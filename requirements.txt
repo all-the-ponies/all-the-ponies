@@ -1,0 +1,8 @@
+luna-kit[loc,xml,pvr]@git+https://github.com/ego-lay-atman-bay/luna-kit
+Pillow
+numpy
+lxml
+charset-normalizer
+rich
+requests
+

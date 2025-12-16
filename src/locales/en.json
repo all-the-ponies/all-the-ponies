@@ -1,0 +1,198 @@
+{
+  "about": {
+    "title": "About"
+  },
+  "ALL_THE_PONIES": "All The Ponies",
+  "button": {
+    "cancel": "Cancel",
+    "no": "No",
+    "ok": "Ok",
+    "share": "Share",
+    "start": "Start",
+    "stop": "Stop",
+    "yes": "Yes",
+    "skip": "Skip",
+    "hint": "Hint"
+  },
+  "common": {
+    "help": "Help",
+    "info": "Info",
+    "name": "Name",
+    "import": "Import",
+    "export": "Export",
+    "wiki": "Wiki"
+  },
+  "dialog": {
+    "filter": "Filter",
+    "sort_by": "Sort By"
+  },
+  "filter": {
+    "pony": {
+      "npc": "NPC",
+      "playable": "Playable",
+      "pro": "Pro",
+      "quest": "Quest",
+      "unused": "Unused"
+    },
+    "decor": {
+      "regular": "Regular",
+      "can_fuse": "Can fuse",
+      "effect": "Effect"
+    },
+    "shop": {
+      "maze": "Maze",
+      "gem_shop": "Gem Shops",
+      "others": "Others"
+    }
+  },
+  "game": {
+    "content_version": "Content version: {version}",
+    "game_version": "Game version: {version}",
+    "message": {
+      "you_won": "You Won!"
+    }
+  },
+  "game_object": {
+    "building": {
+      "build_reward": "Build reward",
+      "build_skip_cost": "Build skip cost",
+      "build_time": "Build time",
+      "skip_cost": "Skip cost"
+    },
+    "common": {
+      "size": "Size",
+      "unlock_level": "Unlock Level"
+    },
+    "decor": {
+      "cannot_fuse": "Cannot fuse",
+      "decor": "Décor",
+      "fusion_points": "Fusion Points",
+      "pro_decors": "Pro Decorations",
+      "pro_decor": "Pro @:game_object.decor.decor"
+    },
+    "house": {
+      "house": "House | Houses",
+      "resident": "Resident | Residents",
+      "visitor": "Visitor | Visitors"
+    },
+    "pony": {
+      "arrival_bonus": "Arrival Bonus",
+      "character": "Character | Characters",
+      "level_up_rewards": "Level Up Rewards",
+      "minigame_cooldown": "Minigame Cooldown",
+      "minigame_skip_cost": "Minigame Skip Cost",
+      "pony": "Ponies",
+      "transform": "Transform",
+      "transformable": "Transformable"
+    },
+    "profile_decorations": {
+      "avatar": {
+        "avatar": "Avatar | Avatars"
+      },
+      "background": {
+        "background": "Background | Backgrounds"
+      },
+      "background_frame": {
+        "background_frame": "Background Frame"
+      },
+      "frame": {
+        "frame": "Frame | Frames"
+      },
+      "is_default": "Is default"
+    },
+    "road": {
+      "road": "Road | Roads"
+    },
+    "shop": {
+      "product": "Product",
+      "production_time": "Production time",
+      "profit": "Profit",
+      "shop": "Shop | Shops",
+      "gem_shop": "Gem Shops"
+    },
+    "token": {
+      "token": "Token | Tokens"
+    }
+  },
+  "group_quests": {
+    "title": "Group Quests",
+    "random_pro": "Random",
+    "pro": "Pro"
+  },
+  "inventory": {
+    "title": "Inventory",
+    "message": {
+      "add_more": "Add some {category}",
+      "dialog": {
+        "export": {
+          "format": "Format:",
+          "category": "Category:"
+        }
+      }
+    },
+    "stats": {
+      "ponies": "@:game_object.pony.pony{':'} {count}",
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "houses": "@:game_object.house.house{':'} {count}",
+      "shops": "@:game_object.shop.shop{':'} {count}",
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}"
+    }
+  },
+  "location": {
+    "canterlot": "Canterlot",
+    "changeling_kingdom": "Changeling Kingdom",
+    "crystal_empire": "Crystal Empire",
+    "everfree_forest": "Everfree Forest",
+    "klugetown": "Klugetown",
+    "ponyville": "Ponyville",
+    "sweet_apple_acres": "Sweet Apple Acres",
+    "town": "Town",
+    "unknown": "Unknown"
+  },
+  "player_info": {
+    "friend_code": "Friend Code",
+    "join_date": "Join date: {join_date}",
+    "total_playtime": "Total playtime: {total_playtime}"
+  },
+  "pony_quiz": {
+    "description": "Test your knowledge of the My Little Pony: Magic Princess mobile game, and see how many ponies you can name. It can still be fun even if you don't play the game, because most ponies in G4 are in the game (there's some G1 ponies as well).",
+    "time": "Time",
+    "title": "Quiz",
+    "message": {
+      "win_message": "Congratulations! It took you {time} to name all {num_ponies} @.lower:game_object.pony.pony"
+    },
+    "options": {
+      "ignore_spaces": "Ignore spaces",
+      "case_sensitive": "Case sensitive",
+      "ignore_accents": "Ignore accents",
+      "ignore_punctuation": "Ignore punctuation",
+      "include_unused": "Include unused ponies"
+    }
+  },
+  "guesser": {
+    "title": "Who's That Pony?",
+    "description": "Guess the pony from the silhouette",
+    "message": {
+      "correct_guesses": "Correct guesses",
+      "guessed_correctly": "Guessed correctly: {ponies}/{total}",
+      "time": "Time: {time}"
+    }
+  },
+  "sorting": {
+    "alphabetically": "Alphabetically",
+    "game_order": "Game Order",
+    "reverse": "Reverse",
+    "shop": {
+      "production": "Production rate",
+      "xp_rate": "XP rate"
+    }
+  },
+  "stats": {
+    "title": "Stats",
+    "message": {
+      "ponies": {
+        "total": "Total ponies: {count}"
+      }
+    }
+  }
+}

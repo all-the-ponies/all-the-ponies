@@ -1,0 +1,198 @@
+{
+  "about": {
+    "title": "À Propos"
+  },
+  "ALL_THE_PONIES": "",
+  "button": {
+    "cancel": "Annuler",
+    "no": "Non",
+    "ok": "Ok",
+    "share": "Partager",
+    "start": "Commencer",
+    "stop": "",
+    "yes": "Oui",
+    "skip": "Passer",
+    "hint": ""
+  },
+  "common": {
+    "help": "Aide",
+    "info": "",
+    "name": "Nom",
+    "import": "",
+    "export": "",
+    "wiki": ""
+  },
+  "dialog": {
+    "filter": "",
+    "sort_by": ""
+  },
+  "filter": {
+    "pony": {
+      "npc": "",
+      "playable": "",
+      "pro": "",
+      "quest": "",
+      "unused": ""
+    },
+    "decor": {
+      "regular": "",
+      "can_fuse": "",
+      "effect": ""
+    },
+    "shop": {
+      "maze": "Labyrinthe",
+      "gem_shop": "Boutiques De Gemmes",
+      "others": ""
+    }
+  },
+  "game": {
+    "content_version": "",
+    "game_version": "",
+    "message": {
+      "you_won": "Tu As Gagné !"
+    }
+  },
+  "game_object": {
+    "building": {
+      "build_reward": "",
+      "build_skip_cost": "",
+      "build_time": "",
+      "skip_cost": ""
+    },
+    "common": {
+      "size": "",
+      "unlock_level": ""
+    },
+    "decor": {
+      "cannot_fuse": "",
+      "decor": "Décorations",
+      "fusion_points": "Points De Fusion",
+      "pro_decors": "Décorations Pro",
+      "pro_decor": ""
+    },
+    "house": {
+      "house": "",
+      "resident": "",
+      "visitor": ""
+    },
+    "pony": {
+      "arrival_bonus": "",
+      "character": "Personnages",
+      "level_up_rewards": "",
+      "minigame_cooldown": "",
+      "minigame_skip_cost": "",
+      "pony": "Poneys",
+      "transform": "Transformer",
+      "transformable": ""
+    },
+    "profile_decorations": {
+      "avatar": {
+        "avatar": "Avatar | Avatars"
+      },
+      "background": {
+        "background": "Fond | Fonds"
+      },
+      "background_frame": {
+        "background_frame": "Cadre de fond"
+      },
+      "frame": {
+        "frame": "Cadre | Cadres"
+      },
+      "is_default": ""
+    },
+    "road": {
+      "road": "Routes"
+    },
+    "shop": {
+      "product": "",
+      "production_time": "",
+      "profit": "",
+      "shop": "Magasins",
+      "gem_shop": "Boutiques De Gemmes"
+    },
+    "token": {
+      "token": "Jetons"
+    }
+  },
+  "group_quests": {
+    "title": "Quêtes De Groupe",
+    "random_pro": "",
+    "pro": ""
+  },
+  "inventory": {
+    "title": "Inventaire",
+    "message": {
+      "add_more": "",
+      "dialog": {
+        "export": {
+          "format": "",
+          "category": ""
+        }
+      }
+    },
+    "stats": {
+      "ponies": "@:game_object.pony.pony{':'} {count}",
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "houses": "@:game_object.house.house{':'} {count}",
+      "shops": "@:game_object.shop.shop{':'} {count}",
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}"
+    }
+  },
+  "location": {
+    "canterlot": "Canterlot",
+    "changeling_kingdom": "Changeling Kingdom",
+    "crystal_empire": "Crystal Empire",
+    "everfree_forest": "Forêt Everfree",
+    "klugetown": "Klugetown",
+    "ponyville": "Ponyville",
+    "sweet_apple_acres": "Sweet Apple Acres",
+    "town": "",
+    "unknown": ""
+  },
+  "player_info": {
+    "friend_code": "Code D'Ami",
+    "join_date": "",
+    "total_playtime": ""
+  },
+  "pony_quiz": {
+    "description": "",
+    "time": "",
+    "title": "",
+    "message": {
+      "win_message": ""
+    },
+    "options": {
+      "ignore_spaces": "",
+      "case_sensitive": "",
+      "ignore_accents": "",
+      "ignore_punctuation": "",
+      "include_unused": ""
+    }
+  },
+  "guesser": {
+    "title": "",
+    "description": "",
+    "message": {
+      "correct_guesses": "",
+      "guessed_correctly": "",
+      "time": ""
+    }
+  },
+  "sorting": {
+    "alphabetically": "",
+    "game_order": "",
+    "reverse": "",
+    "shop": {
+      "production": "",
+      "xp_rate": ""
+    }
+  },
+  "stats": {
+    "title": "",
+    "message": {
+      "ponies": {
+        "total": ""
+      }
+    }
+  }
+}

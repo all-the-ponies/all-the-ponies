@@ -1,0 +1,25 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "typings.d.ts", "src/**/*", "src/**/*.vue", "src/**/*.json"],
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "useUnknownInCatchVariables": false,
+    "strict": false,
+    "allowArbitraryExtensions": true,
+    "resolveJsonModule": true,
+
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    "lib": [
+      "ES2021",
+      "DOM",
+      "DOM.Iterable"
+    ]
+  }
+}

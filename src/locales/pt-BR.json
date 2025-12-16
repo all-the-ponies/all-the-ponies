@@ -1,0 +1,198 @@
+{
+  "about": {
+    "title": "Sobre"
+  },
+  "ALL_THE_PONIES": "",
+  "button": {
+    "cancel": "Cancelar",
+    "no": "Não",
+    "ok": "Ok",
+    "share": "Publicar",
+    "start": "Iniciar",
+    "stop": "",
+    "yes": "Sim",
+    "skip": "Pular",
+    "hint": ""
+  },
+  "common": {
+    "help": "Ajuda",
+    "info": "",
+    "name": "Nome",
+    "import": "",
+    "export": "",
+    "wiki": ""
+  },
+  "dialog": {
+    "filter": "",
+    "sort_by": ""
+  },
+  "filter": {
+    "pony": {
+      "npc": "",
+      "playable": "",
+      "pro": "",
+      "quest": "",
+      "unused": ""
+    },
+    "decor": {
+      "regular": "",
+      "can_fuse": "",
+      "effect": ""
+    },
+    "shop": {
+      "maze": "Labirinto",
+      "gem_shop": "Lojas De Joias",
+      "others": ""
+    }
+  },
+  "game": {
+    "content_version": "",
+    "game_version": "",
+    "message": {
+      "you_won": "Você Ganhou!"
+    }
+  },
+  "game_object": {
+    "building": {
+      "build_reward": "",
+      "build_skip_cost": "",
+      "build_time": "",
+      "skip_cost": ""
+    },
+    "common": {
+      "size": "",
+      "unlock_level": ""
+    },
+    "decor": {
+      "cannot_fuse": "",
+      "decor": "Decoração",
+      "fusion_points": "Pontos De Fusão",
+      "pro_decors": "Decorações Profissionais",
+      "pro_decor": ""
+    },
+    "house": {
+      "house": "",
+      "resident": "",
+      "visitor": ""
+    },
+    "pony": {
+      "arrival_bonus": "",
+      "character": "Personagens",
+      "level_up_rewards": "",
+      "minigame_cooldown": "",
+      "minigame_skip_cost": "",
+      "pony": "Pôneis",
+      "transform": "Transformar",
+      "transformable": ""
+    },
+    "profile_decorations": {
+      "avatar": {
+        "avatar": "Avatar | Avatares"
+      },
+      "background": {
+        "background": "Plano De Fundo | Planos De Fundo"
+      },
+      "background_frame": {
+        "background_frame": "Moldura de Plano de Fundo"
+      },
+      "frame": {
+        "frame": "Moldura | Molduras"
+      },
+      "is_default": ""
+    },
+    "road": {
+      "road": "Estradas"
+    },
+    "shop": {
+      "product": "",
+      "production_time": "",
+      "profit": "",
+      "shop": "Lojas",
+      "gem_shop": "Lojas De Joias"
+    },
+    "token": {
+      "token": "Fichas"
+    }
+  },
+  "group_quests": {
+    "title": "Missões De Grupo",
+    "random_pro": "",
+    "pro": ""
+  },
+  "inventory": {
+    "title": "Inventário",
+    "message": {
+      "add_more": "",
+      "dialog": {
+        "export": {
+          "format": "",
+          "category": ""
+        }
+      }
+    },
+    "stats": {
+      "ponies": "@:game_object.pony.pony{':'} {count}",
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "houses": "@:game_object.house.house{':'} {count}",
+      "shops": "@:game_object.shop.shop{':'} {count}",
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}"
+    }
+  },
+  "location": {
+    "canterlot": "Canterlot",
+    "changeling_kingdom": "Reino Changeling",
+    "crystal_empire": "Crystal Empire",
+    "everfree_forest": "Floresta Everfree",
+    "klugetown": "Klugetown",
+    "ponyville": "Ponyville",
+    "sweet_apple_acres": "Sweet Apple Acres",
+    "town": "",
+    "unknown": ""
+  },
+  "player_info": {
+    "friend_code": "Código De Amigo",
+    "join_date": "",
+    "total_playtime": ""
+  },
+  "pony_quiz": {
+    "description": "",
+    "time": "",
+    "title": "",
+    "message": {
+      "win_message": ""
+    },
+    "options": {
+      "ignore_spaces": "",
+      "case_sensitive": "",
+      "ignore_accents": "",
+      "ignore_punctuation": "",
+      "include_unused": ""
+    }
+  },
+  "guesser": {
+    "title": "",
+    "description": "",
+    "message": {
+      "correct_guesses": "",
+      "guessed_correctly": "",
+      "time": ""
+    }
+  },
+  "sorting": {
+    "alphabetically": "",
+    "game_order": "",
+    "reverse": "",
+    "shop": {
+      "production": "",
+      "xp_rate": ""
+    }
+  },
+  "stats": {
+    "title": "",
+    "message": {
+      "ponies": {
+        "total": ""
+      }
+    }
+  }
+}

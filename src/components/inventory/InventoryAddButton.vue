@@ -1,0 +1,61 @@
+<script setup lang="ts">
+import gameData from '@/scripts/gameData';
+import { useSaveStore } from '@/stores/saveManager';
+import type { GameObjectId } from '@/types/gameDataTypes';
+import { computed } from 'vue';
+
+const props = defineProps<{
+  gameObject: GameObjectId,
+}>()
+
+const saveStore = useSaveStore()
+const gameObject = computed(() => gameData.getObject(props.gameObject))
+
+const owned = computed(() => {
+    switch (gameObject.value.category) {
+        case 'pony':
+            return saveStore.hasPony(gameObject.value.id)
+        case 'shop':
+            return saveStore.hasShop(gameObject.value.id)
+    }
+})
+
+function toggleOwned(event: Event) {
+    // event.preventDefault()
+    if (owned.value) {
+        console.log('removing', gameObject.value.id)
+        switch (gameObject.value.category) {
+            case 'pony':
+                saveStore.removePony(gameObject.value.id)
+                break
+            case 'shop':
+                saveStore.removeShop(gameObject.value.id)
+                break
+        }
+    } else {
+        console.log('adding', gameObject.value.id)
+        switch (gameObject.value.category) {
+            case 'pony':
+                saveStore.addPony(gameObject.value.id)
+                break
+            case 'shop':
+                saveStore.addShop(gameObject.value.id)
+                break
+        }
+    }
+}
+</script>
+
+<template>
+<button
+    class="button-circle inventory-button"
+    :class="owned ? 'button-red' : 'button-green'"
+    @click.prevent="toggleOwned"
+>{{ owned ? '-' : '+' }}</button>
+</template>
+
+<style lang="css" scoped>
+.inventory-button {
+    font-size: 130%;
+}
+</style>

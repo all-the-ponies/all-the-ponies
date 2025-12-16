@@ -1,0 +1,198 @@
+{
+  "about": {
+    "title": "نبذة"
+  },
+  "ALL_THE_PONIES": "",
+  "button": {
+    "cancel": "إلغاء",
+    "no": "لا",
+    "ok": "حسنًا",
+    "share": "مشاركة",
+    "start": "ابدأ",
+    "stop": "",
+    "yes": "نعم",
+    "skip": "تخطي",
+    "hint": ""
+  },
+  "common": {
+    "help": "مساعدة",
+    "info": "",
+    "name": "اسم",
+    "import": "",
+    "export": "",
+    "wiki": ""
+  },
+  "dialog": {
+    "filter": "",
+    "sort_by": ""
+  },
+  "filter": {
+    "pony": {
+      "npc": "",
+      "playable": "",
+      "pro": "",
+      "quest": "",
+      "unused": ""
+    },
+    "decor": {
+      "regular": "",
+      "can_fuse": "",
+      "effect": ""
+    },
+    "shop": {
+      "maze": "متاهة",
+      "gem_shop": "متاجر الأحجار الكريمة",
+      "others": ""
+    }
+  },
+  "game": {
+    "content_version": "",
+    "game_version": "",
+    "message": {
+      "you_won": "ربحت!"
+    }
+  },
+  "game_object": {
+    "building": {
+      "build_reward": "",
+      "build_skip_cost": "",
+      "build_time": "",
+      "skip_cost": ""
+    },
+    "common": {
+      "size": "",
+      "unlock_level": ""
+    },
+    "decor": {
+      "cannot_fuse": "",
+      "decor": "ديكور",
+      "fusion_points": "نقاط الدمج",
+      "pro_decors": "ديكورات احترافية",
+      "pro_decor": ""
+    },
+    "house": {
+      "house": "",
+      "resident": "",
+      "visitor": ""
+    },
+    "pony": {
+      "arrival_bonus": "",
+      "character": "شخصيات",
+      "level_up_rewards": "",
+      "minigame_cooldown": "",
+      "minigame_skip_cost": "",
+      "pony": "المهور",
+      "transform": "تحول",
+      "transformable": ""
+    },
+    "profile_decorations": {
+      "avatar": {
+        "avatar": "صورة رمزية | صور رمزية"
+      },
+      "background": {
+        "background": "الخلفية | الخلفيات"
+      },
+      "background_frame": {
+        "background_frame": "إطار الخلفية"
+      },
+      "frame": {
+        "frame": "إطار | الإطارات"
+      },
+      "is_default": ""
+    },
+    "road": {
+      "road": "الطرق"
+    },
+    "shop": {
+      "product": "",
+      "production_time": "",
+      "profit": "",
+      "shop": "المتاجر",
+      "gem_shop": "متاجر الأحجار الكريمة"
+    },
+    "token": {
+      "token": "القطع"
+    }
+  },
+  "group_quests": {
+    "title": "مهام جماعية",
+    "random_pro": "",
+    "pro": ""
+  },
+  "inventory": {
+    "title": "المخزون",
+    "message": {
+      "add_more": "",
+      "dialog": {
+        "export": {
+          "format": "",
+          "category": ""
+        }
+      }
+    },
+    "stats": {
+      "ponies": "@:game_object.pony.pony{':'} {count}",
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "houses": "@:game_object.house.house{':'} {count}",
+      "shops": "@:game_object.shop.shop{':'} {count}",
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}"
+    }
+  },
+  "location": {
+    "canterlot": "كانترلوت",
+    "changeling_kingdom": "مملكة تشانجلينغ",
+    "crystal_empire": "إمبراطورية الكريستال",
+    "everfree_forest": "غابة إفرفري",
+    "klugetown": "كلوجيتاون",
+    "ponyville": "بونيفيل",
+    "sweet_apple_acres": "فدادين التفاح اللذيذ",
+    "town": "",
+    "unknown": ""
+  },
+  "player_info": {
+    "friend_code": "رمز الصديق",
+    "join_date": "",
+    "total_playtime": ""
+  },
+  "pony_quiz": {
+    "description": "",
+    "time": "",
+    "title": "",
+    "message": {
+      "win_message": ""
+    },
+    "options": {
+      "ignore_spaces": "",
+      "case_sensitive": "",
+      "ignore_accents": "",
+      "ignore_punctuation": "",
+      "include_unused": ""
+    }
+  },
+  "guesser": {
+    "title": "",
+    "description": "",
+    "message": {
+      "correct_guesses": "",
+      "guessed_correctly": "",
+      "time": ""
+    }
+  },
+  "sorting": {
+    "alphabetically": "",
+    "game_order": "",
+    "reverse": "",
+    "shop": {
+      "production": "",
+      "xp_rate": ""
+    }
+  },
+  "stats": {
+    "title": "",
+    "message": {
+      "ponies": {
+        "total": ""
+      }
+    }
+  }
+}

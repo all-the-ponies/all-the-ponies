@@ -1,0 +1,198 @@
+{
+  "about": {
+    "title": "회사 소개"
+  },
+  "ALL_THE_PONIES": "",
+  "button": {
+    "cancel": "취소",
+    "no": "아니요",
+    "ok": "확인",
+    "share": "공유",
+    "start": "시작",
+    "stop": "",
+    "yes": "예",
+    "skip": "건너뛰기",
+    "hint": ""
+  },
+  "common": {
+    "help": "도움말",
+    "info": "",
+    "name": "이름",
+    "import": "",
+    "export": "",
+    "wiki": ""
+  },
+  "dialog": {
+    "filter": "",
+    "sort_by": ""
+  },
+  "filter": {
+    "pony": {
+      "npc": "",
+      "playable": "",
+      "pro": "",
+      "quest": "",
+      "unused": ""
+    },
+    "decor": {
+      "regular": "",
+      "can_fuse": "",
+      "effect": ""
+    },
+    "shop": {
+      "maze": "미로",
+      "gem_shop": "보석 상점",
+      "others": ""
+    }
+  },
+  "game": {
+    "content_version": "",
+    "game_version": "",
+    "message": {
+      "you_won": "보상"
+    }
+  },
+  "game_object": {
+    "building": {
+      "build_reward": "",
+      "build_skip_cost": "",
+      "build_time": "",
+      "skip_cost": ""
+    },
+    "common": {
+      "size": "",
+      "unlock_level": ""
+    },
+    "decor": {
+      "cannot_fuse": "",
+      "decor": "장식",
+      "fusion_points": "결합 점수",
+      "pro_decors": "프로 장식",
+      "pro_decor": ""
+    },
+    "house": {
+      "house": "",
+      "resident": "",
+      "visitor": ""
+    },
+    "pony": {
+      "arrival_bonus": "",
+      "character": "캐릭터",
+      "level_up_rewards": "",
+      "minigame_cooldown": "",
+      "minigame_skip_cost": "",
+      "pony": "포니",
+      "transform": "변신",
+      "transformable": ""
+    },
+    "profile_decorations": {
+      "avatar": {
+        "avatar": "아바타 | 아바타"
+      },
+      "background": {
+        "background": "배경 | 배경"
+      },
+      "background_frame": {
+        "background_frame": "배경 프레임"
+      },
+      "frame": {
+        "frame": "프레임 | 프레임"
+      },
+      "is_default": ""
+    },
+    "road": {
+      "road": "도로"
+    },
+    "shop": {
+      "product": "",
+      "production_time": "",
+      "profit": "",
+      "shop": "건물",
+      "gem_shop": "보석 상점"
+    },
+    "token": {
+      "token": "토큰"
+    }
+  },
+  "group_quests": {
+    "title": "그룹 퀘스트",
+    "random_pro": "",
+    "pro": ""
+  },
+  "inventory": {
+    "title": "보관함",
+    "message": {
+      "add_more": "",
+      "dialog": {
+        "export": {
+          "format": "",
+          "category": ""
+        }
+      }
+    },
+    "stats": {
+      "ponies": "@:game_object.pony.pony{':'} {count}",
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "houses": "@:game_object.house.house{':'} {count}",
+      "shops": "@:game_object.shop.shop{':'} {count}",
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}"
+    }
+  },
+  "location": {
+    "canterlot": "Canterlot",
+    "changeling_kingdom": "Changeling \nKingdom",
+    "crystal_empire": "Crystal Empire",
+    "everfree_forest": "Everfree Forest",
+    "klugetown": "Klugetown",
+    "ponyville": "Ponyville",
+    "sweet_apple_acres": "Sweet Apple Acres",
+    "town": "",
+    "unknown": ""
+  },
+  "player_info": {
+    "friend_code": "친구 코드",
+    "join_date": "",
+    "total_playtime": ""
+  },
+  "pony_quiz": {
+    "description": "",
+    "time": "",
+    "title": "",
+    "message": {
+      "win_message": ""
+    },
+    "options": {
+      "ignore_spaces": "",
+      "case_sensitive": "",
+      "ignore_accents": "",
+      "ignore_punctuation": "",
+      "include_unused": ""
+    }
+  },
+  "guesser": {
+    "title": "",
+    "description": "",
+    "message": {
+      "correct_guesses": "",
+      "guessed_correctly": "",
+      "time": ""
+    }
+  },
+  "sorting": {
+    "alphabetically": "",
+    "game_order": "",
+    "reverse": "",
+    "shop": {
+      "production": "",
+      "xp_rate": ""
+    }
+  },
+  "stats": {
+    "title": "",
+    "message": {
+      "ponies": {
+        "total": ""
+      }
+    }
+  }
+}
