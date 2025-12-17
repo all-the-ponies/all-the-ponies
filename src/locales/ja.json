@@ -36,8 +36,7 @@
     },
     "decor": {
       "regular": "",
-      "can_fuse": "",
-      "effect": ""
+      "can_fuse": ""
     },
     "shop": {
       "maze": "めいろ",
@@ -68,7 +67,8 @@
       "decor": "デコレーション",
       "fusion_points": "フュージョン|ポイント",
       "pro_decors": "プロデコ|レーション",
-      "pro_decor": ""
+      "pro_decor": "",
+      "effect": ""
     },
     "house": {
       "house": "",

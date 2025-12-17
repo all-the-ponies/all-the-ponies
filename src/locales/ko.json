@@ -36,8 +36,7 @@
     },
     "decor": {
       "regular": "",
-      "can_fuse": "",
-      "effect": ""
+      "can_fuse": ""
     },
     "shop": {
       "maze": "미로",
@@ -68,7 +67,8 @@
       "decor": "장식",
       "fusion_points": "결합 점수",
       "pro_decors": "프로 장식",
-      "pro_decor": ""
+      "pro_decor": "",
+      "effect": ""
     },
     "house": {
       "house": "",

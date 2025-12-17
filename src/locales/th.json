@@ -36,8 +36,7 @@
     },
     "decor": {
       "regular": "",
-      "can_fuse": "",
-      "effect": ""
+      "can_fuse": ""
     },
     "shop": {
       "maze": "เขาวงกต",
@@ -68,7 +67,8 @@
       "decor": "ของตกแต่ง",
       "fusion_points": "แต้ม|หลอมรวม",
       "pro_decors": "ของตกแต่ง|ระดับโปร",
-      "pro_decor": ""
+      "pro_decor": "",
+      "effect": ""
     },
     "house": {
       "house": "",

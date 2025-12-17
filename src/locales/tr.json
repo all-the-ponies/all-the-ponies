@@ -36,8 +36,7 @@
     },
     "decor": {
       "regular": "",
-      "can_fuse": "",
-      "effect": ""
+      "can_fuse": ""
     },
     "shop": {
       "maze": "Labi̇rent",
@@ -68,7 +67,8 @@
       "decor": "Süsleme",
       "fusion_points": "Kaynaştırma Puanları",
       "pro_decors": "Pro Süslemeler",
-      "pro_decor": ""
+      "pro_decor": "",
+      "effect": ""
     },
     "house": {
       "house": "",

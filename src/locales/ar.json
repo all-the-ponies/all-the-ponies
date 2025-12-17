@@ -36,8 +36,7 @@
     },
     "decor": {
       "regular": "",
-      "can_fuse": "",
-      "effect": ""
+      "can_fuse": ""
     },
     "shop": {
       "maze": "متاهة",
@@ -68,7 +67,8 @@
       "decor": "ديكور",
       "fusion_points": "نقاط الدمج",
       "pro_decors": "ديكورات احترافية",
-      "pro_decor": ""
+      "pro_decor": "",
+      "effect": ""
     },
     "house": {
       "house": "",

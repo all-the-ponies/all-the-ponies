@@ -36,8 +36,7 @@
     },
     "decor": {
       "regular": "",
-      "can_fuse": "",
-      "effect": ""
+      "can_fuse": ""
     },
     "shop": {
       "maze": "迷宫",
@@ -68,7 +67,8 @@
       "decor": "装饰品",
       "fusion_points": "融合点数",
       "pro_decors": "专业装饰品",
-      "pro_decor": ""
+      "pro_decor": "",
+      "effect": ""
     },
     "house": {
       "house": "",

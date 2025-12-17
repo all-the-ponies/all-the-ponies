@@ -36,8 +36,7 @@
     },
     "decor": {
       "regular": "Regular",
-      "can_fuse": "Can fuse",
-      "effect": "Effect"
+      "can_fuse": "Can fuse"
     },
     "shop": {
       "maze": "Maze",
@@ -68,7 +67,8 @@
       "decor": "Décor",
       "fusion_points": "Fusion Points",
       "pro_decors": "Pro Decorations",
-      "pro_decor": "Pro @:game_object.decor.decor"
+      "pro_decor": "Pro @:game_object.decor.decor",
+      "effect": "Effect"
     },
     "house": {
       "house": "House | Houses",

@@ -36,8 +36,7 @@
     },
     "decor": {
       "regular": "",
-      "can_fuse": "",
-      "effect": ""
+      "can_fuse": ""
     },
     "shop": {
       "maze": "Лабиринт",
@@ -68,7 +67,8 @@
       "decor": "Декор",
       "fusion_points": "Очки Синтеза",
       "pro_decors": "Супердекорации",
-      "pro_decor": ""
+      "pro_decor": "",
+      "effect": ""
     },
     "house": {
       "house": "",

@@ -36,8 +36,7 @@
     },
     "decor": {
       "regular": "",
-      "can_fuse": "",
-      "effect": ""
+      "can_fuse": ""
     },
     "shop": {
       "maze": "Laberinto",
@@ -68,7 +67,8 @@
       "decor": "Decoración",
       "fusion_points": "Puntos De Fusión",
       "pro_decors": "Decoraciones De Profesional",
-      "pro_decor": ""
+      "pro_decor": "",
+      "effect": ""
     },
     "house": {
       "house": "",
