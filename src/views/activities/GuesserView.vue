@@ -249,7 +249,7 @@ function imageLoadFailed() {
             <p>{{ $t('guesser.description') }}</p>
             <button @click="togglePlaying" class="button button-green">{{ $t(playing ? 'button.stop' : 'button.start') }}</button>
         </div>
-        <div class="game-container" ref="game-container">
+        <div class="game-container" :class="{playing}" ref="game-container">
             <div class="game-section">
                 <div class="game-bar" ref="game-bar">
                     <div>
@@ -269,6 +269,7 @@ function imageLoadFailed() {
                             :placeholder="$t('common.name')"
                             class="name-input text-box"
                             :disabled="!playing"
+                            :readonly="!canGuess"
                         >
                         <button
                             @click="nextPony()"
@@ -306,7 +307,7 @@ function imageLoadFailed() {
                 <div class="guessed-ponies-wrapper">
                     <div class="guessed-ponies-list">
                         <router-link
-                            v-for="pony in guessedPonies"
+                            v-for="pony in playing ? guessedPonies.slice().reverse() : guessedPonies"
                             :to="{
                                 name: 'pony',
                                 params: {
