@@ -139,6 +139,15 @@ async function importFriendCode() {
                 </li>
                 <li>
                     {{
+                        $t('inventory.stats.stars', 2, {
+                            named: {
+                                count: $n(saveStats.ponies.stars)
+                            }
+                        })
+                    }}
+                </li>
+                <li>
+                    {{
                         $t('inventory.stats.houses', 2, {
                             named: {
                                 count: $n(saveStats.houses.total)

@@ -135,7 +135,8 @@
       "transformable": "@:game_object.pony.transformable{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}"
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
+      "stars": "Stars: {count}"
     }
   },
   "location": {
