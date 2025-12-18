@@ -743,6 +743,9 @@ class GetGameData:
                 image_name = os.path.splitext(house.get('Icon', {}).get('BookIcon'))[0]
                 image_source = os.path.join(self.game_folder, image_name)
                 if not os.path.isfile(image_source + '.png') and not os.path.isfile(image_source + '.pvr'):
+                    image_source = os.path.join(self.game_folder, os.path.basename(image_name))
+                
+                if not os.path.isfile(image_source + '.png') and not os.path.isfile(image_source + '.pvr'):
                     image_name = os.path.splitext(house.get('Shop', {}).get('Icon'))[0]
                     image_source = os.path.join(self.game_folder, image_name)
 
