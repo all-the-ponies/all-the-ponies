@@ -181,7 +181,11 @@ export const useSaveStore = defineStore('save', {
             }
 
             for (let shop of saveData.inventory.shops) {
-                this.addShop(shop)
+                try {
+                    this.addShop(shop)
+                } catch (error) {
+                    console.error(error)
+                }
             }
             this.$persist()
         },
