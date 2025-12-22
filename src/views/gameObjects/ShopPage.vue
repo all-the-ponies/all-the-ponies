@@ -116,31 +116,33 @@ console.log(residents.value)
                             <td>{{ $t('game_object.building.build_reward') }}</td>
                             <td><currency-image object="XP">{{ objectInfo.build.skip_cost }}</currency-image></td>
                         </tr>
-
-                        <tr>
-                            <th colspan="2">{{ $t('game_object.shop.product') }}</th>
-                        </tr>
-                        <tr>
-                            <td>{{ objectInfo.product.name[language.key] }}</td>
-                            <td><img :src="`/images/${objectInfo.product.image}`" style="height: 1em;"></td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.shop.production_time') }}</td>
-                            <td>{{ formatTime(objectInfo.product.time) }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.shop.profit') }}</td>
-                            <td v-if="productCurrency"><currency-image :object="productCurrency">{{ objectInfo.product.bits || objectInfo.product.gems || objectInfo.product.tls }}</currency-image></td>
-                            <td v-else>{{ objectInfo.product.tls }} <img :src="`/images/${objectInfo.product.image}`" style="height: 1em;"></td>
-                        </tr>
-                        <tr>
-                            <td>{{ gameData.translateName(gameData.getObject('XP', 'item')) }}</td>
-                            <td><currency-image object="XP">{{ objectInfo.product.xp }}</currency-image></td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.building.skip_cost') }}</td>
-                            <td><currency-image object="Gems">{{ objectInfo.product.skip_cost }}</currency-image></td>
-                        </tr>
+                        
+                        <template v-if="Object.keys(objectInfo.product).length > 0">
+                            <tr>
+                                <th colspan="2">{{ $t('game_object.shop.product') }}</th>
+                            </tr>
+                            <tr>
+                                <td>{{ objectInfo.product.name[language.key] }}</td>
+                                <td><img :src="`/images/${objectInfo.product.image}`" style="height: 1em;"></td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.shop.production_time') }}</td>
+                                <td>{{ formatTime(objectInfo.product.time) }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.shop.profit') }}</td>
+                                <td v-if="productCurrency"><currency-image :object="productCurrency">{{ objectInfo.product.bits || objectInfo.product.gems || objectInfo.product.tls }}</currency-image></td>
+                                <td v-else>{{ objectInfo.product.tls }} <img :src="`/images/${objectInfo.product.image}`" style="height: 1em;"></td>
+                            </tr>
+                            <tr>
+                                <td>{{ gameData.translateName(gameData.getObject('XP', 'item')) }}</td>
+                                <td><currency-image object="XP">{{ objectInfo.product.xp }}</currency-image></td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.building.skip_cost') }}</td>
+                                <td><currency-image object="Gems">{{ objectInfo.product.skip_cost }}</currency-image></td>
+                            </tr>
+                        </template>
 
                         <tr v-if="Object.keys(residents).length > 0">
                             <th colspan="2">{{ $t('game_object.house.resident', 2) }}</th>

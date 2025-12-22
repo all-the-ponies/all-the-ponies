@@ -83,6 +83,17 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
       production: {
         name: 'sorting.shop.production',
         check(a: ShopType, b: ShopType) {
+          if (!(a.product && Object.keys(a.product).length) ||
+              !(b.product && Object.keys(b.product).length)) {
+              if (a.product && Object.keys(a.product).length) {
+                return 1
+              } else if (b.product && Object.keys(b.product).length) {
+                return -1
+              }
+
+              return 0
+          }
+          
           if (a.product.gems > 0 || b.product.gems > 0) {
             if (a.product.gems === 0) {
               return 1
@@ -113,6 +124,17 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
       xp: {
         name: 'sorting.shop.xp_rate',
         check(a: ShopType, b: ShopType) {
+          if (!(a.product && Object.keys(a.product).length) ||
+              !(b.product && Object.keys(b.product).length)) {
+              if (a.product && Object.keys(a.product).length) {
+                return 1
+              } else if (b.product && Object.keys(b.product).length) {
+                return -1
+              }
+
+              return 0
+          }
+
           return (b.product.xp / b.product.time) - (a.product.xp / a.product.time)
         }
       }
@@ -166,28 +188,28 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
       bits: {
         name: gameData.translateName(gameData.getObject('Bits', 'item')),
         check(gameObject: ShopType) {
-          return gameObject.product.bits > 0
+          return gameObject.product && gameObject.product.bits > 0
         },
         default: true
       },
       gems: {
         name: 'filter.shop.gem_shop',
         check(gameObject: ShopType) {
-          return gameObject.product.gems > 0
+          return gameObject.product && gameObject.product.gems > 0
         },
         default: true
       },
       maze: {
         name: 'filter.shop.maze',
         check(gameObject: ShopType) {
-          return gameObject.product.tls > 0
+          return gameObject.product && gameObject.product.tls > 0
         },
         default: true
       },
       other: {
         name: 'filter.shop.others',
         check(gameObject: ShopType) {
-          return !(gameObject.product.bits || gameObject.product.gems || gameObject.product.tls)
+          return !(gameObject.product && (gameObject.product.bits || gameObject.product.gems || gameObject.product.tls))
         },
         default: true,
       }
