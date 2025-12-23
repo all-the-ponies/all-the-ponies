@@ -18,12 +18,10 @@ const route = useRoute()
 const objectInfo = ref<ShopType | null>(null)
 
 objectInfo.value = gameData.getObject(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id, 'shop')
-console.log('shop', objectInfo.value)
 
 onBeforeRouteUpdate((to, from) => {
     if (to.params.id !== from.params.id) {to
         objectInfo.value = gameData.getObject(Array.isArray(to.params.id) ? to.params.id[0] : to.params.id, 'shop')
-        console.log('house', objectInfo.value)
     }
 })
 
@@ -59,8 +57,6 @@ const productCurrency = computed(() => {
         return null
     }
 })
-
-console.log(residents.value)
 
 </script>
 

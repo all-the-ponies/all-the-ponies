@@ -60,7 +60,6 @@ const playing = ref<boolean>(false)
 const currentPony = ref<PonyType | null>(null)
 const displayName = ref<string>('')
 const imageUrl = computed(() => {
-    console.log('imageUrl', currentPony.value)
     if (currentPony.value !== null) {
         return staticImage(currentPony.value.image.main)
     }

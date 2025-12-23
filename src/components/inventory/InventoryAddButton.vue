@@ -23,7 +23,6 @@ const owned = computed(() => {
 function toggleOwned(event: Event) {
     // event.preventDefault()
     if (owned.value) {
-        console.log('removing', gameObject.value.id)
         switch (gameObject.value.category) {
             case 'pony':
                 saveStore.removePony(gameObject.value.id)
@@ -33,7 +32,6 @@ function toggleOwned(event: Event) {
                 break
         }
     } else {
-        console.log('adding', gameObject.value.id)
         switch (gameObject.value.category) {
             case 'pony':
                 saveStore.addPony(gameObject.value.id)

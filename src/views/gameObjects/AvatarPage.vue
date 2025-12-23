@@ -17,7 +17,6 @@ const route = useRoute()
 const objectInfo = ref<AvatarType | null>(null)
 
 objectInfo.value = gameData.getObject(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id, 'avatar')
-console.log('decor', objectInfo.value)
 
 onBeforeRouteUpdate((to, from) => {
     if (to.params.id !== from.params.id) {

@@ -20,8 +20,6 @@ const saveStore = useSaveStore()
 
 const gameObject = gameData.getObject(props.object)
 
-// console.log('object', object, props.object)
-
 const name = computed(() => {
     let name = gameData.translateName(gameObject).value
     return name
@@ -40,7 +38,6 @@ const stars = computed({
     }
   },
   set(stars: 0 | 1 | 2 | 3 | 4 | 5) {
-    console.log('setting stars', stars)
     saveStore.addPony(gameObject.id, {
       level: stars,
     })

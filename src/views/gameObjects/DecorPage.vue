@@ -18,12 +18,10 @@ const route = useRoute()
 const objectInfo = ref<DecorType | null>(null)
 
 objectInfo.value = gameData.getObject(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id, 'decor')
-console.log('decor', objectInfo.value)
 
 onBeforeRouteUpdate((to, from) => {
     if (to.params.id !== from.params.id) {
         objectInfo.value = gameData.getObject(Array.isArray(to.params.id) ? to.params.id[0] : to.params.id, 'decor')
-        console.log('decor', objectInfo.value)
     }
 })
 

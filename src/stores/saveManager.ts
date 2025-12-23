@@ -93,7 +93,6 @@ export const useSaveStore = defineStore('save', {
             }
 
             if (pony.group.length) {
-                console.log('adding group', pony.group)
                 for (let friend of pony.group) {
                     this.ponies[friend] = {
                         ...ponyInfo,
@@ -135,7 +134,6 @@ export const useSaveStore = defineStore('save', {
                 const pony = gameData.getObject(id, 'pony')
                 delete this.ponies[id]
                 if (pony.group.length) {
-                    console.log('group', pony.group)
                     for (let friend of pony.group) {
                         if (friend in this.ponies) {
                             delete this.ponies[friend]

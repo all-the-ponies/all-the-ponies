@@ -24,7 +24,6 @@ const pony = ref<PonyType | null>(null)
 
 const saveStore = useSaveStore()
 pony.value = gameData.getObject(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id, 'pony')
-console.log('pony', pony.value)
 
 const stars = computed({
   get() {
@@ -35,7 +34,6 @@ const stars = computed({
     }
   },
   set(stars: 0 | 1 | 2 | 3 | 4 | 5) {
-    console.log('setting stars', stars)
     saveStore.addPony(pony.value.id, {
       level: stars,
     })

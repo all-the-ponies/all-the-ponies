@@ -190,7 +190,6 @@ watch(
             q: searchQuery.value || null,
             sort: sortMethod.value || null,
         }
-        console.log('query', props.query)
 
         if (!params.q) {
             delete params.q
@@ -271,7 +270,6 @@ watch(
     computed(() => route.path),
     (newUrl, oldUrl) => {
         if (newUrl != oldUrl) {
-            console.log('change page')
             searchQuery.value = ''
             sortMethod.value = defaultSortMethod.value
             selectedFilters.value = {}

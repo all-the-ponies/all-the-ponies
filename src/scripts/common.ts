@@ -144,7 +144,6 @@ export function setUrlParameter(param: string, value: any, replace: boolean = fa
 export function getUrlParameter(param: string) {
     const url = new URL(location.href)
     const value = url.searchParams.get(param)
-    console.log(value)
   return value == null ? null : decodeURIComponent(value)
 }
 

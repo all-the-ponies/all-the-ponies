@@ -36,7 +36,6 @@ function exportSave() {
             break
     }
 
-    console.log(result)
     downloadFile(result, type, filename)
 }
 

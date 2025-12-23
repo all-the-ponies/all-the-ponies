@@ -18,12 +18,10 @@ const route = useRoute()
 const objectInfo = ref<HouseType | null>(null)
 
 objectInfo.value = gameData.getObject(Array.isArray(route.params.id) ? route.params.id[0] : route.params.id, 'house')
-console.log('house', objectInfo.value)
 
 onBeforeRouteUpdate((to, from) => {
     if (to.params.id !== from.params.id) {
         objectInfo.value = gameData.getObject(Array.isArray(to.params.id) ? to.params.id[0] : to.params.id, 'house')
-        console.log('house', objectInfo.value)
     }
 })
 
