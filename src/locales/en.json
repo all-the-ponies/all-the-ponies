@@ -186,6 +186,9 @@
     "shop": {
       "production": "Production rate",
       "xp_rate": "XP rate"
+    },
+    "decor": {
+      "pro_rate": "Pro rate"
     }
   },
   "stats": {

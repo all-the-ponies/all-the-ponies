@@ -146,6 +146,21 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
             check(a: DecorType, b: DecorType) {
                 return a.fusion_points - b.fusion_points
             },
+        },
+        pro_rate: {
+          name: "sorting.decor.pro_rate",
+          check(a: DecorType, b: DecorType) {
+            if (!a.pro.is_pro || !b.pro.is_pro) {
+              if (a.pro.is_pro) {
+                return -1
+              } else if (b.pro.is_pro) {
+                return 1
+              }
+              return 0
+            }
+
+            return (b.pro.bits || b.pro.time) - (a.pro.bits || a.pro.time)
+          }
         }
     }
 }
