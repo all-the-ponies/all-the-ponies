@@ -33,11 +33,9 @@ npm run build
 ```
 
 
-# TODO
+# Planned features
 
-- [x] Inventory
-- [x] API integration
-- [x] Finish quiz options and layout
-- [x] Who's That Pony?
-- [x] Stats page
 - [ ] Pony Wordle
+- [ ] Wish lists
+- [ ] Shop page
+- [ ] Rewritten mlpcalc
