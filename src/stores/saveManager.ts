@@ -30,6 +30,10 @@ export const useSaveStore = defineStore('save', {
                 friendCode: '',
                 joinDate: null as TDateISO | null,
                 totalPlaytime: 0,
+                currency: {
+                    gems: 0,
+                    bits: 0,
+                }
             },
             ponies: {} as Record<GameObjectId, PonyInventoryEntry>,
             shops: {} as Record<GameObjectId, ShopInventoryEntry>,
@@ -171,6 +175,8 @@ export const useSaveStore = defineStore('save', {
             this.playerInfo.friendCode = friendCode
             this.playerInfo.joinDate = saveData.player_info.join_date
             this.playerInfo.totalPlaytime = saveData.player_info.total_playtime
+            this.playerInfo.currency.gems = saveData.player_info.currency.gems
+            this.playerInfo.currency.bits = saveData.player_info.currency.bits
 
             for (let pony of saveData.inventory.ponies) {
                 this.addPony(pony.id, {

@@ -57,7 +57,11 @@ interface SaveData {
     version: number,
     player_info: {
         join_date: TDateISO,
-        total_playtime: number
+        total_playtime: number,
+        currency: {
+            gems: number,
+            bits: number,
+        },
     },
     inventory: {
         ponies: {

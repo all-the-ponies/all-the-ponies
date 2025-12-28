@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import CurrencyImage from '@/components/CurrencyImage.vue';
 import { formatTime, formatTimestamp } from '@/scripts/common';
+import gameData from '@/scripts/gameData';
 import saveStats from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
 import { useHead } from '@unhead/vue';
@@ -140,6 +142,18 @@ async function importFriendCode() {
                             }
                         })
                     }}
+                </li>
+                <li>
+                    <CurrencyImage object="Gems">
+                        {{gameData.translateName(gameData.getObject('Gems'))}}:
+                        {{ $n(saveStore.playerInfo.currency.gems) }}
+                    </CurrencyImage>
+                </li>
+                <li>
+                    <CurrencyImage object="Bits">
+                        {{gameData.translateName(gameData.getObject('Bits'))}}:
+                        {{ $n(saveStore.playerInfo.currency.bits) }}
+                    </CurrencyImage>
                 </li>
             </ul>
         </section>
