@@ -85,7 +85,11 @@ const filterFunctions = computed(() => {
     if (category.value in FilterFunctions) {
         functions = {
             ...functions,
-            ...FilterFunctions[category.value]
+            ...FilterFunctions[category.value],
+        }
+
+        if (['pony', 'shop'].includes(category.value) && 'notOwned' in functions) {
+            delete functions.notOwned
         }
     }
 

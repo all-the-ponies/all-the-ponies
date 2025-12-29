@@ -2,6 +2,9 @@ import { language } from "@/main"
 import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType } from "../types/gameDataTypes"
 import gameData from "./gameData"
 import type { Ref } from "vue"
+import { useSaveStore } from "@/stores/saveManager"
+
+const saveManager = useSaveStore()
 
 export const CATEGORIES: Partial<Record<CategoryName, {
   string: string,
@@ -197,7 +200,13 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         quest: {
             name: "filter.pony.quest",
             check(gameObject: PonyType) {return gameObject.tags.includes('quest')},
-        }
+        },
+        notOwned: {
+          name: 'filter.pony.not_owned',
+          check(gameObject: PonyType) {
+            return !saveManager.hasPony(gameObject.id)
+          }
+        },
     },
     shop: {
       bits: {
@@ -227,7 +236,13 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
           return !(gameObject.product && (gameObject.product.bits || gameObject.product.gems || gameObject.product.tls))
         },
         default: true,
-      }
+      },
+      notOwned: {
+        name: 'filter.shop.not_owned',
+        check(gameObject: ShopType) {
+          return !saveManager.hasShop(gameObject.id)
+        }
+      },
     },
     decor: {
       regular: {

@@ -32,7 +32,8 @@
       "playable": "Playable",
       "pro": "Pro",
       "quest": "Quest",
-      "unused": "Unused"
+      "unused": "Unused",
+      "not_owned": "Not owned"
     },
     "decor": {
       "regular": "Regular",
@@ -41,7 +42,8 @@
     "shop": {
       "maze": "Maze",
       "gem_shop": "Gem Shops",
-      "others": "Others"
+      "others": "Others",
+      "not_owned": "Not owned"
     }
   },
   "game": {
