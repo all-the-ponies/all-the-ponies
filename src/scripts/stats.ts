@@ -50,6 +50,9 @@ const ponies = computed(() => {
 
     for (let [ponyId, ponyInfo] of Object.entries(save.ponies)) {
         const pony = gameData.getObject(ponyId, 'pony')
+        if (!pony) {
+            continue
+        }
         ponies.total++
         if (pony.group.length > 0 && !pony.group_master) {
             continue
