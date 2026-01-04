@@ -77,7 +77,7 @@ export const useSaveStore = defineStore('save', {
             }
 
             const ponyInfo: PonyInventoryEntry = {
-                id: id,
+                id: pony.id,
                 level: pony.max_level ? 5 : info.level || 0,
                 minigame: info.minigame || '',
             }
@@ -105,7 +105,7 @@ export const useSaveStore = defineStore('save', {
                 }
             }
 
-            this.ponies[id] = ponyInfo
+            this.ponies[pony.id] = ponyInfo
         },
         addShop(id: GameObjectId, info: Partial<Omit<ShopInventoryEntry, 'id'>> = {}) {
             const shop = gameData.getObject(id, 'shop')
