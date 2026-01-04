@@ -70,7 +70,7 @@ export const useSaveStore = defineStore('save', {
         },
     },
     actions: {
-        addPony(id: GameObjectId, info: Partial<Omit<PonyInventoryEntry, 'id'>> = {}) {
+        addPony(id: GameObjectId | GameObject, info: Partial<Omit<PonyInventoryEntry, 'id'>> = {}) {
             const pony = gameData.getObject(id, 'pony')
             if (pony === null) {
                 throw TypeError(`Invalid pony id: ${id}`)
@@ -179,7 +179,13 @@ export const useSaveStore = defineStore('save', {
             this.playerInfo.currency.bits = saveData.player_info.currency.bits
 
             for (let pony of saveData.inventory.ponies) {
-                this.addPony(pony.id, {
+                const ponyInfo = gameData.getObject(pony.id, 'pony')
+                
+                if (ponyInfo.tags.includes('npc') || ponyInfo.tags.includes('quest')) {
+                    continue
+                }
+
+                this.addPony(ponyInfo, {
                     level: pony.level,
                 })
             }
