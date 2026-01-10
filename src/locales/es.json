@@ -20,7 +20,9 @@
     "name": "Nombre",
     "import": "",
     "export": "",
-    "wiki": ""
+    "wiki": "",
+    "royal": "Real",
+    "new": "Estreno"
   },
   "dialog": {
     "filter": "",
@@ -32,7 +34,8 @@
       "playable": "",
       "pro": "",
       "quest": "",
-      "unused": ""
+      "unused": "",
+      "not_owned": ""
     },
     "decor": {
       "regular": "",
@@ -41,7 +44,8 @@
     "shop": {
       "maze": "Laberinto",
       "gem_shop": "Tiendas De Gemas",
-      "others": ""
+      "others": "",
+      "not_owned": ""
     }
   },
   "game": {
@@ -135,7 +139,8 @@
       "transformable": "",
       "houses": "",
       "shops": "",
-      "gem_shops": ""
+      "gem_shops": "",
+      "stars": ""
     }
   },
   "location": {
@@ -185,6 +190,9 @@
     "shop": {
       "production": "",
       "xp_rate": ""
+    },
+    "decor": {
+      "pro_rate": ""
     }
   },
   "stats": {
@@ -194,5 +202,13 @@
         "total": ""
       }
     }
+  },
+  "store": {
+    "message": {
+      "percent_off": "MENOS",
+      "if": "si",
+      "for": "con"
+    },
+    "title": "Tienda"
   }
 }

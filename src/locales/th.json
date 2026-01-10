@@ -20,7 +20,9 @@
     "name": "ชื่อ",
     "import": "",
     "export": "",
-    "wiki": ""
+    "wiki": "",
+    "royal": "รอยัล",
+    "new": "ใหม่"
   },
   "dialog": {
     "filter": "",
@@ -32,7 +34,8 @@
       "playable": "",
       "pro": "",
       "quest": "",
-      "unused": ""
+      "unused": "",
+      "not_owned": ""
     },
     "decor": {
       "regular": "",
@@ -41,7 +44,8 @@
     "shop": {
       "maze": "เขาวงกต",
       "gem_shop": "ร้านค้าเพชร",
-      "others": ""
+      "others": "",
+      "not_owned": ""
     }
   },
   "game": {
@@ -135,7 +139,8 @@
       "transformable": "@:game_object.pony.transformable{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}"
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
+      "stars": ""
     }
   },
   "location": {
@@ -185,6 +190,9 @@
     "shop": {
       "production": "",
       "xp_rate": ""
+    },
+    "decor": {
+      "pro_rate": ""
     }
   },
   "stats": {
@@ -194,5 +202,13 @@
         "total": ""
       }
     }
+  },
+  "store": {
+    "message": {
+      "percent_off": "ลด",
+      "if": "ถ้าเป็น",
+      "for": "ถ้าใช้"
+    },
+    "title": "สโตร์"
   }
 }

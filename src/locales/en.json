@@ -20,7 +20,9 @@
     "name": "Name",
     "import": "Import",
     "export": "Export",
-    "wiki": "Wiki"
+    "wiki": "Wiki",
+    "royal": "Royal",
+    "new": "New"
   },
   "dialog": {
     "filter": "Filter",
@@ -200,5 +202,13 @@
         "total": "Total ponies: {count}"
       }
     }
+  },
+  "store": {
+    "message": {
+      "percent_off": "OFF",
+      "if": "if",
+      "for": "for"
+    },
+    "title": "Store"
   }
 }

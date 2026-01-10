@@ -20,7 +20,9 @@
     "name": "이름",
     "import": "",
     "export": "",
-    "wiki": ""
+    "wiki": "",
+    "royal": "로열",
+    "new": "New"
   },
   "dialog": {
     "filter": "",
@@ -32,7 +34,8 @@
       "playable": "",
       "pro": "",
       "quest": "",
-      "unused": ""
+      "unused": "",
+      "not_owned": ""
     },
     "decor": {
       "regular": "",
@@ -41,7 +44,8 @@
     "shop": {
       "maze": "미로",
       "gem_shop": "보석 상점",
-      "others": ""
+      "others": "",
+      "not_owned": ""
     }
   },
   "game": {
@@ -135,7 +139,8 @@
       "transformable": "@:game_object.pony.transformable{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}"
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
+      "stars": ""
     }
   },
   "location": {
@@ -185,6 +190,9 @@
     "shop": {
       "production": "",
       "xp_rate": ""
+    },
+    "decor": {
+      "pro_rate": ""
     }
   },
   "stats": {
@@ -194,5 +202,13 @@
         "total": ""
       }
     }
+  },
+  "store": {
+    "message": {
+      "percent_off": "할인",
+      "if": "조건:",
+      "for": "가격:"
+    },
+    "title": "상점"
   }
 }

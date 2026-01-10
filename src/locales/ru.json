@@ -20,7 +20,9 @@
     "name": "Имя",
     "import": "",
     "export": "",
-    "wiki": ""
+    "wiki": "",
+    "royal": "Клуб",
+    "new": "Новинка"
   },
   "dialog": {
     "filter": "",
@@ -32,7 +34,8 @@
       "playable": "",
       "pro": "",
       "quest": "",
-      "unused": ""
+      "unused": "",
+      "not_owned": ""
     },
     "decor": {
       "regular": "",
@@ -41,7 +44,8 @@
     "shop": {
       "maze": "Лабиринт",
       "gem_shop": "Магазины Камней",
-      "others": ""
+      "others": "",
+      "not_owned": ""
     }
   },
   "game": {
@@ -135,7 +139,8 @@
       "transformable": "@:game_object.pony.transformable{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}"
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
+      "stars": ""
     }
   },
   "location": {
@@ -185,6 +190,9 @@
     "shop": {
       "production": "",
       "xp_rate": ""
+    },
+    "decor": {
+      "pro_rate": ""
     }
   },
   "stats": {
@@ -194,5 +202,13 @@
         "total": ""
       }
     }
+  },
+  "store": {
+    "message": {
+      "percent_off": "СКИДКА",
+      "if": "если",
+      "for": "за"
+    },
+    "title": "Магазин"
   }
 }
