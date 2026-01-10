@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    vueDevTools(),
+    // vueDevTools(),
   ],
   resolve: {
     alias: {
@@ -21,5 +21,5 @@ export default defineConfig({
   server: {
     host: true,
     port: 5000,
-  }
+  },
 })
