@@ -32,3 +32,4 @@ __pycache__
 requirements.local.txt
 
 *.tsbuildinfo
+pnpm-lock.yaml
