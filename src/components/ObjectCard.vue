@@ -12,6 +12,7 @@ import { computedAsync } from "@vueuse/core"
 import PriceButton from "./buttons/PriceButton.vue"
 import RoyalIcon from "./icons/store/RoyalIcon.vue"
 import ObjectImage from "./ObjectImage.vue"
+import { valueExists } from "@/scripts/common"
 
 const shopManager = shopStore
 
@@ -66,9 +67,9 @@ const mainCurrency = computed(() => {
         return null
     }
     
-    if (shopInfo.value?.token && (shopInfo.value?.price.base.tokens || shopInfo.value?.price.sale.tokens)) {
+    if (valueExists(shopInfo.value?.token) && (valueExists(shopInfo.value?.price.base.tokens) || valueExists(shopInfo.value?.price.sale.tokens))) {
         return shopInfo.value?.token
-    } else if (shopInfo.value?.price.sale.price && shopInfo.value?.inShop) {
+    } else if (valueExists(shopInfo.value?.price.sale.price) && valueExists(shopInfo.value?.inShop)) {
         return shopInfo.value?.price.sale.currency || null
     } else {
         return shopInfo.value?.price.base.currency || null
@@ -80,9 +81,9 @@ const mainPrice = computed(() => {
         return null
     }
 
-    if (shopInfo.value?.token && (shopInfo.value?.price.base.tokens || shopInfo.value?.price.sale.tokens)) {
+    if (valueExists(shopInfo.value?.token) && (valueExists(shopInfo.value?.price.base.tokens) || valueExists(shopInfo.value?.price.sale.tokens))) {
         return shopInfo.value?.price.base.tokens || shopInfo.value?.price.sale.tokens
-    } else if (shopInfo.value?.price.sale.price && shopInfo.value?.inShop) {
+    } else if (valueExists(shopInfo.value?.price.sale.price) && valueExists(shopInfo.value?.inShop)) {
         return shopInfo.value?.price.sale.price
     } else {
         return shopInfo.value?.price.base.price
@@ -94,7 +95,7 @@ const replacedPrice = computed(() => {
         return null
     }
 
-    if (shopInfo.value?.price.sale.price && shopInfo.value?.inShop) {
+    if (valueExists(shopInfo.value?.price.sale.price) && valueExists(shopInfo.value?.inShop)) {
         return shopInfo.value?.price.base.price
     }
 

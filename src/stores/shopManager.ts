@@ -1,4 +1,5 @@
 import api, { type ShopEntry } from "@/scripts/api";
+import { valueExists } from "@/scripts/common";
 import gameData from "@/scripts/gameData";
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes";
 import { defineStore } from "pinia";
@@ -9,6 +10,19 @@ enum ShopStatus {
     pending,
     loaded,
     error,
+}
+
+
+function chooseExisting<T, T2>(
+    a: T,
+    b: T2 = null,
+): T | T2 | null {
+    if (valueExists(a)) {
+        return a
+    } else if (valueExists(b)) {
+        return b
+    }
+    return null
 }
 
 
@@ -89,19 +103,19 @@ class ShopStore {
             token: gameObject.price?.token || token || null,
             price: {
                 base: {
-                    currency: entry?.price?.base?.currency || gameObject?.price?.base?.currency || null,
-                    price: entry?.price?.base?.price || gameObject?.price?.base?.amount || null,
-                    tokens: entry?.price?.base?.tokens || null,
+                    currency: chooseExisting(entry?.price?.base?.currency, gameObject?.price?.base?.currency),
+                    price: chooseExisting(entry?.price?.base?.price, gameObject?.price?.base?.amount),
+                    tokens: chooseExisting(entry?.price?.base?.tokens),
                 },
                 sale: {
-                    currency: entry?.price?.sale?.currency || gameObject?.price?.base?.currency || null,
-                    price: entry?.price?.sale?.price || null,
-                    tokens: entry?.price?.sale?.tokens || null,
+                    currency: chooseExisting(entry?.price?.sale?.currency, gameObject?.price?.base?.currency),
+                    price: chooseExisting(entry?.price?.sale?.price),
+                    tokens: chooseExisting(entry?.price?.sale?.tokens),
                 },
                 royal: {
-                    currency: entry?.price?.royal?.currency || gameObject?.price?.base?.currency || null,
-                    price: entry?.price?.royal?.price || null,
-                    tokens: entry?.price?.royal?.tokens || null,
+                    currency: chooseExisting(entry?.price?.royal?.currency, gameObject?.price?.base?.currency),
+                    price: chooseExisting(entry?.price?.royal?.price),
+                    tokens: chooseExisting(entry?.price?.royal?.tokens),
                 },
             },
         }
@@ -111,140 +125,3 @@ class ShopStore {
 }
 
 export const shopStore = new ShopStore()
-
-export const useShopStore = defineStore('shop', {
-    state: () => {
-        return {
-            _shop: shallowRef(null as Record<string, ShopEntry> | null),
-            _status: ShopStatus.unloaded as ShopStatus,
-            _pending_result: null as Promise<any> | null,
-        }
-    },
-    getters: {
-        isReady: (state): boolean => state._status === ShopStatus.loaded,
-        shop: async (state): Promise<Record<string, ShopEntry>> => {
-            if (state._status === ShopStatus.loaded) {
-                return state._shop
-            }
-
-            if (state._status === ShopStatus.pending) {
-                await state._pending_result
-                return state._shop
-            }
-
-            state._status = ShopStatus.pending
-
-            state._pending_result = new Promise(async (resolve, reject) => {
-                let shop = await api.getShop()
-
-                console.log('checking')
-
-                if (Array.isArray(shop)) {
-                    console.log('shop is Array')
-                    let shopData = {}
-                    state._shop = {}
-                    console.log('shop length', shop.length)
-                    console.log('shop', state._shop)
-                    for (let item of shop) {
-                        // console.log('item loaded')
-                        shopData[item.id] = item
-                    }
-                    state._shop = shopData
-                    state._status = ShopStatus.loaded
-                    console.log('finished loading shop')
-                    resolve(state._shop)
-                } else {
-                    state._status = ShopStatus.error
-                    console.log('error when loading shop')
-                    reject(shop.detail)
-                }
-            })
-
-            return await state._pending_result
-        }
-    },
-    actions: {
-        loadShop: async (state) => {
-            if (state._status === ShopStatus.loaded) {
-                return state._shop
-            }
-
-            if (state._status === ShopStatus.pending) {
-                await state._pending_result
-                return state._shop
-            }
-
-            state._status = ShopStatus.pending
-
-            state._pending_result = new Promise(async (resolve, reject) => {
-                let shop = await api.getShop()
-
-                console.log('checking')
-
-                if (Array.isArray(shop)) {
-                    console.log('shop is Array')
-                    let shopData = {}
-                    state._shop = {}
-                    console.log('shop length', shop.length)
-                    console.log('shop', state._shop)
-                    for (let item of shop) {
-                        // console.log('item loaded')
-                        shopData[item.id] = item
-                    }
-                    state._shop = shopData
-                    state._status = ShopStatus.loaded
-                    console.log('finished loading shop')
-                    resolve(state._shop)
-                } else {
-                    state._status = ShopStatus.error
-                    console.log('error when loading shop')
-                    reject(shop.detail)
-                }
-            })
-
-            return await state._pending_result
-        },
-        async getShopInfo(id: GameObjectId | GameObject) {
-            const gameObject = gameData.getObject(id)
-            let token = null
-            let entry: ShopEntry | null = null
-            if (gameObject.id in await this.shop) {
-                entry = (await this.shop)[gameObject.id]
-                if (entry?.in_shop) {
-                    if (entry?.tags.includes('pvsar1')) {
-                        token = 'Token_Event_Rare'
-                    } else if (entry?.tags.includes('pvsar2')) {
-                        token = 'Token_Event_Common'
-                    }
-                }
-            }
-
-            const result = {
-                id: gameObject.id,
-                inShop: entry?.in_shop || false,
-                hidden: entry?.hidden || false,
-                tags: entry?.tags || [],
-                token: gameObject.price?.token || token || null,
-                price: {
-                    base: {
-                        currency: entry?.price?.base?.currency || gameObject?.price?.base?.currency || null,
-                        price: entry?.price?.base?.price || gameObject?.price?.base?.amount || null,
-                        tokens: entry?.price?.base?.tokens || null,
-                    },
-                    sale: {
-                        currency: entry?.price?.sale?.currency || gameObject?.price?.base?.currency || null,
-                        price: entry?.price?.sale?.price || null,
-                        tokens: entry?.price?.sale?.tokens || null,
-                    },
-                    royal: {
-                        currency: entry?.price?.royal?.currency || gameObject?.price?.base?.currency || null,
-                        price: entry?.price?.royal?.price || null,
-                        tokens: entry?.price?.royal?.tokens || null,
-                    },
-                },
-            }
-
-            return result
-        }
-    },
-})

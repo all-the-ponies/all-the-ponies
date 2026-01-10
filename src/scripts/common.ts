@@ -270,3 +270,7 @@ export function downloadFile(content: string, type: string, filename: string) {
   link.remove()
   window.URL.revokeObjectURL(blob)
 }
+
+export function valueExists(value): boolean {
+  return !!(value || value === 0)
+}
