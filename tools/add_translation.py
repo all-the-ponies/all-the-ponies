@@ -1,4 +1,5 @@
-from typing import Any
+from typing import Any, Literal
+import re
 
 import argparse
 from glob import glob
@@ -6,6 +7,9 @@ import json
 import os
 
 from luna_kit.loc import LOC
+
+
+PERCENT_PATTERN = r'\%[0 #+-]?[0-9*]*\.?\d*([hl]{0,2}|[jztL])?[diuoxXeEfgGaAcpsSn%]'
 
 
 LOCALES = {
@@ -60,7 +64,12 @@ class TranslationHandler:
         self,
         game_key: str,
         dest_key: str,
+        parameters: list[str] | None = None,
+        casing: Literal['title', 'capitalize', 'lowercase', 'uppercase'] | None = None,
     ):
+        if parameters is None:
+            parameters = []
+
         game_keys = game_key.split('|')
 
         dest_path = dest_key.split('.')
@@ -70,10 +79,28 @@ class TranslationHandler:
 
             with open(os.path.join(self.output_folder, f'{code}.json'), 'r', encoding = 'utf-8') as file:
                 dest_dict = json.load(file)
+
+            translated = []
+
+            for key in game_keys:
+                string = loc.translate(key.strip()).strip()
+                string = re.sub(PERCENT_PATTERN, '{}', string).format(*['{' + str(p) + '}' for p in parameters])
+
+                match casing:
+                    case 'capitalize':
+                        string = string.capitalize()
+                    case 'lowercase':
+                        string = string.lower()
+                    case 'uppercase':
+                        string = string.upper()
+                    case 'title':
+                        string = string.title()
+                
+                translated.append(string)
             
             add_to_dict_deep(
                 dest_path,
-                ' | '.join([loc.translate(key.strip()).strip().title() for key in game_keys]),
+                ' | '.join(translated),
                 dest_dict,
             )
 
@@ -93,6 +120,8 @@ def main(
     output_folder: str,
     game_key: str,
     dest_key: str,
+    parameters: list[str] | None = None,
+    casing: Literal['title', 'capitalize', 'lowercase', 'uppercase'] | None = None,
     delete: bool = False,
 ):
     translator = TranslationHandler(
@@ -106,6 +135,8 @@ def main(
         translator.add_translation(
             game_key,
             dest_key,
+            parameters,
+            casing,
         )
 
 if __name__ == "__main__":
@@ -143,6 +174,20 @@ if __name__ == "__main__":
         help = 'Output folder',
     )
 
+    argparser.add_argument(
+        '-p', '--parameters',
+        dest = 'parameters',
+        nargs = '+',
+        help = 'Parameter names',
+    )
+
+    argparser.add_argument(
+        '-c', '--casing',
+        dest = 'casing',
+        help = 'Transform to case',
+        choices = ['title', 'capitalize', 'lowercase', 'uppercase'],
+    )
+
     args = argparser.parse_args()
     
 
@@ -164,5 +209,7 @@ if __name__ == "__main__":
         output,
         args.game_key,
         args.dest_key,
+        args.parameters,
+        args.casing,
         args.delete,
     )
