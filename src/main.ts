@@ -32,6 +32,7 @@ const head = createHead({
     init: [
         {
             title: i18n.global.t('ALL_THE_PONIES'),
+            titleTemplate: `%s - ${i18n.global.t('ALL_THE_PONIES')}`,
         }
     ]
 })
