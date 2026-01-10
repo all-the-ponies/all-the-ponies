@@ -29,6 +29,6 @@ __pycache__
 *.sln
 *.sw?
 *.babel
-requirements-local.txt
+requirements.local.txt
 
 *.tsbuildinfo
