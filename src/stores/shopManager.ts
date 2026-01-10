@@ -13,16 +13,15 @@ enum ShopStatus {
 }
 
 
-function chooseExisting<T, T2>(
-    a: T,
-    b: T2 = null,
-): T | T2 | null {
-    if (valueExists(a)) {
-        return a
-    } else if (valueExists(b)) {
-        return b
+function chooseExisting<T extends any[]>(
+    ...a: T
+): T[number] | null {
+    const result = a.find(valueExists)
+    if (valueExists(result)) {
+        return result
+    } else {
+        return null
     }
-    return null
 }
 
 
