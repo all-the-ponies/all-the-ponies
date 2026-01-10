@@ -29,6 +29,8 @@ from luna_kit.gameobjectdata import GameObject, GameObjectData
 from luna_kit.loc import LOC
 from luna_kit.xml import parse_xml
 from luna_kit.pvr import PVR
+from luna_kit.questtable import QuestTable
+from luna_kit.cinematictable import CinematicTable
 import luna_kit.typings
 from luna_kit.typings.defaultGameCampaign import DefaultGameCampaignType
 
@@ -251,9 +253,11 @@ class GetGameData:
         self.output_folder = output_folder
 
         self.output_game_data = os.path.join(self.output_folder,'game-data.json')
+        self.output_event_data = os.path.join(self.output_folder,'event-data.json')
         self.images_folder = assets_folder
 
         self.game_data = {}
+        self.event_data = {}
 
         self.get_content_version()
 
@@ -280,12 +284,23 @@ class GetGameData:
             raise ValueError('Could not find loc files')
 
         self.migrate = 3
-        with open(
-            self.output_game_data,
-            'r',
-            encoding = get_encoding(self.output_game_data),
-        ) as file:
-            self.game_data = json.load(file)
+        if os.path.exists(self.output_game_data):
+            with open(
+                self.output_game_data,
+                'r',
+                encoding = get_encoding(self.output_game_data),
+            ) as file:
+                self.game_data = json.load(file)
+        
+        if os.path.exists(self.output_event_data):
+            with open(
+                self.output_event_data,
+                'r',
+                encoding = get_encoding(self.output_event_data),
+            ) as file:
+                self.event_data = json.load(file)
+        
+
         
         self.migrate = self.game_data.get('file_version', 3)
         if self.migrate == 1:
@@ -348,9 +363,35 @@ class GetGameData:
                 object['id'] = id
                 object['category'] = category_name
 
+        
+        self.event_data['version'] = 1
+
+        with open(
+            os.path.join(self.game_folder, 'arenasettings.json'),
+            'r',
+            encoding = get_encoding(os.path.join(self.game_folder, 'arenasettings.json')),
+        ) as file:
+            self.arenasettings = json.load(file)
+        
+        with open(
+            os.path.join(self.game_folder, 'arenasettings_dd.json'),
+            'r',
+            encoding = get_encoding(os.path.join(self.game_folder, 'arenasettings_dd.json')),
+        ) as file:
+            self.arenasettings_dd = json.load(file)
+        
+        self.questtable = QuestTable(os.path.join(self.game_folder, 'questtable.xml'))
+        self.cinematictable = CinematicTable(os.path.join(self.game_folder, 'cinematictable.xml'))
+
+        self.get_sieges()
+
         console.print('saving game data')
         with open(self.output_game_data, 'w', encoding = 'utf-8') as file:
             json.dump(self.game_data, file, indent = 2, ensure_ascii = False)
+        
+        console.print('saving event data')
+        with open(self.output_event_data, 'w', encoding = 'utf-8') as file:
+            json.dump(self.event_data, file, indent = 2, ensure_ascii = False)
         
     
     def get_game_file(
@@ -401,6 +442,44 @@ class GetGameData:
 
     def check_image(self, category: str):
         return self.no_images is None or (len(self.no_images) > 0 and category not in self.no_images)
+
+    def get_price(self, item_info: dict, daily_goals: bool = False):
+        shopdata = self.gameobjectdata.get_object_shopdata(item_info['id'])
+        item_info.setdefault('unlock_level', 0)
+        
+        if 'cost' in item_info:
+            item_info['price'] = item_info['cost']
+            del item_info['price']
+        
+        price: dict = item_info.setdefault('price', {})
+
+        price.setdefault('base', {
+            'currency': None,
+            'amount': 0,
+        })
+        price.setdefault('token', None)
+        if isinstance(price['token'], dict):
+            price['token'] = price['token'].get('id')
+            if price['token'] == '':
+                price['token'] = None
+
+        if 'actual' in price:
+            del price['actual']
+
+        if shopdata is not None:
+            price['base'] = {
+                'currency': CURRENCY.get(shopdata.get('CurrencyType', 0)),
+                'amount': shopdata.get('Cost', 0),
+            }
+            price['token'] = shopdata.get('TaskTokenID')
+            item_info['unlock_level'] = shopdata.get('UnlockValue', 0)
+        
+        if daily_goals or item_info['id'] in self.daily_goals_shop:
+            price['daily_goals'] = self.daily_goals_shop.get(item_info['id'], 0)
+        else:
+            if 'daily_goals' in price:
+                del price['daily_goals']
+
 
     def get_ponies(self):
         self.categories.setdefault('pony', {})
@@ -605,37 +684,8 @@ class GetGameData:
 
                 pony_info['arrival_xp'] = pony.get('OnArrive', {}).get('EarnXP', 0)
 
-                shopdata = self.gameobjectdata.get_object_shopdata(pony.id)
-                pony_info.setdefault('unlock_level', 0)
+                self.get_price(pony_info, True)
                 
-                if shopdata is not None:
-                    pony_info['unlock_level'] = shopdata.get('UnlockValue', 0)
-
-                cost: dict = pony_info.setdefault('cost', {})
-
-                cost.setdefault('base', {
-                    'currency': '',
-                    'amount': 0,
-                })
-                cost.setdefault('actual', {
-                    'currency': '',
-                    'amount': 0,
-                })
-                cost.setdefault('token', {
-                    'id': '',
-                    'amount': 0,
-                })
-
-                if shopdata is not None:
-                    cost['base'] = {
-                        'currency': CURRENCY.get(shopdata.get('CurrencyType', 0), ''),
-                        'amount': shopdata.get('Cost', 0),
-                    }
-                    cost.setdefault('actual', cost['base'])
-                    cost['token']['id'] = shopdata.get('TaskTokenID', '')
-                
-                cost['daily_goals'] = self.daily_goals_shop.get(pony.id, 0)
-
                 pony_info.setdefault('tasks', {}) # will get those later
 
                 # wiki stuff
@@ -671,7 +721,7 @@ class GetGameData:
                     'minigame': pony_info['minigame'],
                     'arrival_xp': pony_info['arrival_xp'],
                     'unlock_level': pony_info['unlock_level'],
-                    'cost': pony_info['cost'],
+                    'price': pony_info['price'],
                     'tasks': pony_info['tasks'],
                     'pro': None,
                     'collections': pony_info.get('collections', []),
@@ -707,13 +757,26 @@ class GetGameData:
         ):
             try:
                 is_shop = bool(house.get('ShopModule', {}).get('IsAShop', 0))
+
+                special = house.get('Special', {})
+                if special.get('IsALotto') or special.get('IsCKBossEntrance') or special.get('IsSpinningWheel'):
+                    is_shop = True
+
                 house_info: dict
                 if is_shop:
                     house_info = shops.setdefault(house.id, {})
+                    if house.id in houses:
+                        del houses[house.id]
+                        if os.path.isfile(os.path.join(self.images_folder, 'game', 'house', house.id + '.png')):
+                            os.remove(os.path.join(self.images_folder, 'game', 'house', house.id + '.png'))
                     if house.id in self.houses:
                         console.log(f'shop is house {house.id}')
                 else:
                     house_info = houses.setdefault(house.id, {})
+                    if house.id in shops:
+                        del shops[house.id]
+                        if os.path.isfile(os.path.join(self.images_folder, 'game', 'shop', house.id + '.png')):
+                            os.remove(os.path.join(self.images_folder, 'game', 'shop', house.id + '.png'))
                 
                 house_info.setdefault('locked', False)
                 if is_shop:
@@ -830,33 +893,8 @@ class GetGameData:
                         console.log(f'cannot find {house.id} consumable')
                 
                 house_info['can_sell'] = bool(house.get('Sell', {}).get('CanSell', 0))
-                
-                cost = house_info.setdefault('cost', {})
 
-                cost.setdefault('base', {
-                    'currency': '',
-                    'amount': 0,
-                })
-                cost.setdefault('actual', {
-                    'currency': '',
-                    'amount': 0,
-                })
-                cost.setdefault('token', {
-                    'id': '',
-                    'amount': 0,
-                })
-
-                house_info.setdefault('unlock_level', 0)
-
-                if shopdata is not None:
-                    house_info['unlock_level'] = shopdata.get('UnlockValue', 0)
-
-                    cost['base'] = {
-                        'currency': CURRENCY.get(shopdata.get('CurrencyType', 0), ''),
-                        'amount': shopdata.get('Cost', 0),
-                    }
-                    cost.setdefault('actual', cost['base'])
-                    cost['token']['id'] = shopdata.get('TaskTokenID', '')
+                self.get_price(house_info, is_shop)
                 
                 if is_shop:
                     shops[house.id] = {
@@ -873,7 +911,7 @@ class GetGameData:
                         'residents': house_info['residents'],
                         'product': house_info['product'],
                         'can_sell': house_info['can_sell'],
-                        'cost': house_info['cost'],
+                        'price': house_info['price'],
                         'tags': house_info.get('tags', []),
                     }
                 else:
@@ -930,42 +968,19 @@ class GetGameData:
             if shopdata is None:
                 console.log(f'shopdata not found {decor.id}')
                 decor_info['location'] = 'UNKNOWN'
-                decor_info.setdefault('unlock_level', 0)
             else:
                 # house_info['location'] = shopdata.get('MapZone', -1)
                 decor_info['location'] = LOCATIONS.get(
                     strToInt(shopdata.get('MapZone', -1)),
                     'UNKNOWN',
                 )
-                decor_info['unlock_level'] = shopdata.get('UnlockValue', 0)
             
             decor_info['limit'] = decor.get('Shop', {}).get('PurchaseLimit', 0)
             decor_info['grid_size'] = decor.get('GridData', {}).get('Size', 0) // 2
 
             decor_info['xp'] = decor.get('OnPurchase', {}).get('EarnXP', 0)
 
-            cost = decor_info.setdefault('cost', {})
-
-            cost.setdefault('base', {
-                'currency': '',
-                'amount': 0,
-            })
-            cost.setdefault('actual', {
-                'currency': '',
-                'amount': 0,
-            })
-            cost.setdefault('token', {
-                'id': '',
-                'amount': 0,
-            })
-
-            if shopdata is not None:
-                cost['base'] = {
-                    'currency': CURRENCY.get(shopdata.get('CurrencyType', 0), ''),
-                    'amount': shopdata.get('Cost', 0),
-                }
-                cost.setdefault('actual', cost['base'])
-                cost['token']['id'] = shopdata.get('TaskTokenID', '')
+            self.get_price(decor_info, True)
 
             decor_info['fusion_points'] = 0
             pro = decor_info.setdefault('pro', {})
@@ -1138,6 +1153,49 @@ class GetGameData:
             avatar_info['is_default'] = avatar.get('Settings', {}).get('IsDefault', 0) == 1
             avatar_info['pony'] = avatar.get('Settings', {}).get('PonyStarsID', '')
 
+            self.get_price(avatar_info)
+    
+
+    def get_sieges(self):
+        from luna_kit.typings.defaultGameCampaign import GlobalDefines_EventConversion
+        
+        self.event_data.setdefault('siege', {})
+        common: dict = self.event_data['siege'].setdefault('common', {})
+
+        def fix_conversion(conversion: list[GlobalDefines_EventConversion]):
+            result = []
+            for step in conversion:
+                result.append({
+                    'currency': step.get('Currency', 0),
+                    'gems': step.get('Gems', 0),
+                })
+            
+            return result
+        
+        def fix_upgrades(upgrades: list[dict[str, int | bool]]):
+            result = []
+            for upgrade in upgrades:
+                result.append({
+                    'power': upgrade.get('Bonus', 0),
+                    'cost': upgrade.get('Cost', 0),
+                    'costume': upgrade.get('NewCostume', False),
+                })
+            
+            return result
+        
+        def find_event(event_id: str, events: list[dict]) -> dict:
+            for event in events:
+                if event.get('TLS_ID') == event_id:
+                    return event
+            
+            return {}
+        
+        if not common.get('conversion'):
+            common['conversion'] = fix_conversion(self.defaultGameCampaign.get('global_defines', {}).get('mega_event_default_convertation_rate', []))
+        
+        self.questtable
+
+
 def main():
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
@@ -1187,8 +1245,6 @@ def main():
         args.no_images,
         args.wiki_status,
     )
-
-    return
 
 if __name__ == "__main__":
     main()
