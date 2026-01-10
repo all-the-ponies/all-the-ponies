@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import CurrencyImage from '@/components/CurrencyImage.vue';
-import { formatTime, formatTimestamp } from '@/scripts/common';
+import { formatTime } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
 import saveStats from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
 import { useHead } from '@unhead/vue';
-import { computed, nextTick, ref, useTemplateRef } from 'vue';
+import { nextTick, ref, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n()

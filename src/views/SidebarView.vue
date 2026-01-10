@@ -46,6 +46,7 @@ function toggleSidebar(e: Event) {
                         <router-link to="/search/decor/">{{ $t('game_object.decor.decor', 2) }}</router-link>
                         <router-link to="/search/avatars/">{{ $t('game_object.profile_decorations.avatar.avatar', 2) }}</router-link>
                         <hr class="sidebar-separator">
+                        <router-link to="/store/">{{ $t('store.title') }}</router-link>
                         <router-link to="/inventory/">{{ $t('inventory.title') }}</router-link>
                         <router-link to="/stats/">{{ $t('stats.title') }}</router-link>
                         <hr class="sidebar-separator">
@@ -175,7 +176,7 @@ header a:hover, header a:focus-visible {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 50rem) {
     .title-bar {
         display: flex;
         align-items: center;

@@ -9,8 +9,8 @@ import type { PonyType } from '@/types/gameDataTypes'
 import { formatTime } from '@/scripts/common'
 import StarRewards from '@/components/StarRewards.vue'
 import { useHead } from '@unhead/vue';
-import BackButton from '@/components/BackButton.vue';
-import InventoryAddButton from '@/components/inventory/InventoryAddButton.vue';
+import BackButton from '@/components/buttons/BackButton.vue';
+import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import { useSaveStore } from '@/stores/saveManager';
 import Stars from '@/components/Stars.vue';
 import type StarsVue from '@/components/Stars.vue';

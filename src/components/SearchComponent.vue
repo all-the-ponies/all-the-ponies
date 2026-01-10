@@ -1,31 +1,38 @@
-<script lang="ts" setup>
-import { computed, nextTick, ref, useTemplateRef, watch, watchEffect } from 'vue'
+<script lang="tsx" setup>
+import { computed, ref, useTemplateRef, watch } from 'vue'
 import ObjectCard from './ObjectCard.vue'
 import gameData from '@/scripts/gameData'
 import { language } from '@/main'
 import Paginator from './Paginator.vue'
-import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import DialogComponent from './DialogComponent.vue'
-import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes'
+import type { GameObject, GameObjectId } from '@/types/gameDataTypes'
 import type { FilterFunctionsType, SortFunctionsType } from '@/scripts/categories'
+import type { JSX } from 'vue/jsx-runtime'
 // import { useI18n } from 'vue-i18n'
 // 
 // const { t } = useI18n()
+
+const currentPage = ref(1)
+const perPage = ref(300)
 
 const router = useRouter()
 const route = useRoute()
 
 const props = withDefaults(defineProps<{
-        objects: GameObjectId[],
+        objects: (GameObjectId | GameObject)[],
         filters?: Record<string, FilterFunctionsType>,
         sorters?: Record<string, SortFunctionsType>,
         query?: Record<string, string | string[] | number | null>,
         placeholder?: string,
+        showPrices?: boolean,
+        infoGetter? (gameObject: GameObject): string | JSX.Element,
     }>(), {
         filters: () => {return {}},
         sorters: () => {return {}},
         query: () => {return {}},
         placeholder: 'Pony',
+        infoGetter: null,
     }
 )
 
@@ -47,43 +54,11 @@ const defaultSortMethod = computed(() => {
     return null
 })
 
-const defaultFilters = computed(() => {
-    if (props.filters) {
-        const defaults = {}
-
-    }
-    
-    return {}
-})
-
 const selectedFilters = ref<Record<string, boolean>>({})
 
 const _selectedSortMethod = ref<string>(sortMethod.value)
 const _reversed = ref<boolean>()
 const _selectedFilters = ref<Record<string, boolean>>({})
-
-
-function updateSelectedFilters() {
-    for (let key of Object.keys(selectedFilters.value)) {
-        if (!(key in props.filters)) {
-            delete selectedFilters.value[key]
-        }
-    }
-    if (props.filters) {
-        for (let key of Object.keys(props.filters)) {
-            if (!(key in selectedFilters.value)) {
-                selectedFilters.value[key] = false
-            }
-        }
-    }
-
-    _selectedFilters.value = {}
-    for (let [key, value] of Object.entries(selectedFilters.value)) {
-        _selectedFilters.value[key] = value
-    }
-}
-
-// updateSelectedFilters()
 
 watch(
     computed(() => props.filters),
@@ -238,9 +213,6 @@ const searchResults = computed(() => {
     return results
 })
 
-const currentPage = ref(1)
-const perPage = ref(200)
-
 const shownResults = computed(() => {
     const results: GameObject[] = []
 
@@ -279,6 +251,19 @@ watch(
     }
 )
 
+function getInfo(gameObject: GameObject): JSX.Element {
+    if (props.infoGetter === null) {
+        return
+    }
+    const info = props.infoGetter(gameObject)
+
+    if (typeof info === 'string') {
+        return <span>{info}</span>
+    }
+
+    return info
+}
+
 </script>
 
 <template>
@@ -303,7 +288,16 @@ watch(
         <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
         <section id="search-results">
             <template v-if="objects.length > 0">
-                <ObjectCard v-for="object in shownResults.values()" :object="object" :key="`object-${object.id}`"></ObjectCard>
+                <ObjectCard
+                    v-for="object in shownResults.values()"
+                    :object="object"
+                    :key="`object-${object.id}`"
+                    :show-price="props.showPrices"
+                >
+                    <template v-if="props.infoGetter" #info>
+                        <component :is="getInfo(object)"></component>
+                    </template>
+                </ObjectCard>
             </template>
             <slot v-else name="empty"></slot>
             

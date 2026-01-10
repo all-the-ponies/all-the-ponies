@@ -1,19 +1,23 @@
 <script lang="ts" setup>
 import VLazyImage from "v-lazy-image"
-import { i18n, language } from '@/main'
-import { LOCALES } from '@/i18n'
 import { RouterLink } from 'vue-router'
-import InventoryAddButton from "./inventory/InventoryAddButton.vue"
+import InventoryAddButton from "./buttons/InventoryAddButton.vue"
 
 import gameData from '@/scripts/gameData'
-import { computed } from 'vue'
+import { computed, shallowRef } from 'vue'
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
-import { staticImage } from "@/scripts/common"
 import { useSaveStore } from "@/stores/saveManager"
-import Stars from "./Stars.vue"
+import { shopStore } from "@/stores/shopManager"
+import { computedAsync } from "@vueuse/core"
+import PriceButton from "./buttons/PriceButton.vue"
+import RoyalIcon from "./icons/store/RoyalIcon.vue"
+import ObjectImage from "./ObjectImage.vue"
+
+const shopManager = shopStore
 
 const props = defineProps<{
     object: GameObjectId | GameObject,
+    showPrice?: boolean,
 }>()
 
 const saveStore = useSaveStore()
@@ -29,20 +33,74 @@ const image = 'preview' in gameObject.image ? gameObject.image.preview : gameObj
 
 const canAdd = ['pony', 'shop'].includes(gameObject.category)
 
-const stars = computed({
-  get() {
-    if (saveStore.hasPony(gameObject.id)) {
-      return saveStore.ponies[gameObject.id].level
-    } else {
-      return 0
+// const stars = computed({
+//   get() {
+//     if (saveStore.hasPony(gameObject.id)) {
+//       return saveStore.ponies[gameObject.id].level
+//     } else {
+//       return 0
+//     }
+//   },
+//   set(stars: 0 | 1 | 2 | 3 | 4 | 5) {
+//     saveStore.addPony(gameObject.id, {
+//       level: stars,
+//     })
+//   },
+// })
+
+
+const gettingShopInfo = shallowRef(false)
+
+const shopInfo = computedAsync(
+    async () => {
+        // console.log('getting shop data for', gameObject.id)
+        // return null
+        return await shopManager.getShopInfo(gameObject)
+    },
+    null,
+    { evaluating: gettingShopInfo, lazy: true, shallow: true },
+)
+
+const mainCurrency = computed(() => {
+    if (gettingShopInfo.value) {
+        return null
     }
-  },
-  set(stars: 0 | 1 | 2 | 3 | 4 | 5) {
-    saveStore.addPony(gameObject.id, {
-      level: stars,
-    })
-  }
+    
+    if (shopInfo.value?.token && (shopInfo.value?.price.base.tokens || shopInfo.value?.price.sale.tokens)) {
+        return shopInfo.value?.token
+    } else if (shopInfo.value?.price.sale.price && shopInfo.value?.inShop) {
+        return shopInfo.value?.price.sale.currency || null
+    } else {
+        return shopInfo.value?.price.base.currency || null
+    }
 })
+
+const mainPrice = computed(() => {
+    if (gettingShopInfo.value) {
+        return null
+    }
+
+    if (shopInfo.value?.token && (shopInfo.value?.price.base.tokens || shopInfo.value?.price.sale.tokens)) {
+        return shopInfo.value?.price.base.tokens || shopInfo.value?.price.sale.tokens
+    } else if (shopInfo.value?.price.sale.price && shopInfo.value?.inShop) {
+        return shopInfo.value?.price.sale.price
+    } else {
+        return shopInfo.value?.price.base.price
+    }
+})
+
+const replacedPrice = computed(() => {
+    if (gettingShopInfo.value) {
+        return null
+    }
+
+    if (shopInfo.value?.price.sale.price && shopInfo.value?.inShop) {
+        return shopInfo.value?.price.base.price
+    }
+
+    return null
+})
+
 </script>
 
 <template>
@@ -53,6 +111,26 @@ const stars = computed({
                 id: gameObject.id,
             }
         }">
+            <div class="banner" v-if="!gettingShopInfo && showPrice && shopInfo?.inShop">
+                <span v-if="shopInfo?.price?.sale?.price" class="discount-banner">
+                    {{
+                        $n(
+                            1 - shopInfo.price.sale.price / shopInfo.price.base.price,
+                            { style: 'percent' },
+                        )
+                    }}
+                    {{ $t('store.message.percent_off') }}
+                </span>
+                <span v-if="shopInfo?.price?.royal?.price" class="royal-banner">
+                    <RoyalIcon class="royal-icon" />
+                    {{
+                        $n(
+                            1 - shopInfo.price.royal.price / shopInfo.price.base.price,
+                            { style: 'percent' },
+                        )
+                    }}
+                </span>
+            </div>
             <span class="object-name">
                 {{ name }}
             </span>
@@ -65,6 +143,29 @@ const stars = computed({
                 <div class="right-container">
                     <inventory-add-button v-if="canAdd" :gameObject="gameObject.id" />
                 </div>
+                <div class="info">
+                    <slot name="info">
+                        <template v-if="showPrice && !gettingShopInfo">
+                            <template v-if="shopInfo?.inShop">
+                                <div class="discount-container">
+                                    <span v-if="replacedPrice != null && !(shopInfo?.token && shopInfo?.price?.base?.tokens)" class="replaced-price">{{ replacedPrice }}</span>
+                                    <div v-if="shopInfo?.price?.royal?.price" class="royal-price">
+                                        {{ $n(shopInfo.price.royal.price)}}
+                                        <ObjectImage :object="shopInfo.price.royal.currency" />
+                                        {{ $t('store.message.if') }}
+                                        <img src="@/assets/images/ui/royal/royal-crown.png" loading="lazy"></img>
+                                    </div>
+                                </div>
+                                <div v-if="(shopInfo?.token && shopInfo?.price?.base?.tokens) && shopInfo?.price?.sale?.price" class="token-discount">
+                                    -{{ $n(1 - shopInfo?.price?.sale?.price / shopInfo?.price?.base?.price, { style: 'percent' }) }}
+                                    {{ $t('store.message.for') }}
+                                    <ObjectImage :object="shopInfo.price.sale.currency" />
+                                </div>
+                            </template>
+                            <PriceButton v-if="props.showPrice" :currency="mainCurrency">{{ mainPrice != null ? $n(mainPrice) : '' }}</PriceButton>
+                        </template>
+                    </slot>
+                </div>
             </div>
         </RouterLink>
     </div>
@@ -72,6 +173,8 @@ const stars = computed({
 
 <style lang="css" scoped>
 .object-card {
+    margin-top: 0.8rem;
+    
     left: 0px;
     background-color: white;
 
@@ -89,6 +192,8 @@ const stars = computed({
 
     transition: box-shadow 150ms ease-out,
                 scale 150ms ease-out;
+    
+    position: relative;
 }
 
 .object-card:hover,
@@ -98,10 +203,6 @@ const stars = computed({
     scale: 105%;
 }
 
-.add-button {
-    visibility: visible;
-}
-
 .object-card:hover .add-button {
     visibility: visible;
 }
@@ -109,6 +210,93 @@ const stars = computed({
 a {
     border-radius: inherit;
     text-decoration: none;
+}
+
+.banner {
+    position: absolute;
+    top: -0.8rem;
+    width: 100%;
+    color: white;
+    font-size: 0.7em;
+}
+
+.discount-banner {
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    padding-inline: 1rem;
+    text-align: center;
+
+    transform: translate(-50%, 0);
+
+    filter: drop-shadow(0px 2px 0px rgb(0 0 0 / 0.25));
+}
+
+.discount-banner:has(+ .royal-banner) {
+    text-align: left;
+}
+
+.discount-banner::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(0.25turn, hsl(351, 77%, 55%), hsl(348, 69%, 70%), hsl(351, 77%, 55%));
+    z-index: -1;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    
+    clip-path: shape(
+        from 0% 0%,
+        line to 100% 0%,
+        line to calc(100% - 2px) 100%,
+        line to 2px 100%,
+        close
+    );
+}
+
+.royal-banner {
+    position: absolute;
+    width: 30%;
+    right: 0%;
+    top: -1px;
+    padding-inline: 0.1rem;
+    text-align: center;
+
+    /* transform: translate(-50%, 0); */
+
+    filter: drop-shadow(0px 1px 0px rgb(0 0 0 / 0.25));
+}
+
+.royal-banner::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(0.25turn, #622e5e, #9b4894, #622e5e);
+    z-index: -1;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    
+    clip-path: shape(
+        from 0% 0%,
+        line to 100% 0%,
+        line to calc(100% - 0px) 100%,
+        line to 2px 100%,
+        close
+    );
+}
+
+.royal-icon {
+    position: absolute;
+    height: 1.15rem;
+    left: 0;
+    top: -1px;
+    transform: translate(-50%, 0);
 }
 
 .object-name {
@@ -131,9 +319,12 @@ a {
 }
 
 .card-body {
+    padding: 0.4rem;
     width: 100%;
     height: 80%;
     position: relative;
+    display: grid;
+    grid-template-rows: 100%;
 }
 
 .object-image-container {
@@ -146,7 +337,7 @@ a {
     height: 100%;
     object-fit: contain;
     object-position: center;
-    padding: 1rem;
+    padding: 0.3rem;
 }
 
 .left-container,
@@ -175,5 +366,111 @@ a {
     height: 1.5rem;
 
     margin: 0;
+}
+
+.info:has(> *) {
+    width: 100%;
+    /* height: 30%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* padding: 0.5rem; */
+}
+
+.card-body:has(.info *) {
+    /* height: 70%; */
+    grid-template-rows: 75% 25%;
+}
+
+.discount-container {
+    position: absolute;
+    bottom: 90%;
+    width: 100%;
+    left: 0;
+    /* height: max-content; */
+    text-align: center;
+    padding-inline: 1.2rem;
+}
+
+.discount-container:has(.royal-price) {
+    text-align: left;
+}
+
+.replaced-price {
+    font-size: 0.6em;
+    color: black;
+    position: relative;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.replaced-price::after {
+    content: "";
+    width: 3rem;
+    height: 2px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-16deg);
+}
+
+.royal-price {
+    position: absolute;
+    right: -0.5rem;
+    bottom: 0;
+    aspect-ratio: 259 / 96;
+    width: 5rem;
+    height: 1.85rem;
+    padding-left: 0.8rem;
+    padding-top: 0.2rem;
+    
+    font-size: 0.8rem;
+    color: white;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    background-image: url('@/assets/images/ui/store/royal-sale-price.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.royal-price img {
+    height: 1.5em;
+}
+
+.token-discount {
+    position: absolute;
+    bottom: 75%;
+    background-image: url('@/assets/images/ui/store/token-price-popup.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 5.5rem;
+    height: 2.1rem;
+    aspect-ratio: 248 / 112;
+    padding-bottom: 0.5rem;
+    padding-top: 0.1rem;
+
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.token-discount img {
+    height: 1.2rem;
+    align-self: center;
 }
 </style>

@@ -43,12 +43,6 @@ async function request(pathname: string, query: Record<string, string | number |
     return response
 }
 
-async function getShop() {
-    const result = (await request(`/sales/shop/`)).json()
-
-    return result
-}
-
 interface ResponseError {
     detail: string,
 }
@@ -79,6 +73,31 @@ async function getSave(friendCode: string): Promise<SaveData | ResponseError> {
     return result
 }
 
+export interface ShopPrice {
+    price: number | null,
+    currency: GameObjectId | null,
+    tokens: number | null,
+}
+
+export interface ShopEntry {
+    id: GameObjectId,
+    in_shop: boolean,
+    hidden: boolean,
+    price: {
+        base: ShopPrice,
+        sale: ShopPrice,
+        royal: ShopPrice,
+    }
+    tags: string[],
+}
+
+async function getShop(): Promise<ShopEntry[] | ResponseError> {
+    const result: ShopEntry[] | ResponseError = await (await request('/shop/')).json()
+
+    console.log('loaded shop')
+
+    return result
+}
 
 export default {
     API_DOMAIN,

@@ -268,7 +268,7 @@ function win() {
     flex-direction: column-reverse;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 50rem) {
     .game.playing {
         flex-direction: column-reverse;
     }

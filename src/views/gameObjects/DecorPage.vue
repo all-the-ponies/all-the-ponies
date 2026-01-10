@@ -7,7 +7,7 @@ import ObjectImage from '@/components/ObjectImage.vue'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { DecorType, Location, PonyType } from '@/types/gameDataTypes'
 import { formatTime } from '@/scripts/common'
-import BackButton from '@/components/BackButton.vue';
+import BackButton from '@/components/buttons/BackButton.vue';
 import { useHead } from '@unhead/vue'
 import { LOCATIONS } from '@/scripts/categories';
 

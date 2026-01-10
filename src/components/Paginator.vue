@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, type Ref } from 'vue'
+import { computed } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 
 const router = useRouter()
@@ -66,6 +66,7 @@ if (props.param) {
         page.value = Number(route.query[props.param])
     }
 }
+
 
 </script>
 

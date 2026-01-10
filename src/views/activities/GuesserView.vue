@@ -438,7 +438,7 @@ function imageLoadFailed() {
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 50rem) {
     .game-container {
         /* min-height: 100dvh;
         display: grid;

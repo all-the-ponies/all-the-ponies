@@ -1,25 +1,21 @@
 <script lang="ts" setup>
 import gameData from '@/scripts/gameData'
-import { computed, type PropType } from 'vue'
+import { computed } from 'vue'
 import VLazyImage from "v-lazy-image"
 import { language } from '@/main'
+import type { GameObjectId } from '@/types/gameDataTypes';
 
-const props = defineProps({
-    object: {
-        type: String,
-        required: true,
-    },
-    type: {
-        type: String as PropType<'preview' | 'main' | 'full'>,
-        required: false,
-        default: 'main',
-    }
+const props = withDefaults(defineProps<{
+    object: GameObjectId | null,
+    type?: 'preview' | 'main' | 'full',
+}>(), {
+    type: 'main',
 })
 
 const objectInfo = computed(() => gameData.getObject(props.object))
 
 const image = computed(() => {
-    return objectInfo.value.image[props.type]
+    return objectInfo.value?.image[props.type]
 })
 
 const name = computed(() => {
@@ -30,7 +26,8 @@ const name = computed(() => {
 </script>
 
 <template>
-<v-lazy-image class="object-image" :src="`/images/${image}`" :alt="name"></v-lazy-image>
+    <span v-if="object === null"></span>
+    <v-lazy-image v-else :src="`/images/${image}`" :alt="name"></v-lazy-image>
 </template>
 
 <style lang="css" scoped>

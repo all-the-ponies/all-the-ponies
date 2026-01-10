@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="tsx">
 import SearchComponent from '@/components/SearchComponent.vue'
 import gameData from '@/scripts/gameData'
 import { computed, ref } from 'vue';
@@ -6,6 +6,8 @@ import { onBeforeRouteUpdate, useRoute } from 'vue-router';
 import { CATEGORIES, SortFunctions, FilterFunctions, PLURAL_CATEGORY_MAP } from '@/scripts/categories'
 import { useHead } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
+import type { GameObject } from '@/types/gameDataTypes';
+import PriceButton from '@/components/buttons/PriceButton.vue';
 
 const { t } = useI18n()
 
@@ -52,6 +54,10 @@ const filterFunctions = computed(() => {
 
     return functions
 })
+
+function infoGetter(gameObject: GameObject) {
+    // return <PriceButton currency='Bits'>10,000</PriceButton>
+}
 
 </script>
 

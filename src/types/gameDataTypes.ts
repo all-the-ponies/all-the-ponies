@@ -23,7 +23,7 @@ export type Location = 'PONYVILLE' |
                 'KLUGETOWN' |
                 'UNKNOWN'
 
-export type Currency = 'Gems' | 'Bits' | ''
+export type Currency = 'Gems' | 'Bits' | GameObjectId
 
 export type CategoryName = 'pony' |
                     'house' |
@@ -84,19 +84,12 @@ export interface StarReward {
     amount: number,
 }
 
-export interface Cost {
+export interface Price {
     base: {
-        currency: Currency,
+        currency: Currency | null,
         amount: number,
     },
-    actual: {
-        currency: Currency,
-        amount: number,
-    },
-    token: {
-        id: string,
-        amount: number
-    },
+    token: GameObjectId | null,
     daily_goals: number
 }
 
@@ -110,6 +103,7 @@ interface GenericObjectType {
     alt_name?: AltName,
     image: {main: string},
     tags?: string[],
+    price?: Price,
 }
 
 export interface PonyType extends Omit<GenericObjectType, 'category' | 'image'> {
@@ -141,7 +135,6 @@ export interface PonyType extends Omit<GenericObjectType, 'category' | 'image'> 
     },
     arrival_xp: number,
     unlock_level: number,
-    cost: Cost,
     tasks: {[ type: string ]: {
                 "name": TranslatableString,
                 "time": number,
@@ -189,7 +182,7 @@ export interface ShopType extends Omit<HouseType, 'category' | 'location'> {
         tls: number,
     },
     can_sell: boolean,
-    cost: Cost,
+    cost: Price,
 }
 
 export interface DecorType extends Omit<GenericObjectType, 'category'> {
@@ -200,7 +193,7 @@ export interface DecorType extends Omit<GenericObjectType, 'category'> {
     limit: number,
     grid_size: number,
     xp: number,
-    cost: Cost,
+    cost: Price,
     fusion_points: number,
     pro: {
         is_pro: boolean,

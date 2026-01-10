@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 
 import SidebarView from './views/SidebarView.vue'
-import { useScrollLock } from '@vueuse/core';
-import { onMounted, useTemplateRef } from 'vue';
+import { useTemplateRef } from 'vue';
 const routerView = useTemplateRef('main')
 // const pageScrollLocked = useScrollLock(document.body, false)
 
@@ -49,7 +48,7 @@ function lockScroll(state: boolean) {
     /* height: 100%; */
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 50rem) {
     .page {
         flex-direction: column;
     }

@@ -7,9 +7,9 @@ import ObjectImage from '@/components/ObjectImage.vue'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { HouseType, Location, PonyType, ShopType } from '@/types/gameDataTypes'
 import { formatTime } from '@/scripts/common'
-import BackButton from '@/components/BackButton.vue';
+import BackButton from '@/components/buttons/BackButton.vue';
 import { useHead } from '@unhead/vue';
-import InventoryAddButton from '@/components/inventory/InventoryAddButton.vue';
+import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import { LOCATIONS } from '@/scripts/categories';
 
 
