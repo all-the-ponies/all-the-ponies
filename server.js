@@ -100,11 +100,11 @@ export default async function createServer(
     }
   })
 
-  return { app, vite };
+  return app;
 }
 
 if (!isTest) {
-  createServer().then(({ app }) =>
+  createServer().then((app) =>
     app.listen(5000, () => {
       console.log("http://localhost:5000");
     })
