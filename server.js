@@ -6,7 +6,7 @@ import express from "express"
 
 const isTest = process.env.VITEST;
 
-export async function createServer(
+export default async function createServer(
   root = process.cwd(),
   isProd = process.env.NODE_ENV === "production",
   hmrPort
