@@ -1,18 +1,20 @@
-import { createApp as createVueApp, h } from 'vue'
+import { createSSRApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+import { createRouter } from './router'
 import { createHead } from '@unhead/vue/client'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { i18n } from './globals'
 
 export function createApp() {
-    const app = createVueApp(App)
+    const app = createSSRApp(App)
 
     // Plugins
 
     const pinia = createPinia()
-    pinia.use(piniaPluginPersistedstate)
+    if (!import.meta.env.SSR) {
+        pinia.use(piniaPluginPersistedstate)
+    }
 
     const head = createHead({
         init: [
@@ -23,10 +25,12 @@ export function createApp() {
         ]
     })
 
+    const router = createRouter()
+
     app.use(i18n)
     app.use(router)
     app.use(head)
     app.use(pinia)
 
-    return app
+    return { app, router, head }
 }

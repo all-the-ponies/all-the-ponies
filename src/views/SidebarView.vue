@@ -2,7 +2,7 @@
 import LanguageSelector from '@/components/LanguageSelector.vue';
 import { RouterLink } from 'vue-router'
 import gameData from '@/scripts/gameData'
-import { inject, ref, watchEffect } from 'vue';
+import { ref } from 'vue';
 
 const sidebarShown = ref<boolean>(false)
 

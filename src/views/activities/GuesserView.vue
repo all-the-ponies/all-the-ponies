@@ -3,10 +3,10 @@ import type { GameObject } from '@/types/gameDataTypes'
 
 import DialogComponent from '@/components/DialogComponent.vue'
 import { language } from '@/globals'
-import { formatNumber, formatTime, formatTimestamp, pickRandom, scrollIntoViewWithOffset, staticImage, transformName } from '@/scripts/common'
+import { formatTime, formatTimestamp, pickRandom, staticImage, transformName } from '@/scripts/common'
 import gameData from '@/scripts/gameData'
 import type { PonyType } from '@/types/gameDataTypes'
-import { computed, guardReactiveProps, nextTick, ref, useTemplateRef, watch, watchEffect, type Ref } from 'vue'
+import { computed, nextTick, ref, useTemplateRef } from 'vue'
 import { onBeforeRouteLeave } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useHead } from '@unhead/vue'
@@ -14,7 +14,7 @@ import { useHead } from '@unhead/vue'
 const { t } = useI18n()
 
 useHead({
-    title: t('guesser.title')
+    title: () => t('guesser.title')
 })
 
 const options = ref({

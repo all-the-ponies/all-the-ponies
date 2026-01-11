@@ -3,7 +3,6 @@ import { computed, ref } from 'vue';
 import { onBeforeRouteUpdate, useRoute } from 'vue-router';
 import gameData from '@/scripts/gameData'
 import { language } from '@/globals';
-import ObjectImage from '@/components/ObjectImage.vue'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { HouseType, Location, PonyType } from '@/types/gameDataTypes'
 import { formatTime } from '@/scripts/common'
@@ -32,7 +31,7 @@ const name = computed(() => {
 })
 
 useHead({
-    title: name,
+    title: () => name.value,
 })
 
 const residents = computed(() => {

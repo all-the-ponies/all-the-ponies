@@ -9,6 +9,7 @@ import DialogComponent from './DialogComponent.vue'
 import type { GameObject, GameObjectId } from '@/types/gameDataTypes'
 import type { FilterFunctionsType, SortFunctionsType } from '@/scripts/categories'
 import type { JSX } from 'vue/jsx-runtime'
+import ClientOnly from './ClientOnly.vue'
 // import { useI18n } from 'vue-i18n'
 // 
 // const { t } = useI18n()
@@ -285,24 +286,28 @@ function getInfo(gameObject: GameObject): JSX.Element {
             </button>
             <slot name="menu-after"></slot>
         </div>
-        <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
-        <section id="search-results">
-            <template v-if="objects.length > 0">
-                <ObjectCard
-                    v-for="object in shownResults.values()"
-                    :object="object"
-                    :key="`object-${object.id}`"
-                    :show-price="props.showPrices"
-                >
-                    <template v-if="props.infoGetter" #info>
-                        <component :is="getInfo(object)"></component>
-                    </template>
-                </ObjectCard>
-            </template>
-            <slot v-else name="empty"></slot>
+        <ClientOnly>
+            <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
+
+            <section id="search-results">
+                <template v-if="objects.length > 0">
+                    <ObjectCard
+                        v-for="object in shownResults.values()"
+                        :object="object"
+                        :key="`object-${object.id}`"
+                        :show-price="props.showPrices"
+                    >
+                        <template v-if="props.infoGetter" #info>
+                            <component :is="getInfo(object)"></component>
+                        </template>
+                    </ObjectCard>
+                </template>
+                <slot v-else name="empty"></slot>
+                
+            </section>
             
-        </section>
-        <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
+            <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
+        </ClientOnly>
 
         <dialog-component
             :has-close-button="true"

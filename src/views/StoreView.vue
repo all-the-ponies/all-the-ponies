@@ -13,7 +13,7 @@ import { useRoute } from 'vue-router'
 const { t } = useI18n()
 
 useHead({
-    title: computed(() => t('store.title')),
+    title: () => t('store.title'),
 })
 
 const route = useRoute()

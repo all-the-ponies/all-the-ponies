@@ -35,6 +35,10 @@ class ShopStore {
     }
 
     async getShop (): Promise<Record<string, ShopEntry>> {
+        if (import.meta.env.SSR) {
+            return this._shop
+        }
+        
         if (this._status === ShopStatus.loaded) {
             return this._shop
         }

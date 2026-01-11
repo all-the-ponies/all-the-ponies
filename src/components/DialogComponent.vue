@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref, Teleport, useTemplateRef } from 'vue';
+import { useTemplateRef } from 'vue';
+import ClientOnly from './ClientOnly.vue';
 
 const emit = defineEmits({
     open: null,
@@ -51,26 +52,28 @@ defineExpose({
 </script>
 
 <template>
-    <Teleport to="body">
-        <dialog class="dialog" ref="dialog-element">
-            <header class="dialog-header">
-                {{ props.title }}
-            </header>
-            <button
-                v-if="props.hasCloseButton"
-                class="button-circle button-pink dialog-close"
-                @click="cancel"
-            >X</button>
-            <div class="dialog-body">
-                <section class="dialog-content">
-                    <slot></slot>
-                </section>
-                <menu class="dialog-menu">
-                    <slot name="menu"></slot>
-                </menu>
-            </div>
-        </dialog>
-    </Teleport>
+    <ClientOnly>
+        <Teleport to="#teleports">
+            <dialog class="dialog" ref="dialog-element">
+                <header class="dialog-header">
+                    {{ props.title }}
+                </header>
+                <button
+                    v-if="props.hasCloseButton"
+                    class="button-circle button-pink dialog-close"
+                    @click="cancel"
+                >X</button>
+                <div class="dialog-body">
+                    <section class="dialog-content">
+                        <slot></slot>
+                    </section>
+                    <menu class="dialog-menu">
+                        <slot name="menu"></slot>
+                    </menu>
+                </div>
+            </dialog>
+        </Teleport>
+    </ClientOnly>
 </template>
 
 <style>

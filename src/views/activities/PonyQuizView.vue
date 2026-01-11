@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import DialogComponent from '@/components/DialogComponent.vue'
 import { language } from '@/globals'
-import { formatNumber, formatTime, formatTimestamp, scrollIntoViewWithOffset, staticImage, transformName } from '@/scripts/common'
+import { formatTime, formatTimestamp, scrollIntoViewWithOffset, staticImage, transformName } from '@/scripts/common'
 import gameData from '@/scripts/gameData'
 import type { PonyType } from '@/types/gameDataTypes'
-import { computed, guardReactiveProps, nextTick, ref, useTemplateRef, watchEffect, type Ref } from 'vue'
+import { useMounted } from '@vueuse/core'
+import { computed, nextTick, ref, useTemplateRef } from 'vue'
 import { onBeforeRouteLeave } from 'vue-router'
 
 const options = ref({
@@ -23,8 +24,10 @@ const optionNames = {
     includeUnused: 'pony_quiz.options.include_unused',
 }
 
+const isMounted = useMounted()
+
 const gameBar = useTemplateRef('game-bar')
-const gameBarHeight = computed(() => getComputedStyle(gameBar.value).height)
+const gameBarHeight = computed(() => isMounted ? 0 : getComputedStyle(gameBar.value).height)
 
 const guessedPonies = ref<PonyType[]>([])
 const ponies = computed(() => {

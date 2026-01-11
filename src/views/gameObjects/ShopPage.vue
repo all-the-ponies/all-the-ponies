@@ -32,7 +32,7 @@ const name = computed(() => {
 })
 
 useHead({
-    title: name,
+    title: () => name.value,
 })
 
 const residents = computed(() => {

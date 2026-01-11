@@ -20,7 +20,7 @@ const category = computed(() => {
 const categoryName = computed(() => t(CATEGORIES[category.value].string, 2))
 
 useHead({
-    title: categoryName
+    title: () => categoryName.value
 })
 
 // console.log('ponies', Object.keys(gameData.data.categories.ponies.objects))

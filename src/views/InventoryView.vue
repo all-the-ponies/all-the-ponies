@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ClientOnly from '@/components/ClientOnly.vue'
 import DialogComponent from '@/components/DialogComponent.vue'
 import ExportDialogBody from '@/components/inventory/dialogs/ExportDialog.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
@@ -7,7 +8,7 @@ import saveStats from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
 import type { CategoryName } from '@/types/gameDataTypes'
 import { useHead } from '@unhead/vue'
-import { computed, nextTick, onMounted, ref, useTemplateRef, watch, watchEffect } from 'vue'
+import { computed, ref, useTemplateRef, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -26,10 +27,8 @@ const category = ref<CategoryName>((Array.isArray(route.query.category) ? route.
 const friendCode = ref<string>(saveStore.playerInfo.friendCode)
 const errorMessage = ref<string>()
 
-const pageTitle = computed(() => t(CATEGORIES[category.value].string, 2))
-
 useHead({
-    title: pageTitle
+    title: () => `${t('inventory.title')} - ${t(CATEGORIES[category.value].string, 2)}`
 })
 
 const query = ref<Record<string, string | null>>({})
@@ -123,60 +122,62 @@ async function importFriendCode() {
 
         <section>
             <ul class="stats">
-                <li>
-                    {{
-                        $t('inventory.stats.ponies', 1, {
-                            named: {
-                                count: $n(saveStats.ponies.unique,)
-                            },
-                        })
-                    }}
-                </li>
-                <li>
-                    {{
-                        $t('inventory.stats.transformable', 2, {
-                            named: {
-                                count: $n(saveStats.ponies.changelings)
-                            }
-                        })
-                    }}
-                </li>
-                <li>
-                    {{
-                        $t('inventory.stats.stars', 2, {
-                            named: {
-                                count: $n(saveStats.ponies.stars)
-                            }
-                        })
-                    }}
-                </li>
-                <li>
-                    {{
-                        $t('inventory.stats.houses', 2, {
-                            named: {
-                                count: $n(saveStats.houses.total)
-                            }
-                        })
-                    }}
-                </li>
-                <li>
-                    {{
-                        $t('inventory.stats.shops', 2, {
-                            named: {
-                                count: $n(saveStats.shops.bits + saveStats.shops.others)
-                            }
-                        })
-                    }}
-                </li>
-                <li>
-                    {{
-                        $t('inventory.stats.gem_shops', 2, {
-                            named: {
-                                count: $n(saveStats.shops.gems)
-                            }
-                        })
-                    }}
-                </li>
+                <ClientOnly>
+                    <li>
+                        {{
+                            $t('inventory.stats.ponies', 1, {
+                                named: {
+                                    count: $n(saveStats.ponies.unique,)
+                                },
+                            })
+                        }}
+                    </li>
+                    <li>
+                        {{
+                            $t('inventory.stats.transformable', 2, {
+                                named: {
+                                    count: $n(saveStats.ponies.changelings)
+                                }
+                            })
+                        }}
+                    </li>
+                    <li>
+                        {{
+                            $t('inventory.stats.stars', 2, {
+                                named: {
+                                    count: $n(saveStats.ponies.stars)
+                                }
+                            })
+                        }}
+                    </li>
+                    <li>
+                        {{
+                            $t('inventory.stats.houses', 2, {
+                                named: {
+                                    count: $n(saveStats.houses.total)
+                                }
+                            })
+                        }}
+                    </li>
+                    <li>
+                        {{
+                            $t('inventory.stats.shops', 2, {
+                                named: {
+                                    count: $n(saveStats.shops.bits + saveStats.shops.others)
+                                }
+                            })
+                        }}
+                    </li>
+                    <li>
+                        {{
+                            $t('inventory.stats.gem_shops', 2, {
+                                named: {
+                                    count: $n(saveStats.shops.gems)
+                                }
+                            })
+                        }}
+                    </li>
+                </ClientOnly>
             </ul>
             <button @click="importDialog.open()" class="button button-blue">{{ $t('common.import') }}</button>
             <button @click="exportDialog.open()" class="button button-blue">{{ $t('common.export') }}</button>

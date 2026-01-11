@@ -2,11 +2,8 @@
 import { computed, ref } from 'vue';
 import { onBeforeRouteUpdate, useRoute } from 'vue-router';
 import gameData from '@/scripts/gameData'
-import { language } from '@/app';
-import ObjectImage from '@/components/ObjectImage.vue'
 import CurrencyImage from '@/components/CurrencyImage.vue'
-import type { DecorType, Location, PonyType } from '@/types/gameDataTypes'
-import { formatTime } from '@/scripts/common'
+import type { DecorType } from '@/types/gameDataTypes'
 import BackButton from '@/components/buttons/BackButton.vue';
 import { useHead } from '@unhead/vue'
 import { LOCATIONS } from '@/scripts/categories';
@@ -32,7 +29,7 @@ const name = computed(() => {
 })
 
 useHead({
-    title: name,
+    title: () => name.value,
 })
 
 </script>

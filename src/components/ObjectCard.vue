@@ -6,7 +6,6 @@ import InventoryAddButton from "./buttons/InventoryAddButton.vue"
 import gameData from '@/scripts/gameData'
 import { computed, shallowRef } from 'vue'
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
-import { useSaveStore } from "@/stores/saveManager"
 import { shopStore } from "@/stores/shopManager"
 import { computedAsync } from "@vueuse/core"
 import PriceButton from "./buttons/PriceButton.vue"
@@ -20,8 +19,6 @@ const props = defineProps<{
     object: GameObjectId | GameObject,
     showPrice?: boolean,
 }>()
-
-const saveStore = useSaveStore()
 
 const gameObject = gameData.getObject(props.object)
 

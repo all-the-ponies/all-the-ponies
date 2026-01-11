@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
 useHead({
-  title: computed(() => t('ALL_THE_PONIES'))
+  title: () => t('ALL_THE_PONIES')
 })
 </script>
 

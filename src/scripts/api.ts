@@ -5,7 +5,7 @@ import type { GameObjectId } from "@/types/gameDataTypes.js"
 const API_DOMAIN = 'https://all-the-ponies-api.vercel.app/'
 
 const LOCALHOST_API_DOMAIN = (() => {
-    const url = new URL(location.origin)
+    const url = new URL(import.meta.env.SSR ? 'https://localhost' : location.origin)
     url.port = '5501'
     return url.origin
 })()

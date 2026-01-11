@@ -1,6 +1,10 @@
 import { createApp } from './app'
 import './assets/css/main.css'
 
-const app = createApp()
+const { app, router } = createApp()
 
-app.mount('#app')
+router.isReady().then(() => {
+    app.mount('#app')
+    
+    console.log('hydrated')
+})

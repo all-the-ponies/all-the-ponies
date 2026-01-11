@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue/legacy';
-import { useI18n } from 'vue-i18n';
+import { useHead } from '@unhead/vue'
+import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
 
 const { t } = useI18n()
 
 useHead({
-  title: t('ABOUT')
+  title: () => t('about.title'),
 })
 </script>
 

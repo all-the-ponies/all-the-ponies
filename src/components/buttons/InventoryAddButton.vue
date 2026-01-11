@@ -3,6 +3,7 @@ import gameData from '@/scripts/gameData';
 import { useSaveStore } from '@/stores/saveManager';
 import type { GameObjectId } from '@/types/gameDataTypes';
 import { computed } from 'vue';
+import ClientOnly from '@/components/ClientOnly.vue';
 
 const props = defineProps<{
   gameObject: GameObjectId,
@@ -45,11 +46,13 @@ function toggleOwned(event: Event) {
 </script>
 
 <template>
-<button
-    class="button-circle inventory-button"
-    :class="owned ? 'button-red' : 'button-green'"
-    @click.prevent="toggleOwned"
->{{ owned ? '-' : '+' }}</button>
+    <ClientOnly>
+        <button
+            class="button-circle inventory-button"
+            :class="owned ? 'button-red' : 'button-green'"
+            @click.prevent="toggleOwned"
+        >{{ owned ? '-' : '+' }}</button>
+    </ClientOnly>
 </template>
 
 <style lang="css" scoped>

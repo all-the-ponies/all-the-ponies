@@ -29,7 +29,7 @@ const name = computed(() => {
 const pony = computed(() => gameData.getObject(objectInfo.value.pony, 'pony'))
 
 useHead({
-    title: name,
+    title: () => name.value,
 })
 
 </script>

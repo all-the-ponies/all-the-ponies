@@ -3,7 +3,6 @@ import { computed, ref } from 'vue';
 import { onBeforeRouteUpdate, useRoute } from 'vue-router';
 import gameData from '@/scripts/gameData'
 import { language } from '@/globals';
-import ObjectImage from '@/components/ObjectImage.vue'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { PonyType } from '@/types/gameDataTypes'
 import { formatTime } from '@/scripts/common'
@@ -13,10 +12,10 @@ import BackButton from '@/components/buttons/BackButton.vue';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import { useSaveStore } from '@/stores/saveManager';
 import Stars from '@/components/Stars.vue';
-import type StarsVue from '@/components/Stars.vue';
 import { LOCATIONS } from '@/scripts/categories';
+import { useMounted } from '@vueuse/core';
 
-
+const isMounted = useMounted()
 
 const route = useRoute()
 
@@ -27,6 +26,10 @@ pony.value = gameData.getObject(Array.isArray(route.params.id) ? route.params.id
 
 const stars = computed({
   get() {
+    if (!isMounted.value) {
+        return 0
+    }
+
     if (saveStore.hasPony(pony.value.id)) {
       return saveStore.ponies[pony.value.id].level
     } else {
@@ -61,7 +64,7 @@ const house = computed(() => gameData.getObject(pony.value?.house))
 const houseName = computed(() => house.value?.name[language.value.key])
 
 useHead({
-    title: name,
+    title: () => name.value,
 })
 
 </script>
