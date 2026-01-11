@@ -17,7 +17,7 @@ export default function createServer(
   const resolve = (p) => path.resolve(__dirname, p);
 
   const indexProd = isProd
-    ? fs.readFileSync(resolve("dist/client/index.html"), "utf-8")
+    ? fs.readFileSync(resolve("client/index.html"), "utf-8")
     : "";
 
   const manifest = isProd
@@ -72,7 +72,7 @@ export default function createServer(
 
       let template, render;
       if (!isProd) {
-        template = fs.readFileSync(resolve("index.html"), "utf-8");
+        template = fs.readFileSync(resolve("./index.html"), "utf-8");
         // template = await viteServer.transformIndexHtml(url, template);
         render = (await viteServer.ssrLoadModule("./src/server")).render;
       } else {
