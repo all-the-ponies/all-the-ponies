@@ -34,8 +34,7 @@ export async function createServer(
     vite = await (
       await import("vite")
     ).createServer({
-      ...(await import('./vite.config.ts').default),
-      // base: "/",
+      base: "/",
       root,
       logLevel: isTest ? "error" : "info",
       server: {
@@ -46,7 +45,7 @@ export async function createServer(
         },
         hmr: {
           port: hmrPort,
-          serve: true,
+          // serve: true,
         },
       },
       appType: "custom",
