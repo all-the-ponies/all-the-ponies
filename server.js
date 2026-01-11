@@ -15,8 +15,11 @@ export default function createServer(
 ) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const resolve = (p) => path.resolve(__dirname, p);
-
-  console.log('files', fs.readdirSync('./dist'), import.meta.url)
+  
+  console.log(fileURLToPath(import.meta.url))
+  console.log('files', fs.readdirSync('./'))
+  console.log('files', fs.readdirSync('./dist'))
+  console.log('files', fs.readdirSync('./dist/server'))
   const indexProd = isProd
     ? fs.readFileSync(resolve("dist/client/index.html"), "utf-8")
     : "";
