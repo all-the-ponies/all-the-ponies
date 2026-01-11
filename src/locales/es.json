@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "",
+    "description": ""
+  },
   "about": {
     "title": "Acerca De"
   },
-  "ALL_THE_PONIES": "",
   "button": {
     "cancel": "Cancelar",
     "no": "No",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "",
+    "description": "",
     "message": {
       "ponies": {
         "total": ""
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "Tienda",
+    "description": "",
     "message": {
       "percent_off": "MENOS",
       "if": "si",
       "for": "con"
-    },
-    "title": "Tienda"
+    }
+  },
+  "search": {
+    "title": ""
   }
 }

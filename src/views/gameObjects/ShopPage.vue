@@ -6,9 +6,9 @@ import { language } from '@/globals';
 import ObjectImage from '@/components/ObjectImage.vue'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { HouseType, Location, PonyType, ShopType } from '@/types/gameDataTypes'
-import { formatTime } from '@/scripts/common'
+import { formatTime, staticImage } from '@/scripts/common'
 import BackButton from '@/components/buttons/BackButton.vue';
-import { useHead } from '@unhead/vue';
+import { useHead, useSeoMeta } from '@unhead/vue';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import { LOCATIONS } from '@/scripts/categories';
 
@@ -31,8 +31,11 @@ const name = computed(() => {
     return name
 })
 
-useHead({
+useSeoMeta({
     title: () => name.value,
+    ogTitle: () => name.value,
+    ogDescription: null,
+    ogImage: () => `%site.url${staticImage(objectInfo.value.image.main)}`
 })
 
 const residents = computed(() => {

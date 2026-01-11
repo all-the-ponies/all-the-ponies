@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "",
+    "description": ""
+  },
   "about": {
     "title": "เกี่ยวกับ"
   },
-  "ALL_THE_PONIES": "",
   "button": {
     "cancel": "ยกเลิก",
     "no": "ไม่",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "",
+    "description": "",
     "message": {
       "ponies": {
         "total": ""
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "สโตร์",
+    "description": "",
     "message": {
       "percent_off": "ลด",
       "if": "ถ้าเป็น",
       "for": "ถ้าใช้"
-    },
-    "title": "สโตร์"
+    }
+  },
+  "search": {
+    "title": ""
   }
 }

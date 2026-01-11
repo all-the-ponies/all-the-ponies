@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "",
+    "description": ""
+  },
   "about": {
     "title": "Spielinfos"
   },
-  "ALL_THE_PONIES": "",
   "button": {
     "cancel": "Abbrechen",
     "no": "Nein",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "",
+    "description": "",
     "message": {
       "ponies": {
         "total": ""
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "Shop",
+    "description": "",
     "message": {
       "percent_off": "RABATT",
       "if": "wenn",
       "for": "für"
-    },
-    "title": "Shop"
+    }
+  },
+  "search": {
+    "title": ""
   }
 }

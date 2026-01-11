@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "",
+    "description": ""
+  },
   "about": {
     "title": "회사 소개"
   },
-  "ALL_THE_PONIES": "",
   "button": {
     "cancel": "취소",
     "no": "아니요",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "",
+    "description": "",
     "message": {
       "ponies": {
         "total": ""
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "상점",
+    "description": "",
     "message": {
       "percent_off": "할인",
       "if": "조건:",
       "for": "가격:"
-    },
-    "title": "상점"
+    }
+  },
+  "search": {
+    "title": ""
   }
 }

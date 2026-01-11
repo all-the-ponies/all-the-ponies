@@ -33,7 +33,7 @@ function toggleSidebar(e: Event) {
                     <label for="sidebar-toggle" aria-label="Toggle sidebar" title="Toggle sidebar"></label>
                 </label>
                 <div>
-                    <router-link class="title" to="/">{{ $t('ALL_THE_PONIES') }}</router-link>
+                    <router-link class="title" to="/">{{ $t('site.title') }}</router-link>
                     <LanguageSelector />
                 </div>
             </div>

@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "All The Ponies",
+    "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game"
+  },
   "about": {
     "title": "About"
   },
-  "ALL_THE_PONIES": "All The Ponies",
   "button": {
     "cancel": "Cancel",
     "no": "No",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "Stats",
+    "description": "See your stats in the My Little Pony: Magic Princess game",
     "message": {
       "ponies": {
         "total": "Total ponies: {count}"
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "Store",
+    "description": "See everything currently in the store in real time",
     "message": {
       "percent_off": "OFF",
       "if": "if",
       "for": "for"
-    },
-    "title": "Store"
+    }
+  },
+  "search": {
+    "title": "Search"
   }
 }

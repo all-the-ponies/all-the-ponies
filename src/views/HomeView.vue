@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 useHead({
-  title: () => t('ALL_THE_PONIES')
+  title: () => t('site.title')
 })
 </script>
 

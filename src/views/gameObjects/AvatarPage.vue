@@ -4,7 +4,8 @@ import { onBeforeRouteUpdate, useRoute } from 'vue-router';
 import gameData from '@/scripts/gameData'
 import type { AvatarType } from '@/types/gameDataTypes'
 import BackButton from '@/components/buttons/BackButton.vue';
-import { useHead } from '@unhead/vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
+import { staticImage } from '@/scripts/common';
 
 
 
@@ -28,8 +29,11 @@ const name = computed(() => {
 
 const pony = computed(() => gameData.getObject(objectInfo.value.pony, 'pony'))
 
-useHead({
+useSeoMeta({
     title: () => name.value,
+    ogTitle: () => name.value,
+    ogDescription: null,
+    ogImage: () => `%site.url${staticImage(objectInfo.value.image.preview)}`,
 })
 
 </script>

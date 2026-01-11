@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "",
+    "description": ""
+  },
   "about": {
     "title": "نبذة"
   },
-  "ALL_THE_PONIES": "",
   "button": {
     "cancel": "إلغاء",
     "no": "لا",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "",
+    "description": "",
     "message": {
       "ponies": {
         "total": ""
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "المتجر",
+    "description": "",
     "message": {
       "percent_off": "خصم",
       "if": "في حالة",
       "for": "مقابل"
-    },
-    "title": "المتجر"
+    }
+  },
+  "search": {
+    "title": ""
   }
 }

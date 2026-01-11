@@ -5,8 +5,9 @@ import gameData from '@/scripts/gameData'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { DecorType } from '@/types/gameDataTypes'
 import BackButton from '@/components/buttons/BackButton.vue';
-import { useHead } from '@unhead/vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
 import { LOCATIONS } from '@/scripts/categories';
+import { staticImage } from '@/scripts/common';
 
 
 
@@ -28,8 +29,11 @@ const name = computed(() => {
     return name
 })
 
-useHead({
+useSeoMeta({
     title: () => name.value,
+    ogTitle: () => name.value,
+    ogDescription: null,
+    ogImage: () => `%site.url${staticImage(objectInfo.value.image.main)}`,
 })
 
 </script>

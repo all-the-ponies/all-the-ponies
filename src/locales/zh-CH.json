@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "",
+    "description": ""
+  },
   "about": {
     "title": "关于"
   },
-  "ALL_THE_PONIES": "",
   "button": {
     "cancel": "取消",
     "no": "否",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "",
+    "description": "",
     "message": {
       "ponies": {
         "total": ""
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "商城",
+    "description": "",
     "message": {
       "percent_off": "折扣",
       "if": "条件：",
       "for": "价格："
-    },
-    "title": "商城"
+    }
+  },
+  "search": {
+    "title": ""
   }
 }

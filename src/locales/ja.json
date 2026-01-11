@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "",
+    "description": ""
+  },
   "about": {
     "title": "クレジット"
   },
-  "ALL_THE_PONIES": "",
   "button": {
     "cancel": "キャンセル",
     "no": "いいえ",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "",
+    "description": "",
     "message": {
       "ponies": {
         "total": ""
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "ストア",
+    "description": "",
     "message": {
       "percent_off": "オフ",
       "if": "：",
       "for": "コスト："
-    },
-    "title": "ストア"
+    }
+  },
+  "search": {
+    "title": ""
   }
 }

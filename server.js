@@ -81,7 +81,7 @@ export async function createServer(
         preloadLinks,
         headPayload,
         teleports,
-      } = await render(url, manifest);
+      } = await render(req.headers.host, url, manifest);
 
       // console.log(teleports)
 

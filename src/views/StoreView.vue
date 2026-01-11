@@ -4,7 +4,7 @@ import { CATEGORIES, FilterFunctions, SortFunctions, type FilterFunctionsType } 
 import gameData from '@/scripts/gameData'
 import { shopStore } from '@/stores/shopManager'
 import type { CategoryName } from '@/types/gameDataTypes'
-import { useHead } from '@unhead/vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
 import { computedAsync } from '@vueuse/core'
 import { computed, ref, shallowRef, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -12,8 +12,10 @@ import { useRoute } from 'vue-router'
 
 const { t } = useI18n()
 
-useHead({
+useSeoMeta({
     title: () => t('store.title'),
+    ogTitle: () => t('store.title'),
+    ogDescription: () => t('store.description'),
 })
 
 const route = useRoute()

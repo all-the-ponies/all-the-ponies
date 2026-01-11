@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "",
+    "description": ""
+  },
   "about": {
     "title": "Hakkında"
   },
-  "ALL_THE_PONIES": "",
   "button": {
     "cancel": "İptal",
     "no": "Hayir",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "",
+    "description": "",
     "message": {
       "ponies": {
         "total": ""
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "Mağaza",
+    "description": "",
     "message": {
       "percent_off": "İNDİRİM",
       "if": "eğer:",
       "for": "için:"
-    },
-    "title": "Mağaza"
+    }
+  },
+  "search": {
+    "title": ""
   }
 }

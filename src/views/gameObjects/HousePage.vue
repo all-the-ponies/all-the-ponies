@@ -5,9 +5,9 @@ import gameData from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { HouseType, Location, PonyType } from '@/types/gameDataTypes'
-import { formatTime } from '@/scripts/common'
+import { formatTime, staticImage } from '@/scripts/common'
 import BackButton from '@/components/buttons/BackButton.vue';
-import { useHead } from '@unhead/vue';
+import { useHead, useSeoMeta } from '@unhead/vue';
 import { LOCATIONS } from '@/scripts/categories';
 
 
@@ -30,8 +30,11 @@ const name = computed(() => {
     return name
 })
 
-useHead({
+useSeoMeta({
     title: () => name.value,
+    ogTitle: () => name.value,
+    ogDescription: null,
+    ogImage: () => `%site.url${staticImage(objectInfo.value.image.main)}`,
 })
 
 const residents = computed(() => {

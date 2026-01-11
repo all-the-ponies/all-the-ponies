@@ -3,8 +3,9 @@ import { renderToString, type SSRContext } from "vue/server-renderer";
 import { createApp } from "./app";
 import { renderSSRHead } from "@unhead/vue/server";
 
-export async function render(url: string, manifest) {
-  const { app, router, head } = createApp();
+export async function render(origin: string, url: string, manifest) {
+  console.log('url', origin)
+  const { app, router, head } = createApp(origin);
 
   await router.push(url);
   await router.isReady();

@@ -5,9 +5,9 @@ import gameData from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { PonyType } from '@/types/gameDataTypes'
-import { formatTime } from '@/scripts/common'
+import { formatTime, staticImage } from '@/scripts/common'
 import StarRewards from '@/components/StarRewards.vue'
-import { useHead } from '@unhead/vue';
+import { useHead, useSeoMeta } from '@unhead/vue';
 import BackButton from '@/components/buttons/BackButton.vue';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import { useSaveStore } from '@/stores/saveManager';
@@ -63,8 +63,11 @@ const description = computed(() => {
 const house = computed(() => gameData.getObject(pony.value?.house))
 const houseName = computed(() => house.value?.name[language.value.key])
 
-useHead({
+useSeoMeta({
     title: () => name.value,
+    ogTitle: () => name.value,
+    ogDescription: () => description.value,
+    ogImage: () => `%site.url${staticImage(pony.value.image.main)}`,
 })
 
 </script>

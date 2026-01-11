@@ -1,8 +1,11 @@
 {
+  "site": {
+    "title": "",
+    "description": ""
+  },
   "about": {
     "title": "Об Игре"
   },
-  "ALL_THE_PONIES": "",
   "button": {
     "cancel": "Отмена",
     "no": "Нет",
@@ -197,6 +200,7 @@
   },
   "stats": {
     "title": "",
+    "description": "",
     "message": {
       "ponies": {
         "total": ""
@@ -204,11 +208,15 @@
     }
   },
   "store": {
+    "title": "Магазин",
+    "description": "",
     "message": {
       "percent_off": "СКИДКА",
       "if": "если",
       "for": "за"
-    },
-    "title": "Магазин"
+    }
+  },
+  "search": {
+    "title": ""
   }
 }

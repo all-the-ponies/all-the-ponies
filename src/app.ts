@@ -5,8 +5,9 @@ import { createHead } from '@unhead/vue/client'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { i18n } from './globals'
+import { TemplateParamsPlugin } from '@unhead/vue/plugins'
 
-export function createApp() {
+export function createApp(domain) {
     const app = createSSRApp(App)
 
     // Plugins
@@ -17,12 +18,37 @@ export function createApp() {
     }
 
     const head = createHead({
+        plugins: [
+            TemplateParamsPlugin,
+        ],
         init: [
             {
-                title: i18n.global.t('ALL_THE_PONIES'),
-                titleTemplate: `%s - ${i18n.global.t('ALL_THE_PONIES')}`,
-            }
-        ]
+                templateParams: {
+                    separator: '-',
+                    site: {
+                        url: `https://${domain}`,
+                        name: i18n.global.t('site.title'),
+                        description: i18n.global.t('site.description'),
+                    },
+                },
+                title: i18n.global.t('site.title'),
+                titleTemplate: `%s %separator ${i18n.global.t('site.title')}`,
+                meta: [
+                    {
+                        property: 'og:site:name',
+                        content: () => `%site.name`,
+                    },
+                    {
+                        property: 'og:description',
+                        content: '%site.description',
+                    },
+                    {
+                        property: 'og:image',
+                        content: '%site.url/favicon/favicon.png',
+                    }
+                ]
+            },
+        ],
     })
 
     const router = createRouter()

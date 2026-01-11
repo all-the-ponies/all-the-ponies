@@ -5,15 +5,17 @@ import { formatTime } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
 import saveStats from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
-import { useHead } from '@unhead/vue';
+import { useHead, useSeoMeta } from '@unhead/vue';
 import { nextTick, onMounted, ref, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n()
 const saveStore = useSaveStore()
 
-useHead({
-    title: () => t('stats.title')
+useSeoMeta({
+    title: () => t('stats.title'),
+    ogTitle: () => t('stats.title'),
+    ogDescription: () => t('stats.description'),
 })
 
 const friendCodeInput = useTemplateRef('friend-code')

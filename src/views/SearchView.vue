@@ -4,7 +4,7 @@ import gameData from '@/scripts/gameData'
 import { computed, ref } from 'vue';
 import { onBeforeRouteUpdate, useRoute } from 'vue-router';
 import { CATEGORIES, SortFunctions, FilterFunctions, PLURAL_CATEGORY_MAP } from '@/scripts/categories'
-import { useHead } from '@unhead/vue';
+import { useHead, useSeoMeta } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
 import type { GameObject } from '@/types/gameDataTypes';
 import PriceButton from '@/components/buttons/PriceButton.vue';
@@ -19,8 +19,9 @@ const category = computed(() => {
 
 const categoryName = computed(() => t(CATEGORIES[category.value].string, 2))
 
-useHead({
-    title: () => categoryName.value
+useSeoMeta({
+    title: () => categoryName.value,
+    ogTitle: () => `${t('search.title')} ${categoryName.value}`,
 })
 
 // console.log('ponies', Object.keys(gameData.data.categories.ponies.objects))
