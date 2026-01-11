@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DialogComponent from '@/components/DialogComponent.vue'
-import { language } from '@/main'
+import { language } from '@/globals'
 import { CATEGORIES, LOCATIONS } from '@/scripts/categories'
 import { downloadFile } from '@/scripts/common'
 import gameData from '@/scripts/gameData'

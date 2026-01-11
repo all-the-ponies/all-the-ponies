@@ -231,7 +231,7 @@ export function pickRandom(list: any[]) {
 }
 
 
-import { language } from '@/main';
+import { language } from '@/globals';
 
 
 

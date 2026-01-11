@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { LOCALES, loadLocaleMessages} from '@/i18n'
-import { setLanguage } from '@/main'
+import { setLanguage } from '@/globals';
+import { LOCALES } from '@/i18n'
 </script>
 
 <template>

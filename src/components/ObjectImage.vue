@@ -2,7 +2,7 @@
 import gameData from '@/scripts/gameData'
 import { computed } from 'vue'
 import VLazyImage from "v-lazy-image"
-import { language } from '@/main'
+import { language } from '@/globals'
 import type { GameObjectId } from '@/types/gameDataTypes';
 
 const props = withDefaults(defineProps<{

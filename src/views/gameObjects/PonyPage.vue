@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue';
 import { onBeforeRouteUpdate, useRoute } from 'vue-router';
 import gameData from '@/scripts/gameData'
-import { language } from '@/main';
+import { language } from '@/globals';
 import ObjectImage from '@/components/ObjectImage.vue'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { PonyType } from '@/types/gameDataTypes'

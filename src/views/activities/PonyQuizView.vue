@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DialogComponent from '@/components/DialogComponent.vue'
-import { language } from '@/main'
+import { language } from '@/globals'
 import { formatNumber, formatTime, formatTimestamp, scrollIntoViewWithOffset, staticImage, transformName } from '@/scripts/common'
 import gameData from '@/scripts/gameData'
 import type { PonyType } from '@/types/gameDataTypes'

@@ -1,4 +1,4 @@
-import { language } from "@/main"
+import { language } from "@/globals"
 import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType } from "../types/gameDataTypes"
 import gameData from "./gameData"
 import type { Ref } from "vue"

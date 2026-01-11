@@ -2,7 +2,7 @@
 import type { GameObject } from '@/types/gameDataTypes'
 
 import DialogComponent from '@/components/DialogComponent.vue'
-import { language } from '@/main'
+import { language } from '@/globals'
 import { formatNumber, formatTime, formatTimestamp, pickRandom, scrollIntoViewWithOffset, staticImage, transformName } from '@/scripts/common'
 import gameData from '@/scripts/gameData'
 import type { PonyType } from '@/types/gameDataTypes'

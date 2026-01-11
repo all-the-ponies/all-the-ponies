@@ -83,12 +83,12 @@ export function setupI18n(options: I18nOptions = { locale: 'en' }) {
   return i18n
 }
 
-export function setI18nLanguage(i18n: I18n, locale: string) {
-    (i18n.global.locale as Record<'value', string>).value = locale
+export function setI18nLanguage(i18n: I18n['global'], locale: string) {
+    (i18n.locale as Record<'value', string>).value = locale
     document.documentElement.setAttribute('lang', locale)
 }
 
-export async function loadLocaleMessages(i18n: I18n, locale: string) {
+export async function loadLocaleMessages(i18n: I18n['global'], locale: string) {
   if (!(locale in loadedLanguages)) {
     // load locale messages with dynamic import
     const messages = await import(
@@ -96,7 +96,7 @@ export async function loadLocaleMessages(i18n: I18n, locale: string) {
     )
   
     // set locale and locale message
-    i18n.global.setLocaleMessage(locale, cleanLocaleMessages(messages.default))
+    i18n.setLocaleMessage(locale, cleanLocaleMessages(messages.default))
 
     loadedLanguages.push(locale)
   }
@@ -121,3 +121,6 @@ function cleanLocaleMessages(messages: object) {
   
   return cleanedMessages
 }
+
+
+export const i18n = setupI18n()

@@ -2,7 +2,7 @@
 import { computed, ref, useTemplateRef, watch } from 'vue'
 import ObjectCard from './ObjectCard.vue'
 import gameData from '@/scripts/gameData'
-import { language } from '@/main'
+import { language } from '@/globals'
 import Paginator from './Paginator.vue'
 import { useRoute, useRouter } from 'vue-router'
 import DialogComponent from './DialogComponent.vue'
