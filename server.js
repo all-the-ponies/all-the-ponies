@@ -2,11 +2,14 @@ import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import express from "express"
+import * as vite from 'vite'
+import compression from 'compression'
+import serveStatic from 'serve-static'
 
 
 const isTest = process.env.VITEST;
 
-export default async function createServer(
+export default function createServer(
   root = process.cwd(),
   isProd = process.env.NODE_ENV === "production",
   hmrPort
@@ -29,11 +32,8 @@ export default async function createServer(
   /**
    * @type {import('vite').ViteDevServer}
    */
-  let vite;
   if (!isProd) {
-    vite = await (
-      await import("vite")
-    ).createServer({
+    vite.createServer({
       base: "/",
       root,
       logLevel: isTest ? "error" : "info",
@@ -52,10 +52,10 @@ export default async function createServer(
     });
     app.use(vite.middlewares);
   } else {
-    app.use((await import("compression")).default());
+    app.use(compression());
     app.use(
       "/",
-      (await import("serve-static")).default(resolve("dist/client"), {
+      serveStatic(resolve("dist/client"), {
         index: false,
       })
     );
@@ -104,9 +104,8 @@ export default async function createServer(
 }
 
 if (!isTest) {
-  createServer().then((app) =>
-    app.listen(5000, () => {
-      console.log("http://localhost:5000");
-    })
-  );
+  let app = createServer()
+  app.listen(5000, () => {
+    console.log("http://localhost:5000");
+  })
 }
