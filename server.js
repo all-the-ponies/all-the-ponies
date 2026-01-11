@@ -2,7 +2,6 @@ import fs from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import express from "express"
-import * as vite from 'vite'
 import compression from 'compression'
 import serveStatic from 'serve-static'
 
@@ -32,25 +31,31 @@ export default function createServer(
   /**
    * @type {import('vite').ViteDevServer}
    */
+  let viteServer
+
   if (!isProd) {
-    vite.createServer({
-      base: "/",
-      root,
-      logLevel: isTest ? "error" : "info",
-      server: {
-        middlewareMode: true,
-        watch: {
-          usePolling: true,
-          interval: 100,
+    import('vite').then(vite => {
+      vite.createServer({
+        base: "/",
+        root,
+        logLevel: isTest ? "error" : "info",
+        server: {
+          middlewareMode: true,
+          watch: {
+            usePolling: true,
+            interval: 100,
+          },
+          hmr: {
+            port: hmrPort,
+            serve: true,
+          },
         },
-        hmr: {
-          port: hmrPort,
-          // serve: true,
-        },
-      },
-      appType: "custom",
-    });
-    app.use(vite.middlewares);
+        appType: "custom",
+      }).then(_viteServer => {
+        viteServer = _viteServer
+        app.use(_viteServer.middlewares);
+      })
+    })
   } else {
     app.use(compression());
     app.use(
@@ -68,8 +73,8 @@ export default function createServer(
       let template, render;
       if (!isProd) {
         template = fs.readFileSync(resolve("index.html"), "utf-8");
-        // template = await vite.transformIndexHtml(url, template);
-        render = (await vite.ssrLoadModule("./src/server")).render;
+        // template = await viteServer.transformIndexHtml(url, template);
+        render = (await viteServer.ssrLoadModule("./src/server")).render;
       } else {
         template = indexProd;
         render = (await import("./dist/server/server.js")).render;
@@ -94,7 +99,7 @@ export default function createServer(
 
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
-      vite && vite.ssrFixStacktrace(e);
+      viteServer && viteServer.ssrFixStacktrace(e);
       console.log(e.stack);
       res.status(500).end(e.stack);
     }
