@@ -81,7 +81,7 @@ export default function createServer(
         render = (await viteServer.ssrLoadModule("./src/server")).render;
       } else {
         template = indexProd;
-        render = (await import("./dist/server/server.js")).render;
+        render = (await import("../dist/server/server.js")).render;
       }
 
       const {
