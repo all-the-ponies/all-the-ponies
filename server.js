@@ -16,8 +16,9 @@ export default function createServer(
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const resolve = (p) => path.resolve(__dirname, p);
 
+  console.log('files', fs.readdirSync('./'))
   const indexProd = isProd
-    ? fs.readFileSync(resolve("client/index.html"), "utf-8")
+    ? fs.readFileSync(resolve("dist/client/index.html"), "utf-8")
     : "";
 
   const manifest = isProd
