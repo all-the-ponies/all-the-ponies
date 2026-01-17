@@ -11,6 +11,11 @@ export async function onCreateApp(pageContext: PageContext & {locale: string}) {
     }
     const app = pageContext.app
 
+    // Workaround for vue-i18n SSR bug on Vercel/Node
+    if (!( '__VUE_PROD_DEVTOOLS__' in globalThis)) {
+        (globalThis as any).__VUE_PROD_DEVTOOLS__ = false
+    }
+
     await setLanguage(pageContext.locale)
 
     app.use(i18n)
