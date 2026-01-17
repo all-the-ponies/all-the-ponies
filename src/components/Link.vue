@@ -6,7 +6,10 @@ import { useAttrs, computed } from 'vue'
 
 const pageContext = usePageContext()
 const { href } = defineProps({
-  href: String,
+  href: {
+    type: String,
+    required: true,
+  },
 })
 const isActive = computed(() => {
   const urlPathname = pageContext.urlPathname
