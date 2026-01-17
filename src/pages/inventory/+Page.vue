@@ -46,6 +46,7 @@ watch(
 const gameObjects = computed(() => {
     switch (category.value) {
         case 'pony':
+            console.log('ponies', saveStore.houses)
             return Object.keys(saveStore.ponies)
         case 'shop':
             return Object.keys(saveStore.shops)
@@ -200,12 +201,7 @@ async function importFriendCode() {
                             <template #category>
                                 <Link
                                     class="link"
-                                    :to="{
-                                        name: 'search',
-                                        params: {
-                                            category: CATEGORIES[category === 'house' ? 'ponies' : category].plural || category === 'house' ? 'ponies' : category,
-                                        }
-                                    }"
+                                    :href="`/${CATEGORIES[category === 'house' ? 'ponies' : category].plural || category === 'house' ? 'ponies' : category}/`"
                                 >
                                     {{ $t(CATEGORIES[category === 'house' ? 'ponies' : category ].string, 2).toLocaleLowerCase() }}
                                 </Link>
