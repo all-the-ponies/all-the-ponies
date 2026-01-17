@@ -53,7 +53,7 @@ defineExpose({
 
 <template>
     <ClientOnly>
-        <Teleport to="#teleports">
+        <Teleport to="body">
             <dialog class="dialog" ref="dialog-element">
                 <header class="dialog-header">
                     {{ props.title }}

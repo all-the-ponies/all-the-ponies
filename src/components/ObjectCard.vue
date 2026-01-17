@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import VLazyImage from "v-lazy-image"
-import { RouterLink } from 'vue-router'
 import InventoryAddButton from "./buttons/InventoryAddButton.vue"
 
 import gameData from '@/scripts/gameData'
@@ -12,6 +11,7 @@ import PriceButton from "./buttons/PriceButton.vue"
 import RoyalIcon from "./icons/store/RoyalIcon.vue"
 import ObjectImage from "./ObjectImage.vue"
 import { valueExists } from "@/scripts/common"
+import Link from "./Link.vue"
 
 const shopManager = shopStore
 
@@ -103,12 +103,7 @@ const replacedPrice = computed(() => {
 
 <template>
     <div class="object-card">
-        <RouterLink :to="{
-            name: gameObject.category,
-            params: {
-                id: gameObject.id,
-            }
-        }">
+        <Link :href="`/${gameObject.category}/${gameObject.id}`">
             <div class="banner" v-if="!gettingShopInfo && showPrice && shopInfo?.inShop">
                 <span v-if="shopInfo?.price?.sale?.price" class="discount-banner">
                     {{
@@ -165,7 +160,7 @@ const replacedPrice = computed(() => {
                     </slot>
                 </div>
             </div>
-        </RouterLink>
+        </Link>
     </div>
 </template>
 

@@ -1,5 +1,5 @@
 import { loadLocaleMessages, LOCALES, setupI18n } from "./i18n";
-import { computed } from "vue";
+import { computed, type Ref } from "vue";
 
 
 export const i18n = setupI18n()

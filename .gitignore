@@ -33,3 +33,5 @@ requirements.local.txt
 
 *.tsbuildinfo
 pnpm-lock.yaml
+
+.vercel/

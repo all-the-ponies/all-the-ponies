@@ -4,7 +4,14 @@ import gameData from "./gameData"
 import type { Ref } from "vue"
 import { useSaveStore } from "@/stores/saveManager"
 
-const saveManager = useSaveStore()
+let saveManager: ReturnType<typeof useSaveStore>
+
+function getSaveManager() {
+  if (!saveManager) {
+    saveManager = useSaveStore()
+  }
+  return saveManager
+}
 
 export const CATEGORIES: Partial<Record<CategoryName, {
   string: string,
@@ -75,9 +82,6 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
                 const name1 = gameData.translateName(a).value
                 const name2 = gameData.translateName(b).value
                 return new Intl.Collator(language.value.code).compare(name1, name2)
-                if (name1 < name2) return -1
-                if (name1 > name2) return 1
-                return 0
             }
         }
     },
@@ -204,7 +208,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         notOwned: {
           name: 'filter.pony.not_owned',
           check(gameObject: PonyType) {
-            return !saveManager.hasPony(gameObject.id)
+            return !getSaveManager().hasPony(gameObject.id)
           }
         },
     },
@@ -240,7 +244,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
       notOwned: {
         name: 'filter.shop.not_owned',
         check(gameObject: ShopType) {
-          return !saveManager.hasShop(gameObject.id)
+          return !getSaveManager().hasShop(gameObject.id)
         }
       },
     },

@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute, useRouter, RouterLink } from 'vue-router'
+import Link from './Link.vue'
+import { usePageContext } from 'vike-vue/usePageContext'
+import { modifyUrl } from 'vike/modifyUrl'
+import { isClient } from '@vueuse/core'
 
-const router = useRouter()
-const route = useRoute()
+const pageContext = usePageContext()
+const searchQuery = computed(() => pageContext.urlParsed.search)
 
 
 const props = defineProps({
@@ -26,11 +29,22 @@ const page = computed({
     set(value: number) {
         value = Math.min(Math.max(1, value), totalPages.value)
         if (props.param) {
-            const query = { ...route.query }
+            const query = { ...pageContext.urlParsed.search }
             query[props.param] = value.toString()
-            router.replace({
-                query: query
-            })
+            if (isClient) {
+                history.replaceState(null, '', 
+                    modifyUrl(
+                        pageContext.urlPathname,
+                        {
+                            search: query
+                        }
+                    ),
+                )
+            }
+            
+            // { overwriteLastHistoryEntry: true }
+            // navigate(
+            // )
         }
         return emit('update:modelValue', value)
     },
@@ -62,8 +76,8 @@ const pageList = computed(() => {
 })
 
 if (props.param) {
-    if (route.query[props.param]) {
-        page.value = Number(route.query[props.param])
+    if (pageContext.urlParsed.search[props.param]) {
+        page.value = Number(pageContext.urlParsed.search[props.param])
     }
 }
 
@@ -71,39 +85,62 @@ if (props.param) {
 </script>
 
 <template>
-<div v-if="props.param" class="paginator-container" :class="totalPages == 1 ? 'hidden' : ''">
-    <router-link
+<div v-if="props?.param" class="paginator-container" :class="totalPages == 1 ? 'hidden' : ''">
+    <Link
      class="paginator-button back-button"
-     @click="page--"
+     @click.prevent.stop="page--"
      :class="{disabled: page <= 1}"
-     :to="`?${props.param}=${Math.max(1, page - 1)}`"
+     :href="
+        modifyUrl(
+            pageContext.urlPathname,
+            {
+                search: {
+                    ...searchQuery,
+                    [$props.param]: String(Math.max(1, page - 1)),
+                }
+            }
+        )
+    "
      :replace="true"
-    ><</router-link>
+    ><</Link>
 
-    <router-link
+    <Link
      class="paginator-button page-selector"
      :class="{selected: pageNum == page}"
      v-for="pageNum in pageList"
      :key="`page-${pageNum}`"
-     @click="page = pageNum"
-     :to="{
-        query: {
-            ...route.query,
-            [props.param]: pageNum,
-        }
-     }"
-     :replace="true"
+     @click.prevent.stop.capture="page = pageNum"
+     :href="
+        modifyUrl(
+            pageContext.urlPathname,
+            {
+                search: {
+                    ...searchQuery,
+                    [$props.param]: String(pageNum),
+                    }
+                }
+            )
+        "
     >
         {{ pageNum }}
-    </router-link>
+    </Link>
 
-    <router-link
+    <Link
      class="paginator-button forward-button"
-     @click="page++"
+     @click.prevent.stop="page++"
      :class="{disabled: page >= totalPages}"
-     :to="`?${props.param}=${Math.min(page + 1, totalPages)}`"
-     :replace="true"
-    >></router-link>
+     :href="
+        modifyUrl(
+            pageContext.urlPathname,
+            {
+                search: {
+                    ...searchQuery,
+                    [$props.param]: String(Math.min(page + 1, totalPages)),
+                    }
+                }
+            )
+        "
+    >></Link>
 </div>
 <div v-else class="paginator-container" :class="totalPages == 1 ? 'hidden' : ''">
     <button
@@ -139,7 +176,7 @@ if (props.param) {
     font-size: 2rem;
     gap: 0.5rem;
 
-    grid-template-columns: repeat( calc(v-bind('pageList.length') + 2), 1fr );
+    grid-template-columns: repeat( calc(v-bind('pageList?.length') + 2), 1fr );
 
     margin-block: 1rem;
 }
@@ -173,10 +210,6 @@ button.paginator-button:disabled,
 .paginator-button.disabled{
     color: var(--grey);
     cursor:default;
-}
-
-.paginator-button.disabled:hover {
-    /*text-decoration: none;*/
 }
 
 .selected {

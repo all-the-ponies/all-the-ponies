@@ -4,21 +4,20 @@ import ObjectCard from './ObjectCard.vue'
 import gameData from '@/scripts/gameData'
 import { language } from '@/globals'
 import Paginator from './Paginator.vue'
-import { useRoute, useRouter } from 'vue-router'
 import DialogComponent from './DialogComponent.vue'
 import type { GameObject, GameObjectId } from '@/types/gameDataTypes'
 import type { FilterFunctionsType, SortFunctionsType } from '@/scripts/categories'
 import type { JSX } from 'vue/jsx-runtime'
-import ClientOnly from './ClientOnly.vue'
+import { usePageContext } from 'vike-vue/usePageContext'
+import { modifyUrl } from 'vike/modifyUrl'
 // import { useI18n } from 'vue-i18n'
 // 
 // const { t } = useI18n()
 
-const currentPage = ref(1)
-const perPage = ref(300)
+const pageContext = usePageContext()
 
-const router = useRouter()
-const route = useRoute()
+const currentPage = ref(Number(pageContext.urlParsed.search.page) || 1)
+const perPage = ref(300)
 
 const props = withDefaults(defineProps<{
         objects: (GameObjectId | GameObject)[],
@@ -40,7 +39,7 @@ const props = withDefaults(defineProps<{
 const sortDialog = useTemplateRef('sort-dialog')
 const filterDialog = useTemplateRef('filter-dialog')
 const sortMethod = ref<string>()
-const reversed = ref<boolean>('reverse' in route.query)
+const reversed = ref<boolean>('reverse' in pageContext.urlParsed.search)
 const defaultSortMethod = computed(() => {
     if (props.sorters) {
         for (let method of Object.keys(props.sorters)) {
@@ -111,9 +110,9 @@ const filters = computed(() => {
 })
 
 if (props.sorters) {
-    const sortQuery = Array.isArray(route.query.sort) ? route.query.sort[0] : route.query.sort
+    const sortQuery = pageContext.urlParsed.search.sort
     
-    if (route.query.sort && sortQuery in props.sorters) {
+    if (pageContext.urlParsed.search.sort && sortQuery in props.sorters) {
         sortMethod.value = sortQuery
     } else {
         sortMethod.value = defaultSortMethod.value
@@ -161,7 +160,7 @@ watch(
         query: props.query,
     }}),
     () => {
-        const params: Record<string, string | string[] | null> = {
+        const params: Record<string, string | null> = {
             ...props.query,
             q: searchQuery.value || null,
             sort: sortMethod.value || null,
@@ -189,9 +188,16 @@ watch(
             delete params.reverse
         }
 
-        router.replace({
-            query: params
-        })
+        history.replaceState(
+            null,
+            '',
+            modifyUrl(
+                pageContext.urlPathname,
+                {
+                    search: params,
+                }
+            ),
+        )
     },
     {
         deep: true,
@@ -228,19 +234,19 @@ const shownResults = computed(() => {
     return results
 })
 
-if (route.query.q) {
-    searchQuery.value = Array.isArray(route.query.q) ? route.query.q[0] : route.query.q
+if (pageContext.urlParsed.search.q) {
+    searchQuery.value = pageContext.urlParsed.search.q
 }
 
-if (route.query.filter) {
-    let filterQuery = Array.isArray(route.query.filter) ? route.query.filter : route.query.filter.split(',')
+if (pageContext.urlParsed.search.filter) {
+    let filterQuery = pageContext.urlParsed.search.filter.split(',')
     for (let filter of filterQuery) {
         selectedFilters.value[filter] = true
     }
 }
 
 watch(
-    computed(() => route.path),
+    computed(() => pageContext.urlParsed.pathname),
     (newUrl, oldUrl) => {
         if (newUrl != oldUrl) {
             searchQuery.value = ''
@@ -286,28 +292,27 @@ function getInfo(gameObject: GameObject): JSX.Element {
             </button>
             <slot name="menu-after"></slot>
         </div>
-        <ClientOnly>
-            <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
 
-            <section id="search-results">
-                <template v-if="objects.length > 0">
-                    <ObjectCard
-                        v-for="object in shownResults.values()"
-                        :object="object"
-                        :key="`object-${object.id}`"
-                        :show-price="props.showPrices"
-                    >
-                        <template v-if="props.infoGetter" #info>
-                            <component :is="getInfo(object)"></component>
-                        </template>
-                    </ObjectCard>
-                </template>
-                <slot v-else name="empty"></slot>
-                
-            </section>
+        <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
+
+        <section id="search-results">
+            <template v-if="objects.length > 0">
+                <ObjectCard
+                    v-for="object in shownResults.values()"
+                    :object="object"
+                    :key="`object-${object.id}`"
+                    :show-price="props.showPrices"
+                >
+                    <template v-if="props.infoGetter" #info>
+                        <component :is="getInfo(object)"></component>
+                    </template>
+                </ObjectCard>
+            </template>
+            <slot v-else name="empty"></slot>
             
-            <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
-        </ClientOnly>
+        </section>
+        
+        <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
 
         <dialog-component
             :has-close-button="true"

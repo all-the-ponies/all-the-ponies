@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import gameData from '@/scripts/gameData';
-import { useSaveStore } from '@/stores/saveManager';
-import type { GameObjectId } from '@/types/gameDataTypes';
-import { computed } from 'vue';
-import ClientOnly from '@/components/ClientOnly.vue';
+import gameData from '@/scripts/gameData'
+import { useSaveStore } from '@/stores/saveManager'
+import type { GameObjectId } from '@/types/gameDataTypes'
+import { ClientOnly } from 'vike-vue/ClientOnly'
+import { computed } from 'vue'
 
 const props = defineProps<{
   gameObject: GameObjectId,
@@ -23,6 +23,7 @@ const owned = computed(() => {
 
 function toggleOwned(event: Event) {
     // event.preventDefault()
+    // event.stopPropagation()
     if (owned.value) {
         switch (gameObject.value.category) {
             case 'pony':
@@ -50,7 +51,7 @@ function toggleOwned(event: Event) {
         <button
             class="button-circle inventory-button"
             :class="owned ? 'button-red' : 'button-green'"
-            @click.prevent="toggleOwned"
+            @click.stop.prevent="toggleOwned"
         >{{ owned ? '-' : '+' }}</button>
     </ClientOnly>
 </template>

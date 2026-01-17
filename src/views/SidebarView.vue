@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import LanguageSelector from '@/components/LanguageSelector.vue';
-import { RouterLink } from 'vue-router'
+import LanguageSelector from '@/components/LanguageSelector.vue'
+import Link from '@/components/Link.vue'
 import gameData from '@/scripts/gameData'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const sidebarShown = ref<boolean>(false)
 
@@ -33,27 +33,27 @@ function toggleSidebar(e: Event) {
                     <label for="sidebar-toggle" aria-label="Toggle sidebar" title="Toggle sidebar"></label>
                 </label>
                 <div>
-                    <router-link class="title" to="/">{{ $t('site.title') }}</router-link>
+                    <Link class="title" href="/">{{ $t('site.title') }}</Link>
                     <LanguageSelector />
                 </div>
             </div>
             <div class="sidebar">
                 <nav>
                     <ul id="sidebar-links">
-                        <router-link to="/search/ponies/">{{ $t('game_object.pony.pony', 2) }}</router-link>
-                        <router-link to="/search/houses/">{{ $t('game_object.house.house', 2) }}</router-link>
-                        <router-link to="/search/shops/">{{ $t('game_object.shop.shop', 2) }}</router-link>
-                        <router-link to="/search/decor/">{{ $t('game_object.decor.decor', 2) }}</router-link>
-                        <router-link to="/search/avatars/">{{ $t('game_object.profile_decorations.avatar.avatar', 2) }}</router-link>
+                        <Link href="/search/ponies/">{{ $t('game_object.pony.pony', 2) }}</Link>
+                        <Link href="/search/houses/">{{ $t('game_object.house.house', 2) }}</Link>
+                        <Link href="/search/shops/">{{ $t('game_object.shop.shop', 2) }}</Link>
+                        <Link href="/search/decor/">{{ $t('game_object.decor.decor', 2) }}</Link>
+                        <Link href="/search/avatars/">{{ $t('game_object.profile_decorations.avatar.avatar', 2) }}</Link>
                         <hr class="sidebar-separator">
-                        <router-link to="/store/">{{ $t('store.title') }}</router-link>
-                        <router-link to="/inventory/">{{ $t('inventory.title') }}</router-link>
-                        <router-link to="/stats/">{{ $t('stats.title') }}</router-link>
+                        <Link href="/store/">{{ $t('store.title') }}</Link>
+                        <Link href="/inventory/">{{ $t('inventory.title') }}</Link>
+                        <Link href="/stats/">{{ $t('stats.title') }}</Link>
                         <hr class="sidebar-separator">
-                        <router-link to="/quiz/">{{ $t('pony_quiz.title') }}</router-link>
-                        <router-link to="/guesser/">{{ $t('guesser.title') }}</router-link>
+                        <Link href="/quiz/">{{ $t('pony_quiz.title') }}</Link>
+                        <Link href="/guesser/">{{ $t('guesser.title') }}</Link>
                         <hr class="sidebar-separator">
-                        <router-link to="/about/">{{ $t('about.title') }}</router-link>
+                        <Link href="/about/">{{ $t('about.title') }}</Link>
 
                     </ul>
                     <div class="version-numbers">
@@ -164,13 +164,13 @@ header a:hover, header a:focus-visible {
     text-shadow: var(--text-shadow);
 }
 
-.sidebar a.router-link-active {
+.sidebar a.a-active {
     /* color: var(--blue); */
 }
 
 .sidebar a:hover,
 .sidebar a:focus-visible,
-.sidebar a.router-link-active {
+.sidebar a.a-active {
     text-decoration: none;
     /* color: var(--orange); */
     background-color: rgba(0, 0, 0, 0.2);

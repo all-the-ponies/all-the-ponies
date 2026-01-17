@@ -1,5 +1,11 @@
+<script setup lang="ts">
+function goBack() {
+    history.back()
+}
+</script>
+
 <template>
-    <button @click="$router.back()" class="back-button button-circle button-blue">←</button>
+    <button @click="goBack" class="back-button button-circle button-blue">←</button>
 </template>
 
 <style lang="css" scoped>

@@ -7,6 +7,8 @@ import {
 
 import en_locale from './locales/en.json'
 import type { Language } from './types/gameDataTypes'
+import { language } from './globals'
+import { isClient } from '@vueuse/core'
 
 export const LOCALES: Record<string, {
   name: string,
@@ -69,23 +71,29 @@ export const LOCALES: Record<string, {
 const loadedLanguages = ['en']
 
 
-export function setupI18n(options: I18nOptions = { locale: 'en' }) {
-  const i18n = createI18n({
-    ...options,
-    legacy: false,
+export function setupI18n(options: Omit<I18nOptions, 'legacy'> = { locale: 'en' }) {
+  const i18nOptions = {
+    legacy: false as false,
     locale: 'en',
     fallbackLocale: 'en',
     messages: {
       en: en_locale,
-    }
-  })
+    },
+    ...options,
+  }
+
+  const i18n = createI18n(i18nOptions)
+
+  // loadLocaleMessages(i18n.global, i18nOptions.locale)
   
   return i18n
 }
 
 export function setI18nLanguage(i18n: I18n['global'], locale: string) {
     (i18n.locale as Record<'value', string>).value = locale
-    document.documentElement.setAttribute('lang', locale)
+    if (isClient) {
+      document.documentElement.setAttribute('lang', locale)
+    }
 }
 
 export async function loadLocaleMessages(i18n: I18n['global'], locale: string) {
@@ -123,4 +131,4 @@ function cleanLocaleMessages(messages: object) {
 }
 
 
-export const i18n = setupI18n()
+// export const i18n = setupI18n()

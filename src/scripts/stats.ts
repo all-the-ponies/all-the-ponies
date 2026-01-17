@@ -1,10 +1,10 @@
-import { useSaveStore } from "@/stores/saveManager";
-import type { _DeepPartial } from "pinia";
-import { computed, reactive, type ComputedRef, type Reactive, type Ref } from "vue";
-import gameData from "./gameData";
-import type { GameObjectId } from "@/types/gameDataTypes";
+import { useSaveStore } from "@/stores/saveManager"
+import type { _DeepPartial } from "pinia"
+import { computed, reactive, type Ref } from "vue"
+import gameData from "./gameData"
+import type { GameObjectId } from "@/types/gameDataTypes"
+import { usePageContext } from "./usePageContext"
 
-const save = useSaveStore()
 
 interface SaveStats {
     readonly ponies: {
@@ -36,6 +36,7 @@ type ReactiveObject<T> = { [K in keyof T]: ToReactive<T[K]> }
 type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
 
 const ponies = computed(() => {
+    const save = useSaveStore()
     const changelingTransformations: GameObjectId[] = []
     
     const ponies: DeepWriteable<SaveStats['ponies']> = {
@@ -77,6 +78,7 @@ const ponies = computed(() => {
 })
 
 const shops = computed(() => {
+    const save = useSaveStore()
     const shops: DeepWriteable<SaveStats['shops']> = {
         total: 0,
         bits: 0,
@@ -103,7 +105,10 @@ const shops = computed(() => {
 const saveStats = reactive<ReactiveObject<SaveStats>>({
     ponies,
     houses: {
-        total: computed(() => save.houses.size),
+        total: computed(() => {
+            const save = useSaveStore()
+            return save.houses.size
+        }),
     },
     shops,
 }) as SaveStats
