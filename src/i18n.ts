@@ -74,6 +74,7 @@ const loadedLanguages = ['en']
 export function setupI18n(options: Omit<I18nOptions, 'legacy'> = { locale: 'en' }) {
   const i18nOptions = {
     legacy: false as false,
+    globalInjection: true,
     locale: 'en',
     fallbackLocale: 'en',
     messages: {

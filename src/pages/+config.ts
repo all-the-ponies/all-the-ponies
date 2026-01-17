@@ -10,5 +10,4 @@ export default {
     // clientRouting: true,
     hydrationCanBeAborted: false,
     prefetchStaticAssets: false,
-    prerender: true,
 } satisfies Config
