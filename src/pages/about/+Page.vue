@@ -48,7 +48,7 @@ import Link from '@/components/Link.vue'
             <h2>Source code</h2>
             <p>
                 The source code for All The Ponies can be found on
-                <Link href="https://github.com/all-the-ponies/all-the-ponies.github.io/" class="link">GitHub</Link>.
+                <Link href="https://github.com/all-the-ponies/all-the-ponies/" class="link">GitHub</Link>.
                 You can report issues there, but you can also help contribute if you want.
             </p>
         </section>
@@ -58,7 +58,7 @@ import Link from '@/components/Link.vue'
             <p>
                 I am currently looking for help translating the website (anything that isn't found in the game),
                 so if you know a second language, you can help translate the website through
-                <Link href="https://github.com/all-the-ponies/all-the-ponies.github.io/" class="link">GitHub</Link>.
+                <Link href="https://github.com/all-the-ponies/all-the-ponies/" class="link">GitHub</Link>.
             </p>
         </section>
         
