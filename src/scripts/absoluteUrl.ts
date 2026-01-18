@@ -1,3 +1,10 @@
 export default function absoluteUrl(path: string) {
-    return String(new URL(path, 'https://all-the-ponies.vercel.app'))
+    let domain = 'https://all-the-ponies.com'
+    try {
+        domain = location.origin
+    } catch {
+        domain = process?.env?.VERCEL_URL || 'https://all-the-ponies.com'
+    }
+    
+    return String(new URL(path, domain))
 }
