@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import '@/assets/css/base.css'
 
 </script>
 
@@ -7,7 +8,3 @@
     <!-- <link rel="stylesheet" href="@/assets/css/base.css"> -->
     <meta property="og:type" content="website" />
 </template>
-
-<style>
-/* @import url('@/assets/css/base.css'); */
-</style>
