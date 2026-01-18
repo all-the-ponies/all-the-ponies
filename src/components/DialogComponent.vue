@@ -60,7 +60,7 @@ defineExpose({
                 </header>
                 <button
                     v-if="props.hasCloseButton"
-                    class="button-circle button-pink dialog-close"
+                    class="dialog-close button-pink button-circle"
                     @click="cancel"
                 >X</button>
                 <div class="dialog-body">
