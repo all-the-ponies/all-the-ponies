@@ -2,7 +2,7 @@ import type { TDateISO } from "@/types/date.js"
 import { isLocalhost } from "./common.js"
 import type { GameObjectId } from "@/types/gameDataTypes.js"
 
-const API_DOMAIN = 'https://all-the-ponies-api.vercel.app/'
+const API_DOMAIN = 'https://api.all-the-ponies.com/'
 
 const LOCALHOST_API_DOMAIN = (() => {
     const url = new URL(import.meta.env.SSR ? 'https://localhost' : location.origin)
