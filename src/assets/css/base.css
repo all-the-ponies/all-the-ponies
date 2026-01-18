@@ -49,7 +49,7 @@
       --light-grey: hsl(0, 0%, 70%);
       --light-grey-dark: hsl(0, 0%, 60%);
     }
-    
+
     *,
     *::before,
     *::after {
@@ -202,6 +202,7 @@
         background-color: white;;
         opacity: 0.9;
         border: 1px var(--blue) solid;
+        border-radius: 0.2rem;
     }
     
     #language:disabled {
@@ -212,7 +213,7 @@
         outline: none;
     }
     
-    /* search bar */
+    /* text box */
     
     .text-box {
         /* display: block; */
@@ -224,6 +225,7 @@
         color: var(--blue);
     
         border: var(--pink-enabled) 2px solid;
+        border-radius: 0.2rem;
         background-color: rgba(252, 252, 252, 0.7);
     
         text-wrap: nowrap;
@@ -271,6 +273,7 @@
         color: var(--blue);
     
         border: var(--pink-enabled) 2px solid;
+        border-radius: 0.2rem;
         background-color: rgba(252, 252, 252, 0.7);
     
         text-wrap: nowrap;
