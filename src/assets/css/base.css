@@ -1,55 +1,55 @@
-@font-face {
-    font-family: "Celestia Medium Redux";
-    /* src: url("../assets/fonts/CelestiaMediumRedux_alt1.55.ttf") format("truetype"); */
-    src: url("@/assets/fonts/celestia_redux.ttf") format("truetype");
-}
-
-:root {
-  --page-width: 50rem;
-  
-  --font-family: "Celestia Medium Redux", Arial, Helvetica, sans-serif;
-  --font-size: 1.3rem;
-  --small-font-size: 0.8rem;
-
-  --mobile-width: 700px;
-
-  --text-shadow: 0px 1px rgba(0, 0, 0, 0.3);
-  
-  --pink: #FF79A4;
-  --pink-disabled: hsl(341, 100%, 90%);
-  --pink-enabled: hsl(341, 100%, 85%);
-  --blue: #0072B1;
-  --blue-disabled: #0072B1;
-  --blue-enabled: #0072B1;
-  --white-enabled: rgba(252, 252, 252, 0.7);
-  --white-disabled: rgba(252, 252, 252, 0.4);
-  --page-background-color: #e1f2fa;
-
-
-  --green-light: #7fef2aff;
-  --green: #55cc1cff;
-  --green-dark: #40A715;
-  --light-blue-light: #60D5EE;
-  --light-blue: #3EB3CC;
-  --light-blue-dark: #2CA1BA;
-  --red-light: #FF8A79;
-  --red: #FF5443;
-  --red-dark: #FF4432;
-  --pink-light: #FF91B4;
-  --pink: #FF6B9B;
-  --pink-dark: #FF1461;
-  --orange-light: #F8D82F;
-  --orange: #EB8B1E;
-  --orange-dark: #BB8321;
-  --grey-light: #939393;
-  --grey: #848484;
-  --grey-dark: #626262;
-  --light-grey-light: hsl(0, 0%, 80%);
-  --light-grey: hsl(0, 0%, 70%);
-  --light-grey-dark: hsl(0, 0%, 60%);
-}
-
 @layer globals {
+    @font-face {
+        font-family: "Celestia Medium Redux";
+        /* src: url("../assets/fonts/CelestiaMediumRedux_alt1.55.ttf") format("truetype"); */
+        src: url("@/assets/fonts/celestia_redux.ttf") format("truetype");
+    }
+    
+    :root {
+      --page-width: 50rem;
+      
+      --font-family: "Celestia Medium Redux", Arial, Helvetica, sans-serif;
+      --font-size: 1.3rem;
+      --small-font-size: 0.8rem;
+    
+      --mobile-width: 700px;
+    
+      --text-shadow: 0px 1px rgba(0, 0, 0, 0.3);
+      
+      --pink: #FF79A4;
+      --pink-disabled: hsl(341, 100%, 90%);
+      --pink-enabled: hsl(341, 100%, 85%);
+      --blue: #0072B1;
+      --blue-disabled: #0072B1;
+      --blue-enabled: #0072B1;
+      --white-enabled: rgba(252, 252, 252, 0.7);
+      --white-disabled: rgba(252, 252, 252, 0.4);
+      --page-background-color: #e1f2fa;
+    
+    
+      --green-light: #7fef2aff;
+      --green: #55cc1cff;
+      --green-dark: #40A715;
+      --light-blue-light: #60D5EE;
+      --light-blue: #3EB3CC;
+      --light-blue-dark: #2CA1BA;
+      --red-light: #FF8A79;
+      --red: #FF5443;
+      --red-dark: #FF4432;
+      --pink-light: #FF91B4;
+      --pink: #FF6B9B;
+      --pink-dark: #FF1461;
+      --orange-light: #F8D82F;
+      --orange: #EB8B1E;
+      --orange-dark: #BB8321;
+      --grey-light: #939393;
+      --grey: #848484;
+      --grey-dark: #626262;
+      --light-grey-light: hsl(0, 0%, 80%);
+      --light-grey: hsl(0, 0%, 70%);
+      --light-grey-dark: hsl(0, 0%, 60%);
+    }
+    
     *,
     *::before,
     *::after {
