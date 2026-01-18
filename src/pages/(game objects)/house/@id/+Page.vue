@@ -140,7 +140,7 @@ const residents = computed(() => {
     grid-template-columns: 50% 50%;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 40rem) {
     .object-profile {
         grid-template-columns: auto;
     }
