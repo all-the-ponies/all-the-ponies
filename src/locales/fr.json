@@ -218,5 +218,28 @@
   },
   "search": {
     "title": ""
+  },
+  "contact": {
+    "title": "",
+    "description": "",
+    "message": {
+      "discord_message": "",
+      "discord_server": "",
+      "discord": {
+        "title": "",
+        "description": "",
+        "button": ""
+      },
+      "github": {
+        "title": "",
+        "description": "",
+        "button": ""
+      },
+      "mlp_game_hangout": {
+        "title": "",
+        "description": "",
+        "button": ""
+      }
+    }
   }
 }

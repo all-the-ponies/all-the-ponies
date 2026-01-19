@@ -218,5 +218,28 @@
   },
   "search": {
     "title": "Search"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Have questions, suggestions, bug reports, or want to contribute? This is the right place for that!",
+    "message": {
+      "discord_message": "Have any questions, suggestions, or bug reports? Join the {server}!",
+      "discord_server": "discord server",
+      "discord": {
+        "title": "Join the Discord server",
+        "description": "Ask questions, make suggestions, report bugs, or just chat with the community.",
+        "button": "Join Server"
+      },
+      "github": {
+        "title": "View on GitHub",
+        "description": "Check out the source code, open issues, or make a pull request.",
+        "button": "Open Repository"
+      },
+      "mlp_game_hangout": {
+        "title": "MLP Game Hangout",
+        "description": "Community server for the game. Connected to r/MLPIOS subreddit.",
+        "button": "Join Server"
+      }
+    }
   }
 }

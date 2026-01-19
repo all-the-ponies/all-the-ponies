@@ -54,6 +54,7 @@ function toggleSidebar(e: Event) {
                         <Link href="/guesser/">{{ $t('guesser.title') }}</Link>
                         <hr class="sidebar-separator">
                         <Link href="/about/">{{ $t('about.title') }}</Link>
+                        <Link href="/contact/">{{ $t('contact.title') }}</Link>
 
                     </ul>
                     <div class="version-numbers">
