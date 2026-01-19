@@ -545,6 +545,7 @@ class GetGameData:
                     }
                 
                 
+                pony_info['id'] = pony.id
                 pony_info.setdefault('locked', False)
                 pony_info['index'] = index
                 pony_info.setdefault('note', {})
@@ -787,6 +788,7 @@ class GetGameData:
                     index['house'] += 1
                 
                 
+                house_info['id'] = house.id
                 name = translate(
                     house.get('Name', {}).get('Unlocal', ''),
                     self.loc_files,
@@ -944,6 +946,7 @@ class GetGameData:
             total = len(self.gameobjectdata['Decore']),
         ):
             decor_info = decors.setdefault(decor.id, {})
+            decor_info['id'] = decor.id
             decor_info.setdefault('locked', False)
             decor_info['index'] = index
 
@@ -1011,6 +1014,7 @@ class GetGameData:
         ):
             token_info: dict = tokens.setdefault(token.id, {})
             
+            token_info['id'] = token.id
             token_info.setdefault('locked', False)
             token_info['index'] = index
 
@@ -1049,6 +1053,7 @@ class GetGameData:
 
         for id, config in prizetypes.get('PrizeData', {}).items():
             item = items.setdefault(id, {})
+            item['id'] = id
             item['name'] = translate(
                 config['loc_string'],
                 self.loc_files,
@@ -1121,6 +1126,7 @@ class GetGameData:
         ):
             avatar_info: dict = avatars.setdefault(avatar.id, {})
 
+            avatar_info['id'] = avatar.id
             avatar_info['index'] = index
             avatar_info.setdefault('locked', False)
             
