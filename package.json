@@ -13,11 +13,11 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
-    "@photonjs/express": "^0.1.13",
+    "@photonjs/hono": "^0.1.12",
     "@photonjs/vercel": "^0.1.22",
     "@vueuse/core": "^14.1.0",
     "accept-language": "^3.0.20",
-    "express": "^5.2.1",
+    "hono": "^4.11.4",
     "papaparse": "^5.5.3",
     "pinia": "^3.0.3",
     "pinia-plugin-persistedstate": "^4.7.1",
