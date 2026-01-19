@@ -6,7 +6,7 @@ import vikePhoton from 'vike-photon/config'
 export default {
     extends: [vikeVue, vikeVuePinia, vikePhoton],
     photon: {
-        server: 'src/server/server.ts',
+        server: 'src/server/server.ts', // relative to the root
     },
     
     trailingSlash: true,
