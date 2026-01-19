@@ -58,7 +58,7 @@ const imageUrl = computed(() => {
 })
 const ponyImage = useTemplateRef('pony-image')
 const imageLoaded = ref<boolean>(false)
-const canGuess = ref<boolean>(false)
+const canGuess = ref<boolean>(true)
 const description = ref<string>('')
 const silhouette = ref<boolean>(true)
 
@@ -75,7 +75,6 @@ function togglePlaying() {
     if (playing.value) {
         start()
     } else {
-        // gameContainer.value.scrollIntoView()
         stop()
     }
 }
@@ -86,8 +85,8 @@ function start() {
     startTimer()
     pickPony()
     nextTick(() => {
-        gameContainer.value.scrollIntoView()
         nameInput.value.focus()
+        gameContainer.value.scrollIntoView()
     })
 }
 
@@ -99,7 +98,7 @@ function stop() {
     }
 }
 
-function resetUi() {
+function resetUI() {
     displayName.value = '???'
     description.value = ''
     query.value = ''
@@ -128,7 +127,7 @@ onUnmounted(() => {
     stop()
 })
 
-function checkName(event: Event) {
+function checkName(event: InputEvent) {
     if (!canGuess.value) {
         return
     }
@@ -173,11 +172,11 @@ function guessedCorrectly() {
 }
 
 function nextPony() {
-    nameInput.value.focus()
     silhouette.value = false
     displayName.value = gameData.translateName(currentPony.value).value
     description.value = currentPony.value.description[language.value.key]
     canGuess.value = false
+    nameInput.value.focus()
     transitionTimeout = setTimeout(() => {
         pickPony()
         transitionTimeout = null
@@ -220,7 +219,7 @@ function win() {
 function imageLoadedCallback() {
     imageLoaded.value = true
     silhouette.value = true
-    resetUi()
+    resetUI()
 }
 
 function imageLoadFailed() {
@@ -261,7 +260,7 @@ function imageLoadFailed() {
                             :placeholder="$t('common.name')"
                             class="name-input text-box"
                             :disabled="!playing"
-                            :readonly="!canGuess"
+                            spellcheck
                         >
                         <button
                             @click="nextPony()"
