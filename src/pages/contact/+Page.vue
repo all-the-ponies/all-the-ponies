@@ -10,42 +10,49 @@ const mlpGameHangoutLink = "https://discord.gg/Hbf9U8WfZk"
 <template>
     <Config :title="$t('contact.title')"></Config>
     <div class="contact-container">
-        <h1>{{ $t('contact.title') }}</h1>
-        <p class="subtitle">{{ $t('contact.description') }}</p>
-
-        <div class="cards-grid">
-            <div class="contact-card">
-                <h3>{{ $t('contact.message.discord.title') }}</h3>
-                <p>{{ $t('contact.message.discord.description') }}</p>
-                <Link :href="discordLink" target="_blank" class="contact-button discord-button">
-                    <img src="@/assets/images/logos/discord/discord-symbol-white.svg" alt="Discord Logo" class="contact-logo">
-                    {{ $t('contact.message.discord.button') }}
-                </Link>
+        <section class="contact-section">
+            <h1>{{ $t('contact.title') }}</h1>
+            <p class="subtitle">{{ $t('contact.description') }}</p>
+            <div class="cards-grid">
+                <div class="contact-card">
+                    <h3>{{ $t('contact.message.discord.title') }}</h3>
+                    <p>{{ $t('contact.message.discord.description') }}</p>
+                    <Link :href="discordLink" target="_blank" class="contact-button discord-button">
+                        <img src="@/assets/images/logos/discord/discord-symbol-white.svg" alt="Discord Logo" class="contact-logo">
+                        {{ $t('contact.message.discord.button') }}
+                    </Link>
+                </div>
+                <div class="contact-card">
+                    <h3>{{ $t('contact.message.github.title') }}</h3>
+                    <p>{{ $t('contact.message.github.description') }}</p>
+                    <Link :href="githubRepo" target="_blank" class="contact-button github-button">
+                        <img src="@/assets/images/logos/github/github-symbol-white.svg" alt="GitHub Logo" class="contact-logo">
+                        {{ $t('contact.message.github.button') }}
+                    </Link>
+                </div>
+                <div class="contact-card">
+                    <h3>{{ $t('contact.message.mlp_game_hangout.title') }}</h3>
+                    <p>{{ $t('contact.message.mlp_game_hangout.description') }}</p>
+                    <Link :href="discordLink" target="_blank" class="contact-button discord-button">
+                        <img src="@/assets/images/logos/discord/discord-symbol-white.svg" alt="Discord Logo" class="contact-logo">
+                        {{ $t('contact.message.mlp_game_hangout.button') }}
+                    </Link>
+                </div>
             </div>
-
-            <div class="contact-card">
-                <h3>{{ $t('contact.message.github.title') }}</h3>
-                <p>{{ $t('contact.message.github.description') }}</p>
-                <Link :href="githubRepo" target="_blank" class="contact-button github-button">
-                    <img src="@/assets/images/logos/github/github-symbol-white.svg" alt="GitHub Logo" class="contact-logo">
-                    {{ $t('contact.message.github.button') }}
-                </Link>
-            </div>
-
-            <div class="contact-card">
-                <h3>{{ $t('contact.message.mlp_game_hangout.title') }}</h3>
-                <p>{{ $t('contact.message.mlp_game_hangout.description') }}</p>
-                <Link :href="discordLink" target="_blank" class="contact-button discord-button">
-                    <img src="@/assets/images/logos/discord/discord-symbol-white.svg" alt="Discord Logo" class="contact-logo">
-                    {{ $t('contact.message.mlp_game_hangout.button') }}
-                </Link>
-            </div>
-        </div>
+        </section>
+        <section class="contact-section">
+            <h2>{{ $t('contact.message.help_wanted.title') }}</h2>
+            <p>{{ $t('contact.message.help_wanted.description') }}</p>
+        </section>
     </div>
 </template>
 
 
 <style scoped>
+.contact-section {
+    margin-bottom: 1rem;
+}
+
 .cards-grid {
     display: grid;
     justify-content: center;

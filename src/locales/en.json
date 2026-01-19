@@ -239,6 +239,10 @@
         "title": "MLP Game Hangout",
         "description": "Community server for the game. Connected to r/MLPIOS subreddit.",
         "button": "Join Server"
+      },
+      "help_wanted": {
+        "title": "Help Wanted!",
+        "description": "I am just one person who only knows English, so there are many things that I can't do, most notably translations. The things that I've been able to translate, are things that I was able to pull from the game. If your language isn't translated well, PLEASE either create a pull request on github, or join the discord server so you can help translate. I'm also not great at designing layouts, so if you are good at designing websites, I'd love to have your help. If you want to just help code the website, that's also very welcome."
       }
     }
   }

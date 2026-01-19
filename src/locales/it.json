@@ -239,6 +239,10 @@
         "title": "",
         "description": "",
         "button": ""
+      },
+      "help_wanted": {
+        "title": "",
+        "description": ""
       }
     }
   }
