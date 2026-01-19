@@ -7,7 +7,7 @@ export default {
     extends: [vikeVue, vikeVuePinia, vikePhoton],
     photon: {
         server: 'src/server/server.ts',
-    } ,
+    },
     
     trailingSlash: true,
     disableUrlNormalization: false,
