@@ -184,7 +184,7 @@ const replacedPrice = computed(() => {
     text-decoration: none;
 
     transition: box-shadow 150ms ease-out,
-                scale 150ms ease-out;
+                transform 150ms ease-out;
     
     position: relative;
 }
@@ -193,7 +193,7 @@ const replacedPrice = computed(() => {
 .object-card:focus {
     box-shadow: var(--box-shadow),
                 0px 0px 5px hsl(211, 30%, 30%);
-    scale: 105%;
+    transform: scale(105%);
 }
 
 .object-card:hover .add-button {
