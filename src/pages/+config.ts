@@ -7,6 +7,7 @@ export default {
     extends: [vikeVue, vikeVuePinia, vikePhoton],
     
     trailingSlash: true,
+    disableUrlNormalization: false,
     // clientRouting: true,
     hydrationCanBeAborted: false,
     prefetchStaticAssets: false,
