@@ -8,7 +8,7 @@ const mlpGameHangoutLink = "https://discord.gg/Hbf9U8WfZk"
 </script>
 
 <template>
-    <Config :title="$t('contact.title')"></Config>
+    <Config :title="$t('contact.title')" :description="$t('contact.description')"></Config>
     <div class="contact-container">
         <section class="contact-section">
             <h1>{{ $t('contact.title') }}</h1>
