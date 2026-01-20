@@ -24,6 +24,9 @@ const category = ref<CategoryName>((pageContext.urlParsed.search.category) as Ca
 const friendCode = ref<string>(saveStore.playerInfo.friendCode)
 const errorMessage = ref<string>()
 
+if (!(category.value in CATEGORIES)) {
+    category.value = 'pony'
+}
 
 const query = ref<Record<string, string | null>>({})
 if (category.value !== 'pony') {
