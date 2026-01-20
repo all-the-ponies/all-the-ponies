@@ -5,6 +5,7 @@ import absoluteUrl from '@/scripts/absoluteUrl';
 import SidebarView from '@/views/SidebarView.vue'
 import { Head } from 'vike-vue/Head';
 import { usePageContext } from 'vike-vue/usePageContext';
+import { modifyUrl } from 'vike/modifyUrl';
 
 const pageContext = usePageContext()
 
@@ -13,11 +14,25 @@ const pageContext = usePageContext()
 <template>
     <!-- <Config :title="$t('site.title')" :description="$t('site.description')"></Config> -->
     <Head>
+        <link
+            v-for="locale in Object.keys(LOCALES).filter(code => code !== language.code)"
+            rel="alternate"
+            :hreflang="locale"
+            :href="absoluteUrl(
+                modifyUrl(
+                    pageContext.urlOriginal,
+                    {
+                        pathname: `/${locale}${pageContext.urlPathname}`
+                    }
+                )
+            )"
+        />
+
         <meta property="og:locale" :content="language.code.replace('-', '_')" />
         <meta
-            v-for="code in Object.keys(LOCALES).filter(code => code !== language.code)"
+            v-for="locale in Object.keys(LOCALES).filter(code => code !== language.code)"
             property="og:locale:alternate"
-            :content="code.replace('-', '_')"
+            :content="locale.replace('-', '_')"
         />
         
         <meta property="og:type" content="website" />
