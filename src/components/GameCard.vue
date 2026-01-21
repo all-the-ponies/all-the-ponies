@@ -1,0 +1,425 @@
+<script lang="ts" setup>
+import VLazyImage from "v-lazy-image"
+import { computed } from 'vue'
+import { shopStore, type PriceData } from "@/stores/shopManager"
+import PriceButton from "./buttons/PriceButton.vue"
+import RoyalIcon from "./icons/store/RoyalIcon.vue"
+import ObjectImage from "./ObjectImage.vue"
+import { valueExists } from "@/scripts/common"
+import Link from "./Link.vue"
+
+const shopManager = shopStore
+
+const props = defineProps<{
+    title: string,
+    image: string,
+    alt?: string,
+    priceData?: PriceData,
+    href?: string,
+}>()
+
+const shopInfo = computed(() => props.priceData)
+const showPrice = computed(() => !!shopInfo.value)
+
+const mainCurrency = computed(() => {
+    if (!shopInfo) {
+        return null
+    }
+    
+    if (valueExists(shopInfo.value?.token) && (valueExists(shopInfo.value?.price.base.tokens) || valueExists(shopInfo.value?.price.sale.tokens))) {
+        return shopInfo.value?.token
+    } else if (valueExists(shopInfo.value?.price.sale.price) && valueExists(shopInfo.value?.inShop)) {
+        return shopInfo.value?.price.sale.currency || null
+    } else {
+        return shopInfo.value?.price.base.currency || null
+    }
+})
+
+const mainPrice = computed(() => {
+    if (!shopInfo) {
+        return null
+    }
+    
+    if (valueExists(shopInfo.value?.token) && (valueExists(shopInfo.value?.price.base.tokens) || valueExists(shopInfo.value?.price.sale.tokens))) {
+        return shopInfo.value?.price.base.tokens || shopInfo.value?.price.sale.tokens
+    } else if (valueExists(shopInfo.value?.price.sale.price) && valueExists(shopInfo.value?.inShop)) {
+        return shopInfo.value?.price.sale.price
+    } else {
+        return shopInfo.value?.price.base.price
+    }
+})
+
+const replacedPrice = computed(() => {
+    if (valueExists(shopInfo.value?.price.sale.price) && valueExists(shopInfo.value?.inShop)) {
+        return shopInfo.value?.price.base.price
+    }
+
+    return null
+})
+
+</script>
+
+<template>
+    <div class="object-card" :class="{hoverable: !!$props.href}">
+        <component :is="props.href ? Link : 'span'" class="card-inner" :href="props.href">
+            <div class="banner" v-if="showPrice && shopInfo?.inShop">
+                <span v-if="shopInfo?.price?.sale?.price" class="discount-banner">
+                    {{
+                        $n(
+                            1 - shopInfo.price.sale.price / shopInfo.price.base.price,
+                            { style: 'percent' },
+                        )
+                    }}
+                    {{ $t('store.message.percent_off') }}
+                </span>
+                <span v-if="shopInfo?.price?.royal?.price" class="royal-banner">
+                    <RoyalIcon class="royal-icon" />
+                    {{
+                        $n(
+                            1 - shopInfo.price.royal.price / shopInfo.price.base.price,
+                            { style: 'percent' },
+                        )
+                    }}
+                </span>
+            </div>
+            <span class="object-name">
+                {{ props.title }}
+            </span>
+            <div class="card-body">
+                <v-lazy-image :src="props.image" :alt="props.alt" class="object-image" />
+                <div class="left-container">
+                    <slot name="left"></slot>
+                </div>
+                <div class="right-container">
+                    <slot name="right"></slot>
+                </div>
+                <div class="info">
+                    <slot name="info">
+                        <template v-if="showPrice">
+                            <template v-if="shopInfo?.inShop">
+                                <div class="discount-container">
+                                    <span v-if="replacedPrice != null && !(shopInfo?.token && shopInfo?.price?.base?.tokens)" class="replaced-price">{{ replacedPrice }}</span>
+                                    <div v-if="shopInfo?.price?.royal?.price" class="royal-price">
+                                        {{ $n(shopInfo.price.royal.price)}}
+                                        <ObjectImage :object="shopInfo.price.royal.currency" />
+                                        {{ $t('store.message.if') }}
+                                        <img src="@/assets/images/ui/royal/royal-crown.png" loading="lazy"></img>
+                                    </div>
+                                </div>
+                                <div v-if="(shopInfo?.token && shopInfo?.price?.base?.tokens) && shopInfo?.price?.sale?.price" class="token-discount">
+                                    -{{ $n(1 - shopInfo?.price?.sale?.price / shopInfo?.price?.base?.price, { style: 'percent' }) }}
+                                    {{ $t('store.message.for') }}
+                                    <ObjectImage :object="shopInfo.price.sale.currency" />
+                                </div>
+                            </template>
+                            <PriceButton v-if="showPrice" :currency="mainCurrency">{{ mainPrice != null ? $n(mainPrice) : '' }}</PriceButton>
+                        </template>
+                    </slot>
+                </div>
+            </div>
+        </component>
+    </div>
+</template>
+
+<style lang="css" scoped>
+.object-card {
+    margin-top: 0.8rem;
+    
+    left: 0px;
+    background-color: white;
+
+    width: var(--grid-size, 10rem);
+    height: calc(var(--grid-size, 10rem) * (4 / 3));
+    aspect-ratio: 3 / 4;
+
+    border-radius: 0.8rem;
+    --box-shadow: inset 0px -1px 4px hsl(211, 30%, 80%);
+    box-shadow: var(--box-shadow);
+
+    container-type: inline-size;
+    text-decoration: none;
+
+    transition: box-shadow 150ms ease-out,
+                transform 150ms ease-out;
+    
+    position: relative;
+}
+
+.object-card.hoverable {
+    cursor: pointer;
+}
+
+.object-card.hoverable:hover,
+.object-card.hoverable:focus {
+    box-shadow: var(--box-shadow),
+                0px 0px 5px hsl(211, 30%, 30%);
+    transform: scale(105%);
+}
+
+.card-inner {
+    border-radius: inherit;
+    text-decoration: none;
+}
+
+.banner {
+    position: absolute;
+    top: -0.8rem;
+    width: 100%;
+    color: white;
+    font-size: 0.7em;
+}
+
+.discount-banner {
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    padding-inline: 1rem;
+    text-align: center;
+
+    transform: translate(-50%, 0);
+
+    filter: drop-shadow(0px 2px 0px rgb(0 0 0 / 0.25));
+}
+
+.discount-banner:has(+ .royal-banner) {
+    text-align: left;
+}
+
+.discount-banner::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(0.25turn, hsl(351, 77%, 55%), hsl(348, 69%, 70%), hsl(351, 77%, 55%));
+    z-index: -1;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    
+    clip-path: shape(
+        from 0% 0%,
+        line to 100% 0%,
+        line to calc(100% - 2px) 100%,
+        line to 2px 100%,
+        close
+    );
+}
+
+.royal-banner {
+    position: absolute;
+    width: 30%;
+    right: 0%;
+    top: -1px;
+    padding-inline: 0.1rem;
+    text-align: center;
+
+    /* transform: translate(-50%, 0); */
+
+    filter: drop-shadow(0px 1px 0px rgb(0 0 0 / 0.25));
+}
+
+.royal-banner::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(0.25turn, #622e5e, #9b4894, #622e5e);
+    z-index: -1;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    
+    clip-path: shape(
+        from 0% 0%,
+        line to 100% 0%,
+        line to calc(100% - 0px) 100%,
+        line to 2px 100%,
+        close
+    );
+}
+
+.royal-icon {
+    position: absolute;
+    height: 1.15rem;
+    left: 0;
+    top: -1px;
+    transform: translate(-50%, 0);
+}
+
+.object-name {
+    font-size: 10cqw;
+    word-break: break-word;
+    text-shadow: var(--text-shadow);
+
+    color: white;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    background-image: linear-gradient(var(--pink-light), var(--pink));
+    /* box-shadow: 0px 1px 0px 1px var(--pink-dark); */
+    border-bottom: 2px solid var(--pink-dark);
+    
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.card-body {
+    padding: 0.4rem;
+    width: 100%;
+    height: 80%;
+    position: relative;
+    display: grid;
+    grid-template-rows: 100%;
+}
+
+.object-image-container {
+    width: 100%;
+    height: 100%;
+}
+
+.object-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    padding: 0.3rem;
+}
+
+.left-container,
+.right-container {
+    height: 100%;
+    width: 2rem;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: center;
+
+    padding: 0.4rem 0.3rem;
+}
+.left-container {
+    left: 0;
+}
+.right-container {
+    right: 0;
+}
+
+.left-container > *,
+.right-container > * {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    margin: 0;
+}
+
+.info:has(> *) {
+    width: 100%;
+    /* height: 30%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* padding: 0.5rem; */
+}
+
+.card-body:has(.info *) {
+    /* height: 70%; */
+    grid-template-rows: 75% 25%;
+}
+
+.discount-container {
+    position: absolute;
+    bottom: 90%;
+    width: 100%;
+    left: 0;
+    /* height: max-content; */
+    text-align: center;
+    padding-inline: 1.2rem;
+}
+
+.discount-container:has(.royal-price) {
+    text-align: left;
+}
+
+.replaced-price {
+    font-size: 0.6em;
+    color: black;
+    position: relative;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.replaced-price::after {
+    content: "";
+    width: 3rem;
+    height: 2px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-16deg);
+}
+
+.royal-price {
+    position: absolute;
+    right: -0.5rem;
+    bottom: 0;
+    aspect-ratio: 259 / 96;
+    width: 5rem;
+    height: 1.85rem;
+    padding-left: 0.8rem;
+    padding-top: 0.2rem;
+    
+    font-size: 0.8rem;
+    color: white;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+    background-image: url('@/assets/images/ui/store/royal-sale-price.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.royal-price img {
+    height: 1.5em;
+}
+
+.token-discount {
+    position: absolute;
+    bottom: 75%;
+    background-image: url('@/assets/images/ui/store/token-price-popup.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 5.5rem;
+    height: 2.1rem;
+    aspect-ratio: 248 / 112;
+    padding-bottom: 0.5rem;
+    padding-top: 0.1rem;
+
+    color: white;
+    font-size: 0.8rem;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.token-discount img {
+    height: 1.2rem;
+    align-self: center;
+}
+</style>

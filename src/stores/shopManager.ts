@@ -12,6 +12,31 @@ enum ShopStatus {
     error,
 }
 
+export interface PriceData {
+    id: GameObjectId,
+    inShop: boolean,
+    hidden: boolean,
+    tags: string[],
+    token: GameObjectId | null,
+    price: {
+        base: {
+            currency: GameObjectId | null,
+            price: number | number,
+            tokens: number | null,
+        },
+        sale: {
+            currency: GameObjectId | null,
+            price: number | number,
+            tokens: number | null,
+        },
+        royal: {
+            currency: GameObjectId | null,
+            price: number | number,
+            tokens: number | null,
+        }
+    }
+}
+
 
 function chooseExisting<T extends any[]>(
     ...a: T
@@ -98,7 +123,7 @@ class ShopStore {
             }
         }
 
-        const result = {
+        const result: PriceData = {
             id: gameObject.id,
             inShop: entry?.in_shop || false,
             hidden: entry?.hidden || false,
