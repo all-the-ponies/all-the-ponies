@@ -70,7 +70,7 @@ const pageContext = usePageContext()
 .router {
     flex-grow: 1;
     /* max-width: var(--page-width); */
-    /* margin: 0.5rem auto; */
+    margin: 0.5rem auto;
     padding: 0 1rem;
     position: relative;
     /* height: 100%; */
