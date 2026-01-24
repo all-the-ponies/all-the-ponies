@@ -3,6 +3,12 @@
     "title": "All The Ponies",
     "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game"
   },
+  "home": {
+    "things_to_do": {
+      "title": "Things To Do",
+      "browse": "Browse"
+    }
+  },
   "about": {
     "title": "About"
   },
