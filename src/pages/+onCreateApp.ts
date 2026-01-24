@@ -3,6 +3,7 @@
  
 import { i18n, setLanguage } from '@/globals'
 import type { PageContext } from 'vike/types'
+import { inject as injectAnalytics } from "@vercel/analytics"
  
 export async function onCreateApp(pageContext: PageContext & {locale: string}) {
     if (pageContext.isRenderingHead) {
@@ -19,4 +20,6 @@ export async function onCreateApp(pageContext: PageContext & {locale: string}) {
     await setLanguage(pageContext.locale)
 
     app.use(i18n)
+
+    injectAnalytics()
 }
