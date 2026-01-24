@@ -387,10 +387,10 @@ function getInfo(gameObject: GameObject): JSX.Element {
 /* search results */
 
 #search-results {
-    --grid-size: 9rem;
+    --card-size: 9rem;
     
     display: grid;
-    grid-template-columns: repeat(auto-fit, var(--grid-size));
+    grid-template-columns: repeat(auto-fit, var(--card-size));
     gap: 0.3rem;
     justify-items: center;
     justify-content: center;
