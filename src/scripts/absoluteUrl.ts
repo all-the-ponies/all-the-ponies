@@ -1,9 +1,9 @@
 export default function absoluteUrl(path: string) {
-    let domain = 'https://all-the-ponies.com'
+    let domain = __BASE_URL__
     try {
         domain = location.origin
     } catch {
-        domain = 'https://all-the-ponies.com'
+        domain = __BASE_URL__
     }
     
     return String(new URL(path, domain))

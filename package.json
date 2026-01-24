@@ -21,6 +21,7 @@
     "papaparse": "^5.5.3",
     "pinia": "^3.0.3",
     "pinia-plugin-persistedstate": "^4.7.1",
+    "sitemap": "^9.0.0",
     "v-lazy-image": "^2.1.1",
     "vike": "^0.4.251",
     "vike-photon": "^0.1.24",

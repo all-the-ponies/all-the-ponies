@@ -26,4 +26,8 @@ export default defineConfig({
     host: true,
     port: 5000,
   },
+  define: {
+    __BUILD_DATE__: JSON.stringify(new Date().valueOf()),
+    __BASE_URL__: JSON.stringify("https://all-the-ponies.com/"),
+  }
 })
