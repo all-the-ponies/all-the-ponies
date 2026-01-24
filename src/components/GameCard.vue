@@ -1,14 +1,12 @@
 <script lang="ts" setup>
 import VLazyImage from "v-lazy-image"
 import { computed } from 'vue'
-import { shopStore, type PriceData } from "@/stores/shopManager"
+import type { PriceData } from "@/stores/shopManager"
 import PriceButton from "./buttons/PriceButton.vue"
 import RoyalIcon from "./icons/store/RoyalIcon.vue"
 import ObjectImage from "./ObjectImage.vue"
 import { valueExists } from "@/scripts/common"
 import Link from "./Link.vue"
-
-const shopManager = shopStore
 
 const props = defineProps<{
     title: string,
@@ -128,8 +126,8 @@ const replacedPrice = computed(() => {
     left: 0px;
     background-color: white;
 
-    width: var(--grid-size, 10rem);
-    height: calc(var(--grid-size, 10rem) * (4 / 3));
+    width: var(--card-size, 10rem);
+    height: calc(var(--card-size, 10rem) * (4 / 3));
     aspect-ratio: 3 / 4;
 
     border-radius: 0.8rem;
