@@ -39,8 +39,6 @@ const pageContext = usePageContext()
         <meta property="og:type" content="website" />
         <meta property="og:site_name" :content="$t('site.title')" />
         <meta property="og:url" :content="absoluteUrl(pageContext.urlOriginal)" />
-
-        <meta property="twitter:card" content="summary" />
     </Head>
 
     <div id="main" class="page" ref="main">
