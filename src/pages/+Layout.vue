@@ -12,7 +12,6 @@ const pageContext = usePageContext()
 </script>
 
 <template>
-    <!-- <Config :title="$t('site.title')" :description="$t('site.description')"></Config> -->
     <Head>
         <meta name="theme-color" content="#FF6B9B" />
 
@@ -40,6 +39,8 @@ const pageContext = usePageContext()
         <meta property="og:type" content="website" />
         <meta property="og:site_name" :content="$t('site.title')" />
         <meta property="og:url" :content="absoluteUrl(pageContext.urlOriginal)" />
+
+        <meta property="twitter:card" content="summary" />
     </Head>
 
     <div id="main" class="page" ref="main">
