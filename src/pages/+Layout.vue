@@ -16,7 +16,7 @@ const pageContext = usePageContext()
         <meta name="theme-color" content="#FF6B9B" />
 
         <link
-            v-for="locale in Object.keys(LOCALES).filter(code => code !== language.code)"
+            v-for="locale in Object.keys(LOCALES)"
             rel="alternate"
             :hreflang="locale"
             :href="absoluteUrl(
