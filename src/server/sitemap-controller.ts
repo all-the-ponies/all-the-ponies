@@ -124,20 +124,20 @@ export async function gameObjectSitemap(c: Context, next: Next) {
 
         const sitemapPromise = streamToPromise(sitemapStream).then((data) => data.toString())
 
-        chunk.forEach((pony) => {
-            locales.forEach((locale) => {
+        for (let gameObject of chunk) {
+            for (let locale of locales) {
                 sitemapStream.write({
-                    url: `/${locale}${pony}`,
+                    url: `/${locale}/${category}/${gameObject}/`,
                     links: locales.map((l) => ({
                         lang: l,
-                        url: String(new URL(`/${l}/${category}/${pony}`, BASE_URL)),
+                        url: String(new URL(`/${l}/${category}/${gameObject}/`, BASE_URL)),
                     })),
                     changefreq: 'monthly',
                     priority: 0.8,
                     lastmod: new Date(__BUILD_DATE__).toISOString(),
                 })
-            })
-        })
+            }
+        }
 
         sitemapStream.end()
 

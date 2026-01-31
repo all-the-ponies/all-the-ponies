@@ -148,7 +148,7 @@ function setStars(value: number) {
     .star:nth-child(#{$i}) {
         position: absolute;
         left:  calc((sin(30deg * $i - 90deg) * 45cqw) + 50cqw);
-        bottom:  calc((cos(30deg * $i + 90deg) * 45cqw) + 50cqw);
+        bottom:  calc((cos(30deg * $i + 90deg) * 30cqw) + 30cqw);
     }
 }
 

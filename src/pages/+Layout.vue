@@ -12,23 +12,33 @@ const pageContext = usePageContext()
 </script>
 
 <template>
-    <!-- <Config :title="$t('site.title')" :description="$t('site.description')"></Config> -->
     <Head>
         <meta name="theme-color" content="#FF6B9B" />
 
         <link
-            v-for="locale in Object.keys(LOCALES).filter(code => code !== language.code)"
+            v-for="locale in Object.keys(LOCALES)"
             rel="alternate"
             :hreflang="locale"
             :href="absoluteUrl(
                 modifyUrl(
                     pageContext.urlOriginal,
                     {
-                        pathname: `/${locale}${pageContext.urlPathname}`
+                        pathname: `/${locale}${pageContext.urlPathname}`,
+                        search: null,
                     }
                 )
             )"
         />
+
+        <link rel="alternate" hreflang="x-default" :href="absoluteUrl(
+                modifyUrl(
+                    pageContext.urlOriginal,
+                    {
+                        pathname: pageContext.urlPathname,
+                        search: null,
+                    }
+                )
+            )" />
 
         <meta property="og:locale" :content="language.code.replace('-', '_')" />
         <meta
@@ -39,7 +49,17 @@ const pageContext = usePageContext()
         
         <meta property="og:type" content="website" />
         <meta property="og:site_name" :content="$t('site.title')" />
-        <meta property="og:url" :content="absoluteUrl(pageContext.urlOriginal)" />
+        <meta property="og:url" :content="absoluteUrl(
+                modifyUrl(
+                    pageContext.urlOriginal,
+                    {
+                        pathname: pageContext.urlPathname,
+                        search: {
+                            __original_path: null,
+                        },
+                    }
+                )
+            )" />
     </Head>
 
     <div id="main" class="page" ref="main">
