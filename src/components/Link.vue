@@ -1,36 +1,49 @@
-<script setup>
+<script setup lang="ts">
 import { language } from '@/globals';
 import { LOCALES } from '@/i18n';
 import { usePageContext } from 'vike-vue/usePageContext'
-import { useAttrs, computed } from 'vue'
+import { useAttrs, computed, type AnchorHTMLAttributes } from 'vue'
 
 const pageContext = usePageContext()
-const { href } = defineProps({
-  href: {
-    type: String,
-    required: true,
-  },
-})
+
+const props = defineProps<{
+  href: AnchorHTMLAttributes['href'],
+  download?: AnchorHTMLAttributes['download'],
+  hreflang?: AnchorHTMLAttributes['hreflang'],
+  media?: AnchorHTMLAttributes['media'],
+  ping?: AnchorHTMLAttributes['ping'],
+  rel?: AnchorHTMLAttributes['rel'],
+  target?: AnchorHTMLAttributes['target'],
+  type?: AnchorHTMLAttributes['type'],
+  referrerpolicy?: AnchorHTMLAttributes['referrerpolicy'],
+}>()
+
 const isActive = computed(() => {
   const urlPathname = pageContext.urlPathname
-  return href === '/' ? urlPathname === href : urlPathname.startsWith(href)
+  return props.href === '/' ? urlPathname === props.href : urlPathname.startsWith(props.href)
 })
 
 const transformedHref = computed(() => {
-  if (href.includes('://')) {
-    return href
+  if (props.href.includes('://')) {
+    return props.href
   }
 
-  let pathParts = href.split('/')
+  let pathParts = props.href.split('/')
   if (pathParts[0] in LOCALES || pathParts[1] in LOCALES) {
-    return href
+    return props.href
   }
-  return `/${language.value.code}${href}`
+  return `/${language.value.code}${props.href}`
 })
 </script>
 
 <template>
-  <a :href="transformedHref" :class="{ 'a-active': isActive }">
+  <a
+    :class="{ 'a-active': isActive }"
+    v-bind="{
+      ...props,
+      href: transformedHref,
+    }"
+  >
     <slot></slot>
   </a>
 </template>
