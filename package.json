@@ -10,12 +10,12 @@
     "dev": "vike dev",
     "build": "vike build",
     "preview": "vike build && vike preview",
+    "deploy": "vike build && wrangler deploy",
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@photonjs/cloudflare": "^0.1.13",
     "@photonjs/hono": "^0.1.12",
-    "@photonjs/vercel": "^0.1.22",
-    "@vercel/analytics": "^1.6.1",
     "@vueuse/core": "^14.1.0",
     "accept-language": "^3.0.20",
     "hono": "^4.11.4",
@@ -30,7 +30,8 @@
     "vike-vue-pinia": "^0.2.6",
     "vue": "^3.5.18",
     "vue-i18n": "^11.1.12",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "wrangler": "^4.61.1"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",
