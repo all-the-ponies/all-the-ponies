@@ -1,7 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "build": {
-    "command": ""
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    }
   },
   "compatibility_date": "2025-08-06",
   "name": "all-the-ponies",
