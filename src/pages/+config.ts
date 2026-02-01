@@ -9,8 +9,7 @@ export default {
         server: 'src/server/server.ts', // relative to the root
     },
     
-    trailingSlash: true,
-    disableUrlNormalization: false,
+    disableUrlNormalization: true,
     // clientRouting: true,
     hydrationCanBeAborted: false,
     prefetchStaticAssets: false,
