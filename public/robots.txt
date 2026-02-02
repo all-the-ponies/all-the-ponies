@@ -1,7 +1,7 @@
 User-Agent: ahrefs
-Disallow: *
+Disallow: /
 
 User-Agent: *
-Allow: *
+Allow: /
 
 Sitemap: https://all-the-ponies.com/sitemap.xml
