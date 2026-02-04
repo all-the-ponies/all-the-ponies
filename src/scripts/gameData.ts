@@ -104,7 +104,7 @@ function searchName(
 
 function translateName(gameObject: GameObject) {
   return computed(() => {
-    if (gameObject === null) {
+    if (!gameObject) {
       return null
     }
     if (gameObject.preferred_name && gameObject.preferred_name[language.value.key]) {
