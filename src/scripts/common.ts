@@ -14,38 +14,6 @@ export function isLocalhost() {
     'i').test(window.location.hostname)
 }
 
-
-// Load JSON text from server hosted file and return JSON parsed object
-// From stackoverflow https://stackoverflow.com/a/4117299/17129659
-export function loadJSON(filePath: string) {
-  // Load json file;
-  var json = loadTextFileAjaxSync(filePath, "application/json");
-  // Parse json
-  return JSON.parse(json);
-}
-
-
-// Load text with Ajax synchronously: takes path to file and optional MIME type
-function loadTextFileAjaxSync(filePath: string, mimeType: string)
-{
-  var xmlhttp=new XMLHttpRequest();
-  xmlhttp.open("GET", filePath, false);
-  if (mimeType != null) {
-    if (xmlhttp.overrideMimeType) {
-      xmlhttp.overrideMimeType(mimeType);
-    }
-  }
-  let error = xmlhttp.send();
-  if (xmlhttp.status==200 && xmlhttp.readyState == 4 ) {
-    return xmlhttp.responseText;
-  }
-  else {
-    
-    // TODO Throw exception
-    return null;
-  }
-}
-
 export function normalize(text: string) {
   return text.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
 }
@@ -110,51 +78,6 @@ export function scrollIntoViewWithOffset(element: HTMLElement, offset: number, b
 
 export function getCurrentScroll() {
   return document.documentElement.scrollTop || document.body.scrollTop
-}
-
-export function setURL(url: string, replace: boolean = false) {
-    if (history && history.replaceState) {
-      if (replace) {
-        history.replaceState("", "", url);
-      } else {
-        history.pushState('', '', url)
-      }
-    } else {
-        location.href = url
-    }
-}
-
-export function setUrlParameter(param: string, value: any, replace: boolean = false) {
-    const url = new URL(location.href)
-    if (value) {
-      url.searchParams.set(param, encodeURIComponent(value))
-    } else {
-      url.searchParams.delete(param)
-    }
-
-    
-    if (history && history.replaceState) {
-      if (replace) {
-        history.replaceState("", "", url.toString());
-      } else {
-        history.pushState('', '', url.toString())
-      }
-    } else {
-        location.href = url.toString();
-    }
-}
-
-export function getUrlParameter(param: string) {
-    const url = new URL(location.href)
-    const value = url.searchParams.get(param)
-  return value == null ? null : decodeURIComponent(value)
-}
-
-// Taken from https://stackoverflow.com/a/5354536/17129659 by Tokimon
-export function checkVisible(elm: HTMLElement) {
-  var rect = elm.getBoundingClientRect();
-  var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-  return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
 }
 
 export function formatTime(time: number): string {
@@ -231,14 +154,6 @@ function truncTime(time: number, value: number) {
 
 export function pickRandom(list: any[]) {
   return list[Math.floor(Math.random() * list.length)]
-}
-
-
-
-
-
-export function formatNumber(num: number): string {
-  return new Intl.NumberFormat(language.value.code).format(num)
 }
 
 export function staticImage(path: string): string {

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ClientOnly from '@/components/ClientOnly.vue'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import { formatTime } from '@/scripts/common'
 import gameData from '@/scripts/gameData'
 import saveStats from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
+import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'
 import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
 

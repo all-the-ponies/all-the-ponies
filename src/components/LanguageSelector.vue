@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { setLanguage } from '@/globals';
+import { setLanguage } from '@/globals'
 import { LOCALES } from '@/i18n'
-import { usePageContext } from 'vike-vue/usePageContext';
-import { navigate } from 'vike/client/router';
-import { modifyUrl } from 'vike/modifyUrl';
-import { shallowRef, watch } from 'vue';
+import { usePageContext } from 'vike-vue/usePageContext'
+import { modifyUrl } from 'vike/modifyUrl'
+import { shallowRef, watch } from 'vue'
 
 const pageContext = usePageContext()
 
@@ -16,12 +15,8 @@ watch(
         setLanguage(selectedLanguage.value)
         // return
         window.history.replaceState(null, '', modifyUrl(pageContext.urlOriginal, {
-            pathname: `/${selectedLanguage.value}/${pageContext.urlParsed.pathname}`,
+            pathname: `/${selectedLanguage.value}${pageContext.urlParsed.pathname}`,
         }))
-        // navigate(
-        //     ,
-        //     { keepScrollPosition: true, overwriteLastHistoryEntry: false }
-        // )
     }
 )
 </script>

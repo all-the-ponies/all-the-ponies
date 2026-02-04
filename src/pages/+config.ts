@@ -13,4 +13,6 @@ export default {
     // clientRouting: true,
     hydrationCanBeAborted: false,
     prefetchStaticAssets: false,
+
+    passToClient: ['locale'],
 } satisfies Config
