@@ -1,8 +1,8 @@
 import { transformName, fixName } from './common'
-import { type CategoryName, type CategoryType, type GAME_DATA_Type, type GameObject, type GameObjectId, type Language } from '../types/gameDataTypes'
-import GAME_DATA from '@/assets/game-data/game-data.json'
+import type { CategoryName, CategoryType, GAME_DATA_Type, GameObject, GameObjectId, Language } from '../types/gameDataTypes'
+import GAME_DATA from '../assets/game-data/game-data.json'
 import { computed } from 'vue'
-import { language } from '@/globals'
+import { language } from '../globals'
 
 const gameVersion = GAME_DATA.game_version
 const contentVersion = GAME_DATA.content_version

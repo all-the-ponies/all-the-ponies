@@ -1,3 +1,6 @@
+import { language } from '../globals'
+
+
 export function isLocalhost() {
   return window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -231,7 +234,6 @@ export function pickRandom(list: any[]) {
 }
 
 
-import { language } from '@/globals';
 
 
 

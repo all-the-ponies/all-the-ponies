@@ -8,9 +8,10 @@
   },
   "scripts": {
     "dev": "vike dev",
-    "build": "vike build",
-    "preview": "vike build && vike preview",
-    "deploy": "vike build && wrangler deploy",
+    "build": "vike build && npm run build:sitemap",
+    "build:sitemap": "tsx ./scripts/generate-sitemap.ts",
+    "preview": "npm run build && vike preview",
+    "deploy": "npm run build && wrangler deploy",
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
@@ -41,6 +42,7 @@
     "@vue/tsconfig": "^0.7.0",
     "npm-run-all2": "^8.0.4",
     "sass-embedded": "^1.97.3",
+    "tsx": "^4.21.0",
     "typescript": "~5.8.3",
     "vite": "^7.3.1",
     "vite-plugin-vue-devtools": "^8.0.5",

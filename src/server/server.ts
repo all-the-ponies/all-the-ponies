@@ -2,7 +2,7 @@
 
 import { Hono } from 'hono'
 import { apply, serve } from '@photonjs/hono'
-import { pagesSitemap, gameObjectSitemap, sitemapIndex } from './sitemap-controller'
+// import { pagesSitemap, gameObjectSitemap, sitemapIndex } from '../../scripts/sitemap-controller'
 
 function startServer() {
     console.log('starting server')
@@ -18,9 +18,9 @@ function startServer() {
         }
         await next()
     })
-    app.get('/sitemap.xml', sitemapIndex)
-    app.get('/sitemap/pages.xml', pagesSitemap)
-    app.get('/sitemap/:category/:id{[0-9]+\\.xml}', gameObjectSitemap)
+    // app.get('/sitemap.xml', sitemapIndex)
+    // app.get('/sitemap/pages.xml', pagesSitemap)
+    // app.get('/sitemap/:category/:id{[0-9]+\\.xml}', gameObjectSitemap)
     // app.get('robots.txt', (c) => {
     //     return c.text(
     //         "User-Agent: *\n\n" + 
