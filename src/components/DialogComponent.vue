@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useTemplateRef } from 'vue';
-import ClientOnly from './ClientOnly.vue';
+import { ClientOnly } from 'vike-vue/ClientOnly'
+import { useTemplateRef } from 'vue'
 
 const emit = defineEmits({
     open: null,

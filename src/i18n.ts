@@ -7,7 +7,6 @@ import {
 
 import en_locale from './locales/en.json'
 import type { Language } from './types/gameDataTypes'
-import { language } from './globals'
 import { isClient } from '@vueuse/core'
 
 export const LOCALES: Record<string, {

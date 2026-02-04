@@ -6,12 +6,13 @@ import vikePhoton from 'vike-photon/config'
 export default {
     extends: [vikeVue, vikeVuePinia, vikePhoton],
     photon: {
-        server: 'src/server/server.ts', // relative to the root
+        server: '../server/server.ts', // relative to the root
     },
     
-    trailingSlash: true,
-    disableUrlNormalization: false,
+    disableUrlNormalization: true,
     // clientRouting: true,
     hydrationCanBeAborted: false,
     prefetchStaticAssets: false,
+
+    passToClient: ['locale'],
 } satisfies Config
