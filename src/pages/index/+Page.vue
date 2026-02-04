@@ -1,10 +1,30 @@
 <script setup lang="ts">
 import Link from '@/components/Link.vue'
 import { Config } from 'vike-vue/Config'
+import Head from '../+Head.vue'
+import { h } from 'vue'
+
+const BASE_URL = __BASE_URL__ // __BASE_URL__ cannot be used in the template
 </script>
 
 <template>
-  <Config :title="$t('site.title')" :description="$t('site.description')"></Config>
+  <Config
+    :title="$t('site.title')"
+    :description="$t('site.description')"
+    :-head="
+      // https://developers.google.com/search/docs/appearance/site-names#website
+      h('script', {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context' : 'https://schema.org',
+          '@type' : 'WebSite',
+          name : 'All The Ponies',
+          alternateName: 'ATP',
+          url : BASE_URL,
+        }),
+      })
+    "
+  ></Config>
 
   <div>
     <h1>All The Ponies</h1>
