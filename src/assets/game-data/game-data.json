@@ -63248,7 +63248,7 @@
             "portrait": "game/pony/portrait/Pony_Bramble.png",
             "main": "game/pony/main/Pony_Bramble.png"
           },
-          "location": "SWEET_APPLE_ACRES",
+          "location": "PONYVILLE",
           "house": "House_Everfree_Embassy",
           "inns": [],
           "changeling": {
@@ -64224,7 +64224,7 @@
             "portrait": "game/pony/portrait/Pony_Rookie_Archaeologist.png",
             "main": "game/pony/main/Pony_Rookie_Archaeologist.png"
           },
-          "location": "SWEET_APPLE_ACRES",
+          "location": "PONYVILLE",
           "house": "House_Daring_Do",
           "inns": [],
           "changeling": {
@@ -65646,7 +65646,7 @@
             "portrait": "game/pony/portrait/Pony_Sphinx.png",
             "main": "game/pony/main/Pony_Sphinx.png"
           },
-          "location": "CANTERLOT",
+          "location": "PONYVILLE",
           "house": "House_Daring_Do",
           "inns": [],
           "changeling": {
@@ -65747,7 +65747,7 @@
             "portrait": "game/pony/portrait/Pony_Abyssinian_King.png",
             "main": "game/pony/main/Pony_Abyssinian_King.png"
           },
-          "location": "KLUGETOWN",
+          "location": "PONYVILLE",
           "house": "House_Abysinnian_Embassy",
           "inns": [],
           "changeling": {
@@ -65848,7 +65848,7 @@
             "portrait": "game/pony/portrait/Pony_Abyssinian_Queen.png",
             "main": "game/pony/main/Pony_Abyssinian_Queen.png"
           },
-          "location": "KLUGETOWN",
+          "location": "PONYVILLE",
           "house": "House_Abysinnian_Embassy",
           "inns": [],
           "changeling": {
@@ -66071,7 +66071,7 @@
             "portrait": "game/pony/portrait/Pony_Canterlot_Night_Guard.png",
             "main": "game/pony/main/Pony_Canterlot_Night_Guard.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Unicorn_Guard",
           "inns": [],
           "changeling": {
@@ -66740,7 +66740,7 @@
             "portrait": "game/pony/portrait/Pony_Rambler.png",
             "main": "game/pony/main/Pony_Rambler.png"
           },
-          "location": "PONYVILLE",
+          "location": "KLUGETOWN",
           "house": "House_Workers_Quarters",
           "inns": [],
           "changeling": {
@@ -67228,7 +67228,7 @@
             "portrait": "game/pony/portrait/Pony_Crystal_Chalice_Trader.png",
             "main": "game/pony/main/Pony_Crystal_Chalice_Trader.png"
           },
-          "location": "CHANGELING_KINGDOM",
+          "location": "CRYSTAL_EMPIRE",
           "house": "House_Sapphire_Abode",
           "inns": [],
           "changeling": {
@@ -67350,7 +67350,7 @@
             "portrait": "game/pony/portrait/Pony_Jetstream.png",
             "main": "game/pony/main/Pony_Jetstream.png"
           },
-          "location": "PONYVILLE",
+          "location": "SWEET_APPLE_ACRES",
           "house": "House_Goldenharvest",
           "inns": [],
           "changeling": {
@@ -67716,7 +67716,7 @@
             "portrait": "game/pony/portrait/Pony_Helia.png",
             "main": "game/pony/main/Pony_Helia.png"
           },
-          "location": "PONYVILLE",
+          "location": "CRYSTAL_EMPIRE",
           "house": "House_Sugilite_Home",
           "inns": [],
           "changeling": {
@@ -67960,7 +67960,7 @@
             "portrait": "game/pony/portrait/Pony_Wide_Eyed_Villager.png",
             "main": "game/pony/main/Pony_Wide_Eyed_Villager.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Starlit_Apartments",
           "inns": [],
           "changeling": {
@@ -68082,7 +68082,7 @@
             "portrait": "game/pony/portrait/Pony_Excitable_Villager.png",
             "main": "game/pony/main/Pony_Excitable_Villager.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Starlit_Apartments",
           "inns": [],
           "changeling": {
@@ -68406,7 +68406,7 @@
             "portrait": "game/pony/portrait/Pony_Timekeeper_Pony.png",
             "main": "game/pony/main/Pony_Timekeeper_Pony.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_CanterlotManor",
           "inns": [],
           "changeling": {
@@ -68751,7 +68751,7 @@
             "portrait": "game/pony/portrait/Pony_Agent_Sweetie_Drops.png",
             "main": "game/pony/main/Pony_Agent_Sweetie_Drops.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Smile_Hq",
           "inns": [],
           "changeling": {
@@ -68873,7 +68873,7 @@
             "portrait": "game/pony/portrait/Pony_Agent_Lyra_Heartstrings.png",
             "main": "game/pony/main/Pony_Agent_Lyra_Heartstrings.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Smile_Hq",
           "inns": [],
           "changeling": {
@@ -69706,7 +69706,7 @@
             "portrait": "game/pony/portrait/Pony_Pony_Of_Shadows.png",
             "main": "game/pony/main/Pony_Pony_Of_Shadows.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Sombra_Castle",
           "inns": [],
           "changeling": {
@@ -69807,7 +69807,7 @@
             "portrait": "game/pony/portrait/Pony_Ms_Vine.png",
             "main": "game/pony/main/Pony_Ms_Vine.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_CanterlotManor",
           "inns": [],
           "changeling": {
@@ -72483,7 +72483,7 @@
             "portrait": "game/pony/portrait/Pony_General_Seaspray.png",
             "main": "game/pony/main/Pony_General_Seaspray.png"
           },
-          "location": "KLUGETOWN",
+          "location": "PONYVILLE",
           "house": "House_Hippogriffian_Embassy",
           "inns": [],
           "changeling": {
@@ -72828,7 +72828,7 @@
             "portrait": "game/pony/portrait/Pony_Retro_Twilight_Sparkle.png",
             "main": "game/pony/main/Pony_Retro_Twilight_Sparkle.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Retromobile",
           "inns": [],
           "changeling": {
@@ -72950,7 +72950,7 @@
             "portrait": "game/pony/portrait/Pony_Retro_Applejack.png",
             "main": "game/pony/main/Pony_Retro_Applejack.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Retromobile",
           "inns": [],
           "changeling": {
@@ -73072,7 +73072,7 @@
             "portrait": "game/pony/portrait/Pony_Retro_Rarity.png",
             "main": "game/pony/main/Pony_Retro_Rarity.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Retromobile",
           "inns": [],
           "changeling": {
@@ -73194,7 +73194,7 @@
             "portrait": "game/pony/portrait/Pony_Retro_Fluttershy.png",
             "main": "game/pony/main/Pony_Retro_Fluttershy.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Retromobile",
           "inns": [],
           "changeling": {
@@ -73316,7 +73316,7 @@
             "portrait": "game/pony/portrait/Pony_Retro_Rainbow_Dash.png",
             "main": "game/pony/main/Pony_Retro_Rainbow_Dash.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Retromobile",
           "inns": [],
           "changeling": {
@@ -73438,7 +73438,7 @@
             "portrait": "game/pony/portrait/Pony_Retro_Pinkie_Pie.png",
             "main": "game/pony/main/Pony_Retro_Pinkie_Pie.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Retromobile",
           "inns": [],
           "changeling": {
@@ -73560,7 +73560,7 @@
             "portrait": "game/pony/portrait/Pony_Retro_Spike.png",
             "main": "game/pony/main/Pony_Retro_Spike.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Retromobile",
           "inns": [],
           "changeling": {
@@ -75390,7 +75390,7 @@
             "portrait": "game/pony/portrait/Pony_Mirror_Sombras_Castle_Guard.png",
             "main": "game/pony/main/Pony_Mirror_Sombras_Castle_Guard.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Unicorn_Guard",
           "inns": [],
           "changeling": {
@@ -79561,7 +79561,7 @@
             "portrait": "game/pony/portrait/Pony_Rain_Shine.png",
             "main": "game/pony/main/Pony_Rain_Shine.png"
           },
-          "location": "CANTERLOT",
+          "location": "PONYVILLE",
           "house": "House_Grove_Of_Silence",
           "inns": [],
           "changeling": {
@@ -79885,7 +79885,7 @@
             "portrait": "game/pony/portrait/Pony_Gallus.png",
             "main": "game/pony/main/Pony_Gallus.png"
           },
-          "location": "SWEET_APPLE_ACRES",
+          "location": "PONYVILLE",
           "house": "House_School_Of_Friendship_Dorms",
           "inns": [],
           "changeling": {
@@ -85573,7 +85573,7 @@
             "portrait": "game/pony/portrait/Pony_Young_Shining_Armor.png",
             "main": "game/pony/main/Pony_Young_Shining_Armor.png"
           },
-          "location": "CANTERLOT",
+          "location": "PONYVILLE",
           "house": "House_Canterlot_Academy",
           "inns": [],
           "changeling": {
@@ -102402,7 +102402,7 @@
             "portrait": "game/pony/portrait/Pony_Chef_Rumble.png",
             "main": "game/pony/main/Pony_Chef_Rumble.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Royal_Kitchen",
           "inns": [],
           "changeling": {
@@ -103744,7 +103744,7 @@
             "portrait": "game/pony/portrait/Pony_Young_Rockhoof.png",
             "main": "game/pony/main/Pony_Young_Rockhoof.png"
           },
-          "location": "PONYVILLE",
+          "location": "SWEET_APPLE_ACRES",
           "house": "House_Ancient_Longhouse",
           "inns": [],
           "changeling": {
@@ -103988,7 +103988,7 @@
             "portrait": "game/pony/portrait/Pony_Steela_Oresdottir.png",
             "main": "game/pony/main/Pony_Steela_Oresdottir.png"
           },
-          "location": "PONYVILLE",
+          "location": "SWEET_APPLE_ACRES",
           "house": "House_Ancient_Longhouse",
           "inns": [],
           "changeling": {
@@ -105574,7 +105574,7 @@
             "portrait": "game/pony/portrait/Pony_Young_Applejack.png",
             "main": "game/pony/main/Pony_Young_Applejack.png"
           },
-          "location": "PONYVILLE",
+          "location": "SWEET_APPLE_ACRES",
           "house": "House_Applejack",
           "inns": [],
           "changeling": {
@@ -135117,7 +135117,7 @@
             "portrait": "game/pony/portrait/Pony_Toffee_Truffle.png",
             "main": "game/pony/main/Pony_Toffee_Truffle.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Gourmands_Guesthouse",
           "inns": [],
           "changeling": {
@@ -135239,7 +135239,7 @@
             "portrait": "game/pony/portrait/Pony_Summer_Van_Der_Hoof.png",
             "main": "game/pony/main/Pony_Summer_Van_Der_Hoof.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Gourmands_Guesthouse",
           "inns": [],
           "changeling": {
@@ -135361,7 +135361,7 @@
             "portrait": "game/pony/portrait/Pony_Super_Chef_Judge_Pony.png",
             "main": "game/pony/main/Pony_Super_Chef_Judge_Pony.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Gourmands_Guesthouse",
           "inns": [],
           "changeling": {
@@ -135483,7 +135483,7 @@
             "portrait": "game/pony/portrait/Pony_Marine_Sandwich.png",
             "main": "game/pony/main/Pony_Marine_Sandwich.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Gourmands_Guesthouse",
           "inns": [],
           "changeling": {
@@ -135605,7 +135605,7 @@
             "portrait": "game/pony/portrait/Pony_Fondant_Frenzy_Marine_Sandwich.png",
             "main": "game/pony/main/Pony_Fondant_Frenzy_Marine_Sandwich.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Gourmands_Guesthouse",
           "inns": [],
           "changeling": {
@@ -135729,7 +135729,7 @@
             "portrait": "game/pony/portrait/Pony_Vermouth_Roux.png",
             "main": "game/pony/main/Pony_Vermouth_Roux.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Gourmands_Guesthouse",
           "inns": [],
           "changeling": {
@@ -135851,7 +135851,7 @@
             "portrait": "game/pony/portrait/Pony_Big_Angie.png",
             "main": "game/pony/main/Pony_Big_Angie.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Gourmands_Guesthouse",
           "inns": [],
           "changeling": {
@@ -135973,7 +135973,7 @@
             "portrait": "game/pony/portrait/Pony_Blade_Sparxx.png",
             "main": "game/pony/main/Pony_Blade_Sparxx.png"
           },
-          "location": "PONYVILLE",
+          "location": "CANTERLOT",
           "house": "House_Gourmands_Guesthouse",
           "inns": [],
           "changeling": {
@@ -215377,7 +215377,9 @@
             "german": "Sie kennt die besten Boutiquen und trendigen Restaurants der Stadt - und weiß, wo man die süßesten Kekse bekommt!"
           },
           "alt_name": {
-            "english": ["Sweet Biscuit"]
+            "english": [
+              "Sweet Biscuit"
+            ]
           },
           "tags": [],
           "image": {
@@ -264581,7 +264583,9 @@
             "german": "Zum Glück für Snowfall Frost ist die Zukunft noch nicht geschrieben."
           },
           "alt_name": {},
-          "tags": ["unused"],
+          "tags": [
+            "unused"
+          ],
           "image": {
             "portrait": "game/pony/portrait/Pony_Spirit_Of_Hearths_Warming_Future.png",
             "main": "game/pony/main/Pony_Spirit_Of_Hearths_Warming_Future.png"
@@ -267297,7 +267301,6 @@
             "main": "game/house/House_Applejack.png"
           },
           "location": [
-            "PONYVILLE",
             "SWEET_APPLE_ACRES"
           ],
           "grid_size": 4,
@@ -268144,9 +268147,7 @@
             "main": "game/house/House_Daring_Do.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE",
-            "SWEET_APPLE_ACRES"
+            "PONYVILLE"
           ],
           "grid_size": 4,
           "build": {
@@ -270017,8 +270018,7 @@
             "main": "game/house/House_Unicorn_Guard.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -270797,7 +270797,6 @@
             "main": "game/house/House_Goldenharvest.png"
           },
           "location": [
-            "PONYVILLE",
             "SWEET_APPLE_ACRES"
           ],
           "grid_size": 3,
@@ -270958,8 +270957,7 @@
             "main": "game/house/House_CanterlotManor.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -273516,8 +273514,7 @@
             "main": "game/house/House_Sombra_Castle.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -278445,8 +278442,7 @@
             "main": "game/house/House_Starlit_Apartments.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -280096,8 +280092,7 @@
             "main": "game/house/House_Workers_Quarters.png"
           },
           "location": [
-            "KLUGETOWN",
-            "PONYVILLE"
+            "KLUGETOWN"
           ],
           "grid_size": 5,
           "build": {
@@ -280847,7 +280842,6 @@
             "main": "game/house/House_Ancient_Longhouse.png"
           },
           "location": [
-            "PONYVILLE",
             "SWEET_APPLE_ACRES"
           ],
           "grid_size": 5,
@@ -281599,8 +281593,7 @@
             "main": "game/house/House_Everfree_Embassy.png"
           },
           "location": [
-            "PONYVILLE",
-            "SWEET_APPLE_ACRES"
+            "PONYVILLE"
           ],
           "grid_size": 4,
           "build": {
@@ -281720,7 +281713,7 @@
             "main": "game/house/House_Abysinnian_Embassy.png"
           },
           "location": [
-            "KLUGETOWN"
+            "PONYVILLE"
           ],
           "grid_size": 4,
           "build": {
@@ -281831,7 +281824,6 @@
             "main": "game/house/House_Sapphire_Abode.png"
           },
           "location": [
-            "CHANGELING_KINGDOM",
             "CRYSTAL_EMPIRE"
           ],
           "grid_size": 4,
@@ -281886,7 +281878,7 @@
             "main": "game/house/House_Sugilite_Home.png"
           },
           "location": [
-            "PONYVILLE"
+            "CRYSTAL_EMPIRE"
           ],
           "grid_size": 3,
           "build": {
@@ -281939,7 +281931,7 @@
             "main": "game/house/House_Smile_Hq.png"
           },
           "location": [
-            "PONYVILLE"
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -282049,8 +282041,7 @@
             "main": "game/house/House_School_Of_Friendship_Dorms.png"
           },
           "location": [
-            "PONYVILLE",
-            "SWEET_APPLE_ACRES"
+            "PONYVILLE"
           ],
           "grid_size": 4,
           "build": {
@@ -282225,7 +282216,6 @@
             "main": "game/house/House_Hippogriffian_Embassy.png"
           },
           "location": [
-            "KLUGETOWN",
             "PONYVILLE"
           ],
           "grid_size": 4,
@@ -282339,7 +282329,7 @@
             "main": "game/house/House_Retromobile.png"
           },
           "location": [
-            "PONYVILLE"
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -282806,7 +282796,6 @@
             "main": "game/house/House_Grove_Of_Silence.png"
           },
           "location": [
-            "CANTERLOT",
             "PONYVILLE"
           ],
           "grid_size": 4,
@@ -283606,7 +283595,6 @@
             "main": "game/house/House_Canterlot_Academy.png"
           },
           "location": [
-            "CANTERLOT",
             "PONYVILLE"
           ],
           "grid_size": 5,
@@ -284824,7 +284812,8 @@
             "main": "game/house/House_Royal_Kitchen.png"
           },
           "location": [
-            "PONYVILLE"
+            "PONYVILLE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -286945,7 +286934,7 @@
             "main": "game/house/House_Gourmands_Guesthouse.png"
           },
           "location": [
-            "PONYVILLE"
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -288895,8 +288884,8 @@
             "main": "game/house/House_Of_Harmony.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "PONYVILLE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {

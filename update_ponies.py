@@ -512,6 +512,7 @@ class GetGameData:
             description = 'Gathering ponies...',
         ):
             try:
+                shop_data = self.gameobjectdata.get_object_shopdata(pony.id)
                 pony_info = ponies.setdefault(pony.id, {})
                 if self.migrate == 1:
                     pony_info = ponies[pony.id] = {
@@ -606,7 +607,7 @@ class GetGameData:
                 if 'full' in images:
                     del images['full']
 
-                full_image_name = os.path.splitext(pony.get('Shop', {}).get('Icon'))[0]
+                full_image_name = os.path.splitext(pony.get('Shop', {}).get('Icon', ''))[0]
                 full_image_source = os.path.join(self.game_folder, full_image_name)
 
                 if self.check_image('pony'):
@@ -624,8 +625,16 @@ class GetGameData:
 
                 # more metadata
                 
+                location: int | None = None
+                if shop_data is not None:
+                    shopdata_location: str = shop_data.get('MapZone', '-1')
+                    shopdata_location = shopdata_location.split(',')[0]
+                    location = strToInt(shopdata_location)
+                else:
+                    location = pony.get('House', {}).get('HomeMapZone')
+
                 pony_info['location'] = LOCATIONS.get(
-                    pony.get('House', {}).get('HomeMapZone', ''),
+                    location, # type: ignore
                     'UNKNOWN',
                 )
                 pony_info['house'] = pony.get('House', {}).get('Type')
