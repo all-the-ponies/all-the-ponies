@@ -183,7 +183,7 @@ watch(
         }
 
         if (reversed.value) {
-            params.reverse = null
+            params.reverse = 'true'
         } else if ('reverse' in params) {
             delete params.reverse
         }
@@ -192,7 +192,7 @@ watch(
             null,
             '',
             modifyUrl(
-                pageContext.urlPathname,
+                pageContext.urlOriginal,
                 {
                     search: params,
                 }

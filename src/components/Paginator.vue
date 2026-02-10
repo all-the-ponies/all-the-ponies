@@ -34,7 +34,7 @@ const page = computed({
             if (isClient) {
                 history.replaceState(null, '', 
                     modifyUrl(
-                        pageContext.urlPathname,
+                        pageContext.urlOriginal,
                         {
                             search: query
                         }
