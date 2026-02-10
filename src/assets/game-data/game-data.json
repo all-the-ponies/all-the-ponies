@@ -1,7 +1,7 @@
 {
   "file_version": 3,
-  "game_version": "10.8.0p",
-  "content_version": "10.8.0.0",
+  "game_version": "10.9.0l",
+  "content_version": "10.9.0.0",
   "categories": {
     "pony": {
       "clones": {},
@@ -34157,7 +34157,7 @@
             "korean": "이 포니는 모든 종류의 춤을 다 가르칠 수 있답니다! 저 다리 워머 안에는 엄청난 능력이 숨겨져 있어요!",
             "russian": "Это талантливая пони в гетрах, которая научит вас любому жанру выступлений.",
             "english": "This pony will tutor all kinds of performers. There's plenty of talent inside those leg warmers!",
-            "chinese": "这只小马喜欢指导各类舞者，它暖腿套里装得可全都是才华！",
+            "chinese": "这只小马喜欢指导各类舞者，它暖腿套里装的可全都是才华！",
             "french": "Ce poney forme toutes sortes d'artistes. Ces jambes sont bourrées de talent !",
             "arabic": "سيدرب هذا المهر جميع أنواع المؤدين. ولاشك أن هناك مواهب حقيقية تستحق الدعم!",
             "turkish": "Bu pony her türlü sahne sanatçısını eğitir. O tozluklarda ne yetenekler birikir!",
@@ -44037,7 +44037,7 @@
             "korean": "그는 에그콜트입니다!\n그들은 에그콜트이죠!\n그는 스탈리온입니다!\n추추 스카두!",
             "russian": "Жеребенок!\nЖеребцы!\nЖЕРЕБЕЦ!\nПарам-пам-пам!",
             "english": "He is an egg-colt!\nThey are the egg-colts!\nHe is a STALLION!\nChoo-choo ska-doo!",
-            "chinese": "他还是匹初生小马！他们全都胆大虎不怕！他也是未来的千里马！驾驾驾！",
+            "chinese": "他还是匹初生小马！\n他们全都胆大虎不怕！\n他也是未来的千里马！驾驾驾！",
             "french": "C'est un poulain !\nCe sont des poulains !\nC'est un ÉTALON !\nTchou-tchou ska-dou !",
             "arabic": "هو بيضة كولت! هم البيوض كولتس! هو ستاليون! تشو-تشو سكا-دو!",
             "turkish": "Yumurtanın sarısını sever;\nBeyazını arkadaşlarıyla yer;\nKarizma hep süper!\nHey gidi yeleler!",
@@ -57241,7 +57241,7 @@
             "korean": "말이 많지 않아요. Pinkie가 대부분 얘기를 하죠. 그러고 보니 Big Macintosh와 참 비슷하네요...",
             "russian": "Эта пони немногословна, обычно за нее болтает Пинки. Вам тоже кажется, что она похожа на Большого Макинтоша? Надо бы об этом подумать…",
             "english": "She doesn't say much: Pinkie does the talking for her. That gives her an awful lot in common with Big Macintosh, come to think of it...",
-            "chinese": "她的话不多，碧琪都帮她说了。想起来，她和麦托什有很多共同之处呢……",
+            "chinese": "她的话不多，碧琪都帮她说了。想起来，她和大麦哥有很多共同之处呢……",
             "french": "Elle ne parle pas beaucoup : Pinkie parle pour elle. Cela lui donne un énorme point commun avec Big Macintosh, quand on y pense...",
             "arabic": "لا تقول الكثير: بينكي تقوم بالتحدث عوضًا عنها. ذلك يعطيها الكثير من العوامل المشتركة مع الماكنتوش الكبير، بما أنني فكرت بالأمر الآن...",
             "turkish": "Ağzından kolay kolay bir laf çıkmaz, Pinkie onun yerine konuşur durur. Aslına bakarsan Big Macintosh'la bu açıdan ortak noktası çoktur.",
@@ -72101,7 +72101,7 @@
             "korean": "좋아하는 것: 친구들, 우정의 학교에서 Yakyakistan 대표하기, 뭔가를 발로 쿵쿵쳐 부수기. 싫어하는 것: 자신의 수술에 걸려 넘어지는 것, 자신의 발굽에 걸려 넘어지는 것, 모든 것에 걸려 넘어지는 것.",
             "russian": "Любит: своих друзей; представлять Якистан в Школе Дружбы; громить все вокруг себя. Не любит: спотыкаться через свои косички; спотыкаться через свои копыта; спотыкаться через что бы то ни было!",
             "english": "Likes: her friends; representing Yakyakistan at the School of Friendship; smashing stuff. Dislikes: tripping over her braids; tripping over her hooves; tripping over everything else.",
-            "chinese": "喜欢：她的朋友、在友谊学校担任牦牛代表、砸东西。不喜欢：被辫子绊倒、被马蹄绊倒、被任何东西绊倒。",
+            "chinese": "喜欢：她的朋友、在友谊学校担任亚克斯坦代表、砸东西。不喜欢：被辫子绊倒、被马蹄绊倒、被任何东西绊倒。",
             "french": "Aime : ses amis, représenter le Yakyakistan à l'École de l'Amitié, écrabrouiller des choses. N'aime pas : marcher sur ses tresses, marcher sur ses sabots, trébucher sur quoi que ce soit.",
             "arabic": "تحب: أصدقائها؛ تمثيل ياكيكيستان في مدرسة الصداقة؛ تحطيم الأشياء. لا تحب: التعثر في ضفائرها؛ التعثر في حوافرها؛ التعثر في أي شيء آخر.",
             "turkish": "Sevdiği şeyler: arkadaşları, Yakyakistan'ı Arkadaşlık Okulu'nda temsil etmek, bir şeyleri parçalamak. Sevmediği şeyler: saç örgülerine takılıp düşmek, toynaklarına takılıp düşmek, başka ne varsa ona takılıp düşmek.",
@@ -81922,7 +81922,7 @@
             "korean": "이 젊은 포니는 자기가 좋아하는 작은 나무가 하츠 워밍에 완벽하게 어울린다는 데 만족하고 있습니다.",
             "russian": "Хотя этот юнец больше любит пасовать мяч в бакболле, тем не менее, он абсолютно уверен, что его любимое маленькое деревце ИДЕАЛЬНО подойдет к Горящему очагу.",
             "english": "This young foal may be used to having the Buckball yanked out from under him -- but he's positive that his favorite little tree is PERFECT for Hearth's Warming.",
-            "chinese": "虽然这只小马喜欢玩球，但是他非常肯定他最喜爱的小树才是完美的暖炉节礼物。",
+            "chinese": "虽然这只小马喜欢玩马蹄球，但是他非常肯定他最喜爱的小树才是完美的暖炉节礼物。",
             "french": "Ce jeune poulain est habitué à se voir arracher la balle-ruade de sous ses sabots, mais il est persuadé que son petit arbre favori est PARFAIT pour le Feu de l'Amitié.",
             "arabic": "قد يستخدم هذا المهر الصغير في جعل باكبول يُسحب من تحته - لكنه إيجابي في كون شجرته الصغيرة المفضلة مثالية لعيد القلوب الدافئة.",
             "turkish": "Bu genç tay sekentopta hayal kırıklığına uğramaya alışkın ama en sevdiği küçük ağacın Isınan Kalpler için İDEAL olduğuna şüphesi yok.",
@@ -95049,7 +95049,7 @@
             "korean": "Yakyakistan의 프리미어 온천장의 사장입니다. 이 온천의 미네랄 목욕을 꼭 체험해 보세요!",
             "russian": "Хозяйка и работница лучшего спа-сервиса в Якистане. Обязательно посетите их минеральные ванны!",
             "english": "Owner-operator of Yakyakistan's premier spa service. Be sure to try their mineral baths!",
-            "chinese": "高级水疗服务的自营业主。一定要试试他们的矿泉浴！",
+            "chinese": "亚克斯坦高级水疗服务的自营业主。一定要试试他们的矿泉浴！",
             "french": "Propriétaire et gérante du premier spa du Yakyakistan. Assure-toi d'essayer leurs bains minéraux !",
             "arabic": "مالكة خدمة المنتجعات الرئيسية في ياكيكيستان. تأكد من تجربة الحمامات المعدنية لديهم!",
             "turkish": "Yakyakistan'ın en seçkin spa hizmetlerinin sahibi ve yöneticisi. Şifalı termal banyolarını denemen şart.",
@@ -97325,7 +97325,7 @@
             "korean": "Canterlot Daily News의 에이스 스포츠 담당 기자로 벅볼부터 Wonderbolts까지 모든 것을 다룹니다.",
             "russian": "Спортивный обозреватель \"Кантерлотского Ежедневника\", пишущий о всем - от бакболла до Чудо-молний.",
             "english": "The Canterlot Daily News' crack sportswriter, covering everything from buckball to the Wonderbolts.",
-            "chinese": "坎特洛特每日新闻的优秀体育记者，他的报道涵盖从后蹄球到闪电飞马队的一切。",
+            "chinese": "坎特洛特每日新闻的优秀体育记者，他的报道涵盖从马蹄球到闪电飞马队的一切。",
             "french": "Il est le journaliste sportif de la Gazette de Canterlot, qui couvre tout, de la balle-ruade aux Wonderbolts.",
             "arabic": "الكاتب الرياضي المتألق لأخبار كانترلوت اليومية، حيث يغطي كل شيء من باكبول إلى وندربولتس.",
             "turkish": "Canterlot Günlük Gazetesinin spor yazarıdır. Sekentoptan Wonderbolt'lara kadar her şeyi kaleme kalır.",
@@ -101070,7 +101070,7 @@
             "korean": "Future Big Mac",
             "russian": "Биг Маки из будущего",
             "english": "Future Big Mac",
-            "chinese": "未来的麦托什",
+            "chinese": "未来的大麦哥",
             "french": "Future Big Mac",
             "arabic": "بيج ماك المستقبلي",
             "turkish": "Future Big Mac",
@@ -101086,7 +101086,7 @@
             "korean": "Big Mac의 미래를 추측하는 건 우리 전문이 아니지만, HOLY FOALEDO가 잘 살펴볼 거예요.",
             "russian": "Не в нашей власти строить предположения о будущем Биг Маки, но, СВЯТОЙ ЖЕРЕБЬЕРО, как же ему пойдет жилет.",
             "english": "It isn't ours to speculate on Big Mac's future, but HOLY FOALEDO is he gonna look good in a vest.",
-            "chinese": "我们无法断言麦托什的未来，但他穿起背心来一定好看得不得了。",
+            "chinese": "我们无法断言大麦哥的未来，但他穿起背心来一定好看得不得了。",
             "french": "Ce n'est pas à nous de spéculer sur l'avenir de Big Mac, mais NOM D'UNE POMME il aura l'air magnifique dans une veste.",
             "arabic": "ليس من شأننا التكهن بمستقبل بيج ماك، ولكن نكاد نقسم أنه سيبدو بمظهر جيد وهو يرتدي سترة.",
             "turkish": "Big Mac'in geleceği hakkında atıp tutmak bize düşmez ama - VAY ATINA - yelek ona ne kadar da yakışacak!",
@@ -102996,7 +102996,7 @@
             "korean": "School of Friendship의 미래 학생들은 종류가 아주 다양해요. 이 작은 그리폰도 포함해서요. (아니, \"시포니\"인가요?)",
             "russian": "Будущий состав студентов Школы дружбы весьма разнообразен. Например, здесь будет учиться этот крошка-гриф. (Или это ''морской пони''?)",
             "english": "The School of Friendship's future student body consists of creatures of all kinds -- including this little 'griff. (Or is that \"seapony\"?)",
-            "chinese": "未来的友谊学校里有各种各样的生物——包括这只小鹰马，或者说“小海马”？",
+            "chinese": "未来的友谊学校里有各种各样的生物——包括这只小马鹫，或者说“小海马”？",
             "french": "Le corps des étudiants du futur de l'École de l'Amitié accueille des créatures diverses et variées, comme ce petit hippogriffe. (Ou est-ce un \"poney-sirène\" ?)",
             "arabic": "الكيان الطلابي المستقبلي لمدرسة الصداقة يتضمن المخلوقات من جميع الأنواع -- بما في ذلك هذا الغريف الصغير. (أم أنه \"مهر بحار\"؟)",
             "turkish": "Arkadaşlık Okulu'nun gelecekteki öğrenci birliğinde bu küçük griff de dahil her tür yaratık olacak. (Yoksa o bir deniz pony'si mi?)",
@@ -103118,7 +103118,7 @@
             "korean": "School of Friendship의 미래 학생들은 종류가 아주 다양해요. Yakyakistan 최고의 크리처도 포함해서요.",
             "russian": "Будущий состав студентов Школы дружбы весьма разнообразен. Например, здесь будет учиться представитель элиты Якистана.",
             "english": "The School of Friendship's future student body consists of creatures of all kinds -- including some of Yakyakistan's finest.",
-            "chinese": "未来的友谊学校里有各种各样的生物——牦牛家园的某些精英也赫然在列！",
+            "chinese": "未来的友谊学校里有各种各样的生物——亚克斯坦的某些精英也赫然在列！",
             "french": "Le corps des étudiants du futur de l'École de l'Amitié accueille des créatures diverses et variées, comme certains des meilleurs membres du Yakyakistan.",
             "arabic": "الكيان الطلابي المستقبلي لمدرسة الصداقة يتضمن المخلوقات من جميع الأنواع -- بما في ذلك بعض من أفضل سكان ياكيكيستان.",
             "turkish": "Arkadaşlık Okulu'nun gelecekteki öğrenci birliğinde Yakyakistan'ın en iyileri de dahil her tür yaratık olacak.",
@@ -106412,7 +106412,7 @@
             "korean": "이 친구의 어린 시절엔, 이 멋진 장작 영업 포니는 늘 Bright Mac과 어울려 다녔답니다.",
             "russian": "Когда этот торговец дровами был моложе, он часто проводил время с пони по имени Брайт Мак.",
             "english": "Back in his younger days, this aspiring firewood salespony used to hang out with Bright Mac all the time.",
-            "chinese": "小的时候，这只雄心勃勃的木材销售马整天跟麦托什混在一起！",
+            "chinese": "小的时候，这只雄心勃勃的木材销售马整天跟辉麦混在一起！",
             "french": "Lorsqu'il était jeune, cet aspirant poney vendeur de bois de chauffage passait tout son temps avec Bright Mac.",
             "arabic": "عندما كان صغيرًا، كان مهر مبيعات الحطب الطموح هذا يتسكع مع برايت ماك طوال الوقت.",
             "turkish": "Bu odun satıcısı, gençlik günlerinde sürekli Bright Mac ile takılırdı.",
@@ -112740,7 +112740,7 @@
             "korean": "Mirror-Universe Big Mac",
             "russian": "Биг Маки из Зеркальной вселенной",
             "english": "Mirror-Universe Big Mac",
-            "chinese": "镜中世界麦托什",
+            "chinese": "镜中世界大麦哥",
             "french": "Mirror-Universe Big Mac",
             "arabic": "بيغ ماك من العالم الموازي",
             "turkish": "Mirror-Universe Big Mac",
@@ -112756,7 +112756,7 @@
             "korean": "거울 우주에 있는 모든 포니가 사악한 염소수염을 갖고 있는 건 아닙니다... 하지만 대체 차원의 Big Mac은 자신의 외모를 긍정적으로 사악하게 만들었습니다.",
             "russian": "Не все пони из Зеркальной вселенной носят такую злобную бородку... Но у Биг Маки из другого измерения она реально дьявольская.",
             "english": "Not everypony in the Mirror Universe has an Evil Goatee... but Alt-Dimensional Big Mac makes his look positively diabolical.",
-            "chinese": "并非所有镜像宇宙的小马都留着邪恶的山羊胡……但平行空间的麦托什例外，一看他的山羊胡就知道他很坏。",
+            "chinese": "并非所有镜中世界的小马都留着邪恶的山羊胡……但平行空间的大麦哥例外，一看他的山羊胡就知道他很坏。",
             "french": "Tout le monde n'a pas un bouc maléfique dans l'univers miroir... Mais la version alternative de Big Mac le rend positivement diabolique.",
             "arabic": "ليس كل مُهر في العالم الموازي لديه لحية شريرة... لكن بيغ ماك البديل يجعل مظهره شيطانيًا بلا شك.",
             "turkish": "Bir pony Ayna Evrende diye illa kötülük simgesi bir keçi sakalı olmak zorunda değil... ama Big Mac'in paralel boyut versiyonu sakalıyla çok şeytani görünüyor.",
@@ -123986,7 +123986,7 @@
             "korean": "Big Mac의 오랜 농장 친구예요. 지금은 전문 레이서이고요. 수동적이면서 공격적인 감정 대립의 엄청난 팬입니다!",
             "russian": "Старый школьный друг Бига Мака, теперь - профессиональный гонщик. Большой фанат пассивно-агрессивных эмоциональных столкновений.",
             "english": "Big Mac's old friend from farm school -- now a professional racer. A big fan of passive-aggressive emotional confrontations.",
-            "chinese": "麦托什在农场学校的老朋友，如今是一名职业选手！最爱用消极对抗的招数！",
+            "chinese": "大麦哥在农场学校的老朋友，如今是一名职业选手！最爱用消极对抗的招数！",
             "french": "Vieil ami de Big Mac depuis l'école d'agriculture, maintenant coureur professionnel. Un grand adepte des confrontations émotionnelles passives-agressives.",
             "arabic": "صديق بيج ماك القديم من مدرسة الزراعة -- وأصبح الآن متسابقًا محترفًا. معجب كبير بالمواجهات العاطفية الخالية من العنف.",
             "turkish": "Big Mac'in çiftlik okulundan eski bir dostu -- şimdilerde profesyonel bir atlet. Duygu yüklü pasif agresif anlara bayılıyor.",
@@ -160362,7 +160362,7 @@
             "korean": "Nirik Rainbow Dash",
             "russian": "Радуга-Нирик",
             "english": "Nirik Rainbow Dash",
-            "chinese": "火麒麟云宝",
+            "chinese": "逆麟云宝",
             "french": "Nirik Rainbow Dash",
             "arabic": "نيريك رينبو داش",
             "turkish": "Nirik Rainbow Dash",
@@ -160484,7 +160484,7 @@
             "korean": "Nirik Pinkie Pie",
             "russian": "Пинки-Нирик",
             "english": "Nirik Pinkie Pie",
-            "chinese": "火麒麟碧琪",
+            "chinese": "逆麟碧琪",
             "french": "Nirik Pinkie Pie",
             "arabic": "نيريك بينكي باي",
             "turkish": "Nirik Pinkie Pie",
@@ -160606,7 +160606,7 @@
             "korean": "Nirik Fluttershy",
             "russian": "Флаттершай-Нирик",
             "english": "Nirik Fluttershy",
-            "chinese": "火麒麟柔柔",
+            "chinese": "逆麟柔柔",
             "french": "Nirik Fluttershy",
             "arabic": "نيريك فلاترشاي",
             "turkish": "Nirik Fluttershy",
@@ -160728,7 +160728,7 @@
             "korean": "Nirik Rarity",
             "russian": "Рарити-Нирик",
             "english": "Nirik Rarity",
-            "chinese": "火麒麟珍奇",
+            "chinese": "逆麟珍奇",
             "french": "Nirik Rarity",
             "arabic": "نيريك ريرتي",
             "turkish": "Nirik Rarity",
@@ -160850,7 +160850,7 @@
             "korean": "Nirik Twilight Sparkle",
             "russian": "Искорка-Нирик",
             "english": "Nirik Twilight Sparkle",
-            "chinese": "火麒麟紫悦",
+            "chinese": "逆麟紫悦",
             "french": "Nirik Twilight Sparkle",
             "arabic": "نيريك توايلايت سباركل",
             "turkish": "Nirik Twilight Sparkle",
@@ -160972,7 +160972,7 @@
             "korean": "Nirik Applejack",
             "russian": "Эпплджек-Нирик",
             "english": "Nirik Applejack",
-            "chinese": "火麒麟苹果嘉儿",
+            "chinese": "逆麟苹果嘉儿",
             "french": "Nirik Applejack",
             "arabic": "نيريك أبل جاك",
             "turkish": "Nirik Applejack",
@@ -161094,7 +161094,7 @@
             "korean": "Nirik Rain Shine",
             "russian": "Рэйн Шайн - Нирик",
             "english": "Nirik Rain Shine",
-            "chinese": "火麒麟雨光",
+            "chinese": "逆麟雨光",
             "french": "Nirik Rain Shine",
             "arabic": "نيريك رين شاين",
             "turkish": "Nirik Rain Shine",
@@ -161216,7 +161216,7 @@
             "korean": "Nirik Cadance",
             "russian": "Каденс-Нирик",
             "english": "Nirik Cadance",
-            "chinese": "火麒麟音韵公主",
+            "chinese": "逆麟音韵公主",
             "french": "Nirik Cadance",
             "arabic": "نيريك كيدانس",
             "turkish": "Nirik Cadance",
@@ -162559,7 +162559,7 @@
             "korean": "Nirik Celestia",
             "russian": "Селестия-Нирик",
             "english": "Nirik Celestia",
-            "chinese": "火麒麟宇宙公主",
+            "chinese": "逆麟宇宙公主",
             "french": "Nirik Celestia",
             "arabic": "نيريك سيليستيا",
             "turkish": "Nirik Celestia",
@@ -162681,7 +162681,7 @@
             "korean": "Nirik Luna",
             "russian": "Луна-Нирик",
             "english": "Nirik Luna",
-            "chinese": "火麒麟月亮公主",
+            "chinese": "逆麟月亮公主",
             "french": "Nirik Luna",
             "arabic": "نيريك لونا",
             "turkish": "Nirik Luna",
@@ -207066,7 +207066,7 @@
             "korean": "그녀는 음식도 먹으러 왔지만, 무엇보다도 게임을 즐기러 왔어요! 라스 페가수스 아케이드에서 모든 액션을 즐기고 있는 그녀를 잡아보세요!",
             "russian": "Она здесь ради еды и, главное, из-за ИГР! Ее можно встретить в Лас-Пегасусской аркаде, где она поедает весь экшен!",
             "english": "She's here for the food, but mostly for the GAMES! Catch her at the Las Pegasus arcade, eating up all the action!",
-            "chinese": "她来这里是为了美食，但主要还是为了游戏！在天马维加斯游乐场，你可以看到她在尽情玩耍！",
+            "chinese": "她来这里是为了美食，但主要还是为了游戏！在洛马基游乐场，你可以看到她在尽情玩耍！",
             "french": "Elle est là pour la nourriture, mais surtout pour les JEUX ! Tu la trouveras dans la salle d'arcade de Las Pegasus, gobant toute l'action !",
             "arabic": "إنها هنا من أجل الطعام، ولكن في الغالب من أجل الألعاب! يمكنك اللحاق بها في صالة ألعاب لاس بيغاسوس، وهي تستمتع بكل الحركات!",
             "turkish": "Buraya yemekler için ama daha çok OYUNLAR için gelir! Onu Las Pegasus oyun salonunda aksiyonun tam içinde bulabilirsiniz!",
@@ -207188,7 +207188,7 @@
             "korean": "라스 페가수스 아케이드에서 말발굽 게임을 하는 늙은 암말의 모습을 보는 것도 좋은 구경거리예요!",
             "russian": "Он ценит хорошее зрелище - в том числе наблюдать за тем, как старые гривы прослезились из-за игры в подковы в Лас-Пегасусской аркаде!",
             "english": "He appreciates a good spectacle -- and that includes watching old mares tear up the horseshoe game at the Las Pegasus arcade!",
-            "chinese": "他喜欢看精彩的表演，包括在天马维加斯游乐场看老母马撕裂马蹄铁游戏！",
+            "chinese": "他喜欢看精彩的表演，包括在洛马基游乐场看老母马撕裂马蹄铁游戏！",
             "french": "Il apprécie un bon spectacle et cela inclut regarder de vieilles juments exploser le jeu du fer dans la salle d'arcade de Las Pegasus !",
             "arabic": "إنه يقدر المشهد الجيد -- والذي يتضمن مشاهدة الأفراس القديمة وهي تمزق لعبة حدوة الحصان في صالة ألعاب لاس بيغاسوس!",
             "turkish": "Bir olay çıksın diye dört gözle bekler -- mesela Las Pegasus oyun salonundaki nal oyununda birbirini yiyen yaşlı kısraklar!",
@@ -215476,7 +215476,7 @@
             "korean": "Alicorn Big Macintosh",
             "russian": "Единорог Большой Макинтош",
             "english": "Alicorn Big Macintosh",
-            "chinese": "天角兽麦托什",
+            "chinese": "天角兽大麦哥",
             "french": "Alicorn Big Macintosh",
             "arabic": "أليكورن بيج ماكينتوش",
             "turkish": "Alicorn Big Macintosh",
@@ -230376,7 +230376,7 @@
             "korean": "Mac the Huntspony",
             "russian": "Мак Охотник",
             "english": "Mac the Huntspony",
-            "chinese": "猎手小马麦托什",
+            "chinese": "猎手小马大麦哥",
             "french": "Mac the Huntspony",
             "arabic": "ماك مهر الصيد",
             "turkish": "Mac the Huntspony",
@@ -233566,7 +233566,7 @@
             "korean": "Shire Lanka Big Macintosh",
             "russian": "Шир-ланкийский Большой Макинтош",
             "english": "Shire Lanka Big Macintosh",
-            "chinese": "夏尔兰卡麦托什",
+            "chinese": "夏尔兰卡大麦哥",
             "french": "Shire Lanka Big Macintosh",
             "arabic": "شير لانكا بيج ماكينتوش",
             "turkish": "Shire Lanka Big Macintosh",
@@ -234675,7 +234675,7 @@
             "korean": "Sombraverse Big Mac",
             "russian": "Биг Мак из Сомбра-вселенной",
             "english": "Sombraverse Big Mac",
-            "chinese": "黑晶世界麦托什",
+            "chinese": "黑晶世界大麦哥",
             "french": "Sombraverse Big Mac",
             "arabic": "سومبرافيرس بيج ماك",
             "turkish": "Sombraverse Big Mac",
@@ -238525,7 +238525,7 @@
             "korean": "Donkey Big Mac",
             "russian": "Ослик Биг Мак",
             "english": "Donkey Big Mac",
-            "chinese": "毛驴麦托什",
+            "chinese": "毛驴大麦哥",
             "french": "Donkey Big Mac",
             "arabic": "الحمار بيج ماك",
             "turkish": "Donkey Big Mac",
@@ -264583,9 +264583,7 @@
             "german": "Zum Glück für Snowfall Frost ist die Zukunft noch nicht geschrieben."
           },
           "alt_name": {},
-          "tags": [
-            "unused"
-          ],
+          "tags": [],
           "image": {
             "portrait": "game/pony/portrait/Pony_Spirit_Of_Hearths_Warming_Future.png",
             "main": "game/pony/main/Pony_Spirit_Of_Hearths_Warming_Future.png"
@@ -266190,7 +266188,7 @@
             "korean": "하츠 워밍의 과거에서 튀어나왔습니다.",
             "russian": "Прямо из Дня Горящего Очага Прошлого.",
             "english": "Straight out of Hearth's Warming Past.",
-            "chinese": "来自炉边温情节的过去。",
+            "chinese": "来自暖炉节的过去。",
             "french": "Tout droit venu du Feu de l'Amitié passé.",
             "arabic": "من روح ماضي هارث وورمينغ مباشرةً.",
             "turkish": "Isınan Kalpler Geçmişinden Gelme.",
@@ -266927,7 +266925,7 @@
             "arabic": "ربما تكون هذه النظارات مطلية باللافندر بدلاً من أن تكون ملونة بالوردي، لكن هذه المهرة متفائلة منذ ولادتها.",
             "turkish": "Gözlüğünün camları pembe yerine lavanta rengi olsa da bu pony doğuştan bir iyimser.",
             "japanese": "かけているのは「バラ色のめがね」ではなくラベンダー色だけど、このポニーが生まれついての楽天家であることにかわりはないよ。",
-            "spanish": "Puede que esas gafas sean de color lavanda en lugar de color rosa, pero esta poni es una optimista nata de todas formas.",
+            "spanish": "Puede que esas gafas sean de color lavanda en lugar de color rosa, pero este poni es un optimista nato de todas formas.",
             "brazilian portuguese": "Esses óculos podem ser lavanda em vez de cor de rosa, mas isso não afeta seu otimismo nato.",
             "italian": "Anche se i suoi occhiali sono del colore della lavanda, invece che rosa, questo pony è comunque ottimista.",
             "german": "Diese Brille mag zwar lavendelfarben statt rosafarben sein, aber dieses Pony ist dennoch ein geborener Optimist."
@@ -267017,6 +267015,3178 @@
             }
           },
           "id": "Pony_Manehattan_Pedestrian",
+          "category": "pony"
+        },
+        "Pony_Poronan_Princess_Cadance": {
+          "locked": false,
+          "index": 2224,
+          "note": {},
+          "name": {
+            "thai": "เจ้าหญิงคาแดนซ์โพโรน่า",
+            "korean": "Poronan Princess Cadance",
+            "russian": "Принцесса Каденс из Пороны",
+            "english": "Poronan Princess Cadance",
+            "chinese": "波萝娜音韵公主",
+            "french": "Poronan Princess Cadance",
+            "arabic": "الأميرة كادانس من بورونا",
+            "turkish": "Poronan Princess Cadance",
+            "japanese": "ポローナのプリンセスケイデンス",
+            "spanish": "Poronan Princess Cadance",
+            "brazilian portuguese": "Poronan Princess Cadance",
+            "italian": "Poronan Princess Cadance",
+            "german": "Poronan Princess Cadance"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "ผู้ปกครองโพโรน่า ดินแดนอันงดงามซึ่งเป็นฉากหลังของเรา",
+            "korean": "우리가 이야기를 펼치는 아름다운 Porona의 통치자입니다.",
+            "russian": "Правительница справедливой Пороны, где разворачивается действие нашей истории.",
+            "english": "The ruler of fair Porona, where we lay our scene.",
+            "chinese": "她是美丽的波萝娜王国的统治者，我们的故事就发生在这个王国。",
+            "french": "Souveraine de la belle Porona, où nous plaçons notre scène.",
+            "arabic": "حاكمة بورونا الجميلة، المكان الذي تدور فيه أحداث قصتنا.",
+            "turkish": "Ana sahnemiz olan güzel Porona'nın hükümdarı.",
+            "japanese": "物語がつむがれる場所、美しきポローナのプリンセス。",
+            "spanish": "La gobernante de la hermosa Porona, donde colocamos nuestra escena.",
+            "brazilian portuguese": "A governante da bela Porona, onde nossa história se passa.",
+            "italian": "La sovrana della bella Porona, dov'è ambientata la nostra storia.",
+            "german": "Der Herrscher des schönen Porona, wo unsere Szene spielt."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Poronan_Princess_Cadance.png",
+            "main": "game/pony/main/Pony_Poronan_Princess_Cadance.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "ProfileAvatar_343_Poronan_Princess_Cadance",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": false,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 9
+          },
+          "arrival_xp": 50,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 1000
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Poronan_Princess_Cadance",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Poronan_Princess_Cadance"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Poronan_Princess_Cadance_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Poronan_Princess_Cadance_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Poronan_Princess_Cadance"
+              }
+            }
+          },
+          "id": "Pony_Poronan_Princess_Cadance",
+          "category": "pony"
+        },
+        "Pony_Montague_Starlight_Glimmer": {
+          "locked": false,
+          "index": 2225,
+          "note": {},
+          "name": {
+            "thai": "สตาร์ไลท์กลิมเมอร์มอนทากิว",
+            "korean": "Montague Starlight Glimmer",
+            "russian": "Старлайт Глиммер Монтекки",
+            "english": "Montague Starlight Glimmer",
+            "chinese": "蒙太古星光熠熠",
+            "french": "Montague Starlight Glimmer",
+            "arabic": "ستارلايت غليمر مونتاغو",
+            "turkish": "Montague Starlight Glimmer",
+            "japanese": "モンタギュー・スターライトグリマー",
+            "spanish": "Montague Starlight Glimmer",
+            "brazilian portuguese": "Montague Starlight Glimmer",
+            "italian": "Montague Starlight Glimmer",
+            "german": "Montague Starlight Glimmer"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "พร้อมเข้าไปกระดุมบอนกับคาปูเล็ตทุกตัวที่เจอ (เล่นคำเรื่องเครื่องแต่งกาย!)",
+            "korean": "만나는 모든 Capulet과 거칠게 맞설 준비가 되어 있어요. (목걸이 말장난!)",
+            "russian": "Готова к бурным столкновениям с любым Капулетти, которого встретит.",
+            "english": "Ready to get ruff-and-tumble with any Capulet she meets. (Neckwear pun!)",
+            "chinese": "她时刻准备着和卡普莱特家族的小马进行充满曲折的斗争，曲折多得就像伊丽莎白时代那种褶皱领饰一样！",
+            "french": "Prête à ramener sa fraise avec n'importe quel Capulet qu'elle rencontre. (Jeu de mots sur la collerette !)",
+            "arabic": "مستعدة للتعامل بحزم وشدة مع أي مهرة كابوليت تقابلها. (أسلوب طريف للتلاعب بالكلمات!)",
+            "turkish": "Karşılaştığı her Capulet ile kavgaya hazır.",
+            "japanese": "キャピュレット家のポニーにまけるつもりはないよ！",
+            "spanish": "Lista para pelear contra cualquier Capuleto que encuentre, que no te engañe esa gorguera tan señorial que lleva al cuello.",
+            "brazilian portuguese": "Pronta para se meter em confusão com qualquer Capuleto que encontrar.",
+            "italian": "Pronta a scontrarsi con qualsiasi Capuleti che incontra.",
+            "german": "Bereit, sich mit jedem Capulet zu raufen."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Montague_Starlight_Glimmer.png",
+            "main": "game/pony/main/Pony_Montague_Starlight_Glimmer.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Montague_Starlight_Glimmer",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Montague_Starlight_Glimmer"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Montague_Starlight_Glimmer_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Montague_Starlight_Glimmer_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Montague_Starlight_Glimmer"
+              }
+            }
+          },
+          "id": "Pony_Montague_Starlight_Glimmer",
+          "category": "pony"
+        },
+        "Pony_Montague_Sunburst": {
+          "locked": false,
+          "index": 2226,
+          "note": {},
+          "name": {
+            "thai": "ซันเบิร์สท์มอนทากิว",
+            "korean": "Montague Sunburst",
+            "russian": "Санберст Монтекки",
+            "english": "Montague Sunburst",
+            "chinese": "蒙太古日光耀耀",
+            "french": "Montague Sunburst",
+            "arabic": "مونتاغو سانبيرست",
+            "turkish": "Montague Sunburst",
+            "japanese": "モンタギュー・サンバースト",
+            "spanish": "Montague Sunburst",
+            "brazilian portuguese": "Montague Sunburst",
+            "italian": "Montague Sunburst",
+            "german": "Montague Sunburst"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "ลูกศิษย์ของทร็อทสปีโร่ พ่อมดผู้ยิ่งใหญ่ เขาเป็นผู้วางแผนงานเลี้ยงเต้นรำสวมหน้ากากธีมเทพนิยายให้ตระกูล",
+            "korean": "위대한 마법사 Trotspero 밑에서 수습하며, 가족을 위해 신화적인 테마의 가면무도회를 계획합니다.",
+            "russian": "Ученик великого волшебника Тротсперо, планирует маскарады на мифологическую тематику для своей семьи.",
+            "english": "Apprenticed under the great wizard Trotspero, he plans mythologically themed masquerades for his family.",
+            "chinese": "他曾是伟大的巫师特雷斯帕罗的学徒，为他的家人策划了以神话为主题的化妆舞会。",
+            "french": "Apprenti du grand sorcier Trotspero, il prévoit des bals masqués à thème mythologique pour sa famille.",
+            "arabic": "تدرب تحت إشراف الساحر العظيم تروتسبيرو، ويخطط لعقد حفلات تنكرية ذات طابع أسطوري لعائلته.",
+            "turkish": "Yüce büyücü Trotspero'nun çırağıydı ve şimdi ailesi için mitolojik temalı maskeli balolar planlıyor.",
+            "japanese": "いだいなるまほう使い、トロットスペローのもとで学んだポニー。家族のために神話をテーマにしたかめんパーティーを計画中。",
+            "spanish": "Aprendiz del gran mago Trotspero, planea bailes de máscaras con temática mitológica para su familia.",
+            "brazilian portuguese": "Aprendiz do grande mago Trotspero, ele planeja bailes de máscaras temáticos mitológicos para sua família.",
+            "italian": "Apprendista del grande mago Trotspero, organizza feste mascherate a tema mitologico per la sua famiglia.",
+            "german": "Als Lehrling des großen Zauberers Trotspero plant er mythologisch inspirierte Maskeraden für seine Familie."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Montague_Sunburst.png",
+            "main": "game/pony/main/Pony_Montague_Sunburst.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Montague_Sunburst",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Montague_Sunburst"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Montague_Sunburst_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Montague_Sunburst_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Montague_Sunburst"
+              }
+            }
+          },
+          "id": "Pony_Montague_Sunburst",
+          "category": "pony"
+        },
+        "Pony_Capulet_Fluttershy": {
+          "locked": false,
+          "index": 2227,
+          "note": {},
+          "name": {
+            "thai": "ฟลัตเตอร์ชายคาปูเล็ต",
+            "korean": "Capulet Fluttershy",
+            "russian": "Флаттершай Капулетти",
+            "english": "Capulet Fluttershy",
+            "chinese": "卡普莱特柔柔",
+            "french": "Capulet Fluttershy",
+            "arabic": "فلاتر شاي كابوليت",
+            "turkish": "Capulet Fluttershy",
+            "japanese": "キャピュレット・フラッターシャイ",
+            "spanish": "Capulet Fluttershy",
+            "brazilian portuguese": "Capulet Fluttershy",
+            "italian": "Capulet Fluttershy",
+            "german": "Capulet Fluttershy"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "เธอรับหน้าที่เป็นผู้ไกล่เกลี่ยข้อพิพาทระหว่างสองตระกูลสัตว์เลี้ยงอย่างด็อกทากิวและแคทปูเล็ตด้วย",
+            "korean": "또한 두 애완동물 가족인 Dogtague와 Catpulet 사이의 우정 분쟁을 중재하고 있어요.",
+            "russian": "Также посредничает в споре о дружбе между двумя семьями домашних животных: Догтекки и Котпулетти.",
+            "english": "Also mediating a friendship dispute between two families of pets: the Dogtagues and Catpulets.",
+            "chinese": "她还要负责调解两个宠物家族之间的友谊纠纷：狗塔格丝家和猫普莱特家。",
+            "french": "Il sert également de médiateur dans un conflit d'amitié entre deux familles d'animaux de compagnie : les Chientague et les Chatpulet.",
+            "arabic": "كما تتوسط لحل نزاع بين عائلتين من الحيوانات الأليفة: الدوغتاجو والكاتبوليت.",
+            "turkish": "Dogtague ve Catpulet adlı iki evcil hayvan ailesi arasında arkadaşlık anlaşmazlığıyla ilgili arabuluculuk da yapıyor.",
+            "japanese": "動物の一族である、ドッグタギュー家とキャットプレット家の間にまきおこる友じょうのいさかいだってちゅうさいしてくれるよ。",
+            "spanish": "También media una disputa de amistad entre dos familias de mascotas: los Perresco y los Gatuleto.",
+            "brazilian portuguese": "Também está mediando uma disputa de amizade entre duas famílias rivais de animais de estimação.",
+            "italian": "Fa da mediatrice anche in una disputa sull'amicizia tra due famiglie di animali domestici: i Cantecchi e i Gattoleti.",
+            "german": "Auch die Schlichtung eines Freundschaftsstreits zwischen zwei Haustierfamilien: den Dogtagues und den Catpulets."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Capulet_Fluttershy.png",
+            "main": "game/pony/main/Pony_Capulet_Fluttershy.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 900
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Capulet_Fluttershy",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Fluttershy"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Fluttershy_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Fluttershy_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Fluttershy"
+              }
+            }
+          },
+          "id": "Pony_Capulet_Fluttershy",
+          "category": "pony"
+        },
+        "Pony_Capulet_Twilight_Sparkle": {
+          "locked": false,
+          "index": 2228,
+          "note": {},
+          "name": {
+            "thai": "ทไวไลท์สปาร์เคิลคาปูเล็ต",
+            "korean": "Capulet Twilight Sparkle",
+            "russian": "Сумеречная Искорка Капулетти",
+            "english": "Capulet Twilight Sparkle",
+            "chinese": "卡普莱特紫悦",
+            "french": "Capulet Twilight Sparkle",
+            "arabic": "كابوليت توايلايت سباركل",
+            "turkish": "Capulet Twilight Sparkle",
+            "japanese": "キャピュレット・トワイライトスパークル",
+            "spanish": "Capulet Twilight Sparkle",
+            "brazilian portuguese": "Capulet Twilight Sparkle",
+            "italian": "Capulet Twilight Sparkle",
+            "german": "Capulet Twilight Sparkle"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "เธอคอยเขียนรายการวางแผนงานเลี้ยงทั้งหมดในรูปแบบฉันทลักษณ์ 5 จังหวะเพื่อให้ม้ารุ่นหลังได้อ่าน",
+            "korean": "후세에 남기기 위해 모든 파티 계획 목록을 5음보격으로 꼭 기록합니다.",
+            "russian": "Все свои списки по планированию вечеринок она обязательно пишет ямбами, для потомков.",
+            "english": "Makes sure to write all her party planning lists in iambic pentameter, for posterity.",
+            "chinese": "她还坚持用抑扬五音步写下所有派对筹备清单，以传后世。",
+            "french": "Elle veille à écrire toutes ses listes de planification de fêtes en pentamètre iambique, pour la postérité.",
+            "arabic": "تحرص على كتابة جميع قوائم تخطيط الحفلات الخاصة بها في شعر خماسي، من أجل الأجيال القادمة.",
+            "turkish": "Parti planlama listelerinin hepsini akılda kalıcı olması için kafiyeli yazıyor.",
+            "japanese": "後世のために、パーティーの計画リストはポエム調で書くようにしているんだって。",
+            "spanish": "Se asegura de escribir todas sus listas de planificación de fiestas en pentámetro yámbico, para la posteridad.",
+            "brazilian portuguese": "Certifica-se de escrever todas as suas listas de planejamento de festas em pentâmetro iâmbico, para a posteridade.",
+            "italian": "Si assicura di redigere le lista per i preparativi delle feste in pentametro giambico, per i posteri.",
+            "german": "Stellt sicher, dass sie alle ihre Partyplanung-Listen in jambischem Pentameter schreibt, für die Nachwelt."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Capulet_Twilight_Sparkle.png",
+            "main": "game/pony/main/Pony_Capulet_Twilight_Sparkle.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 900
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Capulet_Twilight_Sparkle",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Twilight_Sparkle"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Twilight_Sparkle_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Twilight_Sparkle_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Twilight_Sparkle"
+              }
+            }
+          },
+          "id": "Pony_Capulet_Twilight_Sparkle",
+          "category": "pony"
+        },
+        "Pony_Montague_Cheese_Sandwich": {
+          "locked": false,
+          "index": 2229,
+          "note": {},
+          "name": {
+            "thai": "ชีสแซนด์วิชมอนทากิว",
+            "korean": "Montague Cheese Sandwich",
+            "russian": "Чиз Сэндвич Монтекки",
+            "english": "Montague Cheese Sandwich",
+            "chinese": "蒙太古芝士三明治",
+            "french": "Montague Cheese Sandwich",
+            "arabic": "تشيز ساندويتش مونتاغو",
+            "turkish": "Montague Cheese Sandwich",
+            "japanese": "モンタギュー・チーズサンドウィッチ",
+            "spanish": "Montague Cheese Sandwich",
+            "brazilian portuguese": "Montague Cheese Sandwich",
+            "italian": "Montague Cheese Sandwich",
+            "german": "Montague Cheese Sandwich"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "เขาเพิ่งเรียนจบจากมหาวิทยาลัยวิทท์เนเบิร์ก ที่ที่เขาผูกมิตรกับเจ้าชายสุดอีโมได้อย่างรวดเร็ว",
+            "korean": "Wittneighburg 대학을 최근 졸업했으며, 거기서 매우 감성적인 왕자와 빠르게 친구가 되었습니다.",
+            "russian": "Недавний выпускник Виттнейбергского университета, где он быстро подружился с ЧРЕЗВЫЧАЙНО депрессивным принцем.",
+            "english": "Recent graduate of the University of Wittneighburg, where he made fast friends with an EXTREMELY emo prince.",
+            "chinese": "刚从嘶滕堡大学毕业，他在那里与一位极度情绪化的王子迅速结为好友。",
+            "french": "Diplômé récent de l'université de Wittneighburg, où il s'est rapidement lié d'amitié avec un prince EXTRÊMEMENT emo.",
+            "arabic": "خريج حديث من جامعة ويتنيبيرغ، والتي كوّن فيها صداقة سريعة مع أمير عبوس الوجه.",
+            "turkish": "AŞIRI emo bir prensle hızlıca arkadaşlık kurduğu Wittneighburg Üniversitesi'nden yeni mezun oldu.",
+            "japanese": "ウィッテヒヒーンバーグ大学をそつぎょうしたばかり。大学では、とってもエモい王子とすぐに友だちになったんだ。",
+            "spanish": "Reciente graduado de la Universidad de Wittneighburgo, donde rápidamente se hizo amigo de un príncipe EXTREMADAMENTE emo.",
+            "brazilian portuguese": "Recém-formado na Universidade de Wittneighburg, onde fez amizade rapidamente com um príncipe EXTREMAMENTE emo.",
+            "italian": "Si è laureato da poco all'Università di Wittneighburg, dove ha stretto amicizia con un principe MOLTO emo.",
+            "german": "Frischgebackener Absolvent der Universität von Wittneighburg, wo er schnell Freundschaft mit einem EXTREMEN Emo-Prinzen schloss."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Montague_Cheese_Sandwich.png",
+            "main": "game/pony/main/Pony_Montague_Cheese_Sandwich.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "ProfileAvatar_348_Montague_Cheese_Sandwich",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Montague_Cheese_Sandwich",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Montague_Cheese_Sandwich"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Montague_Cheese_Sandwich_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Montague_Cheese_Sandwich_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Montague_Cheese_Sandwich"
+              }
+            }
+          },
+          "id": "Pony_Montague_Cheese_Sandwich",
+          "category": "pony"
+        },
+        "Pony_Capulet_Pinkie_Pie": {
+          "locked": false,
+          "index": 2230,
+          "note": {},
+          "name": {
+            "thai": "พิงกี้พายคาปูเล็ต",
+            "korean": "Capulet Pinkie Pie",
+            "russian": "Пинки Пай Капулетти",
+            "english": "Capulet Pinkie Pie",
+            "chinese": "卡普莱特碧琪",
+            "french": "Capulet Pinkie Pie",
+            "arabic": "بينكي باي كابوليت",
+            "turkish": "Capulet Pinkie Pie",
+            "japanese": "キャピュレット・ピンキーパイ",
+            "spanish": "Capulet Pinkie Pie",
+            "brazilian portuguese": "Capulet Pinkie Pie",
+            "italian": "Capulet Pinkie Pie",
+            "german": "Capulet Pinkie Pie"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "เดี๋ยวนะ แสงอะไรส่องผ่านหน้าต่างมานั่น ก็แสงเจิดจ้าของโพนี่ตัวนี้ไงล่ะ!",
+            "korean": "하지만 부드럽게, 저 창문을 통해 비치는 빛은 무엇일까요? 바로 이 포니에요!",
+            "russian": "Но тише! Что за свет блеснул в окне? Это та самая пони, конечно!",
+            "english": "But soft, what light through yonder window breaks? It's this pony, specifically!",
+            "chinese": "且慢！那边窗中透出的是什么光？正是这匹小马，没错！",
+            "french": "Mais doucement, quelle lumière perce à travers cette fenêtre là-bas ? C'est cette ponette, précisément !",
+            "arabic": "لكن مهلاً، ما الضوء الذي يخترق النافذة هناك؟ إنها هذه المهرة، بالتحديد!",
+            "turkish": "Şu pencereden giren yumuşacık ışık hüzmesi de ne? Ah, bu pony imiş!",
+            "japanese": "あのまどからさしこむ光は？それはまさしくピンキーパイ！",
+            "spanish": "¡Pero calla! ¿Qué luz brota de aquella ventana? ¡Es esta poni, específicamente!",
+            "brazilian portuguese": "Calma. Que luz é essa que surge pela janela? É esta pônei, especificamente!",
+            "italian": "Ma silenzio, quale luce filtra da quella finestra? È questo pony, nello specifico!",
+            "german": "Aber leise, welches Licht bricht durch jenes Fenster? Es ist dieses Pony, ganz genau!"
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Capulet_Pinkie_Pie.png",
+            "main": "game/pony/main/Pony_Capulet_Pinkie_Pie.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 900
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Capulet_Pinkie_Pie",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Pinkie_Pie"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Pinkie_Pie_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Pinkie_Pie_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Pinkie_Pie"
+              }
+            }
+          },
+          "id": "Pony_Capulet_Pinkie_Pie",
+          "category": "pony"
+        },
+        "Pony_Poronan_Shining_Armor": {
+          "locked": false,
+          "index": 2231,
+          "note": {},
+          "name": {
+            "thai": "ไชนิ่งอาร์เมอร์โพโรน่า",
+            "korean": "Poronan Shining Armor",
+            "russian": "Шайнинг Армор из Пороны",
+            "english": "Poronan Shining Armor",
+            "chinese": "波萝娜闪耀盔甲",
+            "french": "Poronan Shining Armor",
+            "arabic": "شاينينغ آرمور من بورونا",
+            "turkish": "Poronan Shining Armor",
+            "japanese": "ポローナのシャイニングアーマー",
+            "spanish": "Poronan Shining Armor",
+            "brazilian portuguese": "Poronan Shining Armor",
+            "italian": "Poronan Shining Armor",
+            "german": "Poronan Shining Armor"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "...และเจ้าหญิงเฟลอร์รี่ฮาร์ทโพโรน่า ต้องขอบคุณเทคโนโลยีการอุ้มลูกม้าจากยุคเรอเนห์ซ็องซ์",
+            "korean": "... 그리고 Poronan Princess Flurry Heart, 르네상스 시대의 아기 운반 기술 덕분이에요.",
+            "russian": "... И Принцесса Фларри Харт из Пороны, благодаря технологии переноса жеребят в эпоху Возрождения.",
+            "english": "... And Poronan Princess Flurry Heart, courtesy of Reneighssance-era foal-carrying technology.",
+            "chinese": "……以及波萝娜公主风雪之心，承蒙文艺复兴时期小马运送技术之便。",
+            "french": "... Et la princesse Poronan Flurry Heart, grâce à la technologie de portage de poulain de l'époque Rhénissance.",
+            "arabic": "... والأميرة فلوري هارت من بورونا، بفضل تكنولوجيا نقل المهرات من عصر النهضة.",
+            "turkish": "... Ve Poronan Princess Flurry Heart, Reneighssance dönemi yavru taşıma teknolojisinin bir hediyesi.",
+            "japanese": "…ポローナのプリンセスフラリーハートをルネッサンス時代のむかしながらのほうほうで運んでいるよ。",
+            "spanish": "... Y Poronan Princess Flurry Heart, cortesía de la tecnología de transporte de potros de la era del Ponicimiento.",
+            "brazilian portuguese": "...E Poronan Princess Flurry Heart, cortesia da tecnologia de transporte de potros da era Reneighssance.",
+            "italian": "...e Poronan Princess Flurry Heart, grazie alla tecnologia di trasporto dei puledri dell'era rinascimentale.",
+            "german": "... Und Poronan Prinzessin Flurry Heart, dank der Fohlen-Tragetechnologie aus der Reneighssance-Ära."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Poronan_Shining_Armor.png",
+            "main": "game/pony/main/Pony_Poronan_Shining_Armor.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Poronan_Shining_Armor",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Poronan_Shining_Armor"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Poronan_Shining_Armor_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Poronan_Shining_Armor_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Poronan_Shining_Armor"
+              }
+            }
+          },
+          "id": "Pony_Poronan_Shining_Armor",
+          "category": "pony"
+        },
+        "Pony_Capulet_Rainbow_Dash": {
+          "locked": false,
+          "index": 2232,
+          "note": {},
+          "name": {
+            "thai": "เรนโบว์แดชคาปูเล็ต",
+            "korean": "Capulet Rainbow Dash",
+            "russian": "Радуга Дэш Капулетти",
+            "english": "Capulet Rainbow Dash",
+            "chinese": "卡普莱特云宝",
+            "french": "Capulet Rainbow Dash",
+            "arabic": "راينبو داش كابوليت",
+            "turkish": "Capulet Rainbow Dash",
+            "japanese": "キャピュレット・レインボーダッシュ",
+            "spanish": "Capulet Rainbow Dash",
+            "brazilian portuguese": "Capulet Rainbow Dash",
+            "italian": "Capulet Rainbow Dash",
+            "german": "Capulet Rainbow Dash"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "พร้อมท้าดวลปาร์ตี้กับคุณถ้าคุณทำให้เธอหรือตระกูลของเธอไม่พอใจ",
+            "korean": "자신이나 가족을 건드리면 파티 대결을 도전할 거예요.",
+            "russian": "Не раздумывая бросит вам вызов, если вам не посчастливится обидеть ее или ее семью.",
+            "english": "Will challenge you to a party duel if you ever cross her or her family.",
+            "chinese": "如果你冒犯了她或她的家族，她会向你发起派对决斗。",
+            "french": "Elle te défiera à un duel de fête si tu l'irrites, elle ou sa famille.",
+            "arabic": "ستتحداك في مبارزة حفلات إذا تجاوزت الحديد التي وضعتها هي أو وضعتها عائلتها.",
+            "turkish": "Eğer ona veya ailesine ters düşersen, seni bir parti düellosuna davet eder.",
+            "japanese": "かのじょやその家族をうらぎると、パーティーデュエルでたたかうはめになるかも！",
+            "spanish": "Te desafiará a un duelo de fiesta si alguna vez la haces enfadar a ella o a su familia.",
+            "brazilian portuguese": "Vai te desafiar para um duelo de festa se você cruzar o caminho dela ou da família dela.",
+            "italian": "Ti sfiderà a un duello di organizzatori di feste, se ti metti contro lei o la sua famiglia.",
+            "german": "Wird dich zu einem Party-Duell herausfordern, wenn du ihr oder ihrer Familie jemals in die Quere kommst."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Capulet_Rainbow_Dash.png",
+            "main": "game/pony/main/Pony_Capulet_Rainbow_Dash.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 900
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Capulet_Rainbow_Dash",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Rainbow_Dash"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Rainbow_Dash_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Rainbow_Dash_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Rainbow_Dash"
+              }
+            }
+          },
+          "id": "Pony_Capulet_Rainbow_Dash",
+          "category": "pony"
+        },
+        "Pony_Capulet_Rarity": {
+          "locked": false,
+          "index": 2233,
+          "note": {},
+          "name": {
+            "thai": "แรริตี้คาปูเล็ต",
+            "korean": "Capulet Rarity",
+            "russian": "Рарити Капулетти",
+            "english": "Capulet Rarity",
+            "chinese": "卡普莱特珍奇",
+            "french": "Capulet Rarity",
+            "arabic": "راريتي كابوليت",
+            "turkish": "Capulet Rarity",
+            "japanese": "キャピュレット・ラリティ",
+            "spanish": "Capulet Rarity",
+            "brazilian portuguese": "Capulet Rarity",
+            "italian": "Capulet Rarity",
+            "german": "Capulet Rarity"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "สงบและเยือกเย็นเสมอ แม้ในยามที่ต้องเผชิญหน้ากับพวกมอนทากิวนิสัยเสีย",
+            "korean": "항상 침착하고 차분하게 행동해요, 그 나쁜 Montagues를 마주할 때도요.",
+            "russian": "Всегда остается спокойной и собранной, даже когда сталкивается с этими негодяями Монтекки.",
+            "english": "Always stays calm and composed, even when faced with those no-good Montagues.",
+            "chinese": "即使面对那些讨厌的蒙太古家族，她也总是保持冷静和沉着。",
+            "french": "Elle reste toujours calme et composée, même face à ces Montaigu de malheur.",
+            "arabic": "تظل دومًا هادئة ومتماسكة، حتى عندما تواجه أولئك المشاغبين من شخصيات مونتاغو.",
+            "turkish": "Sakinliğini ve soğukkanlılığını daima korur, o işe yaramaz Montague’lerle karşılaştığında bile.",
+            "japanese": "いつだってクールで落ち着いている。たとえイジワルなモンタギュー家のポニーたちの前でもね。",
+            "spanish": "Siempre se mantiene calmada y serena, incluso cuando se enfrenta a esos malvados Montesco.",
+            "brazilian portuguese": "Mantém sempre a calma e a compostura, mesmo quando se depara com aqueles Montagues inúteis.",
+            "italian": "Rimane sempre calma e composta, anche quando si trova di fronte a quei Montecchi disonesti.",
+            "german": "Bleibt immer ruhig und gelassen, selbst wenn er diesen nichtsnutzigen Montagues gegenübersteht."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Capulet_Rarity.png",
+            "main": "game/pony/main/Pony_Capulet_Rarity.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 900
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Capulet_Rarity",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Rarity"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Rarity_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Rarity_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Rarity"
+              }
+            }
+          },
+          "id": "Pony_Capulet_Rarity",
+          "category": "pony"
+        },
+        "Pony_Capulet_Applejack": {
+          "locked": false,
+          "index": 2234,
+          "note": {},
+          "name": {
+            "thai": "แอปเปิ้ลแจ๊คคาปูเล็ต",
+            "korean": "Capulet Applejack",
+            "russian": "Эпплджек Капулетти",
+            "english": "Capulet Applejack",
+            "chinese": "卡普莱特苹果嘉儿",
+            "french": "Capulet Applejack",
+            "arabic": "أبل جاك كابوليت",
+            "turkish": "Capulet Applejack",
+            "japanese": "キャピュレット・アップルジャック",
+            "spanish": "Capulet Applejack",
+            "brazilian portuguese": "Capulet Applejack",
+            "italian": "Capulet Applejack",
+            "german": "Capulet Applejack"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "เธอไม่ชอบแต่งตัวหรูหรา แต่ก็จะพยายามแบบสุดฝีกีบเพื่อเกียรติของตระกูล",
+            "korean": "화려한 옷을 싫어하지만, 가문의 명예를 위해 최선을 다할 거예요.",
+            "russian": "Не любит наряжаться, но сделает все возможное ради достоинства своего дома.",
+            "english": "Hates dressin' fancy but will put her best hoof forward for the dignity of her household.",
+            "chinese": "她不喜欢穿得花里胡哨，但为了家庭的尊严，她会尽全力表现得最好。",
+            "french": "Déteste s'habiller chic, mais elle fera de son mieux pour la dignité de sa maison.",
+            "arabic": "تكره ارتداء الملابس الفاخرة لكنها ستبذل قصارى جهدها من أجل كرامة عائلتها.",
+            "turkish": "Şık giyinmekten hoşlanmaz ama ailesinin onuru için toynağından gelenin en iyisini yapar.",
+            "japanese": "着かざることは苦手だけど、一族のためならベストをつくすよ。",
+            "spanish": "Odia vestirse elegante, pero hará todo lo que esté en su pezuña por la dignidad de su hogar.",
+            "brazilian portuguese": "Detesta se vestir de forma elegante, mas dará o seu melhor pelo orgulho da família.",
+            "italian": "Non ama vestirsi elegante, ma darà il meglio di sé per la dignità della sua famiglia.",
+            "german": "Sie hasst es, sich schick zu kleiden, aber für die Würde ihres Haushalts gibt sie ihr Bestes."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Capulet_Applejack.png",
+            "main": "game/pony/main/Pony_Capulet_Applejack.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 900
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Capulet_Applejack",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Applejack"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Applejack_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Capulet_Applejack_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Capulet_Applejack"
+              }
+            }
+          },
+          "id": "Pony_Capulet_Applejack",
+          "category": "pony"
+        },
+        "Pony_Montague_Trixie": {
+          "locked": false,
+          "index": 2235,
+          "note": {},
+          "name": {
+            "thai": "ทริกซี่มอนทากิว",
+            "korean": "Montague Trixie",
+            "russian": "Трикси Монтекки",
+            "english": "Montague Trixie",
+            "chinese": "卡普莱特崔克茜",
+            "french": "Montague Trixie",
+            "arabic": "تريكسي مونتاغو",
+            "turkish": "Montague Trixie",
+            "japanese": "モンタギュー・トリクシー",
+            "spanish": "Montague Trixie",
+            "brazilian portuguese": "Montague Trixie",
+            "italian": "Montague Trixie",
+            "german": "Montague Trixie"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "ไม่มีคาปูเล็ตตัวไหนจะบดบังรัศมีของทริกซี่มอนทากิวผู้ยิ่งใหญ่และทรงพลังได้!",
+            "korean": "어떤 Capulet도 위대한 Montague Trixie를 능가할 수 없어요!",
+            "russian": "Ни один Капулетти не сможет затмить Великую и Могущественную Трикси из семьи Монтекки!",
+            "english": "No Capulet can ever outshine the Great and Powerful Montague Trixie!",
+            "chinese": "卡普莱特家族的任何小马都无法超越伟大而有力的卡普莱特崔克茜！",
+            "french": "Aucun Capulet ne pourra jamais surpasser la grande et puissante Montague Trixie !",
+            "arabic": "لا يمكن لأي كابوليت أن يتفوق على العظيمة والمسيطرة تريكسي مونتاغو!",
+            "turkish": "Hiçbir Capulet, Muhteşem ve Güçlü Montague Trixie'yi gölgede bırakamaz!",
+            "japanese": "グレート・パワフル・モンタギュー・トリクシーには、キャピュレット家だってかなわない！",
+            "spanish": "¡Ningún Capuleto podrá jamás superar a la gran y poderosa Montague Trixie!",
+            "brazilian portuguese": "Nenhum Capulet pode ofuscar a Grande e Poderosa Montague Trixie!",
+            "italian": "Nessun Capuleti potrà mai eclissare la grande e potente Trixie!",
+            "german": "Kein Capulet kann jemals die Große und Mächtige Montague Trixie überstrahlen!"
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Montague_Trixie.png",
+            "main": "game/pony/main/Pony_Montague_Trixie.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Poronan_Villa",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Montague_Trixie",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Montague_Trixie"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Montague_Trixie_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Montague_Trixie_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Montague_Trixie"
+              }
+            }
+          },
+          "id": "Pony_Montague_Trixie",
+          "category": "pony"
+        },
+        "Pony_Lunar_Princess_Celestia": {
+          "locked": false,
+          "index": 2236,
+          "note": {},
+          "name": {
+            "thai": "เจ้าหญิงเซเลสเทียจันทรา",
+            "korean": "Lunar Princess Celestia",
+            "russian": "Лунная Принцесса Селестия",
+            "english": "Lunar Princess Celestia",
+            "chinese": "春节宇宙公主",
+            "french": "Lunar Princess Celestia",
+            "arabic": "الأميرة سيليستيا القمرية",
+            "turkish": "Lunar Princess Celestia",
+            "japanese": "ルナー・プリンセスセレスティア",
+            "spanish": "Lunar Princess Celestia",
+            "brazilian portuguese": "Lunar Princess Celestia",
+            "italian": "Lunar Princess Celestia",
+            "german": "Lunar Princess Celestia"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "สัญลักษณ์ของดวงอาทิตย์ที่ฉลองให้ดวงจันทร์!",
+            "korean": "달을 축하하는 태양의 상징입니다!",
+            "russian": "Символ солнца, воспевающий луну!",
+            "english": "Symbol of the sun, celebrating the moon!",
+            "chinese": "象征着太阳，庆祝着月亮！",
+            "french": "Symbole du soleil, célébrant la lune !",
+            "arabic": "ترمز إلى الشمس، وتحتفل بالقمر!",
+            "turkish": "Güneşin sembolü, ayı kutluyor!",
+            "japanese": "かのじょは太陽のしょうちょうだけど、月をたたえるんだ！",
+            "spanish": "¡Símbolo del sol, celebrando la luna!",
+            "brazilian portuguese": "Símbolo do sol, celebrando a lua!",
+            "italian": "Simbolo del sole, celebra la luna!",
+            "german": "Symbol der Sonne, feiert den Mond!"
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Princess_Celestia.png",
+            "main": "game/pony/main/Pony_Lunar_Princess_Celestia.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": false,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 9
+          },
+          "arrival_xp": 50,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 1000
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Princess_Celestia",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Princess_Celestia"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Princess_Celestia_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Princess_Celestia_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Princess_Celestia"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Princess_Celestia",
+          "category": "pony"
+        },
+        "Pony_Lunar_Applejack": {
+          "locked": false,
+          "index": 2237,
+          "note": {},
+          "name": {
+            "thai": "แอปเปิ้ลแจ๊คจันทรา",
+            "korean": "Lunar Applejack",
+            "russian": "Лунная Эппджек",
+            "english": "Lunar Applejack",
+            "chinese": "明月苹果嘉儿",
+            "french": "Lunar Applejack",
+            "arabic": "أبل جاك القمرية",
+            "turkish": "Lunar Applejack",
+            "japanese": "ルナー・アップルジャック",
+            "spanish": "Lunar Applejack",
+            "brazilian portuguese": "Lunar Applejack",
+            "italian": "Lunar Applejack",
+            "german": "Lunar Applejack"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "แทบไม่อยากเชื่อสายตาเลยว่าเธอดูน่าทึ่งได้ขนาดนี้ ทั้ง ๆ ที่ปกติเธอไม่ชอบสไตล์การแต่งตัวหรูหราสักนิด",
+            "korean": "자신이 얼마나 멋져 보이는지 믿기 힘들어요. 화려한 옷은 평소 스타일이 아니지만요.",
+            "russian": "Едва может поверить, насколько потрясающе она выглядит - хотя наряжаться не в ее обычном стиле.",
+            "english": "Can hardly believe how amazing she looks -- though dressin' fancy isn't her usual style.",
+            "chinese": "她几乎无法相信自己看起来如此惊艳，尽管穿得花里胡哨并不是她的常态。",
+            "french": "Peut à peine croire à quel point elle est incroyable, bien que s'habiller chic ne soit pas son style habituel.",
+            "arabic": "لا أستطيع أن أصدق كم تبدو رائعة -- رغم أن ارتداء الملابس الفاخرة ليس من عادتها.",
+            "turkish": "Şık giyinmek onun pek tarzı değil, ama ne muhteşem görünüyor öyle!",
+            "japanese": "ドレスアップするのはガラじゃないと言うけど、びっくりするほどステキだよね！",
+            "spanish": "Apenas puede creer lo increíble que está, aunque vestirse elegante no es su estilo habitual.",
+            "brazilian portuguese": "Mal pode acreditar em como está incrível, embora se vestir bem não seja seu estilo usual.",
+            "italian": "Non riesce a credere a quanto sia stupenda, anche se vestirsi elegante non è il suo stile.",
+            "german": "Kann kaum glauben, wie fantastisch sie aussieht … obwohl schickes Anziehen nicht ihr üblicher Stil ist."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Applejack.png",
+            "main": "game/pony/main/Pony_Lunar_Applejack.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 850
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Applejack",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Applejack"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Applejack_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Applejack_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Applejack"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Applejack",
+          "category": "pony"
+        },
+        "Pony_Lunar_Pinkie_Pie": {
+          "locked": false,
+          "index": 2238,
+          "note": {},
+          "name": {
+            "thai": "พิงกี้พายจันทรา",
+            "korean": "Lunar Pinkie Pie",
+            "russian": "Лунная Пинки Пай",
+            "english": "Lunar Pinkie Pie",
+            "chinese": "春节碧琪",
+            "french": "Lunar Pinkie Pie",
+            "arabic": "بينكي باي القمرية",
+            "turkish": "Lunar Pinkie Pie",
+            "japanese": "ルナー・ピンキーパイ",
+            "spanish": "Lunar Pinkie Pie",
+            "brazilian portuguese": "Lunar Pinkie Pie",
+            "italian": "Lunar Pinkie Pie",
+            "german": "Lunar Pinkie Pie"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "นี่เป็นครั้งแรกที่เธอจัดปาร์ตี้วันตรุษจีน และเธอชอบสุด ๆ เลย",
+            "korean": "처음으로 설날 파티를 준비하는데, 너무 좋아해요.",
+            "russian": "Впервые организует вечеринку по случаю Лунного Нового года, и ей это НРАВИТСЯ.",
+            "english": "First time organizing a Lunar New Year party, and she LOVES IT.",
+            "chinese": "第一次组织农历新年派对，她非常喜欢。",
+            "french": "C'est la première fois qu'elle organise une fête du Nouvel An lunaire, et elle ADORE ÇA.",
+            "arabic": "تنظم حفلة رأس السنة القمرية لأول مرة، وتستمتع بالأمر تمامًا.",
+            "turkish": "İlk kez bir Ay Yeni Yılı partisi düzenliyor ve buna BAYILIYOR.",
+            "japanese": "ルナーニューイヤーのパーティーをはじめてかいさいするんだって。とってもはりきってるんだ！",
+            "spanish": "Es su primera vez organizando una fiesta de Año Nuevo lunar y le ENCANTA.",
+            "brazilian portuguese": "Primeira vez organizando uma festa de Ano Novo Lunar. E ela ADORA.",
+            "italian": "È la prima volta che organizza una festa per il Capodanno lunare e le piace molto.",
+            "german": "Zum ersten Mal organisiert sie eine Feier zum Mondneujahr, und sie LIEBT ES."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Pinkie_Pie.png",
+            "main": "game/pony/main/Pony_Lunar_Pinkie_Pie.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 850
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Pinkie_Pie",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Pinkie_Pie"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Pinkie_Pie_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Pinkie_Pie_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Pinkie_Pie"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Pinkie_Pie",
+          "category": "pony"
+        },
+        "Pony_Lunar_Rainbow_Dash": {
+          "locked": false,
+          "index": 2239,
+          "note": {},
+          "name": {
+            "thai": "เรนโบว์แดชจันทรา",
+            "korean": "Lunar Rainbow Dash",
+            "russian": "Лунная Радуга Дэш",
+            "english": "Lunar Rainbow Dash",
+            "chinese": "春节云宝",
+            "french": "Lunar Rainbow Dash",
+            "arabic": "رينبو داش القمرية",
+            "turkish": "Lunar Rainbow Dash",
+            "japanese": "ルナー・レインボーダッシュ",
+            "spanish": "Lunar Rainbow Dash",
+            "brazilian portuguese": "Lunar Rainbow Dash",
+            "italian": "Lunar Rainbow Dash",
+            "german": "Lunar Rainbow Dash"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "เธออาจจะรู้เรื่องวันตรุษจีนมากกว่าคุณซะอีกนะ",
+            "korean": "아마 당신보다 설날에 대해 더 많이 알고 있을 거예요.",
+            "russian": "Вероятно, знает о Лунном Новом годе больше, чем вы.",
+            "english": "Probably knows more about Lunar New Year than you.",
+            "chinese": "她可能比你更了解农历新年。",
+            "french": "En sait probablement plus sur le Nouvel An lunaire que toi.",
+            "arabic": "هي على الأرجح تعرف عن السنة القمرية الجديدة أكثر منك.",
+            "turkish": "Muhtemelen Ay Yeni Yılı hakkında senden daha çok şey biliyor.",
+            "japanese": "だれよりもルナーニューイヤーについてくわしいかも。",
+            "spanish": "Probablemente sabe más sobre el Año Nuevo lunar que tú.",
+            "brazilian portuguese": "Provavelmente sabe mais sobre o Ano Novo Lunar que você.",
+            "italian": "Probabilmente sa più di te sul Capodanno lunare.",
+            "german": "Weiß wahrscheinlich mehr über das Mondneujahr als du."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Rainbow_Dash.png",
+            "main": "game/pony/main/Pony_Lunar_Rainbow_Dash.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 850
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Rainbow_Dash",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Rainbow_Dash"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Rainbow_Dash_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Rainbow_Dash_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Rainbow_Dash"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Rainbow_Dash",
+          "category": "pony"
+        },
+        "Pony_Lunar_Rarity": {
+          "locked": false,
+          "index": 2240,
+          "note": {},
+          "name": {
+            "thai": "แรริตี้จันทรา",
+            "korean": "Lunar Rarity",
+            "russian": "Лунная Рарити",
+            "english": "Lunar Rarity",
+            "chinese": "春节珍奇",
+            "french": "Lunar Rarity",
+            "arabic": "راريتي القمرية",
+            "turkish": "Lunar Rarity",
+            "japanese": "ルナー・ラリティ",
+            "spanish": "Lunar Rarity",
+            "brazilian portuguese": "Lunar Rarity",
+            "italian": "Lunar Rarity",
+            "german": "Lunar Rarity"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "เธอตัดชุดของตัวเอง... รวมถึงชุดของทุกตัวด้วย (แหงละ)",
+            "korean": "자신의 드레스뿐만 아니라 다른 모든 드레스도 만들었어요. (물론이죠)",
+            "russian": "Сшила свое платье... и все остальные (конечно же).",
+            "english": "Made her dress... along with everyone else's (of course).",
+            "chinese": "她制作了自己的裙子……当然了，还有其他每只小马的。",
+            "french": "A fait sa robe... ainsi que celles de tout le monde (bien sûr).",
+            "arabic": "صنعت فستانها بنفسها... بالإضافة إلى فساتين الجميع (بالطبع).",
+            "turkish": "Elbisesini kendisi yaptı... Tabii ki diğer herkesinkini de.",
+            "japanese": "自分のためにドレスをオーダーメイドしたよ。もちろん、他のみんなの分もね。",
+            "spanish": "Hizo su vestido... y el de todos los demás (por supuesto).",
+            "brazilian portuguese": "Fez o vestido dela... junto com todos os outros (é claro).",
+            "italian": "Ha realizzato lei il suo vestito... insieme a tutti gli altri (ovviamente).",
+            "german": "Hat ihr Kleid geschneidert … und (natürlich) auch die der anderen."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Rarity.png",
+            "main": "game/pony/main/Pony_Lunar_Rarity.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 850
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Rarity",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Rarity"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Rarity_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Rarity_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Rarity"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Rarity",
+          "category": "pony"
+        },
+        "Pony_Lunar_Twilight_Sparkle": {
+          "locked": false,
+          "index": 2241,
+          "note": {},
+          "name": {
+            "thai": "ทไวไลท์สปาร์เคิลจันทรา",
+            "korean": "Lunar Twilight Sparkle",
+            "russian": "Лунная Сумеречная Искорка",
+            "english": "Lunar Twilight Sparkle",
+            "chinese": "春节紫悦",
+            "french": "Lunar Twilight Sparkle",
+            "arabic": "توايلايت سباركل القمرية",
+            "turkish": "Lunar Twilight Sparkle",
+            "japanese": "ルナー・トワイライトスパークル",
+            "spanish": "Lunar Twilight Sparkle",
+            "brazilian portuguese": "Lunar Twilight Sparkle",
+            "italian": "Lunar Twilight Sparkle",
+            "german": "Lunar Twilight Sparkle"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "บุคลิกท่าทางเหมาะเป็นราชินีแห่งฟากฟ้ามากเลย!",
+            "korean": "천상의 여왕에 걸맞은 기운을 가지고 있어요!",
+            "russian": "Обладает величием, достойным царицы небес!",
+            "english": "Has an air worthy of a celestial queen!",
+            "chinese": "她有一种天后的气质！",
+            "french": "A une allure digne d'une reine céleste !",
+            "arabic": "لديها هالة تليق بملكة سماوية!",
+            "turkish": "Göklerin kraliçesine yaraşan bir havası var!",
+            "japanese": "天空のクイーンにふさわしいふうかくを持っているね！",
+            "spanish": "¡Tiene un aire digno de una reina celestial!",
+            "brazilian portuguese": "Tem um ar digno de uma rainha celestial!",
+            "italian": "Ha un'aria degna di una regina celestiale!",
+            "german": "Hat eine Ausstrahlung, die einer himmlischen Königin würdig ist!"
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Twilight_Sparkle.png",
+            "main": "game/pony/main/Pony_Lunar_Twilight_Sparkle.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 850
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Twilight_Sparkle",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Twilight_Sparkle"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Twilight_Sparkle_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Twilight_Sparkle_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Twilight_Sparkle"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Twilight_Sparkle",
+          "category": "pony"
+        },
+        "Pony_Lunar_Fluttershy": {
+          "locked": false,
+          "index": 2242,
+          "note": {},
+          "name": {
+            "thai": "ฟลัตเตอร์ชายจันทรา",
+            "korean": "Lunar Fluttershy",
+            "russian": "Лунная Флаттершай",
+            "english": "Lunar Fluttershy",
+            "chinese": "春节柔柔",
+            "french": "Lunar Fluttershy",
+            "arabic": "فلاترشاي القمرية",
+            "turkish": "Lunar Fluttershy",
+            "japanese": "ルナー・フラッターシャイ",
+            "spanish": "Lunar Fluttershy",
+            "brazilian portuguese": "Lunar Fluttershy",
+            "italian": "Lunar Fluttershy",
+            "german": "Lunar Fluttershy"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "ลุคนี้เธอเสียงดังและดูห้าวหาญขึ้นนิดหน่อย",
+            "korean": "이 옷을 입고 목소리가 조금 더 커지고 자신감이 생겼어요.",
+            "russian": "Говорит немного громче и чувствует себя немного смелее в этом образе.",
+            "english": "Speaks a little bit louder and feels a little bit bolder with this look.",
+            "chinese": "这种造型让她说话声音更大，感觉更有自信。",
+            "french": "Parle un peu plus fort et se sent un peu plus audacieuse avec ce look.",
+            "arabic": "تتحدث بنبرة أعلى قليلاً ويمنحها هذا المظهر جرأة أكبر.",
+            "turkish": "Bu görünüm, biraz daha yüksek sesle konuşmasını ve cesur hissetmesini sağlıyor.",
+            "japanese": "このドレスを着ていると、いつもよりもちょっとだけ声が大きくなって、だいたんになるみたい。",
+            "spanish": "Habla un poco más fuerte y se siente un poco más audaz con este conjunto.",
+            "brazilian portuguese": "Fala um pouco alto demais e se sente um pouco mais confiante com este visual.",
+            "italian": "Parla un po' più forte e si sente un po' più audace con questo look.",
+            "german": "Spricht ein bisschen lauter und fühlt sich mit diesem Look ein bisschen mutiger."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Fluttershy.png",
+            "main": "game/pony/main/Pony_Lunar_Fluttershy.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 850
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Fluttershy",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Fluttershy"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Fluttershy_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Fluttershy_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Fluttershy"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Fluttershy",
+          "category": "pony"
+        },
+        "Pony_Lunar_Princess_Cadance": {
+          "locked": false,
+          "index": 2243,
+          "note": {},
+          "name": {
+            "thai": "เจ้าหญิงคาแดนซ์จันทรา",
+            "korean": "Lunar Princess Cadance",
+            "russian": "Лунная Принцесса Каденс",
+            "english": "Lunar Princess Cadance",
+            "chinese": "春节音韵公主",
+            "french": "Lunar Princess Cadance",
+            "arabic": "الأميرة كادنس القمرية",
+            "turkish": "Lunar Princess Cadance",
+            "japanese": "ルナー・プリンセスケイデンス",
+            "spanish": "Lunar Princess Cadance",
+            "brazilian portuguese": "Lunar Princess Cadance",
+            "italian": "Lunar Princess Cadance",
+            "german": "Lunar Princess Cadance"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "อยากให้เฟลอร์รี่ฮาร์ทกับไชนิ่งอาร์เมอร์ได้มาฉลองด้วยกันกับเธอ",
+            "korean": "Flurry Heart와 Shining Armor가 그녀와 함께 축하하고 있었으면 좋겠어요.",
+            "russian": "Желает, чтобы с ней праздновали Фларри Харт и Шайнинг Армор.",
+            "english": "Wishes Flurry Heart and Shining Armor were celebrating with her.",
+            "chinese": "她希望风雪之心和闪耀盔甲能和她一起庆祝。",
+            "french": "Aimerait que Flurry Heart et Shining Armor fassent la fête avec elle.",
+            "arabic": "تتمنى لو كانت فلوري هارت وشاينينغ آرمور تحتفلان معها.",
+            "turkish": "Flurry Heart ve Shining Armor'ın da kutlamalarda yanında olmasını isterdi.",
+            "japanese": "フラリーハートやシャイニングアーマーといっしょにおいわいしたいんだって。",
+            "spanish": "Desea que Flurry Heart y Shining Armor estuvieran celebrando con ella.",
+            "brazilian portuguese": "Queria que Flurry Heart e Shining Armor estivessem comemorando com ela.",
+            "italian": "Flurry Heart e Shining Armor festeggiavano con lei.",
+            "german": "Wünscht sich, dass Flurry Heart und Shining Armor mit ihr feiern würden."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Princess_Cadance.png",
+            "main": "game/pony/main/Pony_Lunar_Princess_Cadance.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": false,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 9
+          },
+          "arrival_xp": 50,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 1000
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Princess_Cadance",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Princess_Cadance"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Princess_Cadance_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Princess_Cadance_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Princess_Cadance"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Princess_Cadance",
+          "category": "pony"
+        },
+        "Pony_Lunar_Princess_Luna": {
+          "locked": false,
+          "index": 2244,
+          "note": {},
+          "name": {
+            "thai": "เจ้าหญิงลูน่าจันทรา",
+            "korean": "Lunar Princess Luna",
+            "russian": "Лунная Принцесса Луна",
+            "english": "Lunar Princess Luna",
+            "chinese": "春节月亮公主",
+            "french": "Lunar Princess Luna",
+            "arabic": "الأميرة لونا القمرية",
+            "turkish": "Lunar Princess Luna",
+            "japanese": "ルナー・プリンセスルナ",
+            "spanish": "Lunar Princess Luna",
+            "brazilian portuguese": "Lunar Princess Luna",
+            "italian": "Lunar Princess Luna",
+            "german": "Lunar Princess Luna"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "รู้สึกอยากใช้คำฟุ่มเฟือยมากเป็นพิเศษในช่วงปีใหม่นี้",
+            "korean": "이번 새해에는 특히 반복적인 느낌이 들어요.",
+            "russian": "В этот Новый год вызывает ощущение некоторой тавтологии.",
+            "english": "Feeling especially tautological this New Year.",
+            "chinese": "在这个新年里，她总有重复过去的感觉。",
+            "french": "Se sent particulièrement tautologique en cette nouvelle année.",
+            "arabic": "تشعر بأنها متكررة بشكل خاص هذا العام الجديد.",
+            "turkish": "Yeni Yılda gereksiz tekrarlara daha da düşeceğini hissediyor.",
+            "japanese": "ルナーニューイヤーに対して、なんとなく親近感をおぼえているらしい。",
+            "spanish": "Se siente especialmente tautológica este Año Nuevo.",
+            "brazilian portuguese": "Sentindo-se especialmente tautológica neste Ano Novo.",
+            "italian": "Si sente particolarmente tautologica questo capodanno.",
+            "german": "Fühlt sich dieses Neujahr besonders tautologisch."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Princess_Luna.png",
+            "main": "game/pony/main/Pony_Lunar_Princess_Luna.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "ProfileAvatar_362_Lunar_Princess_Luna",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": false,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 9
+          },
+          "arrival_xp": 50,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 1000
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Princess_Luna",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Princess_Luna"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Princess_Luna_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Princess_Luna_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Princess_Luna"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Princess_Luna",
+          "category": "pony"
+        },
+        "Pony_Lunar_Mistmane": {
+          "locked": false,
+          "index": 2245,
+          "note": {},
+          "name": {
+            "thai": "Lunar Young Mistmane",
+            "korean": "Lunar Young Mistmane",
+            "russian": "Lunar Young Mistmane",
+            "english": "Lunar Young Mistmane",
+            "chinese": "Lunar Young Mistmane",
+            "french": "Lunar Young Mistmane",
+            "arabic": "Lunar Young Mistmane",
+            "turkish": "Lunar Young Mistmane",
+            "japanese": "Lunar Young Mistmane",
+            "spanish": "Lunar Young Mistmane",
+            "brazilian portuguese": "Lunar Young Mistmane",
+            "italian": "Lunar Young Mistmane",
+            "german": "Lunar Young Mistmane"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "korean": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "russian": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "english": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "chinese": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "french": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "arabic": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "turkish": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "japanese": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "spanish": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "brazilian portuguese": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "italian": "In traditional garb, her legendary beauty is almost too much to handle!",
+            "german": "In traditional garb, her legendary beauty is almost too much to handle!"
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Lunar_Mistmane.png",
+            "main": "game/pony/main/Pony_Lunar_Mistmane.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Lunar_Pagoda",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": false,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 9
+          },
+          "arrival_xp": 50,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 900
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Lunar_Young_Mistmane",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Young_Mistmane"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Young_Mistmane_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Lunar_Young_Mistmane_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Lunar_Young_Mistmane"
+              }
+            }
+          },
+          "id": "Pony_Lunar_Mistmane",
+          "category": "pony"
+        },
+        "Pony_Dane_Tee_Dove": {
+          "locked": false,
+          "index": 2246,
+          "note": {},
+          "name": {
+            "thai": "Dane Tee Dove",
+            "korean": "Dane Tee Dove",
+            "russian": "Dane Tee Dove",
+            "english": "Dane Tee Dove",
+            "chinese": "Dane Tee Dove",
+            "french": "Dane Tee Dove",
+            "arabic": "Dane Tee Dove",
+            "turkish": "Dane Tee Dove",
+            "japanese": "Dane Tee Dove",
+            "spanish": "Dane Tee Dove",
+            "brazilian portuguese": "Dane Tee Dove",
+            "italian": "Dane Tee Dove",
+            "german": "Dane Tee Dove"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "korean": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "russian": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "english": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "chinese": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "french": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "arabic": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "turkish": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "japanese": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "spanish": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "brazilian portuguese": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "italian": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?",
+            "german": "A true Manehattanite who doesn't know what a \"rooster\" is. Can you imagine?"
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Dane_Tee_Dove.png",
+            "main": "game/pony/main/Pony_Dane_Tee_Dove.png"
+          },
+          "location": "CANTERLOT",
+          "house": "House_Canterlot_Manor",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 8400,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Dane_Tee_Dove",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Dane_Tee_Dove"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Dane_Tee_Dove_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Dane_Tee_Dove_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Dane_Tee_Dove"
+              }
+            }
+          },
+          "id": "Pony_Dane_Tee_Dove",
+          "category": "pony"
+        },
+        "Pony_Cozy_Drive": {
+          "locked": false,
+          "index": 2247,
+          "note": {},
+          "name": {
+            "thai": "Cozy Drive",
+            "korean": "Cozy Drive",
+            "russian": "Cozy Drive",
+            "english": "Cozy Drive",
+            "chinese": "Cozy Drive",
+            "french": "Cozy Drive",
+            "arabic": "Cozy Drive",
+            "turkish": "Cozy Drive",
+            "japanese": "Cozy Drive",
+            "spanish": "Cozy Drive",
+            "brazilian portuguese": "Cozy Drive",
+            "italian": "Cozy Drive",
+            "german": "Cozy Drive"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "korean": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "russian": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "english": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "chinese": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "french": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "arabic": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "turkish": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "japanese": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "spanish": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "brazilian portuguese": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "italian": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring.",
+            "german": "Periodically talks about how she should be the \"Empress of Friendship\" unprompted. Maybe it's faulty wiring."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Cozy_Drive.png",
+            "main": "game/pony/main/Pony_Cozy_Drive.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Robo_Home",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "ProfileAvatar_279_Celena",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Cozy_Drive",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Cozy_Drive"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Cozy_Drive_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Cozy_Drive_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Cozy_Drive"
+              }
+            }
+          },
+          "id": "Pony_Cozy_Drive",
+          "category": "pony"
+        },
+        "Pony_Sweetie_Juke": {
+          "locked": false,
+          "index": 2248,
+          "note": {},
+          "name": {
+            "thai": "Sweetie Juke",
+            "korean": "Sweetie Juke",
+            "russian": "Sweetie Juke",
+            "english": "Sweetie Juke",
+            "chinese": "Sweetie Juke",
+            "french": "Sweetie Juke",
+            "arabic": "Sweetie Juke",
+            "turkish": "Sweetie Juke",
+            "japanese": "Sweetie Juke",
+            "spanish": "Sweetie Juke",
+            "brazilian portuguese": "Sweetie Juke",
+            "italian": "Sweetie Juke",
+            "german": "Sweetie Juke"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "korean": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "russian": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "english": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "chinese": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "french": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "arabic": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "turkish": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "japanese": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "spanish": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "brazilian portuguese": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "italian": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!",
+            "german": "A walking, talking, karaoke machine. She even has hidden mics so you can sing along!"
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Sweetie_Juke.png",
+            "main": "game/pony/main/Pony_Sweetie_Juke.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Robo_Home",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "ProfileAvatar_279_Celena",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Sweetie_Juke",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Sweetie_Juke"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Sweetie_Juke_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Sweetie_Juke_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Sweetie_Juke"
+              }
+            }
+          },
+          "id": "Pony_Sweetie_Juke",
+          "category": "pony"
+        },
+        "Pony_Flurry_Hart": {
+          "locked": false,
+          "index": 2249,
+          "note": {},
+          "name": {
+            "thai": "Flurry HART",
+            "korean": "Flurry HART",
+            "russian": "Flurry HART",
+            "english": "Flurry HART",
+            "chinese": "Flurry HART",
+            "french": "Flurry HART",
+            "arabic": "Flurry HART",
+            "turkish": "Flurry HART",
+            "japanese": "Flurry HART",
+            "spanish": "Flurry HART",
+            "brazilian portuguese": "Flurry HART",
+            "italian": "Flurry HART",
+            "german": "Flurry HART"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "Has a new program that increases her magic (and cute) output by 200%!",
+            "korean": "Has a new program that increases her magic (and cute) output by 200%!",
+            "russian": "Has a new program that increases her magic (and cute) output by 200%!",
+            "english": "Has a new program that increases her magic (and cute) output by 200%!",
+            "chinese": "Has a new program that increases her magic (and cute) output by 200%!",
+            "french": "Has a new program that increases her magic (and cute) output by 200%!",
+            "arabic": "Has a new program that increases her magic (and cute) output by 200%!",
+            "turkish": "Has a new program that increases her magic (and cute) output by 200%!",
+            "japanese": "Has a new program that increases her magic (and cute) output by 200%!",
+            "spanish": "Has a new program that increases her magic (and cute) output by 200%!",
+            "brazilian portuguese": "Has a new program that increases her magic (and cute) output by 200%!",
+            "italian": "Has a new program that increases her magic (and cute) output by 200%!",
+            "german": "Has a new program that increases her magic (and cute) output by 200%!"
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Flurry_Hart.png",
+            "main": "game/pony/main/Pony_Flurry_Hart.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Robo_Home",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "ProfileAvatar_279_Celena",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": true,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Flurry_HART",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Flurry_HART"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Flurry_HART_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Flurry_HART_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Flurry_HART"
+              }
+            }
+          },
+          "id": "Pony_Flurry_Hart",
           "category": "pony"
         }
       }
@@ -279074,7 +282244,7 @@
             "korean": "리틀 야크야키스탄",
             "russian": "Маленький Якистан",
             "english": "Little Yakyakistan",
-            "chinese": "亚克斯坦",
+            "chinese": "小亚克斯坦",
             "french": "Petite Yakyakistan",
             "arabic": "ياكياكستان الصغير",
             "turkish": "Küçük Yakyakistan",
@@ -279089,7 +282259,7 @@
             "korean": "리틀 야크야키스탄",
             "russian": "Маленький Якистан",
             "english": "Little Yakyakistan",
-            "chinese": "亚克斯坦",
+            "chinese": "小亚克斯坦",
             "french": "Petite Yakyakistan",
             "arabic": "ياكياكستان الصغير",
             "turkish": "Küçük Yakyakistan",
@@ -288037,7 +291207,10 @@
             "Pony_SuperCharged_Pinkie_V3",
             "Pony_Princess_Code_Dense",
             "Pony_Princess_Celestiatron",
-            "Pony_Princess_Lun4"
+            "Pony_Princess_Lun4",
+            "Pony_Cozy_Drive",
+            "Pony_Sweetie_Juke",
+            "Pony_Flurry_Hart"
           ],
           "tags": [],
           "id": "House_Robo_Home",
@@ -290778,7 +293951,8 @@
             "Pony_Elegant_Party_Guest",
             "Pony_Hat_Loving_Party_Guest",
             "Pony_Canterlot_Beautician",
-            "Pony_Sleep_Deprived_Mare"
+            "Pony_Sleep_Deprived_Mare",
+            "Pony_Dane_Tee_Dove"
           ],
           "tags": [],
           "id": "House_Canterlot_Manor",
@@ -291561,8 +294735,8 @@
             "main": "game/house/House_Crystal_Heart_Foal_Center.png"
           },
           "location": [
-            "CANTERLOT",
-            "CRYSTAL_EMPIRE"
+            "CRYSTAL_EMPIRE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -291957,6 +295131,132 @@
           ],
           "tags": [],
           "id": "House_Castle_of_Nightmares",
+          "category": "house"
+        },
+        "House_Poronan_Villa": {
+          "locked": false,
+          "index": 437,
+          "name": {
+            "thai": "คฤหาสน์โพโรน่า",
+            "korean": "Poronan Villa",
+            "russian": "Поронская вилла",
+            "english": "Poronan Villa",
+            "chinese": "波萝娜庄园",
+            "french": "Villa poronienne",
+            "arabic": "فيلا بورونا",
+            "turkish": "Porona Villası",
+            "japanese": "ポローナのやしき",
+            "spanish": "Villa de Porona",
+            "brazilian portuguese": "Vila Poronan",
+            "italian": "Villa di Porona",
+            "german": "Poronan Villa"
+          },
+          "preferred_name": {
+            "thai": "คฤหาสน์โพโรน่า",
+            "korean": "Poronan Villa",
+            "russian": "Поронская вилла",
+            "english": "Poronan Villa",
+            "chinese": "波萝娜庄园",
+            "french": "Villa poronienne",
+            "arabic": "فيلا بورونا",
+            "turkish": "Porona Villası",
+            "japanese": "ポローナのやしき",
+            "spanish": "Villa de Porona",
+            "brazilian portuguese": "Vila Poronan",
+            "italian": "Villa di Porona",
+            "german": "Poronan Villa"
+          },
+          "image": {
+            "main": "game/house/House_Poronan_Villa.png"
+          },
+          "location": [
+            "PONYVILLE"
+          ],
+          "grid_size": 4,
+          "build": {
+            "time": 10800.0,
+            "skip_cost": 5,
+            "xp": 0
+          },
+          "visitors": [],
+          "residents": [
+            "Pony_Poronan_Princess_Cadance",
+            "Pony_Montague_Starlight_Glimmer",
+            "Pony_Montague_Sunburst",
+            "Pony_Capulet_Fluttershy",
+            "Pony_Capulet_Twilight_Sparkle",
+            "Pony_Montague_Cheese_Sandwich",
+            "Pony_Capulet_Pinkie_Pie",
+            "Pony_Poronan_Shining_Armor",
+            "Pony_Capulet_Rainbow_Dash",
+            "Pony_Capulet_Rarity",
+            "Pony_Capulet_Applejack",
+            "Pony_Montague_Trixie"
+          ],
+          "tags": [],
+          "id": "House_Poronan_Villa",
+          "category": "house"
+        },
+        "House_Lunar_Pagoda": {
+          "locked": false,
+          "index": 438,
+          "name": {
+            "thai": "Lunar Pagoda",
+            "korean": "Lunar Pagoda",
+            "russian": "Lunar Pagoda",
+            "english": "Lunar Pagoda",
+            "chinese": "Lunar Pagoda",
+            "french": "Lunar Pagoda",
+            "arabic": "Lunar Pagoda",
+            "turkish": "Lunar Pagoda",
+            "japanese": "Lunar Pagoda",
+            "spanish": "Lunar Pagoda",
+            "brazilian portuguese": "Lunar Pagoda",
+            "italian": "Lunar Pagoda",
+            "german": "Lunar Pagoda"
+          },
+          "preferred_name": {
+            "thai": "Lunar Pagoda",
+            "korean": "Lunar Pagoda",
+            "russian": "Lunar Pagoda",
+            "english": "Lunar Pagoda",
+            "chinese": "Lunar Pagoda",
+            "french": "Lunar Pagoda",
+            "arabic": "Lunar Pagoda",
+            "turkish": "Lunar Pagoda",
+            "japanese": "Lunar Pagoda",
+            "spanish": "Lunar Pagoda",
+            "brazilian portuguese": "Lunar Pagoda",
+            "italian": "Lunar Pagoda",
+            "german": "Lunar Pagoda"
+          },
+          "image": {
+            "main": "game/house/House_Lunar_Pagoda.png"
+          },
+          "location": [
+            "PONYVILLE"
+          ],
+          "grid_size": 4,
+          "build": {
+            "time": 10800.0,
+            "skip_cost": 5,
+            "xp": 0
+          },
+          "visitors": [],
+          "residents": [
+            "Pony_Lunar_Princess_Celestia",
+            "Pony_Lunar_Applejack",
+            "Pony_Lunar_Pinkie_Pie",
+            "Pony_Lunar_Rainbow_Dash",
+            "Pony_Lunar_Rarity",
+            "Pony_Lunar_Twilight_Sparkle",
+            "Pony_Lunar_Fluttershy",
+            "Pony_Lunar_Princess_Cadance",
+            "Pony_Lunar_Princess_Luna",
+            "Pony_Lunar_Mistmane"
+          ],
+          "tags": [],
+          "id": "House_Lunar_Pagoda",
           "category": "house"
         }
       }
@@ -317703,7 +321003,7 @@
               "english": "Gems",
               "chinese": "宝石",
               "french": "Gemmes",
-              "arabic": "الأحجار الكريمة",
+              "arabic": "أحجار كريمة",
               "turkish": "Cevher",
               "japanese": "ほう石",
               "spanish": "Diamantes",
@@ -363439,6 +366739,50 @@
             "token": "",
             "daily_goals": 0
           }
+        },
+        "Decoration_Imperial_Dragon_Boat_PRO": {
+          "id": "Decoration_Imperial_Dragon_Boat_PRO",
+          "locked": false,
+          "index": 788,
+          "name": {
+            "thai": "เรือมังกรจักรวรรดิ",
+            "korean": "제국 용선",
+            "russian": "Имперская драконья ладья",
+            "english": "Imperial Dragon Boat",
+            "chinese": "宫廷龙舟",
+            "french": "Bateau-dragon impérial",
+            "arabic": "قارب التنين الإمبراطوري",
+            "turkish": "Kraliyet Ejder Teknesi",
+            "japanese": "インペリアルドラゴンボート",
+            "spanish": "Barco dragón imperial",
+            "brazilian portuguese": "Barco Dragão Imperial",
+            "italian": "Barca drago imperiale",
+            "german": "Kaiserliches Drachenboot"
+          },
+          "image": {
+            "main": "game/decor/Decoration_Imperial_Dragon_Boat_PRO.png"
+          },
+          "location": "PONYVILLE",
+          "limit": 0,
+          "grid_size": 3,
+          "xp": 10,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 50
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "fusion_points": 195,
+          "pro": {
+            "is_pro": true,
+            "size": 3,
+            "time": 0,
+            "bits": 4
+          },
+          "category": "decor"
         }
       }
     },
@@ -370514,19 +373858,19 @@
           "locked": false,
           "index": 189,
           "name": {
-            "thai": "เกล็ดหิมะระยิบระยับ",
-            "korean": "반짝이는 눈송이",
-            "russian": "Сверкающая снежинка",
-            "english": "Sparkling Snowflake",
-            "chinese": "发光雪花",
-            "french": "Flocon de neige étincelant",
-            "arabic": "ندفة الثلج اللامعة",
-            "turkish": "Işıltılı Kar Tanesi",
-            "japanese": "きらめくスノーフレーク",
-            "spanish": "Copo de nieve brillante",
-            "brazilian portuguese": "Floco de Neve Brilhante",
-            "italian": "Fiocco di neve scintillante",
-            "german": "Glitzernde Schneeflocke"
+            "thai": "ดอกไม้แสนสวย",
+            "korean": "사랑스러운 꽃",
+            "russian": "Цветы любви",
+            "english": "Lovely Flowers",
+            "chinese": "美丽鲜花",
+            "french": "Jolies fleurs",
+            "arabic": "أزهار محببة",
+            "turkish": "Hoş Çiçekler",
+            "japanese": "ステキな花",
+            "spanish": "Flores preciosas",
+            "brazilian portuguese": "Flores Amáveis",
+            "italian": "Fiori graziosi",
+            "german": "Schöne Blumen"
           },
           "image": {
             "main": "game/token/Token_Event_Rare.png"
@@ -370542,19 +373886,19 @@
           "locked": false,
           "index": 190,
           "name": {
-            "thai": "ลูกแก้วตกแต่งลมโชย",
-            "korean": "바람 장식",
-            "russian": "Орнамент ветра",
-            "english": "Windy Ornament",
-            "chinese": "微风饰品",
-            "french": "Décoration venteuse",
-            "arabic": "زينة الرياح",
-            "turkish": "Rüzgarlı Süs",
-            "japanese": "風のオーナメント",
-            "spanish": "Adorno ventoso",
-            "brazilian portuguese": "Ornamento de Vento",
-            "italian": "Decorazione del vento",
-            "german": "Windiger Baumschmuck"
+            "thai": "ของตกแต่งวันกีบตรึงใจ",
+            "korean": "사랑의 발굽 데이 장식",
+            "russian": "Украшения ко Дню Сердечек и Копыт",
+            "english": "Hearts and Hooves Day Decoration",
+            "chinese": "情马节装饰",
+            "french": "Décoration du Hearts and Hooves Day",
+            "arabic": "زينة يوم القلوب والحوافر",
+            "turkish": "Kalp ve Toynak Günü Süslemesi",
+            "japanese": "ハーツ&フーヴズデーのデコレーション",
+            "spanish": "Adornos de Hearts and Hooves Day",
+            "brazilian portuguese": "Decoração de Dia dos Namorados",
+            "italian": "Decorazioni per l'Hearts and Hooves Day",
+            "german": "Herz-und-Huf-Tag-Dekoration"
           },
           "image": {
             "main": "game/token/Token_Event_Common.png"
@@ -383325,6 +386669,776 @@
           "image": {
             "preview": "game/avatar/preview/ProfileAvatar_341_Twilightsparkle_Changelling_Light.png",
             "main": "game/avatar/main/ProfileAvatar_341_Twilightsparkle_Changelling_Light.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_342_RAJ": {
+          "id": "ProfileAvatar_342_RAJ",
+          "index": 344,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_342_RAJ.png",
+            "main": "game/avatar/main/ProfileAvatar_342_RAJ.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_343_Poronan_Princess_Cadance": {
+          "id": "ProfileAvatar_343_Poronan_Princess_Cadance",
+          "index": 345,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_343_Poronan_Princess_Cadance.png",
+            "main": "game/avatar/main/ProfileAvatar_343_Poronan_Princess_Cadance.png"
+          },
+          "is_default": false,
+          "pony": "Pony_Poronan_Princess_Cadance",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_344_Montague_Starlight_Glimmer": {
+          "id": "ProfileAvatar_344_Montague_Starlight_Glimmer",
+          "index": 346,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_344_Montague_Starlight_Glimmer.png",
+            "main": "game/avatar/main/ProfileAvatar_344_Montague_Starlight_Glimmer.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_345_Montague_Sunburst": {
+          "id": "ProfileAvatar_345_Montague_Sunburst",
+          "index": 347,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_345_Montague_Sunburst.png",
+            "main": "game/avatar/main/ProfileAvatar_345_Montague_Sunburst.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_346_Capulet_Fluttershy": {
+          "id": "ProfileAvatar_346_Capulet_Fluttershy",
+          "index": 348,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_346_Capulet_Fluttershy.png",
+            "main": "game/avatar/main/ProfileAvatar_346_Capulet_Fluttershy.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_347_Capulet_Twilight_Sparkle": {
+          "id": "ProfileAvatar_347_Capulet_Twilight_Sparkle",
+          "index": 349,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_347_Capulet_Twilight_Sparkle.png",
+            "main": "game/avatar/main/ProfileAvatar_347_Capulet_Twilight_Sparkle.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_348_Montague_Cheese_Sandwich": {
+          "id": "ProfileAvatar_348_Montague_Cheese_Sandwich",
+          "index": 350,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_348_Montague_Cheese_Sandwich.png",
+            "main": "game/avatar/main/ProfileAvatar_348_Montague_Cheese_Sandwich.png"
+          },
+          "is_default": false,
+          "pony": "Pony_Montague_Cheese_Sandwich",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_349_Capulet_Pinkie_Pie": {
+          "id": "ProfileAvatar_349_Capulet_Pinkie_Pie",
+          "index": 351,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_349_Capulet_Pinkie_Pie.png",
+            "main": "game/avatar/main/ProfileAvatar_349_Capulet_Pinkie_Pie.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_350_Poronan_Shining_Armor": {
+          "id": "ProfileAvatar_350_Poronan_Shining_Armor",
+          "index": 352,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_350_Poronan_Shining_Armor.png",
+            "main": "game/avatar/main/ProfileAvatar_350_Poronan_Shining_Armor.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_351_Capulet_Rainbow_Dash": {
+          "id": "ProfileAvatar_351_Capulet_Rainbow_Dash",
+          "index": 353,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_351_Capulet_Rainbow_Dash.png",
+            "main": "game/avatar/main/ProfileAvatar_351_Capulet_Rainbow_Dash.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_352_Capulet_Rarity": {
+          "id": "ProfileAvatar_352_Capulet_Rarity",
+          "index": 354,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_352_Capulet_Rarity.png",
+            "main": "game/avatar/main/ProfileAvatar_352_Capulet_Rarity.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_353_Capulet_Applejack": {
+          "id": "ProfileAvatar_353_Capulet_Applejack",
+          "index": 355,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_353_Capulet_Applejack.png",
+            "main": "game/avatar/main/ProfileAvatar_353_Capulet_Applejack.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_354_Montague_Trixie": {
+          "id": "ProfileAvatar_354_Montague_Trixie",
+          "index": 356,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_354_Montague_Trixie.png",
+            "main": "game/avatar/main/ProfileAvatar_354_Montague_Trixie.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_355_Lunar_Princess_Celestia": {
+          "id": "ProfileAvatar_355_Lunar_Princess_Celestia",
+          "index": 357,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_355_Lunar_Princess_Celestia.png",
+            "main": "game/avatar/main/ProfileAvatar_355_Lunar_Princess_Celestia.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_356_Lunar_Applejack": {
+          "id": "ProfileAvatar_356_Lunar_Applejack",
+          "index": 358,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_356_Lunar_Applejack.png",
+            "main": "game/avatar/main/ProfileAvatar_356_Lunar_Applejack.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_357_Lunar_Pinkie_Pie": {
+          "id": "ProfileAvatar_357_Lunar_Pinkie_Pie",
+          "index": 359,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_357_Lunar_Pinkie_Pie.png",
+            "main": "game/avatar/main/ProfileAvatar_357_Lunar_Pinkie_Pie.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_358_Lunar_Rainbow_Dash": {
+          "id": "ProfileAvatar_358_Lunar_Rainbow_Dash",
+          "index": 360,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_358_Lunar_Rainbow_Dash.png",
+            "main": "game/avatar/main/ProfileAvatar_358_Lunar_Rainbow_Dash.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_359_Lunar_Rarity": {
+          "id": "ProfileAvatar_359_Lunar_Rarity",
+          "index": 361,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_359_Lunar_Rarity.png",
+            "main": "game/avatar/main/ProfileAvatar_359_Lunar_Rarity.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_360_Lunar_Twilight_Sparkle": {
+          "id": "ProfileAvatar_360_Lunar_Twilight_Sparkle",
+          "index": 362,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_360_Lunar_Twilight_Sparkle.png",
+            "main": "game/avatar/main/ProfileAvatar_360_Lunar_Twilight_Sparkle.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_361_Lunar_Fluttershy": {
+          "id": "ProfileAvatar_361_Lunar_Fluttershy",
+          "index": 363,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_361_Lunar_Fluttershy.png",
+            "main": "game/avatar/main/ProfileAvatar_361_Lunar_Fluttershy.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_362_Lunar_Princess_Luna": {
+          "id": "ProfileAvatar_362_Lunar_Princess_Luna",
+          "index": 364,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_362_Lunar_Princess_Luna.png",
+            "main": "game/avatar/main/ProfileAvatar_362_Lunar_Princess_Luna.png"
+          },
+          "is_default": false,
+          "pony": "Pony_Lunar_Princess_Luna",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_363_Lunar_Princess_Cadance": {
+          "id": "ProfileAvatar_363_Lunar_Princess_Cadance",
+          "index": 365,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_363_Lunar_Princess_Cadance.png",
+            "main": "game/avatar/main/ProfileAvatar_363_Lunar_Princess_Cadance.png"
           },
           "is_default": false,
           "pony": "",
