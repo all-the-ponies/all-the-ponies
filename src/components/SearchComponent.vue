@@ -184,8 +184,8 @@ watch(
 
         if (reversed.value) {
             params.reverse = 'true'
-        } else if ('reverse' in params) {
-            delete params.reverse
+        } else {
+            params.reverse = null
         }
 
         history.replaceState(
