@@ -206,12 +206,33 @@ watch(
 
 const objects = computed(() => props.objects.map((obj) => gameData.getObject(obj)))
 
+function checkObject(gameObject: GameObject, filterKey: string) {
+    const filter = props.filters[filterKey]
+    const mainCheck =filter.check ? filter.check(gameObject) : true
+    let excludeCheck = true
+    let includeCheck = true
+    if (mainCheck && filter.exclude) {
+        excludeCheck = filter.exclude.every((excludeFilter) => (
+            filters.value.includes(excludeFilter) ||
+            (!checkObject(gameObject, excludeFilter))
+        ))
+    }
+    if (mainCheck && filter.include) {
+        includeCheck = filter.include.every((includeFilter) => (
+            filters.value.includes(includeFilter) ||
+            checkObject(gameObject, includeFilter)
+        ))
+    }
+
+    return mainCheck && excludeCheck && includeCheck
+}
+
 const searchResults = computed(() => {
     let results = gameData.searchName(searchQuery.value, objects.value, language.value.key)
     // let filterFunctions = filters.filter(key => selectedFilters[key])
     if (filters.value.length) {
         results = results.filter(
-            gameObject => filters.value.every(key => props.filters[key].check(gameObject))
+            gameObject => filters.value.every((key) => checkObject(gameObject, key))
         )
     }
     if (sortFunction.value) {
