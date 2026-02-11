@@ -167,13 +167,13 @@ watch(
         }
 
         if (!params.q) {
-            delete params.q
+            params.q = null
         }
 
         const currentFilters = Object.keys(props.filters).filter(key => selectedFilters.value[key])
         
         if (!currentFilters.length) {
-            delete params.filter
+            params.filter = null
         } else {
             params.filter = currentFilters.join(',')
         }
