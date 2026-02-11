@@ -211,7 +211,7 @@ const searchResults = computed(() => {
     // let filterFunctions = filters.filter(key => selectedFilters[key])
     if (filters.value.length) {
         results = results.filter(
-            gameObject => filters.value.some(key => props.filters[key].check(gameObject))
+            gameObject => filters.value.every(key => props.filters[key].check(gameObject))
         )
     }
     if (sortFunction.value) {
