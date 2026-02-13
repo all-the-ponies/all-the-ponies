@@ -4,7 +4,8 @@ import gameData from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { Location, PonyType, ShopType } from '@/types/gameDataTypes'
-import { formatTime, staticImage } from '@/scripts/common'
+import { staticImage } from '@/scripts/common'
+import { formatTime } from '@/scripts/timeFunctions';
 import BackButton from '@/components/buttons/BackButton.vue';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import { LOCATIONS } from '@/scripts/categories';

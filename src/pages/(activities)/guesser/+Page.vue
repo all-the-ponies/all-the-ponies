@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import DialogComponent from '@/components/DialogComponent.vue'
 import { language } from '@/globals'
-import { formatTime, formatTimestamp, pickRandom, staticImage, transformName } from '@/scripts/common'
+import { pickRandom, staticImage, transformName } from '@/scripts/common'
+import { formatTime, formatTimestamp } from '@/scripts/timeFunctions'
 import gameData from '@/scripts/gameData'
 import type { PonyType } from '@/types/gameDataTypes'
 import { computed, nextTick, onUnmounted, ref, useTemplateRef } from 'vue'

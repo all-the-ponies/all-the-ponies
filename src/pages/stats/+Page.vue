@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CurrencyImage from '@/components/CurrencyImage.vue'
-import { formatTime } from '@/scripts/common'
+import { formatTime } from '@/scripts/timeFunctions'
 import gameData from '@/scripts/gameData'
 import saveStats from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'

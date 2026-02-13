@@ -4,14 +4,15 @@ import gameData from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { HouseType, Location, PonyType } from '@/types/gameDataTypes'
-import { formatTime, staticImage } from '@/scripts/common'
-import BackButton from '@/components/buttons/BackButton.vue';
-import { LOCATIONS } from '@/scripts/categories';
-import { usePageContext } from 'vike-vue/usePageContext';
-import { Config } from 'vike-vue/Config';
-import absoluteUrl from '@/scripts/absoluteUrl';
-import Link from '@/components/Link.vue';
-import { useData } from 'vike-vue/useData';
+import { staticImage } from '@/scripts/common'
+import { formatTime } from '@/scripts/timeFunctions'
+import BackButton from '@/components/buttons/BackButton.vue'
+import { LOCATIONS } from '@/scripts/categories'
+import { usePageContext } from 'vike-vue/usePageContext'
+import { Config } from 'vike-vue/Config'
+import absoluteUrl from '@/scripts/absoluteUrl'
+import Link from '@/components/Link.vue'
+import { useData } from 'vike-vue/useData'
 
 
 const pageContext = usePageContext()
