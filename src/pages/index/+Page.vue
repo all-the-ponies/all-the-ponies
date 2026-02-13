@@ -4,6 +4,10 @@ import Link from '@/components/Link.vue'
 import { pickRandom, staticImage } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
 import { Config } from 'vike-vue/Config'
+import Head from '../+Head.vue'
+import { h } from 'vue'
+
+const BASE_URL = __BASE_URL__ // __BASE_URL__ cannot be used in the template
 
 
 const pony = pickRandom(Object.values(gameData.data.categories.pony.objects))
@@ -15,7 +19,23 @@ const avatar = pickRandom(Object.values(gameData.data.categories.avatar.objects)
 </script>
 
 <template>
-    <Config :title="$t('site.title')" :description="$t('site.description')"></Config>
+  <Config
+    :title="$t('site.title')"
+    :description="$t('site.description')"
+    :-head="
+      // https://developers.google.com/search/docs/appearance/site-names#website
+      h('script', {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context' : 'https://schema.org',
+          '@type' : 'WebSite',
+          name : 'All The Ponies',
+          alternateName: 'ATP',
+          url : BASE_URL,
+        }),
+      })
+    "
+  ></Config>
 
     <div>
         <section class="section">

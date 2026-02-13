@@ -167,13 +167,13 @@ watch(
         }
 
         if (!params.q) {
-            delete params.q
+            params.q = null
         }
 
         const currentFilters = Object.keys(props.filters).filter(key => selectedFilters.value[key])
         
         if (!currentFilters.length) {
-            delete params.filter
+            params.filter = null
         } else {
             params.filter = currentFilters.join(',')
         }
@@ -183,16 +183,16 @@ watch(
         }
 
         if (reversed.value) {
+            params.reverse = 'true'
+        } else {
             params.reverse = null
-        } else if ('reverse' in params) {
-            delete params.reverse
         }
 
         history.replaceState(
             null,
             '',
             modifyUrl(
-                pageContext.urlPathname,
+                pageContext.urlOriginal,
                 {
                     search: params,
                 }
@@ -206,12 +206,33 @@ watch(
 
 const objects = computed(() => props.objects.map((obj) => gameData.getObject(obj)))
 
+function checkObject(gameObject: GameObject, filterKey: string) {
+    const filter = props.filters[filterKey]
+    const mainCheck =filter.check ? filter.check(gameObject) : true
+    let excludeCheck = true
+    let includeCheck = true
+    if (mainCheck && filter.exclude) {
+        excludeCheck = filter.exclude.every((excludeFilter) => (
+            filters.value.includes(excludeFilter) ||
+            (!checkObject(gameObject, excludeFilter))
+        ))
+    }
+    if (mainCheck && filter.include) {
+        includeCheck = filter.include.every((includeFilter) => (
+            filters.value.includes(includeFilter) ||
+            checkObject(gameObject, includeFilter)
+        ))
+    }
+
+    return mainCheck && excludeCheck && includeCheck
+}
+
 const searchResults = computed(() => {
     let results = gameData.searchName(searchQuery.value, objects.value, language.value.key)
     // let filterFunctions = filters.filter(key => selectedFilters[key])
     if (filters.value.length) {
         results = results.filter(
-            gameObject => filters.value.some(key => props.filters[key].check(gameObject))
+            gameObject => filters.value.every((key) => checkObject(gameObject, key))
         )
     }
     if (sortFunction.value) {

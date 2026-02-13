@@ -14,5 +14,7 @@ export default {
     hydrationCanBeAborted: false,
     prefetchStaticAssets: false,
 
+    viewport: null,
+
     passToClient: ['locale'],
 } satisfies Config

@@ -173,25 +173,29 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
 }
 
 export interface FilterFunctionsType {
-    name: string | Ref,
+    name?: string | Ref,
     // type: 'checkbox' | 'radio' | 'text' | 'number',
-    check(gameObject: GameObject): boolean,
+    check?(gameObject: GameObject): boolean,
     default?: boolean,
     category?: CategoryName,
     group?: string,
+    include?: string[],
+    exclude?: string[],
+    hidden?: boolean,
 }
 
 export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: FilterFunctionsType}>> = {
     pony: {
         playable: {
             name: "filter.pony.playable",
-            check(gameObject: PonyType) {return gameObject.tags.length === 0 && (gameObject.group.length == 0 || gameObject.group.length && gameObject.group_master)},
+            check(gameObject: PonyType) {return (gameObject.group.length == 0 || gameObject.group.length && gameObject.group_master)},
             default: true,
+            exclude: ['npc', 'unused', 'quest'],
         },
         pro: {
             name: 'filter.pony.pro',
             check(gameObject: PonyType) {return gameObject.pro != null},
-            default: true,
+            // default: true,
         },
         npc: {
             name: "filter.pony.npc",
@@ -209,37 +213,45 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
           name: 'filter.pony.not_owned',
           check(gameObject: PonyType) {
             return !getSaveManager().hasPony(gameObject.id)
-          }
+          },
+          include: ['playable'],
         },
     },
     shop: {
+      // base: {
+      //   check(gameObject: ShopType) {
+      //     return true
+      //   },
+      //   hidden: true,
+      //   default: true,
+      // },
       bits: {
         name: gameData.translateName(gameData.getObject('Bits', 'item')),
         check(gameObject: ShopType) {
           return gameObject.product && gameObject.product.bits > 0
         },
-        default: true
+        // default: true
       },
       gems: {
         name: 'filter.shop.gem_shop',
         check(gameObject: ShopType) {
           return gameObject.product && gameObject.product.gems > 0
         },
-        default: true
+        // default: true
       },
       maze: {
         name: 'filter.shop.maze',
         check(gameObject: ShopType) {
           return gameObject.product && gameObject.product.tls > 0
         },
-        default: true
+        // default: true
       },
       other: {
         name: 'filter.shop.others',
         check(gameObject: ShopType) {
           return !(gameObject.product && (gameObject.product.bits || gameObject.product.gems || gameObject.product.tls))
         },
-        default: true,
+        // default: true,
       },
       notOwned: {
         name: 'filter.shop.not_owned',
@@ -254,21 +266,21 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         check(gameObject: DecorType) {
           return !gameObject.pro.is_pro
         },
-        default: true
+        // default: true
       },
       pro: {
         name: 'game_object.decor.pro_decor',
         check(gameObject: DecorType) {
           return gameObject.pro.is_pro
         },
-        default: true
+        // default: true
       },
       can_fuse: {
         name: 'filter.decor.can_fuse',
         check(gameObject: DecorType) {
           return !!gameObject.fusion_points
         },
-        default: true,
+        // default: true,
       },
       unused: {
           name: "filter.pony.unused",

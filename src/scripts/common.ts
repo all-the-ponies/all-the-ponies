@@ -157,6 +157,9 @@ export function pickRandom(list: any[]) {
 }
 
 export function staticImage(path: string): string {
+  if (!path) {
+    return
+  }
   return `/images/${path}`
 }
 

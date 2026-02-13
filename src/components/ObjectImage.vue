@@ -4,6 +4,7 @@ import { computed } from 'vue'
 import VLazyImage from "v-lazy-image"
 import { language } from '@/globals'
 import type { GameObjectId } from '@/types/gameDataTypes';
+import { staticImage } from '@/scripts/common';
 
 const props = withDefaults(defineProps<{
     object: GameObjectId | null,
@@ -23,11 +24,13 @@ const name = computed(() => {
     return name
 })
 
+
+
 </script>
 
 <template>
-    <span v-if="object === null"></span>
-    <v-lazy-image v-else :src="`/images/${image}`" :alt="name"></v-lazy-image>
+    <span v-if="object === null || !image"></span>
+    <v-lazy-image v-else :src="staticImage(image)" :alt="name"></v-lazy-image>
 </template>
 
 <style lang="css" scoped>
