@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import VLazyImage from "v-lazy-image"
-import { computed } from 'vue'
+import { computed, type AnchorHTMLAttributes } from 'vue'
 import type { PriceData } from "@/stores/shopManager"
 import PriceButton from "./buttons/PriceButton.vue"
 import RoyalIcon from "./icons/store/RoyalIcon.vue"
@@ -10,10 +10,10 @@ import Link from "./Link.vue"
 
 const props = defineProps<{
     title: string,
-    image: string,
+    image?: string,
     alt?: string,
     priceData?: PriceData,
-    href?: string,
+    href?: AnchorHTMLAttributes['href'],
 }>()
 
 const shopInfo = computed(() => props.priceData)
@@ -84,7 +84,7 @@ const replacedPrice = computed(() => {
                 {{ props.title }}
             </span>
             <div class="card-body">
-                <v-lazy-image :src="props.image" :alt="props.alt" class="object-image" />
+                <v-lazy-image v-if="props.image" :src="props.image" :alt="props.alt" class="object-image" />
                 <div class="left-container">
                     <slot name="left"></slot>
                 </div>
