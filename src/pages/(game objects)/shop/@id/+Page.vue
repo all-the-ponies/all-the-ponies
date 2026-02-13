@@ -14,6 +14,7 @@ import { Config } from 'vike-vue/Config';
 import absoluteUrl from '@/scripts/absoluteUrl';
 import Link from '@/components/Link.vue';
 import { useData } from 'vike-vue/useData';
+import PriceHistory from '@/components/tables/PriceHistory.vue';
 
 const pageContext = usePageContext()
 const data = useData<{shop: ShopType}>()
@@ -171,6 +172,9 @@ const productCurrency = computed(() => {
                 </table>
             </div>
         </div>
+        <section>
+            <PriceHistory :object="objectInfo.id"></PriceHistory>
+        </section>
     </div>
 </template>
 

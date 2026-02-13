@@ -9,6 +9,7 @@ import absoluteUrl from '@/scripts/absoluteUrl';
 import Link from '@/components/Link.vue';
 import { useData } from 'vike-vue/useData';
 import type { AvatarType, DecorType } from '@/types/gameDataTypes';
+import PriceHistory from '@/components/tables/PriceHistory.vue';
 
 
 const pageContext = usePageContext()
@@ -65,6 +66,9 @@ const pony = computed(() => gameData.getObject(objectInfo.value.pony, 'pony'))
                 </table>
             </div>
         </div>
+        <section>
+            <PriceHistory :object="objectInfo.id"></PriceHistory>
+        </section>
     </div>
 </template>
 

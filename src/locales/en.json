@@ -35,7 +35,11 @@
     "export": "Export",
     "wiki": "Wiki",
     "royal": "Royal",
-    "new": "New"
+    "new": "New",
+    "date": {
+      "range": "{start} to {end}",
+      "current": "current"
+    }
   },
   "dialog": {
     "filter": "Filter",

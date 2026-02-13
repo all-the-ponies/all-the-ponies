@@ -10,6 +10,7 @@ import { Config } from 'vike-vue/Config';
 import absoluteUrl from '@/scripts/absoluteUrl';
 import { useData } from 'vike-vue/useData';
 import type { DecorType } from '@/types/gameDataTypes';
+import PriceHistory from '@/components/tables/PriceHistory.vue';
 
 
 const pageContext = usePageContext()
@@ -87,6 +88,9 @@ const name = computed(() => {
                 </table>
             </div>
         </div>
+        <section>
+            <PriceHistory :object="objectInfo.id"></PriceHistory>
+        </section>
     </div>
 </template>
 

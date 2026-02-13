@@ -3,20 +3,22 @@ import { computed } from 'vue';
 import gameData from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
-import { formatTime, staticImage } from '@/scripts/common'
+import { staticImage } from '@/scripts/common'
+import { formatTime } from '@/scripts/timeFunctions'
 import StarRewards from '@/components/StarRewards.vue'
-import BackButton from '@/components/buttons/BackButton.vue';
-import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
-import { useSaveStore } from '@/stores/saveManager';
-import Stars from '@/components/Stars.vue';
-import { LOCATIONS } from '@/scripts/categories';
-import { isClient, useMounted } from '@vueuse/core';
-import { usePageContext } from 'vike-vue/usePageContext';
-import Link from '@/components/Link.vue';
-import { Config } from 'vike-vue/Config';
-import absoluteUrl from '@/scripts/absoluteUrl';
+import BackButton from '@/components/buttons/BackButton.vue'
+import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue'
+import { useSaveStore } from '@/stores/saveManager'
+import Stars from '@/components/Stars.vue'
+import { LOCATIONS } from '@/scripts/categories'
+import { isClient, useMounted } from '@vueuse/core'
+import { usePageContext } from 'vike-vue/usePageContext'
+import Link from '@/components/Link.vue'
+import { Config } from 'vike-vue/Config'
+import absoluteUrl from '@/scripts/absoluteUrl'
 import { useData } from 'vike-vue/useData'
-import type { PonyType } from '@/types/gameDataTypes';
+import type { PonyType } from '@/types/gameDataTypes'
+import PriceHistory from '@/components/tables/PriceHistory.vue'
 
 const isMounted = useMounted()
 
@@ -180,6 +182,9 @@ const houseName = computed(() => house.value?.name[language.value.key])
                 </table>
             </div>
         </div>
+        <section>
+            <PriceHistory :object="pony.id"></PriceHistory>
+        </section>
     </div>
 </template>
 
