@@ -3,6 +3,16 @@
     "title": "",
     "description": ""
   },
+  "home": {
+    "description": "",
+    "message": {
+      "game_name": ""
+    },
+    "things_to_do": {
+      "title": "",
+      "browse": ""
+    }
+  },
   "about": {
     "title": "Riconoscimenti"
   },
