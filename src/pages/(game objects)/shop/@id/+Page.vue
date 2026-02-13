@@ -101,7 +101,7 @@ const productCurrency = computed(() => {
                         </tr>
                         <tr>
                             <td>{{ $t('game_object.building.build_reward') }}</td>
-                            <td><currency-image object="XP">{{ objectInfo.build.skip_cost }}</currency-image></td>
+                            <td><currency-image object="XP">{{ objectInfo.build.xp }}</currency-image></td>
                         </tr>
                         
                         <template v-if="Object.keys(objectInfo.product).length > 0">

@@ -89,7 +89,7 @@ const residents = computed(() => {
                         </tr>
                         <tr>
                             <td>{{ $t('game_object.building.build_reward') }}</td>
-                            <td><currency-image object="XP">{{ objectInfo.build.skip_cost }}</currency-image></td>
+                            <td><currency-image object="XP">{{ objectInfo.build.xp }}</currency-image></td>
                         </tr>
                         <tr v-if="Object.keys(residents).length > 0">
                             <th colspan="2">{{ $t('game_object.house.resident', 2) }}</th>
