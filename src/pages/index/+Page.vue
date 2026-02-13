@@ -3,18 +3,35 @@ import GameCard from '@/components/GameCard.vue';
 import Link from '@/components/Link.vue'
 import { pickRandom, staticImage } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
+import type { AvatarType, DecorType, HouseType, PonyType, ShopType } from '@/types/gameDataTypes';
 import { Config } from 'vike-vue/Config'
 import Head from '../+Head.vue'
 import { h } from 'vue'
 
 const BASE_URL = __BASE_URL__ // __BASE_URL__ cannot be used in the template
+import { onMounted, ref } from 'vue';
 
 
-const pony = pickRandom(Object.values(gameData.data.categories.pony.objects))
-const house = pickRandom(Object.values(gameData.data.categories.house.objects))
-const shop = pickRandom(Object.values(gameData.data.categories.shop.objects))
-const decor = pickRandom(Object.values(gameData.data.categories.decor.objects))
-const avatar = pickRandom(Object.values(gameData.data.categories.avatar.objects))
+const pony = ref<PonyType>(null)
+const house = ref<HouseType>(null)
+const shop = ref<ShopType>(null)
+const decor = ref<DecorType>(null)
+const avatar = ref<AvatarType>(null)
+
+onMounted(() => {
+    pony.value = pickRandom(Object.values(gameData.data.categories.pony.objects))
+    house.value = pickRandom(Object.values(gameData.data.categories.house.objects))
+    shop.value = pickRandom(Object.values(gameData.data.categories.shop.objects))
+    decor.value = pickRandom(Object.values(gameData.data.categories.decor.objects))
+    avatar.value = pickRandom(Object.values(gameData.data.categories.avatar.objects))
+})
+
+function openSidebar() {
+    const sidebarToggle = document.getElementById('sidebar-toggle')
+    sidebarToggle.checked = true
+    if (sidebarToggle != null) {
+    }
+}
 
 </script>
 
@@ -37,7 +54,7 @@ const avatar = pickRandom(Object.values(gameData.data.categories.avatar.objects)
     "
   ></Config>
 
-    <div>
+    <div class="home-page">
         <section class="section">
             <h1 >{{ $t('site.title') }}</h1>
             <p>
@@ -53,12 +70,11 @@ const avatar = pickRandom(Object.values(gameData.data.categories.avatar.objects)
         </section>
 
         <section class="section">
-            <h2>{{ $t('home.things_to_do.title') }}</h2>
-            <h3>{{ $t('home.things_to_do.browse') }}</h3>
+            <h2>{{ $t('home.things_to_do.browse') }}</h2>
             <div class="things-container">
                 <GameCard
                     :title="$t('game_object.pony.pony', 2)"
-                    :image="staticImage(pony.image.main)"
+                    :image="pony ? staticImage(pony.image.main) : null"
                     :alt="gameData.translateName(pony).value"
                     href="/search/ponies/"
                     class="thing-card"
@@ -66,33 +82,33 @@ const avatar = pickRandom(Object.values(gameData.data.categories.avatar.objects)
                 </GameCard>
                 <GameCard
                     :title="$t('game_object.house.house', 2)"
-                    :image="staticImage(house.image.main)"
+                    :image="house ? staticImage(house.image.main) : null"
                     :alt="gameData.translateName(house).value"
-                    href="/search/ponies/"
+                    href="/search/houses/"
                     class="thing-card"
                 >
                 </GameCard>
                 <GameCard
                     :title="$t('game_object.shop.shop', 2)"
-                    :image="staticImage(shop.image.main)"
+                    :image="shop ? staticImage(shop.image.main) : null"
                     :alt="gameData.translateName(shop).value"
-                    href="/search/ponies/"
+                    href="/search/shops/"
                     class="thing-card"
                 >
                 </GameCard>
                 <GameCard
                     :title="$t('game_object.decor.decor', 2)"
-                    :image="staticImage(decor.image.main)"
+                    :image="decor ? staticImage(decor.image.main) : null"
                     :alt="gameData.translateName(decor).value"
-                    href="/search/ponies/"
+                    href="/search/decor/"
                     class="thing-card"
                 >
                 </GameCard>
                 <GameCard
                     :title="$t('game_object.profile_decorations.avatar.avatar', 2)"
-                    :image="staticImage(avatar.image.preview)"
+                    :image="avatar ? staticImage(avatar.image.preview) : null"
                     :alt="gameData.translateName(avatar).value"
-                    href="/search/ponies/"
+                    href="/search/avatars/"
                     class="thing-card"
                 >
                 </GameCard>
@@ -102,6 +118,10 @@ const avatar = pickRandom(Object.values(gameData.data.categories.avatar.objects)
 </template>
 
 <style lang="css" scoped>
+.home-page {
+    text-align: center;
+}
+
 .things-container {
     --card-size: 8rem;
     display: grid;
