@@ -4,6 +4,10 @@
     "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game"
   },
   "home": {
+    "description": "Get info about {game_link} and track what you have!",
+    "message": {
+      "game_name": "My LIttle Pony: Magic Princess"
+    },
     "things_to_do": {
       "title": "Things To Do",
       "browse": "Browse"
