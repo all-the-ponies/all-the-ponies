@@ -63,6 +63,8 @@ function infoGetter(gameObject: GameObject) {
     // return <PriceButton currency='Bits'>10,000</PriceButton>
 }
 
+const objects = computed(() => Object.keys(gameData.data.categories[category.value].objects))
+
 </script>
 
 <template>
@@ -72,7 +74,7 @@ function infoGetter(gameObject: GameObject) {
 
     <SearchComponent
         v-if="category != null"
-        :objects="Object.keys(gameData.data.categories[category].objects)"
+        :objects="objects"
         :sorters="sortFunctions"
         :filters="filterFunctions"
         :placeholder="$t(CATEGORIES[category].string)"
