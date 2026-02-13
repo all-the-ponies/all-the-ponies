@@ -17,11 +17,13 @@ const selectedCategory = ref<CategoryName>((pageContext.urlParsed.search.categor
 
 const shop = computedAsync(
     async () => {
-        return Object.fromEntries(
-            Object.entries(
-                await shopStore.shop
-            ).filter(([id, info]) => info.in_shop && !info.hidden)
-        )
+        const shop = await shopStore.shop
+        if (shop) {
+            return Object.fromEntries(
+                Object.entries(shop).filter(([id, info]) => info.in_shop && !info.hidden)
+            )
+        }
+        return {}
     },
     {},
     { evaluating: loadingShop },
