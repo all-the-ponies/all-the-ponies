@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import DiscordButton from '@/components/buttons/socials/DiscordButton.vue';
+import GitHubButton from '@/components/buttons/socials/GitHubButton.vue';
 import Link from '@/components/Link.vue';
 import { Config } from 'vike-vue/Config';
 
@@ -17,26 +19,37 @@ const mlpGameHangoutLink = "https://discord.gg/Hbf9U8WfZk"
                 <div class="contact-card">
                     <h3>{{ $t('contact.message.discord.title') }}</h3>
                     <p>{{ $t('contact.message.discord.description') }}</p>
-                    <Link :href="discordLink" target="_blank" class="contact-button discord-button">
-                        <img src="@/assets/images/logos/discord/discord-symbol-white.svg" alt="Discord Logo" class="contact-logo">
+                    <DiscordButton
+                        :href="discordLink"
+                        target="_blank"
+                        class="contact-button"
+                    >
                         {{ $t('contact.message.discord.button') }}
-                    </Link>
+                    </DiscordButton>
                 </div>
                 <div class="contact-card">
                     <h3>{{ $t('contact.message.github.title') }}</h3>
                     <p>{{ $t('contact.message.github.description') }}</p>
-                    <Link :href="githubRepo" target="_blank" class="contact-button github-button">
-                        <img src="@/assets/images/logos/github/github-symbol-white.svg" alt="GitHub Logo" class="contact-logo">
+
+                    <GitHubButton
+                        :href="githubRepo"
+                        target="_blank"
+                        class="contact-button"
+                    >
                         {{ $t('contact.message.github.button') }}
-                    </Link>
+                    </GitHubButton>
                 </div>
                 <div class="contact-card">
                     <h3>{{ $t('contact.message.mlp_game_hangout.title') }}</h3>
                     <p>{{ $t('contact.message.mlp_game_hangout.description') }}</p>
-                    <Link :href="discordLink" target="_blank" class="contact-button discord-button">
-                        <img src="@/assets/images/logos/discord/discord-symbol-white.svg" alt="Discord Logo" class="contact-logo">
-                        {{ $t('contact.message.mlp_game_hangout.button') }}
-                    </Link>
+
+                    <DiscordButton
+                        :href="mlpGameHangoutLink"
+                        target="_blank"
+                        class="contact-button"
+                    >
+                        {{ $t('contact.message.discord.button') }}
+                    </DiscordButton>
                 </div>
             </div>
         </section>
@@ -81,27 +94,5 @@ const mlpGameHangoutLink = "https://discord.gg/Hbf9U8WfZk"
     box-shadow: var(--box-shadow),
                 0px 0px 5px hsl(211, 30%, 30%);
     transform: scale(105%);
-}
-
-.contact-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding: 0.8rem 1.5rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-}
-
-.discord-button { background-color: #5865F2; }
-.github-button { background-color: #333; }
-
-.contact-logo {
-    object-fit: contain;
-    object-position: center;
-    height: 1em;
 }
 </style>
