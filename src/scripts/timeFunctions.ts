@@ -1,3 +1,4 @@
+import { language } from "@/globals"
 
 
 export function formatTime(time: number): string {
