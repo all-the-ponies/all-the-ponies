@@ -87,14 +87,35 @@ export interface ShopEntry {
         base: ShopPrice,
         sale: ShopPrice,
         royal: ShopPrice,
-    }
+    },
     tags: string[],
 }
 
 async function getShop(): Promise<ShopEntry[] | ResponseError> {
     const result: ShopEntry[] | ResponseError = await (await request('/shop/')).json()
 
-    console.log('loaded shop')
+    return result
+}
+
+export interface PriceHistoryEntry {
+    start_date: string,
+    end_date: string,
+    hidden: boolean,
+    price: {
+        base: ShopPrice,
+        sale: ShopPrice,
+        royal: ShopPrice,
+    },
+    tags: string[],
+}
+
+export interface PriceHistory {
+    id: GameObjectId,
+    price_history: PriceHistoryEntry[],
+}
+
+async function getPriceHistory(item: GameObjectId): Promise<ResponseError | PriceHistory> {
+    const result: PriceHistory | ResponseError = await (await request(`/shop/history/${item}/`)).json()
 
     return result
 }
@@ -103,4 +124,5 @@ export default {
     API_DOMAIN,
     getSave,
     getShop,
+    getPriceHistory,
 }
