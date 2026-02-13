@@ -68,7 +68,7 @@ function setStars(value: number) {
 .content {
     width: 100%;
     height: 100%;
-    padding: 2rem;
+    padding-block: 2rem;
 }
 
 .stars-wrapper {
