@@ -105,10 +105,10 @@ function formatDateRange(start: string, end: string) {
             <Table class="price-table">
                 <TableBody>
                     <TableHeader>
-                        <TableHeaderCell>Date</TableHeaderCell>
-                        <TableHeaderCell>Price</TableHeaderCell>
-                        <TableHeaderCell v-if="shownColumns.royal">Royal</TableHeaderCell>
-                        <TableHeaderCell v-if="shownColumns.tokens">Tokens</TableHeaderCell>
+                        <TableHeaderCell>{{ $t('price_history.header.date') }}</TableHeaderCell>
+                        <TableHeaderCell>{{ $t('price_history.header.price') }}</TableHeaderCell>
+                        <TableHeaderCell v-if="shownColumns.royal">{{ $t('price_history.header.royal') }}</TableHeaderCell>
+                        <TableHeaderCell v-if="shownColumns.tokens">{{ $t('price_history.header.tokens') }}</TableHeaderCell>
                     </TableHeader>
                     <TableRow v-for="entry in priceHistory.price_history.filter(entry => !entry.hidden)">
                         <TableCell>

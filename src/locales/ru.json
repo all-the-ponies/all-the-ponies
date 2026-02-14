@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "Клуб",
-    "new": "Новинка"
+    "new": "Новинка",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "Жетоны"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "Жетоны",
+      "royal": "Клуб"
     }
   },
   "group_quests": {

@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "Königlich",
-    "new": "Neu"
+    "new": "Neu",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "Marken"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "Marken",
+      "royal": "Königlich"
     }
   },
   "group_quests": {

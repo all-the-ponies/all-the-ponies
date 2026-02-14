@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "Royal",
-    "new": "Novo"
+    "new": "Novo",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "Fichas"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "Fichas",
+      "royal": "Royal"
     }
   },
   "group_quests": {

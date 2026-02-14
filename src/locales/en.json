@@ -135,6 +135,14 @@
       "token": "Token | Tokens"
     }
   },
+  "price_history": {
+    "header": {
+      "date": "Date",
+      "price": "Price",
+      "tokens": "Tokens",
+      "royal": "Royal"
+    }
+  },
   "group_quests": {
     "title": "Group Quests",
     "random_pro": "Random",

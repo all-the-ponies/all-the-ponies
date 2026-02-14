@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "Asil",
-    "new": "Yeni"
+    "new": "Yeni",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "Objeler"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "Objeler",
+      "royal": "Asil"
     }
   },
   "group_quests": {

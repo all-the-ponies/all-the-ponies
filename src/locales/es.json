@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "Real",
-    "new": "Estreno"
+    "new": "Estreno",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "Fichas"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "Fichas",
+      "royal": "Real"
     }
   },
   "group_quests": {

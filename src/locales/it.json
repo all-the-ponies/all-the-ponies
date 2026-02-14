@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "Reale",
-    "new": "Novità"
+    "new": "Novità",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "Accessori"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "Accessori",
+      "royal": "Reale"
     }
   },
   "group_quests": {

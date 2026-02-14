@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "로열",
-    "new": "New"
+    "new": "New",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "토큰"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "토큰",
+      "royal": "로열"
     }
   },
   "group_quests": {

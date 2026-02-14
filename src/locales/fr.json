@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "Royal",
-    "new": "Nouveau"
+    "new": "Nouveau",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "Jetons"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "Jetons",
+      "royal": "Royal"
     }
   },
   "group_quests": {

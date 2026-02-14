@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "ロイヤル",
-    "new": "新作"
+    "new": "新作",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "トークン"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "トークン",
+      "royal": "ロイヤル"
     }
   },
   "group_quests": {

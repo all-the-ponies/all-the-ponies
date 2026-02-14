@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "ملكي",
-    "new": "جديد"
+    "new": "جديد",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "القطع"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "القطع",
+      "royal": "ملكي"
     }
   },
   "group_quests": {

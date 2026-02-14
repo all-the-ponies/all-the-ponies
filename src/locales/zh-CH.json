@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "皇家",
-    "new": "新"
+    "new": "新",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "礼物"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "礼物",
+      "royal": "皇家"
     }
   },
   "group_quests": {

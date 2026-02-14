@@ -35,7 +35,11 @@
     "export": "",
     "wiki": "",
     "royal": "รอยัล",
-    "new": "ใหม่"
+    "new": "ใหม่",
+    "date": {
+      "range": "",
+      "current": ""
+    }
   },
   "dialog": {
     "filter": "",
@@ -129,6 +133,14 @@
     },
     "token": {
       "token": "โทเค็น"
+    }
+  },
+  "price_history": {
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "โทเค็น",
+      "royal": "รอยัล"
     }
   },
   "group_quests": {
