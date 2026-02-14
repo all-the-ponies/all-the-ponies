@@ -4,13 +4,16 @@ import type { GameObjectId } from '@/types/gameDataTypes'
 import { computedAsync } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { computed, watch } from 'vue'
-import moment from 'moment'
-import { language } from '@/globals'
-import { formatDateRange } from '@/scripts/timeFunctions'
 import { useI18n } from 'vue-i18n'
 import CurrencyImage from '../CurrencyImage.vue'
 import { valueExists } from '@/scripts/common'
 import gameData from '@/scripts/gameData'
+import Table from '../table/Table.vue'
+import TableBody from '../table/TableBody.vue'
+import TableRow from '../table/TableRow.vue'
+import TableHeader from '../table/TableHeader.vue'
+import TableHeaderCell from '../table/TableHeaderCell.vue'
+import TableCell from '../table/TableCell.vue'
 
 const { t, d } = useI18n()
 
@@ -32,7 +35,7 @@ const priceHistory = computedAsync(async () => {
     return data
 }, null, {lazy: true})
 
-function formatDate(start: string, end: string) {
+function formatDateRange(start: string, end: string) {
     let startDate = new Date(`${start}T07:00z`)
     let endDate = new Date(`${end}T07:00z`)
 
@@ -66,19 +69,19 @@ function formatDate(start: string, end: string) {
 <template>
     <ClientOnly>
         <div v-if="priceHistory">
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Date</th>
-                        <th>Price</th>
-                        <th>Royal</th>
-                        <th>Tokens</th>
-                    </tr>
-                    <tr v-for="entry in priceHistory.price_history">
-                        <td>
-                            {{ formatDate(entry.start_date, entry.end_date) }}
-                        </td>
-                        <td>
+            <Table class="price-table">
+                <TableBody>
+                    <TableHeader>
+                        <TableHeaderCell>Date</TableHeaderCell>
+                        <TableHeaderCell>Price</TableHeaderCell>
+                        <TableHeaderCell>Royal</TableHeaderCell>
+                        <TableHeaderCell>Tokens</TableHeaderCell>
+                    </TableHeader>
+                    <TableRow v-for="entry in priceHistory.price_history">
+                        <TableCell>
+                            {{ formatDateRange(entry.start_date, entry.end_date) }}
+                        </TableCell>
+                        <TableCell>
                             <CurrencyImage :object="entry.price.sale?.currency ?? entry.price.base?.currency">
                                 {{ entry.price.sale?.price ?? entry.price.base?.price }}
                             </CurrencyImage>
@@ -91,8 +94,8 @@ function formatDate(start: string, end: string) {
                                 }}
                                 {{ $t('store.message.percent_off') }})
                             </span>
-                        </td>
-                        <td>
+                        </TableCell>
+                        <TableCell>
                             <template v-if="valueExists(entry.price.royal?.price)">
                                 <CurrencyImage :object="entry.price.royal?.currency">
                                     {{ entry.price.royal?.price }}
@@ -105,8 +108,8 @@ function formatDate(start: string, end: string) {
                                 }}
                                 {{ $t('store.message.percent_off') }})
                             </template>
-                        </td>
-                        <td>
+                        </TableCell>
+                        <TableCell>
                             <template v-if="gameObject.price?.token || entry.tags?.includes('pvsar1') || entry.tags?.includes('pvsar2')">
                                 <CurrencyImage :object="
                                     entry.tags?.includes('pvsar1') ?'Token_Event_Rare' :
@@ -116,15 +119,17 @@ function formatDate(start: string, end: string) {
                                     {{ entry.price.base.tokens }}
                                 </CurrencyImage>
                             </template>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        </TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
         </div>
         <div v-else></div>
     </ClientOnly>
 </template>
 
 <style lang="css" scoped>
-
+.price-table {
+    font-size: 1rem;
+}
 </style>
