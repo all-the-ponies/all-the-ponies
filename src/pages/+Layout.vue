@@ -94,6 +94,7 @@ const pageContext = usePageContext()
     padding: 0 1rem;
     position: relative;
     /* height: 100%; */
+    margin: 1rem;
 }
 
 @media screen and (max-width: 50rem) {
