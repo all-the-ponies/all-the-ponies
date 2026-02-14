@@ -108,10 +108,9 @@ function formatDateRange(start: string, end: string) {
                         <TableHeaderCell>Date</TableHeaderCell>
                         <TableHeaderCell>Price</TableHeaderCell>
                         <TableHeaderCell v-if="shownColumns.royal">Royal</TableHeaderCell>
-                        <TableHeaderCell v-if="shownColumns.base">Base Price</TableHeaderCell>
                         <TableHeaderCell v-if="shownColumns.tokens">Tokens</TableHeaderCell>
                     </TableHeader>
-                    <TableRow v-for="entry in priceHistory.price_history">
+                    <TableRow v-for="entry in priceHistory.price_history.filter(entry => !entry.hidden)">
                         <TableCell>
                             {{ formatDateRange(entry.start_date, entry.end_date) }}
                         </TableCell>
@@ -142,11 +141,6 @@ function formatDateRange(start: string, end: string) {
                                 }}
                                 {{ $t('store.message.percent_off') }})
                             </template>
-                        </TableCell>
-                        <TableCell v-if="shownColumns.base">
-                            <CurrencyImage :object="entry.price.base.currency">
-                                {{ entry.price.base.price }}
-                            </CurrencyImage>
                         </TableCell>
                         <TableCell v-if="shownColumns.tokens">
                             <template v-if="gameObject.price?.token || entry.tags?.includes('pvsar1') || entry.tags?.includes('pvsar2')">
