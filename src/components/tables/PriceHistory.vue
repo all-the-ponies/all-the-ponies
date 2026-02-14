@@ -35,6 +35,39 @@ const priceHistory = computedAsync(async () => {
     return data
 }, null, {lazy: true})
 
+const shownColumns = computed(() => {
+    const columns = {
+        base: false,
+        royal: false,
+        tokens: false,
+    }
+
+    let basePrice = priceHistory.value?.price_history[0].price.base.price
+
+    if (priceHistory) {
+        for (let entry of priceHistory.value?.price_history) {
+            if (entry.hidden) {
+                continue
+            }
+
+            if (valueExists(entry.price.base.tokens)) {
+                columns.tokens = true
+            }
+
+            if (valueExists(entry.price.royal.price)) {
+                console.log('show royal', entry.price.royal.price)
+                columns.royal = true
+            }
+
+            if (entry.price.base.price != basePrice) {
+                columns.base = true
+            }
+        }
+    }
+
+    return columns
+})
+
 function formatDateRange(start: string, end: string) {
     let startDate = new Date(`${start}T07:00z`)
     let endDate = new Date(`${end}T07:00z`)
@@ -74,8 +107,9 @@ function formatDateRange(start: string, end: string) {
                     <TableHeader>
                         <TableHeaderCell>Date</TableHeaderCell>
                         <TableHeaderCell>Price</TableHeaderCell>
-                        <TableHeaderCell>Royal</TableHeaderCell>
-                        <TableHeaderCell>Tokens</TableHeaderCell>
+                        <TableHeaderCell v-if="shownColumns.royal">Royal</TableHeaderCell>
+                        <TableHeaderCell v-if="shownColumns.base">Base Price</TableHeaderCell>
+                        <TableHeaderCell v-if="shownColumns.tokens">Tokens</TableHeaderCell>
                     </TableHeader>
                     <TableRow v-for="entry in priceHistory.price_history">
                         <TableCell>
@@ -95,7 +129,7 @@ function formatDateRange(start: string, end: string) {
                                 {{ $t('store.message.percent_off') }})
                             </span>
                         </TableCell>
-                        <TableCell>
+                        <TableCell v-if="shownColumns.royal">
                             <template v-if="valueExists(entry.price.royal?.price)">
                                 <CurrencyImage :object="entry.price.royal?.currency">
                                     {{ entry.price.royal?.price }}
@@ -109,7 +143,12 @@ function formatDateRange(start: string, end: string) {
                                 {{ $t('store.message.percent_off') }})
                             </template>
                         </TableCell>
-                        <TableCell>
+                        <TableCell v-if="shownColumns.base">
+                            <CurrencyImage :object="entry.price.base.currency">
+                                {{ entry.price.base.price }}
+                            </CurrencyImage>
+                        </TableCell>
+                        <TableCell v-if="shownColumns.tokens">
                             <template v-if="gameObject.price?.token || entry.tags?.includes('pvsar1') || entry.tags?.includes('pvsar2')">
                                 <CurrencyImage :object="
                                     entry.tags?.includes('pvsar1') ?'Token_Event_Rare' :
