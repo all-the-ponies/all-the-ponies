@@ -12,9 +12,9 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    vueDevTools({
-      launchEditor: 'codium'
-    }),
+    // vueDevTools({
+    //   launchEditor: 'codium'
+    // }),
     vike(),
   ],
   resolve: {
