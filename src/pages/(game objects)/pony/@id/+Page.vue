@@ -19,6 +19,7 @@ import absoluteUrl from '@/scripts/absoluteUrl'
 import { useData } from 'vike-vue/useData'
 import type { PonyType } from '@/types/gameDataTypes'
 import PriceHistory from '@/components/tables/PriceHistory.vue'
+import type { PriceHistoryType } from '@/scripts/api'
 
 const isMounted = useMounted()
 
@@ -26,7 +27,7 @@ const pageContext = usePageContext()
 
 const saveStore = useSaveStore()
 
-const data = useData<{pony: PonyType}>()
+const data = useData<{pony: PonyType, priceHistory: PriceHistoryType | null}>()
 
 const pony = computed(() => data.pony)
 
@@ -79,112 +80,115 @@ const houseName = computed(() => house.value?.name[language.value.key])
         <div v-if="!pony">
             Pony {{ pageContext.routeParams.id }} not found
         </div>
-        <div v-else class="object-profile">
-            <div>
-                <h1 class="name">
-                    <img class="portrait" :src="`/images/${pony.image.portrait}`" :alt="name">
-                    {{ name }}
-                </h1>
-                <div class="character-wrapper">
-                    <div class="character-container">
-                        <Stars
-                            class="stars"
-                            v-model="stars"
-                            interractive
-                        >
-                            <img class="full-image" :src="staticImage(pony.image.main)" :alt="name">
-                            <div class="left-image-container">
-                                <img v-if="pony.pro" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
-                            </div>
-                            <div class="right-image-container">
-                                <inventory-add-button :gameObject="pony.id"></inventory-add-button>
-                            </div>
-                        </Stars>
-                        <Link
-                            v-if="pony.changeling.id"
-                            :href="`/pony/${pony.changeling.id}/`"
-                            class="button button-blue"
-                        >
-                            {{ $t('game_object.pony.transform') }}
-                        </Link>
+        <div v-else>
+            <section class="object-profile section">
+                <div>
+                    <h1 class="name">
+                        <img class="portrait" :src="`/images/${pony.image.portrait}`" :alt="name">
+                        {{ name }}
+                    </h1>
+                    <div class="character-wrapper">
+                        <div class="character-container">
+                            <Stars
+                                class="stars"
+                                v-model="stars"
+                                interractive
+                            >
+                                <img class="full-image" :src="staticImage(pony.image.main)" :alt="name">
+                                <div class="left-image-container">
+                                    <img v-if="pony.pro" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
+                                </div>
+                                <div class="right-image-container">
+                                    <inventory-add-button :gameObject="pony.id"></inventory-add-button>
+                                </div>
+                            </Stars>
+                            <Link
+                                v-if="pony.changeling.id"
+                                :href="`/pony/${pony.changeling.id}/`"
+                                class="button button-blue"
+                            >
+                                {{ $t('game_object.pony.transform') }}
+                            </Link>
+                        </div>
                     </div>
+                    <div class="description">{{ description }}</div>
                 </div>
-                <div class="description">{{ description }}</div>
-            </div>
-            <div>
-                <table class="infobox">
-                    <tbody>
-                        <tr>
-                            <th colspan="2">{{ $t('common.info') }}</th>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <Link :href="`https://mlp-game-wiki.no/index.php/${pony.wiki_path}`" class="link" target="_blank">
-                                    {{ $t('common.wiki') }}
-                                </Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.common.unlock_level') }}</td>
-                            <td>{{ pony.unlock_level }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('location.town') }}</td>
-                            <td>{{ $t(LOCATIONS[pony.location].string) }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.pony.arrival_bonus') }}</td>
-                            <td>
-                                {{ pony.arrival_xp }}
-                                <currency-image object="XP" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.house.house') }}</td>
-                            <td>
-                                <Link
-                                    v-if="house !== null"
-                                    class="link"
-                                    :href="`/house/${house.id}`"
-                                >
-                                    {{ houseName }}
-                                </Link>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.pony.minigame_cooldown') }}</td>
-                            <td>{{ formatTime(pony.minigame.cooldown) }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.pony.minigame_skip_cost') }}</td>
-                            <td>
-                                {{ pony.minigame.skip_cost }} <currency-image class="item" object="Gems" />
-                            </td>
-                        </tr>
-                        <tr v-if="pony.pro">
-                           	<td>{{ $t('group_quests.pro') }}</td>
-                           	<td>{{ pony.pro === 'random' ? $t('group_quests.random_pro') : gameData.data.group_quests.quests[pony.pro].name[language.key] }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="table-header">{{ $t('game_object.pony.level_up_rewards') }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <span v-if="pony.max_level || pony.rewards.length == 0" class="none-star-rewards">None</span>
-                                <star-rewards
-                                    v-if="!pony.max_level && pony.rewards.length > 0"
-                                    :rewards="pony.rewards"
-                                    v-model="stars"
-                                ></star-rewards>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div>
+                    <table class="infobox">
+                        <tbody>
+                            <tr>
+                                <th colspan="2">{{ $t('common.info') }}</th>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <Link :href="`https://mlp-game-wiki.no/index.php/${pony.wiki_path}`" class="link" target="_blank">
+                                        {{ $t('common.wiki') }}
+                                    </Link>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.common.unlock_level') }}</td>
+                                <td>{{ pony.unlock_level }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('location.town') }}</td>
+                                <td>{{ $t(LOCATIONS[pony.location].string) }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.pony.arrival_bonus') }}</td>
+                                <td>
+                                    {{ pony.arrival_xp }}
+                                    <currency-image object="XP" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.house.house') }}</td>
+                                <td>
+                                    <Link
+                                        v-if="house !== null"
+                                        class="link"
+                                        :href="`/house/${house.id}`"
+                                    >
+                                        {{ houseName }}
+                                    </Link>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.pony.minigame_cooldown') }}</td>
+                                <td>{{ formatTime(pony.minigame.cooldown) }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.pony.minigame_skip_cost') }}</td>
+                                <td>
+                                    {{ pony.minigame.skip_cost }} <currency-image class="item" object="Gems" />
+                                </td>
+                            </tr>
+                            <tr v-if="pony.pro">
+                                   <td>{{ $t('group_quests.pro') }}</td>
+                                   <td>{{ pony.pro === 'random' ? $t('group_quests.random_pro') : gameData.data.group_quests.quests[pony.pro].name[language.key] }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="table-header">{{ $t('game_object.pony.level_up_rewards') }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <span v-if="pony.max_level || pony.rewards.length == 0" class="none-star-rewards">None</span>
+                                    <star-rewards
+                                        v-if="!pony.max_level && pony.rewards.length > 0"
+                                        :rewards="pony.rewards"
+                                        v-model="stars"
+                                    ></star-rewards>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="section" v-if="data.priceHistory">
+                <h2 class="h2">Price History</h2>
+                <PriceHistory :priceHistory="data.priceHistory"></PriceHistory>
+            </section>
         </div>
-        <section>
-            <PriceHistory :object="pony.id"></PriceHistory>
-        </section>
     </div>
 </template>
 

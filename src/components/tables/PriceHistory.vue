@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import api from '@/scripts/api'
+import api, { type PriceHistoryType } from '@/scripts/api'
 import type { GameObjectId } from '@/types/gameDataTypes'
 import { computedAsync } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
@@ -18,22 +18,25 @@ import TableCell from '../table/TableCell.vue'
 const { t, d } = useI18n()
 
 const props = defineProps<{
-    object: GameObjectId,
+    // object: GameObjectId,
+    priceHistory: PriceHistoryType | null,
 }>()
 
-const gameObject = computed(() => gameData.getObject(props.object))
+const priceHistory = computed(() => props.priceHistory)
+const gameObject = computed(() => gameData.getObject(priceHistory.value?.id))
 
-const priceHistory = computedAsync(async () => {
-    if (!gameObject.value?.id) {
-        return null
-    }
-    const data = await api.getPriceHistory(gameObject.value.id)
-    console.log('data', data)
-    if ('detail' in data) {
-        return null
-    }
-    return data
-}, null, {lazy: true})
+// const priceHistory = computedAsync(async () => {
+//     if (!gameObject.value?.id) {
+//         return null
+//     }
+//     console.log('loading data')
+//     const data = await api.getPriceHistory(gameObject.value.id)
+//     console.log('data', data)
+//     if ('detail' in data) {
+//         return null
+//     }
+//     return data
+// }, null, {lazy: false})
 
 const shownColumns = computed(() => {
     const columns = {
@@ -44,8 +47,8 @@ const shownColumns = computed(() => {
 
     let basePrice = priceHistory.value?.price_history[0].price.base.price
 
-    if (priceHistory) {
-        for (let entry of priceHistory.value?.price_history) {
+    if (priceHistory.value) {
+        for (let entry of priceHistory?.value?.price_history) {
             if (entry.hidden) {
                 continue
             }
@@ -100,65 +103,67 @@ function formatDateRange(start: string, end: string) {
 </script>
 
 <template>
-    <ClientOnly>
-        <div v-if="priceHistory">
+    <!-- <ClientOnly> -->
+        <div>
             <Table class="price-table">
-                <TableBody>
+                <!-- <TableBody> -->
                     <TableHeader>
                         <TableHeaderCell>{{ $t('price_history.header.date') }}</TableHeaderCell>
                         <TableHeaderCell>{{ $t('price_history.header.price') }}</TableHeaderCell>
                         <TableHeaderCell v-if="shownColumns.royal">{{ $t('price_history.header.royal') }}</TableHeaderCell>
                         <TableHeaderCell v-if="shownColumns.tokens">{{ $t('price_history.header.tokens') }}</TableHeaderCell>
                     </TableHeader>
-                    <TableRow v-for="entry in priceHistory.price_history.filter(entry => !entry.hidden)">
-                        <TableCell>
-                            {{ formatDateRange(entry.start_date, entry.end_date) }}
-                        </TableCell>
-                        <TableCell>
-                            <CurrencyImage :object="entry.price.sale?.currency ?? entry.price.base?.currency">
-                                {{ entry.price.sale?.price ?? entry.price.base?.price }}
-                            </CurrencyImage>
-                            <span v-if="valueExists(entry.price.sale.price)">
-                                ({{
-                                    $n(
-                                        1 - entry.price.sale.price / entry.price.base.price,
-                                        { style: 'percent' },
-                                    )
-                                }}
-                                {{ $t('store.message.percent_off') }})
-                            </span>
-                        </TableCell>
-                        <TableCell v-if="shownColumns.royal">
-                            <template v-if="valueExists(entry.price.royal?.price)">
-                                <CurrencyImage :object="entry.price.royal?.currency">
-                                    {{ entry.price.royal?.price }}
+                    <template v-if="priceHistory">
+                        <TableRow v-for="entry in priceHistory.price_history.filter(entry => !entry.hidden)">
+                            <TableCell>
+                                {{ formatDateRange(entry.start_date, entry.end_date) }}
+                            </TableCell>
+                            <TableCell>
+                                <CurrencyImage :object="entry.price.sale?.currency ?? entry.price.base?.currency">
+                                    {{ entry.price.sale?.price ?? entry.price.base?.price }}
                                 </CurrencyImage>
-                                ({{
-                                    $n(
-                                        1 - entry.price.royal.price / entry.price.base.price,
-                                        { style: 'percent' },
-                                    )
-                                }}
-                                {{ $t('store.message.percent_off') }})
-                            </template>
-                        </TableCell>
-                        <TableCell v-if="shownColumns.tokens">
-                            <template v-if="gameObject.price?.token || entry.tags?.includes('pvsar1') || entry.tags?.includes('pvsar2')">
-                                <CurrencyImage :object="
-                                    entry.tags?.includes('pvsar1') ?'Token_Event_Rare' :
-                                    entry.tags?.includes('pvsar2') ? 'Token_Event_Common' :
-                                    gameObject.price?.token
-                                ">
-                                    {{ entry.price.base.tokens }}
-                                </CurrencyImage>
-                            </template>
-                        </TableCell>
-                    </TableRow>
-                </TableBody>
+                                <span v-if="valueExists(entry.price.sale.price)">
+                                    ({{
+                                        $n(
+                                            1 - entry.price.sale.price / entry.price.base.price,
+                                            { style: 'percent' },
+                                        )
+                                    }}
+                                    {{ $t('store.message.percent_off') }})
+                                </span>
+                            </TableCell>
+                            <TableCell v-if="shownColumns.royal">
+                                <template v-if="valueExists(entry.price.royal?.price)">
+                                    <CurrencyImage :object="entry.price.royal?.currency">
+                                        {{ entry.price.royal?.price }}
+                                    </CurrencyImage>
+                                    ({{
+                                        $n(
+                                            1 - entry.price.royal.price / entry.price.base.price,
+                                            { style: 'percent' },
+                                        )
+                                    }}
+                                    {{ $t('store.message.percent_off') }})
+                                </template>
+                            </TableCell>
+                            <TableCell v-if="shownColumns.tokens">
+                                <template v-if="gameObject.price?.token || entry.tags?.includes('pvsar1') || entry.tags?.includes('pvsar2')">
+                                    <CurrencyImage :object="
+                                        entry.tags?.includes('pvsar1') ?'Token_Event_Rare' :
+                                        entry.tags?.includes('pvsar2') ? 'Token_Event_Common' :
+                                        gameObject.price?.token
+                                    ">
+                                        {{ entry.price.base.tokens }}
+                                    </CurrencyImage>
+                                </template>
+                            </TableCell>
+                        </TableRow>
+                    </template>
+                <!-- </TableBody> -->
             </Table>
         </div>
-        <div v-else></div>
-    </ClientOnly>
+        <!-- <div v-else></div> -->
+    <!-- </ClientOnly> -->
 </template>
 
 <style lang="css" scoped>

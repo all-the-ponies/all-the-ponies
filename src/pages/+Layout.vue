@@ -70,6 +70,18 @@ const pageContext = usePageContext()
     </div>
 </template>
 
+<style lang="css">
+
+.section {
+    margin-block: 1rem;
+}
+
+.h2 {
+    margin-block: 0.5rem;
+}
+
+</style>
+
 <style scoped>
 
 #main {

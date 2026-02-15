@@ -109,13 +109,13 @@ export interface PriceHistoryEntry {
     tags: string[],
 }
 
-export interface PriceHistory {
+export interface PriceHistoryType {
     id: GameObjectId,
     price_history: PriceHistoryEntry[],
 }
 
-async function getPriceHistory(item: GameObjectId): Promise<ResponseError | PriceHistory> {
-    const result: PriceHistory | ResponseError = await (await request(`/shop/history/${item}/`)).json()
+async function getPriceHistory(item: GameObjectId): Promise<ResponseError | PriceHistoryType> {
+    const result: PriceHistoryType | ResponseError = await (await request(`/shop/history/${item}/`)).json()
 
     return result
 }
