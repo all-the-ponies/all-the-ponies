@@ -97,7 +97,7 @@ const replacedPrice = computed(() => {
                             <template v-if="shopInfo?.inShop">
                                 <div class="discount-container">
                                     <span v-if="replacedPrice != null && !(shopInfo?.token && shopInfo?.price?.base?.tokens)" class="replaced-price">{{ replacedPrice }}</span>
-                                    <div v-if="shopInfo?.price?.royal?.price" class="royal-price">
+                                    <div v-if="!shopInfo?.token && shopInfo?.price?.royal?.price" class="royal-price">
                                         {{ $n(shopInfo.price.royal.price)}}
                                         <ObjectImage :object="shopInfo.price.royal.currency" />
                                         {{ $t('store.message.if') }}
