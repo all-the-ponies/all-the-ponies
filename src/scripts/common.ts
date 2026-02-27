@@ -45,7 +45,7 @@ export function transformName(name: string, options = {
     }
     if (options.ignorePunctuation) {
         name = name.replaceAll('-', ' ')
-        name = name.replaceAll(/[,.()"']/gm, '')
+        name = name.replaceAll(/[,.()"'’]/gm, '')
     }
     if (options.ignoreAccents) {
         name = normalize(name)
