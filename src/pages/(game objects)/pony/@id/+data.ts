@@ -7,9 +7,14 @@ export async function data(pageContext: PageContext) {
     const { id } = pageContext.routeParams
     
     console.log('getting price history')
-    let priceHistory = await api.getPriceHistory(id)
-    if ('detail' in priceHistory) {
-        priceHistory = null
+    let priceHistory = null
+    try {
+        priceHistory = await api.getPriceHistory(id)
+        if ('detail' in priceHistory) {
+            priceHistory = null
+        }
+    } catch {
+        
     }
     
     const pony = gameData.getObject(id, 'pony')
