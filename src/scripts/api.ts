@@ -5,8 +5,8 @@ import type { GameObjectId } from "@/types/gameDataTypes.js"
 const API_DOMAIN = 'https://api.all-the-ponies.com/'
 
 const LOCALHOST_API_DOMAIN = (() => {
-    const url = new URL(import.meta.env.SSR ? 'https://localhost' : location.origin)
-    url.port = '5501'
+    const url = new URL(import.meta.env.SSR ? 'http://localhost' : location.origin)
+    url.port = '5001'
     return url.origin
 })()
 

@@ -17,8 +17,10 @@ const selectedCategory = ref<CategoryName>((pageContext.urlParsed.search.categor
 
 const shop = computedAsync(
     async () => {
+        const shopStart = performance.now()
         const shop = await shopStore.shop
         if (shop) {
+            console.log(`Got shop in ${(performance.now() - shopStart) / 1000}s`)
             return Object.fromEntries(
                 Object.entries(shop).filter(([id, info]) => info.in_shop && !info.hidden)
             )
