@@ -106,7 +106,7 @@ function formatDateRange(start: string, end: string) {
     <!-- <ClientOnly> -->
         <div>
             <Table class="price-table">
-                <!-- <TableBody> -->
+                <TableBody>
                     <TableHeader>
                         <TableHeaderCell>{{ $t('price_history.header.date') }}</TableHeaderCell>
                         <TableHeaderCell>{{ $t('price_history.header.price') }}</TableHeaderCell>
@@ -159,7 +159,7 @@ function formatDateRange(start: string, end: string) {
                             </TableCell>
                         </TableRow>
                     </template>
-                <!-- </TableBody> -->
+                </TableBody>
             </Table>
         </div>
         <!-- <div v-else></div> -->
