@@ -3,7 +3,6 @@ import { language } from '../globals'
 
 
 export function isLocalhost() {
-  console.log('node_env', process.env.NODE_ENV)
   return ['dev', 'development', '', undefined].includes(process.env.NODE_ENV)
   if (['dev', 'development'].includes(process.env.NODE_ENV)) {
     return true
