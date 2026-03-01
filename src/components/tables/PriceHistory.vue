@@ -14,6 +14,7 @@ import TableRow from '../table/TableRow.vue'
 import TableHeader from '../table/TableHeader.vue'
 import TableHeaderCell from '../table/TableHeaderCell.vue'
 import TableCell from '../table/TableCell.vue'
+import TableContainer from '../table/TableContainer.vue'
 
 const { t, d } = useI18n()
 
@@ -103,8 +104,8 @@ function formatDateRange(start: string, end: string) {
 </script>
 
 <template>
-    <!-- <ClientOnly> -->
-        <div>
+    <div>
+        <TableContainer>
             <Table class="price-table">
                 <TableBody>
                     <TableHeader>
@@ -161,13 +162,15 @@ function formatDateRange(start: string, end: string) {
                     </template>
                 </TableBody>
             </Table>
-        </div>
-        <!-- <div v-else></div> -->
-    <!-- </ClientOnly> -->
+        </TableContainer>
+    </div>
 </template>
 
 <style lang="css" scoped>
 .price-table {
     font-size: 1rem;
+    max-width: 30rem;
+    min-width: max-content;
+    width: 100%;
 }
 </style>

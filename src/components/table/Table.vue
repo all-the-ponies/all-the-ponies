@@ -1,19 +1,10 @@
 <template>
-    <div class="table-container">
-        <table class="table">
-            <slot></slot>
-        </table>
-    </div>
+    <table class="table">
+        <slot></slot>
+    </table>
 </template>
 
 <style lang="css">
-
-.table-container {
-    width: fit-content;
-    max-width: 100%;
-    overflow-x: scroll;
-}
-
 
 .table {
     --border-radius: 1rem;
@@ -24,8 +15,6 @@
     border-spacing: 0;
     border-radius: var(--border-radius);
     border: var(--border);
-
-    min-width: 30rem;
 
     overflow: hidden;
 }
