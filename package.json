@@ -20,6 +20,7 @@
     "@vueuse/core": "^14.2.0",
     "accept-language": "^3.0.20",
     "hono": "^4.11.7",
+    "ky": "^1.14.3",
     "papaparse": "^5.5.3",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",

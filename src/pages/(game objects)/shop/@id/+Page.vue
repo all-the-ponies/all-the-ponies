@@ -15,9 +15,17 @@ import absoluteUrl from '@/scripts/absoluteUrl';
 import Link from '@/components/Link.vue';
 import { useData } from 'vike-vue/useData';
 import PriceHistory from '@/components/tables/PriceHistory.vue';
+import type { PriceHistoryType } from '@/scripts/api.types';
 
 const pageContext = usePageContext()
-const data = useData<{shop: ShopType}>()
+const data = useData<{shop: ShopType, priceHistory: PriceHistoryType | null}>()
+const priceHistory = computed(() => {
+    if (!data.priceHistory) {
+        return []
+    }
+    
+    return data.priceHistory.price_history.filter(item => !item.hidden)
+})
 
 const objectInfo = computed(() => data.shop)
 
@@ -172,8 +180,9 @@ const productCurrency = computed(() => {
                 </table>
             </div>
         </div>
-        <section>
-            <PriceHistory :object="objectInfo.id"></PriceHistory>
+        <section class="section" v-if="priceHistory.length">
+            <h2 class="h2">Price History</h2>
+            <PriceHistory :object="objectInfo.id" :priceHistory="priceHistory"></PriceHistory>
         </section>
     </div>
 </template>

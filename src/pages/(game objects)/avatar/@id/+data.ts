@@ -6,7 +6,7 @@ import type { PageContext } from "vike/types"
 
 export async function data(pageContext: PageContext) {
     const { id } = pageContext.routeParams
-    
+
     console.log('getting price history')
     let priceHistory: PriceHistoryType = null
     try {
@@ -15,11 +15,11 @@ export async function data(pageContext: PageContext) {
         priceHistory = null
     }
     
-    const pony = gameData.getObject(id, 'pony')
+    const avatar = gameData.getObject(id, 'avatar')
 
-    if (pony === null) {
-        throw render(404, `Pony with id ${id} doesn't exist`)
+    if (avatar === null) {
+        throw render(404, `Avatar with id ${id} doesn't exist`)
     }
 
-    return { pony, priceHistory }
+    return { avatar, priceHistory }
 }

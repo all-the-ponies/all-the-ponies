@@ -1,8 +1,9 @@
-import type { TDateISO } from "@/types/date.js"
 import { isLocalhost } from "./common.js"
 import type { GameObjectId } from "@/types/gameDataTypes.js"
+import ky from 'ky'
+import type { PriceHistoryType, SaveData, ShopEntry } from "./api.types.js"
 
-const API_DOMAIN = 'https://api.all-the-ponies.com/'
+const API_DOMAIN = 'https://api.all-the-ponies.com'
 
 const LOCALHOST_API_DOMAIN = (() => {
     const url = new URL(import.meta.env.SSR ? 'http://localhost' : location.origin)
@@ -10,112 +11,38 @@ const LOCALHOST_API_DOMAIN = (() => {
     return url.origin
 })()
 
-async function request(pathname: string, query: Record<string, string | number | null> = {}) {
-    let url: URL, response: Response
-
-    function createUrl(localhost = false) {
-        let url = new URL(localhost ? LOCALHOST_API_DOMAIN : API_DOMAIN)
-        url.pathname = pathname
-        for (let [key, value] of Object.entries(query)) {
-            url.searchParams.set(key, String(value))
-        }
-
-        return url
+const api = ky.create({
+    prefixUrl: isLocalhost() ? LOCALHOST_API_DOMAIN : API_DOMAIN,
+    retry: isLocalhost() ? 1 : 0,
+    hooks: {
+        beforeRetry: [
+            ({request, options, error, retryCount}) => {
+                if (retryCount && isLocalhost()) {
+                    console.log('Retrying', error.message == "Failed to fetch")
+                    return new Request(
+                        request.url.replace(LOCALHOST_API_DOMAIN, API_DOMAIN),
+                        request,
+                    )
+                }
+            }
+        ]
     }
+})
 
-    url = createUrl(isLocalhost())
-
-    
-    if (isLocalhost()) {
-        response = await fetch(String(url)).catch(err => {
-            console.warn(err)
-            return null
-        })
-        if (response !== null) {
-            return response
-        }
-
-        url = createUrl(false)
-    }
-
-    response = await fetch(String(url))
-
-    return response
-}
-
-interface ResponseError {
-    detail: string,
-}
-
-interface SaveData {
-    version: number,
-    player_info: {
-        join_date: TDateISO,
-        total_playtime: number,
-        currency: {
-            gems: number,
-            bits: number,
-        },
-    },
-    inventory: {
-        ponies: {
-            id: GameObjectId,
-            level: 0 | 1 | 2 | 3 | 4 | 5,
-            next_minigame: number,
-        }[],
-        shops: GameObjectId[],
-    }
-}
-
-async function getSave(friendCode: string): Promise<SaveData | ResponseError> {
-    const result: SaveData | ResponseError = await (await request(`/save/${friendCode.toLowerCase().trim()}/inventory/`)).json()
+async function getSave(friendCode: string) {
+    const result = await api.get<SaveData>(`save/${friendCode.toLowerCase().trim()}/inventory/`).json()
 
     return result
 }
 
-export interface ShopPrice {
-    price: number | null,
-    currency: GameObjectId | null,
-    tokens: number | null,
-}
-
-export interface ShopEntry {
-    id: GameObjectId,
-    in_shop: boolean,
-    hidden: boolean,
-    price: {
-        base: ShopPrice,
-        sale: ShopPrice,
-        royal: ShopPrice,
-    },
-    tags: string[],
-}
-
-async function getShop(): Promise<ShopEntry[] | ResponseError> {
-    const result: ShopEntry[] | ResponseError = await (await request('/shop/')).json()
+async function getShop() {
+    const result = await api.get<ShopEntry[]>('shop').json()
 
     return result
 }
 
-export interface PriceHistoryEntry {
-    start_date: string,
-    end_date: string,
-    hidden: boolean,
-    price: {
-        base: ShopPrice,
-        sale: ShopPrice,
-        royal: ShopPrice,
-    },
-    tags: string[],
-}
-
-export interface PriceHistoryType {
-    id: GameObjectId,
-    price_history: PriceHistoryEntry[],
-}
-
-async function getPriceHistory(item: GameObjectId): Promise<ResponseError | PriceHistoryType> {
-    const result: PriceHistoryType | ResponseError = await (await request(`/shop/history/${item}/`)).json()
+async function getPriceHistory(item: GameObjectId) {
+    const result = api.get<PriceHistoryType>(`shop/history/${item}/`).json()
 
     return result
 }

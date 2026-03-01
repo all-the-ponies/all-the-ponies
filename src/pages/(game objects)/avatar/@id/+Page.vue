@@ -10,10 +10,18 @@ import Link from '@/components/Link.vue';
 import { useData } from 'vike-vue/useData';
 import type { AvatarType, DecorType } from '@/types/gameDataTypes';
 import PriceHistory from '@/components/tables/PriceHistory.vue';
+import type { PriceHistoryType } from '@/scripts/api.types';
 
 
 const pageContext = usePageContext()
-const data = useData<{avatar: AvatarType}>()
+const data = useData<{avatar: AvatarType, priceHistory: PriceHistoryType | null}>()
+const priceHistory = computed(() => {
+    if (!data.priceHistory) {
+        return []
+    }
+    
+    return data.priceHistory.price_history.filter(item => !item.hidden)
+})
 
 const objectInfo = computed(() => data.avatar)
 
@@ -66,8 +74,9 @@ const pony = computed(() => gameData.getObject(objectInfo.value.pony, 'pony'))
                 </table>
             </div>
         </div>
-        <section>
-            <PriceHistory :object="objectInfo.id"></PriceHistory>
+        <section class="section" v-if="priceHistory.length">
+            <h2 class="h2">Price History</h2>
+            <PriceHistory :object="objectInfo.id" :priceHistory="priceHistory"></PriceHistory>
         </section>
     </div>
 </template>

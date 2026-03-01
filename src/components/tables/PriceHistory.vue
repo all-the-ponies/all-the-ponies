@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import api, { type PriceHistoryType } from '@/scripts/api'
+import { type PriceHistoryEntry } from '@/scripts/api.types'
 import type { GameObjectId } from '@/types/gameDataTypes'
 import { computedAsync } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
@@ -18,12 +18,12 @@ import TableCell from '../table/TableCell.vue'
 const { t, d } = useI18n()
 
 const props = defineProps<{
-    // object: GameObjectId,
-    priceHistory: PriceHistoryType | null,
+    object: GameObjectId,
+    priceHistory: PriceHistoryEntry[] | null,
 }>()
 
 const priceHistory = computed(() => props.priceHistory)
-const gameObject = computed(() => gameData.getObject(priceHistory.value?.id))
+const gameObject = computed(() => gameData.getObject(props.object))
 
 // const priceHistory = computedAsync(async () => {
 //     if (!gameObject.value?.id) {
@@ -45,10 +45,10 @@ const shownColumns = computed(() => {
         tokens: false,
     }
 
-    let basePrice = priceHistory.value?.price_history[0].price.base.price
+    let basePrice = priceHistory.value[0]?.price?.base?.price
 
     if (priceHistory.value) {
-        for (let entry of priceHistory?.value?.price_history) {
+        for (let entry of priceHistory?.value) {
             if (entry.hidden) {
                 continue
             }
@@ -114,7 +114,7 @@ function formatDateRange(start: string, end: string) {
                         <TableHeaderCell v-if="shownColumns.tokens">{{ $t('price_history.header.tokens') }}</TableHeaderCell>
                     </TableHeader>
                     <template v-if="priceHistory">
-                        <TableRow v-for="entry in priceHistory.price_history.filter(entry => !entry.hidden)">
+                        <TableRow v-for="entry in priceHistory">
                             <TableCell>
                                 {{ formatDateRange(entry.start_date, entry.end_date) }}
                             </TableCell>

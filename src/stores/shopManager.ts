@@ -1,9 +1,9 @@
-import api, { type ShopEntry } from "@/scripts/api";
-import { valueExists } from "@/scripts/common";
-import gameData from "@/scripts/gameData";
-import type { GameObject, GameObjectId } from "@/types/gameDataTypes";
-import { defineStore } from "pinia";
-import { shallowRef } from "vue";
+import api from "@/scripts/api"
+import type { ShopEntry } from "@/scripts/api.types"
+import { valueExists } from "@/scripts/common"
+import gameData from "@/scripts/gameData"
+import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
+import { HTTPError } from "ky"
 
 enum ShopStatus {
     unloaded,
@@ -76,29 +76,32 @@ class ShopStore {
         this._status = ShopStatus.pending
 
         this._pending_result = new Promise(async (resolve, reject) => {
-            let shop = await api.getShop()
+            let shop: ShopEntry[]
+            try {
+                shop = await api.getShop()
+            } catch (error: unknown) {
+                if (error instanceof HTTPError) {
+                    reject(await error.response.text())
+                } else {
+                    reject(error)
+                }
+            }
 
             console.log('checking')
 
-            if (Array.isArray(shop)) {
-                console.log('shop is Array')
-                let shopData = {}
-                this._shop = {}
-                console.log('shop length', shop.length)
-                console.log('shop', this._shop)
-                for (let item of shop) {
-                    // console.log('item loaded')
-                    shopData[item.id] = item
-                }
-                this._shop = shopData
-                this._status = ShopStatus.loaded
-                console.log('finished loading shop')
-                resolve(this._shop)
-            } else {
-                this._status = ShopStatus.error
-                console.log('error when loading shop')
-                reject(shop.detail)
+            console.log('shop is Array')
+            let shopData = {}
+            this._shop = {}
+            console.log('shop length', shop.length)
+            console.log('shop', this._shop)
+            for (let item of shop) {
+                // console.log('item loaded')
+                shopData[item.id] = item
             }
+            this._shop = shopData
+            this._status = ShopStatus.loaded
+            console.log('finished loading shop')
+            resolve(this._shop)
         })
 
         return await this._pending_result

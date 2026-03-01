@@ -19,7 +19,7 @@ import absoluteUrl from '@/scripts/absoluteUrl'
 import { useData } from 'vike-vue/useData'
 import type { PonyType } from '@/types/gameDataTypes'
 import PriceHistory from '@/components/tables/PriceHistory.vue'
-import type { PriceHistoryType } from '@/scripts/api'
+import type { PriceHistoryType } from '@/scripts/api.types'
 
 const isMounted = useMounted()
 
@@ -28,6 +28,13 @@ const pageContext = usePageContext()
 const saveStore = useSaveStore()
 
 const data = useData<{pony: PonyType, priceHistory: PriceHistoryType | null}>()
+const priceHistory = computed(() => {
+    if (!data.priceHistory) {
+        return []
+    }
+    
+    return data.priceHistory.price_history.filter(item => !item.hidden)
+})
 
 const pony = computed(() => data.pony)
 
@@ -184,9 +191,9 @@ const houseName = computed(() => house.value?.name[language.value.key])
                     </table>
                 </div>
             </section>
-            <section class="section" v-if="data.priceHistory">
+            <section class="section" v-if="priceHistory.length">
                 <h2 class="h2">Price History</h2>
-                <PriceHistory :priceHistory="data.priceHistory"></PriceHistory>
+                <PriceHistory :object="pony.id" :priceHistory="priceHistory"></PriceHistory>
             </section>
         </div>
     </div>

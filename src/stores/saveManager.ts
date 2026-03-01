@@ -2,6 +2,7 @@ import api from "@/scripts/api"
 import gameData from "@/scripts/gameData"
 import type { TDateISO } from "@/types/date"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
+import type { HTTPError } from "ky"
 import { defineStore } from "pinia"
 import { computed, reactive, ref } from "vue"
 
@@ -165,11 +166,15 @@ export const useSaveStore = defineStore('save', {
         },
 
         async loadFromCloud(friendCode: string) {
-            const saveData = await api.getSave(friendCode)
+            const saveData = await api.getSave(friendCode).catch(async (error: HTTPError) => {
+                if (error.response) {
+                    throw new Error(await error.response.text())
+                } else {
+                    throw error
+                }
+            })
 
-            if ('detail' in saveData) {
-                throw Error(saveData.detail)
-            }
+            console.log('saveData', saveData)
 
             this.$reset()
             this.playerInfo.friendCode = friendCode
@@ -178,7 +183,9 @@ export const useSaveStore = defineStore('save', {
             this.playerInfo.currency.gems = saveData.player_info.currency.gems
             this.playerInfo.currency.bits = saveData.player_info.currency.bits
 
-            for (let pony of saveData.inventory.ponies) {
+            let ponies = Array.isArray(saveData.inventory.ponies) ? saveData.inventory.ponies : Object.values(saveData.inventory.ponies)
+            
+            for (let pony of ponies) {
                 const ponyInfo = gameData.getObject(pony.id, 'pony')
                 
                 if (ponyInfo.tags.includes('npc') || ponyInfo.tags.includes('quest')) {

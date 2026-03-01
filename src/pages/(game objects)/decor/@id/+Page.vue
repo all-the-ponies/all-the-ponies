@@ -11,10 +11,18 @@ import absoluteUrl from '@/scripts/absoluteUrl';
 import { useData } from 'vike-vue/useData';
 import type { DecorType } from '@/types/gameDataTypes';
 import PriceHistory from '@/components/tables/PriceHistory.vue';
+import type { PriceHistoryType } from '@/scripts/api.types';
 
 
 const pageContext = usePageContext()
-const data = useData<{decor: DecorType}>()
+const data = useData<{decor: DecorType, priceHistory: PriceHistoryType | null}>()
+const priceHistory = computed(() => {
+    if (!data.priceHistory) {
+        return []
+    }
+    
+    return data.priceHistory.price_history.filter(item => !item.hidden)
+})
 
 const objectInfo = computed(() => data.decor)
 
@@ -88,8 +96,9 @@ const name = computed(() => {
                 </table>
             </div>
         </div>
-        <section>
-            <PriceHistory :object="objectInfo.id"></PriceHistory>
+        <section class="section" v-if="priceHistory.length">
+            <h2 class="h2">Price History</h2>
+            <PriceHistory :object="objectInfo.id" :priceHistory="priceHistory"></PriceHistory>
         </section>
     </div>
 </template>

@@ -15,11 +15,11 @@ export async function data(pageContext: PageContext) {
         priceHistory = null
     }
     
-    const pony = gameData.getObject(id, 'pony')
+    const shop = gameData.getObject(id, 'shop')
 
-    if (pony === null) {
-        throw render(404, `Pony with id ${id} doesn't exist`)
+    if (shop === null) {
+        throw render(404, `Shop with id ${id} doesn't exist`)
     }
 
-    return { pony, priceHistory }
+    return { shop, priceHistory }
 }
