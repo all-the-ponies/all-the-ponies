@@ -72,8 +72,8 @@ const shownColumns = computed(() => {
 })
 
 function formatDateRange(start: string, end: string) {
-    let startDate = new Date(`${start}T07:00z`)
-    let endDate = new Date(`${end}T07:00z`)
+    let startDate = new Date(`${start}T07:00Z`)
+    let endDate = new Date(`${end}T07:00Z`)
 
     const today = new Date()
 
