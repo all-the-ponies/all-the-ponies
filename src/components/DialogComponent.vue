@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { useTemplateRef } from 'vue'
+import XButton from './buttons/XButton.vue'
 
 const emit = defineEmits({
     open: null,
@@ -58,11 +59,13 @@ defineExpose({
                 <header class="dialog-header">
                     {{ props.title }}
                 </header>
-                <button
+                <XButton
                     v-if="props.hasCloseButton"
-                    class="dialog-close button-pink button-circle"
+                    class="dialog-close"
                     @click="cancel"
-                >X</button>
+                ></XButton>
+                <!-- <button
+                >X</button> -->
                 <div class="dialog-body">
                     <section class="dialog-content">
                         <slot></slot>
