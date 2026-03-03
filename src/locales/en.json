@@ -3,6 +3,13 @@
     "title": "All The Ponies",
     "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game"
   },
+  "notices": {
+    "help_wanted": {
+      "title": "Help Wanted!",
+      "body": "I only speak English, so I can't translate All The Ponies to other languages. If you know another language, I would really love your help translating the website. You can find more info in the discord server.",
+      "discord": "Join Server"
+    }
+  },
   "home": {
     "description": "Get info about {game_link} and track what you have!",
     "message": {
