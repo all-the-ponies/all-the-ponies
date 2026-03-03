@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import XButton from '../buttons/XButton.vue';
 import { ClientOnly } from 'vike-vue/ClientOnly';
+import { useGlobalStateStore } from '@/stores/globalState';
+
+const globalState = useGlobalStateStore()
 
 const props = defineProps<{
     noticeId: string,
 }>()
 
-const closed = ref<boolean>(false)
+const closed = computed(() => globalState.dismissedNotices.includes(props.noticeId))
 
 function close() {
     console.log('Closing')
-    closed.value = true
+    globalState.dismissedNotices.push(props.noticeId)
 }
 
 </script>
