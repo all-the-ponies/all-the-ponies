@@ -25,7 +25,12 @@ const props = defineProps<{
 <style lang="css" scoped>
 
 .discord-button {
-    background-color: #5865F2;
+    --background: #5865F2;
+    background-color: var(--background);
     color: #E0E3FF;
+}
+
+.discord-button:hover {
+    background-color: hsl(from var(--background) h s calc(l + 5));
 }
 </style>
