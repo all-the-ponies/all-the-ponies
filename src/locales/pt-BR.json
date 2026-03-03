@@ -3,6 +3,13 @@
     "title": "",
     "description": ""
   },
+  "notices": {
+    "help_wanted": {
+      "title": "",
+      "body": "",
+      "discord": ""
+    }
+  },
   "home": {
     "description": "",
     "message": {
