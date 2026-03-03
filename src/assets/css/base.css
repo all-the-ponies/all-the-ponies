@@ -145,7 +145,7 @@
         position: relative;
     
         /* border: solid #40A715 var(--border-width); */
-        border-radius: 50rem;
+        border-radius: 50%;
     
         box-shadow: 0px 1px 0px 1px var(--shadow-color);
     
