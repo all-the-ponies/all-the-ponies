@@ -7,7 +7,7 @@
 
 <style lang="css" scoped>
 .x-button {
-    padding: 0.4rem;
+    padding: 0.2em;
 }
 
 .x-icon {
