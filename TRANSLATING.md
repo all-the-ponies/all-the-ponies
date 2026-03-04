@@ -45,5 +45,5 @@ There are two ways to contribute
 
 1. **Pull Request (preferred):** Submit a pull request on this repository with the modified `.json` file.
 2. **Discord:** If you cannot submit a PR, then you are free to send the file in the [Discord server](https://discord.gg/7cyj3TDufD).
-    > [!IMPORTANT]
-    > Only submit the full JSON file, snippets or a single line will not be accepted.
+  > [!IMPORTANT]
+  > Only submit the full JSON file, snippets or a single line will not be accepted.
