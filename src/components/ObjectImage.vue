@@ -8,7 +8,7 @@ import { staticImage } from '@/scripts/common';
 
 const props = withDefaults(defineProps<{
     object: GameObjectId | GameObject | null,
-    type?: 'preview' | 'main' | 'full',
+    type?: 'preview' | 'main',
 }>(), {
     type: 'main',
 })
