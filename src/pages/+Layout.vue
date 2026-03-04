@@ -6,6 +6,7 @@ import SidebarView from '@/views/SidebarView.vue'
 import { Head } from 'vike-vue/Head'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
+import Notices from './Notices.vue'
 
 const pageContext = usePageContext()
 
@@ -65,6 +66,7 @@ const pageContext = usePageContext()
     <div id="main" class="page" ref="main">
         <SidebarView />
         <main class="router">
+            <Notices></Notices>
             <slot></slot>
         </main>
     </div>

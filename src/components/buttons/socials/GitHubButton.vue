@@ -25,6 +25,11 @@ const props = defineProps<{
 <style lang="css" scoped>
 
 .github-button {
-    background-color: #333;
+    --background: #333;
+    background-color: var(--background);
+}
+
+.github-button:hover {
+    background-color: hsl(from var(--background) h s calc(l + 5));
 }
 </style>

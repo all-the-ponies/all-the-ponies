@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import DiscordButton from '@/components/buttons/socials/DiscordButton.vue';
-import GitHubButton from '@/components/buttons/socials/GitHubButton.vue';
-import Link from '@/components/Link.vue';
-import { Config } from 'vike-vue/Config';
-
-const discordLink = "https://discord.gg/vk4KaFFggS"
-const githubRepo = "https://github.com/all-the-ponies/all-the-ponies/"
-const mlpGameHangoutLink = "https://discord.gg/Hbf9U8WfZk"
+import DiscordButton from '@/components/buttons/socials/DiscordButton.vue'
+import GitHubButton from '@/components/buttons/socials/GitHubButton.vue'
+import links from '@/globals/links'
+import { Config } from 'vike-vue/Config'
 </script>
 
 <template>
@@ -20,7 +16,7 @@ const mlpGameHangoutLink = "https://discord.gg/Hbf9U8WfZk"
                     <h3>{{ $t('contact.message.discord.title') }}</h3>
                     <p>{{ $t('contact.message.discord.description') }}</p>
                     <DiscordButton
-                        :href="discordLink"
+                        :href="links.discordServer"
                         target="_blank"
                         class="contact-button"
                     >
@@ -32,7 +28,7 @@ const mlpGameHangoutLink = "https://discord.gg/Hbf9U8WfZk"
                     <p>{{ $t('contact.message.github.description') }}</p>
 
                     <GitHubButton
-                        :href="githubRepo"
+                        :href="links.githubRepo"
                         target="_blank"
                         class="contact-button"
                     >
@@ -44,7 +40,7 @@ const mlpGameHangoutLink = "https://discord.gg/Hbf9U8WfZk"
                     <p>{{ $t('contact.message.mlp_game_hangout.description') }}</p>
 
                     <DiscordButton
-                        :href="mlpGameHangoutLink"
+                        :href="links.mlpGameHangoutServer"
                         target="_blank"
                         class="contact-button"
                     >
