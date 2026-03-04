@@ -122,11 +122,11 @@
     }
     
     .button-circle {
-        display: inline-grid;
-        justify-items: center;
-        align-content: center;
+        display: grid;
+        place-items: center;
     
         font-size: 1.3rem;
+        line-height: 0;
     
         color: white;
         text-shadow: var(--text-shadow);
@@ -145,7 +145,7 @@
         position: relative;
     
         /* border: solid #40A715 var(--border-width); */
-        border-radius: 50rem;
+        border-radius: 50%;
     
         box-shadow: 0px 1px 0px 1px var(--shadow-color);
     

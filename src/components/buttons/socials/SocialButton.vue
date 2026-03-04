@@ -33,6 +33,8 @@ const props = withDefaults(defineProps<{
     text-decoration: none;
     font-weight: bold;
     color: white;
+    
+    transition: background-color 150ms linear;
 }
 
 .social-logo {
