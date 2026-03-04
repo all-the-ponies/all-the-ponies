@@ -3,11 +3,11 @@ import gameData from '@/scripts/gameData'
 import { computed } from 'vue'
 import VLazyImage from "v-lazy-image"
 import { language } from '@/globals'
-import type { GameObjectId } from '@/types/gameDataTypes';
+import type { GameObject, GameObjectId } from '@/types/gameDataTypes';
 import { staticImage } from '@/scripts/common';
 
 const props = withDefaults(defineProps<{
-    object: GameObjectId | null,
+    object: GameObjectId | GameObject | null,
     type?: 'preview' | 'main' | 'full',
 }>(), {
     type: 'main',
