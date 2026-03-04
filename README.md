@@ -1,41 +1,31 @@
 # All The Ponies
 
-All The Ponies is a website built for the My Little Pony Gameloft game.
+[![Discord](https://img.shields.io/discord/1459275396490072237?logo=discord&logoColor=white&label=Discord&color=%235865F2)](https://discord.gg/vk4KaFFggS "Join the discord server")
+[![i18n](https://img.shields.io/badge/i18n-vue--i18n-green?logo=vuedotjs)](TRANSLATING.md)
+![License](https://img.shields.io/github/license/all-the-ponies/all-the-ponies)
 
-## Recommended IDE Setup
+[All The Ponies](https://all-the-ponies.com) is a website built for the My Little Pony Gameloft game.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Translating
 
-## Type Support for `.vue` Imports in TS
+Please see [TRANSLATING.md](TRANSLATING.md)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Development
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+First install the dependencies
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+And then simply run the dev server
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+To build, run this
 
 ```sh
 npm run build
 ```
-
-
-# Planned features
-
-- [ ] Pony Wordle
-- [ ] Wish lists
-- [ ] Shop page
-- [ ] Rewritten mlpcalc
