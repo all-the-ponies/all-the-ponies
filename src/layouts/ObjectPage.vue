@@ -50,7 +50,7 @@ const image = computed(() => gameObject.value?.image?.main)
 
 .object-profile {
     text-align: center;
-    align-items: center;
+    justify-items: center;
 }
 
 .name {
