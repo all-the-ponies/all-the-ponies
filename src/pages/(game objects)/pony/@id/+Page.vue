@@ -20,6 +20,7 @@ import { useData } from 'vike-vue/useData'
 import type { PonyType } from '@/types/gameDataTypes'
 import PriceHistory from '@/components/tables/PriceHistory.vue'
 import type { PriceHistoryType } from '@/scripts/api.types'
+import ObjectPage from '@/layouts/ObjectPage.vue';
 
 const isMounted = useMounted()
 
@@ -88,12 +89,12 @@ const houseName = computed(() => house.value?.name[language.value.key])
             Pony {{ pageContext.routeParams.id }} not found
         </div>
         <div v-else>
-            <section class="object-profile section">
-                <div>
-                    <h1 class="name">
-                        <img class="portrait" :src="`/images/${pony.image.portrait}`" :alt="name">
-                        {{ name }}
-                    </h1>
+            <ObjectPage :gameObject="pony">
+                <template #name>
+                    <img class="portrait" :src="`/images/${pony.image.portrait}`" :alt="name">
+                    {{ name }}
+                </template>
+                <template #image>
                     <div class="character-wrapper">
                         <div class="character-container">
                             <Stars
@@ -119,8 +120,8 @@ const houseName = computed(() => house.value?.name[language.value.key])
                         </div>
                     </div>
                     <div class="description">{{ description }}</div>
-                </div>
-                <div>
+                </template>
+                <template #info>
                     <table class="infobox">
                         <tbody>
                             <tr>
@@ -189,8 +190,8 @@ const houseName = computed(() => house.value?.name[language.value.key])
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </section>
+                </template>
+            </ObjectPage>
             <section class="section" v-if="priceHistory.length">
                 <h2 class="h2">Price History</h2>
                 <PriceHistory :object="pony.id" :priceHistory="priceHistory"></PriceHistory>
@@ -200,24 +201,6 @@ const houseName = computed(() => house.value?.name[language.value.key])
 </template>
 
 <style lang="css" scoped>
-
-.object-profile {
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-@media screen and (max-width: 40rem) {
-    .object-profile {
-        grid-template-columns: auto;
-    }
-}
-
-.name {
-    display: flex;
-    align-items: center;
-    gap: 0.2em;
-    overflow-wrap: anywhere;
-}
 
 .portrait {
     height: 1em;
@@ -232,8 +215,6 @@ const houseName = computed(() => house.value?.name[language.value.key])
 }
 
 .character-wrapper {
-    display: flex;
-    flex-direction: column;
     align-items: start;
 }
 
