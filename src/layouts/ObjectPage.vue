@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ObjectImage from '@/components/ObjectImage.vue';
-import gameData from '@/scripts/gameData';
-import type { GameObject, GameObjectId } from '@/types/gameDataTypes';
-import { computed } from 'vue';
+import { staticImage } from '@/scripts/common'
+import gameData from '@/scripts/gameData'
+import type { GameObject, GameObjectId } from '@/types/gameDataTypes'
+import { computed } from 'vue'
 
 
 const props = defineProps<{
@@ -10,7 +10,9 @@ const props = defineProps<{
 }>()
 
 const gameObject = computed(() => gameData.getObject(props.gameObject))
-const name = computed(() => gameData.translateName(gameObject.value))
+const name = computed(() => gameData.translateName(gameObject.value).value)
+const image = computed(() => gameObject.value?.image?.main)
+
 
 </script>
 
@@ -19,11 +21,9 @@ const name = computed(() => gameData.translateName(gameObject.value))
         <div class="main-object-section">
             <div class="object-profile">
                 <h1 class="name"><slot name="name">{{ name }}</slot></h1>
-                <div>
-                    <slot name="image">
-                        <ObjectImage class="object-image" :object="gameObject" type="main"></ObjectImage>
-                    </slot>
-                </div>
+                <slot name="image">
+                    <img :src="staticImage(image)" :alt="name">
+                </slot>
             </div>
             <div class="object-info">
                 <slot name="info"></slot>
@@ -60,5 +60,10 @@ const name = computed(() => gameData.translateName(gameObject.value))
     overflow-wrap: anywhere;
 }
 
+.object-image {
+    max-height: 10rem;
+    object-fit: contain;
+    object-position: center;
+}
 
 </style>
