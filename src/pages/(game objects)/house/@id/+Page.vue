@@ -88,46 +88,45 @@ const residents = computed(() => {
                                 <td>{{ $t('game_object.building.build_reward') }}</td>
                                 <td><currency-image object="XP">{{ house.build.xp }}</currency-image></td>
                             </tr>
-                            <tr v-if="Object.keys(residents).length > 0">
-                                <th colspan="2">{{ $t('game_object.house.resident', 2) }}</th>
-                            </tr>
-                            <tr v-for="(ponies, location) in residents">
-                                <td colspan="2">
-                                    <span v-if="house.location.length > 1">{{ $t(LOCATIONS[location].string) }} <br></br></span>
-                                    <div class="residents">
-                                        <Link
-                                            v-for="pony in ponies"
-                                            :href="`/${pony.category}/${pony.id}`"
-                                            class="resident link"
-                                        >
-                                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
-                                            <span class="resident-name">{{ gameData.translateName(pony) }}</span>
-                                        </Link>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr v-if="house.visitors.length > 0">
-                                <th colspan="2">{{ $t('game_object.house.visitor', 2) }}</th>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <div class="residents">
-                                        <Link
-                                            v-for="pony in house.visitors.map((id) => gameData.getObject(id, 'pony'))"
-                                            :href="`/${pony.category}/${pony.id}`"
-                                            class="resident link"
-                                         >
-                                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
-                                            <span class="resident-name">{{ gameData.translateName(pony) }}</span>
-                                        </Link>
-                                    </div>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </template>
             </ObjectPage>
-            
+            <section class="section" v-if="Object.keys(residents).length > 0">
+                <h2>
+                    {{ $t('game_object.house.resident', 2) }}
+                </h2>
+                <div v-for="(ponies, location) in residents">
+                    <h3 v-if="house.location.length > 1">{{ $t(LOCATIONS[location].string) }} <br></br></h3>
+                    <div class="residents">
+                        <Link
+                            v-for="pony in ponies"
+                            :href="`/${pony.category}/${pony.id}`"
+                            class="resident link"
+                        >
+                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
+                            <span class="resident-name">{{ gameData.translateName(pony) }}</span>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+            <section class="section" v-if="house.visitors.length > 0">
+                <h2>
+                    {{ $t('game_object.house.visitor', 2) }}
+                </h2>
+                <div>
+                    <div class="residents">
+                        <Link
+                            v-for="pony in house.visitors.map((id) => gameData.getObject(id, 'pony'))"
+                            :href="`/${pony.category}/${pony.id}`"
+                            class="resident link"
+                            >
+                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
+                            <span class="resident-name">{{ gameData.translateName(pony) }}</span>
+                        </Link>
+                    </div>
+                </div>
+            </section>
         </template>
     </div>
 </template>
@@ -140,7 +139,7 @@ const residents = computed(() => {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--item-width), 1fr));
     /* grid-template-rows: subgrid; */
-    gap: 0.5rem;
+    gap: 0.8rem;
 }
 
 .resident {
