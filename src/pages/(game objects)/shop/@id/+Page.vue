@@ -16,6 +16,7 @@ import Link from '@/components/Link.vue';
 import { useData } from 'vike-vue/useData';
 import PriceHistory from '@/components/tables/PriceHistory.vue';
 import type { PriceHistoryType } from '@/scripts/api.types';
+import ObjectPage from '@/layouts/ObjectPage.vue';
 
 const pageContext = usePageContext()
 const data = useData<{shop: ShopType, priceHistory: PriceHistoryType | null}>()
@@ -27,16 +28,16 @@ const priceHistory = computed(() => {
     return data.priceHistory.price_history.filter(item => !item.hidden)
 })
 
-const objectInfo = computed(() => data.shop)
+const shop = computed(() => data.shop)
 
 const name = computed(() => {
-    let name = gameData.translateName(objectInfo.value).value
+    let name = gameData.translateName(shop.value).value
     return name
 })
 
 const residents = computed(() => {
     const residents: {[ L in Location ]+?: PonyType[]} = {}
-    for (let ponyId of objectInfo.value.residents) {
+    for (let ponyId of shop.value.residents) {
         let pony = gameData.getObject(ponyId, 'pony')
         if (!(pony.location in residents)) {
             residents[pony.location] = []
@@ -48,9 +49,9 @@ const residents = computed(() => {
 })
 
 const productCurrency = computed(() => {
-    if (objectInfo.value.product.bits) {
+    if (shop.value.product.bits) {
         return 'Bits'
-    } else if (objectInfo.value.product.gems) {
+    } else if (shop.value.product.gems) {
         return 'Gems'
     } else {
         return null
@@ -60,151 +61,134 @@ const productCurrency = computed(() => {
 </script>
 
 <template>
-    <Config :title="name" description="" :image="absoluteUrl(staticImage(objectInfo.image.main))"></Config>
+    <Config :title="name" description="" :image="absoluteUrl(staticImage(shop.image.main))"></Config>
 
     <div>
         <back-button/>
-        <div v-if="objectInfo === null">
+        <div v-if="shop === null">
             House {{ pageContext.routeParams.id }} not found
         </div>
-        <div v-else class="object-profile">
-            <div>
-                <h1 class="name">
-                    {{ name }}
-                </h1>
-                <div class="shop-container">
-                    <img class="full-image" :src="`/images/${objectInfo.image.main}`" :alt="name">
-                    <div class="left-image-container">
+        <template v-else>
+            <ObjectPage :gameObject="shop">
+                <template #image>
+                    <div class="shop-container">
+                        <img class="full-image" :src="`/images/${shop.image.main}`" :alt="name">
+                        <div class="left-image-container">
+                        </div>
+                        <div class="right-image-container">
+                            <inventory-add-button :gameObject="shop.id"></inventory-add-button>
+                        </div>
                     </div>
-                    <div class="right-image-container">
-                        <inventory-add-button :gameObject="objectInfo.id"></inventory-add-button>
+                </template>
+                <template #info>
+                    <table class="infobox">
+                        <tbody>
+                            <tr>
+                                <th colspan="2">{{ $t('common.info') }}</th>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('location.town') }}</td>
+                                <td>
+                                    {{ $t(LOCATIONS[shop.location].string) }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.common.unlock_level') }}</td>
+                                <td>{{ shop.unlock_level }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.common.size') }}</td>
+                                <td>{{ shop.grid_size }}x{{ shop.grid_size }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.building.build_time') }}</td>
+                                <td>{{ formatTime(shop.build.time) }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.building.build_skip_cost') }}</td>
+                                <td><currency-image object="Gems">{{ shop.build.skip_cost }}</currency-image></td>
+                            </tr>
+                            <tr>
+                                <td>{{ $t('game_object.building.build_reward') }}</td>
+                                <td><currency-image object="XP">{{ shop.build.xp }}</currency-image></td>
+                            </tr>
+                            
+                            <template v-if="Object.keys(shop.product).length > 0">
+                                <tr>
+                                    <th colspan="2">{{ $t('game_object.shop.product') }}</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ shop.product.name[language.key] }}</td>
+                                    <td><img :src="`/images/${shop.product.image}`" style="height: 1em;"></td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $t('game_object.shop.production_time') }}</td>
+                                    <td>{{ formatTime(shop.product.time) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $t('game_object.shop.profit') }}</td>
+                                    <td v-if="productCurrency"><currency-image :object="productCurrency">{{ shop.product.bits || shop.product.gems || shop.product.tls }}</currency-image></td>
+                                    <td v-else>{{ shop.product.tls }} <img :src="`/images/${shop.product.image}`" style="height: 1em;"></td>
+                                </tr>
+                                <tr>
+                                    <td>{{ gameData.translateName(gameData.getObject('XP', 'item')) }}</td>
+                                    <td><currency-image object="XP">{{ shop.product.xp }}</currency-image></td>
+                                </tr>
+                                <tr>
+                                    <td>{{ $t('game_object.building.skip_cost') }}</td>
+                                    <td><currency-image object="Gems">{{ shop.product.skip_cost }}</currency-image></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </template>
+            </ObjectPage>
+            
+            <section class="section" v-if="Object.keys(residents).length > 0">
+                <h2>
+                    {{ $t('game_object.house.resident', 2) }}
+                </h2>
+                <div v-for="(ponies, location) in residents">
+                    <h3 v-if="Object.keys(residents).length > 1">{{ $t(LOCATIONS[location].string) }} <br></br></h3>
+                    <div class="residents">
+                        <Link
+                            v-for="pony in ponies"
+                            :href="`/${pony.category}/${pony.id}`"
+                            class="resident link"
+                        >
+                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
+                            <span class="resident-name">{{ gameData.translateName(pony) }}</span>
+                        </Link>
                     </div>
                 </div>
-            </div>
-            <div>
-                <table class="infobox">
-                    <tbody>
-                        <tr>
-                            <th colspan="2">{{ $t('common.info') }}</th>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('location.town') }}</td>
-                            <td>
-                                {{ $t(LOCATIONS[objectInfo.location].string) }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.common.unlock_level') }}</td>
-                            <td>{{ objectInfo.unlock_level }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.common.size') }}</td>
-                            <td>{{ objectInfo.grid_size }}x{{ objectInfo.grid_size }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.building.build_time') }}</td>
-                            <td>{{ formatTime(objectInfo.build.time) }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.building.build_skip_cost') }}</td>
-                            <td><currency-image object="Gems">{{ objectInfo.build.skip_cost }}</currency-image></td>
-                        </tr>
-                        <tr>
-                            <td>{{ $t('game_object.building.build_reward') }}</td>
-                            <td><currency-image object="XP">{{ objectInfo.build.xp }}</currency-image></td>
-                        </tr>
-                        
-                        <template v-if="Object.keys(objectInfo.product).length > 0">
-                            <tr>
-                                <th colspan="2">{{ $t('game_object.shop.product') }}</th>
-                            </tr>
-                            <tr>
-                                <td>{{ objectInfo.product.name[language.key] }}</td>
-                                <td><img :src="`/images/${objectInfo.product.image}`" style="height: 1em;"></td>
-                            </tr>
-                            <tr>
-                                <td>{{ $t('game_object.shop.production_time') }}</td>
-                                <td>{{ formatTime(objectInfo.product.time) }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ $t('game_object.shop.profit') }}</td>
-                                <td v-if="productCurrency"><currency-image :object="productCurrency">{{ objectInfo.product.bits || objectInfo.product.gems || objectInfo.product.tls }}</currency-image></td>
-                                <td v-else>{{ objectInfo.product.tls }} <img :src="`/images/${objectInfo.product.image}`" style="height: 1em;"></td>
-                            </tr>
-                            <tr>
-                                <td>{{ gameData.translateName(gameData.getObject('XP', 'item')) }}</td>
-                                <td><currency-image object="XP">{{ objectInfo.product.xp }}</currency-image></td>
-                            </tr>
-                            <tr>
-                                <td>{{ $t('game_object.building.skip_cost') }}</td>
-                                <td><currency-image object="Gems">{{ objectInfo.product.skip_cost }}</currency-image></td>
-                            </tr>
-                        </template>
+            </section>
+            <section class="section" v-if="shop.visitors.length > 0">
+                <h2>
+                    {{ $t('game_object.house.visitor', 2) }}
+                </h2>
+                <div>
+                    <div class="residents">
+                        <Link
+                            v-for="pony in shop.visitors.map((id) => gameData.getObject(id, 'pony'))"
+                            :href="`/${pony.category}/${pony.id}`"
+                            class="resident link"
+                            >
+                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
+                            <span class="resident-name">{{ gameData.translateName(pony) }}</span>
+                        </Link>
+                    </div>
+                </div>
+            </section>
 
-                        <tr v-if="Object.keys(residents).length > 0">
-                            <th colspan="2">{{ $t('game_object.house.resident', 2) }}</th>
-                        </tr>
-                        <tr v-for="(ponies, location) in residents">
-                            <td>
-                                <span v-if="Object.keys(residents).length > 1">{{ $t(LOCATIONS[location].string) }} <br></br></span>
-                                <div class="residents">
-                                    <Link
-                                        v-for="pony in ponies"
-                                        :href="`/${pony.category}/${pony.id}`"
-                                        class="resident link"
-                                    >
-                                        <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
-                                        <span class="resident-name">{{ gameData.translateName(pony) }}</span>
-                                    </Link>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr v-if="objectInfo.visitors.length > 0">
-                            <th colspan="2">{{ $t('game_object.house.visitor', 2) }}</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="residents">
-                                    <Link
-                                        v-for="pony in objectInfo.visitors.map((id) => gameData.getObject(id, 'pony'))"
-                                        :href="`/${pony.category}/${pony.id}`"
-                                        class="resident link"
-                                     >
-                                        <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
-                                        <span class="resident-name">{{ gameData.translateName(pony) }}</span>
-                                    </Link>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <section class="section" v-if="priceHistory.length">
-            <h2 class="h2">Price History</h2>
-            <PriceHistory :object="objectInfo.id" :priceHistory="priceHistory"></PriceHistory>
-        </section>
+            <section class="section" v-if="priceHistory.length">
+                <h2 class="h2">Price History</h2>
+                <PriceHistory :object="shop.id" :priceHistory="priceHistory"></PriceHistory>
+            </section>
+        </template>
     </div>
 </template>
 
 <style lang="css" scoped>
-
-.object-profile {
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-
-@media screen and (max-width: 40rem) {
-    .object-profile {
-        grid-template-columns: auto;
-    }
-}
-
-.name {
-    display: flex;
-    align-items: center;
-    gap: 0.2em;
-}
 
 .full-image {
     width: 100%;
@@ -256,7 +240,7 @@ const productCurrency = computed(() => {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--item-width), 1fr));
     /* grid-template-rows: subgrid; */
-    gap: 0.5rem;
+    gap: 0.8rem;
 }
 
 .resident {
@@ -268,12 +252,13 @@ const productCurrency = computed(() => {
     width: 100%;
     justify-items: center;
     align-items: stretch;
+    
+    img {
+        object-fit: contain;
+        object-position: center;
+        width: var(--item-width);
+    }
 }
 
-.resident img {
-    object-fit: contain;
-    object-position: center;
-    width: var(--item-width);
-}
 
 </style>
