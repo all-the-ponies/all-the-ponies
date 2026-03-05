@@ -30,7 +30,8 @@ const name = computed(() => {
 
 <template>
     <span v-if="object === null || !image"></span>
-    <v-lazy-image v-else :src="staticImage(image)" :alt="name"></v-lazy-image>
+    <img v-else :src="staticImage(image)" :alt="name" loading="lazy">
+    <!-- <v-lazy-image v-else :src="staticImage(image)" :alt="name"></v-lazy-image> -->
 </template>
 
 <style lang="css" scoped>
