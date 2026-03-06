@@ -318,16 +318,21 @@ function getInfo(gameObject: GameObject): JSX.Element {
 
         <section id="search-results">
             <template v-if="objects.length > 0">
-                <ObjectCard
-                    v-for="object in shownResults.values()"
-                    :object="object"
-                    :key="`object-${object.id}`"
-                    :show-price="props.showPrices"
-                >
-                    <template v-if="props.infoGetter" #info>
-                        <component :is="getInfo(object)"></component>
-                    </template>
-                </ObjectCard>
+                <div class="item" v-for="object in shownResults.values()" :key="`object-${object.id}`">
+                    <slot name="item" :object-id="object.id" :object="object">
+                        <ObjectCard
+                            
+                            :object="object"
+                            :show-price="props.showPrices"
+                            is-link
+                            show-inventory-button
+                        >
+                            <template v-if="props.infoGetter" #info>
+                                <component :is="getInfo(object)"></component>
+                            </template>
+                        </ObjectCard>
+                    </slot>
+                </div>
             </template>
             <slot v-else name="empty"></slot>
             

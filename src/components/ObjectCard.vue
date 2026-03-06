@@ -19,6 +19,9 @@ const shopManager = shopStore
 const props = defineProps<{
     object: GameObjectId | GameObject,
     showPrice?: boolean,
+    isLink?: boolean,
+    showInventoryButton?: boolean,
+    hover?: boolean,
 }>()
 
 const gameObject = gameData.getObject(props.object)
@@ -67,13 +70,14 @@ const shopInfo = computedAsync(
         :image="staticImage(image)"
         :alt="name"
         :priceData="!gettingShopInfo && showPrice ? shopInfo : null"
-        :href="`/${gameObject.category}/${gameObject.id}/`"
+        :href="props.isLink ? `/${gameObject.category}/${gameObject.id}/` : null"
+        :hover="$props.hover"
     >
         <template #left>
             <img v-if="gameObject.category === 'pony' && gameObject.pro" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
         </template>
         <template #right>
-            <inventory-add-button v-if="canAdd" :gameObject="gameObject.id" />
+            <inventory-add-button v-if="props.showInventoryButton && canAdd" :gameObject="gameObject.id" />
         </template>
         <template #info>
             <slot name="info"></slot>
