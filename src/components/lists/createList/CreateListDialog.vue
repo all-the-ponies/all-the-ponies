@@ -43,8 +43,8 @@ function selectImage() {
     selectItemDialog.value.open()
 }
 
-function selectedImage() {
-
+function selectedImage(objectId: GameObjectId) {
+    image.value.item = objectId
 }
 
 defineExpose({
@@ -85,6 +85,7 @@ defineExpose({
 
     <SelectObjectDialog
         ref="select-object-dialog"
+        @submit="selectedImage"
     >
 
     </SelectObjectDialog>

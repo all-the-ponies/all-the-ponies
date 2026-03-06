@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed, ref, useTemplateRef } from 'vue';
 import DialogComponent from '../DialogComponent.vue';
-import type { CategoryName, GameObjectId } from '@/types/gameDataTypes';
+import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
 import SearchComponent from '../SearchComponent.vue';
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories';
 import gameData from '@/scripts/gameData';
+import ObjectCard from '../ObjectCard.vue';
 
 const props = defineProps<{
 
@@ -46,6 +47,10 @@ defineExpose({
     cancel,
 })
 
+
+function selectObject(objectId: GameObjectId) {
+    submit(objectId)
+}
 
 
 const selectedCategory = ref<CategoryName>('pony')
@@ -109,6 +114,16 @@ const filterFunctions = computed(() => {
                         :key="`category-${category}`"
                     >{{ $t(CATEGORIES[category].string, 2) }}</option>
                 </select>
+            </template>
+
+            <template #item="{ objectId, object }">
+                <ObjectCard
+                    :object="object"
+                    hover
+                    @click="selectObject(objectId)"
+                >
+
+                </ObjectCard>
             </template>
         </SearchComponent>
         <template #menu>
