@@ -79,10 +79,10 @@ defineExpose({
     </ClientOnly>
 </template>
 
-<style>
+<style lang="css" scoped>
 
 .dialog {
-    margin: auto auto ;
+    margin: auto auto;
     border: none !important;
     border-radius: calc(5px * var(--ratio));
     box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -91,7 +91,16 @@ defineExpose({
 
     border-radius: 10px;
     box-shadow: inset 0px -1px 4px hsl(211, 30%, 55%);
-    max-width: min(100dvw, 20rem);;
+
+    flex-direction: column;
+
+    max-width: 95dvw;
+    max-height: 90dvh;
+    /* height: auto; */
+}
+
+.dialog:open {
+    display: flex;
 }
 
 .dialog::backdrop {
@@ -140,23 +149,31 @@ defineExpose({
     translate: 50% -50%;
 
     font-size: 2rem;
-    /* padding: 0.3em; */
     width: 1.2em;
     height: 1.2em;
 }
 
-.dialog-menu {
-    display: grid;
-    grid-auto-columns: minmax(6rem, auto);
-    grid-auto-flow: column;
-    justify-content: center;
-    gap: 0.5em;
+.dialog-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
 }
 
 .dialog-content {
     color: var(--blue);
     margin: 0.5rem 0.2rem;
-    /* width: min-content; */
-    /* min-width: 20rem; */
+    
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+.dialog-menu {
+    flex: 0 0 auto;
+    display: grid;
+    grid-auto-columns: minmax(6rem, auto);
+    grid-auto-flow: column;
+    justify-content: center;
+    gap: 0.5em;
 }
 </style>
