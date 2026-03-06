@@ -367,6 +367,7 @@ function imageLoadFailed() {
 .pony-image {
     max-width: 100%;
     min-width: 5rem;
+    pointer-events: none;
 }
     
 .pony-image.not-loaded {
