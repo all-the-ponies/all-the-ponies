@@ -2,12 +2,13 @@
 import DialogComponent from '@/components/DialogComponent.vue';
 import SelectObjectDialog from '@/components/dialogs/SelectObjectDialog.vue';
 import GameCard from '@/components/GameCard.vue';
-import { staticImage } from '@/scripts/common';
+import { pickRandom, staticImage } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
 import { useListStore } from '@/stores/listStore';
-import type { GameObjectId } from '@/types/gameDataTypes';
-import { computed, ref, useTemplateRef } from 'vue';
+import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
+import { computed, nextTick, ref, useTemplateRef } from 'vue';
 import ChooseImageDialog from './ChooseImageDialog.vue';
+import { CATEGORIES } from '@/scripts/categories';
 
 const listsStore = useListStore()
 
@@ -20,17 +21,22 @@ const image = ref<{item: GameObjectId | null, image: string | null}>({
     item: null,
     image: null,
 })
-const tempItem = ref<GameObjectId>()
+const tempItem = ref<GameObjectId>(null)
 const gameObject = computed(() => gameData.getObject(image.value?.item))
 
 
 function createList() {
     name.value = ''
-    image.value = {
-        item: 'Pony_Twilight_Sparkle',
-        image: 'main',
-    }
-    createListDialog.value.open()
+    const randomObject = pickRandom(Object.values(gameData.data.categories[
+        pickRandom(Object.keys(gameData.data.categories).filter(category => category in CATEGORIES) as CategoryName[])
+    ].objects as GameObject[]))
+
+    image.value.item = randomObject.id
+    image.value.image = pickRandom(Object.keys(randomObject.image))
+    
+    nextTick(() => {
+        createListDialog.value.open()
+    })
 }
 
 function submitList() {
