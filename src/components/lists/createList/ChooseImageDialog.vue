@@ -22,7 +22,7 @@ const emit = defineEmits<{
 const imageDialog = useTemplateRef('image-dialog')
 
 const gameObject = computed(() => gameData.getObject(props.gameObject))
-const images = computed(() => gameObject.value?.image || {})
+const images = computed<Record<string, string>>(() => gameObject.value?.image || {})
 
 function open() {
     emit('open')
