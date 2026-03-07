@@ -288,6 +288,9 @@
           "wishlist": "Wishlist",
           "name": "Name:"
         }
+      },
+      "choose_image": {
+        "title": "Choose Image"
       }
     }
   }

@@ -71,7 +71,7 @@ const shopInfo = computedAsync(
         :alt="name"
         :priceData="!gettingShopInfo && showPrice ? shopInfo : null"
         :href="props.isLink ? `/${gameObject.category}/${gameObject.id}/` : null"
-        :hover="$props.hover"
+        :hover="props.hover"
     >
         <template #left>
             <img v-if="gameObject.category === 'pony' && gameObject.pro" loading="lazy" src="@/assets/images/ui/pro-pony.png" />

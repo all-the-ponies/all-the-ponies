@@ -7,14 +7,20 @@ import gameData from '@/scripts/gameData';
 import { useListStore } from '@/stores/listStore';
 import type { GameObjectId } from '@/types/gameDataTypes';
 import { computed, ref, useTemplateRef } from 'vue';
+import ChooseImageDialog from './ChooseImageDialog.vue';
 
 const listsStore = useListStore()
 
 const createListDialog = useTemplateRef('create-list')
 const selectItemDialog = useTemplateRef('select-object-dialog')
+const chooseImageDialog = useTemplateRef('choose-image-dialog')
 
 const name = ref<string>()
-const image = ref<{item: GameObjectId | null, image: string | null}>()
+const image = ref<{item: GameObjectId | null, image: string | null}>({
+    item: null,
+    image: null,
+})
+const tempItem = ref<GameObjectId>()
 const gameObject = computed(() => gameData.getObject(image.value?.item))
 
 
@@ -39,12 +45,27 @@ function cancelList() {
 
 }
 
-function selectImage() {
+function selectObject() {
     selectItemDialog.value.open()
 }
 
-function selectedImage(objectId: GameObjectId) {
-    image.value.item = objectId
+function submitObject(objectId: GameObjectId) {
+    tempItem.value = objectId
+    selectImage()
+}
+
+function selectImage() {
+    const tempObject = gameData.getObject(tempItem.value)
+    if (Object.keys(tempObject.image).length <= 1) {
+        submitImage(Object.keys(tempObject.image)[0])
+    } else {
+        chooseImageDialog.value.open()
+    }
+}
+
+function submitImage(imageType: string) {
+    image.value.item = tempItem.value
+    image.value.image = imageType
 }
 
 defineExpose({
@@ -74,7 +95,7 @@ defineExpose({
             :title="name || $t('lists.dialog.create_list.message.wishlist')"
             hover
             :image="staticImage(gameObject ? gameObject.image[image.image] : null)"
-            @click="selectImage()"
+            @click="selectObject()"
         ></GameCard>
 
         <template #menu>
@@ -85,10 +106,18 @@ defineExpose({
 
     <SelectObjectDialog
         ref="select-object-dialog"
-        @submit="selectedImage"
+        @submit="submitObject"
     >
 
     </SelectObjectDialog>
+
+    <ChooseImageDialog
+        ref="choose-image-dialog"
+        :game-object="tempItem"
+        :name="name || $t('lists.dialog.create_list.message.wishlist')"
+        @submit="submitImage"
+    >
+    </ChooseImageDialog>
 </template>
 
 <style lang="css" scoped>

@@ -98,6 +98,7 @@ const filterFunctions = computed(() => {
     <DialogComponent
         ref="select-dialog"
         :title="$t('dialog.select_item.title')"
+        has-close-button
     >
         <SearchComponent
             :objects="gameObjects"
@@ -126,9 +127,6 @@ const filterFunctions = computed(() => {
                 </ObjectCard>
             </template>
         </SearchComponent>
-        <template #menu>
-            <button @click="selectDialog.cancel()" class="button button-red">{{ $t('button.cancel') }}</button>
-        </template>
     </DialogComponent>
 </template>
 
