@@ -61,18 +61,19 @@ export interface GAME_DATA_Type {
     game_version: string,
     content_version: string,
     categories: {
-        pony: {
-            clones: object,
-            objects: {[ key: string]: PonyType},
-        },
-        house: {objects: {[ keys: string ]: HouseType},},
-        shop: {objects: {[ keys: string ]: ShopType},},
-        decor: {objects: {[ keys: string ]: DecorType},},
-        item: {objects: {[ keys: string ]: ItemType},},
-        token: {objects: {[ keys: string ]: TokenType},},
-        avatar: {objects: {[ keys: string ]: AvatarType},},
+        pony: CategoryData<HouseType> & {clones: object},
+        house: CategoryData<HouseType>,
+        shop: CategoryData<ShopType>,
+        decor: CategoryData<DecorType>,
+        item: CategoryData<ItemType>,
+        token: CategoryData<TokenType>,
+        avatar: CategoryData<AvatarType>,
     },
     group_quests: GroupQuests,
+}
+
+interface CategoryData<T> {
+    objects: Record<GameObjectId, T>,
 }
 
 
