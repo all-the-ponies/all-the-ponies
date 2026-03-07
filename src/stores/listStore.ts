@@ -2,12 +2,12 @@ import type { TDateISO } from "@/types/date";
 import type { GameObjectId } from "@/types/gameDataTypes";
 import { defineStore } from "pinia";
 
-interface ListItem {
+interface WishlistItem {
     item: GameObjectId,
     dateAdded: string,
 }
 
-interface List {
+export interface Wishlist {
     id: number,
     name: string,
     image: {
@@ -15,20 +15,21 @@ interface List {
         image: string,
     },
     dateCreated: string,
-    items: ListItem[],
+    items: WishlistItem[],
 }
 
 export const useListStore = defineStore('lists', {
     state: () => {
         return {
-            lists: new Map<number, List>(),
+            lists: new Map<number, Wishlist>(),
         }
     },
     actions: {
-        createList(name: string, image: List['image'], date: Date) {
+        createList(name: string, image: Wishlist['image'], date: Date) {
             let id: number
-            let previous: number
-            for (let key of [...this.lists.keys()].sort()) {
+            let previous: number = 1
+            const ids = [...this.lists.keys()].sort()
+            for (let key of ids) {
                 if (previous) {
                     if (key - previous > 1) {
                         id = previous + 1
@@ -38,8 +39,10 @@ export const useListStore = defineStore('lists', {
                 previous = key
             }
             if (!id) {
-                id = this.lists.size + 1
+                id = ids.at(-1) + 1 || 1
             }
+
+            console.log('new id', id)
 
             const list = {
                 id,
@@ -70,10 +73,10 @@ export const useListStore = defineStore('lists', {
             deserialize: (data) => {
                 const newData = JSON.parse(data)
                 
-                newData.lists = (newData.lists as List[]).reduce((acc: Map<number, List>, current) => {
+                newData.lists = (newData.lists as Wishlist[]).reduce((acc: Map<number, Wishlist>, current) => {
                     acc.set(current.id, current)
                     return acc
-                }, new Map<number, List>())
+                }, new Map<number, Wishlist>())
 
                 return newData
             }
