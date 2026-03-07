@@ -85,86 +85,86 @@ if (props.param) {
 </script>
 
 <template>
-<div v-if="props?.param" class="paginator-container" :class="totalPages == 1 ? 'hidden' : ''">
-    <Link
-     class="paginator-button back-button"
-     @click.prevent.stop="page--"
-     :class="{disabled: page <= 1}"
-     :href="
-        modifyUrl(
-            pageContext.urlPathname,
-            {
-                search: {
-                    ...searchQuery,
-                    [$props.param]: String(Math.max(1, page - 1)),
-                }
-            }
-        )
-    "
-     :replace="true"
-    ><</Link>
-
-    <Link
-     class="paginator-button page-selector"
-     :class="{selected: pageNum == page}"
-     v-for="pageNum in pageList"
-     :key="`page-${pageNum}`"
-     @click.prevent.stop.capture="page = pageNum"
-     :href="
-        modifyUrl(
-            pageContext.urlPathname,
-            {
-                search: {
-                    ...searchQuery,
-                    [$props.param]: String(pageNum),
+    <div v-if="props?.param" class="paginator-container" :class="totalPages == 1 ? 'hidden' : ''">
+        <Link
+        class="paginator-button back-button"
+        @click.prevent.stop="page--"
+        :class="{disabled: page <= 1}"
+        :href="
+            modifyUrl(
+                pageContext.urlPathname,
+                {
+                    search: {
+                        ...searchQuery,
+                        [$props.param]: String(Math.max(1, page - 1)),
                     }
                 }
             )
         "
-    >
-        {{ pageNum }}
-    </Link>
+        :replace="true"
+        ><</Link>
 
-    <Link
-     class="paginator-button forward-button"
-     @click.prevent.stop="page++"
-     :class="{disabled: page >= totalPages}"
-     :href="
-        modifyUrl(
-            pageContext.urlPathname,
-            {
-                search: {
-                    ...searchQuery,
-                    [$props.param]: String(Math.min(page + 1, totalPages)),
+        <Link
+        class="paginator-button page-selector"
+        :class="{selected: pageNum == page}"
+        v-for="pageNum in pageList"
+        :key="`page-${pageNum}`"
+        @click.prevent.stop.capture="page = pageNum"
+        :href="
+            modifyUrl(
+                pageContext.urlPathname,
+                {
+                    search: {
+                        ...searchQuery,
+                        [$props.param]: String(pageNum),
+                        }
                     }
-                }
-            )
-        "
-    >></Link>
-</div>
-<div v-else class="paginator-container" :class="totalPages == 1 ? 'hidden' : ''">
-    <button
-     class="paginator-button back-button"
-     @click="page--"
-     :disabled="page <= 1"
-    ><</button>
+                )
+            "
+        >
+            {{ pageNum }}
+        </Link>
 
-    <button
-     class="paginator-button page-selector"
-     :class="{selected: pageNum == page}"
-     v-for="pageNum in pageList"
-     :key="`page-${pageNum}`"
-     @click="page = pageNum"
-    >
-        {{ pageNum }}
-    </button>
+        <Link
+        class="paginator-button forward-button"
+        @click.prevent.stop="page++"
+        :class="{disabled: page >= totalPages}"
+        :href="
+            modifyUrl(
+                pageContext.urlPathname,
+                {
+                    search: {
+                        ...searchQuery,
+                        [$props.param]: String(Math.min(page + 1, totalPages)),
+                        }
+                    }
+                )
+            "
+        >></Link>
+    </div>
+    <div v-else class="paginator-container" :class="totalPages == 1 ? 'hidden' : ''">
+        <button
+        class="paginator-button back-button"
+        @click="page--"
+        :disabled="page <= 1"
+        ><</button>
 
-    <button
-     class="paginator-button forward-button"
-     @click="page++"
-     :disabled="page >= totalPages"
-    >></button>
-</div>
+        <button
+        class="paginator-button page-selector"
+        :class="{selected: pageNum == page}"
+        v-for="pageNum in pageList"
+        :key="`page-${pageNum}`"
+        @click="page = pageNum"
+        >
+            {{ pageNum }}
+        </button>
+
+        <button
+        class="paginator-button forward-button"
+        @click="page++"
+        :disabled="page >= totalPages"
+        >></button>
+    </div>
 </template>
 
 <style scoped>
