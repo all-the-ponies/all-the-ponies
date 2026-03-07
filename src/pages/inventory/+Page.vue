@@ -2,8 +2,11 @@
 import DialogComponent from '@/components/DialogComponent.vue'
 import ExportDialogBody from '@/components/inventory/dialogs/ExportDialog.vue'
 import Link from '@/components/Link.vue'
+import ObjectCard from '@/components/ObjectCard.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
+import { language } from '@/globals'
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories'
+import gameData from '@/scripts/gameData'
 import saveStats from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
 import type { CategoryName } from '@/types/gameDataTypes'
@@ -186,12 +189,22 @@ async function importFriendCode() {
         <section>
             <ClientOnly>
                 <SearchComponent
-                    :objects="gameObjects"
+                    :data="gameObjects.map(objectId => gameData.getObject(objectId, category))"
+                    :search-function="(query, items) => gameData.searchName(query, items, language.key)"
                     :filters="filterFunctions"
                     :sorters="sortFunctions"
                     :query="query"
                     :placeholder="$t(CATEGORIES[category].string)"
+                    page-param="page"
                 >
+                    <template #item="{ item }">
+                        <ObjectCard
+                            :object="item"
+                            is-link
+                            show-inventory-button
+                        >
+                        </ObjectCard>
+                    </template>
                     <template #menu-before>
                         <select v-model="category" class="dropdown" name="category">
                             <option value="pony">{{ $t('game_object.pony.pony', 2) }}</option>

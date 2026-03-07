@@ -1,4 +1,4 @@
-<script lang="tsx" setup>
+<script lang="tsx" setup generic="ITEM extends {id: string | number, [key: string]: any}">
 import { computed, ref, useTemplateRef, watch } from 'vue'
 import ObjectCard from './ObjectCard.vue'
 import gameData from '@/scripts/gameData'
@@ -20,19 +20,18 @@ const currentPage = ref(Number(pageContext.urlParsed.search.page) || 1)
 const perPage = ref(300)
 
 const props = withDefaults(defineProps<{
-        objects: (GameObjectId | GameObject)[],
+        data: ITEM[],
+        searchFunction(query: string, items: ITEM[]): ITEM[],
         filters?: Record<string, FilterFunctionsType>,
         sorters?: Record<string, SortFunctionsType>,
         query?: Record<string, string | string[] | number | null>,
         placeholder?: string,
-        showPrices?: boolean,
-        infoGetter? (gameObject: GameObject): string | JSX.Element,
+        pageParam?: string,
     }>(), {
         filters: () => {return {}},
         sorters: () => {return {}},
         query: () => {return {}},
         placeholder: 'Pony',
-        infoGetter: null,
     }
 )
 
@@ -204,23 +203,23 @@ watch(
     }
 )
 
-const objects = computed(() => props.objects.map((obj) => gameData.getObject(obj)))
+const items = computed(() => props.data)
 
-function checkObject(gameObject: GameObject, filterKey: string) {
+function checkObject(item: ITEM, filterKey: string) {
     const filter = props.filters[filterKey]
-    const mainCheck =filter.check ? filter.check(gameObject) : true
+    const mainCheck =filter.check ? filter.check(item) : true
     let excludeCheck = true
     let includeCheck = true
     if (mainCheck && filter.exclude) {
         excludeCheck = filter.exclude.every((excludeFilter) => (
             filters.value.includes(excludeFilter) ||
-            (!checkObject(gameObject, excludeFilter))
+            (!checkObject(item, excludeFilter))
         ))
     }
     if (mainCheck && filter.include) {
         includeCheck = filter.include.every((includeFilter) => (
             filters.value.includes(includeFilter) ||
-            checkObject(gameObject, includeFilter)
+            checkObject(item, includeFilter)
         ))
     }
 
@@ -228,7 +227,7 @@ function checkObject(gameObject: GameObject, filterKey: string) {
 }
 
 const searchResults = computed(() => {
-    let results = gameData.searchName(searchQuery.value, objects.value, language.value.key)
+    let results = props.searchFunction(searchQuery.value, items.value)
     // let filterFunctions = filters.filter(key => selectedFilters[key])
     if (filters.value.length) {
         results = results.filter(
@@ -242,7 +241,7 @@ const searchResults = computed(() => {
 })
 
 const shownResults = computed(() => {
-    const results: GameObject[] = []
+    const results: ITEM[] = []
 
     let start = (Math.max(1, currentPage.value) - 1) * perPage.value
     for (let i = start; i < Math.min(start + perPage.value, searchResults.value.length); i++) {
@@ -279,19 +278,6 @@ watch(
     }
 )
 
-function getInfo(gameObject: GameObject): JSX.Element {
-    if (props.infoGetter === null) {
-        return
-    }
-    const info = props.infoGetter(gameObject)
-
-    if (typeof info === 'string') {
-        return <span>{info}</span>
-    }
-
-    return info
-}
-
 </script>
 
 <template>
@@ -314,23 +300,18 @@ function getInfo(gameObject: GameObject): JSX.Element {
             <slot name="menu-after"></slot>
         </div>
 
-        <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
+        <Paginator
+            v-model="currentPage"
+            :per-page="perPage"
+            :total="searchResults.length"
+            :max-pages="10"
+            :param="props.pageParam"
+        ></Paginator>
 
         <section id="search-results">
-            <template v-if="objects.length > 0">
-                <div class="item" v-for="object in shownResults.values()" :key="`object-${object.id}`">
-                    <slot name="item" :object-id="object.id" :object="object">
-                        <ObjectCard
-                            
-                            :object="object"
-                            :show-price="props.showPrices"
-                            is-link
-                            show-inventory-button
-                        >
-                            <template v-if="props.infoGetter" #info>
-                                <component :is="getInfo(object)"></component>
-                            </template>
-                        </ObjectCard>
+            <template v-if="items.length > 0">
+                <div class="item" v-for="item in shownResults.values()" :key="`item-${item.id}`">
+                    <slot name="item" :item="item">
                     </slot>
                 </div>
             </template>
@@ -338,7 +319,13 @@ function getInfo(gameObject: GameObject): JSX.Element {
             
         </section>
         
-        <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
+        <Paginator
+            v-model="currentPage"
+            :per-page="perPage"
+            :total="searchResults.length"
+            :max-pages="10"
+            :param="props.pageParam"
+        ></Paginator>
 
         <dialog-component
             :has-close-button="true"

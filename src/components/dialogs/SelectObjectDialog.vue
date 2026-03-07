@@ -6,6 +6,7 @@ import SearchComponent from '../SearchComponent.vue';
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories';
 import gameData from '@/scripts/gameData';
 import ObjectCard from '../ObjectCard.vue';
+import { language } from '@/globals';
 
 const props = defineProps<{
 
@@ -54,7 +55,7 @@ function selectObject(objectId: GameObjectId) {
 
 
 const selectedCategory = ref<CategoryName>('pony')
-const gameObjects = computed(() => Object.keys(gameData.data.categories[selectedCategory.value].objects))
+const gameObjects = computed(() => Object.values(gameData.data.categories[selectedCategory.value].objects) as GameObject[])
 
 
 const availableCategories = Object.keys(gameData.data.categories)
@@ -91,7 +92,6 @@ const filterFunctions = computed(() => {
     return functions
 })
 
-
 </script>
 
 <template>
@@ -101,7 +101,8 @@ const filterFunctions = computed(() => {
         has-close-button
     >
         <SearchComponent
-            :objects="gameObjects"
+            :data="gameObjects"
+            :search-function="(query, items) => gameData.searchName(query, items, language.key)"
             :sorters="sortFunctions"
             :filters="filterFunctions"
             :placeholder="$t(CATEGORIES[selectedCategory].string)"
@@ -117,11 +118,11 @@ const filterFunctions = computed(() => {
                 </select>
             </template>
 
-            <template #item="{ objectId, object }">
+            <template #item="{ item }">
                 <ObjectCard
-                    :object="object"
+                    :object="item"
                     hover
-                    @click="selectObject(objectId)"
+                    @click="selectObject(item.id)"
                 >
 
                 </ObjectCard>
