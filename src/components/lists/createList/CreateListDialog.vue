@@ -6,7 +6,7 @@ import { pickRandom, staticImage } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
 import { useListStore } from '@/stores/listStore';
 import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
-import { computed, nextTick, ref, useTemplateRef } from 'vue';
+import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 import ChooseImageDialog from './ChooseImageDialog.vue';
 import { CATEGORIES } from '@/scripts/categories';
 
@@ -17,6 +17,7 @@ const selectItemDialog = useTemplateRef('select-object-dialog')
 const chooseImageDialog = useTemplateRef('choose-image-dialog')
 
 const name = ref<string>()
+const errorMessage = ref<string>('')
 const image = ref<{item: GameObjectId | null, image: string | null}>({
     item: null,
     image: null,
@@ -24,6 +25,8 @@ const image = ref<{item: GameObjectId | null, image: string | null}>({
 const tempItem = ref<GameObjectId>(null)
 const gameObject = computed(() => gameData.getObject(image.value?.item))
 
+
+watch(name, () => errorMessage.value = '')
 
 function createList() {
     name.value = ''
@@ -40,15 +43,25 @@ function createList() {
 }
 
 function submitList() {
-    listsStore.createList(
-        name.value,
-        image.value,
-        new Date(),
-    )
+    if (!name.value) {
+        errorMessage.value = 'A name is required'
+        return
+    }
+    
+    try {
+        listsStore.createList(
+            name.value,
+            image.value,
+            new Date(),
+        )
+        createListDialog.value.submit()
+    } catch (error) {
+        errorMessage.value = String(error)
+    }
 }
 
 function cancelList() {
-
+    createListDialog.value.cancel()
 }
 
 function selectObject() {
@@ -84,8 +97,6 @@ defineExpose({
     <DialogComponent
         ref="create-list"
         :title="$t('lists.dialog.create_list.title')"
-        @submit="submitList"
-        @cancel="cancelList"
     >
 
         {{ $t('lists.dialog.create_list.message.name') }}
@@ -95,7 +106,12 @@ defineExpose({
             :placeholder="$t('lists.dialog.create_list.message.wishlist')"
             type="text"
             name="list-name"
+            @keypress="(e) => {if (e.key === 'Enter') submitList()}"
         >
+
+        <div class="error-message">
+            {{ errorMessage }}
+        </div>
 
         <GameCard
             :title="name || $t('lists.dialog.create_list.message.wishlist')"
@@ -105,8 +121,8 @@ defineExpose({
         ></GameCard>
 
         <template #menu>
-            <button @click="createListDialog.submit()" class="button button-green">{{ $t('button.ok') }}</button>
-            <button @click="createListDialog.cancel()" class="button button-red">{{ $t('button.cancel') }}</button>
+            <button @click="submitList()" class="button button-green">{{ $t('button.ok') }}</button>
+            <button @click="cancelList()" class="button button-red">{{ $t('button.cancel') }}</button>
         </template>
     </DialogComponent>
 
