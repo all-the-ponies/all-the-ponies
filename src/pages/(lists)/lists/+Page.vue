@@ -5,6 +5,7 @@ import SearchComponent from '@/components/SearchComponent.vue';
 import { staticImage, transformName } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
+import { ClientOnly } from 'vike-vue/ClientOnly';
 import { useTemplateRef } from 'vue';
 
 const listsStore = useListStore()
@@ -40,27 +41,29 @@ function getListImage(wishlist: Wishlist) {
             <h1>{{ $t('lists.title') }}</h1>
             <button @click="createList" class="button button-blue">{{ $t('lists.create_list') }}</button>
         </section>
-        <SearchComponent
-            :data="[...listsStore.lists.values()]"
-            :search-function="searchFilters"
-            :placeholder="$t('Wishlist')"
-        >
-            <template #item="{ item }">
-                <GameCard
-                    :title="item.name"
-                    :image="staticImage(getListImage(item))"
-                >
-                    <template #right>
-                        <button
-                            class="button-circle button-red"
-                            @click.stop.prevent="listsStore.lists.delete(item.id)"
-                        >
-                            -
-                        </button>
-                    </template>
-                </GameCard>
-            </template>
-        </SearchComponent>
+        <ClientOnly>
+            <SearchComponent
+                :data="[...listsStore.lists.values()]"
+                :search-function="searchFilters"
+                :placeholder="$t('Wishlist')"
+            >
+                <template #item="{ item }">
+                    <GameCard
+                        :title="item.name"
+                        :image="staticImage(getListImage(item))"
+                    >
+                        <template #right>
+                            <button
+                                class="button-circle button-red"
+                                @click.stop.prevent="listsStore.lists.delete(item.id)"
+                            >
+                                -
+                            </button>
+                        </template>
+                    </GameCard>
+                </template>
+            </SearchComponent>
+        </ClientOnly>
     </div>
 
     <CreateListDialog ref="create-list-dialog"></CreateListDialog>
