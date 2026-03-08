@@ -1,3 +1,4 @@
+import { findGap as findGap } from "@/scripts/common";
 import type { TDateISO } from "@/types/date";
 import type { GameObjectId } from "@/types/gameDataTypes";
 import { defineStore } from "pinia";
@@ -26,23 +27,13 @@ export const useListStore = defineStore('lists', {
     },
     actions: {
         createList(name: string, image: Wishlist['image'], date: Date) {
-            let id: number
-            let previous: number = 1
-            const ids = [...this.lists.keys()].sort()
-            for (let key of ids) {
-                if (previous) {
-                    if (key - previous > 1) {
-                        id = previous + 1
-                        break
-                    }
-                }
-                previous = key
-            }
-            if (!id) {
-                id = ids.at(-1) + 1 || 1
-            }
+            const ids = [...this.lists.keys()].sort((a, b) => a - b)
+            let id: number = findGap(ids, 1)
 
-            console.log('new id', id)
+
+            if (this.lists.has(id)) {
+                throw new Error(`id ${id} already in use`)
+            }
 
             const list = {
                 id,
