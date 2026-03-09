@@ -49,6 +49,25 @@ export const useListStore = defineStore('lists', {
 
             return list
         },
+        addItem(listId: number, objectId: GameObjectId) {
+            const list = this.lists.get(listId)
+            if (!list) {
+                throw new Error(`List with index ${listId} does not exist`)
+            }
+
+            const today = new Date()
+            
+            let item = list.items.find(item => item.item === objectId)
+            if (!item) {
+                item = {
+                    item: objectId,
+                    dateAdded: today.toISOString(),
+                }
+                list.items.push(item)
+            } else {
+                item.dateAdded = today.toISOString()
+            }
+        }
     },
     persist: {
         serializer: {
