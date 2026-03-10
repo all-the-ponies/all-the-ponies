@@ -269980,7 +269980,9 @@
             "italian": "Una macchina karaoke ambulante e parlante. Ha anche dei microfoni nascosti, così puoi cantare con lei!",
             "german": "Eine wandelnde, sprechende Karaoke-Maschine. Sie hat sogar versteckte Mikrofone, damit du mitsingen kannst!"
           },
-          "alt_name": {},
+          "alt_name": {
+            "english": ["Sweetie Bot"]
+          },
           "tags": [],
           "image": {
             "portrait": "game/pony/portrait/Pony_Sweetie_Juke.png",
