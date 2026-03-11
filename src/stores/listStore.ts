@@ -35,7 +35,7 @@ export const useListStore = defineStore('lists', {
                 throw new Error(`id ${id} already in use`)
             }
 
-            const list = {
+            const list: Wishlist = {
                 id,
                 name,
                 image: {
@@ -49,11 +49,15 @@ export const useListStore = defineStore('lists', {
 
             return list
         },
-        addItem(listId: number, objectId: GameObjectId) {
+        getList(listId: number) {
             const list = this.lists.get(listId)
             if (!list) {
                 throw new Error(`List with index ${listId} does not exist`)
             }
+            return list
+        },
+        addItem(listId: number, objectId: GameObjectId) {
+            const list = this.getList(listId)
 
             const today = new Date()
             
@@ -65,9 +69,23 @@ export const useListStore = defineStore('lists', {
                 }
                 list.items.push(item)
             } else {
-                item.dateAdded = today.toISOString()
+                // item.dateAdded = today.toISOString()
             }
-        }
+        },
+        removeItem(listId: number, objectId: GameObjectId) {
+            const list = this.getList(listId)
+
+            for (let i = 0; i < list.items.length; i++) {
+                if (list.items[i].item === objectId) {
+                    list.items.splice(i, 1)
+                    break
+                }
+            }
+        },
+        listHasItem(listId: number, objectId: GameObjectId) {
+            const list = this.getList(listId)
+            return list.items.find(item => item.item === objectId) != undefined
+        },
     },
     persist: {
         serializer: {

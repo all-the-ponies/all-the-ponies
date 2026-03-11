@@ -22,12 +22,10 @@ const emit = defineEmits<{
 const selectDialog = useTemplateRef('select-dialog')
 
 function open() {
-    emit('open')
     selectDialog.value.open()
 }
 
 function close() {
-    emit('close')
     selectDialog.value.close()
 }
 
@@ -37,7 +35,6 @@ function submit(gameObject: GameObjectId) {
 }
 
 function cancel() {
-    emit('cancel')
     selectDialog.value.cancel()
 }
 
@@ -92,6 +89,8 @@ const filterFunctions = computed(() => {
     return functions
 })
 
+
+
 </script>
 
 <template>
@@ -99,6 +98,9 @@ const filterFunctions = computed(() => {
         ref="select-dialog"
         :title="$t('dialog.select_item.title')"
         has-close-button
+        @open="$emit('open')"
+        @close="$emit('close')"
+        @cancel="$emit('cancel')"
     >
         <SearchComponent
             :data="gameObjects"

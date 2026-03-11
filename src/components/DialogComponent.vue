@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ClientOnly } from 'vike-vue/ClientOnly'
-import { useTemplateRef } from 'vue'
+import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import XButton from './buttons/XButton.vue'
 
 const emit = defineEmits({
@@ -10,37 +10,46 @@ const emit = defineEmits({
     submit: null,
 })
 
-const props = defineProps({
-    title: {
-        type: String,
-        required: true,
-    },
-    hasCloseButton: {
-        type: Boolean,
-        default: false,
-    },
-})
+const props = defineProps<{
+    title: string,
+    hasCloseButton?: boolean,
+    open?: boolean,
+}>()
 
 const dialogElement = useTemplateRef('dialog-element')
 
+const dialogOpen = ref<boolean>(false)
+
 function open() {
-    emit('open')
-    dialogElement.value.showModal()
+    if (!dialogOpen.value) {
+        emit('open')
+        dialogOpen.value = true
+        nextTick(() => {
+            dialogElement.value.showModal()
+        })
+    }
 }
 
 function close() {
-    emit('close')
-    dialogElement.value.close()
+    if (dialogOpen.value) {
+        emit('close')
+        dialogElement.value.close()
+        dialogOpen.value = false
+    }
 }
 
 function submit() {
-    emit('submit')
-    close()
+    if (dialogOpen.value) {
+        emit('submit')
+        close()
+    }
 }
 
 function cancel() {
-    emit('cancel')
-    close()
+    if (dialogOpen.value) {
+        emit('cancel')
+        close()
+    }
 }
 
 defineExpose({
@@ -50,33 +59,39 @@ defineExpose({
     cancel,
 })
 
+if (props.open) {
+    open()
+}
+
 </script>
 
 <template>
-    <ClientOnly>
-        <Teleport to="body">
-            <dialog class="dialog" ref="dialog-element">
-                <header class="dialog-header">
-                    {{ props.title }}
-                </header>
-                <XButton
-                    v-if="props.hasCloseButton"
-                    class="dialog-close"
-                    @click="cancel"
-                ></XButton>
-                <!-- <button
-                >X</button> -->
-                <div class="dialog-body">
-                    <section class="dialog-content">
-                        <slot></slot>
-                    </section>
-                    <menu class="dialog-menu">
-                        <slot name="menu"></slot>
-                    </menu>
-                </div>
-            </dialog>
-        </Teleport>
-    </ClientOnly>
+    <template v-if="dialogOpen">
+        <ClientOnly>
+            <Teleport to="body">
+                <dialog class="dialog" ref="dialog-element">
+                    <header class="dialog-header">
+                        {{ props.title }}
+                    </header>
+                    <XButton
+                        v-if="props.hasCloseButton"
+                        class="dialog-close"
+                        @click="cancel"
+                    ></XButton>
+                    <!-- <button
+                    >X</button> -->
+                    <div class="dialog-body">
+                        <section class="dialog-content">
+                            <slot></slot>
+                        </section>
+                        <menu class="dialog-menu">
+                            <slot name="menu"></slot>
+                        </menu>
+                    </div>
+                </dialog>
+            </Teleport>
+        </ClientOnly>
+    </template>
 </template>
 
 <style lang="css" scoped>
@@ -94,6 +109,7 @@ defineExpose({
 
     flex-direction: column;
 
+    min-width: min(15rem, 95dvw);
     max-width: 95dvw;
     max-height: 90dvh;
     /* height: auto; */

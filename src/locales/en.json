@@ -281,6 +281,9 @@
   "lists": {
     "title": "Wishlists",
     "messages": {},
+    "button": {
+      "add_to_list": "Add to wishlist"
+    },
     "dialog": {
       "create_list": {
         "title": "Create List",
@@ -291,6 +294,9 @@
       },
       "choose_image": {
         "title": "Choose Image"
+      },
+      "add_to_list": {
+        "title": "Add to Wishlist"
       }
     }
   }

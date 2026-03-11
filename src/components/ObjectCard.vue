@@ -13,6 +13,7 @@ import ObjectImage from "./ObjectImage.vue"
 import { staticImage, valueExists } from "@/scripts/common"
 import Link from "./Link.vue"
 import GameCard from "./GameCard.vue"
+import AddToListButton from "./buttons/AddToListButton.vue"
 
 const shopManager = shopStore
 
@@ -78,6 +79,7 @@ const shopInfo = computedAsync(
         </template>
         <template #right>
             <inventory-add-button v-if="props.showInventoryButton && canAdd" :gameObject="gameObject.id" />
+            <AddToListButton :gameObject="gameObject.id"></AddToListButton>
         </template>
         <template #info>
             <slot name="info"></slot>
