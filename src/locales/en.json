@@ -221,6 +221,7 @@
   "sorting": {
     "alphabetically": "Alphabetically",
     "game_order": "Game Order",
+    "date_added": "Date added",
     "reverse": "Reverse",
     "shop": {
       "production": "Production rate",
@@ -282,11 +283,12 @@
     "title": "Wishlists",
     "messages": {},
     "button": {
-      "add_to_list": "Add to wishlist"
+      "add_to_list": "Add to wishlist",
+      "create_list": "Create wishlist"
     },
     "dialog": {
       "create_list": {
-        "title": "Create List",
+        "title": "Create Wishlist",
         "message": {
           "wishlist": "Wishlist",
           "name": "Name:"
