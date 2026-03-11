@@ -1,7 +1,7 @@
 {
   "file_version": 3,
   "game_version": "10.9.1a",
-  "content_version": "10.9.1.4",
+  "content_version": "10.9.1.11",
   "categories": {
     "pony": {
       "clones": {},
@@ -4218,7 +4218,9 @@
             "german": "Doctor Hooves kümmert sich darum, dass die Uhren Ponyvilles alle gleich laufen, stellt die Sanduhr für Apfelsaftwettbewerbe und kümmert sich um sonstige Zeitangelegenheiten."
           },
           "alt_name": {
-            "english": ["Doctor Hooves"]
+            "english": [
+              "Doctor Hooves"
+            ]
           },
           "tags": [],
           "image": {
@@ -269983,7 +269985,9 @@
             "german": "Eine wandelnde, sprechende Karaoke-Maschine. Sie hat sogar versteckte Mikrofone, damit du mitsingen kannst!"
           },
           "alt_name": {
-            "english": ["Sweetie Bot"]
+            "english": [
+              "Sweetie Bot"
+            ]
           },
           "tags": [],
           "image": {
@@ -270198,15 +270202,15 @@
           "index": 2250,
           "note": {},
           "name": {
-            "thai": "Unprincely Discord",
+            "thai": "ดิสคอร์ดผู้ไร้ความเป็นเจ้าชาย",
             "korean": "Unprincely Discord",
-            "russian": "Unprincely Discord",
+            "russian": "Сомнительный Дискорд",
             "english": "Unprincely Discord",
-            "chinese": "Unprincely Discord",
+            "chinese": "乖张无序",
             "french": "Unprincely Discord",
-            "arabic": "Unprincely Discord",
+            "arabic": "ديسكورد غير الأنيق",
             "turkish": "Unprincely Discord",
-            "japanese": "Unprincely Discord",
+            "japanese": "王子らしくないディスコード",
             "spanish": "Unprincely Discord",
             "brazilian portuguese": "Unprincely Discord",
             "italian": "Unprincely Discord",
@@ -270214,19 +270218,19 @@
           },
           "preferred_name": {},
           "description": {
-            "thai": "A slightly strange storybook pony of noble descent.",
-            "korean": "A slightly strange storybook pony of noble descent.",
-            "russian": "A slightly strange storybook pony of noble descent.",
+            "thai": "โพนี่เชื้อพระวงศ์ในนิทานที่ประหลาดนิดหน่อย",
+            "korean": "귀족 혈통의 조금 이상한 이야기책 포니입니다.",
+            "russian": "Немного странный сказочный пони благородного происхождения.",
             "english": "A slightly strange storybook pony of noble descent.",
-            "chinese": "A slightly strange storybook pony of noble descent.",
-            "french": "A slightly strange storybook pony of noble descent.",
-            "arabic": "A slightly strange storybook pony of noble descent.",
-            "turkish": "A slightly strange storybook pony of noble descent.",
-            "japanese": "A slightly strange storybook pony of noble descent.",
-            "spanish": "A slightly strange storybook pony of noble descent.",
-            "brazilian portuguese": "A slightly strange storybook pony of noble descent.",
-            "italian": "A slightly strange storybook pony of noble descent.",
-            "german": "A slightly strange storybook pony of noble descent."
+            "chinese": "出身高贵却略显奇特的童话小马。",
+            "french": "Un poney de conte légèrement étrange, de noble lignée.",
+            "arabic": "مهر من قصة خيالية غريب الأطوار إلى حدٍ ما ومن أصل نبيل.",
+            "turkish": "Hafiften değişik bir soylu pony'dir.",
+            "japanese": "こうきな血すじを引く、ほんの少しかわった物語の中のポニー。",
+            "spanish": "Un poni de cuento algo peculiar y descendiente de nobles.",
+            "brazilian portuguese": "Um pônei de um conto de fadas muito peculiar e de origem nobre.",
+            "italian": "Un pony da fiaba un po' strano, di nobile discendenza.",
+            "german": "Ein etwas seltsames Bilderbuchpony von edler Abstammung."
           },
           "alt_name": {},
           "tags": [],
@@ -270910,8 +270914,8 @@
             "main": "game/house/House_Club_House.png"
           },
           "location": [
-            "SWEET_APPLE_ACRES",
-            "PONYVILLE"
+            "PONYVILLE",
+            "SWEET_APPLE_ACRES"
           ],
           "grid_size": 4,
           "build": {
@@ -281206,8 +281210,8 @@
             "main": "game/house/House_Snowfall_Frost.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "PONYVILLE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -387545,6 +387549,286 @@
           "image": {
             "preview": "game/avatar/preview/ProfileAvatar_363_Lunar_Princess_Cadance.png",
             "main": "game/avatar/main/ProfileAvatar_363_Lunar_Princess_Cadance.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_364_Queen_Circutryx": {
+          "id": "ProfileAvatar_364_Queen_Circutryx",
+          "index": 366,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_364_Queen_Circutryx.png",
+            "main": "game/avatar/main/ProfileAvatar_364_Queen_Circutryx.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_365_Flurry_Hart": {
+          "id": "ProfileAvatar_365_Flurry_Hart",
+          "index": 367,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_365_Flurry_Hart.png",
+            "main": "game/avatar/main/ProfileAvatar_365_Flurry_Hart.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_366_Auto_Jack": {
+          "id": "ProfileAvatar_366_Auto_Jack",
+          "index": 368,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_366_Auto_Jack.png",
+            "main": "game/avatar/main/ProfileAvatar_366_Auto_Jack.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_367_RoboDash": {
+          "id": "ProfileAvatar_367_RoboDash",
+          "index": 369,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_367_RoboDash.png",
+            "main": "game/avatar/main/ProfileAvatar_367_RoboDash.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_368_Pinkie_V3": {
+          "id": "ProfileAvatar_368_Pinkie_V3",
+          "index": 370,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_368_Pinkie_V3.png",
+            "main": "game/avatar/main/ProfileAvatar_368_Pinkie_V3.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_369_Ramity": {
+          "id": "ProfileAvatar_369_Ramity",
+          "index": 371,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_369_Ramity.png",
+            "main": "game/avatar/main/ProfileAvatar_369_Ramity.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_370_CyberShy": {
+          "id": "ProfileAvatar_370_CyberShy",
+          "index": 372,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_370_CyberShy.png",
+            "main": "game/avatar/main/ProfileAvatar_370_CyberShy.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_371_Terabyte_Sparkle": {
+          "id": "ProfileAvatar_371_Terabyte_Sparkle",
+          "index": 373,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_371_Terabyte_Sparkle.png",
+            "main": "game/avatar/main/ProfileAvatar_371_Terabyte_Sparkle.png"
           },
           "is_default": false,
           "pony": "",
