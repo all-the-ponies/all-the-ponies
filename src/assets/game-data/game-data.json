@@ -4217,7 +4217,9 @@
             "italian": "Doctor Hooves tiene sincronizzati gli orologi di Ponyville, prepara la clessidra per le gare di sidro e si occupa di tutto ciò che riguarda la misurazione del tempo.",
             "german": "Doctor Hooves kümmert sich darum, dass die Uhren Ponyvilles alle gleich laufen, stellt die Sanduhr für Apfelsaftwettbewerbe und kümmert sich um sonstige Zeitangelegenheiten."
           },
-          "alt_name": {},
+          "alt_name": {
+            "english": ["Doctor Hooves"]
+          },
           "tags": [],
           "image": {
             "portrait": "game/pony/portrait/Pony_DrWhooves.png",
