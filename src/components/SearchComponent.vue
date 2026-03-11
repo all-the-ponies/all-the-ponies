@@ -290,11 +290,20 @@ watch(
                 <input v-model="searchQuery" class="text-box" type="search" name="search-bar" id="search-bar" :placeholder="$props.placeholder" />
             </label>
             
-            <button @click="filterDialog.open()" id="filter-button" class="search-option button button-blue">
-                <!-- Filter -->
+            <button
+                v-if="(props.filters && Object.keys(props.filters).length)"
+                @click="filterDialog.open()"
+                id="filter-button"
+                class="search-option button button-blue"
+            >
                 <img src="@/assets/images/ui/filter.svg" alt="">
             </button>
-            <button @click="sortDialog.open()" id="sort-button" class="button button-blue">
+            <button
+                v-if="(props.sorters && Object.keys(props.sorters).length)"
+                @click="sortDialog.open()"
+                id="sort-button"
+                class="button button-blue"
+            >
                 {{ $t('dialog.sort_by') }}
             </button>
             <slot name="menu-after"></slot>
