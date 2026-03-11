@@ -298,6 +298,7 @@ const replacedPrice = computed(() => {
     flex-direction: column;
     justify-content: start;
     align-content: center;
+    gap: 0.3rem;
 
     padding: 0.4rem 0.3rem;
 }
