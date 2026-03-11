@@ -39,7 +39,7 @@ function getListImage(wishlist: Wishlist) {
     <div>
         <section class="section">
             <h1>{{ $t('lists.title') }}</h1>
-            <button @click="createList" class="button button-blue">{{ $t('lists.create_list') }}</button>
+            <button @click="createList" class="button button-blue">{{ $t('lists.button.create_list') }}</button>
         </section>
         <ClientOnly>
             <SearchComponent
@@ -51,6 +51,7 @@ function getListImage(wishlist: Wishlist) {
                     <GameCard
                         :title="item.name"
                         :image="staticImage(getListImage(item))"
+                        :href="`/list/${item.id}/`"
                     >
                         <template #right>
                             <button
