@@ -393,7 +393,7 @@ watch(
     position: sticky;
     top: 0;
 
-    background-color: var(--page-background-color);
+    background-color: var(--background-color, var(--page-background-color));
     padding-block: 0.2rem;
 
     text-align: center;

@@ -103,6 +103,7 @@ const filterFunctions = computed(() => {
         @cancel="$emit('cancel')"
     >
         <SearchComponent
+            class="search-section"
             :data="gameObjects"
             :search-function="(query, items) => gameData.searchName(query, items, language.key)"
             :sorters="sortFunctions"
@@ -134,5 +135,7 @@ const filterFunctions = computed(() => {
 </template>
 
 <style lang="css" scoped>
-
+.search-section {
+    --background-color: white;
+}
 </style>
