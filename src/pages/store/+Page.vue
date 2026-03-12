@@ -122,6 +122,7 @@ const query = computed(() => {
             :sorters="sortFunctions"
             :query="query"
             page-param="page"
+            save-url
         >
             <template #menu-before>
                 <select v-model="selectedCategory" class="dropdown" name="category">

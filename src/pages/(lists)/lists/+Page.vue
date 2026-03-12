@@ -46,6 +46,7 @@ function getListImage(wishlist: Wishlist) {
                 :data="[...listsStore.lists.values()]"
                 :search-function="searchFilters"
                 :placeholder="$t('Wishlist')"
+                save-url
             >
                 <template #item="{ item }">
                     <GameCard

@@ -113,12 +113,14 @@ defineExpose({
             {{ errorMessage }}
         </div>
 
-        <GameCard
-            :title="name || $t('lists.dialog.create_list.message.wishlist')"
-            hover
-            :image="staticImage(gameObject ? gameObject.image[image.image] : null)"
-            @click="selectObject()"
-        ></GameCard>
+        <div class="card-container">
+            <GameCard
+                :title="name || $t('lists.dialog.create_list.message.wishlist')"
+                hover
+                :image="staticImage(gameObject ? gameObject.image[image.image] : null)"
+                @click="selectObject()"
+            ></GameCard>
+        </div>
 
         <template #menu>
             <button @click="submitList()" class="button button-green">{{ $t('button.ok') }}</button>
@@ -143,5 +145,8 @@ defineExpose({
 </template>
 
 <style lang="css" scoped>
-
+.card-container {
+    justify-items: center;
+    margin-bottom: 1rem;
+}
 </style>

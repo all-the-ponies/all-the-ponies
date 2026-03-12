@@ -100,6 +100,7 @@ const sortFunctions = computed(() => {
                 :search-function="searchObjects"
                 :placeholder="$t('Wishlist')"
                 :sorters="sortFunctions"
+                save-url
             >
                 <template #item="{ item }">
                     <ObjectCard

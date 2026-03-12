@@ -82,6 +82,7 @@ const objects = computed(() => Object.values(gameData.data.categories[category.v
         :filters="filterFunctions"
         :placeholder="$t(CATEGORIES[category].string)"
         page-param="page"
+        save-url
     >
         <template #item="{ item }">
             <ObjectCard

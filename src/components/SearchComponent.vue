@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<{
         query?: Record<string, string | string[] | number | null>,
         placeholder?: string,
         pageParam?: string,
+        saveUrl?: boolean,
     }>(), {
         filters: () => {return {}},
         sorters: () => {return {}},
@@ -38,7 +39,7 @@ const props = withDefaults(defineProps<{
 const sortDialog = useTemplateRef('sort-dialog')
 const filterDialog = useTemplateRef('filter-dialog')
 const sortMethod = ref<string>()
-const reversed = ref<boolean>('reverse' in pageContext.urlParsed.search)
+const reversed = ref<boolean>(props.saveUrl && 'reverse' in pageContext.urlParsed.search)
 const defaultSortMethod = computed(() => {
     if (props.sorters) {
         for (let method of Object.keys(props.sorters)) {
@@ -111,7 +112,7 @@ const filters = computed(() => {
 if (props.sorters) {
     const sortQuery = pageContext.urlParsed.search.sort
     
-    if (pageContext.urlParsed.search.sort && sortQuery in props.sorters) {
+    if (props.saveUrl && pageContext.urlParsed.search.sort && sortQuery in props.sorters) {
         sortMethod.value = sortQuery
     } else {
         sortMethod.value = defaultSortMethod.value
@@ -150,58 +151,60 @@ function submitFilterDialog() {
 
 const searchQuery = ref('')
 
-watch(
-    computed(() => {return {
-        searchQuery,
-         sortMethod,
-        selectedFilters,
-        reversed,
-        query: props.query,
-    }}),
-    () => {
-        const params: Record<string, string | null> = {
-            ...props.query,
-            q: searchQuery.value || null,
-            sort: sortMethod.value || null,
+if (props.saveUrl) {
+    watch(
+        computed(() => {return {
+            searchQuery,
+             sortMethod,
+            selectedFilters,
+            reversed,
+            query: props.query,
+        }}),
+        () => {
+            const params: Record<string, string | null> = {
+                ...props.query,
+                q: searchQuery.value || null,
+                sort: sortMethod.value || null,
+            }
+    
+            if (!params.q) {
+                params.q = null
+            }
+    
+            const currentFilters = Object.keys(props.filters).filter(key => selectedFilters.value[key])
+            
+            if (!currentFilters.length) {
+                params.filter = null
+            } else {
+                params.filter = currentFilters.join(',')
+            }
+    
+            if (!params.sort || sortMethod.value === defaultSortMethod.value) {
+                delete params.sort
+            }
+    
+            if (reversed.value) {
+                params.reverse = 'true'
+            } else {
+                params.reverse = null
+            }
+    
+            history.replaceState(
+                null,
+                '',
+                modifyUrl(
+                    pageContext.urlOriginal,
+                    {
+                        search: params,
+                    }
+                ),
+            )
+        },
+        {
+            deep: true,
         }
-
-        if (!params.q) {
-            params.q = null
-        }
-
-        const currentFilters = Object.keys(props.filters).filter(key => selectedFilters.value[key])
-        
-        if (!currentFilters.length) {
-            params.filter = null
-        } else {
-            params.filter = currentFilters.join(',')
-        }
-
-        if (!params.sort || sortMethod.value === defaultSortMethod.value) {
-            delete params.sort
-        }
-
-        if (reversed.value) {
-            params.reverse = 'true'
-        } else {
-            params.reverse = null
-        }
-
-        history.replaceState(
-            null,
-            '',
-            modifyUrl(
-                pageContext.urlOriginal,
-                {
-                    search: params,
-                }
-            ),
-        )
-    },
-    {
-        deep: true,
-    }
-)
+    )
+}
 
 const items = computed(() => props.data)
 
@@ -254,11 +257,11 @@ const shownResults = computed(() => {
     return results
 })
 
-if (pageContext.urlParsed.search.q) {
+if (props.saveUrl && pageContext.urlParsed.search.q) {
     searchQuery.value = pageContext.urlParsed.search.q
 }
 
-if (pageContext.urlParsed.search.filter) {
+if (props.saveUrl && pageContext.urlParsed.search.filter) {
     let filterQuery = pageContext.urlParsed.search.filter.split(',')
     for (let filter of filterQuery) {
         selectedFilters.value[filter] = true

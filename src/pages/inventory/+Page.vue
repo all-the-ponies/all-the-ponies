@@ -196,6 +196,7 @@ async function importFriendCode() {
                     :query="query"
                     :placeholder="$t(CATEGORIES[category].string)"
                     page-param="page"
+                    save-url
                 >
                     <template #item="{ item }">
                         <ObjectCard
