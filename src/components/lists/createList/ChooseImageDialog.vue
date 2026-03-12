@@ -83,7 +83,7 @@ defineExpose({
     justify-items: center;
     justify-content: center;
 
-    margin-top: 0.5rem;
+    margin: 0.5rem 0.2rem;
     max-width: 100cqw;
 }
 </style>
