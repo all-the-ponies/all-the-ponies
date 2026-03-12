@@ -137,5 +137,7 @@ const filterFunctions = computed(() => {
 <style lang="css" scoped>
 .search-section {
     --background-color: white;
+    width: min(100dvw, 50rem);
+    max-width: 100%;
 }
 </style>
