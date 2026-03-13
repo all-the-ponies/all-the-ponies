@@ -7,6 +7,6 @@
 <style lang="css" scoped>
 .table-container {
     max-width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 </style>
