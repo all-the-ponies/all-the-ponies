@@ -7683,7 +7683,9 @@
             "italian": "Minuette ha tantissimi hobby: le piace tanto cantare! Il suo cutie mark è una clessidra.",
             "german": "Minuettes Schönheitsfleck ist eine Sanduhr. Sie hat jede Menge Hobbies und singt gerne."
           },
-          "alt_name": {},
+          "alt_name": {
+            "english": ["colgate"]
+          },
           "tags": [],
           "image": {
             "portrait": "game/pony/portrait/Pony_Minuette.png",
