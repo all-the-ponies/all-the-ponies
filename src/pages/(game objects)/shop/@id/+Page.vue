@@ -80,6 +80,9 @@ const productCurrency = computed(() => {
                         </div>
                     </div>
                 </template>
+                <template #image-right>
+                    <inventory-add-button :gameObject="shop.id"></inventory-add-button>
+                </template>
                 <template #info>
                     <table class="infobox">
                         <tbody>

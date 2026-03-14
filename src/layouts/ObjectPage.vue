@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AddToListButton from '@/components/buttons/AddToListButton.vue';
 import { staticImage } from '@/scripts/common'
 import gameData from '@/scripts/gameData'
 import type { GameObject, GameObjectId } from '@/types/gameDataTypes'
@@ -21,9 +22,19 @@ const image = computed(() => gameObject.value?.image?.main)
         <div class="main-object-section">
             <div class="object-profile">
                 <h1 class="name"><slot name="name">{{ name }}</slot></h1>
-                <slot name="image">
-                    <img :src="staticImage(image)" :alt="name">
-                </slot>
+                <div class="image">
+                    <div class="left-image-container">
+                        <slot name="image-left"></slot>
+                    </div>
+                    <slot name="image">
+                        <img :src="staticImage(image)" :alt="name">
+                    </slot>
+                    <div class="right-image-container">
+                        <slot name="image-right"></slot>
+                        <AddToListButton :gameObject="gameObject.id"></AddToListButton>
+                    </div>
+                </div>
+                <slot name="left-info"></slot>
             </div>
             <div class="object-info">
                 <slot name="info"></slot>
@@ -64,6 +75,48 @@ const image = computed(() => gameObject.value?.image?.main)
     max-height: 10rem;
     object-fit: contain;
     object-position: center;
+}
+
+.image {
+    position: relative;
+    max-width: calc(100% + 2rem);
+    display: flex;
+    /* justify-items: center; */
+}
+
+
+.left-image-container,
+.right-image-container {
+    --width: 2rem;
+    
+    height: 100%;
+    width: var(--width);
+    /* position: absolute; */
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-content: center;
+    align-items: center;
+    gap: 0.3rem;
+
+    /* padding: 0.4rem 0.3rem; */
+}
+.left-image-container {
+    left: 0;
+}
+.right-image-container {
+    right: 0;
+}
+
+.left-image-container > *,
+.right-image-container > * {
+    width: var(--width);
+    height: var(--width);
+
+    margin: 0;
+
+    font-size: 1.5em;
 }
 
 </style>
