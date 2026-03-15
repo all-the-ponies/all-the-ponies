@@ -73,11 +73,6 @@ const productCurrency = computed(() => {
                 <template #image>
                     <div class="shop-container">
                         <img class="full-image" :src="`/images/${shop.image.main}`" :alt="name">
-                        <div class="left-image-container">
-                        </div>
-                        <div class="right-image-container">
-                            <inventory-add-button :gameObject="shop.id"></inventory-add-button>
-                        </div>
                     </div>
                 </template>
                 <template #image-right>

@@ -109,10 +109,6 @@ const houseName = computed(() => house.value?.name[language.value.key])
                                 interractive
                             >
                                 <img class="full-image" :src="staticImage(pony.image.main)" :alt="name">
-                                <!-- <div class="left-image-container">
-                                </div>
-                                <div class="right-image-container">
-                                </div> -->
                             </Stars>
                             <Link
                                 v-if="pony.changeling.id"
