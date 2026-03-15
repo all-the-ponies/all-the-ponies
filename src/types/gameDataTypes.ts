@@ -61,7 +61,7 @@ export interface GAME_DATA_Type {
     game_version: string,
     content_version: string,
     categories: {
-        pony: CategoryData<HouseType> & {clones: object},
+        pony: CategoryData<PonyType> & {clones: object},
         house: CategoryData<HouseType>,
         shop: CategoryData<ShopType>,
         decor: CategoryData<DecorType>,
