@@ -4,11 +4,15 @@ import SelectObjectDialog from '@/components/dialogs/SelectObjectDialog.vue';
 import GameCard from '@/components/GameCard.vue';
 import { pickRandom, staticImage } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
-import { useListStore } from '@/stores/listStore';
+import { useListStore, type Wishlist } from '@/stores/listStore';
 import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 import ChooseImageDialog from './ChooseImageDialog.vue';
 import { CATEGORIES } from '@/scripts/categories';
+
+const emit = defineEmits<{
+    create: [listId: Wishlist],
+}>()
 
 const listsStore = useListStore()
 
@@ -49,12 +53,13 @@ function submitList() {
     }
     
     try {
-        listsStore.createList(
+        const listId = listsStore.createList(
             name.value,
             image.value,
             new Date(),
         )
         createListDialog.value.submit()
+        emit('create', listId)
     } catch (error) {
         errorMessage.value = String(error)
     }

@@ -2,7 +2,8 @@
 import type { GameObjectId } from '@/types/gameDataTypes';
 import DialogComponent from '../DialogComponent.vue';
 import { computed, ref, useTemplateRef } from 'vue';
-import { useListStore } from '@/stores/listStore';
+import { useListStore, type Wishlist } from '@/stores/listStore';
+import CreateListDialog from '../lists/createList/CreateListDialog.vue';
 
 const listStore = useListStore()
 
@@ -11,6 +12,8 @@ const props = defineProps<{
 }>()
 
 const listsDialog = useTemplateRef('lists-dialog')
+const createListDialog = useTemplateRef('create-list-dialog')
+
 const wishlists = computed(() => [...listStore.lists.keys()].filter(
     key => listStore.listHasItem(key, props.gameObject)
 ))
@@ -25,9 +28,14 @@ const emit = defineEmits<{
 
 function open() {
     _wishlists.value.clear()
+    if (listStore.lists.size === 0) {
+        createNewList()
+        return
+    }
     for (let id of listStore.lists.keys()) {
         _wishlists.value.set(id, wishlists.value.includes(id))
     }
+    
     listsDialog.value.open()
 }
 
@@ -54,7 +62,14 @@ defineExpose({
     open, close, submit, cancel
 })
 
+function createNewList() {
+    createListDialog.value.createList()
+}
 
+function onCreateList(wishlist: Wishlist) {
+    _wishlists.value.set(wishlist.id, true)
+    listsDialog.value.open()
+}
 
 </script>
 
@@ -68,6 +83,7 @@ defineExpose({
         @submit="$emit('submit')"
         @cancel="$emit('cancel')"
     >
+
         <div class="dialog-options">
             <label v-for="wishlist in listStore.lists.values()">
                 <input
@@ -81,17 +97,26 @@ defineExpose({
                     {{ wishlist.name }}
             </label>
         </div>
+        <div class="create-button-container">
+            <button @click="createNewList" class="button button-blue">{{ $t('lists.button.new_wishlist') }}</button>
+        </div>
 
         <template #menu>
             <button class="button button-green" @click="submit()">{{ $t('button.ok') }}</button>
             <button class="button button-red" @click="cancel()">{{ $t('button.cancel') }}</button>
         </template>
     </DialogComponent>
+
+    <CreateListDialog ref="create-list-dialog" @create="onCreateList" ></CreateListDialog>
 </template>
 
 <style lang="css" scoped>
 .dialog-options {
     display: flex;
     flex-direction: column;
+}
+
+.create-button-container {
+    justify-self: center;
 }
 </style>
