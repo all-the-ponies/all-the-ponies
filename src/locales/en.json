@@ -282,7 +282,7 @@
   "lists": {
     "title": "Wishlists",
     "messages": {
-      "no_lists": "It looks there are no lists. "
+      "no_lists": "It looks there are no wishlists yet. "
     },
     "button": {
       "add_to_list": "Add to wishlist",
