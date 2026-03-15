@@ -64,6 +64,11 @@ function getListImage(wishlist: Wishlist) {
                         </template>
                     </GameCard>
                 </template>
+                <template #empty>
+                    <p>{{ $t('lists.messages.no_lists') }}</p>
+                    <button @click="createList" class="button button-blue">{{ $t('lists.button.create_list') }}</button>
+
+                </template>
             </SearchComponent>
         </ClientOnly>
     </div>

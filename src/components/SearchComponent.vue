@@ -320,15 +320,14 @@ watch(
             :param="props.pageParam"
         ></Paginator>
 
-        <section id="search-results">
-            <template v-if="items.length > 0">
-                <div class="item" v-for="item in shownResults.values()" :key="`item-${item.id}`">
-                    <slot name="item" :item="item">
-                    </slot>
-                </div>
-            </template>
-            <slot v-else name="empty"></slot>
-            
+        <section v-if="items.length > 0" id="search-results">
+            <div class="item" v-for="item in shownResults.values()" :key="`item-${item.id}`">
+                <slot name="item" :item="item">
+                </slot>
+            </div>
+        </section>
+        <section v-else class="empty">
+            <slot name="empty"></slot>
         </section>
         
         <Paginator
@@ -434,6 +433,10 @@ watch(
     height: 100%;
     object-fit: contain;
     object-position: center;
+}
+
+.empty {
+    text-align: center;
 }
 
 .dialog-options {

@@ -281,7 +281,9 @@
   },
   "lists": {
     "title": "Wishlists",
-    "messages": {},
+    "messages": {
+      "no_lists": "It looks there are no lists. "
+    },
     "button": {
       "add_to_list": "Add to wishlist",
       "create_list": "Create wishlist",
