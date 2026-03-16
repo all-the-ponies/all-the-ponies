@@ -11,7 +11,7 @@ import ChooseImageDialog from './ChooseImageDialog.vue';
 import { CATEGORIES } from '@/scripts/categories';
 
 const emit = defineEmits<{
-    create: [listId: Wishlist],
+    submit: [listId: Wishlist],
 }>()
 
 const listsStore = useListStore()
@@ -28,11 +28,12 @@ const image = ref<{item: GameObjectId | null, image: string | null}>({
 })
 const tempItem = ref<GameObjectId>(null)
 const gameObject = computed(() => gameData.getObject(image.value?.item))
-
+const wishlistId = ref<number | null>(null)
 
 watch(name, () => errorMessage.value = '')
 
 function createList() {
+    wishlistId.value = null
     name.value = ''
     const randomObject = pickRandom(Object.values(gameData.data.categories[
         pickRandom(Object.keys(gameData.data.categories).filter(category => category in CATEGORIES) as CategoryName[])
@@ -46,6 +47,18 @@ function createList() {
     })
 }
 
+function editList(listId: number) {
+    wishlistId.value = listId
+    const wishlist = listsStore.getList(listId)
+    name.value = wishlist.name
+    image.value.image = wishlist.image.image
+    image.value.item = wishlist.image.item
+
+    nextTick(() => {
+        createListDialog.value.open()
+    })
+}
+
 function submitList() {
     if (!name.value) {
         errorMessage.value = 'A name is required'
@@ -53,13 +66,22 @@ function submitList() {
     }
     
     try {
-        const listId = listsStore.createList(
-            name.value,
-            image.value,
-            new Date(),
-        )
+        let listId
+        if (wishlistId.value === null) {
+            listId = listsStore.createList(
+                name.value,
+                image.value,
+                new Date(),
+            )
+        } else {
+            listId = wishlistId.value
+            const wishlist = listsStore.getList(listId)
+            wishlist.name = name.value
+            wishlist.image.image = image.value.image
+            wishlist.image.item = image.value.item
+        }
         createListDialog.value.submit()
-        emit('create', listId)
+        emit('submit', listId)
     } catch (error) {
         errorMessage.value = String(error)
     }
@@ -93,7 +115,8 @@ function submitImage(imageType: string) {
 }
 
 defineExpose({
-    createList
+    createList,
+    editList,
 })
 
 </script>

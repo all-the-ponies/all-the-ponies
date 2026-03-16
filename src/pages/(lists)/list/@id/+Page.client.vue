@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BackButton from '@/components/buttons/BackButton.vue';
+import CreateListDialog from '@/components/lists/createList/CreateListDialog.vue';
 import ObjectCard from '@/components/ObjectCard.vue';
 import SearchComponent from '@/components/SearchComponent.vue';
 import { language } from '@/globals';
@@ -10,10 +11,12 @@ import { useListStore, type Wishlist } from '@/stores/listStore';
 import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext'
 import { render } from 'vike/abort';
-import { computed } from 'vue';
+import { computed, useTemplateRef } from 'vue';
 
 const listStore = useListStore()
 const pageContext = usePageContext()
+
+const createListDialog = useTemplateRef('create-list-dialog')
 
 // const { wishlist } = useData<{wishlist: Wishlist}>()
 
@@ -34,6 +37,10 @@ const objects = computed(() => wishlist.value.items.map(item => {
         id: item.item,
     }
 }))
+
+function editList() {
+    createListDialog.value.editList(wishlist.value.id)
+}
 
 function searchObjects(query: string, items: typeof objects.value) {
     const filtered = gameData.searchName(query, items.map(item => item.item), language.value.key)
@@ -93,6 +100,7 @@ const sortFunctions = computed(() => {
         <BackButton></BackButton>
         <section class="section">
             <h1>{{ wishlist.name }}</h1>
+            <button @click="editList" class="button button-blue">{{ $t('lists.button.edit') }}</button>
         </section>
         <section class="section">
             <SearchComponent
@@ -112,5 +120,10 @@ const sortFunctions = computed(() => {
                 </template>
             </SearchComponent>
         </section>
+
+        <CreateListDialog
+            ref="create-list-dialog"
+        >
+        </CreateListDialog>
     </div>
 </template>

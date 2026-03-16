@@ -107,7 +107,7 @@ function onCreateList(wishlist: Wishlist) {
         </template>
     </DialogComponent>
 
-    <CreateListDialog ref="create-list-dialog" @create="onCreateList" ></CreateListDialog>
+    <CreateListDialog ref="create-list-dialog" @submit="onCreateList" ></CreateListDialog>
 </template>
 
 <style lang="css" scoped>

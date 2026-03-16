@@ -287,7 +287,8 @@
     "button": {
       "add_to_list": "Add to wishlist",
       "create_list": "Create wishlist",
-      "new_wishlist": "+ New wishlist"
+      "new_wishlist": "+ New wishlist",
+      "edit": "Edit"
     },
     "dialog": {
       "create_list": {
