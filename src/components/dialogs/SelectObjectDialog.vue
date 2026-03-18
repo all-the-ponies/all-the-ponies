@@ -56,7 +56,6 @@ const gameObjects = computed(() => Object.values(gameData.data.categories[select
 
 
 const availableCategories = Object.keys(gameData.data.categories)
-console.log(availableCategories)
 
 
 const sortFunctions = computed(() => {
