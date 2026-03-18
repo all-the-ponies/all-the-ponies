@@ -58,7 +58,7 @@ async function deleteList(wishlist: Wishlist) {
             <SearchComponent
                 :data="[...listsStore.lists.values()]"
                 :search-function="searchFilters"
-                :placeholder="$t('Wishlist')"
+                :placeholder="$t('lists.messages.wishlist')"
                 save-url
             >
                 <template #item="{ item }">

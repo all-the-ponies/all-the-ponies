@@ -106,7 +106,7 @@ const sortFunctions = computed(() => {
             <SearchComponent
                 :data="objects"
                 :search-function="searchObjects"
-                :placeholder="$t('Wishlist')"
+                :placeholder="$t('lists.messages.wishlist')"
                 :sorters="sortFunctions"
                 save-url
             >

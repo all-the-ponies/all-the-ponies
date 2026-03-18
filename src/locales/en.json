@@ -294,7 +294,8 @@
   "lists": {
     "title": "Wishlists",
     "messages": {
-      "no_lists": "It looks there are no wishlists yet. "
+      "no_lists": "It looks there are no wishlists yet. ",
+      "wishlist": "Wishlist"
     },
     "button": {
       "add_to_list": "Add to wishlist",
