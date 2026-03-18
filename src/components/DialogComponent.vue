@@ -2,6 +2,7 @@
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import XButton from './buttons/XButton.vue'
+import { resolve } from 'path';
 
 const emit = defineEmits({
     open: null,
@@ -20,6 +21,14 @@ const dialogElement = useTemplateRef('dialog-element')
 
 const dialogOpen = ref<boolean>(false)
 
+let _resolveSubmit: (value: boolean) => void
+function resolvePromise(value: boolean) {
+    if (_resolveSubmit) {
+        _resolveSubmit(value)
+        _resolveSubmit = undefined
+    }
+}
+
 function open() {
     if (!dialogOpen.value) {
         emit('open')
@@ -28,6 +37,10 @@ function open() {
             dialogElement.value.showModal()
         })
     }
+
+    return new Promise((resolve) => {
+        _resolveSubmit = resolve
+    })
 }
 
 function close() {
@@ -35,12 +48,14 @@ function close() {
         emit('close')
         dialogElement.value.close()
         dialogOpen.value = false
+        resolvePromise(false)
     }
 }
 
 function submit() {
     if (dialogOpen.value) {
         emit('submit')
+        resolvePromise(true)
         close()
     }
 }
@@ -48,6 +63,7 @@ function submit() {
 function cancel() {
     if (dialogOpen.value) {
         emit('cancel')
+        resolvePromise(false)
         close()
     }
 }
@@ -69,7 +85,7 @@ if (props.open) {
     <template v-if="dialogOpen">
         <ClientOnly>
             <Teleport to="body">
-                <dialog class="dialog" ref="dialog-element">
+                <dialog class="dialog" ref="dialog-element" @close="cancel()">
                     <header class="dialog-header">
                         {{ props.title }}
                     </header>

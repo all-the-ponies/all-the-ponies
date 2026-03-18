@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import DialogComponent from '@/components/DialogComponent.vue';
 import GameCard from '@/components/GameCard.vue';
 import CreateListDialog from '@/components/lists/createList/CreateListDialog.vue';
 import SearchComponent from '@/components/SearchComponent.vue';
@@ -6,10 +7,12 @@ import { staticImage, transformName } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
 import { ClientOnly } from 'vike-vue/ClientOnly';
-import { useTemplateRef } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 
 const listsStore = useListStore()
 const createListDialog = useTemplateRef('create-list-dialog')
+const confirmDeleteDialog = useTemplateRef('confirm-delete-dialog')
+const listToDelete = ref<Wishlist>()
 
 console.log(listsStore.lists)
 
@@ -31,6 +34,16 @@ function getListImage(wishlist: Wishlist) {
         return
     }
     return gameObject.image[wishlist.image.image]
+}
+
+async function deleteList(wishlist: Wishlist) {
+    listToDelete.value = wishlist
+    const willDelete = await confirmDeleteDialog.value.open()
+
+    if (willDelete) {
+        listsStore.lists.delete(wishlist.id)
+    }
+    listToDelete.value = null
 }
 
 </script>
@@ -57,7 +70,7 @@ function getListImage(wishlist: Wishlist) {
                         <template #right>
                             <button
                                 class="button-circle button-red"
-                                @click.stop.prevent="listsStore.lists.delete(item.id)"
+                                @click.stop.prevent="deleteList(item)"
                             >
                                 -
                             </button>
@@ -74,4 +87,19 @@ function getListImage(wishlist: Wishlist) {
     </div>
 
     <CreateListDialog ref="create-list-dialog"></CreateListDialog>
+
+    <DialogComponent
+        ref="confirm-delete-dialog"
+        :title="$t('lists.dialog.confirm_delete.title')"
+    >
+        {{
+            $t('lists.dialog.confirm_delete.body', {
+                list: listToDelete.name
+            })
+        }}
+        <template #menu>
+            <button @click="confirmDeleteDialog.submit()" class="button button-red">{{ $t('button.yes') }}</button>
+            <button @click="confirmDeleteDialog.cancel()" class="button button-green">{{ $t('button.no') }}</button>
+        </template>
+    </DialogComponent>
 </template>

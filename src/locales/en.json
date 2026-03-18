@@ -315,6 +315,10 @@
       },
       "add_to_list": {
         "title": "Add to Wishlist"
+      },
+      "confirm_delete": {
+        "title": "Delete wishlist?",
+        "body": "Are you sure you want to delete \"{list}\"?"
       }
     }
   }
