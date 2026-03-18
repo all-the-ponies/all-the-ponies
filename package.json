@@ -41,6 +41,7 @@
     "@vitejs/plugin-vue": "^6.0.4",
     "@vitejs/plugin-vue-jsx": "^5.1.4",
     "@vue/tsconfig": "^0.7.0",
+    "navigation-api-types": "^0.6.1",
     "npm-run-all2": "^8.0.4",
     "sass-embedded": "^1.97.3",
     "tsx": "^4.21.0",
