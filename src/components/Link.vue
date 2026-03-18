@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { language } from '@/globals';
 import { LOCALES } from '@/i18n';
+import { fixUrl } from '@/scripts/fixUrl';
 import { usePageContext } from 'vike-vue/usePageContext'
 import { useAttrs, computed, type AnchorHTMLAttributes } from 'vue'
 
@@ -23,17 +24,7 @@ const isActive = computed(() => {
   return props.href === '/' ? urlPathname === props.href : urlPathname.startsWith(props.href)
 })
 
-const transformedHref = computed(() => {
-  if (props.href.includes('://')) {
-    return props.href
-  }
-
-  let pathParts = props.href.split('/')
-  if (pathParts[0] in LOCALES || pathParts[1] in LOCALES) {
-    return props.href
-  }
-  return `/${language.value.code}${props.href}`
-})
+const transformedHref = computed(() => fixUrl(props.href))
 </script>
 
 <template>
