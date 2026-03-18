@@ -21,7 +21,19 @@
     }
   },
   "about": {
-    "title": "About"
+    "title": "About",
+    "description": {
+      "body": "All The Ponies was initially created by {me} as a website to {quiz_link}, because one quiz I found online barely scratched the surface of ponies. It later expanded it to a resource for accurate information about stuff in the game, tracking what you have, and of course small activities you can play.",
+      "quiz_link": "name as many ponies you can"
+    },
+    "sections": {
+      "credits": {
+        "title": "Credits"
+      },
+      "translations": {
+        "title": "Translations"
+      }
+    }
   },
   "button": {
     "cancel": "Cancel",
