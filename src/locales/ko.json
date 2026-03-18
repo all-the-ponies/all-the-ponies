@@ -21,7 +21,19 @@
     }
   },
   "about": {
-    "title": "회사 소개"
+    "title": "회사 소개",
+    "description": {
+      "body": "",
+      "quiz_link": ""
+    },
+    "sections": {
+      "credits": {
+        "title": ""
+      },
+      "translations": {
+        "title": ""
+      }
+    }
   },
   "button": {
     "cancel": "취소",

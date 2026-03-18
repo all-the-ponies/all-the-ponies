@@ -21,7 +21,19 @@
     }
   },
   "about": {
-    "title": "Об Игре"
+    "title": "Об Игре",
+    "description": {
+      "body": "",
+      "quiz_link": ""
+    },
+    "sections": {
+      "credits": {
+        "title": ""
+      },
+      "translations": {
+        "title": ""
+      }
+    }
   },
   "button": {
     "cancel": "Отмена",
