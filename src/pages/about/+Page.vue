@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Config } from 'vike-vue/Config'
 import Link from '@/components/Link.vue'
+import { language } from '@/globals';
 
 </script>
 
@@ -41,6 +42,10 @@ import Link from '@/components/Link.vue'
                 <li>Thanks to <span class="text-green">Bass</span> for help with loading ponies with a friend code.</li>
                 <li>The font used is <Link href="https://www.mattyhex.net/CMR/" class="link">Celestia Medium Redux</Link>, which is also used in the game.</li>
                 <li>The website was built using <Link href="https://vuejs.org/" class="link">Vue.js</Link> to make my life easier and allow for a more dynamic experience.</li>
+            </ul>
+            <h2>Translations</h2>
+            <ul class="list">
+                <li><span class="text-green">Pamcezya</span> - {{ new Intl.DisplayNames([language.code], { type: "language" }).of('tr') }}</li>
             </ul>
         </section>
         
