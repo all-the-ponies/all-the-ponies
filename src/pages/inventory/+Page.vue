@@ -202,7 +202,7 @@ async function importFriendCode() {
                         <ObjectCard
                             :object="item"
                             is-link
-                            show-inventory-button
+                            hasButtons
                         >
                         </ObjectCard>
                     </template>

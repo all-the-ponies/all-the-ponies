@@ -113,7 +113,7 @@ const sortFunctions = computed(() => {
                 <template #item="{ item }">
                     <ObjectCard
                         :object="item.item"
-                        show-inventory-button
+                        hasButtons
                         is-link
                     >
                     </ObjectCard>

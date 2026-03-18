@@ -137,7 +137,7 @@ const query = computed(() => {
                 <ObjectCard
                     :object="item"
                     is-link
-                    show-inventory-button
+                    hasButtons
                     show-price
                 >
                 </ObjectCard>

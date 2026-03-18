@@ -88,7 +88,7 @@ const objects = computed(() => Object.values(gameData.data.categories[category.v
             <ObjectCard
                 :object="item"
                 is-link
-                show-inventory-button
+                hasButtons
             >
             </ObjectCard>
         </template>
