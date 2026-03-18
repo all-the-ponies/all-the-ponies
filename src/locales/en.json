@@ -13,7 +13,7 @@
   "home": {
     "description": "Get info about {game_link} and track what you have!",
     "message": {
-      "game_name": "My LIttle Pony: Magic Princess"
+      "game_name": "My Little Pony: Magic Princess"
     },
     "things_to_do": {
       "title": "Things To Do",
