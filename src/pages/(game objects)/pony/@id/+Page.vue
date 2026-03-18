@@ -84,7 +84,7 @@ const houseName = computed(() => house.value?.name[language.value.key])
     </Config>
 
     <div>
-        <back-button/>
+        <back-button fallback="/search/ponies" />
         <div v-if="!pony">
             Pony {{ pageContext.routeParams.id }} not found
         </div>

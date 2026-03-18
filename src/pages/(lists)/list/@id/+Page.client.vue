@@ -97,7 +97,7 @@ const sortFunctions = computed(() => {
 
 <template>
     <div>
-        <BackButton></BackButton>
+        <BackButton fallback="/lists"></BackButton>
         <section class="section">
             <h1>{{ wishlist.name }}</h1>
             <button @click="editList" class="button button-blue">{{ $t('lists.button.edit') }}</button>

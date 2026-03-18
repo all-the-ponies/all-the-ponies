@@ -64,7 +64,7 @@ const productCurrency = computed(() => {
     <Config :title="name" description="" :image="absoluteUrl(staticImage(shop.image.main))"></Config>
 
     <div>
-        <back-button/>
+        <back-button fallback="/search/shops" />
         <div v-if="shop === null">
             House {{ pageContext.routeParams.id }} not found
         </div>

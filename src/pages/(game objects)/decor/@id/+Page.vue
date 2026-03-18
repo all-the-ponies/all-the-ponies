@@ -39,7 +39,7 @@ const name = computed(() => {
     <Config :title="name" description="" :image="absoluteUrl(staticImage(decor.image.main))"></Config>
 
     <div>
-        <back-button/>
+        <back-button fallback="/search/decor" />
         <div v-if="decor === null">
             Decor {{ pageContext.routeParams.id }} not found
         </div>
