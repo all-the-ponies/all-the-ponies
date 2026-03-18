@@ -21,7 +21,19 @@
     }
   },
   "about": {
-    "title": "نبذة"
+    "title": "نبذة",
+    "description": {
+      "body": "",
+      "quiz_link": ""
+    },
+    "sections": {
+      "credits": {
+        "title": ""
+      },
+      "translations": {
+        "title": ""
+      }
+    }
   },
   "button": {
     "cancel": "إلغاء",

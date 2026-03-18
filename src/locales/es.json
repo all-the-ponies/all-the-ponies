@@ -21,7 +21,19 @@
     }
   },
   "about": {
-    "title": "Acerca De"
+    "title": "Acerca De",
+    "description": {
+      "body": "",
+      "quiz_link": ""
+    },
+    "sections": {
+      "credits": {
+        "title": ""
+      },
+      "translations": {
+        "title": ""
+      }
+    }
   },
   "button": {
     "cancel": "Cancelar",

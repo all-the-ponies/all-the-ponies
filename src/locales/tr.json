@@ -1,117 +1,129 @@
 {
   "site": {
-    "title": "",
-    "description": ""
+    "title": "All The Ponies",
+    "description": "My Little Pony Büyülü Prenses Oyunu hakkında öğrenmek istediğiniz herhangi bir şey hakkında tüm doğru bilgileri alın"
   },
   "notices": {
     "help_wanted": {
-      "title": "",
-      "body": "",
-      "discord": ""
+      "title": "Yardım Aranıyor!",
+      "body": "Sadece İngilizce konuşuyorum, bu yüzden All The Ponies sitesini diğer dillere çeviremiyorum. Eğer başka bir dil biliyorsan, Siteyi çevirme konusunda yardımın beni çok mutlu eder.",
+      "discord": "Sunucuya Katıl"
     }
   },
   "home": {
-    "description": "",
+    "description": "{game_link} hakkında bilgi al ve ilerlemeni takip et!",
     "message": {
-      "game_name": ""
+      "game_name": "My Little Pony: Büyülü Prenses"
     },
     "things_to_do": {
-      "title": "",
-      "browse": ""
+      "title": "Yapılacak Şeyler",
+      "browse": "Göz At"
     }
   },
   "about": {
-    "title": "Hakkında"
+    "title": "Hakkında",
+    "description": {
+      "body": "",
+      "quiz_link": ""
+    },
+    "sections": {
+      "credits": {
+        "title": ""
+      },
+      "translations": {
+        "title": ""
+      }
+    }
   },
   "button": {
     "cancel": "İptal",
-    "no": "Hayir",
+    "no": "Hayır",
     "ok": "Tamam",
     "share": "Paylaş",
     "start": "Başla",
-    "stop": "",
+    "stop": "Dur",
     "yes": "Evet",
     "skip": "Geç",
-    "hint": ""
+    "hint": "İpucu"
   },
   "common": {
-    "help": "Yardim",
-    "info": "",
-    "name": "Ad",
-    "import": "",
-    "export": "",
-    "wiki": "",
+    "help": "Yardım",
+    "info": "Bilgi",
+    "name": "İsim",
+    "import": "İçe Aktar",
+    "export": "Dışa Aktar",
+    "wiki": "Wiki",
     "royal": "Asil",
     "new": "Yeni",
     "date": {
-      "range": "",
-      "current": ""
+      "range": "{start} 'dan {end} 'a",
+      "current": "Güncel"
     }
   },
   "dialog": {
-    "filter": "",
-    "sort_by": ""
+    "filter": "Filtrele",
+    "sort_by": "Sırala"
   },
   "filter": {
     "pony": {
-      "npc": "",
-      "playable": "",
-      "pro": "",
-      "quest": "",
-      "unused": "",
-      "not_owned": ""
+      "npc": "Oynanamayan",
+      "playable": "Oynanabilir",
+      "pro": "Pro",
+      "quest": "Görev",
+      "unused": "Kullanılmayan",
+      "not_owned": "Sahip Olunmayan"
     },
     "decor": {
-      "regular": "",
-      "can_fuse": ""
+      "regular": "Normal",
+      "can_fuse": "Kaynaştırılabilir"
     },
     "shop": {
       "maze": "Labi̇rent",
-      "gem_shop": "Cevher Dükkanlari",
-      "others": "",
-      "not_owned": ""
+      "gem_shop": "Cevher Dükkanları",
+      "others": "Diğer",
+      "not_owned": "Sahip Olunmayan"
     }
   },
   "game": {
-    "content_version": "",
-    "game_version": "",
+    "content_version": "İçerik Versiyonu: {version}",
+    "game_version": "Oyun Versiyonu: {version}",
     "message": {
-      "you_won": "Kazandin!"
+      "you_won": "Kazandın!"
     }
   },
   "game_object": {
     "building": {
-      "build_reward": "",
-      "build_skip_cost": "",
-      "build_time": "",
-      "skip_cost": ""
+      "build_reward": "İnşa Ödülü",
+      "build_skip_cost": "İnşa Atlama Bedeli",
+      "build_time": "İnşa Süresi",
+      "skip_cost": "Atlama Bedeli"
     },
     "common": {
-      "size": "",
-      "unlock_level": ""
+      "size": "Boyut",
+      "unlock_level": "Açılma Seviyesi"
     },
     "decor": {
-      "cannot_fuse": "",
+      "cannot_fuse": "Kaynaştırılamayan",
       "decor": "Süsleme",
       "fusion_points": "Kaynaştırma Puanları",
       "pro_decors": "Pro Süslemeler",
-      "pro_decor": "",
-      "effect": ""
+      "pro_decor": "Pro @:game_object.decor.decor",
+      "effect": "Efekt"
     },
     "house": {
-      "house": "",
-      "resident": "",
-      "visitor": ""
+      "house": "Ev | Evler",
+      "resident": "Ev Sakini  | Ev Sakinleri",
+      "visitor": "Ziyaretçi | Ziyaretçiler"
     },
     "pony": {
-      "arrival_bonus": "",
-      "character": "Karakterler",
-      "level_up_rewards": "",
-      "minigame_cooldown": "",
-      "minigame_skip_cost": "",
+      "arrival_bonus": "Varış Bonusu",
+      "character": "Karakter",
+      "level_up_rewards": "Seviye Atlama Ödülleri",
+      "minigame_cooldown": "Mini Oyun Bekleme Süresi",
+      "minigame_skip_cost": "Mini Oyun Geçme Bedeli",
       "pony": "Pony'ler",
       "transform": "Dönüştür",
-      "transformable": ""
+      "transformable": "Dönüştürülebilir"
     },
     "profile_decorations": {
       "avatar": {
@@ -126,43 +138,43 @@
       "frame": {
         "frame": "Çerçeve | Çerçeveler"
       },
-      "is_default": ""
+      "is_default": "Varsayılan"
     },
     "road": {
-      "road": "Yollar"
+      "road": "Yol | Yollar"
     },
     "shop": {
-      "product": "",
-      "production_time": "",
-      "profit": "",
-      "shop": "Dükkanlar",
-      "gem_shop": "Cevher Dükkanlari"
+      "product": "Ürün",
+      "production_time": "Üretim Süresi",
+      "profit": "kâr",
+      "shop": "Dükkan | Dükkanlar",
+      "gem_shop": "Cevher Dükkanları"
     },
     "token": {
-      "token": "Objeler"
+      "token": "Obje | Objeler"
     }
   },
   "price_history": {
     "header": {
-      "date": "",
-      "price": "",
+      "date": "Tarih",
+      "price": "Ücret",
       "tokens": "Objeler",
       "royal": "Asil"
     }
   },
   "group_quests": {
     "title": "Grup Görevleri",
-    "random_pro": "",
-    "pro": ""
+    "random_pro": "Rastgele",
+    "pro": "Pro"
   },
   "inventory": {
     "title": "Envanter",
     "message": {
-      "add_more": "",
+      "add_more": "Daha fazla {category} ekle",
       "dialog": {
         "export": {
-          "format": "",
-          "category": ""
+          "format": "Biçim",
+          "category": "Kategori"
         }
       }
     },
@@ -172,7 +184,7 @@
       "houses": "@:game_object.house.house{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "stars": ""
+      "stars": "Yıldızlar: {count}"
     }
   },
   "location": {
@@ -183,62 +195,62 @@
     "klugetown": "Klugetown",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
-    "town": "",
-    "unknown": ""
+    "town": "Kasaba",
+    "unknown": "Bilinmeyen"
   },
   "player_info": {
     "friend_code": "Arkadaş Kodu",
-    "join_date": "",
-    "total_playtime": ""
+    "join_date": "Katılım Tarihi",
+    "total_playtime": "Toplam Oynama Süresi"
   },
   "pony_quiz": {
-    "description": "",
-    "time": "",
-    "title": "",
+    "description": "My Little Pony: Büyülü Prenses mobil oyunu hakkında bilginizi test edin ve kaç tane Pony'i adlandırabileceğinizi görün. Oyunu oynamasanız bile eğlenceli olabilir çünkü G4'deki çoğu Pony oyunda da var (bazı G1 Pony'leri de var).",
+    "time": "Süre",
+    "title": "Bilgi Yarışı",
     "message": {
-      "win_message": ""
+      "win_message": "Tebrikler! Hepsini adlandırmak {time} kadar sürdü {num_ponies} @.lower:game_object.pony.pony"
     },
     "options": {
-      "ignore_spaces": "",
-      "case_sensitive": "",
-      "ignore_accents": "",
-      "ignore_punctuation": "",
-      "include_unused": ""
+      "ignore_spaces": "Boşlukları yoksay",
+      "case_sensitive": "Büyük/küçük harfe duyarlı",
+      "ignore_accents": "Vurguları/Aksanları yoksay",
+      "ignore_punctuation": "Noktalama işaretlerini yoksay",
+      "include_unused": "Kullanılmayan ponyleri dahil et"
     }
   },
   "guesser": {
-    "title": "",
-    "description": "",
+    "title": "Bu Pony Kim?",
+    "description": "Silüete göre Pony'i tahmin et ",
     "message": {
-      "correct_guesses": "",
-      "guessed_correctly": "",
-      "time": ""
+      "correct_guesses": "Doğru Tahminler",
+      "guessed_correctly": "Doğru Tahmin Edildi: {ponies}/{total}",
+      "time": "Süre"
     }
   },
   "sorting": {
-    "alphabetically": "",
-    "game_order": "",
-    "reverse": "",
+    "alphabetically": "Alfabetik Olarak",
+    "game_order": "Oyun Sırası",
+    "reverse": "Geri Al",
     "shop": {
-      "production": "",
-      "xp_rate": ""
+      "production": "Üretim Oranı",
+      "xp_rate": "Xp Oranı"
     },
     "decor": {
-      "pro_rate": ""
+      "pro_rate": "Pro Oranı"
     }
   },
   "stats": {
-    "title": "",
-    "description": "",
+    "title": "İstatistikler",
+    "description": "My Little Pony: Büyülü Prenses oyunundaki istatistiklerini gör",
     "message": {
       "ponies": {
-        "total": ""
+        "total": "Toplam Pony'ler: {count}"
       }
     }
   },
   "store": {
     "title": "Mağaza",
-    "description": "",
+    "description": "Güncel olarak mağazada olan her şeyi eş zamanlı olarak görün",
     "message": {
       "percent_off": "İNDİRİM",
       "if": "eğer:",
@@ -246,32 +258,32 @@
     }
   },
   "search": {
-    "title": ""
+    "title": "Ara"
   },
   "contact": {
-    "title": "",
-    "description": "",
+    "title": "İletişim",
+    "description": "Sorularınız, hata bildirileriniz mı var ya da katkıda mı bulunmak istiyorsunuz? Burası tam doğru yer.",
     "message": {
-      "discord_message": "",
-      "discord_server": "",
+      "discord_message": "Sorularınız, hata raporlarınız mı var ya da katkıda mı bulunmak istiyorsunuz? {server} 'ya katılın!",
+      "discord_server": "Discord Sunucusu",
       "discord": {
-        "title": "",
-        "description": "",
-        "button": ""
+        "title": "Discord sunucusuna katılın!",
+        "description": "Sorular sorun, önerilerde bulunun, hataları bildirin ya da sadece toplulukla sohbet edin.",
+        "button": "Sunucuya Katıl"
       },
       "github": {
-        "title": "",
-        "description": "",
-        "button": ""
+        "title": "Github'da görüntüle",
+        "description": "İçerik kodunu kontrol edin, sorunları açın ya da değişiklik talebinde bulunun",
+        "button": "Depoyu Aç"
       },
       "mlp_game_hangout": {
-        "title": "",
-        "description": "",
-        "button": ""
+        "title": "MLP Oyun Alanı",
+        "description": "Oyun için topluluk sunucusu. r/MLPIOS subreddit'ine bağlıdır.",
+        "button": "Sunucuya Katıl"
       },
       "help_wanted": {
-        "title": "",
-        "description": ""
+        "title": "Yardım Aranıyor!",
+        "description": "Ben sadece İngilizce bilen tek bir kişiyim, bu yüzden yapamadığım pek çok şey var; bunların en başında da çeviriler geliyor. Şu ana kadar çevirebildiğim kısımlar, sadece oyunun içinden alabildiğim verilerdir. Eğer diliniz düzgün çevrilmemişse, LÜTFEN ya GitHub üzerinden bir 'değiştirme talebi' oluşturun ya da çeviriye yardımcı olmak için Discord sunucusuna katılın. Ayrıca sayfa düzeni tasarımı konusunda pek iyi değilim, bu sebeple eğer site tasarımında iyiyseniz yardımınızı almaktan mutluluk duyarım. Eğer sadece siteyi kodlamaya yardımcı olamk isterseniz buna da her zaman kapım açık."
       }
     }
   }

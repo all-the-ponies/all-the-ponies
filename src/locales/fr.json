@@ -21,7 +21,19 @@
     }
   },
   "about": {
-    "title": "À Propos"
+    "title": "À Propos",
+    "description": {
+      "body": "",
+      "quiz_link": ""
+    },
+    "sections": {
+      "credits": {
+        "title": ""
+      },
+      "translations": {
+        "title": ""
+      }
+    }
   },
   "button": {
     "cancel": "Annuler",
