@@ -62,7 +62,10 @@
   },
   "dialog": {
     "filter": "Filtrele",
-    "sort_by": "Sırala"
+    "sort_by": "Sırala",
+    "select_item": {
+      "title": ""
+    }
   },
   "filter": {
     "pony": {
@@ -230,6 +233,7 @@
   "sorting": {
     "alphabetically": "Alfabetik Olarak",
     "game_order": "Oyun Sırası",
+    "date_added": "",
     "reverse": "Geri Al",
     "shop": {
       "production": "Üretim Oranı",
@@ -284,6 +288,39 @@
       "help_wanted": {
         "title": "Yardım Aranıyor!",
         "description": "Ben sadece İngilizce bilen tek bir kişiyim, bu yüzden yapamadığım pek çok şey var; bunların en başında da çeviriler geliyor. Şu ana kadar çevirebildiğim kısımlar, sadece oyunun içinden alabildiğim verilerdir. Eğer diliniz düzgün çevrilmemişse, LÜTFEN ya GitHub üzerinden bir 'değiştirme talebi' oluşturun ya da çeviriye yardımcı olmak için Discord sunucusuna katılın. Ayrıca sayfa düzeni tasarımı konusunda pek iyi değilim, bu sebeple eğer site tasarımında iyiyseniz yardımınızı almaktan mutluluk duyarım. Eğer sadece siteyi kodlamaya yardımcı olamk isterseniz buna da her zaman kapım açık."
+      }
+    }
+  },
+  "lists": {
+    "title": "",
+    "messages": {
+      "no_lists": "",
+      "wishlist": "",
+      "empty_list": ""
+    },
+    "button": {
+      "add_to_list": "",
+      "create_list": "",
+      "new_wishlist": "",
+      "edit": ""
+    },
+    "dialog": {
+      "create_list": {
+        "title": "",
+        "message": {
+          "wishlist": "",
+          "name": ""
+        }
+      },
+      "choose_image": {
+        "title": ""
+      },
+      "add_to_list": {
+        "title": ""
+      },
+      "confirm_delete": {
+        "title": "",
+        "body": ""
       }
     }
   }

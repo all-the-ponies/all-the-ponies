@@ -62,7 +62,10 @@
   },
   "dialog": {
     "filter": "",
-    "sort_by": ""
+    "sort_by": "",
+    "select_item": {
+      "title": ""
+    }
   },
   "filter": {
     "pony": {
@@ -230,6 +233,7 @@
   "sorting": {
     "alphabetically": "",
     "game_order": "",
+    "date_added": "",
     "reverse": "",
     "shop": {
       "production": "",
@@ -284,6 +288,39 @@
       "help_wanted": {
         "title": "",
         "description": ""
+      }
+    }
+  },
+  "lists": {
+    "title": "",
+    "messages": {
+      "no_lists": "",
+      "wishlist": "",
+      "empty_list": ""
+    },
+    "button": {
+      "add_to_list": "",
+      "create_list": "",
+      "new_wishlist": "",
+      "edit": ""
+    },
+    "dialog": {
+      "create_list": {
+        "title": "",
+        "message": {
+          "wishlist": "",
+          "name": ""
+        }
+      },
+      "choose_image": {
+        "title": ""
+      },
+      "add_to_list": {
+        "title": ""
+      },
+      "confirm_delete": {
+        "title": "",
+        "body": ""
       }
     }
   }
