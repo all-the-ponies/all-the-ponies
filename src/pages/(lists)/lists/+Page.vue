@@ -14,8 +14,6 @@ const createListDialog = useTemplateRef('create-list-dialog')
 const confirmDeleteDialog = useTemplateRef('confirm-delete-dialog')
 const listToDelete = ref<Wishlist>()
 
-console.log(listsStore.lists)
-
 function createList() {
     createListDialog.value.createList()
 }
