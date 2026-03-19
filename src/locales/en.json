@@ -124,7 +124,7 @@
       "level_up_rewards": "Level Up Rewards",
       "minigame_cooldown": "Minigame Cooldown",
       "minigame_skip_cost": "Minigame Skip Cost",
-      "pony": "Ponies",
+      "pony": "Pony | Ponies",
       "transform": "Transform",
       "transformable": "Transformable"
     },
@@ -136,7 +136,7 @@
         "background": "Background | Backgrounds"
       },
       "background_frame": {
-        "background_frame": "Background Frame"
+        "background_frame": "Background Frame | Background Frames"
       },
       "frame": {
         "frame": "Frame | Frames"
