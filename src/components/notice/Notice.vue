@@ -13,7 +13,7 @@ const props = defineProps<{
 const closed = computed(() => globalState.dismissedNotices.includes(props.noticeId))
 
 function close() {
-    console.log('Closing')
+    // console.log('Closing')
     globalState.dismissedNotices.push(props.noticeId)
 }
 

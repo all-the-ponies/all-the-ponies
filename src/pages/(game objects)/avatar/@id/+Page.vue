@@ -39,7 +39,7 @@ const pony = computed(() => gameData.getObject(avatar.value.pony, 'pony'))
     <Config :title="name" description="" :image="absoluteUrl(staticImage(avatar.image.preview))"></Config>
 
     <div>
-        <back-button/>
+        <back-button fallback="/search/avatars" />
         <div v-if="avatar === null">
             Decor {{ pageContext.routeParams.id }} not found
         </div>

@@ -52,12 +52,12 @@ function toggleOwned(event: Event) {
             class="button-circle inventory-button"
             :class="owned ? 'button-red' : 'button-green'"
             @click.stop.prevent="toggleOwned"
-        >{{ owned ? '-' : '+' }}</button>
+        >{{ owned ? '−' : '+' }}</button>
     </ClientOnly>
 </template>
 
 <style lang="css" scoped>
 .inventory-button {
-    font-size: 130%;
+    font-size: 115%;
 }
 </style>

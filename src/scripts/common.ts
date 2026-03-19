@@ -85,7 +85,7 @@ export function getCurrentScroll() {
   return document.documentElement.scrollTop || document.body.scrollTop
 }
 
-export function pickRandom(list: any[]) {
+export function pickRandom<T>(list: T[]): T {
   return list[Math.floor(Math.random() * list.length)]
 }
 
@@ -126,4 +126,22 @@ export function downloadFile(content: string, type: string, filename: string) {
 
 export function valueExists(value): boolean {
   return !!(value || value === 0)
+}
+
+
+export function findGap(sortedList: number[], start: number = 0) {
+  if (sortedList.length === 0) return start
+  if (sortedList[0] != start) return start
+
+  let previous: number
+  for (let n of sortedList) {
+    if (previous != undefined) {
+      if (n - previous > 1) {
+        return previous + 1
+      }
+    }
+    previous = n
+  }
+
+  return sortedList.at(-1) + 1
 }

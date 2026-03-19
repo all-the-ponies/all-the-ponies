@@ -46,7 +46,7 @@ const residents = computed(() => {
     <Config :title="name" description="" :image="absoluteUrl(staticImage(house.image.main))"></Config>
 
     <div>
-        <back-button/>
+        <back-button fallback="/search/houses" />
         <div v-if="house === null">
             House {{ pageContext.routeParams.id }} not found
         </div>

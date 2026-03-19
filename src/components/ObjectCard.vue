@@ -13,12 +13,16 @@ import ObjectImage from "./ObjectImage.vue"
 import { staticImage, valueExists } from "@/scripts/common"
 import Link from "./Link.vue"
 import GameCard from "./GameCard.vue"
+import AddToListButton from "./buttons/AddToListButton.vue"
 
 const shopManager = shopStore
 
 const props = defineProps<{
     object: GameObjectId | GameObject,
     showPrice?: boolean,
+    isLink?: boolean,
+    hasButtons?: boolean,
+    hover?: boolean,
 }>()
 
 const gameObject = gameData.getObject(props.object)
@@ -67,13 +71,15 @@ const shopInfo = computedAsync(
         :image="staticImage(image)"
         :alt="name"
         :priceData="!gettingShopInfo && showPrice ? shopInfo : null"
-        :href="`/${gameObject.category}/${gameObject.id}/`"
+        :href="props.isLink ? `/${gameObject.category}/${gameObject.id}/` : null"
+        :hover="props.hover"
     >
         <template #left>
             <img v-if="gameObject.category === 'pony' && gameObject.pro" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
         </template>
         <template #right>
-            <inventory-add-button v-if="canAdd" :gameObject="gameObject.id" />
+            <inventory-add-button v-if="props.hasButtons && canAdd" :gameObject="gameObject.id" />
+            <AddToListButton v-if="props.hasButtons" :gameObject="gameObject.id"></AddToListButton>
         </template>
         <template #info>
             <slot name="info"></slot>

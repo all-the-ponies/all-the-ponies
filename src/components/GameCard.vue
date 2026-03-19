@@ -14,6 +14,7 @@ const props = defineProps<{
     alt?: string,
     priceData?: PriceData,
     href?: AnchorHTMLAttributes['href'],
+    hover?: boolean,
 }>()
 
 const shopInfo = computed(() => props.priceData)
@@ -58,7 +59,7 @@ const replacedPrice = computed(() => {
 </script>
 
 <template>
-    <div class="object-card" :class="{hoverable: !!$props.href}">
+    <div class="object-card" :class="{hoverable: (!!$props.href || props.hover)}">
         <component :is="props.href ? Link : 'span'" class="card-inner" :href="props.href">
             <div class="banner" v-if="showPrice && shopInfo?.inShop">
                 <span v-if="shopInfo?.price?.sale?.price" class="discount-banner">
@@ -297,6 +298,7 @@ const replacedPrice = computed(() => {
     flex-direction: column;
     justify-content: start;
     align-content: center;
+    gap: 0.3rem;
 
     padding: 0.4rem 0.3rem;
 }

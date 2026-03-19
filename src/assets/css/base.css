@@ -2,7 +2,7 @@
     @font-face {
         font-family: "Celestia Medium Redux";
         /* src: url("../assets/fonts/CelestiaMediumRedux_alt1.55.ttf") format("truetype"); */
-        src: url("@/assets/fonts/celestia_redux.ttf") format("truetype");
+        src: url("@/assets/fonts/CelestiaReduxMedium.ttf") format("truetype");
     }
     
     :root {
@@ -122,7 +122,7 @@
     }
     
     .button-circle {
-        display: grid;
+        display: inline-grid;
         place-items: center;
     
         font-size: 1.3rem;

@@ -88,12 +88,9 @@ class ShopStore {
             }
 
             console.log('checking')
-
-            console.log('shop is Array')
             let shopData = {}
             this._shop = {}
             console.log('shop length', shop.length)
-            console.log('shop', this._shop)
             for (let item of shop) {
                 // console.log('item loaded')
                 shopData[item.id] = item

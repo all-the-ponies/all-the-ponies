@@ -62,7 +62,10 @@
   },
   "dialog": {
     "filter": "Filter",
-    "sort_by": "Sort By"
+    "sort_by": "Sort By",
+    "select_item": {
+      "title": "Select Item"
+    }
   },
   "filter": {
     "pony": {
@@ -230,6 +233,7 @@
   "sorting": {
     "alphabetically": "Alphabetically",
     "game_order": "Game Order",
+    "date_added": "Date added",
     "reverse": "Reverse",
     "shop": {
       "production": "Production rate",
@@ -284,6 +288,39 @@
       "help_wanted": {
         "title": "Help Wanted!",
         "description": "I am just one person who only knows English, so there are many things that I can't do, most notably translations. The things that I've been able to translate, are things that I was able to pull from the game. If your language isn't translated well, PLEASE either create a pull request on github, or join the discord server so you can help translate. I'm also not great at designing layouts, so if you are good at designing websites, I'd love to have your help. If you want to just help code the website, that's also very welcome."
+      }
+    }
+  },
+  "lists": {
+    "title": "Wishlists",
+    "messages": {
+      "no_lists": "It looks there are no wishlists yet. ",
+      "wishlist": "Wishlist",
+      "empty_list": "There's nothing here right now. Consider adding {ponies}."
+    },
+    "button": {
+      "add_to_list": "Add to wishlist",
+      "create_list": "Create wishlist",
+      "new_wishlist": "+ New wishlist",
+      "edit": "Edit"
+    },
+    "dialog": {
+      "create_list": {
+        "title": "Create Wishlist",
+        "message": {
+          "wishlist": "Wishlist",
+          "name": "Name:"
+        }
+      },
+      "choose_image": {
+        "title": "Choose Image"
+      },
+      "add_to_list": {
+        "title": "Add to Wishlist"
+      },
+      "confirm_delete": {
+        "title": "Delete wishlist?",
+        "body": "Are you sure you want to delete \"{list}\"?"
       }
     }
   }

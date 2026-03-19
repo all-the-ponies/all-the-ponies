@@ -84,7 +84,7 @@ const houseName = computed(() => house.value?.name[language.value.key])
     </Config>
 
     <div>
-        <back-button/>
+        <back-button fallback="/search/ponies" />
         <div v-if="!pony">
             Pony {{ pageContext.routeParams.id }} not found
         </div>
@@ -93,6 +93,12 @@ const houseName = computed(() => house.value?.name[language.value.key])
                 <template #name>
                     <img class="portrait" :src="`/images/${pony.image.portrait}`" :alt="name">
                     {{ name }}
+                </template>
+                <template #image-left>
+                    <img v-if="pony.pro" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
+                </template>
+                <template #image-right>
+                    <inventory-add-button :gameObject="pony.id"></inventory-add-button>
                 </template>
                 <template #image>
                     <div class="character-wrapper">
@@ -103,12 +109,6 @@ const houseName = computed(() => house.value?.name[language.value.key])
                                 interractive
                             >
                                 <img class="full-image" :src="staticImage(pony.image.main)" :alt="name">
-                                <div class="left-image-container">
-                                    <img v-if="pony.pro" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
-                                </div>
-                                <div class="right-image-container">
-                                    <inventory-add-button :gameObject="pony.id"></inventory-add-button>
-                                </div>
                             </Stars>
                             <Link
                                 v-if="pony.changeling.id"
@@ -119,6 +119,8 @@ const houseName = computed(() => house.value?.name[language.value.key])
                             </Link>
                         </div>
                     </div>
+                </template>
+                <template #left-info>
                     <div class="description">{{ description }}</div>
                 </template>
                 <template #info>

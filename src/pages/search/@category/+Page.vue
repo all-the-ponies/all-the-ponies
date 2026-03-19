@@ -5,18 +5,20 @@ import { computed, ref } from 'vue';
 import { CATEGORIES, SortFunctions, FilterFunctions, PLURAL_CATEGORY_MAP } from '@/scripts/categories'
 // import { useSeoMeta } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
-import type { GameObject } from '@/types/gameDataTypes';
+import type { CategoryName, GameObject } from '@/types/gameDataTypes';
 import PriceButton from '@/components/buttons/PriceButton.vue';
 import { Config } from 'vike-vue/Config';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { useSaveStore } from '@/stores/saveManager';
+import { language } from '@/globals';
+import ObjectCard from '@/components/ObjectCard.vue';
 
 const pageContext = usePageContext()
 const saveStore = useSaveStore()
 
 const { t } = useI18n()
 
-const category = computed(() => {
+const category = computed<CategoryName | null>(() => {
     return PLURAL_CATEGORY_MAP[pageContext.routeParams.category] || null
 })
 
@@ -63,7 +65,7 @@ function infoGetter(gameObject: GameObject) {
     // return <PriceButton currency='Bits'>10,000</PriceButton>
 }
 
-const objects = computed(() => Object.keys(gameData.data.categories[category.value].objects))
+const objects = computed(() => Object.values(gameData.data.categories[category.value].objects as GameObject[]))
 
 </script>
 
@@ -74,10 +76,22 @@ const objects = computed(() => Object.keys(gameData.data.categories[category.val
 
     <SearchComponent
         v-if="category != null"
-        :objects="objects"
+        :data="objects"
+        :search-function="(query, items) => gameData.searchName(query, items, language.key)"
         :sorters="sortFunctions"
         :filters="filterFunctions"
         :placeholder="$t(CATEGORIES[category].string)"
-    ></SearchComponent>
+        page-param="page"
+        save-url
+    >
+        <template #item="{ item }">
+            <ObjectCard
+                :object="item"
+                is-link
+                hasButtons
+            >
+            </ObjectCard>
+        </template>
+    </SearchComponent>
     <div v-else>Not Found</div>
 </template>

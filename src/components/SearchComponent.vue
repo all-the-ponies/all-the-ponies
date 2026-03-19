@@ -1,4 +1,4 @@
-<script lang="tsx" setup>
+<script lang="tsx" setup generic="ITEM extends {id: string | number, [key: string]: any}">
 import { computed, ref, useTemplateRef, watch } from 'vue'
 import ObjectCard from './ObjectCard.vue'
 import gameData from '@/scripts/gameData'
@@ -20,26 +20,26 @@ const currentPage = ref(Number(pageContext.urlParsed.search.page) || 1)
 const perPage = ref(300)
 
 const props = withDefaults(defineProps<{
-        objects: (GameObjectId | GameObject)[],
+        data: ITEM[],
+        searchFunction(query: string, items: ITEM[]): ITEM[],
         filters?: Record<string, FilterFunctionsType>,
         sorters?: Record<string, SortFunctionsType>,
         query?: Record<string, string | string[] | number | null>,
         placeholder?: string,
-        showPrices?: boolean,
-        infoGetter? (gameObject: GameObject): string | JSX.Element,
+        pageParam?: string,
+        saveUrl?: boolean,
     }>(), {
         filters: () => {return {}},
         sorters: () => {return {}},
         query: () => {return {}},
         placeholder: 'Pony',
-        infoGetter: null,
     }
 )
 
 const sortDialog = useTemplateRef('sort-dialog')
 const filterDialog = useTemplateRef('filter-dialog')
 const sortMethod = ref<string>()
-const reversed = ref<boolean>('reverse' in pageContext.urlParsed.search)
+const reversed = ref<boolean>(props.saveUrl && 'reverse' in pageContext.urlParsed.search)
 const defaultSortMethod = computed(() => {
     if (props.sorters) {
         for (let method of Object.keys(props.sorters)) {
@@ -112,7 +112,7 @@ const filters = computed(() => {
 if (props.sorters) {
     const sortQuery = pageContext.urlParsed.search.sort
     
-    if (pageContext.urlParsed.search.sort && sortQuery in props.sorters) {
+    if (props.saveUrl && pageContext.urlParsed.search.sort && sortQuery in props.sorters) {
         sortMethod.value = sortQuery
     } else {
         sortMethod.value = defaultSortMethod.value
@@ -151,76 +151,78 @@ function submitFilterDialog() {
 
 const searchQuery = ref('')
 
-watch(
-    computed(() => {return {
-        searchQuery,
-         sortMethod,
-        selectedFilters,
-        reversed,
-        query: props.query,
-    }}),
-    () => {
-        const params: Record<string, string | null> = {
-            ...props.query,
-            q: searchQuery.value || null,
-            sort: sortMethod.value || null,
+if (props.saveUrl) {
+    watch(
+        computed(() => {return {
+            searchQuery,
+             sortMethod,
+            selectedFilters,
+            reversed,
+            query: props.query,
+        }}),
+        () => {
+            const params: Record<string, string | null> = {
+                ...props.query,
+                q: searchQuery.value || null,
+                sort: sortMethod.value || null,
+            }
+    
+            if (!params.q) {
+                params.q = null
+            }
+    
+            const currentFilters = Object.keys(props.filters).filter(key => selectedFilters.value[key])
+            
+            if (!currentFilters.length) {
+                params.filter = null
+            } else {
+                params.filter = currentFilters.join(',')
+            }
+    
+            if (!params.sort || sortMethod.value === defaultSortMethod.value) {
+                delete params.sort
+            }
+    
+            if (reversed.value) {
+                params.reverse = 'true'
+            } else {
+                params.reverse = null
+            }
+    
+            history.replaceState(
+                null,
+                '',
+                modifyUrl(
+                    pageContext.urlOriginal,
+                    {
+                        search: params,
+                    }
+                ),
+            )
+        },
+        {
+            deep: true,
         }
+    )
+}
 
-        if (!params.q) {
-            params.q = null
-        }
+const items = computed(() => props.data)
 
-        const currentFilters = Object.keys(props.filters).filter(key => selectedFilters.value[key])
-        
-        if (!currentFilters.length) {
-            params.filter = null
-        } else {
-            params.filter = currentFilters.join(',')
-        }
-
-        if (!params.sort || sortMethod.value === defaultSortMethod.value) {
-            delete params.sort
-        }
-
-        if (reversed.value) {
-            params.reverse = 'true'
-        } else {
-            params.reverse = null
-        }
-
-        history.replaceState(
-            null,
-            '',
-            modifyUrl(
-                pageContext.urlOriginal,
-                {
-                    search: params,
-                }
-            ),
-        )
-    },
-    {
-        deep: true,
-    }
-)
-
-const objects = computed(() => props.objects.map((obj) => gameData.getObject(obj)))
-
-function checkObject(gameObject: GameObject, filterKey: string) {
+function checkObject(item: ITEM, filterKey: string) {
     const filter = props.filters[filterKey]
-    const mainCheck =filter.check ? filter.check(gameObject) : true
+    const mainCheck =filter.check ? filter.check(item) : true
     let excludeCheck = true
     let includeCheck = true
     if (mainCheck && filter.exclude) {
         excludeCheck = filter.exclude.every((excludeFilter) => (
             filters.value.includes(excludeFilter) ||
-            (!checkObject(gameObject, excludeFilter))
+            (!checkObject(item, excludeFilter))
         ))
     }
     if (mainCheck && filter.include) {
         includeCheck = filter.include.every((includeFilter) => (
             filters.value.includes(includeFilter) ||
-            checkObject(gameObject, includeFilter)
+            checkObject(item, includeFilter)
         ))
     }
 
@@ -228,7 +230,7 @@ function checkObject(gameObject: GameObject, filterKey: string) {
 }
 
 const searchResults = computed(() => {
-    let results = gameData.searchName(searchQuery.value, objects.value, language.value.key)
+    let results = props.searchFunction(searchQuery.value, items.value)
     // let filterFunctions = filters.filter(key => selectedFilters[key])
     if (filters.value.length) {
         results = results.filter(
@@ -242,7 +244,7 @@ const searchResults = computed(() => {
 })
 
 const shownResults = computed(() => {
-    const results: GameObject[] = []
+    const results: ITEM[] = []
 
     let start = (Math.max(1, currentPage.value) - 1) * perPage.value
     for (let i = start; i < Math.min(start + perPage.value, searchResults.value.length); i++) {
@@ -255,11 +257,11 @@ const shownResults = computed(() => {
     return results
 })
 
-if (pageContext.urlParsed.search.q) {
+if (props.saveUrl && pageContext.urlParsed.search.q) {
     searchQuery.value = pageContext.urlParsed.search.q
 }
 
-if (pageContext.urlParsed.search.filter) {
+if (props.saveUrl && pageContext.urlParsed.search.filter) {
     let filterQuery = pageContext.urlParsed.search.filter.split(',')
     for (let filter of filterQuery) {
         selectedFilters.value[filter] = true
@@ -279,19 +281,6 @@ watch(
     }
 )
 
-function getInfo(gameObject: GameObject): JSX.Element {
-    if (props.infoGetter === null) {
-        return
-    }
-    const info = props.infoGetter(gameObject)
-
-    if (typeof info === 'string') {
-        return <span>{info}</span>
-    }
-
-    return info
-}
-
 </script>
 
 <template>
@@ -304,36 +293,50 @@ function getInfo(gameObject: GameObject): JSX.Element {
                 <input v-model="searchQuery" class="text-box" type="search" name="search-bar" id="search-bar" :placeholder="$props.placeholder" />
             </label>
             
-            <button @click="filterDialog.open()" id="filter-button" class="search-option button button-blue">
-                <!-- Filter -->
+            <button
+                v-if="(props.filters && Object.keys(props.filters).length)"
+                @click="filterDialog.open()"
+                id="filter-button"
+                class="search-option button button-blue"
+            >
                 <img src="@/assets/images/ui/filter.svg" alt="">
             </button>
-            <button @click="sortDialog.open()" id="sort-button" class="button button-blue">
+            <button
+                v-if="(props.sorters && Object.keys(props.sorters).length)"
+                @click="sortDialog.open()"
+                id="sort-button"
+                class="button button-blue"
+            >
                 {{ $t('dialog.sort_by') }}
             </button>
             <slot name="menu-after"></slot>
         </div>
 
-        <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
+        <Paginator
+            v-model="currentPage"
+            :per-page="perPage"
+            :total="searchResults.length"
+            :max-pages="10"
+            :param="props.pageParam"
+        ></Paginator>
 
-        <section id="search-results">
-            <template v-if="objects.length > 0">
-                <ObjectCard
-                    v-for="object in shownResults.values()"
-                    :object="object"
-                    :key="`object-${object.id}`"
-                    :show-price="props.showPrices"
-                >
-                    <template v-if="props.infoGetter" #info>
-                        <component :is="getInfo(object)"></component>
-                    </template>
-                </ObjectCard>
-            </template>
-            <slot v-else name="empty"></slot>
-            
+        <section v-if="items.length > 0" id="search-results">
+            <div class="item" v-for="item in shownResults.values()" :key="`item-${item.id}`">
+                <slot name="item" :item="item">
+                </slot>
+            </div>
+        </section>
+        <section v-else class="empty">
+            <slot name="empty"></slot>
         </section>
         
-        <Paginator v-model="currentPage" :per-page="perPage" :total="searchResults.length" :max-pages="10" param="page"></Paginator>
+        <Paginator
+            v-model="currentPage"
+            :per-page="perPage"
+            :total="searchResults.length"
+            :max-pages="10"
+            :param="props.pageParam"
+        ></Paginator>
 
         <dialog-component
             :has-close-button="true"
@@ -389,7 +392,7 @@ function getInfo(gameObject: GameObject): JSX.Element {
     position: sticky;
     top: 0;
 
-    background-color: var(--page-background-color);
+    background-color: var(--background-color, var(--page-background-color));
     padding-block: 0.2rem;
 
     text-align: center;
@@ -430,6 +433,10 @@ function getInfo(gameObject: GameObject): JSX.Element {
     height: 100%;
     object-fit: contain;
     object-position: center;
+}
+
+.empty {
+    text-align: center;
 }
 
 .dialog-options {

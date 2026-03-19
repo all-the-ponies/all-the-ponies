@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import ObjectCard from '@/components/ObjectCard.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
+import { language } from '@/globals'
 import { CATEGORIES, FilterFunctions, SortFunctions, type FilterFunctionsType } from '@/scripts/categories'
 import gameData from '@/scripts/gameData'
 import { shopStore } from '@/stores/shopManager'
@@ -114,11 +116,13 @@ const query = computed(() => {
     <div>
         <h1>{{ $t('store.title') }}</h1>
         <SearchComponent
-            :objects="shop ? shownObjects : []"
+            :data="shop ? shownObjects : []"
+            :search-function="(query, items) => gameData.searchName(query, items, language.key)"
             :filters="filterFunctions"
             :sorters="sortFunctions"
-            show-prices
             :query="query"
+            page-param="page"
+            save-url
         >
             <template #menu-before>
                 <select v-model="selectedCategory" class="dropdown" name="category">
@@ -128,6 +132,15 @@ const query = computed(() => {
                         :key="`category-${category}`"
                     >{{ $t(CATEGORIES[category].string, 2) }}</option>
                 </select>
+            </template>
+            <template #item="{ item }">
+                <ObjectCard
+                    :object="item"
+                    is-link
+                    hasButtons
+                    show-price
+                >
+                </ObjectCard>
             </template>
         </SearchComponent>
     </div>

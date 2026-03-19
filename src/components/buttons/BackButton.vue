@@ -1,6 +1,26 @@
 <script setup lang="ts">
+import { fixUrl } from '@/scripts/fixUrl';
+import { computed } from 'vue';
+import { navigate } from 'vike/client/router'
+
+
+const props = defineProps<{
+    fallback?: string
+}>()
+
+const fallbackUrl = computed(() => {
+    if (!props.fallback) {
+        return null
+    }
+    return fixUrl(props.fallback)
+})
+
 function goBack() {
-    history.back()
+    if (fallbackUrl.value && window.navigation != undefined && !window.navigation.canGoBack) {
+        navigate(fallbackUrl.value)
+    } else {
+        history.back()
+    }
 }
 </script>
 

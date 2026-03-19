@@ -64,7 +64,7 @@ const productCurrency = computed(() => {
     <Config :title="name" description="" :image="absoluteUrl(staticImage(shop.image.main))"></Config>
 
     <div>
-        <back-button/>
+        <back-button fallback="/search/shops" />
         <div v-if="shop === null">
             House {{ pageContext.routeParams.id }} not found
         </div>
@@ -73,12 +73,10 @@ const productCurrency = computed(() => {
                 <template #image>
                     <div class="shop-container">
                         <img class="full-image" :src="`/images/${shop.image.main}`" :alt="name">
-                        <div class="left-image-container">
-                        </div>
-                        <div class="right-image-container">
-                            <inventory-add-button :gameObject="shop.id"></inventory-add-button>
-                        </div>
                     </div>
+                </template>
+                <template #image-right>
+                    <inventory-add-button :gameObject="shop.id"></inventory-add-button>
                 </template>
                 <template #info>
                     <table class="infobox">
