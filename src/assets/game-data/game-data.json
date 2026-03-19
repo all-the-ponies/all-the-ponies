@@ -102280,7 +102280,9 @@
             "italian": "Presenta la famosa serie di documentari \"La cucina di Tartarus\" e... grida MOOOOLTO forte.",
             "german": "Moderator der beliebten Dokumentarfilmserie \"Küche des Tartaros\" und ein EXTREM lauter Schreier."
           },
-          "alt_name": {},
+          "alt_name": {
+            "english": ["Gordon Ramsay"]
+          },
           "tags": [],
           "image": {
             "portrait": "game/pony/portrait/Pony_Head_Chef_Pony.png",
