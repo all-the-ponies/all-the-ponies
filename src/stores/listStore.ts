@@ -90,7 +90,6 @@ export const useListStore = defineStore('lists', {
     persist: {
         serializer: {
             serialize: (data) => {
-                console.log('data', data)
                 const newData = {
                     ...data,
                     lists: [...data.lists.values()],

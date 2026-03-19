@@ -52,7 +52,6 @@ watch(
 const gameObjects = computed(() => {
     switch (category.value) {
         case 'pony':
-            console.log('ponies', saveStore.houses)
             return Object.keys(saveStore.ponies)
         case 'shop':
             return Object.keys(saveStore.shops)
