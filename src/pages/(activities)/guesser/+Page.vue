@@ -364,6 +364,10 @@ function imageLoadFailed() {
     flex-grow: 1;
 }
 
+.pony-info {
+    text-align: center;
+}
+
 .pony-image {
     max-width: 100%;
     min-width: 5rem;
