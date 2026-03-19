@@ -8,6 +8,13 @@ import type { PonyType } from '@/types/gameDataTypes'
 import { computed, nextTick, onUnmounted, ref, useTemplateRef } from 'vue'
 import Link from '@/components/Link.vue'
 import { Config } from 'vike-vue/Config'
+import { useEventListener } from '@vueuse/core'
+
+useEventListener('beforeunload', (e) => {
+    if (playing.value) {
+        e.preventDefault()
+    }
+})
 
 const options = ref({
     ignoreSpaces: true,
