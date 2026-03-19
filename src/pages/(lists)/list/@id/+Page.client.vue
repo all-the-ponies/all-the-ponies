@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BackButton from '@/components/buttons/BackButton.vue';
+import Link from '@/components/Link.vue';
 import CreateListDialog from '@/components/lists/createList/CreateListDialog.vue';
 import ObjectCard from '@/components/ObjectCard.vue';
 import SearchComponent from '@/components/SearchComponent.vue';
@@ -117,6 +118,15 @@ const sortFunctions = computed(() => {
                         is-link
                     >
                     </ObjectCard>
+                </template>
+                <template #empty>
+                    <i18n-t keypath="lists.messages.empty_list" tag="p">
+                        <template #ponies>
+                            <Link href="/search/ponies" class="link">
+                                {{ $t('game_object.pony.pony', 2) }}
+                            </Link>
+                        </template>
+                    </i18n-t>
                 </template>
             </SearchComponent>
         </section>

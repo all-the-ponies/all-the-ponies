@@ -295,7 +295,8 @@
     "title": "Wishlists",
     "messages": {
       "no_lists": "It looks there are no wishlists yet. ",
-      "wishlist": "Wishlist"
+      "wishlist": "Wishlist",
+      "empty_list": "There's nothing here right now. Consider adding {ponies}."
     },
     "button": {
       "add_to_list": "Add to wishlist",
