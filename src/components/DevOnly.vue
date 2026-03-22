@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { isLocalhost } from '@/scripts/common';
+import { isDev } from '@/scripts/common';
 </script>
 
 <template>
-    <template v-if="isLocalhost()">
+    <template v-if="isDev()">
         <slot></slot>
     </template>
 </template>

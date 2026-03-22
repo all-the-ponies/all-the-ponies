@@ -1,4 +1,4 @@
-import { isLocalhost } from "./common.js"
+import { isDev } from "./common.js"
 import type { GameObjectId } from "@/types/gameDataTypes.js"
 import ky from 'ky'
 import type { PriceHistoryType, SaveData, ShopEntry } from "./api.types.js"
@@ -13,12 +13,12 @@ const LOCALHOST_API_DOMAIN = (() => {
 })()
 
 const api = ky.create({
-    prefixUrl: isLocalhost() ? LOCALHOST_API_DOMAIN : API_DOMAIN,
-    retry: isLocalhost() ? 1 : 0,
+    prefixUrl: isDev() ? LOCALHOST_API_DOMAIN : API_DOMAIN,
+    retry: isDev() ? 1 : 0,
     hooks: {
         beforeRetry: [
             ({request, options, error, retryCount}) => {
-                if (retryCount && isLocalhost()) {
+                if (retryCount && isDev()) {
                     console.log('Retrying', error.message == "Failed to fetch")
                     return new Request(
                         request.url.replace(LOCALHOST_API_DOMAIN, API_DOMAIN),

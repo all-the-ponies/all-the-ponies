@@ -2,7 +2,7 @@ import { language } from '../globals'
 
 
 
-export function isLocalhost() {
+export function isDev() {
   return ['dev', 'development', '', undefined].includes(process.env.NODE_ENV)
   if (['dev', 'development'].includes(process.env.NODE_ENV)) {
     return true
