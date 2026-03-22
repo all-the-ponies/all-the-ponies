@@ -9,6 +9,7 @@ import { computed, nextTick, onUnmounted, ref, useTemplateRef } from 'vue'
 import Link from '@/components/Link.vue'
 import { Config } from 'vike-vue/Config'
 import { useEventListener } from '@vueuse/core'
+import DevOnly from '@/components/DevOnly.vue'
 
 useEventListener('beforeunload', (e) => {
     if (playing.value) {
@@ -225,7 +226,9 @@ function showHint() {
 }
 
 function win() {
-    togglePlaying()
+    if (playing.value) {
+        togglePlaying()
+    }
     winDialog.value.open()
 }
 
@@ -252,6 +255,9 @@ function imageLoadFailed() {
             <h1>{{ $t('guesser.title') }}</h1>
             <p>{{ $t('guesser.description') }}</p>
             <button @click="togglePlaying" class="button button-green">{{ $t(playing ? 'button.stop' : 'button.start') }}</button>
+            <DevOnly>
+                <button @click="win()" class="button button-green">Win</button>
+            </DevOnly>
         </div>
         <div class="game-container" :class="{playing}" ref="game-container">
             <div class="game-section">
@@ -330,10 +336,13 @@ function imageLoadFailed() {
             :title="$t('game.message.you_won')"
         >
             <div class="win-body">
-                {{ $t('pony_quiz.message.win_message', {
-                    time: formatTime(timeElapsed),
-                    num_ponies: $n(guessedPonies.length),
-                }) }}
+                <img class="pinkie-celebrate" src="/images/activities/pinkie-celebrate.gif" alt="Pinkie Pie celebrating">
+                <div>
+                    {{ $t('pony_quiz.message.win_message', {
+                        time: formatTime(timeElapsed),
+                        num_ponies: $n(guessedPonies.length),
+                    }) }}
+                </div>
             </div>
 
             <template #menu>
@@ -487,5 +496,11 @@ function imageLoadFailed() {
 
 .win-body {
     text-align: center;
+
+    .pinkie-celebrate {
+        max-width: 8rem;
+        object-fit: contain;
+        object-position: center;
+    }
 }
 </style>
