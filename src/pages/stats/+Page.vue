@@ -86,14 +86,16 @@ async function importFriendCode() {
                             })
                         }}
                     </li>
+                    <!--
                     <li>
                         {{ 
                             $t('stats.message.ponies.total', saveStats.ponies.total)
                         }}
                     </li>
+                    -->
                     <li>
                         {{
-                            $t('inventory.stats.ponies', 1, {
+                            $t('inventory.stats.ponies', 2, {
                                 named: {
                                     count: $n(saveStats.ponies.unique,)
                                 },
