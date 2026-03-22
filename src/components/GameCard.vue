@@ -5,7 +5,7 @@ import type { PriceData } from "@/stores/shopManager"
 import PriceButton from "./buttons/PriceButton.vue"
 import RoyalIcon from "./icons/store/RoyalIcon.vue"
 import ObjectImage from "./ObjectImage.vue"
-import { valueExists } from "@/scripts/common"
+import { notNullIsh } from "@/scripts/common"
 import Link from "./Link.vue"
 
 const props = defineProps<{
@@ -25,9 +25,9 @@ const mainCurrency = computed(() => {
         return null
     }
     
-    if (valueExists(shopInfo.value?.token) && (valueExists(shopInfo.value?.price.base.tokens) || valueExists(shopInfo.value?.price.sale.tokens))) {
+    if (notNullIsh(shopInfo.value?.token) && (notNullIsh(shopInfo.value?.price.base.tokens) || notNullIsh(shopInfo.value?.price.sale.tokens))) {
         return shopInfo.value?.token
-    } else if (valueExists(shopInfo.value?.price.sale.price) && valueExists(shopInfo.value?.inShop)) {
+    } else if (notNullIsh(shopInfo.value?.price.sale.price) && notNullIsh(shopInfo.value?.inShop)) {
         return shopInfo.value?.price.sale.currency || null
     } else {
         return shopInfo.value?.price.base.currency || null
@@ -39,9 +39,9 @@ const mainPrice = computed(() => {
         return null
     }
     
-    if (valueExists(shopInfo.value?.token) && (valueExists(shopInfo.value?.price.base.tokens) || valueExists(shopInfo.value?.price.sale.tokens))) {
+    if (notNullIsh(shopInfo.value?.token) && (notNullIsh(shopInfo.value?.price.base.tokens) || notNullIsh(shopInfo.value?.price.sale.tokens))) {
         return shopInfo.value?.price.base.tokens || shopInfo.value?.price.sale.tokens
-    } else if (valueExists(shopInfo.value?.price.sale.price) && valueExists(shopInfo.value?.inShop)) {
+    } else if (notNullIsh(shopInfo.value?.price.sale.price) && notNullIsh(shopInfo.value?.inShop)) {
         return shopInfo.value?.price.sale.price
     } else {
         return shopInfo.value?.price.base.price
@@ -49,7 +49,7 @@ const mainPrice = computed(() => {
 })
 
 const replacedPrice = computed(() => {
-    if (valueExists(shopInfo.value?.price.sale.price) && valueExists(shopInfo.value?.inShop)) {
+    if (notNullIsh(shopInfo.value?.price.sale.price) && notNullIsh(shopInfo.value?.inShop)) {
         return shopInfo.value?.price.base.price
     }
 

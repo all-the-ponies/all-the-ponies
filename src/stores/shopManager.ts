@@ -1,6 +1,6 @@
 import api from "@/scripts/api"
 import type { ShopEntry } from "@/scripts/api.types"
-import { valueExists } from "@/scripts/common"
+import { notNullIsh } from "@/scripts/common"
 import gameData from "@/scripts/gameData"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
 import { HTTPError } from "ky"
@@ -41,8 +41,8 @@ export interface PriceData {
 function chooseExisting<T extends any[]>(
     ...a: T
 ): T[number] | null {
-    const result = a.find(valueExists)
-    if (valueExists(result)) {
+    const result = a.find(notNullIsh)
+    if (notNullIsh(result)) {
         return result
     } else {
         return null

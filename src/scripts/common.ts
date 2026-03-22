@@ -124,7 +124,7 @@ export function downloadFile(content: string, type: string, filename: string) {
   window.URL.revokeObjectURL(blob)
 }
 
-export function valueExists(value): boolean {
+export function notNullIsh(value): boolean {
   return !!(value || value === 0)
 }
 

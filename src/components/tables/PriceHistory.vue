@@ -6,7 +6,7 @@ import { ClientOnly } from 'vike-vue/ClientOnly'
 import { computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import CurrencyImage from '../CurrencyImage.vue'
-import { valueExists } from '@/scripts/common'
+import { notNullIsh } from '@/scripts/common'
 import gameData from '@/scripts/gameData'
 import Table from '../table/Table.vue'
 import TableBody from '../table/TableBody.vue'
@@ -54,11 +54,11 @@ const shownColumns = computed(() => {
                 continue
             }
 
-            if (valueExists(entry.price.base.tokens)) {
+            if (notNullIsh(entry.price.base.tokens)) {
                 columns.tokens = true
             }
 
-            if (valueExists(entry.price.royal.price)) {
+            if (notNullIsh(entry.price.royal.price)) {
                 console.log('show royal', entry.price.royal.price)
                 columns.royal = true
             }
@@ -123,7 +123,7 @@ function formatDateRange(start: string, end: string) {
                                 <CurrencyImage :object="entry.price.sale?.currency ?? entry.price.base?.currency">
                                     {{ entry.price.sale?.price ?? entry.price.base?.price }}
                                 </CurrencyImage>
-                                <span v-if="valueExists(entry.price.sale.price)">
+                                <span v-if="notNullIsh(entry.price.sale.price)">
                                     ({{
                                         $n(
                                             1 - entry.price.sale.price / entry.price.base.price,
@@ -134,7 +134,7 @@ function formatDateRange(start: string, end: string) {
                                 </span>
                             </TableCell>
                             <TableCell v-if="shownColumns.royal">
-                                <template v-if="valueExists(entry.price.royal?.price)">
+                                <template v-if="notNullIsh(entry.price.royal?.price)">
                                     <CurrencyImage :object="entry.price.royal?.currency">
                                         {{ entry.price.royal?.price }}
                                     </CurrencyImage>
