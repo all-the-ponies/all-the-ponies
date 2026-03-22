@@ -193,7 +193,7 @@ function nextPony() {
 
 function pickPony() {
     let tempPony = pickRandom(availablePonies.value)
-    console.log('current pony', currentPony.value.id, tempPony)
+    console.log('current pony', tempPony.id, tempPony)
     currentPony.value = tempPony
 }
 
