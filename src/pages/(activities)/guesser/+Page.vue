@@ -168,10 +168,6 @@ function checkName(event: InputEvent) {
             guessedCorrectly()
         }
     }
-
-    if (guessedPonies.value.length === ponies.value.length) {
-        win()
-    }
 }
 
 function guessedCorrectly() {
@@ -186,8 +182,17 @@ function nextPony() {
     canGuess.value = false
     nameInput.value.focus()
     transitionTimeout = setTimeout(() => {
+        if (guessedPonies.value.length >= ponies.value.length) {
+            win()
+            return
+        }
+        
+        const previousPony = currentPony.value.id
         pickPony()
         transitionTimeout = null
+        if (previousPony === currentPony.value.id) {
+            imageLoadedCallback()
+        }
     }, 2000)
 }
 
