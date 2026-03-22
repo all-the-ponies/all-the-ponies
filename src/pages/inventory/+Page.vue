@@ -127,7 +127,7 @@ async function importFriendCode() {
                 <ClientOnly>
                     <li>
                         {{
-                            $t('inventory.stats.ponies', 1, {
+                            $t('inventory.stats.ponies', 2, {
                                 named: {
                                     count: $n(saveStats.ponies.unique,)
                                 },
