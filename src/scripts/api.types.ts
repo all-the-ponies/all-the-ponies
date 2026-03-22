@@ -14,8 +14,9 @@ export interface SaveData {
     inventory: {
         ponies: Record<string, {
             id: GameObjectId,
-            level: 0 | 1 | 2 | 3 | 4 | 5,
-            next_minigame: number,
+            level: 0 | 1 | 2 | 3 | 4 | 5 | null,
+            next_minigame: number | null,
+            notWelcomed?: boolean,
         }>,
         shops: GameObjectId[],
     }
