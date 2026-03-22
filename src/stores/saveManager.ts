@@ -1,3 +1,4 @@
+import { FRIEND_CODE_PATTERN } from "@/globals/constants"
 import api from "@/scripts/api"
 import { notNullIsh } from "@/scripts/common"
 import gameData from "@/scripts/gameData"
@@ -6,6 +7,7 @@ import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
 import type { HTTPError } from "ky"
 import { defineStore } from "pinia"
 import { computed, reactive, ref } from "vue"
+
 
 interface GenericInventoryEntry {
     id: string,
@@ -167,6 +169,11 @@ export const useSaveStore = defineStore('save', {
         },
 
         async loadFromCloud(friendCode: string) {
+            friendCode = friendCode.trim().toLocaleLowerCase()
+            if (!FRIEND_CODE_PATTERN.test(friendCode)) {
+                throw new Error(`Invalid friend code "${friendCode}"`)
+            }
+            
             const saveData = await api.getSave(friendCode).catch(async (error: HTTPError) => {
                 if (error.response) {
                     throw new Error(await error.response.text())

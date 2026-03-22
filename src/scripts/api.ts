@@ -2,6 +2,7 @@ import { isLocalhost } from "./common.js"
 import type { GameObjectId } from "@/types/gameDataTypes.js"
 import ky from 'ky'
 import type { PriceHistoryType, SaveData, ShopEntry } from "./api.types.js"
+import { FRIEND_CODE_PATTERN } from "@/globals/constants.js"
 
 const API_DOMAIN = 'https://api.all-the-ponies.com'
 
@@ -30,6 +31,11 @@ const api = ky.create({
 })
 
 async function getSave(friendCode: string) {
+    friendCode = friendCode.trim().toLocaleLowerCase()
+    if (!FRIEND_CODE_PATTERN.test(friendCode)) {
+        throw new Error(`Invalid friend code "${friendCode}"`)
+    }
+    
     const result = await api.get<SaveData>(`save/${friendCode.toLowerCase().trim()}/inventory/`).json()
 
     return result

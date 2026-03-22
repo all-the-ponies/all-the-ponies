@@ -102,10 +102,14 @@ watch(
 
 async function importFriendCode() {
     errorMessage.value = ''
+    if (!friendCode.value) {
+        return
+    }
     importDisabled.value = true
     try {
         await saveStore.loadFromCloud(friendCode.value)
         importDialog.value.close()
+        friendCode.value = saveStore.playerInfo.friendCode
     } catch (error) {
         console.error(error)
         errorMessage.value = error
@@ -277,7 +281,7 @@ async function importFriendCode() {
 }
 
 .friend-code-input {
-    max-width: 10ch;
+    max-width: 12ch;
 }
 
 .error-message {

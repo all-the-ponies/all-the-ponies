@@ -21,6 +21,9 @@ onMounted(() => {
 
 async function importFriendCode() {
     errorMessage.value = ''
+    if (!friendCode.value) {
+        return
+    }
     importDisabled.value = true
     try {
         await saveStore.loadFromCloud(friendCode.value)
