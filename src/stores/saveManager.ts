@@ -1,4 +1,5 @@
 import api from "@/scripts/api"
+import { notNullIsh } from "@/scripts/common"
 import gameData from "@/scripts/gameData"
 import type { TDateISO } from "@/types/date"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
@@ -11,7 +12,7 @@ interface GenericInventoryEntry {
 }
 
 interface PonyInventoryEntry extends GenericInventoryEntry {
-    level: 0 | 1 | 2 | 3 | 4 | 5,
+    level: 0 | 1 | 2 | 3 | 4 | 5 | null,
     minigame: string,
 }
 
@@ -89,7 +90,7 @@ export const useSaveStore = defineStore('save', {
                     ponyInfo.level = 5
                 }
 
-                if (changelingPony.id in this.ponies) {
+                if (changelingPony.id in this.ponies && notNullIsh(info.level)) {
                     this.ponies[changelingPony.id] = {
                         ...ponyInfo,
                         id: changelingPony.id,
@@ -188,7 +189,11 @@ export const useSaveStore = defineStore('save', {
             for (let pony of ponies) {
                 const ponyInfo = gameData.getObject(pony.id, 'pony')
                 
-                if (ponyInfo.tags.includes('npc') || ponyInfo.tags.includes('quest')) {
+                if (
+                    ponyInfo.tags.includes('npc') ||
+                    ponyInfo.tags.includes('quest') ||
+                    (ponyInfo.group.length && !ponyInfo.group_master)
+                ) {
                     continue
                 }
 
