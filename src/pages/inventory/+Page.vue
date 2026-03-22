@@ -247,7 +247,7 @@ async function importFriendCode() {
                 >
             </label>
 
-            <div>{{ errorMessage }}</div>
+            <div class="error-message">{{ errorMessage }}</div>
             
             <template #menu>
                 <button :disabled="importDisabled" @click="importFriendCode()" class="button button-blue">{{ $t('common.import') }}</button>
@@ -278,5 +278,9 @@ async function importFriendCode() {
 
 .friend-code-input {
     max-width: 10ch;
+}
+
+.error-message {
+    color: var(--red);
 }
 </style>

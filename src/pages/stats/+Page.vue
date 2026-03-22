@@ -63,7 +63,7 @@ async function importFriendCode() {
                     @click="importFriendCode()"
                 >{{ $t('common.import') }}</button>
             </label>
-            <p>{{ errorMessage }}</p>
+            <p class="error-message">{{ errorMessage }}</p>
         </section>
         <section class="stats-section">
             <ClientOnly>
@@ -168,5 +168,9 @@ async function importFriendCode() {
 <style lang="css" scoped>
 .stats li {
     list-style: none;
+}
+
+.error-message {
+    color: var(--red);
 }
 </style>
