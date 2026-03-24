@@ -150,7 +150,7 @@ function checkName(event: Event) {
         query.value = ''
     }
 
-    if (guessedPonies.value.length === ponies.value.length) {
+    if (guessedPonies.value.length >= ponies.value.length) {
         win()
     }
 }
@@ -207,10 +207,13 @@ function win() {
                 :title="$t('game.message.you_won')"
             >
                 <div class="win-body">
-                    {{ $t('pony_quiz.message.win_message', {
-                    time: formatTime(timeElapsed),
-                    num_ponies: $n(guessedPonies.length),
-                    }) }}
+                    <img class="pinkie-celebrate" src="/images/activities/pinkie-celebrate.gif" alt="Pinkie Pie celebrating">
+                    <div>
+                        {{ $t('pony_quiz.message.win_message', {
+                        time: formatTime(timeElapsed),
+                        num_ponies: $n(guessedPonies.length),
+                        }) }}
+                    </div>
                 </div>
 
                 <template #menu>
@@ -304,6 +307,12 @@ function win() {
 
 .win-body {
     text-align: center;
+
+    .pinkie-celebrate {
+        max-width: 8rem;
+        object-fit: contain;
+        object-position: center;
+    }
 }
 
 .dialog-options {
