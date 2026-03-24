@@ -130,7 +130,8 @@
     },
     "profile_decorations": {
       "avatar": {
-        "avatar": "Avatar | Avatars"
+        "avatar": "Avatar | Avatars",
+        "animated": "Animated?"
       },
       "background": {
         "background": "Background | Backgrounds"

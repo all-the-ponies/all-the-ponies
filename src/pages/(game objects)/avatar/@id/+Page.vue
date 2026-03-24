@@ -55,6 +55,10 @@ const pony = computed(() => gameData.getObject(avatar.value.pony, 'pony'))
                                 <td>{{ $t('game_object.profile_decorations.is_default') }}</td>
                                 <td>{{ avatar.is_default }}</td>
                             </tr>
+                            <tr v-if="avatar.animated">
+                                <td>{{ $t('game_object.profile_decorations.avatar.animated') }}</td>
+                                <td>{{ avatar.animated }}</td>
+                            </tr>
                             <tr v-if="pony != null">
                                 <td>{{ $t('game_object.pony.pony') }}</td>
                                 <td>
