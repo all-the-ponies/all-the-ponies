@@ -1038,7 +1038,9 @@ class GetGameData:
             token_info['image']['main'] = normalize_path(os.path.join('game', 'token', f'{token.id}.png'))
             image_path = os.path.relpath(os.path.join(self.images_folder, token_info['image']['main']))
         
-            image_name = os.path.splitext(QuestSpecialItem.get('Icon', ''))[0]
+            image_name: str = os.path.splitext(QuestSpecialItem.get('Icon', ''))[0]
+            if image_name.startswith('/') or image_name.startswith('\\'):
+                image_name = image_name[1:]
             image_source = os.path.join(self.game_folder, image_name)
 
             if self.check_image('token'):
@@ -1156,17 +1158,24 @@ class GetGameData:
             if self.check_image('avatar'):
                 self.save_image(image_source, image_path)
             
-            avatar_info['image']['main'] = normalize_path((os.path.join('game', 'avatar', 'main', f'{avatar.id}.png')))
-            image_path = os.path.relpath(os.path.join(self.images_folder, avatar_info['image']['main']))
-        
-            image_name = os.path.splitext(avatar.get('Settings', {}).get('PictureActive', ''))[0]
+
+            image_name, image_extension = os.path.splitext(avatar.get('Settings', {}).get('PictureActive', ''))
             image_source = os.path.join(self.game_folder, image_name)
 
-            if self.check_image('avatar'):
+            is_animated = 'swf' in image_extension
+
+            avatar_info['image']['main'] = normalize_path((os.path.join('game', 'avatar', 'main', f'{avatar.id}.{'webp' if is_animated else 'png'}')))
+            image_path = os.path.relpath(os.path.join(self.images_folder, avatar_info['image']['main']))
+
+            if not is_animated and self.check_image('avatar'):
                 self.save_image(image_source, image_path)
+            
+            if is_animated:
+                console.log(f'{avatar.id} is animated')
             
             avatar_info['is_default'] = avatar.get('Settings', {}).get('IsDefault', 0) == 1
             avatar_info['pony'] = avatar.get('Settings', {}).get('PonyStarsID', '')
+            avatar_info['animated'] = is_animated
 
             self.get_price(avatar_info)
     
