@@ -225,6 +225,7 @@ export interface AvatarType extends Omit<GenericObjectType, 'category' | 'image'
     },
     is_default: boolean,
     pony: string,
+    animated: boolean,
 }
 
 interface GroupQuests {
