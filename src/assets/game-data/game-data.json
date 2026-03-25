@@ -270829,7 +270829,12 @@
             "italian": "Is just SO generous that she made Twilight Sparkle pink saddle bags out of the goodness of her heart. It was in Rarity's dream - but that still counts, right?",
             "german": "Is just SO generous that she made Twilight Sparkle pink saddle bags out of the goodness of her heart. It was in Rarity's dream - but that still counts, right?"
           },
-          "alt_name": {},
+          "alt_name": {
+            "english": [
+              "Mabel",
+              "Mabel Pines"
+            ]
+          },
           "tags": [],
           "image": {
             "portrait": "game/pony/portrait/Pony_Maybelle.png",
@@ -270951,7 +270956,12 @@
             "italian": "Always manages to find himself in the middle of Ponyville's COMPLETELY normal activities. Nothing paranormal to see here!",
             "german": "Always manages to find himself in the middle of Ponyville's COMPLETELY normal activities. Nothing paranormal to see here!"
           },
-          "alt_name": {},
+          "alt_name": {
+            "english": [
+              "Dipper",
+              "Dipper Pines"
+            ]
+          },
           "tags": [],
           "image": {
             "portrait": "game/pony/portrait/Pony_Maybelles_Twin_Brother.png",
