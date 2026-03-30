@@ -257,7 +257,8 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         name: 'filter.shop.not_owned',
         check(gameObject: ShopType) {
           return !getSaveManager().hasShop(gameObject.id)
-        }
+        },
+        exclude: ['maze'],
       },
     },
     decor: {
