@@ -193,7 +193,7 @@ async function importFriendCode() {
             <ClientOnly>
                 <SearchComponent
                     :data="gameObjects.map(objectId => gameData.getObject(objectId, category))"
-                    :search-function="(query, items) => gameData.searchName(query, items, language.key)"
+                    :get-search-text="gameData.getSearchText"
                     :filters="filterFunctions"
                     :sorters="sortFunctions"
                     :query="query"

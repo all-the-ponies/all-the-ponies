@@ -1,27 +1,22 @@
-<script lang="tsx" setup generic="ITEM extends {id: string | number, [key: string]: any}">
-import { computed, ref, useTemplateRef, watch } from 'vue'
-import ObjectCard from './ObjectCard.vue'
-import gameData from '@/scripts/gameData'
+<script lang="ts" setup generic="ITEM extends {id: string | number, [key: string]: any}">
+import { computed, ref, useTemplateRef, watch, watchEffect } from 'vue'
 import { language } from '@/globals'
 import Paginator from './Paginator.vue'
 import DialogComponent from './DialogComponent.vue'
-import type { GameObject, GameObjectId } from '@/types/gameDataTypes'
 import type { FilterFunctionsType, SortFunctionsType } from '@/scripts/categories'
-import type { JSX } from 'vue/jsx-runtime'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
-// import { useI18n } from 'vue-i18n'
-// 
-// const { t } = useI18n()
+import createFuzzySearch from '@nozbe/microfuzz'
+import { isClient } from '@vueuse/core'
 
 const pageContext = usePageContext()
 
 const currentPage = ref(Number(pageContext.urlParsed.search.page) || 1)
-const perPage = ref(300)
+const perPage = ref(250)
 
 const props = withDefaults(defineProps<{
         data: ITEM[],
-        searchFunction(query: string, items: ITEM[]): ITEM[],
+        getSearchText(item: ITEM),
         filters?: Record<string, FilterFunctionsType>,
         sorters?: Record<string, SortFunctionsType>,
         query?: Record<string, string | string[] | number | null>,
@@ -38,7 +33,7 @@ const props = withDefaults(defineProps<{
 
 const sortDialog = useTemplateRef('sort-dialog')
 const filterDialog = useTemplateRef('filter-dialog')
-const sortMethod = ref<string>()
+const sortMethod = ref<string>('relevance')
 const reversed = ref<boolean>(props.saveUrl && 'reverse' in pageContext.urlParsed.search)
 const defaultSortMethod = computed(() => {
     if (props.sorters) {
@@ -84,7 +79,7 @@ watch(
 )
 
 const filters = computed(() => {
-    const filters = []
+    const filters: string[] = []
 
     if (!props.filters) {
         return filters
@@ -115,7 +110,7 @@ if (props.sorters) {
     if (props.saveUrl && pageContext.urlParsed.search.sort && sortQuery in props.sorters) {
         sortMethod.value = sortQuery
     } else {
-        sortMethod.value = defaultSortMethod.value
+        sortMethod.value = 'relevance'
     }
 }
 
@@ -179,8 +174,8 @@ if (props.saveUrl) {
                 params.filter = currentFilters.join(',')
             }
     
-            if (!params.sort || sortMethod.value === defaultSortMethod.value) {
-                delete params.sort
+            if (!params.sort || sortMethod.value === 'relevance') {
+                params.sort = null
             }
     
             if (reversed.value) {
@@ -229,30 +224,77 @@ function checkObject(item: ITEM, filterKey: string) {
     return mainCheck && excludeCheck && includeCheck
 }
 
-const searchResults = computed(() => {
-    let results = props.searchFunction(searchQuery.value, items.value)
-    // let filterFunctions = filters.filter(key => selectedFilters[key])
+function sortItems(items: ITEM[], func?: (a: ITEM, b: ITEM) => number) {
+    if (func) {
+        return [...items].sort((a,b) => (func(a,b)))
+    } else {
+        return items
+    }
+}
+
+const filteredItems = computed(() => {
+    let filtered = items.value
     if (filters.value.length) {
-        results = results.filter(
+        filtered = filtered.filter(
             gameObject => filters.value.every((key) => checkObject(gameObject, key))
         )
     }
-    if (sortFunction.value) {
-        results.sort((a,b) => ((+!reversed.value * 2) - 1) * sortFunction.value(a,b))
+    return filtered
+})
+
+const computedItems = computed(() => {
+    let itemsToSearch = filteredItems.value
+    if (defaultSortMethod.value) {
+        itemsToSearch = sortItems(
+            itemsToSearch,
+            props.sorters[defaultSortMethod.value].check,
+        )
+    }
+
+    return createFuzzySearch(itemsToSearch, {
+        getText: props.getSearchText,
+        strategy: 'smart',
+    })
+})
+
+const searchResults = computed(() => {
+    
+    let searchStart = performance.now()
+
+    let results: ITEM[]
+
+    const query = searchQuery.value.trim()
+
+    if (!query) {
+        results = filteredItems.value
+    } else {
+        results = computedItems.value(searchQuery.value).map(item => item.item)
+    }
+    
+    if (isClient) {
+        console.debug(`Search time ${(performance.now() - searchStart) / 1000}s`)
+    }
+    return results
+})
+
+const sortedResults = computed(() => {
+    let results = searchResults.value
+    if (!searchQuery.value && sortMethod.value === 'relevance' && defaultSortMethod.value) {
+        results = sortItems(results, props.sorters[defaultSortMethod.value].check)
+    } else if (sortMethod.value !== 'relevance') {
+        results = sortItems(results, sortFunction.value)
+    }
+    if (reversed.value) {
+        results = [...results].reverse()
     }
     return results
 })
 
 const shownResults = computed(() => {
-    const results: ITEM[] = []
-
+    let results = sortedResults.value
+    
     let start = (Math.max(1, currentPage.value) - 1) * perPage.value
-    for (let i = start; i < Math.min(start + perPage.value, searchResults.value.length); i++) {
-        results.push(searchResults.value[i])
-    }
-
-    // console.log('results', results)
-    // console.log('loop', start, Math.min(start + perPage.value, searchResults.value.length))
+    results = results.slice(start, start + perPage.value)
 
     return results
 })
@@ -321,7 +363,7 @@ watch(
         ></Paginator>
 
         <section v-if="items.length > 0" id="search-results">
-            <div class="item" v-for="item in shownResults.values()" :key="`item-${item.id}`">
+            <div class="item" v-for="item in shownResults" :key="item.id" :data-key="item.id">
                 <slot name="item" :item="item">
                 </slot>
             </div>
@@ -371,6 +413,10 @@ watch(
                 <label>
                     <input v-model="_reversed" type="checkbox" name="reverse">
                     {{ $t('sorting.reverse') }}
+                </label>
+                <label>
+                    <input type="radio" name="sortMethod" value="relevance" v-model="_selectedSortMethod">
+                    {{ $t('sorting.relevance') }}
                 </label>
                 <label v-for="[sortKey, {name: sortName}] in Object.entries(props.sorters)" :key="sortKey">
                     <input type="radio" name="sortMethod" :value="sortKey" v-model="_selectedSortMethod">

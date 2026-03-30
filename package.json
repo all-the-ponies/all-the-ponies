@@ -15,6 +15,7 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@nozbe/microfuzz": "^1.0.0",
     "@photonjs/cloudflare": "^0.1.13",
     "@photonjs/hono": "^0.1.12",
     "@vueuse/core": "^14.2.0",

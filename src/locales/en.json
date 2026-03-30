@@ -232,6 +232,7 @@
     }
   },
   "sorting": {
+    "relevance": "Relevance",
     "alphabetically": "Alphabetically",
     "game_order": "Game Order",
     "date_added": "Date added",

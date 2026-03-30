@@ -18,14 +18,6 @@ function createList() {
     createListDialog.value.createList()
 }
 
-function searchFilters(query: string, items: Wishlist[]) {
-    const normalizedQuery = transformName(query)
-    
-    return items.filter(item => 
-        transformName(item.name).includes(normalizedQuery)
-    )
-}
-
 function getListImage(wishlist: Wishlist) {
     const gameObject = gameData.getObject(wishlist.image.item)
     if (!gameObject) {
@@ -55,7 +47,7 @@ async function deleteList(wishlist: Wishlist) {
         <ClientOnly>
             <SearchComponent
                 :data="[...listsStore.lists.values()]"
-                :search-function="searchFilters"
+                :get-search-text="(item) => [item.name]"
                 :placeholder="$t('lists.messages.wishlist')"
                 save-url
             >

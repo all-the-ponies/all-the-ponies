@@ -115,6 +115,17 @@ function translateName(gameObject: GameObject) {
   })
 }
 
+function getSearchText(gameObject: GameObject) {
+    let text = [gameObject.name[language.value.key]]
+    if (gameObject.preferred_name[language.value.key]) {
+        text.push(gameObject.preferred_name[language.value.key])
+    }
+    if (gameObject.alt_name[language.value.key]) {
+        text.push(...gameObject.alt_name[language.value.key])
+    }
+    return text
+}
+
 export default {
     gameVersion,
     contentVersion,
@@ -122,4 +133,5 @@ export default {
     getObject,
     searchName,
     translateName,
+    getSearchText,
 }

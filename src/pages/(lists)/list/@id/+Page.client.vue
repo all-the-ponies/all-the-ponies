@@ -43,12 +43,6 @@ function editList() {
     createListDialog.value.editList(wishlist.value.id)
 }
 
-function searchObjects(query: string, items: typeof objects.value) {
-    const filtered = gameData.searchName(query, items.map(item => item.item), language.value.key)
-    return filtered.map(gameObject => items.find(item => item.id === gameObject.id))
-}
-
-
 const sortFunctions = computed(() => {
     let functions = {
         date_added: {
@@ -106,7 +100,7 @@ const sortFunctions = computed(() => {
         <section class="section">
             <SearchComponent
                 :data="objects"
-                :search-function="searchObjects"
+                :get-search-text="(item) => gameData.getSearchText(item.item)"
                 :placeholder="$t('lists.messages.wishlist')"
                 :sorters="sortFunctions"
                 save-url

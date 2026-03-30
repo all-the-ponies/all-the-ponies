@@ -104,7 +104,7 @@ const filterFunctions = computed(() => {
         <SearchComponent
             class="search-section"
             :data="gameObjects"
-            :search-function="(query, items) => gameData.searchName(query, items, language.key)"
+            :get-search-text="gameData.getSearchText"
             :sorters="sortFunctions"
             :filters="filterFunctions"
             :placeholder="$t(CATEGORIES[selectedCategory].string)"

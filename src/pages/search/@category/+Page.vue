@@ -77,7 +77,7 @@ const objects = computed(() => Object.values(gameData.data.categories[category.v
     <SearchComponent
         v-if="category != null"
         :data="objects"
-        :search-function="(query, items) => gameData.searchName(query, items, language.key)"
+        :get-search-text="gameData.getSearchText"
         :sorters="sortFunctions"
         :filters="filterFunctions"
         :placeholder="$t(CATEGORIES[category].string)"

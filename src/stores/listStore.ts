@@ -1,4 +1,4 @@
-import { findGap as findGap } from "@/scripts/common";
+import { findGap } from "@/scripts/common";
 import type { TDateISO } from "@/types/date";
 import type { GameObjectId } from "@/types/gameDataTypes";
 import { defineStore } from "pinia";
