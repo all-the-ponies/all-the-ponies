@@ -3,6 +3,7 @@ import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType 
 import gameData from "./gameData"
 import type { Ref } from "vue"
 import { useSaveStore } from "@/stores/saveManager"
+import { isClient, useMounted } from "@vueuse/core"
 
 let saveManager: ReturnType<typeof useSaveStore>
 
@@ -182,6 +183,7 @@ export interface FilterFunctionsType {
     include?: string[],
     exclude?: string[],
     hidden?: boolean,
+    client?: boolean,
 }
 
 export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: FilterFunctionsType}>> = {
@@ -215,6 +217,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
             return !getSaveManager().hasPony(gameObject.id)
           },
           include: ['playable'],
+          client: true,
         },
     },
     shop: {
@@ -259,6 +262,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
           return !getSaveManager().hasShop(gameObject.id)
         },
         exclude: ['maze'],
+        client: true,
       },
     },
     decor: {

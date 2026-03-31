@@ -7,9 +7,10 @@ import type { FilterFunctionsType, SortFunctionsType } from '@/scripts/categorie
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
 import createFuzzySearch from '@nozbe/microfuzz'
-import { isClient } from '@vueuse/core'
+import { isClient, useMounted } from '@vueuse/core'
 
 const pageContext = usePageContext()
+const isMounted = useMounted()
 
 const currentPage = ref(Number(pageContext.urlParsed.search.page) || 1)
 const perPage = ref(250)
@@ -103,6 +104,8 @@ const filters = computed(() => {
 
     return filters
 })
+
+const filterOnClient = computed(() => filters.value.some(filter => props.filters[filter].client))
 
 if (props.sorters) {
     const sortQuery = pageContext.urlParsed.search.sort
@@ -354,31 +357,33 @@ watch(
             <slot name="menu-after"></slot>
         </div>
 
-        <Paginator
-            v-model="currentPage"
-            :per-page="perPage"
-            :total="searchResults.length"
-            :max-pages="10"
-            :param="props.pageParam"
-        ></Paginator>
+        <template v-if="!filterOnClient || (filterOnClient && isMounted)">
+            <Paginator
+                v-model="currentPage"
+                :per-page="perPage"
+                :total="searchResults.length"
+                :max-pages="10"
+                :param="props.pageParam"
+            ></Paginator>
 
-        <section v-if="items.length > 0" id="search-results">
-            <div class="item" v-for="item in shownResults" :key="item.id" :data-key="item.id">
-                <slot name="item" :item="item">
-                </slot>
-            </div>
-        </section>
-        <section v-else class="empty">
-            <slot name="empty"></slot>
-        </section>
+            <section v-if="items.length > 0" id="search-results">
+                <div class="item" v-for="item in shownResults" :key="item.id" :data-key="item.id">
+                    <slot name="item" :item="item">
+                    </slot>
+                </div>
+            </section>
+            <section v-else class="empty">
+                <slot name="empty"></slot>
+            </section>
         
-        <Paginator
-            v-model="currentPage"
-            :per-page="perPage"
-            :total="searchResults.length"
-            :max-pages="10"
-            :param="props.pageParam"
-        ></Paginator>
+            <Paginator
+                v-model="currentPage"
+                :per-page="perPage"
+                :total="searchResults.length"
+                :max-pages="10"
+                :param="props.pageParam"
+            ></Paginator>
+        </template>
 
         <dialog-component
             :has-close-button="true"
