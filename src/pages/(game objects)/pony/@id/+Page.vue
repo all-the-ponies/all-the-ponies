@@ -131,7 +131,7 @@ const houseName = computed(() => house.value?.name[language.value.key])
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <Link :href="`https://mlp-game-wiki.no/index.php/${pony.wiki_path}`" class="link" target="_blank">
+                                    <Link :href="`https://mlp-game-wiki.no/wiki/${pony.wiki_path}`" class="link" target="_blank">
                                         {{ $t('common.wiki') }}
                                     </Link>
                                 </td>
