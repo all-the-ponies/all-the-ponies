@@ -15,6 +15,9 @@ export function onBeforeRoute(pageContext: PageContextClient) {
       }
     ))
   }
+  if (locale === 'zh-CH') {
+    throw redirect(`/zh${pathnameWithoutLocale}`, 301)
+  }
   return {
     pageContext: {
       locale,

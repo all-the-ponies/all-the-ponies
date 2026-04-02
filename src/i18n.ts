@@ -21,7 +21,7 @@ export const LOCALES: Record<string, {
       name: "العربية",
       key: "arabic",
     },
-    "zh-CH": {
+    zh: {
       name: "简体中文",
       key: "chinese",
     },
