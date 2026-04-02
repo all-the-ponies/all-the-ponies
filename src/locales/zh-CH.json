@@ -1,37 +1,37 @@
 {
   "site": {
-    "title": "",
-    "description": ""
+    "title": "小马官游信息站",
+    "description": "简介"
   },
   "notices": {
     "help_wanted": {
-      "title": "",
-      "body": "",
-      "discord": ""
+      "title": "帮助征集",
+      "body": "由于本网站的站长只会英语，所以没法把这个小马官游信息站翻译成所有的语言版本。如果你恰巧会说其他语言，我非常希望大家能够帮助我一起翻译这个站点。您可以在下面这个Discord服务器中（需要科学上网）咨询更多有关信息。",
+      "discord": "加入服务器"
     }
   },
   "home": {
-    "description": "",
+    "description": "在这里，你可以了解更多关于{game_link} 游戏的信息，以及记录你在官游中收集到的所有物品！",
     "message": {
-      "game_name": ""
+      "game_name": "小马宝莉：魔法公主"
     },
     "things_to_do": {
-      "title": "",
-      "browse": ""
+      "title": "功能板块",
+      "browse": "浏览"
     }
   },
   "about": {
     "title": "关于",
     "description": {
-      "body": "",
-      "quiz_link": ""
+      "body": "这个小马官游信息站最初是由 {me} 创建的一个网站，最初它的用途还只有 {quiz_link}这一种，因为我在网上能搜到的MLP相关小测试游戏都不太够全面，于是我就自己做了一个。后来，这个网站扩展为一个提供官游中各类准确信息的资源平台，在这里你既可以记录自己的游戏进度，也有一些官游相关的网页小游戏可以体验游玩。",
+      "quiz_link": "你能说出多少小马的名字"
     },
     "sections": {
       "credits": {
-        "title": ""
+        "title": "版权归属信息"
       },
       "translations": {
-        "title": ""
+        "title": "翻译"
       }
     }
   },
@@ -41,96 +41,97 @@
     "ok": "确认",
     "share": "分享",
     "start": "开始",
-    "stop": "",
+    "stop": "暂停",
     "yes": "是",
     "skip": "跳过",
-    "hint": ""
+    "hint": "提示"
   },
   "common": {
     "help": "帮助",
-    "info": "",
+    "info": "信息",
     "name": "名称",
-    "import": "",
-    "export": "",
-    "wiki": "",
+    "import": "导入",
+    "export": "导出",
+    "wiki": "维基",
     "royal": "皇家",
     "new": "新",
     "date": {
-      "range": "",
-      "current": ""
+      "range": "{start} to {end}",
+      "current": "当前"
     }
   },
   "dialog": {
-    "filter": "",
-    "sort_by": "",
+    "filter": "筛选",
+    "sort_by": "排序",
     "select_item": {
-      "title": ""
+      "title": "选择物品"
     }
   },
   "filter": {
     "pony": {
-      "npc": "",
-      "playable": "",
-      "pro": "",
-      "quest": "",
-      "unused": "",
-      "not_owned": ""
+      "npc": "NPC角色",
+      "playable": "可玩角色",
+      "pro": "专家角色",
+      "quest": "任务角色",
+      "unused": "废案角色",
+      "not_owned": "未拥有的角色"
     },
     "decor": {
-      "regular": "",
-      "can_fuse": ""
+      "regular": "常规装饰品",
+      "can_fuse": "可融合的装饰品"
     },
     "shop": {
       "maze": "迷宫",
       "gem_shop": "宝石商店",
-      "others": "",
-      "not_owned": ""
+      "others": "其他",
+      "not_owned": "未拥有"
     }
   },
   "game": {
-    "content_version": "",
-    "game_version": "",
+    "content_version": "网页内容对应的游戏版本: {version}",
+    "game_version": "游戏版本: {version}",
     "message": {
       "you_won": "你赢啦！"
     }
   },
   "game_object": {
     "building": {
-      "build_reward": "",
-      "build_skip_cost": "",
-      "build_time": "",
-      "skip_cost": ""
+      "build_reward": "建造奖励",
+      "build_skip_cost": "跳过建造时间的花费",
+      "build_time": "建造时间",
+      "skip_cost": "跳过建造时间的花费"
     },
     "common": {
-      "size": "",
-      "unlock_level": ""
+      "size": "大小",
+      "unlock_level": "解锁等级"
     },
     "decor": {
-      "cannot_fuse": "",
+      "cannot_fuse": "不能融合的装饰品",
       "decor": "装饰品",
       "fusion_points": "融合点数",
       "pro_decors": "专业装饰品",
-      "pro_decor": "",
-      "effect": ""
+      "pro_decor": "专业 @:game_object.decor.decor",
+      "effect": "增益效果"
     },
     "house": {
-      "house": "",
-      "resident": "",
-      "visitor": ""
+      "house": "房屋",
+      "resident": "住客",
+      "visitor": "访客"
     },
     "pony": {
-      "arrival_bonus": "",
+      "arrival_bonus": "到达奖励",
       "character": "角色",
-      "level_up_rewards": "",
-      "minigame_cooldown": "",
-      "minigame_skip_cost": "",
+      "level_up_rewards": "升级奖励",
+      "minigame_cooldown": "小游戏冷却时间",
+      "minigame_skip_cost": "跳过小游戏冷却时间的花费",
       "pony": "小马",
       "transform": "变形",
-      "transformable": ""
+      "transformable": "替代形态"
     },
     "profile_decorations": {
       "avatar": {
-        "avatar": "头像 | 头像"
+        "avatar": "头像 | 头像",
+        "animated": "是否为动态头像"
       },
       "background": {
         "background": "背景 | 背景"
@@ -141,15 +142,15 @@
       "frame": {
         "frame": "头像框 | 头像框"
       },
-      "is_default": ""
+      "is_default": "是否为常驻头像"
     },
     "road": {
       "road": "道路"
     },
     "shop": {
-      "product": "",
-      "production_time": "",
-      "profit": "",
+      "product": "产出",
+      "production_time": "产出时间",
+      "profit": "奖励",
       "shop": "商店",
       "gem_shop": "宝石商店"
     },
@@ -159,25 +160,25 @@
   },
   "price_history": {
     "header": {
-      "date": "",
-      "price": "",
+      "date": "日期",
+      "price": "价格",
       "tokens": "礼物",
       "royal": "皇家"
     }
   },
   "group_quests": {
     "title": "团队任务",
-    "random_pro": "",
-    "pro": ""
+    "random_pro": "随机",
+    "pro": "专家角色"
   },
   "inventory": {
     "title": "物品栏",
     "message": {
-      "add_more": "",
+      "add_more": "添加更多{category}",
       "dialog": {
         "export": {
-          "format": "",
-          "category": ""
+          "format": "格式",
+          "category": "类别"
         }
       }
     },
@@ -187,74 +188,74 @@
       "houses": "@:game_object.house.house{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "stars": ""
+      "stars": "星星数: {count}"
     }
   },
   "location": {
-    "canterlot": "Canterlot",
-    "changeling_kingdom": "Changeling Kingdom",
-    "crystal_empire": "Crystal Empire",
-    "everfree_forest": "Everfree Forest",
-    "klugetown": "Klugetown",
-    "ponyville": "Ponyville",
-    "sweet_apple_acres": "Sweet Apple Acres",
-    "town": "",
-    "unknown": ""
+    "canterlot": "坎特洛特",
+    "changeling_kingdom": "幻形族王国",
+    "crystal_empire": "水晶帝国",
+    "everfree_forest": "永恒自由森林",
+    "klugetown": "九流镇",
+    "ponyville": "小马谷",
+    "sweet_apple_acres": "甜苹果园",
+    "town": "小镇",
+    "unknown": "未知"
   },
   "player_info": {
     "friend_code": "好友代码",
-    "join_date": "",
-    "total_playtime": ""
+    "join_date": "注册时间: {join_date}",
+    "total_playtime": "总游戏时长: {total_playtime}"
   },
   "pony_quiz": {
-    "description": "",
-    "time": "",
-    "title": "",
+    "description": "来看看你对《小马宝莉：魔法公主》官游都了解多少吧，测试一下你记得多少匹小马的名字。其实即使你没玩过官游，也能玩这个小游戏，因为这个官游里大部分角色都是G4里面的（当然这个游戏里也有一些G1角色）。",
+    "time": "用时",
+    "title": "小测试",
     "message": {
-      "win_message": ""
+      "win_message": "恭喜你！你总共花了 {time} 说出了 {num_ponies}只小马的名字@.lower:game_object.pony.pony"
     },
     "options": {
-      "ignore_spaces": "",
-      "case_sensitive": "",
-      "ignore_accents": "",
-      "ignore_punctuation": "",
-      "include_unused": ""
+      "ignore_spaces": "忽略空格",
+      "case_sensitive": "区分大小写",
+      "ignore_accents": "忽略变音符号",
+      "ignore_punctuation": "忽略标点符号",
+      "include_unused": "出现废案小马"
     }
   },
   "guesser": {
-    "title": "",
-    "description": "",
+    "title": "猜猜这是哪只小马？",
+    "description": "只看角色的阴影轮廓，你能说得出这个角色的名字吗？",
     "message": {
-      "correct_guesses": "",
-      "guessed_correctly": "",
-      "time": ""
+      "correct_guesses": "猜对",
+      "guessed_correctly": "猜对的数量： {ponies}/{total}",
+      "time": "用时: {time}"
     }
   },
   "sorting": {
-    "alphabetically": "",
-    "game_order": "",
-    "date_added": "",
-    "reverse": "",
+    "alphabetically": "字母顺序",
+    "game_order": "推出顺序",
+    "date_added": "加入顺序",
+    "reverse": "倒序",
     "shop": {
-      "production": "",
-      "xp_rate": ""
+      "production": "产出",
+      "xp_rate": "经验值"
     },
     "decor": {
-      "pro_rate": ""
+      "pro_rate": "加成增益速率"
     }
   },
   "stats": {
-    "title": "",
-    "description": "",
+    "title": "游戏资产",
+    "description": "查询你在官游中拥有的所有游戏资产",
     "message": {
       "ponies": {
-        "total": ""
+        "total": "小马总数: {count}"
       }
     }
   },
   "store": {
-    "title": "商城",
-    "description": "",
+    "title": "商店",
+    "description": "查询现在官游的商店里上架的所有物品",
     "message": {
       "percent_off": "折扣",
       "if": "条件：",
@@ -262,65 +263,65 @@
     }
   },
   "search": {
-    "title": ""
+    "title": "搜索"
   },
   "contact": {
-    "title": "",
-    "description": "",
+    "title": "联系我们",
+    "description": "如果您对本站有任何疑问、建议，在本站中发现了bug，又或者想要帮助我们建设本站点，都可以来这里联系我们！",
     "message": {
-      "discord_message": "",
-      "discord_server": "",
+      "discord_message": "如果您对本站有任何疑问、建议，又或者在本站中发现了bug，欢迎加入{server}！",
+      "discord_server": "Discord服务器",
       "discord": {
-        "title": "",
-        "description": "",
-        "button": ""
+        "title": "加入本站点的Discord群聊吧（需要科学上网）",
+        "description": "大家可以在这里询问问题，对本站建设提出建议，报告bug又或者和群里的官游玩家朋友们一同畅聊",
+        "button": "加入服务器"
       },
       "github": {
-        "title": "",
-        "description": "",
-        "button": ""
+        "title": "本站的GitHub页面",
+        "description": "查看本站源代码、待解决问题或发起合并请求。",
+        "button": "打开该仓库"
       },
       "mlp_game_hangout": {
-        "title": "",
-        "description": "",
-        "button": ""
+        "title": "小马官游大群（需要科学上网）",
+        "description": "外网官游交流群，在此群内发言请用英语。此群为Reddit的r/MLPIOS版组分支出的群聊",
+        "button": "加入服务器"
       },
       "help_wanted": {
-        "title": "",
-        "description": ""
+        "title": "帮助征集",
+        "description": "由于本网站的站长只会英语，所以有时候本站也会存在较多不足之处，比如说翻译不齐全的问题。我能翻译出来的内容，都是从官游的源文件里提取的官方原版翻译。如果您在本站看到您的母语模式翻译存在缺陷，希望您可以在GitHub上报告问题，或者加入本站的Discord服务器帮助我们翻译本站。我的网页美工设计布局水平也一般般，所以我也不太擅长设计本站的页面布局，如果您对网站设计比较在行，我很乐意得到您的帮助。如果您想直接帮忙撰写本站的网站代码，同样也非常欢迎。"
       }
     }
   },
   "lists": {
-    "title": "",
+    "title": "心愿单",
     "messages": {
-      "no_lists": "",
-      "wishlist": "",
-      "empty_list": ""
+      "no_lists": "暂无心愿单",
+      "wishlist": "心愿单",
+      "empty_list": "这里什么都没有。来添加一个{ponies}吧"
     },
     "button": {
-      "add_to_list": "",
-      "create_list": "",
-      "new_wishlist": "",
-      "edit": ""
+      "add_to_list": "添加到心愿单",
+      "create_list": "创建新心愿单",
+      "new_wishlist": "添加到新心愿单",
+      "edit": "编辑"
     },
     "dialog": {
       "create_list": {
-        "title": "",
+        "title": "创建心愿单",
         "message": {
-          "wishlist": "",
-          "name": ""
+          "wishlist": "心愿单",
+          "name": "名称"
         }
       },
       "choose_image": {
-        "title": ""
+        "title": "选择图片"
       },
       "add_to_list": {
-        "title": ""
+        "title": "添加到心愿单"
       },
       "confirm_delete": {
-        "title": "",
-        "body": ""
+        "title": "删除心愿单",
+        "body": "确认要删除 \"{list}\"吗？"
       }
     }
   }
