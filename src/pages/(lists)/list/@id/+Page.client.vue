@@ -4,6 +4,8 @@ import Link from '@/components/Link.vue';
 import CreateListDialog from '@/components/lists/createList/CreateListDialog.vue';
 import ObjectCard from '@/components/ObjectCard.vue';
 import SearchComponent from '@/components/SearchComponent.vue';
+import { useGameCardSize } from '@/composables/useGameCardSize';
+import { useRem } from '@/composables/useRem';
 import { language } from '@/globals';
 import { FilterFunctions, SortFunctions } from '@/scripts/categories';
 import { staticImage } from '@/scripts/common';
@@ -88,6 +90,10 @@ const sortFunctions = computed(() => {
 //     return functions
 // })
 
+const cardSize = 9
+const { width: itemWidth, height: itemHeight } = useGameCardSize(cardSize)
+const itemGap = useRem(.3)
+
 </script>
 
 <template>
@@ -104,9 +110,13 @@ const sortFunctions = computed(() => {
                 :placeholder="$t('lists.messages.wishlist')"
                 :sorters="sortFunctions"
                 save-url
+                :item-width="itemWidth"
+                :item-height="itemHeight"
+                :item-gap="itemGap"
             >
                 <template #item="{ item }">
                     <ObjectCard
+                        class="item-card"
                         :object="item.item"
                         hasButtons
                         is-link
@@ -131,3 +141,9 @@ const sortFunctions = computed(() => {
         </CreateListDialog>
     </div>
 </template>
+
+<style lang="css" scoped>
+.item-card {
+    --card-size: calc(v-bind('cardSize') * 1rem);
+}
+</style>

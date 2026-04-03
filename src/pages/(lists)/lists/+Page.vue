@@ -3,6 +3,8 @@ import DialogComponent from '@/components/DialogComponent.vue';
 import GameCard from '@/components/GameCard.vue';
 import CreateListDialog from '@/components/lists/createList/CreateListDialog.vue';
 import SearchComponent from '@/components/SearchComponent.vue';
+import { useGameCardSize } from '@/composables/useGameCardSize';
+import { useRem } from '@/composables/useRem';
 import { staticImage, transformName } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
@@ -36,6 +38,10 @@ async function deleteList(wishlist: Wishlist) {
     listToDelete.value = null
 }
 
+const cardSize = 9
+const { width: itemWidth, height: itemHeight } = useGameCardSize(cardSize)
+const itemGap = useRem(.3)
+
 </script>
 
 <template>
@@ -50,9 +56,13 @@ async function deleteList(wishlist: Wishlist) {
                 :get-search-text="(item) => [item.name]"
                 :placeholder="$t('lists.messages.wishlist')"
                 save-url
+                :item-width="itemWidth"
+                :item-height="itemHeight"
+                :item-gap="itemGap"
             >
                 <template #item="{ item }">
                     <GameCard
+                        class="item-card"
                         :title="item.name"
                         :image="staticImage(getListImage(item))"
                         :href="`/list/${item.id}/`"
@@ -93,3 +103,9 @@ async function deleteList(wishlist: Wishlist) {
         </template>
     </DialogComponent>
 </template>
+
+<style lang="css" scoped>
+.item-card {
+    --card-size: calc(v-bind('cardSize') * 1rem);
+}
+</style>

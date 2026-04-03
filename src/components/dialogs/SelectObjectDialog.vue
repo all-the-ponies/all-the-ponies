@@ -7,6 +7,8 @@ import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories
 import gameData from '@/scripts/gameData';
 import ObjectCard from '../ObjectCard.vue';
 import { language } from '@/globals';
+import { useRem } from '@/composables/useRem';
+import { useGameCardSize } from '@/composables/useGameCardSize';
 
 const props = defineProps<{
 
@@ -88,6 +90,9 @@ const filterFunctions = computed(() => {
     return functions
 })
 
+const cardSize = 9
+const { width: itemWidth, height: itemHeight } = useGameCardSize(cardSize)
+const itemGap = useRem(.3)
 
 
 </script>
@@ -108,6 +113,9 @@ const filterFunctions = computed(() => {
             :sorters="sortFunctions"
             :filters="filterFunctions"
             :placeholder="$t(CATEGORIES[selectedCategory].string)"
+            :item-width="itemWidth"
+            :item-height="itemHeight"
+            :item-gap="itemGap"
         >
 
             <template #menu-before>
@@ -122,6 +130,7 @@ const filterFunctions = computed(() => {
 
             <template #item="{ item }">
                 <ObjectCard
+                    class="item-card"
                     :object="item"
                     hover
                     @click="selectObject(item.id)"
@@ -138,5 +147,9 @@ const filterFunctions = computed(() => {
     --background-color: white;
     width: min(100dvw, 50rem);
     max-width: 100%;
+}
+
+.item-card {
+    --card-size: 9rem;
 }
 </style>

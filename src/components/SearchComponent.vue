@@ -7,7 +7,9 @@ import type { FilterFunctionsType, SortFunctionsType } from '@/scripts/categorie
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
 import createFuzzySearch from '@nozbe/microfuzz'
-import { isClient, useMounted } from '@vueuse/core'
+import { isClient, useElementSize, useMounted } from '@vueuse/core'
+import { RecycleScroller, WindowScroller } from 'vue-virtual-scroller'
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 
 const pageContext = usePageContext()
 const isMounted = useMounted()
@@ -24,16 +26,27 @@ const props = withDefaults(defineProps<{
         placeholder?: string,
         pageParam?: string,
         saveUrl?: boolean,
+        itemWidth?: number,
+        itemHeight?: number,
+        itemGap?: number,
     }>(), {
         filters: () => {return {}},
         sorters: () => {return {}},
         query: () => {return {}},
         placeholder: 'Pony',
+        itemWidth: 160,
+        itemHeight: 160 * (4/3),
+        itemGap: 0,
     }
 )
 
+const itemGap = computed(() => props.itemGap)
+const itemWidth = computed(() => props.itemWidth + itemGap.value)
+const itemHeight = computed(() => props.itemHeight + itemGap.value)
+
 const sortDialog = useTemplateRef('sort-dialog')
 const filterDialog = useTemplateRef('filter-dialog')
+const scroller = useTemplateRef('scroller')
 const sortMethod = ref<string>('relevance')
 const reversed = ref<boolean>(props.saveUrl && 'reverse' in pageContext.urlParsed.search)
 const defaultSortMethod = computed(() => {
@@ -231,7 +244,7 @@ function sortItems(items: ITEM[], func?: (a: ITEM, b: ITEM) => number) {
     if (func) {
         return [...items].sort((a,b) => (func(a,b)))
     } else {
-        return items
+        return [...items]
     }
 }
 
@@ -297,10 +310,22 @@ const shownResults = computed(() => {
     let results = sortedResults.value
     
     let start = (Math.max(1, currentPage.value) - 1) * perPage.value
-    results = results.slice(start, start + perPage.value)
+    // results = results.slice(start, start + perPage.value)
+    console.log('getting shown results', currentPage.value)
+    if (isClient) {
+        console.log('results', results)
+    }
 
     return results
 })
+
+const scrollerSize = useElementSize(scroller)
+
+const columnCount = computed(() => {
+    const columns = Math.floor(scrollerSize.width.value / itemWidth.value)
+    return Math.max(1, Math.min(columns, shownResults.value.length))
+})
+
 
 if (props.saveUrl && pageContext.urlParsed.search.q) {
     searchQuery.value = pageContext.urlParsed.search.q
@@ -366,11 +391,28 @@ watch(
                 :param="props.pageParam"
             ></Paginator>
 
-            <section v-if="items.length > 0" id="search-results">
-                <div class="item" v-for="item in shownResults" :key="item.id" :data-key="item.id">
-                    <slot name="item" :item="item">
-                    </slot>
-                </div>
+            <section
+                ref="scroller"
+                v-if="items.length > 0"
+                class="search-results"
+            >
+                <WindowScroller
+                    class="scroller"
+                    :items="shownResults"
+                    :item-size="itemHeight"
+                    :grid-items="columnCount"
+                    :item-secondary-size="itemWidth"
+                    key-field="id"
+                    :buffer="itemHeight * 3"
+                >
+                    <template #default="{ item }">
+                        <div class="item" :data-key="item.id">
+                            <slot name="item" :item="item">
+                            </slot>
+                        </div>
+                    </template>
+                </WindowScroller>
+                <!-- <div class="item" v-for="item in shownResults" :key="item.id" :data-key="item.id"> -->
             </section>
             <section v-else class="empty">
                 <slot name="empty"></slot>
@@ -461,6 +503,21 @@ watch(
 
 /* search results */
 
+.search-results {
+    justify-items: center;
+    width: 100%;
+
+    .scroller {
+        min-width: calc(v-bind('itemWidth') * v-bind('columnCount') * 1px);
+    }
+
+    .item {
+        width: 100%;
+        height: 100%;
+        justify-items: center;
+    }
+}
+
 #search-results {
     --card-size: 9rem;
     
@@ -471,6 +528,7 @@ watch(
     justify-content: center;
 
     margin-top: 0.5rem;
+
 }
 
 .search-option {

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import ObjectCard from '@/components/ObjectCard.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
+import { useGameCardSize } from '@/composables/useGameCardSize'
+import { useRem } from '@/composables/useRem'
 import { language } from '@/globals'
 import { CATEGORIES, FilterFunctions, SortFunctions, type FilterFunctionsType } from '@/scripts/categories'
 import gameData from '@/scripts/gameData'
@@ -108,6 +110,10 @@ const query = computed(() => {
     }
 })
 
+const cardSize = 9
+const { width: itemWidth, height: itemHeight } = useGameCardSize(cardSize)
+const itemGap = useRem(.3)
+
 </script>
 
 <template>
@@ -117,12 +123,15 @@ const query = computed(() => {
         <h1>{{ $t('store.title') }}</h1>
         <SearchComponent
             :data="shop ? shownObjects : []"
-            :search-function="(query, items) => gameData.searchName(query, items, language.key)"
+            :get-search-text="gameData.getSearchText"
             :filters="filterFunctions"
             :sorters="sortFunctions"
             :query="query"
             page-param="page"
             save-url
+            :item-width="itemWidth"
+            :item-height="itemHeight"
+            :item-gap="itemGap"
         >
             <template #menu-before>
                 <select v-model="selectedCategory" class="dropdown" name="category">
@@ -135,6 +144,7 @@ const query = computed(() => {
             </template>
             <template #item="{ item }">
                 <ObjectCard
+                    class="item-card"
                     :object="item"
                     is-link
                     hasButtons
@@ -145,3 +155,9 @@ const query = computed(() => {
         </SearchComponent>
     </div>
 </template>
+
+<style lang="css" scoped>
+.item-card {
+    --card-size: calc(v-bind('cardSize') * 1rem);
+}
+</style>

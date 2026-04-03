@@ -33,6 +33,7 @@
     "vike-vue-pinia": "^0.2.6",
     "vue": "^3.5.27",
     "vue-i18n": "^11.2.8",
+    "vue-virtual-scroller": "^2.0.0",
     "wrangler": "^4.62.0"
   },
   "devDependencies": {
