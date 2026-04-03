@@ -383,13 +383,13 @@ watch(
         </div>
 
         <template v-if="!filterOnClient || (filterOnClient && isMounted)">
-            <Paginator
+            <!-- <Paginator
                 v-model="currentPage"
                 :per-page="perPage"
                 :total="searchResults.length"
                 :max-pages="10"
                 :param="props.pageParam"
-            ></Paginator>
+            ></Paginator> -->
 
             <section
                 ref="scroller"
@@ -418,13 +418,13 @@ watch(
                 <slot name="empty"></slot>
             </section>
         
-            <Paginator
+            <!-- <Paginator
                 v-model="currentPage"
                 :per-page="perPage"
                 :total="searchResults.length"
                 :max-pages="10"
                 :param="props.pageParam"
-            ></Paginator>
+            ></Paginator> -->
         </template>
 
         <dialog-component
