@@ -26,7 +26,7 @@ Since I don't expect everyone to know what language code their language is, here
 |-------|----------------------|
 | en    | English              |
 | ar    | Arabic               |
-| zh-CH | Chinese (Simplified) |
+| zh    | Chinese              |
 | fr    | French               |
 | de    | German               |
 | it    | Italian              |
