@@ -34,7 +34,7 @@ const priceHistory = computed(() => {
         return []
     }
     
-    return data.priceHistory.price_history.filter(item => !item.hidden)
+    return data.priceHistory.price_history.filter(item => !item.hidden && item.price.base.currency !== 'Lotto')
 })
 
 const pony = computed(() => data.pony)

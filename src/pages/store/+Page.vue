@@ -60,6 +60,11 @@ const shownObjects = computed(() => {
             return false
         }
 
+        const price = shop.value[gameObject.id]
+        if (price.price.base.currency === 'Lotto') {
+            return false
+        }
+
         return true
     })
 })
