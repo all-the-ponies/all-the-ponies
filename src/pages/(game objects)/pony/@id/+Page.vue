@@ -39,6 +39,25 @@ const priceHistory = computed(() => {
 
 const pony = computed(() => data.pony)
 
+const basePrice = computed(() => {
+    const result = {
+        token: pony.value.price?.token,
+        tokens: null,
+        currency: pony.value.price?.base.currency,
+        price: pony.value.price?.base.amount,
+        dailyGoals: pony.value.price?.daily_goals,
+    }
+    if (priceHistory.value.length) {
+        result.currency = priceHistory.value[0].price.base.currency
+        result.price = priceHistory.value[0].price.base.price
+        result.tokens = priceHistory.value[0].price.base.tokens
+    }
+    if (result.currency == 'Lotto') {
+        result.currency = null // hide "Lotto" prices
+    }
+    return result
+})
+
 const stars = computed({
   get() {
     if (!isMounted.value) {
@@ -147,8 +166,24 @@ const houseName = computed(() => house.value?.name[language.value.key])
                             <tr>
                                 <td>{{ $t('game_object.pony.arrival_bonus') }}</td>
                                 <td>
-                                    {{ pony.arrival_xp }}
-                                    <currency-image object="XP" />
+                                    <currency-image object="XP">
+                                        {{ pony.arrival_xp }}
+                                    </currency-image>
+                                </td>
+                            </tr>
+                            <tr v-if="basePrice.currency">
+                                <td>{{ $t('common.price') }}</td>
+                                <td>
+                                    <template v-if="basePrice.token">
+                                        <CurrencyImage :object="basePrice.token">
+                                            {{ $n(basePrice.tokens) }}
+                                        </CurrencyImage>
+                                        {{ $t('common.or').toLocaleLowerCase() }} 
+                                        {{}}
+                                    </template>
+                                    <CurrencyImage :object="basePrice.currency">
+                                        {{ $n(basePrice.price) }}
+                                    </CurrencyImage>
                                 </td>
                             </tr>
                             <tr>
@@ -170,7 +205,9 @@ const houseName = computed(() => house.value?.name[language.value.key])
                             <tr>
                                 <td>{{ $t('game_object.pony.minigame_skip_cost') }}</td>
                                 <td>
-                                    {{ pony.minigame.skip_cost }} <currency-image class="item" object="Gems" />
+                                    <currency-image object="Gems">
+                                        {{ pony.minigame.skip_cost }}
+                                    </currency-image>
                                 </td>
                             </tr>
                             <tr v-if="pony.pro">
