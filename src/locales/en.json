@@ -58,7 +58,9 @@
     "date": {
       "range": "{start} to {end}",
       "current": "current"
-    }
+    },
+    "price": "Price",
+    "or": "or"
   },
   "dialog": {
     "filter": "Filter",
