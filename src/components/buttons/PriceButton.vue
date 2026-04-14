@@ -17,7 +17,7 @@ const props = defineProps<{
     </button>
 </template>
 
-<style lang="css">
+<style lang="css" scoped>
 
 .price-button {
     position: relative;
