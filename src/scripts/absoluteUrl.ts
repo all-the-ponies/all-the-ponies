@@ -6,9 +6,7 @@ export default function absoluteUrl(path: string) {
         domain = __BASE_URL__
     }
 
-    if (!path.endsWith('/')) {
-        path += '/'
-    }
+    // DO NOT NORMALIZE END SLASH, IT BREAKS IMAGE URLS
     
     return String(new URL(path, domain))
 }
