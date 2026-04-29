@@ -262,7 +262,10 @@
     }
   },
   "search": {
-    "title": "Ara"
+    "title": "Ara",
+    "message": {
+      "search": "Ara"
+    }
   },
   "contact": {
     "title": "İletişim",

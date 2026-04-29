@@ -263,7 +263,10 @@
     }
   },
   "search": {
-    "title": "搜索"
+    "title": "搜索",
+    "message": {
+      "search": "搜索"
+    }
   },
   "contact": {
     "title": "联系我们",

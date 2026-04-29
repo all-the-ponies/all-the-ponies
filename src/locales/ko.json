@@ -262,7 +262,10 @@
     }
   },
   "search": {
-    "title": ""
+    "title": "",
+    "message": {
+      "search": ""
+    }
   },
   "contact": {
     "title": "",

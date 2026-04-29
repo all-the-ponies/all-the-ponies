@@ -265,7 +265,10 @@
     }
   },
   "search": {
-    "title": "Search"
+    "title": "Search",
+    "message": {
+      "search": "Search"
+    }
   },
   "contact": {
     "title": "Contact",
