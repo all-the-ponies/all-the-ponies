@@ -58,7 +58,9 @@
     "date": {
       "range": "{start} to {end}",
       "current": "当前"
-    }
+    },
+    "price": "",
+    "or": ""
   },
   "dialog": {
     "filter": "筛选",
@@ -326,6 +328,54 @@
         "title": "删除心愿单",
         "body": "确认要删除 \"{list}\"吗？"
       }
+    }
+  },
+  "save_check": {
+    "title": "",
+    "description": "",
+    "messages": {
+      "explanation": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": ""
+      },
+      "status": {
+        "safe": "",
+        "affected": ""
+      },
+      "what_this_means": {
+        "title": "",
+        "body": {
+          "affected": "",
+          "safe": ""
+        }
+      },
+      "what_can_you_do": {
+        "title": "",
+        "body": "",
+        "customer_support": ""
+      },
+      "what_to_say": {
+        "title": "",
+        "body": {
+          "affected": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          },
+          "safe": {
+            "1": "",
+            "2": ""
+          }
+        }
+      }
+    }
+  },
+  "check_save": {
+    "messages": {
+      "check": "查看"
     }
   }
 }

@@ -58,7 +58,9 @@
     "date": {
       "range": "",
       "current": ""
-    }
+    },
+    "price": "",
+    "or": ""
   },
   "dialog": {
     "filter": "",
@@ -130,7 +132,8 @@
     },
     "profile_decorations": {
       "avatar": {
-        "avatar": "Avatar | Avatares"
+        "avatar": "Avatar | Avatares",
+        "animated": ""
       },
       "background": {
         "background": "Fondo | Fondos"
@@ -325,6 +328,54 @@
         "title": "",
         "body": ""
       }
+    }
+  },
+  "save_check": {
+    "title": "",
+    "description": "",
+    "messages": {
+      "explanation": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": ""
+      },
+      "status": {
+        "safe": "",
+        "affected": ""
+      },
+      "what_this_means": {
+        "title": "",
+        "body": {
+          "affected": "",
+          "safe": ""
+        }
+      },
+      "what_can_you_do": {
+        "title": "",
+        "body": "",
+        "customer_support": ""
+      },
+      "what_to_say": {
+        "title": "",
+        "body": {
+          "affected": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          },
+          "safe": {
+            "1": "",
+            "2": ""
+          }
+        }
+      }
+    }
+  },
+  "check_save": {
+    "messages": {
+      "check": "Ver"
     }
   }
 }
