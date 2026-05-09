@@ -5,11 +5,13 @@ import { pickRandom, staticImage, transformName } from '@/scripts/common'
 import { formatTime, formatTimestamp } from '@/scripts/timeFunctions'
 import gameData from '@/scripts/gameData'
 import type { PonyType } from '@/types/gameDataTypes'
-import { computed, nextTick, onUnmounted, ref, useTemplateRef } from 'vue'
+import { computed, nextTick, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 import Link from '@/components/Link.vue'
 import { Config } from 'vike-vue/Config'
-import { useEventListener } from '@vueuse/core'
+import { useEventListener, useLocalStorage } from '@vueuse/core'
 import DevOnly from '@/components/DevOnly.vue'
+import { ClientOnly } from 'vike-vue/ClientOnly'
+import { useActivityState } from '@/stores/activityState'
 
 useEventListener('beforeunload', (e) => {
     if (playing.value) {
@@ -32,6 +34,8 @@ const optionNames = {
     ignorePunctuation: 'pony_quiz.options.ignore_punctuation',
     includeUnused: 'pony_quiz.options.include_unused',
 }
+
+const activityState = useActivityState()
 
 const guessedPonies = ref<PonyType[]>([])
 const loadFailedPonies = ref<PonyType[]>([])
@@ -99,6 +103,39 @@ function start() {
     })
 }
 
+function resume() {
+    restoreState()
+    playing.value = true
+    startTimer()
+    nextTick(() => {
+        nameInput.value.focus()
+        gameContainer.value.scrollIntoView()
+    })
+}
+
+function restoreState() {
+    currentPony.value = gameData.getObject(activityState.guesser.currentPony, 'pony')
+    timeElapsed.value = activityState.guesser.time
+    guessedPonies.value = activityState.guesser.guessedPonies.map(id => gameData.getObject(id, 'pony'))
+}
+
+watch(
+    () => [
+        currentPony.value,
+        timeElapsed.value,
+        guessedPonies.value,
+        playing.value,
+    ],
+    () => {
+        if (playing.value) {
+            activityState.guesser.time = timeElapsed.value
+            activityState.guesser.playing = playing.value
+            activityState.guesser.currentPony = currentPony.value.id
+            activityState.guesser.guessedPonies = guessedPonies.value.map(pony => pony.id)
+        }
+    }
+)
+
 function stop() {
     pauseTimer()
     if (transitionTimeout !== null) {
@@ -121,7 +158,9 @@ function resetTimer() {
 }
 
 function startTimer() {
-    timerInterval = setInterval(() => timeElapsed.value++, 1000)
+    if (timerInterval == null) {
+        timerInterval = setInterval(() => timeElapsed.value++, 1000)
+    }
 }
 
 function pauseTimer() {
@@ -226,6 +265,7 @@ function showHint() {
 }
 
 function win() {
+    activityState.guesser.playing = false
     if (playing.value) {
         togglePlaying()
     }
@@ -255,6 +295,9 @@ function imageLoadFailed() {
             <h1>{{ $t('guesser.title') }}</h1>
             <p>{{ $t('guesser.description') }}</p>
             <button @click="togglePlaying" class="button button-green">{{ $t(playing ? 'button.stop' : 'button.start') }}</button>
+            <ClientOnly>
+                <button v-if="!playing && activityState.guesser.playing" @click="resume()" class="button button-green">Resume</button>
+            </ClientOnly>
             <DevOnly>
                 <button @click="win()" class="button button-green">Win</button>
             </DevOnly>
@@ -293,7 +336,7 @@ function imageLoadFailed() {
                         >{{ $t('button.hint') }}</button>
                     </div>
                 </div>
-                <div class="pony-info">
+                <div class="pony-info" v-show="playing">
                     <h2>{{ displayName }}</h2>
                     <img
                         ref="pony-image"
