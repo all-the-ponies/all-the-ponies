@@ -31,6 +31,8 @@ import { language } from '@/globals';
             <h2>{{ $t('about.sections.translations.title') }}</h2>
             <ul class="list">
                 <li><span class="text-green">Pamcezya</span> - {{ new Intl.DisplayNames([language.code], { type: "language" }).of('tr') }}</li>
+                <li><span class="text-green">Double Dove</span> - {{ new Intl.DisplayNames([language.code], { type: "language" }).of('zh') }}</li>
+                <li><span class="text-green">justfeydan</span> - {{ new Intl.DisplayNames([language.code], { type: "language" }).of('ru') }}</li>
             </ul>
         </section>
     </div>

@@ -5,6 +5,8 @@ export default function absoluteUrl(path: string) {
     } catch {
         domain = __BASE_URL__
     }
+
+    // DO NOT NORMALIZE END SLASH, IT BREAKS IMAGE URLS
     
     return String(new URL(path, domain))
 }

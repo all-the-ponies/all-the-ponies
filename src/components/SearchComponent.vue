@@ -362,7 +362,7 @@ watch(
             <slot name="menu-before"></slot>
             
             <label for="search-bar">
-                Search
+                {{ $t('search.message.search') }}
                 <input v-model="searchQuery" class="text-box" type="search" name="search-bar" id="search-bar" :placeholder="$props.placeholder" />
             </label>
             

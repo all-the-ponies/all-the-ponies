@@ -11,7 +11,7 @@ import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue'
 import { useSaveStore } from '@/stores/saveManager'
 import Stars from '@/components/Stars.vue'
 import { LOCATIONS } from '@/scripts/categories'
-import { isClient, useMounted } from '@vueuse/core'
+import { isClient, useArrayFilter, useMounted } from '@vueuse/core'
 import { usePageContext } from 'vike-vue/usePageContext'
 import Link from '@/components/Link.vue'
 import { Config } from 'vike-vue/Config'
@@ -37,7 +37,28 @@ const priceHistory = computed(() => {
     return data.priceHistory.price_history.filter(item => !item.hidden)
 })
 
+const filteredPriceHistory = useArrayFilter(priceHistory, (item) => item.price.base.currency !== 'Lotto')
+
 const pony = computed(() => data.pony)
+
+const basePrice = computed(() => {
+    const result = {
+        token: pony.value.price?.token,
+        tokens: null,
+        currency: pony.value.price?.base.currency,
+        price: pony.value.price?.base.amount,
+        dailyGoals: pony.value.price?.daily_goals,
+    }
+    if (priceHistory.value.length) {
+        result.currency = priceHistory.value[0].price.base.currency
+        result.price = priceHistory.value[0].price.base.price
+        result.tokens = priceHistory.value[0].price.base.tokens
+    }
+    if (result.currency == 'Lotto') {
+        result.currency = null // hide "Lotto" prices
+    }
+    return result
+})
 
 const stars = computed({
   get() {
@@ -136,6 +157,24 @@ const houseName = computed(() => house.value?.name[language.value.key])
                                     </Link>
                                 </td>
                             </tr>
+                            <tr v-if="(basePrice.currency && basePrice.price) || (basePrice.token && basePrice.tokens)">
+                                <td>{{ $t('common.price') }}</td>
+                                <td>
+                                    <template v-if="basePrice.token && basePrice.tokens">
+                                        <CurrencyImage :object="basePrice.token">
+                                            {{ $n(basePrice.tokens) }}
+                                        </CurrencyImage>
+                                        <template v-if="basePrice.currency && basePrice.price">
+                                            {{}}
+                                            {{ $t('common.or').toLocaleLowerCase() }} 
+                                            {{}}
+                                        </template>
+                                    </template>
+                                    <CurrencyImage v-if="basePrice.currency && basePrice.price" :object="basePrice.currency">
+                                        {{ $n(basePrice.price) }}
+                                    </CurrencyImage>
+                                </td>
+                            </tr>
                             <tr>
                                 <td>{{ $t('game_object.common.unlock_level') }}</td>
                                 <td>{{ pony.unlock_level }}</td>
@@ -143,13 +182,6 @@ const houseName = computed(() => house.value?.name[language.value.key])
                             <tr>
                                 <td>{{ $t('location.town') }}</td>
                                 <td>{{ $t(LOCATIONS[pony.location].string) }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ $t('game_object.pony.arrival_bonus') }}</td>
-                                <td>
-                                    {{ pony.arrival_xp }}
-                                    <currency-image object="XP" />
-                                </td>
                             </tr>
                             <tr>
                                 <td>{{ $t('game_object.house.house') }}</td>
@@ -164,13 +196,23 @@ const houseName = computed(() => house.value?.name[language.value.key])
                                 </td>
                             </tr>
                             <tr>
+                                <td>{{ $t('game_object.pony.arrival_bonus') }}</td>
+                                <td>
+                                    <currency-image object="XP">
+                                        {{ pony.arrival_xp }}
+                                    </currency-image>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>{{ $t('game_object.pony.minigame_cooldown') }}</td>
                                 <td>{{ formatTime(pony.minigame.cooldown) }}</td>
                             </tr>
                             <tr>
                                 <td>{{ $t('game_object.pony.minigame_skip_cost') }}</td>
                                 <td>
-                                    {{ pony.minigame.skip_cost }} <currency-image class="item" object="Gems" />
+                                    <currency-image object="Gems">
+                                        {{ pony.minigame.skip_cost }}
+                                    </currency-image>
                                 </td>
                             </tr>
                             <tr v-if="pony.pro">
@@ -194,9 +236,9 @@ const houseName = computed(() => house.value?.name[language.value.key])
                     </table>
                 </template>
             </ObjectPage>
-            <section class="section" v-if="priceHistory.length">
+            <section class="section" v-if="filteredPriceHistory.length">
                 <h2 class="h2">Price History</h2>
-                <PriceHistory :object="pony.id" :priceHistory="priceHistory"></PriceHistory>
+                <PriceHistory :object="pony.id" :priceHistory="filteredPriceHistory"></PriceHistory>
             </section>
         </div>
     </div>

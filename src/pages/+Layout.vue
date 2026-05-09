@@ -7,6 +7,7 @@ import { Head } from 'vike-vue/Head'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
 import Notices from './Notices.vue'
+import { extractLocale } from './extractLocale'
 
 const pageContext = usePageContext()
 
@@ -16,6 +17,25 @@ const pageContext = usePageContext()
     <Head>
         <meta name="theme-color" content="#FF6B9B" />
 
+        <link rel="canonical" :href="absoluteUrl(
+                modifyUrl(
+                    pageContext.urlOriginal,
+                    {
+                        search: null,
+                    }
+                )
+            )" />
+        
+        <link rel="alternate" hreflang="x-default" :href="absoluteUrl(
+                modifyUrl(
+                    pageContext.urlOriginal,
+                    {
+                        pathname: pageContext.urlPathname,
+                        search: null,
+                    }
+                )
+            )" />
+        
         <link
             v-for="locale in Object.keys(LOCALES)"
             rel="alternate"
@@ -30,16 +50,6 @@ const pageContext = usePageContext()
                 )
             )"
         />
-
-        <link rel="alternate" hreflang="x-default" :href="absoluteUrl(
-                modifyUrl(
-                    pageContext.urlOriginal,
-                    {
-                        pathname: pageContext.urlPathname,
-                        search: null,
-                    }
-                )
-            )" />
 
         <meta property="og:locale" :content="language.code.replace('-', '_')" />
         <meta

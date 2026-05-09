@@ -10,7 +10,7 @@ export function extractLocale(url: PageContext['urlParsed']) {
   let locale = urlParts[1]
   let pathnameWithoutLocale = pathname
 
-  if (locale && locale in LOCALES) {
+  if (locale && locale in LOCALES || locale === 'zh-CH') {
     pathnameWithoutLocale = '/' + urlParts.slice(2).join('/')
   } else {
     locale = null

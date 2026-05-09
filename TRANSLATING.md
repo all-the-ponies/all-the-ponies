@@ -1,6 +1,6 @@
 # Translating
 
-Any translators are welcome, as long as you know the language, **Google Translate is not allowed**. While there are some things I have been able to pull from the game already, there is a lot more text that I can't, and your help is very much appreciated.
+Any translations for any of the languages already on the site (and in the game) are welcome, as long as you know the language, **Google Translate is not allowed**. While there are some things I have been able to pull from the game already, there is a lot more text that I can't, and your help is very much appreciated.
 
 ## Getting Started
 
@@ -26,7 +26,7 @@ Since I don't expect everyone to know what language code their language is, here
 |-------|----------------------|
 | en    | English              |
 | ar    | Arabic               |
-| zh-CH | Chinese (Simplified) |
+| zh    | Chinese              |
 | fr    | French               |
 | de    | German               |
 | it    | Italian              |
