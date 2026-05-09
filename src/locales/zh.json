@@ -239,6 +239,7 @@
     }
   },
   "sorting": {
+    "relevance": "",
     "alphabetically": "字母顺序",
     "game_order": "推出顺序",
     "date_added": "加入顺序",
@@ -271,6 +272,7 @@
   },
   "search": {
     "title": "搜索",
+    "no_results": "",
     "message": {
       "search": "搜索"
     }

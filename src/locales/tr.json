@@ -239,6 +239,7 @@
     }
   },
   "sorting": {
+    "relevance": "",
     "alphabetically": "Alfabetik Olarak",
     "game_order": "Oyun Sırası",
     "date_added": "",
@@ -271,6 +272,7 @@
   },
   "search": {
     "title": "Ara",
+    "no_results": "",
     "message": {
       "search": "Ara"
     }

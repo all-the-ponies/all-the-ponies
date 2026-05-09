@@ -239,6 +239,7 @@
     }
   },
   "sorting": {
+    "relevance": "",
     "alphabetically": "В алфавитном порядке",
     "game_order": "Порядок игры",
     "date_added": "По дате добавления",
@@ -271,6 +272,7 @@
   },
   "search": {
     "title": "Поиск",
+    "no_results": "",
     "message": {
       "search": "Поиск"
     }

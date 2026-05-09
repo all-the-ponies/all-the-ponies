@@ -239,6 +239,7 @@
     }
   },
   "sorting": {
+    "relevance": "",
     "alphabetically": "",
     "game_order": "",
     "date_added": "",
@@ -271,6 +272,7 @@
   },
   "search": {
     "title": "",
+    "no_results": "",
     "message": {
       "search": ""
     }
