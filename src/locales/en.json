@@ -8,6 +8,11 @@
       "title": "Help Wanted!",
       "body": "I only speak English, so I can't translate All The Ponies to other languages. If you know another language, I would really love your help translating the website. You can find more info in the discord server.",
       "discord": "Join Server"
+    },
+    "corrupt_save": {
+      "title": "Important",
+      "body": "A recent bug has been found that can cause your cloud save to be corrupt. You can check if you're affected by clicking \"@:notices.corrupt_save.button\"",
+      "button": "Learn more"
     }
   },
   "home": {
@@ -234,6 +239,7 @@
     }
   },
   "sorting": {
+    "relevance": "Relevance",
     "alphabetically": "Alphabetically",
     "game_order": "Game Order",
     "date_added": "Date added",
@@ -265,7 +271,11 @@
     }
   },
   "search": {
-    "title": "Search"
+    "title": "Search",
+    "no_results": "No results",
+    "message": {
+      "search": "Search"
+    }
   },
   "contact": {
     "title": "Contact",
@@ -325,6 +335,54 @@
         "title": "Delete wishlist?",
         "body": "Are you sure you want to delete \"{list}\"?"
       }
+    }
+  },
+  "save_check": {
+    "title": "Check your save file",
+    "description": "Check if your save file has been corrupted",
+    "messages": {
+      "explanation": {
+        "first": "You may have noticed that after the game's maintenance, many of you have not been able to view your saves on All The Ponies, which was the same error that is causing the issue with not being able visit friends due to \"having no internet\".",
+        "second": "After some investigation, dataminers have found where this error is coming from, and it's not pretty.",
+        "third": "This error is actually the result of your cloud save becoming corrupt. I'm not sure how this is happening, but it is a really scary thing.",
+        "fourth": "You can check if you are affected here."
+      },
+      "status": {
+        "safe": "It looks like your save file is safe for now",
+        "affected": "Unfortunately it looks like you may be affected"
+      },
+      "what_this_means": {
+        "title": "What does this mean?",
+        "body": {
+          "affected": "Your local save file is fine, but if you uninstall your game, or need to transfer, your cloud save is not.",
+          "safe": "Your cloud save is currently fine, but please note that it does not mean that it will always be fine, as many player's accounts that were previously fine, are now not."
+        }
+      },
+      "what_can_you_do": {
+        "title": "What can you do?",
+        "body": "In simple, contact {support}. We must say, do this at your own caution. If you email about this and mention that this was found out from data mining, we do not know how Gameloft will feel or what they could possibly do to your account, seeing that knowing this info could be against their rules. You can also spread the word so we can have as many people contacting support as possible, which should hopefully alert the devs to fix this issue.",
+        "customer_support": "Customer Support"
+      },
+      "what_to_say": {
+        "title": "What to say to support?",
+        "body": {
+          "affected": {
+            "1": "You could simply mention that people cannot visit you, adding the message it gives, and suggesting that you’re worried there is an issue with the save file for your account and would like them to forward this to their technical team.",
+            "2": "You could lie and say your save got reset, which should make them have to check the status of it.",
+            "3": "You could lie and say that you cannot visit people and are getting unexpected pop ups that say your local and cloud save do not match up, even tho you haven't changed devices and are playing connected to the internet.",
+            "4": "You could mention straight up that your save file is corrupted, but again do that at your own risk."
+          },
+          "safe": {
+            "1": "You can talk about how you cannot visit other players towns, and mention that you have a stable internet connection.",
+            "2": "You could mention outright what is going on, even though you're not affected."
+          }
+        }
+      }
+    }
+  },
+  "check_save": {
+    "messages": {
+      "check": "Check"
     }
   }
 }

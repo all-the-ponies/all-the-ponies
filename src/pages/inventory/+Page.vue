@@ -4,6 +4,8 @@ import ExportDialogBody from '@/components/inventory/dialogs/ExportDialog.vue'
 import Link from '@/components/Link.vue'
 import ObjectCard from '@/components/ObjectCard.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
+import { useGameCardSize } from '@/composables/useGameCardSize'
+import { useRem } from '@/composables/useRem'
 import { language } from '@/globals'
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories'
 import gameData from '@/scripts/gameData'
@@ -118,6 +120,10 @@ async function importFriendCode() {
     importDisabled.value = false
 }
 
+const cardSize = 9
+const { width: itemWidth, height: itemHeight } = useGameCardSize(cardSize)
+const itemGap = useRem(.3)
+
 </script>
 
 <template>
@@ -193,16 +199,20 @@ async function importFriendCode() {
             <ClientOnly>
                 <SearchComponent
                     :data="gameObjects.map(objectId => gameData.getObject(objectId, category))"
-                    :search-function="(query, items) => gameData.searchName(query, items, language.key)"
+                    :get-search-text="gameData.getNames"
                     :filters="filterFunctions"
                     :sorters="sortFunctions"
                     :query="query"
                     :placeholder="$t(CATEGORIES[category].string)"
                     page-param="page"
                     save-url
+                    :item-width="itemWidth"
+                    :item-height="itemHeight"
+                    :item-gap="itemGap"
                 >
                     <template #item="{ item }">
                         <ObjectCard
+                            class="item-card"
                             :object="item"
                             is-link
                             hasButtons
@@ -286,5 +296,9 @@ async function importFriendCode() {
 
 .error-message {
     color: var(--red);
+}
+
+.item-card {
+    --card-size: calc(v-bind('cardSize') * 1rem);
 }
 </style>

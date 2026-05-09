@@ -8,6 +8,11 @@
       "title": "Yardım Aranıyor!",
       "body": "Sadece İngilizce konuşuyorum, bu yüzden All The Ponies sitesini diğer dillere çeviremiyorum. Eğer başka bir dil biliyorsan, Siteyi çevirme konusunda yardımın beni çok mutlu eder.",
       "discord": "Sunucuya Katıl"
+    },
+    "corrupt_save": {
+      "title": "",
+      "body": "",
+      "button": ""
     }
   },
   "home": {
@@ -58,7 +63,9 @@
     "date": {
       "range": "{start} 'dan {end} 'a",
       "current": "Güncel"
-    }
+    },
+    "price": "",
+    "or": ""
   },
   "dialog": {
     "filter": "Filtrele",
@@ -130,7 +137,8 @@
     },
     "profile_decorations": {
       "avatar": {
-        "avatar": "Avatar | Avatarlar"
+        "avatar": "Avatar | Avatarlar",
+        "animated": ""
       },
       "background": {
         "background": "Arka Plan | Arka Planlar"
@@ -262,7 +270,10 @@
     }
   },
   "search": {
-    "title": "Ara"
+    "title": "Ara",
+    "message": {
+      "search": "Ara"
+    }
   },
   "contact": {
     "title": "İletişim",
@@ -322,6 +333,54 @@
         "title": "",
         "body": ""
       }
+    }
+  },
+  "save_check": {
+    "title": "",
+    "description": "",
+    "messages": {
+      "explanation": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": ""
+      },
+      "status": {
+        "safe": "",
+        "affected": ""
+      },
+      "what_this_means": {
+        "title": "",
+        "body": {
+          "affected": "",
+          "safe": ""
+        }
+      },
+      "what_can_you_do": {
+        "title": "",
+        "body": "",
+        "customer_support": ""
+      },
+      "what_to_say": {
+        "title": "",
+        "body": {
+          "affected": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          },
+          "safe": {
+            "1": "",
+            "2": ""
+          }
+        }
+      }
+    }
+  },
+  "check_save": {
+    "messages": {
+      "check": "Göz At"
     }
   }
 }

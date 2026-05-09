@@ -8,6 +8,11 @@
       "title": "帮助征集",
       "body": "由于本网站的站长只会英语，所以没法把这个小马官游信息站翻译成所有的语言版本。如果你恰巧会说其他语言，我非常希望大家能够帮助我一起翻译这个站点。您可以在下面这个Discord服务器中（需要科学上网）咨询更多有关信息。",
       "discord": "加入服务器"
+    },
+    "corrupt_save": {
+      "title": "",
+      "body": "",
+      "button": ""
     }
   },
   "home": {
@@ -58,7 +63,9 @@
     "date": {
       "range": "{start} to {end}",
       "current": "当前"
-    }
+    },
+    "price": "",
+    "or": ""
   },
   "dialog": {
     "filter": "筛选",
@@ -263,7 +270,10 @@
     }
   },
   "search": {
-    "title": "搜索"
+    "title": "搜索",
+    "message": {
+      "search": "搜索"
+    }
   },
   "contact": {
     "title": "联系我们",
@@ -323,6 +333,54 @@
         "title": "删除心愿单",
         "body": "确认要删除 \"{list}\"吗？"
       }
+    }
+  },
+  "save_check": {
+    "title": "",
+    "description": "",
+    "messages": {
+      "explanation": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": ""
+      },
+      "status": {
+        "safe": "",
+        "affected": ""
+      },
+      "what_this_means": {
+        "title": "",
+        "body": {
+          "affected": "",
+          "safe": ""
+        }
+      },
+      "what_can_you_do": {
+        "title": "",
+        "body": "",
+        "customer_support": ""
+      },
+      "what_to_say": {
+        "title": "",
+        "body": {
+          "affected": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          },
+          "safe": {
+            "1": "",
+            "2": ""
+          }
+        }
+      }
+    }
+  },
+  "check_save": {
+    "messages": {
+      "check": "查看"
     }
   }
 }

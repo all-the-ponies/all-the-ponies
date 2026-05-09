@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import SearchComponent from '@/components/SearchComponent.vue'
 import gameData from '@/scripts/gameData'
-import { computed, ref } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { CATEGORIES, SortFunctions, FilterFunctions, PLURAL_CATEGORY_MAP } from '@/scripts/categories'
 // import { useSeoMeta } from '@unhead/vue';
 import { useI18n } from 'vue-i18n';
@@ -12,6 +12,9 @@ import { usePageContext } from 'vike-vue/usePageContext';
 import { useSaveStore } from '@/stores/saveManager';
 import { language } from '@/globals';
 import ObjectCard from '@/components/ObjectCard.vue';
+import { useRem } from '@/composables/useRem';
+import { useMounted } from '@vueuse/core';
+import { useGameCardSize } from '@/composables/useGameCardSize';
 
 const pageContext = usePageContext()
 const saveStore = useSaveStore()
@@ -67,6 +70,11 @@ function infoGetter(gameObject: GameObject) {
 
 const objects = computed(() => Object.values(gameData.data.categories[category.value].objects as GameObject[]))
 
+const cardSize = 9
+
+const { width: itemWidth, height: itemHeight } = useGameCardSize(cardSize)
+const itemGap = useRem(.3)
+
 </script>
 
 <template>
@@ -77,15 +85,20 @@ const objects = computed(() => Object.values(gameData.data.categories[category.v
     <SearchComponent
         v-if="category != null"
         :data="objects"
-        :search-function="(query, items) => gameData.searchName(query, items, language.key)"
+        :get-search-text="gameData.getNames"
+        :get-exact-search-text="(item) => item.id"
         :sorters="sortFunctions"
         :filters="filterFunctions"
         :placeholder="$t(CATEGORIES[category].string)"
         page-param="page"
         save-url
+        :item-width="itemWidth"
+        :item-height="itemHeight"
+        :item-gap="itemGap"
     >
         <template #item="{ item }">
             <ObjectCard
+                class="item-card"
                 :object="item"
                 is-link
                 hasButtons
@@ -95,3 +108,9 @@ const objects = computed(() => Object.values(gameData.data.categories[category.v
     </SearchComponent>
     <div v-else>Not Found</div>
 </template>
+
+<style lang="css" scoped>
+.item-card {
+    --card-size: calc(v-bind('cardSize') * 1rem);
+}
+</style>

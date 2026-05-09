@@ -7,6 +7,7 @@ import RoyalIcon from "./icons/store/RoyalIcon.vue"
 import ObjectImage from "./ObjectImage.vue"
 import { notNullIsh } from "@/scripts/common"
 import Link from "./Link.vue"
+import LazyImage from "./LazyImage.vue"
 
 const props = defineProps<{
     title: string,
@@ -85,7 +86,7 @@ const replacedPrice = computed(() => {
                 {{ props.title }}
             </span>
             <div class="card-body">
-                <v-lazy-image v-if="props.image" :src="props.image" :alt="props.alt" class="object-image" />
+                <LazyImage v-if="props.image" :src="props.image" :alt="props.alt" loading="lazy" class="object-image" />
                 <div class="left-container">
                     <slot name="left"></slot>
                 </div>

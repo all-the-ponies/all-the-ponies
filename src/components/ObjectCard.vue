@@ -25,16 +25,16 @@ const props = defineProps<{
     hover?: boolean,
 }>()
 
-const gameObject = gameData.getObject(props.object)
+const gameObject = computed(() => gameData.getObject(props.object))
 
 const name = computed(() => {
-    let name = gameData.translateName(gameObject).value
+    let name = gameData.translateName(gameObject.value).value
     return name
 })
 
-const image = 'preview' in gameObject.image ? gameObject.image.preview : gameObject.image.main
+const image = computed(() => 'preview' in gameObject.value.image ? gameObject.value.image.preview : gameObject.value.image.main)
 
-const canAdd = ['pony', 'shop'].includes(gameObject.category)
+const canAdd = computed(() => ['pony', 'shop'].includes(gameObject.value.category))
 
 // const stars = computed({
 //   get() {
@@ -58,7 +58,7 @@ const shopInfo = computedAsync(
     async () => {
         // console.log('getting shop data for', gameObject.id)
         // return null
-        return await shopManager.getShopInfo(gameObject)
+        return await shopManager.getShopInfo(gameObject.value)
     },
     null,
     { evaluating: gettingShopInfo, lazy: true, shallow: true },
@@ -67,6 +67,7 @@ const shopInfo = computedAsync(
 
 <template>
     <GameCard
+        class="object-card"
         :title="name"
         :image="staticImage(image)"
         :alt="name"

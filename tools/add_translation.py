@@ -15,7 +15,7 @@ PERCENT_PATTERN = r'\%[0 #+-]?[0-9*]*\.?\d*([hl]{0,2}|[jztL])?[diuoxXeEfgGaAcpsS
 LOCALES = {
     "english": "en",   
     "arabic": "ar",    
-    "chinese": "zh-CH",
+    "chinese": "zh",
     "french": "fr",    
     "german": "de",    
     "italian": "it",   
