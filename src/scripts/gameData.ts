@@ -1,4 +1,4 @@
-import { transformName, fixName } from './common'
+import { transformName, fixName, removeSymbols } from './common'
 import type { CategoryName, CategoryType, GAME_DATA_Type, GameObject, GameObjectId, Language } from '../types/gameDataTypes'
 import GAME_DATA from '../assets/game-data/game-data.json'
 import { computed } from 'vue'
@@ -115,15 +115,19 @@ function translateName(gameObject: GameObject) {
   })
 }
 
-function getSearchText(gameObject: GameObject) {
-    let text = [gameObject.name[language.value.key]]
+function getNames(gameObject: GameObject) {
+    let names = [gameObject.name[language.value.key]]
     if (gameObject.preferred_name && gameObject.preferred_name[language.value.key]) {
-        text.push(gameObject.preferred_name[language.value.key])
+        names.push(gameObject.preferred_name[language.value.key])
     }
     if (gameObject.alt_name && gameObject.alt_name[language.value.key]) {
-        text.push(...gameObject.alt_name[language.value.key])
+        names.push(...gameObject.alt_name[language.value.key])
     }
-    return text
+    return names
+}
+
+function getNamesForSearch(gameObject: GameObject) {
+    return getNames(gameObject).map(name => removeSymbols(name))
 }
 
 export default {
@@ -133,5 +137,6 @@ export default {
     getObject,
     searchName,
     translateName,
-    getSearchText,
+    getNames,
+    getNamesForSearch
 }

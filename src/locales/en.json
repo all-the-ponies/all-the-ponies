@@ -264,7 +264,8 @@
     }
   },
   "search": {
-    "title": "Search"
+    "title": "Search",
+    "no_results": "No results"
   },
   "contact": {
     "title": "Contact",

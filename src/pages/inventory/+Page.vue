@@ -199,7 +199,7 @@ const itemGap = useRem(.3)
             <ClientOnly>
                 <SearchComponent
                     :data="gameObjects.map(objectId => gameData.getObject(objectId, category))"
-                    :get-search-text="gameData.getSearchText"
+                    :get-search-text="gameData.getNames"
                     :filters="filterFunctions"
                     :sorters="sortFunctions"
                     :query="query"

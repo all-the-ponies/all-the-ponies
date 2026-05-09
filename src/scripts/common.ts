@@ -28,6 +28,13 @@ export function fixName(name: string) {
   return name
 }
 
+export function removeSymbols(str: string) {
+  return normalize(str)
+          .replaceAll(/[^\p{L}\s\d]/gmu, ' ')
+          .replaceAll(/\s+/gm, ' ')
+          .trim()
+}
+
 export function transformName(name: string, options = {
         ignoreSpaces: true,
         caseSensitive: false,
@@ -49,8 +56,8 @@ export function transformName(name: string, options = {
         name = name.toLocaleLowerCase()
     }
     if (options.ignorePunctuation) {
-        name = name.replaceAll('-', ' ')
-        name = name.replaceAll(/[,.()"'’]/gm, '')
+        // name = name.replaceAll('-', ' ')
+        name = name.replaceAll(/[^\p{L}\s\d]/gmu, ' ')
     }
     if (options.ignoreAccents) {
         name = normalize(name)

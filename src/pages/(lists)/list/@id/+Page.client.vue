@@ -106,7 +106,7 @@ const itemGap = useRem(.3)
         <section class="section">
             <SearchComponent
                 :data="objects"
-                :get-search-text="(item) => gameData.getSearchText(item.item)"
+                :get-search-text="(item) => gameData.getNames(item.item)"
                 :placeholder="$t('lists.messages.wishlist')"
                 :sorters="sortFunctions"
                 save-url

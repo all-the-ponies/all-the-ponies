@@ -85,7 +85,8 @@ const itemGap = useRem(.3)
     <SearchComponent
         v-if="category != null"
         :data="objects"
-        :get-search-text="gameData.getSearchText"
+        :get-search-text="gameData.getNames"
+        :get-exact-search-text="(item) => item.id"
         :sorters="sortFunctions"
         :filters="filterFunctions"
         :placeholder="$t(CATEGORIES[category].string)"

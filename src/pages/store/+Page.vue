@@ -123,7 +123,8 @@ const itemGap = useRem(.3)
         <h1>{{ $t('store.title') }}</h1>
         <SearchComponent
             :data="shop ? shownObjects : []"
-            :get-search-text="gameData.getSearchText"
+            :get-search-text="gameData.getNamesForSearch"
+            :get-exact-search-text="(item) => item.id"
             :filters="filterFunctions"
             :sorters="sortFunctions"
             :query="query"

@@ -10,6 +10,7 @@ import createFuzzySearch from '@nozbe/microfuzz'
 import { isClient, useElementSize, useMounted } from '@vueuse/core'
 import { RecycleScroller, WindowScroller } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+import { removeSymbols } from '@/scripts/common'
 
 const pageContext = usePageContext()
 const isMounted = useMounted()
@@ -19,7 +20,8 @@ const perPage = ref(250)
 
 const props = withDefaults(defineProps<{
         data: ITEM[],
-        getSearchText(item: ITEM),
+        getSearchText(item: ITEM): string[],
+        getExactSearchText?(item: ITEM): string,
         filters?: Record<string, FilterFunctionsType>,
         sorters?: Record<string, SortFunctionsType>,
         query?: Record<string, string | string[] | number | null>,
@@ -268,8 +270,8 @@ const computedItems = computed(() => {
     }
 
     return createFuzzySearch(itemsToSearch, {
-        getText: props.getSearchText,
-        strategy: 'smart',
+        getText: (item: ITEM) => props.getSearchText(item).map(text => removeSymbols(text)),
+        strategy: 'aggressive',
     })
 })
 
@@ -277,25 +279,29 @@ const searchResults = computed(() => {
     
     let searchStart = performance.now()
 
-    let results: ITEM[]
+    let results: ITEM[] = []
 
     const query = searchQuery.value.trim()
 
     if (!query) {
         results = filteredItems.value
     } else {
-        results = computedItems.value(searchQuery.value).map(item => item.item)
-    }
-    
-    if (isClient) {
-        console.debug(`Search time ${(performance.now() - searchStart) / 1000}s`)
+        if (props.getExactSearchText) {
+            results = filteredItems.value.filter((item) => {
+                const text = props.getExactSearchText(item)
+                return text.toLocaleLowerCase() == query.toLocaleLowerCase()
+            })
+        }
+        if (results.length == 0) {
+            results = computedItems.value(removeSymbols(query)).map(item => item.item)
+        }
     }
     return results
 })
 
 const sortedResults = computed(() => {
     let results = searchResults.value
-    if (!searchQuery.value && sortMethod.value === 'relevance' && defaultSortMethod.value) {
+    if (!searchQuery.value.trim() && sortMethod.value === 'relevance' && defaultSortMethod.value) {
         results = sortItems(results, props.sorters[defaultSortMethod.value].check)
     } else if (sortMethod.value !== 'relevance') {
         results = sortItems(results, sortFunction.value)
@@ -309,12 +315,9 @@ const sortedResults = computed(() => {
 const shownResults = computed(() => {
     let results = sortedResults.value
     
-    let start = (Math.max(1, currentPage.value) - 1) * perPage.value
+    // We no longer split by page
+    // let start = (Math.max(1, currentPage.value) - 1) * perPage.value
     // results = results.slice(start, start + perPage.value)
-    console.log('getting shown results', currentPage.value)
-    if (isClient) {
-        console.log('results', results)
-    }
 
     return results
 })
@@ -391,9 +394,12 @@ watch(
                 :param="props.pageParam"
             ></Paginator> -->
 
+            <section v-if="!items.length" class="empty">
+                <slot name="empty"></slot>
+            </section>
             <section
                 ref="scroller"
-                v-if="items.length > 0"
+                v-else-if="shownResults.length > 0"
                 class="search-results"
             >
                 <WindowScroller
@@ -415,7 +421,7 @@ watch(
                 <!-- <div class="item" v-for="item in shownResults" :key="item.id" :data-key="item.id"> -->
             </section>
             <section v-else class="empty">
-                <slot name="empty"></slot>
+                <slot name="no-results">{{ $t('search.no_results') }}</slot>
             </section>
         
             <!-- <Paginator
