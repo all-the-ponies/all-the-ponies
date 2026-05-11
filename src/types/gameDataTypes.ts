@@ -70,6 +70,7 @@ export interface GAME_DATA_Type {
         avatar: CategoryData<AvatarType>,
     },
     group_quests: GroupQuests,
+    fortune_shop: FortuneShop,
 }
 
 interface CategoryData<T> {
@@ -235,4 +236,26 @@ interface GroupQuests {
         description: TranslatableString,
         pro: string[],
     }}
+}
+
+
+export type FortuneShopRarities = 'rare' | 'common' | 'uncommon'
+export type FortuneShopPrices = 'regular' | 'discount' | 'super' | 'ultra'
+
+export interface FortuneShop {
+    max_items_in_shop: number,
+    refresh_cost: number,
+    item_rarity_chances: Record<FortuneShopRarities, number>,
+    item_price_chances: Record<FortuneShopPrices, number>,
+    items: Record<FortuneShopRarities, Record<GameObjectId, FortuneShopItem>>,
+}
+
+export interface FortuneShopItem {
+    id: GameObjectId,
+    rarity: FortuneShopRarities,
+    amount: number,
+    prices: {
+        regular: Record<FortuneShopPrices, number>,
+        royal: Record<FortuneShopPrices, number>,
+    },
 }

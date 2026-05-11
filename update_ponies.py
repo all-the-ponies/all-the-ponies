@@ -355,6 +355,7 @@ class GetGameData:
         self.get_avatars()
         self.get_items()
         self.get_avatars()
+        self.get_fortune_shop()
 
         self.get_group_quests()
 
@@ -383,15 +384,15 @@ class GetGameData:
         self.questtable = QuestTable(os.path.join(self.game_folder, 'questtable.xml'))
         self.cinematictable = CinematicTable(os.path.join(self.game_folder, 'cinematictable.xml'))
 
-        self.get_sieges()
+        # self.get_sieges()
 
         console.print('saving game data')
         with open(self.output_game_data, 'w', encoding = 'utf-8') as file:
             json.dump(self.game_data, file, indent = 2, ensure_ascii = False)
         
-        console.print('saving event data')
-        with open(self.output_event_data, 'w', encoding = 'utf-8') as file:
-            json.dump(self.event_data, file, indent = 2, ensure_ascii = False)
+        # console.print('saving event data')
+        # with open(self.output_event_data, 'w', encoding = 'utf-8') as file:
+        #     json.dump(self.event_data, file, indent = 2, ensure_ascii = False)
         
     
     def get_game_file(
@@ -1179,6 +1180,42 @@ class GetGameData:
 
             self.get_price(avatar_info)
     
+    def get_fortune_shop(self):
+        fortune_shop_data = self.defaultGameCampaign.get('global_defines', {}).get(
+            'fortune_shop_data',
+            self.defaultGameCampaign.get('global_defines', {}).get('personal_shop_data')
+        )
+
+        console.print('Getting fortune shop')
+
+        if not fortune_shop_data:
+            console.log('No fortune shop data')
+            return
+        
+        fortune_shop = self.game_data.setdefault('fortune_shop', {})
+        fortune_shop['max_items_in_shop'] = fortune_shop_data.get('max_items_in_shop')
+        fortune_shop['refresh_cost'] = fortune_shop_data['refresh_cost']
+        fortune_shop['item_rarity_chances'] = fortune_shop_data['item_rarity_chances']
+        fortune_shop['item_price_chances'] = fortune_shop_data['item_price_chances']
+        fortune_shop['items'] = {}
+
+        price_names = ['regular', 'discount', 'super', 'ultra']
+
+        for rarity, items in fortune_shop_data['item_lists'].items():
+            fortune_shop['items'][rarity] = {}
+            for item in track(
+                items,
+                description = f'Getting {rarity} prices...',
+            ):
+                fortune_shop['items'][rarity][item['id']] = item_info = {}
+
+                item_info['id'] = item['id']
+                item_info['rarity'] = rarity
+                item_info['amount'] = item.get('amount', 1)
+                item_info['prices'] = {
+                    'regular': dict(zip(price_names, item['price_list'])),
+                    'royal': dict(zip(price_names, item['sub_price_list'])),
+                }
 
     def get_sieges(self):
         from luna_kit.typings.defaultGameCampaign import GlobalDefines_EventConversion

@@ -1,5 +1,5 @@
 import { transformName, fixName, removeSymbols } from './common'
-import type { CategoryName, CategoryType, GAME_DATA_Type, GameObject, GameObjectId, Language } from '../types/gameDataTypes'
+import type { CategoryName, CategoryType, FortuneShopItem, GAME_DATA_Type, GameObject, GameObjectId, Language } from '../types/gameDataTypes'
 import GAME_DATA from '../assets/game-data/game-data.json'
 import { computed } from 'vue'
 import { language } from '../globals'
@@ -42,6 +42,16 @@ function getObject<T extends CategoryName>(
             return null
         }
         return GAME_DATA.categories[category as CategoryName]?.objects[id]
+    }
+    return null
+}
+
+function getFortuneShopData(id: GameObjectId): FortuneShopItem | null {
+    for (let items of Object.values(GAME_DATA.fortune_shop.items)) {
+        let item = items[id]
+        if (item) {
+            return item
+        }
     }
     return null
 }
@@ -138,5 +148,6 @@ export default {
     searchName,
     translateName,
     getNames,
-    getNamesForSearch
+    getNamesForSearch,
+    getFortuneShopData,
 }
