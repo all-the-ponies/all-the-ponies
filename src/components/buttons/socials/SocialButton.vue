@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<{
 
 <style lang="css" scoped>
 .social-button {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
@@ -34,7 +34,12 @@ const props = withDefaults(defineProps<{
     font-weight: bold;
     color: white;
     
-    transition: background-color 150ms linear;
+    transition: background-color 150ms linear,
+                transform 150ms ease-in-out;
+}
+
+.social-button:hover {
+    transform: scale(1.1);
 }
 
 .social-logo {

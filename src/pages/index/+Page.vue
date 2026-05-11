@@ -7,9 +7,16 @@ import type { AvatarType, DecorType, HouseType, PonyType, ShopType } from '@/typ
 import { Config } from 'vike-vue/Config'
 import Head from '../+Head.vue'
 import { h } from 'vue'
+import links from '@/globals/links';
+
 
 const BASE_URL = __BASE_URL__ // __BASE_URL__ cannot be used in the template
 import { onMounted, ref } from 'vue';
+import DiscordButton from '@/components/buttons/socials/DiscordButton.vue';
+import GitHubButton from '@/components/buttons/socials/GitHubButton.vue';
+import KofiButton from '@/components/buttons/socials/KofiButton.vue';
+import RedditButton from '@/components/buttons/socials/RedditButton.vue';
+import WikiButton from '@/components/buttons/socials/WikiButton.vue';
 
 
 const pony = ref<PonyType>(null)
@@ -111,6 +118,22 @@ function openSidebar() {
                 </GameCard>
             </div>
         </section>
+        <section class="section">
+            <h2>{{ $t('home.message.links') }}</h2>
+            <div>
+                <DiscordButton :href="links.discordServer">{{ $t('socials.discord') }}</DiscordButton>
+                <GitHubButton :href="links.githubRepo">{{ $t('socials.github') }}</GitHubButton>
+                <KofiButton :href="links.kofi">{{ $t('socials.donate') }}</KofiButton>
+            </div>
+        </section>
+        <section class="section">
+            <h2>{{ $t('home.message.affiliates') }}</h2>
+            <div>
+                <DiscordButton :href="links.mlpGameHangoutServer">{{ $t('socials.mlp_game_hangout') }}</DiscordButton>
+                <WikiButton :href="links.wiki">{{ $t('socials.wiki') }}</WikiButton>
+                <RedditButton :href="links.reddit">r/MLPIOS</RedditButton>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -128,6 +151,7 @@ function openSidebar() {
     justify-content: center;
 }
 
-.thing-card {
+.social-button {
+    margin: 0.5rem;
 }
 </style>

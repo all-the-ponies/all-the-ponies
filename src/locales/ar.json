@@ -18,12 +18,21 @@
   "home": {
     "description": "",
     "message": {
-      "game_name": ""
+      "game_name": "",
+      "links": "",
+      "affiliates": ""
     },
     "things_to_do": {
       "title": "",
       "browse": ""
     }
+  },
+  "socials": {
+    "discord": "",
+    "mlp_game_hangout": "",
+    "github": "",
+    "wiki": "",
+    "donate": ""
   },
   "about": {
     "title": "نبذة",

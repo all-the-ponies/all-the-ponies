@@ -18,12 +18,21 @@
   "home": {
     "description": "Узнайте информацию о {game_link} и следите за тем, что у вас есть!",
     "message": {
-      "game_name": "My Little Pony: Магия Принцесс"
+      "game_name": "My Little Pony: Магия Принцесс",
+      "links": "",
+      "affiliates": ""
     },
     "things_to_do": {
       "title": "Что осталось сделать",
       "browse": "Навигация"
     }
+  },
+  "socials": {
+    "discord": "",
+    "mlp_game_hangout": "",
+    "github": "",
+    "wiki": "",
+    "donate": ""
   },
   "about": {
     "title": "О сайте",

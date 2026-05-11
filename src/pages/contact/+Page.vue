@@ -91,4 +91,8 @@ import { Config } from 'vike-vue/Config'
                 0px 0px 5px hsl(211, 30%, 30%);
     transform: scale(105%);
 }
+
+.contact-button:hover:hover {
+    transform: revert;
+}
 </style>

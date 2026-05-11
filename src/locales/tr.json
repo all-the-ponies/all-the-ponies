@@ -18,12 +18,21 @@
   "home": {
     "description": "{game_link} hakkında bilgi al ve ilerlemeni takip et!",
     "message": {
-      "game_name": "My Little Pony: Büyülü Prenses"
+      "game_name": "My Little Pony: Büyülü Prenses",
+      "links": "",
+      "affiliates": ""
     },
     "things_to_do": {
       "title": "Yapılacak Şeyler",
       "browse": "Göz At"
     }
+  },
+  "socials": {
+    "discord": "",
+    "mlp_game_hangout": "",
+    "github": "",
+    "wiki": "",
+    "donate": ""
   },
   "about": {
     "title": "Hakkında",

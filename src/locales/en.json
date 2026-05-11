@@ -18,12 +18,21 @@
   "home": {
     "description": "Get info about {game_link} and track what you have!",
     "message": {
-      "game_name": "My Little Pony: Magic Princess"
+      "game_name": "My Little Pony: Magic Princess",
+      "links": "LInks",
+      "affiliates": "Affiliates"
     },
     "things_to_do": {
       "title": "Things To Do",
       "browse": "Browse"
     }
+  },
+  "socials": {
+    "discord": "Discord",
+    "mlp_game_hangout": "MLP Game Hangout",
+    "github": "GitHub",
+    "wiki": "Wiki",
+    "donate": "Donate"
   },
   "about": {
     "title": "About",
