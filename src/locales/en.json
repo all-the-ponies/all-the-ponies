@@ -11,7 +11,7 @@
     },
     "corrupt_save": {
       "title": "Important",
-      "body": "A recent bug has been found that can cause your cloud save to be corrupt. You can check if you're affected by clicking \"@:notices.corrupt_save.button\"",
+      "body": "A recent bug has been found that can cause your cloud save to be corrupt. You can check if you're affected by clicking \"@:{'notices.corrupt_save.button'}\"",
       "button": "Learn more"
     }
   },
