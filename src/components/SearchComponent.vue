@@ -510,7 +510,9 @@ watch(
 /* search results */
 
 .search-results {
+    display: grid;
     justify-items: center;
+
     width: 100%;
 
     .scroller {
@@ -518,6 +520,7 @@ watch(
     }
 
     .item {
+        display: grid;
         width: 100%;
         height: 100%;
         justify-items: center;

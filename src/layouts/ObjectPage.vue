@@ -61,6 +61,7 @@ const image = computed(() => gameObject.value?.image?.main)
 
 .object-profile {
     text-align: center;
+    display: grid;
     justify-items: center;
 }
 

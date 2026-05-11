@@ -174,6 +174,7 @@ defineExpose({
 
 <style lang="css" scoped>
 .card-container {
+    display: grid;
     justify-items: center;
     margin-bottom: 1rem;
 }
