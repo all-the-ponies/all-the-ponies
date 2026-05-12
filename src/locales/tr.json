@@ -393,5 +393,21 @@
     "messages": {
       "check": "Göz At"
     }
+  },
+  "fortune_shop": {
+    "title": "Talih Dükkanı",
+    "messages": {
+      "regular": "",
+      "royal": "Asil"
+    },
+    "rarities": {
+      "common": "Sıradan",
+      "uncommon": "Sıra Dışı",
+      "rare": "Nadir",
+      "legendary": "Efsanevi"
+    },
+    "price_rarities": {
+      "discount": "İndi̇ri̇m"
+    }
   }
 }

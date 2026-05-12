@@ -12,6 +12,7 @@ import type { AvatarType, DecorType } from '@/types/gameDataTypes';
 import PriceHistory from '@/components/tables/PriceHistory.vue';
 import type { PriceHistoryType } from '@/scripts/api.types';
 import ObjectPage from '@/layouts/ObjectPage.vue';
+import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 
 
 const pageContext = usePageContext()
@@ -32,6 +33,8 @@ const name = computed(() => {
 })
 
 const pony = computed(() => gameData.getObject(avatar.value.pony, 'pony'))
+
+const fortuneShopData = computed(() => gameData.getFortuneShopData(avatar.value.id))
 
 </script>
 
@@ -77,6 +80,10 @@ const pony = computed(() => gameData.getObject(avatar.value.pony, 'pony'))
             <section class="section" v-if="priceHistory.length">
                 <h2 class="h2">Price History</h2>
                 <PriceHistory :object="avatar.id" :priceHistory="priceHistory"></PriceHistory>
+            </section>
+            <section class="section" v-if="fortuneShopData">
+                <h2 class="h2">{{ $t('fortune_shop.title') }}</h2>
+                <FortuneShopTable :prices="fortuneShopData.prices"></FortuneShopTable>
             </section>
         </template>
     </div>

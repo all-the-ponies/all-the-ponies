@@ -393,5 +393,24 @@
     "messages": {
       "check": "Check"
     }
+  },
+  "fortune_shop": {
+    "title": "Fortune Shop",
+    "messages": {
+      "regular": "Regular",
+      "royal": "Royal"
+    },
+    "price_rarities": {
+      "regular": "Regular",
+      "discount": "Discount",
+      "super": "Super",
+      "ultra": "Ultra"
+    },
+    "rarities": {
+      "common": "Common",
+      "uncommon": "Uncommon",
+      "rare": "Rare",
+      "legendary": "Legendary"
+    }
   }
 }

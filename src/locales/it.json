@@ -393,5 +393,21 @@
     "messages": {
       "check": "Controlla"
     }
+  },
+  "fortune_shop": {
+    "title": "Negozio Della Fortuna",
+    "messages": {
+      "regular": "",
+      "royal": "Reale"
+    },
+    "rarities": {
+      "common": "Comune",
+      "uncommon": "Non Comune",
+      "rare": "Rara",
+      "legendary": "Leggendaria"
+    },
+    "price_rarities": {
+      "discount": "Sconto"
+    }
   }
 }

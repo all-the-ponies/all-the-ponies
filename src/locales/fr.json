@@ -393,5 +393,21 @@
     "messages": {
       "check": "Vérifier"
     }
+  },
+  "fortune_shop": {
+    "title": "Boutique De La Chance",
+    "messages": {
+      "regular": "",
+      "royal": "Royal"
+    },
+    "rarities": {
+      "common": "Commun",
+      "uncommon": "Atypique",
+      "rare": "Rare",
+      "legendary": "Légendaire"
+    },
+    "price_rarities": {
+      "discount": "Rabais"
+    }
   }
 }

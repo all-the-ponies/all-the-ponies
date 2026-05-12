@@ -393,5 +393,21 @@
     "messages": {
       "check": "Confere"
     }
+  },
+  "fortune_shop": {
+    "title": "Loja Da Sorte",
+    "messages": {
+      "regular": "",
+      "royal": "Royal"
+    },
+    "rarities": {
+      "common": "Comum",
+      "uncommon": "Incomum",
+      "rare": "Raro",
+      "legendary": "Lendário"
+    },
+    "price_rarities": {
+      "discount": "Desconto"
+    }
   }
 }

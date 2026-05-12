@@ -8,6 +8,9 @@
 th {
     /* border: 0.05rem solid var(--pink); */
     padding: var(--padding);
+
+    background-color: var(--pink);
+    color: white;
 }
 
 /* th:first-child:has(th:first-child) {

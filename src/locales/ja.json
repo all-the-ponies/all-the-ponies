@@ -393,5 +393,21 @@
     "messages": {
       "check": "チェック"
     }
+  },
+  "fortune_shop": {
+    "title": "フォーチュン|ショップ",
+    "messages": {
+      "regular": "",
+      "royal": "ロイヤル"
+    },
+    "rarities": {
+      "common": "コモン",
+      "uncommon": "アンコモン",
+      "rare": "レア",
+      "legendary": "レジェンド"
+    },
+    "price_rarities": {
+      "discount": "わり引き"
+    }
   }
 }

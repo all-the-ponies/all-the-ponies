@@ -393,5 +393,21 @@
     "messages": {
       "check": "Проверить"
     }
+  },
+  "fortune_shop": {
+    "title": "Лавка Фортуны",
+    "messages": {
+      "regular": "",
+      "royal": "Клуб"
+    },
+    "rarities": {
+      "common": "Обычный",
+      "uncommon": "Необычный",
+      "rare": "Редкий",
+      "legendary": "Легендарный"
+    },
+    "price_rarities": {
+      "discount": "Скидка"
+    }
   }
 }

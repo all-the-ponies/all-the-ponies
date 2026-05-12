@@ -17,6 +17,7 @@ import { useData } from 'vike-vue/useData';
 import PriceHistory from '@/components/tables/PriceHistory.vue';
 import type { PriceHistoryType } from '@/scripts/api.types';
 import ObjectPage from '@/layouts/ObjectPage.vue';
+import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 
 const pageContext = usePageContext()
 const data = useData<{shop: ShopType, priceHistory: PriceHistoryType | null}>()
@@ -57,6 +58,8 @@ const productCurrency = computed(() => {
         return null
     }
 })
+
+const fortuneShopData = computed(() => gameData.getFortuneShopData(shop.value.id))
 
 </script>
 
@@ -181,6 +184,10 @@ const productCurrency = computed(() => {
             <section class="section" v-if="priceHistory.length">
                 <h2 class="h2">Price History</h2>
                 <PriceHistory :object="shop.id" :priceHistory="priceHistory"></PriceHistory>
+            </section>
+            <section class="section" v-if="fortuneShopData">
+                <h2 class="h2">{{ $t('fortune_shop.title') }}</h2>
+                <FortuneShopTable :prices="fortuneShopData.prices"></FortuneShopTable>
             </section>
         </template>
     </div>

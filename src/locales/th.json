@@ -393,5 +393,21 @@
     "messages": {
       "check": "ตรวจสอบ"
     }
+  },
+  "fortune_shop": {
+    "title": "ร้านเสี่ยงทาย",
+    "messages": {
+      "regular": "",
+      "royal": "รอยัล"
+    },
+    "rarities": {
+      "common": "ธรรมดา",
+      "uncommon": "ไม่ธรรมดา",
+      "rare": "หายาก",
+      "legendary": "ในตำนาน"
+    },
+    "price_rarities": {
+      "discount": "ลดราคา"
+    }
   }
 }

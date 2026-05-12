@@ -393,5 +393,21 @@
     "messages": {
       "check": "Ver"
     }
+  },
+  "fortune_shop": {
+    "title": "Tienda De Fortuna",
+    "messages": {
+      "regular": "",
+      "royal": "Real"
+    },
+    "rarities": {
+      "common": "Común",
+      "uncommon": "Poco Común",
+      "rare": "Raro",
+      "legendary": "Legendario"
+    },
+    "price_rarities": {
+      "discount": "Descuento"
+    }
   }
 }

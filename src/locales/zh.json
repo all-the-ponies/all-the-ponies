@@ -393,5 +393,21 @@
     "messages": {
       "check": "查看"
     }
+  },
+  "fortune_shop": {
+    "title": "福运商店",
+    "messages": {
+      "regular": "",
+      "royal": "皇家"
+    },
+    "rarities": {
+      "common": "普通",
+      "uncommon": "特殊",
+      "rare": "稀有",
+      "legendary": "传奇"
+    },
+    "price_rarities": {
+      "discount": "折扣"
+    }
   }
 }

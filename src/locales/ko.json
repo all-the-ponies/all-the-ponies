@@ -393,5 +393,21 @@
     "messages": {
       "check": "확인"
     }
+  },
+  "fortune_shop": {
+    "title": "행운 상점",
+    "messages": {
+      "regular": "",
+      "royal": "로열"
+    },
+    "rarities": {
+      "common": "일반",
+      "uncommon": "고급",
+      "rare": "희귀",
+      "legendary": "전설"
+    },
+    "price_rarities": {
+      "discount": "할인"
+    }
   }
 }

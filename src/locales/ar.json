@@ -393,5 +393,21 @@
     "messages": {
       "check": "تحقق"
     }
+  },
+  "fortune_shop": {
+    "title": "متجر الحظ",
+    "messages": {
+      "regular": "",
+      "royal": "ملكي"
+    },
+    "rarities": {
+      "common": "شائع",
+      "uncommon": "غير شائع",
+      "rare": "نادر",
+      "legendary": "أسطوري"
+    },
+    "price_rarities": {
+      "discount": "خصم"
+    }
   }
 }

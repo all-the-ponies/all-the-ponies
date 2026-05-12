@@ -393,5 +393,21 @@
     "messages": {
       "check": "Überprüfen"
     }
+  },
+  "fortune_shop": {
+    "title": "Glücksladen",
+    "messages": {
+      "regular": "",
+      "royal": "Königlich"
+    },
+    "rarities": {
+      "common": "Gewöhnlich",
+      "uncommon": "Ungewöhnlich",
+      "rare": "Selten",
+      "legendary": "Legendär"
+    },
+    "price_rarities": {
+      "discount": "Rabatt"
+    }
   }
 }

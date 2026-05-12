@@ -21,6 +21,7 @@ import type { PonyType } from '@/types/gameDataTypes'
 import PriceHistory from '@/components/tables/PriceHistory.vue'
 import type { PriceHistoryType } from '@/scripts/api.types'
 import ObjectPage from '@/layouts/ObjectPage.vue';
+import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 
 const isMounted = useMounted()
 
@@ -92,6 +93,8 @@ const description = computed(() => {
 
 const house = computed(() => gameData.getObject(pony.value?.house))
 const houseName = computed(() => house.value?.name[language.value.key])
+
+const fortuneShopData = computed(() => gameData.getFortuneShopData(pony.value.id))
 
 </script>
 
@@ -239,6 +242,10 @@ const houseName = computed(() => house.value?.name[language.value.key])
             <section class="section" v-if="filteredPriceHistory.length">
                 <h2 class="h2">Price History</h2>
                 <PriceHistory :object="pony.id" :priceHistory="filteredPriceHistory"></PriceHistory>
+            </section>
+            <section class="section" v-if="fortuneShopData">
+                <h2 class="h2">{{ $t('fortune_shop.title') }}</h2>
+                <FortuneShopTable :prices="fortuneShopData.prices"></FortuneShopTable>
             </section>
         </div>
     </div>
