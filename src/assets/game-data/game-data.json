@@ -1,7 +1,7 @@
 {
   "file_version": 3,
   "game_version": "11.1.0k",
-  "content_version": "11.1.0.1",
+  "content_version": "11.1.0.3",
   "categories": {
     "pony": {
       "clones": {},
@@ -278836,6 +278836,372 @@
           },
           "id": "Pony_Mean_Sunset_Shimmer",
           "category": "pony"
+        },
+        "Pony_Sunset_Shimmer_Hippogriff": {
+          "locked": false,
+          "index": 2320,
+          "note": {},
+          "name": {
+            "thai": "ฮิปโปกริฟฟ์ซันเซ็ตชิมเมอร์",
+            "korean": "Sunset Shimmer Hippogriff",
+            "russian": "Гиппогриф Сансет Шиммер",
+            "english": "Sunset Shimmer Hippogriff",
+            "chinese": "余晖烁烁马鹫",
+            "french": "Sunset Shimmer Hippogriff",
+            "arabic": "سنسيت شيمر هيبوغريف",
+            "turkish": "Sunset Shimmer Hippogriff",
+            "japanese": "サンセットシマー・ヒッポグリフ",
+            "spanish": "Sunset Shimmer Hippogriff",
+            "brazilian portuguese": "Sunset Shimmer Hippogriff",
+            "italian": "Sunset Shimmer Hippogriff",
+            "german": "Sunset Shimmer Hippogriff"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "ชื่นชอบปีกใหม่ที่ใช้ทำลายคู่แข่งระหว่างการแข่งขัน",
+            "korean": "새로 얻은 날개를 매우 아끼며, 이를 이용하여 경주에서 경쟁자들을 물리칩니다.",
+            "russian": "Обожает свои новообретенные крылья, которые использует для ПОБЕДЫ над соперниками во время гонок.",
+            "english": "Adores her newfound wings, which she uses to DESTROY the competition during races.",
+            "chinese": "她对自己新长出的翅膀爱不释手，在比赛时更是靠它们大杀四方，碾压对手。",
+            "french": "Adore ses ailes nouvellement acquises, qu'elle utilise pour DÉTRUIRE la concurrence lors des courses.",
+            "arabic": "تعشق جناحيها اللذين عثرت عليهما مؤخرًا، وتستخدمهما لسحق المنافسين خلال السباقات.",
+            "turkish": "Yeni kazandığı kanatlarını çok seviyor ve onları yarışlar sırasında rekabeti YOK ETMEK için kullanıyor.",
+            "japanese": "新しく手に入れたつばさが大のお気に入り！レースではそのつばさでライバルたちをあっとうするよ。",
+            "spanish": "Adora sus alas recién descubiertas, las cuales emplea para destruir a la competencia en cada carrera.",
+            "brazilian portuguese": "Adora suas novas asas, que ela utiliza para DESTRUIR a concorrência nas corridas.",
+            "italian": "Adora le sue nuove ali, che usa per DISTRUGGERE gli avversari durante le gare.",
+            "german": "Sie liebt ihre neu gewonnenen Flügel, mit denen sie die Konkurrenz bei Rennen VERNICHTET."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Sunset_Shimmer_Hippogriff.png",
+            "main": "game/pony/main/Pony_Sunset_Shimmer_Hippogriff.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Mount_Aris",
+          "inns": [],
+          "changeling": {
+            "id": "Pony_Sunset_Shimmer_Seapony",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": false,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 45
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 900
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Sunset_Shimmer_Hippogriff",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Sunset_Shimmer_Hippogriff"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Sunset_Shimmer_Hippogriff_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Sunset_Shimmer_Hippogriff_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Sunset_Shimmer_Hippogriff"
+              }
+            }
+          },
+          "id": "Pony_Sunset_Shimmer_Hippogriff",
+          "category": "pony"
+        },
+        "Pony_Sunset_Shimmer_Seapony": {
+          "locked": false,
+          "index": 2321,
+          "note": {},
+          "name": {
+            "thai": "โพนี่น้ำซันเซ็ตชิมเมอร์",
+            "korean": "Sunset Shimmer Seapony",
+            "russian": "Морская пони Сансет Шиммер",
+            "english": "Sunset Shimmer Seapony",
+            "chinese": "余晖烁烁海马",
+            "french": "Sunset Shimmer Seapony",
+            "arabic": "سنسيت شيمر مهرة البحر",
+            "turkish": "Sunset Shimmer Seapony",
+            "japanese": "サンセットシマー・シーポニー",
+            "spanish": "Sunset Shimmer Seapony",
+            "brazilian portuguese": "Sunset Shimmer Seapony",
+            "italian": "Sunset Shimmer Seapony",
+            "german": "Sunset Shimmer Seapony"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "ชินกับการเปลี่ยนร่างหลายรูปแบบ นี่ก็เลยง่ายอย่างกับว่ายน้ำในทะเลเลย",
+            "korean": "여러 형태로 존재하는 데 익숙해서, 이것은 바다에서의 산책, 아니, 노를 젓는 것과 같습니다.",
+            "russian": "Она уже привыкла к разным формам, так что в этой нет ничего сложного.",
+            "english": "She's used to being many different forms, so this is a walk, er, paddle in the sea.",
+            "chinese": "她她早就习惯了变幻各种形态，所以这不过是，呃，算是在海里划划水吧。",
+            "french": "Elle a l'habitude de prendre de nombreuses formes différentes, donc c'est une promenade, euh, nage de santé.",
+            "arabic": "اعتادت أن تأخذ أشكالاً متنوعة، لذا فالأمر بالنسبة لها شديد السهولة.",
+            "turkish": "O, birçok farklı formda olmaya alışkın. Bu onun için denizde bir yürüyüş yapmak, pardon, kürek çekmek gibi.",
+            "japanese": "いろんなすがたになるのにはなれてるから、このすがたもへっちゃら。海の中でもスイスイ進めるよ。",
+            "spanish": "Está acostumbrada a tener muchas formas diferentes, así que esto es coser y cantar... bueno, nadar.",
+            "brazilian portuguese": "Está acostumada a ter várias formas diferentes, então isso é um passeio, ou melhor, um mergulho no mar.",
+            "italian": "È abituata ad avere molte forme diverse, quindi questa è una passeggiata, ehm, una nuotata.",
+            "german": "Sie ist es gewohnt, viele verschiedene Formen anzunehmen, daher ist das hier ein Spaziergang, äh, ein Paddelschlag im Meer."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Sunset_Shimmer_Seapony.png",
+            "main": "game/pony/main/Pony_Sunset_Shimmer_Seapony.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Mount_Aris",
+          "inns": [],
+          "changeling": {
+            "id": "Pony_Sunset_Shimmer_Hippogriff",
+            "IAmAlterSet": true
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": true,
+          "rewards": [
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": false,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 30
+          },
+          "arrival_xp": 45,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 800
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Sunset_Shimmer_Seapony",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Sunset_Shimmer_Seapony"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Sunset_Shimmer_Seapony_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Sunset_Shimmer_Seapony_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Sunset_Shimmer_Seapony"
+              }
+            }
+          },
+          "id": "Pony_Sunset_Shimmer_Seapony",
+          "category": "pony"
+        },
+        "Pony_Chaos_Future_Flurry_Heart": {
+          "locked": false,
+          "index": 2322,
+          "note": {},
+          "name": {
+            "thai": "เฟลอร์รี่ฮาร์ทอนาคตโกลาหล",
+            "korean": "Chaos Future Flurry Heart",
+            "russian": "Фларри Харт из хаотичного будущего",
+            "english": "Chaos Future Flurry Heart",
+            "chinese": "混沌未来风雪之心",
+            "french": "Chaos Future Flurry Heart",
+            "arabic": "فلوري هارت الفوضوية المستقبلية",
+            "turkish": "Chaos Future Flurry Heart",
+            "japanese": "みらいのカオス・フルーリーハート",
+            "spanish": "Chaos Future Flurry Heart",
+            "brazilian portuguese": "Chaos Future Flurry Heart",
+            "italian": "Chaos Future Flurry Heart",
+            "german": "Chaos Future Flurry Heart"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "ถ้าคุณคิดว่าทารกอะลิคอร์นราชวงศ์นั้นป่วนแล้ว คิดใหม่นะ!",
+            "korean": "로열 앨리컨 아기들이 시끄럽고 정신 없다고 생각했다면, 다시 생각해보세요!",
+            "russian": "Если вы думали, что младенцы-аликорны королевских кровей несут хаос, подумайте еще раз!",
+            "english": "If you thought royal alicorn babies were chaotic, think again!",
+            "chinese": "如果你觉得皇家空角兽宝宝已经很让人头大了，那你可就大错特错了！",
+            "french": "Si tu pensais que les bébés alicornes royaux étaient chaotiques, détrompe-toi !",
+            "arabic": "إذا كنت تعتقد أن أطفال اليونيكورن الملكيين كانوا فوضويين، فكر مجددًا!",
+            "turkish": "Kaotik olanın asil alicorn yavruları olduğunu düşünüyorsan, tekrar düşün deriz!",
+            "japanese": "王族のアリコーンの赤ちゃんがカオスだと思ってた？それいじょうかもしれないよ！",
+            "spanish": "Si creías que los bebés alicornio reales eran caóticos, ¡aún no has visto nada!",
+            "brazilian portuguese": "Se você achava que bebês unicórnios da realeza eram caóticos, você não viu nada!",
+            "italian": "Se pensavi che i cuccioli di alicorno reale fossero caotici, ripensaci!",
+            "german": "Wenn du dachtest, dass königliche Alicorn-Babys chaotisch seien, dann hast du noch nicht alles gesehen!"
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Chaos_Future_Flurry_Heart.png",
+            "main": "game/pony/main/Pony_Chaos_Future_Flurry_Heart.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Discord",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": false,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 9
+          },
+          "arrival_xp": 50,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 1000
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Chaos_Future_Flurry_Heart",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Chaos_Future_Flurry_Heart"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Chaos_Future_Flurry_Heart_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Chaos_Future_Flurry_Heart_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Chaos_Future_Flurry_Heart"
+              }
+            }
+          },
+          "id": "Pony_Chaos_Future_Flurry_Heart",
+          "category": "pony"
         }
       }
     },
@@ -286364,7 +286730,8 @@
             "Pony_Grackle_Dyre",
             "Pony_Screwball",
             "Pony_Edgy_Discord",
-            "Pony_Fake_Pony"
+            "Pony_Fake_Pony",
+            "Pony_Chaos_Future_Flurry_Heart"
           ],
           "tags": [],
           "id": "House_Discord",
@@ -289753,8 +290120,8 @@
             "main": "game/house/House_Snowfall_Frost.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "PONYVILLE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -294151,8 +294518,8 @@
             "main": "game/house/House_Retromobile.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "PONYVILLE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -302988,7 +303355,9 @@
             "Pony_Trumpet_Player_Hippogriff",
             "Pony_Trumpet_Player_Seapony",
             "Pony_Elegant_Traveler_Hippogriff",
-            "Pony_Elegant_Traveler_Seapony"
+            "Pony_Elegant_Traveler_Seapony",
+            "Pony_Sunset_Shimmer_Hippogriff",
+            "Pony_Sunset_Shimmer_Seapony"
           ],
           "tags": [],
           "id": "House_Mount_Aris",
@@ -303400,8 +303769,8 @@
             "main": "game/house/House_Crystal_Heart_Foal_Center.png"
           },
           "location": [
-            "CRYSTAL_EMPIRE",
-            "CANTERLOT"
+            "CANTERLOT",
+            "CRYSTAL_EMPIRE"
           ],
           "grid_size": 4,
           "build": {
