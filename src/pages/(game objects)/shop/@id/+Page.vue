@@ -31,6 +31,25 @@ const priceHistory = computed(() => {
 
 const shop = computed(() => data.shop)
 
+const basePrice = computed(() => {
+    const result = {
+        token: shop.value.price?.token,
+        tokens: null,
+        currency: shop.value.price?.base.currency,
+        price: shop.value.price?.base.amount,
+        dailyGoals: shop.value.price?.daily_goals,
+    }
+    if (priceHistory.value.length) {
+        result.currency = priceHistory.value[0].price.base.currency
+        result.price = priceHistory.value[0].price.base.price
+        result.tokens = priceHistory.value[0].price.base.tokens
+    }
+    if (result.currency == 'Lotto') {
+        result.currency = null // hide "Lotto" prices
+    }
+    return result
+})
+
 const name = computed(() => {
     let name = gameData.translateName(shop.value).value
     return name
@@ -86,6 +105,24 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(shop.value.id
                         <tbody>
                             <tr>
                                 <th colspan="2">{{ $t('common.info') }}</th>
+                            </tr>
+                            <tr v-if="(basePrice.currency && basePrice.price) || (basePrice.token && basePrice.tokens)">
+                                <td>{{ $t('common.price') }}</td>
+                                <td>
+                                    <template v-if="basePrice.token && basePrice.tokens">
+                                        <CurrencyImage :object="basePrice.token">
+                                            {{ $n(basePrice.tokens) }}
+                                        </CurrencyImage>
+                                        <template v-if="basePrice.currency && basePrice.price">
+                                            {{}}
+                                            {{ $t('common.or').toLocaleLowerCase() }} 
+                                            {{}}
+                                        </template>
+                                    </template>
+                                    <CurrencyImage v-if="basePrice.currency && basePrice.price" :object="basePrice.currency">
+                                        {{ $n(basePrice.price) }}
+                                    </CurrencyImage>
+                                </td>
                             </tr>
                             <tr>
                                 <td>{{ $t('location.town') }}</td>
