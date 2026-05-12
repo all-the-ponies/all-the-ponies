@@ -400,14 +400,17 @@
       "regular": "",
       "royal": "로열"
     },
+    "price_rarities": {
+      "regular": "",
+      "discount": "할인",
+      "super": "",
+      "ultra": ""
+    },
     "rarities": {
       "common": "일반",
       "uncommon": "고급",
       "rare": "희귀",
       "legendary": "전설"
-    },
-    "price_rarities": {
-      "discount": "할인"
     }
   }
 }

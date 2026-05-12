@@ -400,14 +400,17 @@
       "regular": "",
       "royal": "皇家"
     },
+    "price_rarities": {
+      "regular": "",
+      "discount": "折扣",
+      "super": "",
+      "ultra": ""
+    },
     "rarities": {
       "common": "普通",
       "uncommon": "特殊",
       "rare": "稀有",
       "legendary": "传奇"
-    },
-    "price_rarities": {
-      "discount": "折扣"
     }
   }
 }

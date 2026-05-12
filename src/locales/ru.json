@@ -400,14 +400,17 @@
       "regular": "",
       "royal": "Клуб"
     },
+    "price_rarities": {
+      "regular": "",
+      "discount": "Скидка",
+      "super": "",
+      "ultra": ""
+    },
     "rarities": {
       "common": "Обычный",
       "uncommon": "Необычный",
       "rare": "Редкий",
       "legendary": "Легендарный"
-    },
-    "price_rarities": {
-      "discount": "Скидка"
     }
   }
 }

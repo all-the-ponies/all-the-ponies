@@ -400,14 +400,17 @@
       "regular": "",
       "royal": "Asil"
     },
+    "price_rarities": {
+      "regular": "",
+      "discount": "İndi̇ri̇m",
+      "super": "",
+      "ultra": ""
+    },
     "rarities": {
       "common": "Sıradan",
       "uncommon": "Sıra Dışı",
       "rare": "Nadir",
       "legendary": "Efsanevi"
-    },
-    "price_rarities": {
-      "discount": "İndi̇ri̇m"
     }
   }
 }

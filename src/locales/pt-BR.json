@@ -400,14 +400,17 @@
       "regular": "",
       "royal": "Royal"
     },
+    "price_rarities": {
+      "regular": "",
+      "discount": "Desconto",
+      "super": "",
+      "ultra": ""
+    },
     "rarities": {
       "common": "Comum",
       "uncommon": "Incomum",
       "rare": "Raro",
       "legendary": "Lendário"
-    },
-    "price_rarities": {
-      "discount": "Desconto"
     }
   }
 }

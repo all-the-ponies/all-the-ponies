@@ -400,14 +400,17 @@
       "regular": "",
       "royal": "ملكي"
     },
+    "price_rarities": {
+      "regular": "",
+      "discount": "خصم",
+      "super": "",
+      "ultra": ""
+    },
     "rarities": {
       "common": "شائع",
       "uncommon": "غير شائع",
       "rare": "نادر",
       "legendary": "أسطوري"
-    },
-    "price_rarities": {
-      "discount": "خصم"
     }
   }
 }
