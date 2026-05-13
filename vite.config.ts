@@ -5,6 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import vike from 'vike/plugin'
+import { cloudflare } from '@cloudflare/vite-plugin'
+
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -15,6 +17,10 @@ export default defineConfig({
     // vueDevTools({
     //   launchEditor: 'codium'
     // }),
+    
+    cloudflare({
+      viteEnvironment: {name: 'ssr'},
+    }),
     vike(),
   ],
   resolve: {

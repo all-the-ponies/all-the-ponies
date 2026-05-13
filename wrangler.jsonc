@@ -1,14 +1,14 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
+  "compatibility_date": "2026-03-09",
+  "name": "all-the-ponies",
+  "main": "vike:server-entry",
+  // Only required if your app (or one of your libraries) uses a Node.js API
+  "compatibility_flags": ["nodejs_compat"],
   "observability": {
     "logs": {
       "enabled": true,
       "invocation_logs": true
     }
   },
-  "compatibility_date": "2025-08-06",
-  "name": "all-the-ponies",
-  "main": "virtual:photon:cloudflare:server-entry",
-  // Only required if your app (or one of your libraries) uses a Node.js API
-  "compatibility_flags": ["nodejs_compat"],
 }
