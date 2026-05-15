@@ -185,7 +185,11 @@
   "group_quests": {
     "title": "그룹 퀘스트",
     "random_pro": "",
-    "pro": ""
+    "pro": "",
+    "tutorial": "",
+    "seasonal": "시즌",
+    "name_tutorial": "{name} (@:group_quests.tutorial)",
+    "name_seasonal": "{name} (@:group_quests.seasonal)"
   },
   "inventory": {
     "title": "보관함",

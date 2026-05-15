@@ -185,7 +185,11 @@
   "group_quests": {
     "title": "团队任务",
     "random_pro": "随机",
-    "pro": "专家角色"
+    "pro": "专家角色",
+    "tutorial": "",
+    "seasonal": "赛季",
+    "name_tutorial": "{name} (@:group_quests.tutorial)",
+    "name_seasonal": "{name} (@:group_quests.seasonal)"
   },
   "inventory": {
     "title": "物品栏",

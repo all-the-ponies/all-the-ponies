@@ -1107,6 +1107,7 @@ class GetGameData:
                     self.loc_files,
                 ),
                 'pros': [],
+                'special': None,
             }
 
             for story_point in quest_data.get('StoryPoints', []):
@@ -1122,6 +1123,11 @@ class GetGameData:
         
         for pony in random_pros:
             self.categories['pony']['objects'][pony]['pro'] = 'random'
+        
+        for tutorial_slot in self.defaultGameCampaign.get('group_quests', {}).get('seasonal_slots', []):
+            quests[tutorial_slot['seasonal']]['special'] = 'seasonal'
+        
+        quests['GQ_0_Tutorial']['special'] = 'tutorial'
 
     def get_avatars(self):
         self.categories.setdefault('avatar', {})

@@ -36,6 +36,22 @@ const image = computed(() => 'preview' in gameObject.value.image ? gameObject.va
 
 const canAdd = computed(() => ['pony', 'shop'].includes(gameObject.value.category))
 
+const showProIcon = computed(() => {
+    if (gameObject.value.category != 'pony') {
+        return false
+    }
+    if (!gameObject.value.pro) {
+        return false
+    }
+    if (gameObject.value.pro == 'random') {
+        return true
+    }
+    if (!gameData.data.group_quests.quests[gameObject.value.pro].special) {
+        return true
+    }
+    return false
+})
+
 // const stars = computed({
 //   get() {
 //     if (saveStore.hasPony(gameObject.id)) {
@@ -76,7 +92,7 @@ const shopInfo = computedAsync(
         :hover="props.hover"
     >
         <template #left>
-            <img v-if="gameObject.category === 'pony' && gameObject.pro" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
+            <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
         </template>
         <template #right>
             <inventory-add-button v-if="props.hasButtons && canAdd" :gameObject="gameObject.id" />

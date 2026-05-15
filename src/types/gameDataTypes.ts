@@ -235,6 +235,7 @@ interface GroupQuests {
         name: TranslatableString,
         description: TranslatableString,
         pro: string[],
+        special: 'seasonal' | 'tutorial' | null,
     }}
 }
 

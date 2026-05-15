@@ -22,7 +22,9 @@ import PriceHistory from '@/components/tables/PriceHistory.vue'
 import type { PriceHistoryType } from '@/scripts/api.types'
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n()
 const isMounted = useMounted()
 
 const pageContext = usePageContext()
@@ -96,6 +98,37 @@ const houseName = computed(() => house.value?.name[language.value.key])
 
 const fortuneShopData = computed(() => gameData.getFortuneShopData(pony.value.id))
 
+const showProIcon = computed(() => {
+    if (!pony.value.pro) {
+        return false
+    }
+    if (pony.value.pro == 'random') {
+        return true
+    }
+    if (!gameData.data.group_quests.quests[pony.value.pro].special) {
+        return true
+    }
+    return false
+})
+
+const groupQuestName = computed(() => {
+    if (!pony.value.pro) {
+        return null
+    }
+
+    let name = pony.value.pro === 'random' ? t('group_quests.random_pro') : gameData.data.group_quests.quests[pony.value.pro].name[language.value.key]
+
+    if (pony.value.pro != 'random') {
+        let special = gameData.data.group_quests.quests[pony.value.pro].special
+        switch (special) {
+            case 'seasonal': name = t('group_quests.name_seasonal', {name}); break
+            case 'tutorial':name = t('group_quests.name_tutorial', {name}); break
+        }
+    }
+
+    return name
+})
+
 </script>
 
 <template>
@@ -119,7 +152,7 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(pony.value.id
                     {{ name }}
                 </template>
                 <template #image-left>
-                    <img v-if="pony.pro" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
+                    <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
                 </template>
                 <template #image-right>
                     <inventory-add-button :gameObject="pony.id"></inventory-add-button>
@@ -218,9 +251,9 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(pony.value.id
                                     </currency-image>
                                 </td>
                             </tr>
-                            <tr v-if="pony.pro">
+                            <tr v-if="groupQuestName">
                                    <td>{{ $t('group_quests.pro') }}</td>
-                                   <td>{{ pony.pro === 'random' ? $t('group_quests.random_pro') : gameData.data.group_quests.quests[pony.pro].name[language.key] }}</td>
+                                   <td>{{ groupQuestName }}</td>
                             </tr>
                             <tr>
                                 <td colspan="2" class="table-header">{{ $t('game_object.pony.level_up_rewards') }}</td>

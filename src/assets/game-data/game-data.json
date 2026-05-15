@@ -290120,8 +290120,8 @@
             "main": "game/house/House_Snowfall_Frost.png"
           },
           "location": [
-            "PONYVILLE",
-            "CANTERLOT"
+            "CANTERLOT",
+            "PONYVILLE"
           ],
           "grid_size": 4,
           "build": {
@@ -294518,8 +294518,8 @@
             "main": "game/house/House_Retromobile.png"
           },
           "location": [
-            "PONYVILLE",
-            "CANTERLOT"
+            "CANTERLOT",
+            "PONYVILLE"
           ],
           "grid_size": 4,
           "build": {
@@ -399666,7 +399666,8 @@
         "pros": [
           "Pony_Mane_Goodall",
           "Pony_Toola_Roola"
-        ]
+        ],
+        "special": null
       },
       "GQ_1_The_Las_Pegasus_Job": {
         "name": {
@@ -399702,7 +399703,8 @@
         "pros": [
           "Pony_Cubist_Pony",
           "Pony_Tracy_Flash"
-        ]
+        ],
+        "special": null
       },
       "GQ_7_Princess_Panic": {
         "name": {
@@ -399738,7 +399740,8 @@
         "pros": [
           "Pony_Ma_Hooffield",
           "Pony_Cubist_Pony"
-        ]
+        ],
+        "special": "seasonal"
       },
       "GQ_6_Trot_Secret": {
         "name": {
@@ -399774,7 +399777,8 @@
         "pros": [
           "Pony_Klugetown_Basketweaver",
           "Pony_Tracy_Flash"
-        ]
+        ],
+        "special": null
       },
       "GQ_0_Tutorial": {
         "name": {
@@ -399811,7 +399815,8 @@
           "Pony_Abyssinian_King",
           "Pony_Abyssinian_Queen",
           "Pony_Bon_Bon"
-        ]
+        ],
+        "special": "tutorial"
       },
       "GQ_2_In_the_Yak_of_It": {
         "name": {
@@ -399847,7 +399852,8 @@
         "pros": [
           "Pony_Countess_Coloratura",
           "Pony_Saffron_Masala"
-        ]
+        ],
+        "special": null
       },
       "GQ_3_Cold_Front": {
         "name": {
@@ -399883,7 +399889,8 @@
         "pros": [
           "Pony_Mane_Goodall",
           "Pony_Toola_Roola"
-        ]
+        ],
+        "special": null
       },
       "GQ_4_Guys_Night": {
         "name": {
@@ -399919,7 +399926,8 @@
         "pros": [
           "Pony_Mercury",
           "Pony_Coriander_Cumin"
-        ]
+        ],
+        "special": null
       },
       "GQ_5_Doctor_Shy": {
         "name": {
@@ -399955,7 +399963,8 @@
         "pros": [
           "Pony_Lucy_Packard",
           "Pony_Mane_Goodall"
-        ]
+        ],
+        "special": null
       }
     }
   },

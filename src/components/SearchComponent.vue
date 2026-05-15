@@ -293,7 +293,12 @@ const searchResults = computed(() => {
             })
         }
         if (results.length == 0) {
-            results = computedItems.value(removeSymbols(query)).map(item => item.item)
+            let items = computedItems.value(removeSymbols(query))
+            if (isClient) {
+                console.debug('items', items)
+            }
+            items = items.filter(item => item.score <= 4)
+            results = items.map(item => item.item)
         }
     }
     return results

@@ -185,7 +185,11 @@
   "group_quests": {
     "title": "Misiones De Grupo",
     "random_pro": "",
-    "pro": ""
+    "pro": "",
+    "tutorial": "",
+    "seasonal": "Temporada",
+    "name_tutorial": "{name} (@:group_quests.tutorial)",
+    "name_seasonal": "{name} (@:group_quests.seasonal)"
   },
   "inventory": {
     "title": "Inventario",

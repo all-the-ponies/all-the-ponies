@@ -185,7 +185,11 @@
   "group_quests": {
     "title": "Group Quests",
     "random_pro": "Random",
-    "pro": "Pro"
+    "pro": "Pro",
+    "tutorial": "Tutorial",
+    "seasonal": "Seasonal",
+    "name_tutorial": "{name} (@:group_quests.tutorial)",
+    "name_seasonal": "{name} (@:group_quests.seasonal)"
   },
   "inventory": {
     "title": "Inventory",
