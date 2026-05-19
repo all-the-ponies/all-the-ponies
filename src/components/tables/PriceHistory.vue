@@ -119,7 +119,10 @@ function formatDateRange(start: string, end: string) {
                             <TableCell>
                                 {{ formatDateRange(entry.start_date, entry.end_date) }}
                             </TableCell>
-                            <TableCell>
+                            <TableCell v-if="entry.tags.includes('whthot')">
+                                {{ $t('price_history.message.whats_hot') }}
+                            </TableCell>
+                            <TableCell v-else>
                                 <CurrencyImage :object="entry.price.sale?.currency ?? entry.price.base?.currency">
                                     {{ entry.price.sale?.price ?? entry.price.base?.price }}
                                 </CurrencyImage>

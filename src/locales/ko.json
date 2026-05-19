@@ -180,6 +180,9 @@
       "price": "",
       "tokens": "토큰",
       "royal": "로열"
+    },
+    "message": {
+      "whats_hot": "핫 컬렉션"
     }
   },
   "group_quests": {

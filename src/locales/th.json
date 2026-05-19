@@ -180,6 +180,9 @@
       "price": "",
       "tokens": "โทเค็น",
       "royal": "รอยัล"
+    },
+    "message": {
+      "whats_hot": "มี|อะไร|ฮ็อต ๆ |บ้าง"
     }
   },
   "group_quests": {

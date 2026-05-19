@@ -180,6 +180,9 @@
       "price": "Стоимость",
       "tokens": "Жетоны",
       "royal": "Клуб"
+    },
+    "message": {
+      "whats_hot": "Актуальное"
     }
   },
   "group_quests": {

@@ -180,6 +180,9 @@
       "price": "",
       "tokens": "トークン",
       "royal": "ロイヤル"
+    },
+    "message": {
+      "whats_hot": "期間げんてい"
     }
   },
   "group_quests": {

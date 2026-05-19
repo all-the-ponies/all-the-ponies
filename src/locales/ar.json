@@ -180,6 +180,9 @@
       "price": "",
       "tokens": "القطع",
       "royal": "ملكي"
+    },
+    "message": {
+      "whats_hot": "ما الجديد"
     }
   },
   "group_quests": {

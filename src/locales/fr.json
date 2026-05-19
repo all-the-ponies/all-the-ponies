@@ -180,6 +180,9 @@
       "price": "",
       "tokens": "Jetons",
       "royal": "Royal"
+    },
+    "message": {
+      "whats_hot": "En Vedette"
     }
   },
   "group_quests": {

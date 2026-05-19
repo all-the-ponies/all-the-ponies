@@ -180,6 +180,9 @@
       "price": "",
       "tokens": "Fichas",
       "royal": "Real"
+    },
+    "message": {
+      "whats_hot": "Novedades"
     }
   },
   "group_quests": {

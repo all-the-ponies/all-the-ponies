@@ -26,7 +26,11 @@ const shop = computedAsync(
         if (shop) {
             console.log(`Got shop in ${(performance.now() - shopStart) / 1000}s`)
             return Object.fromEntries(
-                Object.entries(shop).filter(([id, info]) => info.in_shop && !info.hidden)
+                Object.entries(shop).filter(([id, info]) => 
+                    info.in_shop && !info.hidden && (
+                        !info.tags.includes('whthot')
+                    )
+                )
             )
         }
         return {}

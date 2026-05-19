@@ -180,6 +180,9 @@
       "price": "价格",
       "tokens": "礼物",
       "royal": "皇家"
+    },
+    "message": {
+      "whats_hot": "热门收藏"
     }
   },
   "group_quests": {

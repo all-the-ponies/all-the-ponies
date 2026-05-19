@@ -180,6 +180,9 @@
       "price": "",
       "tokens": "Marken",
       "royal": "Königlich"
+    },
+    "message": {
+      "whats_hot": "Was Angesagt Ist!"
     }
   },
   "group_quests": {

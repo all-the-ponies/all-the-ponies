@@ -180,6 +180,9 @@
       "price": "Ücret",
       "tokens": "Objeler",
       "royal": "Asil"
+    },
+    "message": {
+      "whats_hot": "Öne Çikanlar"
     }
   },
   "group_quests": {

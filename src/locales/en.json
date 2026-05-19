@@ -180,6 +180,9 @@
       "price": "Price",
       "tokens": "Tokens",
       "royal": "Royal"
+    },
+    "message": {
+      "whats_hot": "What'S Hot"
     }
   },
   "group_quests": {

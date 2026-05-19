@@ -180,6 +180,9 @@
       "price": "",
       "tokens": "Accessori",
       "royal": "Reale"
+    },
+    "message": {
+      "whats_hot": "Novità"
     }
   },
   "group_quests": {
