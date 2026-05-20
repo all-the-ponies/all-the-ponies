@@ -42,7 +42,15 @@
     },
     "sections": {
       "credits": {
-        "title": "Примечания"
+        "title": "Примечания",
+        "message": {
+          "credits_list": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          }
+        }
       },
       "translations": {
         "title": "Переводчики"
@@ -175,6 +183,7 @@
     }
   },
   "price_history": {
+    "title": "",
     "header": {
       "date": "Дата",
       "price": "Стоимость",
@@ -338,7 +347,8 @@
         "title": "Создание списка желаний",
         "message": {
           "wishlist": "Список желаний",
-          "name": "Название:"
+          "name": "Название:",
+          "name_required": ""
         }
       },
       "choose_image": {

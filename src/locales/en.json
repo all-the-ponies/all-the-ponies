@@ -42,7 +42,15 @@
     },
     "sections": {
       "credits": {
-        "title": "Credits"
+        "title": "Credits",
+        "message": {
+          "credits_list": {
+            "1": "The website is built by {ego}.",
+            "2": "Thanks to {bass} for help with loading ponies with a friend code.",
+            "3": "The font used is {font}, which is also used in the game.",
+            "4": "The website was built using {vue} to make my life easier and allow for a more dynamic experience."
+          }
+        }
       },
       "translations": {
         "title": "Translations"
@@ -175,6 +183,7 @@
     }
   },
   "price_history": {
+    "title": "Price History",
     "header": {
       "date": "Date",
       "price": "Price",
@@ -338,7 +347,8 @@
         "title": "Create Wishlist",
         "message": {
           "wishlist": "Wishlist",
-          "name": "Name:"
+          "name": "Name:",
+          "name_required": "A name is required"
         }
       },
       "choose_image": {

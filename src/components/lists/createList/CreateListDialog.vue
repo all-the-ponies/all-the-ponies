@@ -9,6 +9,9 @@ import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTyp
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 import ChooseImageDialog from './ChooseImageDialog.vue';
 import { CATEGORIES } from '@/scripts/categories';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n()
 
 const emit = defineEmits<{
     submit: [listId: Wishlist],
@@ -61,7 +64,7 @@ function editList(listId: number) {
 
 function submitList() {
     if (!name.value) {
-        errorMessage.value = 'A name is required'
+        errorMessage.value = t('lists.dialog.create_list.message.name_required')
         return
     }
     

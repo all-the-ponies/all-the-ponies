@@ -23,10 +23,34 @@ import { language } from '@/globals';
         <section>
             <h2>{{ $t('about.sections.credits.title') }}</h2>
             <ul class="list">
-                <li>The website is built by <Link href="https://github.com/ego-lay-atman-bay" class="link">ego-lay-atman-bay</Link>.</li>
-                <li>Thanks to <span class="text-green">Bass</span> for help with loading ponies with a friend code.</li>
-                <li>The font used is <Link href="https://www.mattyhex.net/CMR/" class="link">Celestia Medium Redux</Link>, which is also used in the game.</li>
-                <li>The website was built using <Link href="https://vuejs.org/" class="link">Vue.js</Link> to make my life easier and allow for a more dynamic experience.</li>
+                <li>
+                    <i18n-t keypath="about.sections.credits.message.credits_list.1">
+                        <template #ego>
+                            <Link href="https://github.com/ego-lay-atman-bay" class="link">ego-lay-atman-bay</Link>
+                        </template>
+                    </i18n-t>
+                </li>
+                <li>
+                    <i18n-t keypath="about.sections.credits.message.credits_list.2">
+                        <template #bass>
+                            <span class="text-green">Bass</span>
+                        </template>
+                    </i18n-t>
+                </li>
+                <li>
+                    <i18n-t keypath="about.sections.credits.message.credits_list.3">
+                        <template #font>
+                            <Link href="https://www.mattyhex.net/CMR/" class="link">Celestia Medium Redux</Link>
+                        </template>
+                    </i18n-t>
+                </li>
+                <li>
+                    <i18n-t keypath="about.sections.credits.message.credits_list.4">
+                        <template #vue>
+                            <Link href="https://vuejs.org/" class="link">Vue.js</Link>
+                        </template>
+                    </i18n-t>
+                </li>
             </ul>
             <h2>{{ $t('about.sections.translations.title') }}</h2>
             <ul class="list">

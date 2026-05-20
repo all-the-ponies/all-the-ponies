@@ -273,7 +273,7 @@ const groupQuestName = computed(() => {
                 </template>
             </ObjectPage>
             <section class="section" v-if="filteredPriceHistory.length">
-                <h2 class="h2">Price History</h2>
+                <h2 class="h2">{{ $t('price_history.title') }}</h2>
                 <PriceHistory :object="pony.id" :priceHistory="filteredPriceHistory"></PriceHistory>
             </section>
             <section class="section" v-if="fortuneShopData">

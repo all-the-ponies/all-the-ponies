@@ -42,7 +42,15 @@
     },
     "sections": {
       "credits": {
-        "title": "版权归属信息"
+        "title": "版权归属信息",
+        "message": {
+          "credits_list": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          }
+        }
       },
       "translations": {
         "title": "翻译"
@@ -175,6 +183,7 @@
     }
   },
   "price_history": {
+    "title": "",
     "header": {
       "date": "日期",
       "price": "价格",
@@ -338,7 +347,8 @@
         "title": "创建心愿单",
         "message": {
           "wishlist": "心愿单",
-          "name": "名称"
+          "name": "名称",
+          "name_required": ""
         }
       },
       "choose_image": {

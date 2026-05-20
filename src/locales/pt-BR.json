@@ -42,7 +42,15 @@
     },
     "sections": {
       "credits": {
-        "title": ""
+        "title": "",
+        "message": {
+          "credits_list": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          }
+        }
       },
       "translations": {
         "title": ""
@@ -175,6 +183,7 @@
     }
   },
   "price_history": {
+    "title": "",
     "header": {
       "date": "",
       "price": "",
@@ -338,7 +347,8 @@
         "title": "",
         "message": {
           "wishlist": "",
-          "name": ""
+          "name": "",
+          "name_required": ""
         }
       },
       "choose_image": {

@@ -116,7 +116,7 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(avatar.value.
                 </template>
             </ObjectPage>
             <section class="section" v-if="priceHistory.length">
-                <h2 class="h2">Price History</h2>
+                <h2 class="h2">{{ $t('price_history.title') }}</h2>
                 <PriceHistory :object="avatar.id" :priceHistory="priceHistory"></PriceHistory>
             </section>
             <section class="section" v-if="fortuneShopData">
