@@ -137,6 +137,7 @@ const itemGap = useRem(.3)
             :filters="filterFunctions"
             :sorters="sortFunctions"
             :query="query"
+            :placeholder="$t(CATEGORIES[selectedCategory].string)"
             page-param="page"
             save-url
             :item-width="itemWidth"
