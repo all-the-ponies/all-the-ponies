@@ -19,8 +19,8 @@
     "description": "Узнайте информацию о {game_link} и следите за тем, что у вас есть!",
     "message": {
       "game_name": "My Little Pony: Магия Принцесс",
-      "links": "",
-      "affiliates": ""
+      "links": "Ссылки",
+      "affiliates": "Партнёры"
     },
     "things_to_do": {
       "title": "Что осталось сделать",
@@ -264,7 +264,7 @@
     }
   },
   "sorting": {
-    "relevance": "По релевантность",
+    "relevance": "По релевантности",
     "alphabetically": "В алфавитном порядке",
     "game_order": "Порядок игры",
     "date_added": "По дате добавления",
