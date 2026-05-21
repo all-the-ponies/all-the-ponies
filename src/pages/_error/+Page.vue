@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { usePageContext } from 'vike-vue/usePageContext';
 
+console.log('error page')
 
 const pageContext = usePageContext()
 let { is404, abortReason } = pageContext
@@ -13,6 +14,8 @@ const heading = is404 ? "Page Not Found" : "Internal Error"
 </script>
 
 <template>
-  <h1>{{ heading }}</h1>
-  <p>{{ abortReason }}</p>
+  <section class="section">
+    <h1>{{ heading }}</h1>
+    <p>{{ abortReason }}</p>
+  </section>
 </template>

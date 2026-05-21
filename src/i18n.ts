@@ -99,14 +99,21 @@ export function setI18nLanguage(i18n: I18n['global'], locale: string) {
 export async function loadLocaleMessages(i18n: I18n['global'], locale: string) {
   if (!(locale in loadedLanguages)) {
     // load locale messages with dynamic import
-    const messages = await import(
-      `./locales/${locale}.json`
-    )
+    let messages
+    try {
+      messages = await import(
+        `./locales/${locale}.json`
+      )
+    } catch (error) {
+      console.error(error)
+      throw error
+    }
   
     // set locale and locale message
-    i18n.setLocaleMessage(locale, cleanLocaleMessages(messages.default))
-
-    loadedLanguages.push(locale)
+    if (messages) {
+      i18n.setLocaleMessage(locale, cleanLocaleMessages(messages.default))
+      loadedLanguages.push(locale)
+    }
   }
   
   setI18nLanguage(i18n, locale)

@@ -3,6 +3,7 @@ import { redirect } from 'vike/abort'
 import { modifyUrl } from 'vike/modifyUrl'
 import type { PageContextClient } from 'vike/types'
 import { extractLocale } from './extractLocale'
+import { chooseDefaultLocale } from '@/scripts/chooseDefaultLocale'
  
 export function onBeforeRoute(pageContext: PageContextClient) {
   let { urlWithoutLocale, pathnameWithoutLocale, locale } = extractLocale(pageContext.urlParsed)
@@ -24,20 +25,4 @@ export function onBeforeRoute(pageContext: PageContextClient) {
       urlLogical: urlWithoutLocale,
     }
   }
-}
-
-function chooseDefaultLocale() {
-    let locale
-
-    for (let code of navigator.languages) {
-        if (code in LOCALES) {
-            locale = code
-            break
-        } else if (code.split('-')[0] in LOCALES) {
-            locale = code.split('-')[0]
-            break
-        }
-    }
-
-    return locale
 }
