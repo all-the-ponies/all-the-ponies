@@ -7,6 +7,11 @@ import type { PageContext } from "vike/types"
 export async function data(pageContext: PageContext) {
     const { id } = pageContext.routeParams
 
+    const decor = gameData.getObject(id, 'decor')
+
+    if (decor === null) {
+        throw render(404, `Decor with id ${id} doesn't exist`)
+    }
 
     console.log('getting price history')
     let priceHistory: PriceHistoryType = null
@@ -14,12 +19,6 @@ export async function data(pageContext: PageContext) {
         priceHistory = await api.getPriceHistory(id)
     } catch {
         priceHistory = null
-    }
-    
-    const decor = gameData.getObject(id, 'decor')
-
-    if (decor === null) {
-        throw render(404, `Decor with id ${id} doesn't exist`)
     }
 
     return { decor, priceHistory }
