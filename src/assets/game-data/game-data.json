@@ -1,7 +1,7 @@
 {
   "file_version": 3,
-  "game_version": "11.1.0k",
-  "content_version": "11.1.0.3",
+  "game_version": "11.1.1a",
+  "content_version": "11.1.1.13",
   "categories": {
     "pony": {
       "clones": {},
@@ -99874,7 +99874,7 @@
             "korean": "Starlight의 미래를 추측하는 건 우리 전문이 아니지만, 행복한 학생들과 햇살 가득한 날이 기다릴 것 같네요.",
             "russian": "Не в нашей власти строить предположения о будущем Старлайт, но, подозреваем, счастливые студенты и солнечные деньки в нем определенно будут.",
             "english": "It isn't ours to speculate on Starlight's future, but we suspect it'll be full of happy students and sunny days.",
-            "chinese": "我们无法断言星光的未来是什么样，但我们觉得很可能会满是阳光灿烂，学生环绕的快乐时光。",
+            "chinese": "我们无法断言星光熠熠的未来是什么样，但我们觉得很可能会满是阳光灿烂，学生环绕的快乐时光。",
             "french": "Ce n'est pas à nous de spéculer sur l'avenir de Starlight, mais nous soupçonnons qu'il sera plein d'étudiants heureux et de journées ensoleillées.",
             "arabic": "ليس من شأننا التكهن بمستقبل ستارلايت، ولكننا نشك أنه سيكون مملوءًا بالطلبة السعداء والأيام المشمسة.",
             "turkish": "Starlight'ın geleceği hakkında atıp tutmak bize düşmez ama mutlu öğrencilerle dolu günlük güneşlik bir hayatı olması muhtemel.",
@@ -277033,35 +277033,35 @@
           "index": 2305,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "korean": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "russian": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "english": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "chinese": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "french": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "arabic": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "turkish": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "japanese": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "spanish": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "italian": "STR_PONY_MEAN_PRINCESS_LUNA_NAME",
-            "german": "STR_PONY_MEAN_PRINCESS_LUNA_NAME"
+            "thai": "เจ้าหญิงลูน่าใจร้าย",
+            "korean": "Mean Princess Luna",
+            "russian": "Заносчивая Принцесса Луна",
+            "english": "Mean Princess Luna",
+            "chinese": "刻薄月亮公主",
+            "french": "Mean Princess Luna",
+            "arabic": "الأميرة لونا الشريرة",
+            "turkish": "Mean Princess Luna",
+            "japanese": "イジワルなプリンセスルナ",
+            "spanish": "Mean Princesa Luna",
+            "brazilian portuguese": "Mean Princess Luna",
+            "italian": "Mean Princess Luna",
+            "german": "Mean Prinzessin Luna"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "korean": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "russian": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "english": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "chinese": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "french": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "arabic": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "turkish": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "japanese": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "spanish": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "italian": "STR_PONY_MEAN_PRINCESS_LUNA_DESC",
-            "german": "STR_PONY_MEAN_PRINCESS_LUNA_DESC"
+            "thai": "ไม่ใช่ไนท์แมร์มูนนะอย่าสับสน คือเจ้าหญิงลูน่าเนี่ยแหละ แต่ใจร้ายกว่าเดิม",
+            "korean": "분명히 Nightmare Moon이 아니라 그냥 Princess Luna인데, 더 심술궂은 버전입니다.",
+            "russian": "Не Лунная Пони, как вы могли подумать, просто Принцесса Луна, но более ЗАНОСЧИВАЯ.",
+            "english": "Not Nightmare Moon, to be clear: just Princess Luna, but MEANER.",
+            "chinese": "不是梦魇之月，要说清楚：还是月亮公主，只是更刻薄。",
+            "french": "Pas Nightmare Moon, pour être clair : juste la princesse Luna, mais PLUS MÉCHANTE.",
+            "arabic": "ليست نايت مير مون، للتوضيح: هي فقط الأميرة لونا، لكنها أكثر شرًا",
+            "turkish": "Nightmare Moon değil, net olsun: sadece Princess Luna, ama DAHA KÖTÜ hali.",
+            "japanese": "ナイトメアムーンじゃないよ。せいかくにはプリンセスルナだけど、もっと意地悪な感じ。",
+            "spanish": "No es Nightmare Moon, que conste: solo es la princesa Luna, pero MÁS MALA.",
+            "brazilian portuguese": "Não é a Nightmare Moon, para deixar claro. É só Princess Luna, mas MAIS MALVADA.",
+            "italian": "Non Nightmare Moon, per essere chiari: solo Princess Luna, ma PIÙ CATTIVA.",
+            "german": "Nicht Nightmare Moon, um das klarzustellen: nur Prinzessin Luna, aber BÖSER."
           },
           "alt_name": {},
           "tags": [],
@@ -277070,7 +277070,7 @@
             "main": "game/pony/main/Pony_Mean_Princess_Luna.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Creepy_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -277093,7 +277093,7 @@
               "amount": 1
             },
             {
-              "item": "PopCurrency4",
+              "item": "Token_Lottery",
               "amount": 1
             },
             {
@@ -277103,16 +277103,16 @@
           ],
           "minigame": {
             "can_play_minecart": false,
-            "cooldown": 9600,
+            "cooldown": 8400,
             "skip_cost": 4,
             "exp_rank": 9
           },
-          "arrival_xp": 50,
+          "arrival_xp": 45,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 1000
+              "amount": 900
             },
             "token": "",
             "daily_goals": 0
@@ -277155,35 +277155,35 @@
           "index": 2306,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "korean": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "russian": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "english": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "chinese": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "french": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "arabic": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "turkish": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "japanese": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "spanish": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "italian": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME",
-            "german": "STR_PONY_MEAN_PRINCESS_CELESTIA_NAME"
+            "thai": "เจ้าหญิงเซเลสเทียใจร้าย",
+            "korean": "Mean Princess Celestia",
+            "russian": "Заносчивая Принцесса Селестия",
+            "english": "Mean Princess Celestia",
+            "chinese": "刻薄宇宙公主",
+            "french": "Mean Princess Celestia",
+            "arabic": "الأميرة سيليستيا الشريرة",
+            "turkish": "Mean Princess Celestia",
+            "japanese": "イジワルなプリンセスセレスティア",
+            "spanish": "Mean Princesa Celestia",
+            "brazilian portuguese": "Mean Princess Celestia",
+            "italian": "Mean Princess Celestia",
+            "german": "Mean Prinzessin Celestia"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "korean": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "russian": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "english": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "chinese": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "french": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "arabic": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "turkish": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "japanese": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "spanish": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "italian": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC",
-            "german": "STR_PONY_MEAN_PRINCESS_CELESTIA_DESC"
+            "thai": "เหมือนกับกษัตริย์ที่กุมอำนาจเบ็ดเสร็จหลาย ๆ คน นางทำทุกอย่างที่ต้องการ เมื่อใดก็ตามที่ต้องการ",
+            "korean": "많은 절대 군주들처럼, 그녀는 하고 싶은 것을 하고 싶은 때에 합니다.",
+            "russian": "Как и многие абсолютные монархи, она делает все, что хочет и когда хочет.",
+            "english": "Like many absolute monarchs, she does whatever she wants, whenever she wants.",
+            "chinese": "像许多拥有绝对权力的君主一样，她随时想做什么就做什么。",
+            "french": "Comme beaucoup de monarques absolus, elle fait tout ce qu'elle veut, quand elle le veut.",
+            "arabic": "كحال العديد من الحكام المستبدين، تفعلُ ما تشاء، وقتما تشاء.",
+            "turkish": "Birçok mutlak hükümdar gibi, istediği zaman istediğini yapar.",
+            "japanese": "ぜったい君主みたいに、やりたいことは自分がやりたい時になんでもやる。",
+            "spanish": "Como muchas monarcas absolutas, hace lo que quiere, cuando quiere.",
+            "brazilian portuguese": "Como muitos monarcas absolutos, ela faz o que quer, quando quer.",
+            "italian": "Come molti monarchi assoluti, fa tutto ciò che desidera, quando lo desidera.",
+            "german": "Wie viele absolute Monarchen, tut sie, was sie will, wann immer sie will."
           },
           "alt_name": {},
           "tags": [],
@@ -277192,7 +277192,7 @@
             "main": "game/pony/main/Pony_Mean_Princess_Celestia.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Creepy_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -277203,15 +277203,15 @@
           "max_level": false,
           "rewards": [
             {
-              "item": "PopCurrency1",
-              "amount": 1
-            },
-            {
               "item": "Token_Lottery",
               "amount": 1
             },
             {
-              "item": "Gems",
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "wheel_starmastery",
               "amount": 1
             },
             {
@@ -277219,22 +277219,22 @@
               "amount": 1
             },
             {
-              "item": "PopCurrency5",
+              "item": "Gems",
               "amount": 1
             }
           ],
           "minigame": {
             "can_play_minecart": false,
-            "cooldown": 9600,
+            "cooldown": 8400,
             "skip_cost": 4,
             "exp_rank": 9
           },
-          "arrival_xp": 50,
+          "arrival_xp": 45,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 1000
+              "amount": 900
             },
             "token": "",
             "daily_goals": 0
@@ -277277,35 +277277,35 @@
           "index": 2307,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_BON_BON_NAME",
-            "korean": "STR_PONY_MEAN_BON_BON_NAME",
-            "russian": "STR_PONY_MEAN_BON_BON_NAME",
-            "english": "STR_PONY_MEAN_BON_BON_NAME",
-            "chinese": "STR_PONY_MEAN_BON_BON_NAME",
-            "french": "STR_PONY_MEAN_BON_BON_NAME",
-            "arabic": "STR_PONY_MEAN_BON_BON_NAME",
-            "turkish": "STR_PONY_MEAN_BON_BON_NAME",
-            "japanese": "STR_PONY_MEAN_BON_BON_NAME",
-            "spanish": "STR_PONY_MEAN_BON_BON_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_BON_BON_NAME",
-            "italian": "STR_PONY_MEAN_BON_BON_NAME",
-            "german": "STR_PONY_MEAN_BON_BON_NAME"
+            "thai": "บองบองใจร้าย",
+            "korean": "Mean Bon Bon",
+            "russian": "Заносчивая Бон-Бон",
+            "english": "Mean Bon Bon",
+            "chinese": "刻薄棒棒",
+            "french": "Mean Bon Bon",
+            "arabic": "بون بون الشريرة",
+            "turkish": "Mean Bon Bon",
+            "japanese": "イジワルなボンボン",
+            "spanish": "Mean Bon Bon",
+            "brazilian portuguese": "Mean Bon Bon",
+            "italian": "Mean Bon Bon",
+            "german": "Mean Bon Bon"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_BON_BON_DESC",
-            "korean": "STR_PONY_MEAN_BON_BON_DESC",
-            "russian": "STR_PONY_MEAN_BON_BON_DESC",
-            "english": "STR_PONY_MEAN_BON_BON_DESC",
-            "chinese": "STR_PONY_MEAN_BON_BON_DESC",
-            "french": "STR_PONY_MEAN_BON_BON_DESC",
-            "arabic": "STR_PONY_MEAN_BON_BON_DESC",
-            "turkish": "STR_PONY_MEAN_BON_BON_DESC",
-            "japanese": "STR_PONY_MEAN_BON_BON_DESC",
-            "spanish": "STR_PONY_MEAN_BON_BON_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_BON_BON_DESC",
-            "italian": "STR_PONY_MEAN_BON_BON_DESC",
-            "german": "STR_PONY_MEAN_BON_BON_DESC"
+            "thai": "รังเกียจน้ำตาลทุกชนิด และดื่มชาแบบดำสนิทเหมือนกลางคืน",
+            "korean": "모든 설탕을 싫어하며 차를 깜깜한 밤처럼 새카맣게 우려서 마십니다.",
+            "russian": "НЕНАВИДИТ сахар во всех его проявлениях и пьет черный как ночь чай.",
+            "english": "HATES sugar of any kind, and takes her tea black as night.",
+            "chinese": "讨厌任何种类的糖，只喝黑夜般的茶。",
+            "french": "DÉTESTE tous les types de sucre, et prend son thé noir comme la nuit.",
+            "arabic": "تكره السكر بجميع أنواعه، وتشرب الشاي أسود كعتمة الليل.",
+            "turkish": "Herhangi bir tür şekeri SEVMEZ ve çayını gece kadar siyah içer.",
+            "japanese": "さとうが大きらいで、夜のように真っ黒なこうちゃを飲む。",
+            "spanish": "Odia el azúcar de cualquier tipo y toma su té tan negro como la noche.",
+            "brazilian portuguese": "ODEIA açúcar de qualquer tipo e bebe seu chá preto como a noite.",
+            "italian": "ODIA qualsiasi tipo di zucchero e prende il tè nero come la notte.",
+            "german": "HASST jegliche Art von Zucker und trinkt ihren Tee so schwarz wie die Nacht."
           },
           "alt_name": {},
           "tags": [],
@@ -277314,7 +277314,7 @@
             "main": "game/pony/main/Pony_Mean_Bon_Bon.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -277325,11 +277325,11 @@
           "max_level": false,
           "rewards": [
             {
-              "item": "wheel_starmastery",
+              "item": "PopCurrency1",
               "amount": 1
             },
             {
-              "item": "PopCurrency2",
+              "item": "wheel_starmastery",
               "amount": 1
             },
             {
@@ -277337,7 +277337,7 @@
               "amount": 1
             },
             {
-              "item": "Token_Lottery",
+              "item": "PopCurrency4",
               "amount": 1
             },
             {
@@ -277351,12 +277351,12 @@
             "skip_cost": 4,
             "exp_rank": 45
           },
-          "arrival_xp": 45,
+          "arrival_xp": 40,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 900
+              "amount": 700
             },
             "token": "",
             "daily_goals": 0
@@ -277399,35 +277399,35 @@
           "index": 2308,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_LYRA_NAME",
-            "korean": "STR_PONY_MEAN_LYRA_NAME",
-            "russian": "STR_PONY_MEAN_LYRA_NAME",
-            "english": "STR_PONY_MEAN_LYRA_NAME",
-            "chinese": "STR_PONY_MEAN_LYRA_NAME",
-            "french": "STR_PONY_MEAN_LYRA_NAME",
-            "arabic": "STR_PONY_MEAN_LYRA_NAME",
-            "turkish": "STR_PONY_MEAN_LYRA_NAME",
-            "japanese": "STR_PONY_MEAN_LYRA_NAME",
-            "spanish": "STR_PONY_MEAN_LYRA_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_LYRA_NAME",
-            "italian": "STR_PONY_MEAN_LYRA_NAME",
-            "german": "STR_PONY_MEAN_LYRA_NAME"
+            "thai": "ไลร่า ฮาร์ทสตริงส์ใจร้าย",
+            "korean": "Mean Lyra Heartstrings",
+            "russian": "Заносчивая Лира Хартстрингс",
+            "english": "Mean Lyra Heartstrings",
+            "chinese": "刻薄心弦",
+            "french": "Mean Lyra Heartstrings",
+            "arabic": "ليرا هارتسترينج الشريرة",
+            "turkish": "Mean Lyra Heartstrings",
+            "japanese": "イジワルなライラ・ハートストリングス",
+            "spanish": "Mean Lyra Heartstrings",
+            "brazilian portuguese": "Mean Lyra Heartstrings",
+            "italian": "Mean Lyra Heartstrings",
+            "german": "Mean Lyra Heartstrings"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_LYRA_DESC",
-            "korean": "STR_PONY_MEAN_LYRA_DESC",
-            "russian": "STR_PONY_MEAN_LYRA_DESC",
-            "english": "STR_PONY_MEAN_LYRA_DESC",
-            "chinese": "STR_PONY_MEAN_LYRA_DESC",
-            "french": "STR_PONY_MEAN_LYRA_DESC",
-            "arabic": "STR_PONY_MEAN_LYRA_DESC",
-            "turkish": "STR_PONY_MEAN_LYRA_DESC",
-            "japanese": "STR_PONY_MEAN_LYRA_DESC",
-            "spanish": "STR_PONY_MEAN_LYRA_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_LYRA_DESC",
-            "italian": "STR_PONY_MEAN_LYRA_DESC",
-            "german": "STR_PONY_MEAN_LYRA_DESC"
+            "thai": "ไม่เพียงแต่เธอจะนั่งท่าแปลก ยังยึดที่ทั้งม้านั่งเวลานั่งด้วย",
+            "korean": "이상하게 앉을 뿐만 아니라, 앉을 때는 벤치 전체를 차지합니다.",
+            "russian": "Она не только сидит странным образом, но при это занимает ВСЮ СКАМЕЙКУ.",
+            "english": "Not only does she sit weird, she takes up the WHOLE BENCH when she does it.",
+            "chinese": "她不仅坐姿奇怪，还总霸占整条长椅。",
+            "french": "Non seulement elle s'assoit bizarrement, mais elle prend TOUT LE BANC quand elle le fait.",
+            "arabic": "لا تكتفي بالجلوس بطريقة غريبة فحسب، بل تستحوذ على المقعد بأكمله عندما تفعل ذلك.",
+            "turkish": "Sadece garip oturmakla kalmaz, oturduğunda tüm BANKI kaplar.",
+            "japanese": "ヘンなすわり方でベンチをせんりょうする。",
+            "spanish": "No solo se sienta de manera extraña, sino que ocupa todo el banco cuando lo hace.",
+            "brazilian portuguese": "Não apenas se senta de modo estranho, mas ocupa TODO O BANCO.",
+            "italian": "Non solo si siede in modo strano, ma occupa l'INTERO SEDILE quando lo fa.",
+            "german": "Nicht nur, dass sie seltsam sitzt, sie nimmt die GANZE BANK ein, wenn sie es tut."
           },
           "alt_name": {},
           "tags": [],
@@ -277436,7 +277436,7 @@
             "main": "game/pony/main/Pony_Mean_Lyra.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -277451,19 +277451,19 @@
               "amount": 1
             },
             {
-              "item": "PopCurrency2",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency3",
-              "amount": 1
-            },
-            {
               "item": "Token_Lottery",
               "amount": 1
             },
             {
-              "item": "PopCurrency5",
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
               "amount": 1
             }
           ],
@@ -277473,12 +277473,12 @@
             "skip_cost": 4,
             "exp_rank": 45
           },
-          "arrival_xp": 45,
+          "arrival_xp": 40,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 900
+              "amount": 700
             },
             "token": "",
             "daily_goals": 0
@@ -277521,35 +277521,35 @@
           "index": 2309,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "korean": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "russian": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "english": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "chinese": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "french": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "arabic": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "turkish": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "japanese": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "spanish": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "italian": "STR_PONY_MEAN_MOONDANCER_NAME",
-            "german": "STR_PONY_MEAN_MOONDANCER_NAME"
+            "thai": "มูนแดนเซอร์ใจร้าย",
+            "korean": "Mean Moon Dancer",
+            "russian": "Заносчивая Мун Дэнсер",
+            "english": "Mean Moon Dancer",
+            "chinese": "刻薄月舞",
+            "french": "Mean Moon Dancer",
+            "arabic": "مون دانسر الشريرة",
+            "turkish": "Mean Moon Dancer",
+            "japanese": "イジワルなムーンダンサー",
+            "spanish": "Mean Moon Dancer",
+            "brazilian portuguese": "Mean Moon Dancer",
+            "italian": "Mean Moon Dancer",
+            "german": "Mean Moon Dancer"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "korean": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "russian": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "english": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "chinese": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "french": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "arabic": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "turkish": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "japanese": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "spanish": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "italian": "STR_PONY_MEAN_MOONDANCER_DESC",
-            "german": "STR_PONY_MEAN_MOONDANCER_DESC"
+            "thai": "ไม่เคยเรียนรู้หรือสอนบทเรียนเกี่ยวกับมิตรภาพโดยบังเอิญเลย",
+            "korean": "우정에 대한 교훈을 배운 적도 없고 가르친 적도 결코 없습니다.",
+            "russian": "Никогда не училась И даже по оплошности не преподавала уроков дружбы, ВООБЩЕ.",
+            "english": "Has never learned OR inadvertently taught any friendship lessons, EVER.",
+            "chinese": "从未学过，也从未无意中教过任何友情课程。",
+            "french": "N'a jamais appris OU enseigné par inadvertance la moindre leçon sur l'amitié, JAMAIS.",
+            "arabic": "لم تتعلم أي دروس عن الصداقة، ولم تُعلّمها لأحد عن غير قصد، على الإطلاق.",
+            "turkish": "Hiçbir zaman dostluk derslerini öğrenmedi ya da kazara öğretmedi.",
+            "japanese": "友じょうを学んだことはないし、まさかうっかりそれを教えたなんてことは、ない。",
+            "spanish": "Nunca ha aprendido ni enseñado involuntariamente ninguna lección de amistad, nunca.",
+            "brazilian portuguese": "Nunca aprendeu NEM sem querer ensinou lições sobre amizade. NUNCA.",
+            "italian": "Non ha mai imparato NÉ involontariamente impartito lezioni di amicizia, MAI.",
+            "german": "Hat noch nie Freundschaftslektionen gelernt ODER versehentlich gelehrt."
           },
           "alt_name": {},
           "tags": [],
@@ -277558,7 +277558,7 @@
             "main": "game/pony/main/Pony_Mean_Moondancer.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -277569,19 +277569,19 @@
           "max_level": false,
           "rewards": [
             {
-              "item": "wheel_starmastery",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency2",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency3",
+              "item": "PopCurrency1",
               "amount": 1
             },
             {
               "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
               "amount": 1
             },
             {
@@ -277595,12 +277595,12 @@
             "skip_cost": 4,
             "exp_rank": 45
           },
-          "arrival_xp": 45,
+          "arrival_xp": 40,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 900
+              "amount": 700
             },
             "token": "",
             "daily_goals": 0
@@ -277643,35 +277643,35 @@
           "index": 2310,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_SANDBAR_NAME",
-            "korean": "STR_PONY_MEAN_SANDBAR_NAME",
-            "russian": "STR_PONY_MEAN_SANDBAR_NAME",
-            "english": "STR_PONY_MEAN_SANDBAR_NAME",
-            "chinese": "STR_PONY_MEAN_SANDBAR_NAME",
-            "french": "STR_PONY_MEAN_SANDBAR_NAME",
-            "arabic": "STR_PONY_MEAN_SANDBAR_NAME",
-            "turkish": "STR_PONY_MEAN_SANDBAR_NAME",
-            "japanese": "STR_PONY_MEAN_SANDBAR_NAME",
-            "spanish": "STR_PONY_MEAN_SANDBAR_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_SANDBAR_NAME",
-            "italian": "STR_PONY_MEAN_SANDBAR_NAME",
-            "german": "STR_PONY_MEAN_SANDBAR_NAME"
+            "thai": "แซนด์บาร์ใจร้าย",
+            "korean": "Mean Sandbar",
+            "russian": "Заносчивый Сандбар",
+            "english": "Mean Sandbar",
+            "chinese": "刻薄桑德巴尔",
+            "french": "Mean Sandbar",
+            "arabic": "ساندبار الشرير",
+            "turkish": "Mean Sandbar",
+            "japanese": "イジワルなサンドバー",
+            "spanish": "Mean Sandbar",
+            "brazilian portuguese": "Mean Sandbar",
+            "italian": "Mean Sandbar",
+            "german": "Mean Sandbar"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_SANDBAR_DESC",
-            "korean": "STR_PONY_MEAN_SANDBAR_DESC",
-            "russian": "STR_PONY_MEAN_SANDBAR_DESC",
-            "english": "STR_PONY_MEAN_SANDBAR_DESC",
-            "chinese": "STR_PONY_MEAN_SANDBAR_DESC",
-            "french": "STR_PONY_MEAN_SANDBAR_DESC",
-            "arabic": "STR_PONY_MEAN_SANDBAR_DESC",
-            "turkish": "STR_PONY_MEAN_SANDBAR_DESC",
-            "japanese": "STR_PONY_MEAN_SANDBAR_DESC",
-            "spanish": "STR_PONY_MEAN_SANDBAR_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_SANDBAR_DESC",
-            "italian": "STR_PONY_MEAN_SANDBAR_DESC",
-            "german": "STR_PONY_MEAN_SANDBAR_DESC"
+            "thai": "หงุดหงิดกับทุกอย่างและโพนี่ทุกตัวเลย ไม่มีความใจเย็นเลยจริง ๆ",
+            "korean": "모든 것과 모든 포니한테 짜증이 나 있습니다. 완전 여유가 없죠.",
+            "russian": "Раздражается из-за всех и вся. И совсем не умеет расслабляться.",
+            "english": "Is annoyed by everything and everypony. Profoundly lacking in chill.",
+            "chinese": "对所有事和小马都感到烦躁，完全没有耐心。",
+            "french": "Est agacé par tout et tout le monde. Profondément dépourvu de calme.",
+            "arabic": "يشعر بالانزعاج من كل شيء ومن كل المهور. يفتقر تمامًا إلى الهدوء.",
+            "turkish": "Her şeyden ve herkesten rahatsız oluyor. Rahatlıktan tamamen mahrum.",
+            "japanese": "あらゆること、あらゆるポニーにイラついている。れいせいさがすっごくかけているみたい。",
+            "spanish": "Está molesto por todo y todos. No sabe tomarse las cosas con calma.",
+            "brazilian portuguese": "Se irrita com tudo e com todos. Não tem paciência alguma.",
+            "italian": "È infastidito da tutto e da chiunque. Totalmente privo di calma.",
+            "german": "Ist von allem und allen genervt. Kann sich nur schwer entspannen."
           },
           "alt_name": {},
           "tags": [],
@@ -277680,7 +277680,7 @@
             "main": "game/pony/main/Pony_Mean_Sandbar.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -277691,15 +277691,7 @@
           "max_level": false,
           "rewards": [
             {
-              "item": "wheel_starmastery",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency2",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency3",
+              "item": "PopCurrency1",
               "amount": 1
             },
             {
@@ -277707,7 +277699,15 @@
               "amount": 1
             },
             {
-              "item": "PopCurrency5",
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
               "amount": 1
             }
           ],
@@ -277722,7 +277722,7 @@
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 900
+              "amount": 750
             },
             "token": "",
             "daily_goals": 0
@@ -277765,35 +277765,35 @@
           "index": 2311,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_SMOLDER_NAME",
-            "korean": "STR_PONY_MEAN_SMOLDER_NAME",
-            "russian": "STR_PONY_MEAN_SMOLDER_NAME",
-            "english": "STR_PONY_MEAN_SMOLDER_NAME",
-            "chinese": "STR_PONY_MEAN_SMOLDER_NAME",
-            "french": "STR_PONY_MEAN_SMOLDER_NAME",
-            "arabic": "STR_PONY_MEAN_SMOLDER_NAME",
-            "turkish": "STR_PONY_MEAN_SMOLDER_NAME",
-            "japanese": "STR_PONY_MEAN_SMOLDER_NAME",
-            "spanish": "STR_PONY_MEAN_SMOLDER_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_SMOLDER_NAME",
-            "italian": "STR_PONY_MEAN_SMOLDER_NAME",
-            "german": "STR_PONY_MEAN_SMOLDER_NAME"
+            "thai": "สโมลเดอร์ใจร้าย",
+            "korean": "Mean Smolder",
+            "russian": "Заносчивая Смолдер",
+            "english": "Mean Smolder",
+            "chinese": "刻薄阴燃",
+            "french": "Mean Smolder",
+            "arabic": "سمولدر الشريرة",
+            "turkish": "Mean Smolder",
+            "japanese": "イジワルなスモールダー",
+            "spanish": "Mean Smolder",
+            "brazilian portuguese": "Mean Smolder",
+            "italian": "Mean Smolder",
+            "german": "Mean Smolder"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_SMOLDER_DESC",
-            "korean": "STR_PONY_MEAN_SMOLDER_DESC",
-            "russian": "STR_PONY_MEAN_SMOLDER_DESC",
-            "english": "STR_PONY_MEAN_SMOLDER_DESC",
-            "chinese": "STR_PONY_MEAN_SMOLDER_DESC",
-            "french": "STR_PONY_MEAN_SMOLDER_DESC",
-            "arabic": "STR_PONY_MEAN_SMOLDER_DESC",
-            "turkish": "STR_PONY_MEAN_SMOLDER_DESC",
-            "japanese": "STR_PONY_MEAN_SMOLDER_DESC",
-            "spanish": "STR_PONY_MEAN_SMOLDER_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_SMOLDER_DESC",
-            "italian": "STR_PONY_MEAN_SMOLDER_DESC",
-            "german": "STR_PONY_MEAN_SMOLDER_DESC"
+            "thai": "เท่ซะจนไม่ต้องแคร์ทั้งโรงเรียนหรืออะไรทั้งนั้น",
+            "korean": "학교에도, 그리고 다른 어떤 곳에도 어울리지 않습니다.",
+            "russian": "Слишком крута для школы... и для всего остального.",
+            "english": "Is too cool for school, and also for everything else.",
+            "chinese": "太酷了，觉得学校和其他事都一样没劲。",
+            "french": "Est trop cool pour quoi ce soit.",
+            "arabic": "ترى نفسها أرفع شأنًا من الجميع، ومن أي شيء آخر في هذا العالم أيضًا.",
+            "turkish": "Okul ve diğer her şey için fazla havalı.",
+            "japanese": "学校にはクールすぎる。なんなら、全てのことにクールすぎる。",
+            "spanish": "Es demasiado genial para la escuela y también para todo lo demás.",
+            "brazilian portuguese": "É descolado demais para a escola. E também para qualquer outra coisa.",
+            "italian": "È troppo avanti per la scuola e per ogni altra cosa.",
+            "german": "Ist zu cool für die Schule und auch für alles andere."
           },
           "alt_name": {},
           "tags": [],
@@ -277802,7 +277802,7 @@
             "main": "game/pony/main/Pony_Mean_Smolder.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Timbucktu_Palace",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -277811,19 +277811,40 @@
           "group_master": false,
           "group": [],
           "max_level": true,
-          "rewards": [],
+          "rewards": [
+            {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency2",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            }
+          ],
           "minigame": {
             "can_play_minecart": false,
-            "cooldown": 14400,
-            "skip_cost": 6,
+            "cooldown": 8400,
+            "skip_cost": 4,
             "exp_rank": 9
           },
-          "arrival_xp": 30,
+          "arrival_xp": 45,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 800
+              "amount": 750
             },
             "token": "",
             "daily_goals": 0
@@ -277866,35 +277887,35 @@
           "index": 2312,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_GALLUS_NAME",
-            "korean": "STR_PONY_MEAN_GALLUS_NAME",
-            "russian": "STR_PONY_MEAN_GALLUS_NAME",
-            "english": "STR_PONY_MEAN_GALLUS_NAME",
-            "chinese": "STR_PONY_MEAN_GALLUS_NAME",
-            "french": "STR_PONY_MEAN_GALLUS_NAME",
-            "arabic": "STR_PONY_MEAN_GALLUS_NAME",
-            "turkish": "STR_PONY_MEAN_GALLUS_NAME",
-            "japanese": "STR_PONY_MEAN_GALLUS_NAME",
-            "spanish": "STR_PONY_MEAN_GALLUS_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_GALLUS_NAME",
-            "italian": "STR_PONY_MEAN_GALLUS_NAME",
-            "german": "STR_PONY_MEAN_GALLUS_NAME"
+            "thai": "แกลลัสใจร้าย",
+            "korean": "겁쟁이",
+            "russian": "Заносчивый Галлус",
+            "english": "Mean Gallus",
+            "chinese": "刻薄佳乐斯",
+            "french": "Mean Gallus",
+            "arabic": "غالوس الشرير",
+            "turkish": "Mean Gallus",
+            "japanese": "イジワルなガーラス",
+            "spanish": "Mean Gallus",
+            "brazilian portuguese": "Mean Gallus",
+            "italian": "Mean Gallus",
+            "german": "Mean Gallus"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_GALLUS_DESC",
-            "korean": "STR_PONY_MEAN_GALLUS_DESC",
-            "russian": "STR_PONY_MEAN_GALLUS_DESC",
-            "english": "STR_PONY_MEAN_GALLUS_DESC",
-            "chinese": "STR_PONY_MEAN_GALLUS_DESC",
-            "french": "STR_PONY_MEAN_GALLUS_DESC",
-            "arabic": "STR_PONY_MEAN_GALLUS_DESC",
-            "turkish": "STR_PONY_MEAN_GALLUS_DESC",
-            "japanese": "STR_PONY_MEAN_GALLUS_DESC",
-            "spanish": "STR_PONY_MEAN_GALLUS_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_GALLUS_DESC",
-            "italian": "STR_PONY_MEAN_GALLUS_DESC",
-            "german": "STR_PONY_MEAN_GALLUS_DESC"
+            "thai": "โอ๊ะโอ มีพวกช่างประชดอยู่ที่นี่ด้วย",
+            "korean": "오, 여기에 냉소적인 친구가 한 명 더 있군요.",
+            "russian": "Ой-ой, у нас тут любитель сарказма.",
+            "english": "Uh-oh, we've got a sarcastic one over here.",
+            "chinese": "哎呀，这里有只毒舌小马。",
+            "french": "Oh là là, on a un sarcastique parmi nous.",
+            "arabic": "أوه، يبدو أننا أمام شخصٍ يقطر سخرية هنا!",
+            "turkish": "Alaycı birini mi aramıştın? İşte karşında!",
+            "japanese": "あーらら、皮肉屋が来ちゃった。",
+            "spanish": "Uy, uy, tenemos a un sarcástico por aquí.",
+            "brazilian portuguese": "Opa, temos alguém sarcástico por aqui.",
+            "italian": "Oh-oh, abbiamo un tipo sarcastico qui.",
+            "german": "Oh-oh, wir haben hier einen sarkastischen Charakter."
           },
           "alt_name": {},
           "tags": [],
@@ -277902,8 +277923,8 @@
             "portrait": "game/pony/portrait/Pony_Mean_Gallus.png",
             "main": "game/pony/main/Pony_Mean_Gallus.png"
           },
-          "location": "CANTERLOT",
-          "house": "House_Rainbowified",
+          "location": "PONYVILLE",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -277914,7 +277935,7 @@
           "max_level": false,
           "rewards": [
             {
-              "item": "Token_Lottery",
+              "item": "PopCurrency1",
               "amount": 1
             },
             {
@@ -277922,7 +277943,7 @@
               "amount": 1
             },
             {
-              "item": "wheel_starmastery",
+              "item": "PopCurrency3",
               "amount": 1
             },
             {
@@ -277940,12 +277961,12 @@
             "skip_cost": 4,
             "exp_rank": 40
           },
-          "arrival_xp": 40,
+          "arrival_xp": 45,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 700
+              "amount": 750
             },
             "token": "",
             "daily_goals": 0
@@ -277988,35 +278009,35 @@
           "index": 2313,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_OCELLUS_NAME",
-            "korean": "STR_PONY_MEAN_OCELLUS_NAME",
-            "russian": "STR_PONY_MEAN_OCELLUS_NAME",
-            "english": "STR_PONY_MEAN_OCELLUS_NAME",
-            "chinese": "STR_PONY_MEAN_OCELLUS_NAME",
-            "french": "STR_PONY_MEAN_OCELLUS_NAME",
-            "arabic": "STR_PONY_MEAN_OCELLUS_NAME",
-            "turkish": "STR_PONY_MEAN_OCELLUS_NAME",
-            "japanese": "STR_PONY_MEAN_OCELLUS_NAME",
-            "spanish": "STR_PONY_MEAN_OCELLUS_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_OCELLUS_NAME",
-            "italian": "STR_PONY_MEAN_OCELLUS_NAME",
-            "german": "STR_PONY_MEAN_OCELLUS_NAME"
+            "thai": "โอเซลลัสใจร้าย",
+            "korean": "Mean Ocellus",
+            "russian": "Заносчивая Оцеллус",
+            "english": "Mean Ocellus",
+            "chinese": "刻薄欧塞勒斯",
+            "french": "Mean Ocellus",
+            "arabic": "أوسيلوس الشريرة",
+            "turkish": "Mean Ocellus",
+            "japanese": "イジワルなオセラス",
+            "spanish": "Mean Ocellus",
+            "brazilian portuguese": "Mean Ocellus",
+            "italian": "Mean Ocellus",
+            "german": "Mean Ocellus"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_OCELLUS_DESC",
-            "korean": "STR_PONY_MEAN_OCELLUS_DESC",
-            "russian": "STR_PONY_MEAN_OCELLUS_DESC",
-            "english": "STR_PONY_MEAN_OCELLUS_DESC",
-            "chinese": "STR_PONY_MEAN_OCELLUS_DESC",
-            "french": "STR_PONY_MEAN_OCELLUS_DESC",
-            "arabic": "STR_PONY_MEAN_OCELLUS_DESC",
-            "turkish": "STR_PONY_MEAN_OCELLUS_DESC",
-            "japanese": "STR_PONY_MEAN_OCELLUS_DESC",
-            "spanish": "STR_PONY_MEAN_OCELLUS_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_OCELLUS_DESC",
-            "italian": "STR_PONY_MEAN_OCELLUS_DESC",
-            "german": "STR_PONY_MEAN_OCELLUS_DESC"
+            "thai": "สามารถเปลี่ยนร่างเป็นอะไรก็ได้ตามใจ แต่เลือกที่จะทำหน้าบึ้งอยู่ตลอด",
+            "korean": "어떤 모습이든 변할 수 있지만, 찡그린 얼굴로 계속 있는 걸 좋아합니다.",
+            "russian": "Может принять любую форму, какую пожелает, но при этом сохраняет свое характерное вечно угрюмое выражение.",
+            "english": "Can take on any form she wants, but prefers to keep a permanent scowl on her face.",
+            "chinese": "明明可以变成任何样子，却始终摆着个臭脸。",
+            "french": "Peut prendre toutes les formes qu'elle souhaite, mais préfère froncer les sourcils en permanence.",
+            "arabic": "يمكنها اتخاذ أي شكل تريده، لكنها تفضل إبقاء العبوس دائمًا على وجهها.",
+            "turkish": "İstediği her şekli alabilir, ancak yüzünde kalıcı bir asık ifadeyi tercih eder.",
+            "japanese": "どんなすがたにもへんしんできるけど、できればえいえんにフキゲンな顔をしていたい。",
+            "spanish": "Puede adoptar cualquier forma que desee, pero prefiere mantener una mueca de desdén permanente en el rostro.",
+            "brazilian portuguese": "Pode assumir qualquer forma que quiser, mas prefere manter uma carranca permanente na cara.",
+            "italian": "Può assumere qualsiasi forma desideri, ma preferisce mantenere un broncio permanente sul viso.",
+            "german": "Kann jede Gestalt annehmen, die sie möchte, bevorzugt es aber, stets ein finsteres Gesicht aufzusetzen."
           },
           "alt_name": {},
           "tags": [],
@@ -278024,8 +278045,8 @@
             "portrait": "game/pony/portrait/Pony_Mean_Ocellus.png",
             "main": "game/pony/main/Pony_Mean_Ocellus.png"
           },
-          "location": "CANTERLOT",
-          "house": "House_Rainbowified",
+          "location": "PONYVILLE",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -278036,15 +278057,15 @@
           "max_level": false,
           "rewards": [
             {
+              "item": "PopCurrency1",
+              "amount": 1
+            },
+            {
               "item": "Token_Lottery",
               "amount": 1
             },
             {
-              "item": "wheel_starmastery",
-              "amount": 1
-            },
-            {
-              "item": "wheel_starmastery",
+              "item": "Gems",
               "amount": 1
             },
             {
@@ -278062,12 +278083,12 @@
             "skip_cost": 4,
             "exp_rank": 40
           },
-          "arrival_xp": 40,
+          "arrival_xp": 45,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 700
+              "amount": 750
             },
             "token": "",
             "daily_goals": 0
@@ -278110,35 +278131,35 @@
           "index": 2314,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "korean": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "russian": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "english": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "chinese": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "french": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "arabic": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "turkish": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "japanese": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "spanish": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "italian": "STR_PONY_MEAN_SILVERSTREAM_NAME",
-            "german": "STR_PONY_MEAN_SILVERSTREAM_NAME"
+            "thai": "ซิลเวอร์สตรีมใจร้าย",
+            "korean": "Mean Silverstream",
+            "russian": "Заносчивая Сильвер Стрим",
+            "english": "Mean Silverstream",
+            "chinese": "刻薄银溪",
+            "french": "Mean Silverstream",
+            "arabic": "سيلفرستريم الشريرة",
+            "turkish": "Mean Silverstream",
+            "japanese": "イジワルなシルバーストリーム",
+            "spanish": "Mean Silverstream",
+            "brazilian portuguese": "Mean Silverstream",
+            "italian": "Mean Silverstream",
+            "german": "Mean Silverstream"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "korean": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "russian": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "english": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "chinese": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "french": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "arabic": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "turkish": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "japanese": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "spanish": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "italian": "STR_PONY_MEAN_SILVERSTREAM_DESC",
-            "german": "STR_PONY_MEAN_SILVERSTREAM_DESC"
+            "thai": "เป็นอะไรก็แล้วแต่ที่ตรงข้ามกับ \"ความสดใส\"",
+            "korean": "항상 \"상냥하다\"의 반대 상태에 있습니다.",
+            "russian": "Всегда полная противоположность того, что вкладывают в понятие \"жизнерадостности\".",
+            "english": "Is always whatever the reverse of \"bubbly\" is.",
+            "chinese": "永远都是“活泼开朗”的反义词。",
+            "french": "Est toujours l'opposé de \"pétillante\".",
+            "arabic": "تكون دائمًا في حالة معاكسة تمامًا للحيوية والمرح.",
+            "turkish": "Her zaman \"neşeli\"nin tam tersidir.",
+            "japanese": "つねに「陽気」とぎゃくのじょうたい。",
+            "spanish": "Es cualquier cosa menos \"dicharachera\".",
+            "brazilian portuguese": "É sempre o oposto de \"animada\".",
+            "italian": "È sempre l'esatto contrario di \"allegra\".",
+            "german": "Ist immer das genaue Gegenteil von \"lebhaft\"."
           },
           "alt_name": {},
           "tags": [],
@@ -278146,8 +278167,8 @@
             "portrait": "game/pony/portrait/Pony_Mean_Silverstream.png",
             "main": "game/pony/main/Pony_Mean_Silverstream.png"
           },
-          "location": "CANTERLOT",
-          "house": "House_Rainbowified",
+          "location": "PONYVILLE",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -278162,7 +278183,7 @@
               "amount": 1
             },
             {
-              "item": "wheel_starmastery",
+              "item": "PopCurrency2",
               "amount": 1
             },
             {
@@ -278170,11 +278191,11 @@
               "amount": 1
             },
             {
-              "item": "Token_Lottery",
+              "item": "PopCurrency4",
               "amount": 1
             },
             {
-              "item": "PopCurrency5",
+              "item": "Gems",
               "amount": 1
             }
           ],
@@ -278184,12 +278205,12 @@
             "skip_cost": 4,
             "exp_rank": 40
           },
-          "arrival_xp": 40,
+          "arrival_xp": 45,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 700
+              "amount": 750
             },
             "token": "",
             "daily_goals": 0
@@ -278232,35 +278253,35 @@
           "index": 2315,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "korean": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "russian": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "english": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "chinese": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "french": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "arabic": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "turkish": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "japanese": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "spanish": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "italian": "STR_PONY_MEAN_YONA_PONY_NAME",
-            "german": "STR_PONY_MEAN_YONA_PONY_NAME"
+            "thai": "โพนี่โยนาใจร้าย",
+            "korean": "Mean Pony Yona",
+            "russian": "Заносчивая пони Йона",
+            "english": "Mean Pony Yona",
+            "chinese": "刻薄小马约娜",
+            "french": "Mean Pony Yona",
+            "arabic": "المهرة يونا الشريرة",
+            "turkish": "Mean Pony Yona",
+            "japanese": "イジワルなポニーヨナ",
+            "spanish": "Mean Pony Yona",
+            "brazilian portuguese": "Mean Pony Yona",
+            "italian": "Mean Pony Yona",
+            "german": "Mean Pony Yona"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "korean": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "russian": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "english": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "chinese": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "french": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "arabic": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "turkish": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "japanese": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "spanish": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "italian": "STR_PONY_MEAN_YONA_PONY_DESC",
-            "german": "STR_PONY_MEAN_YONA_PONY_DESC"
+            "thai": "โกรธมากที่ไม่ได้เป็นจามรีแล้ว",
+            "korean": "아직 야크가 아니어서 매우 화가 났습니다.",
+            "russian": "ОЧЕНЬ ЗЛИТСЯ, что она больше не як.",
+            "english": "Is VERY ANGRY that she's not still a yak.",
+            "chinese": "因为自己不再是牦牛，她非常生气。",
+            "french": "Est TRÈS FÂCHÉE de ne plus être un yak.",
+            "arabic": "غاضبة جدًا لأنها لم تعد ثور ياك.",
+            "turkish": "Hala bir yak olmadığı için ÇOK KIZGIN.",
+            "japanese": "まだヤクになれないからってすっごくおこってるみたい。",
+            "spanish": "Está MUY enfadada por no seguir siendo un yak.",
+            "brazilian portuguese": "ESTÁ MUITO IRRITADA porque ela não é mais uma iaque.",
+            "italian": "È MOLTO ARRABBIATA perché non è più uno yak.",
+            "german": "Ist SEHR WÜTEND, dass sie nicht mehr ein Yak ist."
           },
           "alt_name": {},
           "tags": [],
@@ -278269,7 +278290,7 @@
             "main": "game/pony/main/Pony_Mean_Yona_Pony.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -278280,11 +278301,11 @@
           "max_level": false,
           "rewards": [
             {
-              "item": "wheel_starmastery",
+              "item": "PopCurrency1",
               "amount": 1
             },
             {
-              "item": "PopCurrency2",
+              "item": "wheel_starmastery",
               "amount": 1
             },
             {
@@ -278292,7 +278313,7 @@
               "amount": 1
             },
             {
-              "item": "Token_Lottery",
+              "item": "PopCurrency4",
               "amount": 1
             },
             {
@@ -278311,7 +278332,7 @@
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 900
+              "amount": 750
             },
             "token": "",
             "daily_goals": 0
@@ -278354,35 +278375,35 @@
           "index": 2316,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "korean": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "russian": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "english": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "chinese": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "french": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "arabic": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "turkish": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "japanese": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "spanish": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "italian": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME",
-            "german": "STR_PONY_MEAN_AUTUMN_BLAZE_NAME"
+            "thai": "ออทั่มเบลซใจร้าย",
+            "korean": "Mean Autumn Blaze",
+            "russian": "Заносчивая Отемн Блейз",
+            "english": "Mean Autumn Blaze",
+            "chinese": "刻薄秋天烈火",
+            "french": "Mean Autumn Blaze",
+            "arabic": "أوتم بليز الشريرة",
+            "turkish": "Mean Autumn Blaze",
+            "japanese": "イジワルなオータムブレイズ",
+            "spanish": "Mean Autumn Blaze",
+            "brazilian portuguese": "Mean Autumn Blaze",
+            "italian": "Mean Autumn Blaze",
+            "german": "Mean Autumn Blaze"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "korean": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "russian": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "english": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "chinese": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "french": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "arabic": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "turkish": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "japanese": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "spanish": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "italian": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC",
-            "german": "STR_PONY_MEAN_AUTUMN_BLAZE_DESC"
+            "thai": "ตอบเพียงคำเดียว หรืออาจจะสองคำถ้าเจ้าโชคดีสุด ๆ",
+            "korean": "단어 한 개로만 대답할 수도 있고, 어쩌면 정말 운이 좋으면 두 단어일 수도 있습니다.",
+            "russian": "Отвечает только одним словом - или, возможно, двумя, если вам ОЧЕНЬ повезет.",
+            "english": "Only responds with one word -- or maybe two, if you're REALLY lucky.",
+            "chinese": "每次回答只用一个词——如果你走运，也许会是两个。",
+            "french": "Ne répond qu'avec un mot... ou peut-être deux, si tu as BEAUCOUP de chance.",
+            "arabic": "لا تجيب إلا بكلمة واحدة، أو ربما بكلمتين إذا كنت محظوظًا حقًا.",
+            "turkish": "Sadece bir kelimeyle yanıt verir -- taş çatlasın iki, o da eğer GERÇEKTEN şanslıysan.",
+            "japanese": "一言でしか返事しない。二言の時もあるけど…運がよければね。",
+            "spanish": "Solo responde con una palabra, o tal vez dos, si tienes mucha suerte.",
+            "brazilian portuguese": "Só responde com uma palavra - ou talvez duas, se você tiver MUITA sorte.",
+            "italian": "Risponde solo con una parola o forse due, se hai molta fortuna.",
+            "german": "Antwortet nur mit einem Wort – oder vielleicht zwei, wenn du WIRKLICH Glück hast."
           },
           "alt_name": {},
           "tags": [],
@@ -278391,7 +278412,7 @@
             "main": "game/pony/main/Pony_Mean_Autumn_Blaze.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -278406,19 +278427,19 @@
               "amount": 1
             },
             {
-              "item": "PopCurrency2",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency3",
-              "amount": 1
-            },
-            {
               "item": "Token_Lottery",
               "amount": 1
             },
             {
-              "item": "PopCurrency5",
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
               "amount": 1
             }
           ],
@@ -278433,7 +278454,7 @@
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 900
+              "amount": 800
             },
             "token": "",
             "daily_goals": 0
@@ -278476,35 +278497,35 @@
           "index": 2317,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_MUFFINS_NAME",
-            "korean": "STR_PONY_MEAN_MUFFINS_NAME",
-            "russian": "STR_PONY_MEAN_MUFFINS_NAME",
-            "english": "STR_PONY_MEAN_MUFFINS_NAME",
-            "chinese": "STR_PONY_MEAN_MUFFINS_NAME",
-            "french": "STR_PONY_MEAN_MUFFINS_NAME",
-            "arabic": "STR_PONY_MEAN_MUFFINS_NAME",
-            "turkish": "STR_PONY_MEAN_MUFFINS_NAME",
-            "japanese": "STR_PONY_MEAN_MUFFINS_NAME",
-            "spanish": "STR_PONY_MEAN_MUFFINS_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_MUFFINS_NAME",
-            "italian": "STR_PONY_MEAN_MUFFINS_NAME",
-            "german": "STR_PONY_MEAN_MUFFINS_NAME"
+            "thai": "มัฟฟินส์ใจร้าย",
+            "korean": "Mean Muffins",
+            "russian": "Заносчивая Маффинс",
+            "english": "Mean Muffins",
+            "chinese": "刻薄马芬",
+            "french": "Mean Muffins",
+            "arabic": "مافينز الشريرة",
+            "turkish": "Mean Muffins",
+            "japanese": "イジワルなマフィン",
+            "spanish": "Mean Muffins",
+            "brazilian portuguese": "Mean Muffins",
+            "italian": "Mean Muffins",
+            "german": "Mean Muffins"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_MUFFINS_DESC",
-            "korean": "STR_PONY_MEAN_MUFFINS_DESC",
-            "russian": "STR_PONY_MEAN_MUFFINS_DESC",
-            "english": "STR_PONY_MEAN_MUFFINS_DESC",
-            "chinese": "STR_PONY_MEAN_MUFFINS_DESC",
-            "french": "STR_PONY_MEAN_MUFFINS_DESC",
-            "arabic": "STR_PONY_MEAN_MUFFINS_DESC",
-            "turkish": "STR_PONY_MEAN_MUFFINS_DESC",
-            "japanese": "STR_PONY_MEAN_MUFFINS_DESC",
-            "spanish": "STR_PONY_MEAN_MUFFINS_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_MUFFINS_DESC",
-            "italian": "STR_PONY_MEAN_MUFFINS_DESC",
-            "german": "STR_PONY_MEAN_MUFFINS_DESC"
+            "thai": "ไม่มีใครเอามัฟฟินส์ใจร้ายไปเป็นตัวประกอบหรอกนะ!",
+            "korean": "누구도 Mean Muffins를 배경에 두지 않습니다!",
+            "russian": "Никто не рискнет отодвинуть ее на второй план!",
+            "english": "Nopony puts Mean Muffins in the background!",
+            "chinese": "没有小马能把刻薄马芬晾在一边。",
+            "french": "Personne ne met Mean Muffins à l'arrière-plan !",
+            "arabic": "لا أحد يهمش مافينز الشريرة ويضعها في الخلفية!",
+            "turkish": "Hiçbir pony Mean Muffins'i arka plana koyamaz!",
+            "japanese": "だれもイジワルなマフィンをむしできない！",
+            "spanish": "¡Nadie pone a Mean Muffins en segundo plano!",
+            "brazilian portuguese": "Ninguém coloca Mean Muffins em segundo plano!",
+            "italian": "Nessuno mette Mean Muffins in secondo piano!",
+            "german": "Niemand stellt Mean Muffins in den Hintergrund!"
           },
           "alt_name": {},
           "tags": [],
@@ -278513,7 +278534,7 @@
             "main": "game/pony/main/Pony_Mean_Muffins.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Mean_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -278524,19 +278545,19 @@
           "max_level": false,
           "rewards": [
             {
-              "item": "wheel_starmastery",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency2",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency3",
+              "item": "PopCurrency1",
               "amount": 1
             },
             {
               "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
               "amount": 1
             },
             {
@@ -278555,7 +278576,7 @@
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 900
+              "amount": 800
             },
             "token": "",
             "daily_goals": 0
@@ -278598,35 +278619,35 @@
           "index": 2318,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "korean": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "russian": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "english": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "chinese": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "french": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "arabic": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "turkish": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "japanese": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "spanish": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "italian": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME",
-            "german": "STR_PONY_MEAN_CHEESE_SANDWICH_NAME"
+            "thai": "ชีสแซนด์วิชใจร้าย",
+            "korean": "Mean Cheese Sandwich",
+            "russian": "Заносчивый Чиз Сэндвич",
+            "english": "Mean Cheese Sandwich",
+            "chinese": "刻薄芝士三明治",
+            "french": "Mean Cheese Sandwich",
+            "arabic": "تشيز ساندوتش الشرير",
+            "turkish": "Mean Cheese Sandwich",
+            "japanese": "イジワルなチーズサンドウィッチ",
+            "spanish": "Mean Cheese Sandwich",
+            "brazilian portuguese": "Mean Cheese Sandwich",
+            "italian": "Mean Cheese Sandwich",
+            "german": "Mean Cheese Sandwich"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "korean": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "russian": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "english": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "chinese": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "french": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "arabic": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "turkish": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "japanese": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "spanish": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "italian": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC",
-            "german": "STR_PONY_MEAN_CHEESE_SANDWICH_DESC"
+            "thai": "เพลงล้อเลียนของเขาทุกเพลงก็คือเพลงเสียดสีดี ๆ นี่เอง",
+            "korean": "그의 모든 패러디 노래는 얇게 가려진 디스곡입니다.",
+            "russian": "Все его песни-пародии представляют собой едва скрывамое пренебрежение.",
+            "english": "All of his parody songs are thinly-veiled diss tracks.",
+            "chinese": "他所有的恶搞歌曲都是在变相怼人。",
+            "french": "Toutes ses chansons parodiques sont des morceaux de dissidence à peine voilés.",
+            "arabic": "كل أغانيه الساخرة عبارة عن أغاني هجاء مبطنة بشكل مكشوف.",
+            "turkish": "Parodi şarkılarının tamamı, üstü kapalı bir şekilde eleştiri içerikli parçalardır.",
+            "japanese": "全部のかえ歌にわかりやすいディスをまぜてくる。",
+            "spanish": "Todas sus canciones parodia son, en realidad, disstracks muy mal disimulados.",
+            "brazilian portuguese": "Todas as suas canções de paródia são ataques disfarçados.",
+            "italian": "Tutte le sue parodie sono brani ironici leggermente velati.",
+            "german": "All seine Parodielieder sind durchsichtige Disstracks."
           },
           "alt_name": {},
           "tags": [],
@@ -278635,7 +278656,7 @@
             "main": "game/pony/main/Pony_Mean_Cheese_Sandwich.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Creepy_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -278646,15 +278667,7 @@
           "max_level": false,
           "rewards": [
             {
-              "item": "wheel_starmastery",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency2",
-              "amount": 1
-            },
-            {
-              "item": "PopCurrency3",
+              "item": "PopCurrency1",
               "amount": 1
             },
             {
@@ -278662,7 +278675,15 @@
               "amount": 1
             },
             {
-              "item": "PopCurrency5",
+              "item": "PopCurrency3",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency4",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
               "amount": 1
             }
           ],
@@ -278672,12 +278693,12 @@
             "skip_cost": 4,
             "exp_rank": 45
           },
-          "arrival_xp": 45,
+          "arrival_xp": 40,
           "unlock_level": 8,
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 900
+              "amount": 700
             },
             "token": "",
             "daily_goals": 0
@@ -278720,35 +278741,35 @@
           "index": 2319,
           "note": {},
           "name": {
-            "thai": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "korean": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "russian": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "english": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "chinese": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "french": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "arabic": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "turkish": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "japanese": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "spanish": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "brazilian portuguese": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "italian": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME",
-            "german": "STR_PONY_MEAN_SUNSET_SHIMMER_NAME"
+            "thai": "ซันเซ็ตชิมเมอร์ใจร้าย",
+            "korean": "Mean Sunset Shimmer",
+            "russian": "Заносчивая Сансет Шиммер",
+            "english": "Mean Sunset Shimmer",
+            "chinese": "刻薄余晖烁烁",
+            "french": "Mean Sunset Shimmer",
+            "arabic": "صنست شيمر الشريرة",
+            "turkish": "Mean Sunset Shimmer",
+            "japanese": "イジワルなサンセットシマー",
+            "spanish": "Mean Sunset Shimmer",
+            "brazilian portuguese": "Mean Sunset Shimmer",
+            "italian": "Mean Sunset Shimmer",
+            "german": "Mean Sunset Shimmer"
           },
           "preferred_name": {},
           "description": {
-            "thai": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "korean": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "russian": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "english": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "chinese": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "french": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "arabic": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "turkish": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "japanese": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "spanish": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "brazilian portuguese": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "italian": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC",
-            "german": "STR_PONY_MEAN_SUNSET_SHIMMER_DESC"
+            "thai": "จากอันธพาลกลายมาเป็นเพื่อน ตอนนี้กลับไปเป็นอันธพาลอีกแล้ว",
+            "korean": "악당에서 친구로 변했다가, 이젠 악당에서 친구로 변했다가 다시 악당이 되었습니다.",
+            "russian": "Задира, ставшая хорошим другом, а теперь снова задирой.",
+            "english": "This bully-turned-friend is now a bully-turned-friend-turned-bully.",
+            "chinese": "这个曾经的恶霸后来成了朋友，如今又变成了恶霸。",
+            "french": "Cette ancienne intimidatrice devenue amie est redevenue intimidatrice.",
+            "arabic": "هذه المتنمرة التي أصبحت صديقة، باتت الآن متنمرة وصديقة ومتنمرة من جديد!",
+            "turkish": "Eskiden zorba olan, sonradan arkadaş olan bu kişi şimdi tekrar zorba, sonra arkadaş, sonra tekrar zorba haline döndü.",
+            "japanese": "いじめっ子から友達になったけど、今はいじめっ子から友達になったいじめっ子。",
+            "spanish": "La que pasó de abusona a amiga, ahora vuelve a ser abusona.",
+            "brazilian portuguese": "Essa tirana-que-virou-amiga agora é um tirana-que-virou-amiga-que-virou-tirana.",
+            "italian": "Questa amica ex bulla ora è una ex amica ridiventata bulla.",
+            "german": "Diese ehemalige Tyrannin, die zur Freundin wurde, ist nun eine ehemalige Tyrannin, die zur Freundin wurde und wieder zur Tyrannin geworden ist."
           },
           "alt_name": {},
           "tags": [],
@@ -278757,7 +278778,7 @@
             "main": "game/pony/main/Pony_Mean_Sunset_Shimmer.png"
           },
           "location": "PONYVILLE",
-          "house": "House_Steampost_Office",
+          "house": "House_Creepy_Abode",
           "inns": [],
           "changeling": {
             "id": "",
@@ -278768,7 +278789,7 @@
           "max_level": false,
           "rewards": [
             {
-              "item": "wheel_starmastery",
+              "item": "PopCurrency1",
               "amount": 1
             },
             {
@@ -278776,7 +278797,7 @@
               "amount": 1
             },
             {
-              "item": "PopCurrency3",
+              "item": "Gems",
               "amount": 1
             },
             {
@@ -278784,7 +278805,7 @@
               "amount": 1
             },
             {
-              "item": "PopCurrency5",
+              "item": "ProfileAvatar_425_Mean_Sunset_Shimmer",
               "amount": 1
             }
           ],
@@ -278799,7 +278820,7 @@
           "price": {
             "base": {
               "currency": "Gems",
-              "amount": 900
+              "amount": 800
             },
             "token": "",
             "daily_goals": 0
@@ -279201,6 +279222,128 @@
             }
           },
           "id": "Pony_Chaos_Future_Flurry_Heart",
+          "category": "pony"
+        },
+        "Pony_Tropical_Dream": {
+          "locked": false,
+          "index": 2323,
+          "note": {},
+          "name": {
+            "thai": "ทรอปิคอลดรีม",
+            "korean": "Tropical Dream",
+            "russian": "Тропикал Дрим",
+            "english": "Tropical Dream",
+            "chinese": "热带美梦",
+            "french": "Tropical Dream",
+            "arabic": "تروبيكال دريمز",
+            "turkish": "Tropical Dream",
+            "japanese": "トロピカルドリーム",
+            "spanish": "Tropical Dream",
+            "brazilian portuguese": "Tropical Dream",
+            "italian": "Tropical Dream",
+            "german": "Tropical Dream"
+          },
+          "preferred_name": {},
+          "description": {
+            "thai": "ผู้แทนจากการประชุมโพนี่แห่งเอเควสเทรียจากแคลิโฟลเนีย สถานที่ที่เธอมีความสุขที่สุดคือชายหาด",
+            "korean": "Califoalnia 출신의 위대한 Equestria 포니 회담의 대표로, 그녀가 가장 좋아하는 곳은 해변입니다.",
+            "russian": "Делегат Саммита поняш Эквестрии из Калипонии, лучше всего себя чувствует на пляже.",
+            "english": "A Grand Equestria Pony Summit delegate from Califoalnia, her happy place is on the beach.",
+            "chinese": "一位来自加利驹尼亚的小马国高阶马驹议会代表，海滩是她最钟意的快乐老家。",
+            "french": "Une déléguée du Grand sommet des poneys d'Equestria venant de Califoalnie, son endroit préféré est la plage.",
+            "arabic": "موفدة لقمة مهار إكويستيريا الكبرى قادمة من كاليفولنيا، الشاطئ هو مكانها المفضل.",
+            "turkish": "Kalifoalniya'dan bir Büyük Equestria Pony Zirvesi delegesidir ve en mutlu olduğu yer plajdır.",
+            "japanese": "エクエストリアポニーサミットのカリフォールニア代表。安らぎの場所はビーチなんだって。",
+            "spanish": "Una delegada de Califoalnia en la Gran cumbre de ponis de Equestria, su lugar favorito es la playa.",
+            "brazilian portuguese": "Representante da Convenção de Pôneis de Equestria de Califoalnia, pois seu lugar feliz é na praia.",
+            "italian": "È la delegata della Califoalnia per il Grande summit dei pony di Equestria e il suo posto prefeito è la spiaggia.",
+            "german": "Als Delegierte des Großen Ponygipfels von Equestria aus Califoalnia ist der Strand ihr Lieblingsort."
+          },
+          "alt_name": {},
+          "tags": [],
+          "image": {
+            "portrait": "game/pony/portrait/Pony_Tropical_Dream.png",
+            "main": "game/pony/main/Pony_Tropical_Dream.png"
+          },
+          "location": "PONYVILLE",
+          "house": "House_Mayor",
+          "inns": [],
+          "changeling": {
+            "id": "",
+            "IAmAlterSet": false
+          },
+          "group_master": false,
+          "group": [],
+          "max_level": false,
+          "rewards": [
+            {
+              "item": "wheel_starmastery",
+              "amount": 1
+            },
+            {
+              "item": "Token_Lottery",
+              "amount": 1
+            },
+            {
+              "item": "Gems",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            },
+            {
+              "item": "PopCurrency5",
+              "amount": 1
+            }
+          ],
+          "minigame": {
+            "can_play_minecart": false,
+            "cooldown": 9600,
+            "skip_cost": 4,
+            "exp_rank": 9
+          },
+          "arrival_xp": 50,
+          "unlock_level": 8,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 900
+            },
+            "token": "",
+            "daily_goals": 0
+          },
+          "tasks": {},
+          "pro": null,
+          "collections": [],
+          "wiki_path": "Tropical_Dream",
+          "wiki": {
+            "indie": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Tropical_Dream"
+              },
+              "2d_image": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Tropical_Dream_2d.png"
+              },
+              "portrait": {
+                "exists": false,
+                "redirect": false,
+                "path": "File:Tropical_Dream_portrait.png"
+              }
+            },
+            "fandom": {
+              "page": {
+                "exists": false,
+                "redirect": false,
+                "path": "Tropical_Dream"
+              }
+            }
+          },
+          "id": "Pony_Tropical_Dream",
           "category": "pony"
         }
       }
@@ -279820,8 +279963,8 @@
             "main": "game/house/House_Club_House.png"
           },
           "location": [
-            "SWEET_APPLE_ACRES",
-            "PONYVILLE"
+            "PONYVILLE",
+            "SWEET_APPLE_ACRES"
           ],
           "grid_size": 4,
           "build": {
@@ -281085,7 +281228,8 @@
             "Pony_Formalwear_Colt",
             "Pony_Raven_Inkwell",
             "Pony_Lucy_Packard",
-            "Pony_Young_Mayor_Mare"
+            "Pony_Young_Mayor_Mare",
+            "Pony_Tropical_Dream"
           ],
           "tags": [],
           "id": "House_Mayor",
@@ -290120,8 +290264,8 @@
             "main": "game/house/House_Snowfall_Frost.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "PONYVILLE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -294518,8 +294662,8 @@
             "main": "game/house/House_Retromobile.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "PONYVILLE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -294598,7 +294742,11 @@
             "Pony_Mean_Rarity",
             "Pony_Mean_Fluttershy",
             "Pony_Mean_Rainbow_Dash",
-            "Pony_Mean_Pinkie_Pie"
+            "Pony_Mean_Pinkie_Pie",
+            "Pony_Mean_Princess_Luna",
+            "Pony_Mean_Princess_Celestia",
+            "Pony_Mean_Cheese_Sandwich",
+            "Pony_Mean_Sunset_Shimmer"
           ],
           "tags": [],
           "id": "House_Creepy_Abode",
@@ -297006,8 +297154,8 @@
             "main": "game/house/House_Royal_Kitchen.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "PONYVILLE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -298640,8 +298788,7 @@
             "Pony_Chaos_Sandbar",
             "Pony_Chaos_Ocellus",
             "Pony_Chaos_Smolder",
-            "Pony_Chaos_Gallus",
-            "Pony_Mean_Smolder"
+            "Pony_Chaos_Gallus"
           ],
           "tags": [],
           "id": "House_Timbucktu_Palace",
@@ -301085,8 +301232,8 @@
             "main": "game/house/House_Of_Harmony.png"
           },
           "location": [
-            "CANTERLOT",
-            "PONYVILLE"
+            "PONYVILLE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -302414,10 +302561,7 @@
             "Pony_Rainbowified_Smolder",
             "Pony_Rainbowified_Amore",
             "Pony_Rainbowified_Yona",
-            "Pony_Rainbowified_Sky_Beak",
-            "Pony_Mean_Gallus",
-            "Pony_Mean_Ocellus",
-            "Pony_Mean_Silverstream"
+            "Pony_Rainbowified_Sky_Beak"
           ],
           "tags": [],
           "id": "House_Rainbowified",
@@ -303769,8 +303913,8 @@
             "main": "game/house/House_Crystal_Heart_Foal_Center.png"
           },
           "location": [
-            "CANTERLOT",
-            "CRYSTAL_EMPIRE"
+            "CRYSTAL_EMPIRE",
+            "CANTERLOT"
           ],
           "grid_size": 4,
           "build": {
@@ -304471,18 +304615,7 @@
             "Pony_Steampunk_Apple_Bloom",
             "Pony_Steampunk_Queen_Chrysalis",
             "Pony_Steampunk_King_Sombra",
-            "Pony_Steampunk_Changeling_Drone",
-            "Pony_Mean_Princess_Luna",
-            "Pony_Mean_Princess_Celestia",
-            "Pony_Mean_Bon_Bon",
-            "Pony_Mean_Lyra",
-            "Pony_Mean_Moondancer",
-            "Pony_Mean_Sandbar",
-            "Pony_Mean_Yona_Pony",
-            "Pony_Mean_Autumn_Blaze",
-            "Pony_Mean_Muffins",
-            "Pony_Mean_Cheese_Sandwich",
-            "Pony_Mean_Sunset_Shimmer"
+            "Pony_Steampunk_Changeling_Drone"
           ],
           "tags": [],
           "id": "House_Steampost_Office",
@@ -304605,6 +304738,69 @@
           ],
           "tags": [],
           "id": "House_Roller_Rink",
+          "category": "house"
+        },
+        "House_Mean_Abode": {
+          "locked": false,
+          "index": 444,
+          "name": {
+            "thai": "อะโดบีใจร้าย",
+            "korean": "Mean Adobe",
+            "russian": "Неприглядная постройка",
+            "english": "Mean Adobe",
+            "chinese": "刻薄土砖房",
+            "french": "Mean Adobe",
+            "arabic": "أدوبي الشرير",
+            "turkish": "Mean Adobe",
+            "japanese": "イジワルハウス",
+            "spanish": "Casa de adobe mezquina",
+            "brazilian portuguese": "Adobe Mean",
+            "italian": "Mean Adobe",
+            "german": "Mean Adobe"
+          },
+          "preferred_name": {
+            "thai": "อะโดบีใจร้าย",
+            "korean": "Mean Adobe",
+            "russian": "Неприглядная постройка",
+            "english": "Mean Adobe",
+            "chinese": "刻薄土砖房",
+            "french": "Mean Adobe",
+            "arabic": "أدوبي الشرير",
+            "turkish": "Mean Adobe",
+            "japanese": "イジワルハウス",
+            "spanish": "Casa de adobe mezquina",
+            "brazilian portuguese": "Adobe Mean",
+            "italian": "Mean Adobe",
+            "german": "Mean Adobe"
+          },
+          "image": {
+            "main": "game/house/House_Mean_Abode.png"
+          },
+          "location": [
+            "PONYVILLE"
+          ],
+          "grid_size": 4,
+          "build": {
+            "time": 10800.0,
+            "skip_cost": 5,
+            "xp": 0
+          },
+          "visitors": [],
+          "residents": [
+            "Pony_Mean_Bon_Bon",
+            "Pony_Mean_Lyra",
+            "Pony_Mean_Moondancer",
+            "Pony_Mean_Sandbar",
+            "Pony_Mean_Smolder",
+            "Pony_Mean_Gallus",
+            "Pony_Mean_Ocellus",
+            "Pony_Mean_Silverstream",
+            "Pony_Mean_Yona_Pony",
+            "Pony_Mean_Autumn_Blaze",
+            "Pony_Mean_Muffins"
+          ],
+          "tags": [],
+          "id": "House_Mean_Abode",
           "category": "house"
         }
       }
@@ -381341,7 +381537,7 @@
             "korean": "Starlight의 짐",
             "russian": "Багаж Старлайт",
             "english": "Starlight's Luggage",
-            "chinese": "星光的行李",
+            "chinese": "星光熠熠的行李",
             "french": "Valise de Starlight",
             "arabic": "حقائب ستارلايت",
             "turkish": "Starlight'ın Bavulu",
@@ -399539,6 +399735,222 @@
           "is_default": false,
           "pony": "",
           "animated": false,
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_425_Mean_Sunset_Shimmer": {
+          "id": "ProfileAvatar_425_Mean_Sunset_Shimmer",
+          "index": 425,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_425_Mean_Sunset_Shimmer.png",
+            "main": "game/avatar/main/ProfileAvatar_425_Mean_Sunset_Shimmer.png"
+          },
+          "is_default": false,
+          "pony": "Pony_Mean_Sunset_Shimmer",
+          "animated": false,
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_426_Mean_Cheese_Sandwich": {
+          "id": "ProfileAvatar_426_Mean_Cheese_Sandwich",
+          "index": 426,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_426_Mean_Cheese_Sandwich.png",
+            "main": "game/avatar/main/ProfileAvatar_426_Mean_Cheese_Sandwich.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "animated": false,
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_427_Mean_Moondancer": {
+          "id": "ProfileAvatar_427_Mean_Moondancer",
+          "index": 427,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_427_Mean_Moondancer.png",
+            "main": "game/avatar/main/ProfileAvatar_427_Mean_Moondancer.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "animated": false,
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_428_Mean_Princess_Celestia": {
+          "id": "ProfileAvatar_428_Mean_Princess_Celestia",
+          "index": 428,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_428_Mean_Princess_Celestia.png",
+            "main": "game/avatar/main/ProfileAvatar_428_Mean_Princess_Celestia.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "animated": false,
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_429_Mean_Silverstream": {
+          "id": "ProfileAvatar_429_Mean_Silverstream",
+          "index": 429,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_429_Mean_Silverstream.png",
+            "main": "game/avatar/main/ProfileAvatar_429_Mean_Silverstream.png"
+          },
+          "is_default": false,
+          "pony": "",
+          "animated": false,
+          "unlock_level": 0,
+          "price": {
+            "base": {
+              "currency": "Gems",
+              "amount": 100
+            },
+            "token": ""
+          },
+          "category": "avatar"
+        },
+        "ProfileAvatar_An_430_Mean_Luna": {
+          "id": "ProfileAvatar_An_430_Mean_Luna",
+          "index": 430,
+          "locked": false,
+          "name": {
+            "thai": "อวาตาร์หายาก",
+            "korean": "희귀 아바타",
+            "russian": "Редкий аватар",
+            "english": "Rare Avatar",
+            "chinese": "稀有头像",
+            "french": "Avatar rare",
+            "arabic": "صورة رمزية نادرة",
+            "turkish": "Nadir Avatar",
+            "japanese": "レアアバター",
+            "spanish": "Avatar especial",
+            "brazilian portuguese": "Avatar Raro",
+            "italian": "Avatar raro",
+            "german": "Seltener Avatar"
+          },
+          "image": {
+            "preview": "game/avatar/preview/ProfileAvatar_An_430_Mean_Luna.png",
+            "main": "game/avatar/main/ProfileAvatar_An_430_Mean_Luna.webp"
+          },
+          "is_default": false,
+          "pony": "",
+          "animated": true,
           "unlock_level": 0,
           "price": {
             "base": {
