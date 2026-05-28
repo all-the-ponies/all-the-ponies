@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DiscordButton from '@/components/buttons/socials/DiscordButton.vue';
+import GitHubButton from '@/components/buttons/socials/GitHubButton.vue';
 import Link from '@/components/Link.vue';
 import Notice from '@/components/notice/Notice.vue'
 import links from '@/globals/links';
@@ -14,7 +15,7 @@ import links from '@/globals/links';
                     <h2>{{ $t('notices.corrupt_save.title') }}</h2>
                     <p>{{ $t('notices.corrupt_save.body') }}</p>
                 </div>
-                <div>
+                <div class="buttons">
                     <Link class="notice-button button button-blue" href="/check-save/">{{ $t('notices.corrupt_save.button') }}</Link>
                 </div>
             </div>
@@ -27,8 +28,9 @@ import links from '@/globals/links';
                     <h2>{{ $t('notices.help_wanted.title') }}</h2>
                     <p>{{ $t('notices.help_wanted.body') }}</p>
                 </div>
-                <div>
+                <div class="buttons">
                     <DiscordButton class="notice-button" :href="links.discordServer">{{ $t('notices.help_wanted.discord') }}</DiscordButton>
+                    <GitHubButton class="notice-button" :href="links.translating">{{ $t('socials.github') }}</GitHubButton>
                 </div>
             </div>
         </div>
@@ -42,10 +44,18 @@ import links from '@/globals/links';
     .main-body {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 0.5rem;
     
         .body {
             min-width: 3rem;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
         }
     
         .notice-button {
