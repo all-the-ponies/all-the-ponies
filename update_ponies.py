@@ -503,9 +503,6 @@ class GetGameData:
         os.makedirs(os.path.join(self.images_folder, 'game', 'pony', 'main'), exist_ok = True)
         
         groups = {}
-        
-        def test(wow = 'cool'):
-            print(wow)
 
         index = 0
         for pony in track(
