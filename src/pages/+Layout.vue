@@ -100,13 +100,9 @@ const pageContext = usePageContext()
 
 <style scoped>
 
-#main {
-    /* height: 100dvh;
-    overflow: auto; */
-}
-
 .page {
     min-height: 100dvh;
+    /* height: 100%; */
     display: flex;
     /* background-color: var(--page-background-color); */
 
@@ -128,6 +124,7 @@ const pageContext = usePageContext()
 @media screen and (max-width: 50rem) {
     .page {
         flex-direction: column;
+        height: 100dvh;
     }
 
     .router {
