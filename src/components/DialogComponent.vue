@@ -127,6 +127,7 @@ if (props.open) {
 
     min-width: min(15rem, 95dvw);
     max-width: 95dvw;
+    min-height: 10rem;
     max-height: 90dvh;
     /* height: auto; */
 }
