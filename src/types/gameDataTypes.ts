@@ -149,7 +149,7 @@ export interface PonyType extends Omit<GenericObjectType, 'category' | 'image'> 
                 "requires": string,
             }
         },
-    pro: string | null,
+    pro: ('random' | string)[],
     collections: string[],
     wiki_path: string,
 }

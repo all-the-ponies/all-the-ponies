@@ -52,13 +52,13 @@ function exportCSV() {
                 const house = gameData.getObject(pony.house, 'house')
                 const houseName = house !== null ? gameData.translateName(house).value : ''
 
-                let pro = ''
+                const pro = []
 
-                if (pony.pro) {
-                    if (pony.pro === 'random') {
-                        pro = t('group_quests.random_pro')
+                for (let quest of pony.pro) {
+                    if (quest === 'random') {
+                        pro.push(t('group_quests.random_pro'))
                     } else {
-                        pro = gameData.data.group_quests.quests[pony.pro].name[language.value.key]
+                        pro.push(gameData.data.group_quests.quests[quest].name[language.value.key])
                     }
                 }
 
@@ -75,7 +75,7 @@ function exportCSV() {
                     location: t(LOCATIONS[pony.location].string),
                     house: houseName,
                     stars: ponyInfo.level as number,
-                    pro: pro,
+                    pro: pro.join(','),
                     transform: changeling,
                 }
 

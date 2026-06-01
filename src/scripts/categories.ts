@@ -197,17 +197,23 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         pro: {
             name: 'filter.pony.pro',
             check(gameObject: PonyType) {
+              let showPro = false
+
               if (!gameObject.pro) {
-                return false
-              }
-              if (gameObject.pro == 'random') {
-                return true
-              }
-              if (!gameData.data.group_quests.quests[gameObject.pro].special) {
-                return true
+                console.log(gameObject.id, gameObject.pro)
               }
               
-              return false
+              for (let quest of gameObject.pro) {
+                if (quest === 'random') {
+                  showPro = true
+                  break
+                }
+                if (!gameData.data.group_quests.quests[quest].special) {
+                  showPro = true
+                  break
+                }
+              }
+              return showPro
             },
             // default: true,
         },

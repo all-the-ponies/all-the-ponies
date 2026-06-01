@@ -40,16 +40,20 @@ const showProIcon = computed(() => {
     if (gameObject.value.category != 'pony') {
         return false
     }
-    if (!gameObject.value.pro) {
-        return false
+
+    let showPro = false
+
+    for (let id of gameObject.value.pro) {
+        if (id === 'random') {
+            showPro = true
+            break
+        }
+        if (!gameData.data.group_quests.quests[id].special) {
+            showPro = true
+            break
+        }
     }
-    if (gameObject.value.pro == 'random') {
-        return true
-    }
-    if (!gameData.data.group_quests.quests[gameObject.value.pro].special) {
-        return true
-    }
-    return false
+    return showPro
 })
 
 // const stars = computed({

@@ -731,7 +731,7 @@ class GetGameData:
                     'unlock_level': pony_info['unlock_level'],
                     'price': pony_info['price'],
                     'tasks': pony_info['tasks'],
-                    'pro': None,
+                    'pro': [],
                     'collections': pony_info.get('collections', []),
                     'wiki_path': pony_info['wiki_path'],
                     'wiki': pony_info['wiki'],
@@ -1112,14 +1112,14 @@ class GetGameData:
                     continue
 
                 pro = story_point['PremiumPony']
-                self.categories['pony']['objects'][pro]['pro'] = id
+                self.categories['pony']['objects'][pro]['pro'].append(id)
                 group_quest['pros'].append(pro)
 
             quests[id] = group_quest
 
         
         for pony in random_pros:
-            self.categories['pony']['objects'][pony]['pro'] = 'random'
+            self.categories['pony']['objects'][pony]['pro'].append('random')
         
         for tutorial_slot in self.defaultGameCampaign.get('group_quests', {}).get('seasonal_slots', []):
             quests[tutorial_slot['seasonal']]['special'] = 'seasonal'

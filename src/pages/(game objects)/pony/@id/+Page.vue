@@ -99,34 +99,41 @@ const houseName = computed(() => house.value?.name[language.value.key])
 const fortuneShopData = computed(() => gameData.getFortuneShopData(pony.value.id))
 
 const showProIcon = computed(() => {
-    if (!pony.value.pro) {
-        return false
+    let showPro = false
+
+    for (let quest of pony.value.pro) {
+        if (quest === 'random') {
+            showPro = true
+            break
+        }
+        if (!gameData.data.group_quests.quests[quest].special) {
+            showPro = true
+            break
+        }
     }
-    if (pony.value.pro == 'random') {
-        return true
-    }
-    if (!gameData.data.group_quests.quests[pony.value.pro].special) {
-        return true
-    }
-    return false
+    return showPro
 })
 
 const groupQuestName = computed(() => {
-    if (!pony.value.pro) {
-        return null
-    }
+    const names = []
+    
+    for (let quest of pony.value.pro) {
+        if (quest === 'random') {
+            names.push(t('group_quests.random_pro'))
+        } else {
+            console.log(quest)
+            let name = gameData.data.group_quests.quests[quest].name[language.value.key]
+            let special = gameData.data.group_quests.quests[quest].special
+            switch (special) {
+                case 'seasonal': name = t('group_quests.name_seasonal', {name}); break
+                case 'tutorial':name = t('group_quests.name_tutorial', {name}); break
+            }
 
-    let name = pony.value.pro === 'random' ? t('group_quests.random_pro') : gameData.data.group_quests.quests[pony.value.pro].name[language.value.key]
-
-    if (pony.value.pro != 'random') {
-        let special = gameData.data.group_quests.quests[pony.value.pro].special
-        switch (special) {
-            case 'seasonal': name = t('group_quests.name_seasonal', {name}); break
-            case 'tutorial':name = t('group_quests.name_tutorial', {name}); break
+            names.push(name)
         }
     }
 
-    return name
+    return new Intl.ListFormat(language.value.code, {style: 'short'}).format(names)
 })
 
 </script>
