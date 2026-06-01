@@ -362,7 +362,7 @@ watch(
 </script>
 
 <template>
-    <div id="search-section">
+    <div class="search-section">
         <div class="search-container">
             <slot name="menu-before"></slot>
             
@@ -399,13 +399,13 @@ watch(
                 :param="props.pageParam"
             ></Paginator> -->
 
-            <section v-if="!items.length" class="empty">
+            <section v-if="!items.length" class="main-section empty">
                 <slot name="empty"></slot>
             </section>
             <section
                 ref="scroller"
                 v-else-if="shownResults.length > 0"
-                class="search-results"
+                class="main-section search-results"
             >
                 <WindowScroller
                     class="scroller"
@@ -425,7 +425,7 @@ watch(
                 </WindowScroller>
                 <!-- <div class="item" v-for="item in shownResults" :key="item.id" :data-key="item.id"> -->
             </section>
-            <section v-else class="empty">
+            <section v-else class="main-section empty">
                 <slot name="no-results">{{ $t('search.no_results') }}</slot>
             </section>
         
@@ -491,6 +491,11 @@ watch(
 </template>
 
 <style lang="css" scoped>
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+}
 
 .search-container {
     position: sticky;
@@ -558,8 +563,16 @@ watch(
     object-position: center;
 }
 
+.main-section {
+    flex: 1;
+}
+
 .empty {
     text-align: center;
+    /* display: grid;
+    align-content: center;
+    justify-content: center; */
+    position: relative;
 }
 
 .dialog-options {

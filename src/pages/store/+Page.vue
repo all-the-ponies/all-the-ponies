@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import Loading from '@/components/Loading.vue'
 import ObjectCard from '@/components/ObjectCard.vue'
 import SearchComponent from '@/components/SearchComponent.vue'
 import { useGameCardSize } from '@/composables/useGameCardSize'
 import { useRem } from '@/composables/useRem'
 import { language } from '@/globals'
+import type { ShopEntry } from '@/scripts/api.types'
 import { CATEGORIES, FilterFunctions, SortFunctions, type FilterFunctionsType } from '@/scripts/categories'
 import gameData from '@/scripts/gameData'
 import { shopStore } from '@/stores/shopManager'
@@ -16,13 +18,21 @@ import { computed, ref, shallowRef } from 'vue'
 
 const pageContext = usePageContext()
 
-const loadingShop = shallowRef<boolean>(false)
+const loadingShop = shallowRef<boolean>(true)
+const errorMessage = ref<string>('')
 const selectedCategory = ref<CategoryName>((pageContext.urlParsed.search.category as CategoryName) || 'pony')
 
 const shop = computedAsync(
     async () => {
         const shopStart = performance.now()
-        const shop = await shopStore.shop
+        let shop: Record<string, ShopEntry>
+        errorMessage.value = ''
+        try {
+            shop = await shopStore.shop
+        } catch (error) {
+            errorMessage.value = String(error)
+            return {}
+        }
         if (shop) {
             console.log(`Got shop in ${(performance.now() - shopStart) / 1000}s`)
             return Object.fromEntries(
@@ -128,9 +138,13 @@ const itemGap = useRem(.3)
 <template>
     <Config :title="$t('store.title')" :description="$t('store.description')"></Config>
 
-    <div>
+    <div class="page-fill page">
         <h1>{{ $t('store.title') }}</h1>
+        <!-- <div v-if="loadingShop">
+            <img src="@/assets/images/ui/loading.webp" alt="Loading...">
+        </div> -->
         <SearchComponent
+            class="search"
             :data="shop ? shownObjects : []"
             :get-search-text="gameData.getNamesForSearch"
             :get-exact-search-text="(item) => item.id"
@@ -144,6 +158,16 @@ const itemGap = useRem(.3)
             :item-height="itemHeight"
             :item-gap="itemGap"
         >
+            <template #empty>
+                <template v-if="loadingShop">
+                    <Loading class="loading" />
+                </template>
+                <template v-else>
+                    <div class="error-message">
+                        {{ errorMessage }}
+                    </div>
+                </template>
+            </template>
             <template #menu-before>
                 <select v-model="selectedCategory" class="dropdown" name="category">
                     <option
@@ -168,6 +192,15 @@ const itemGap = useRem(.3)
 </template>
 
 <style lang="css" scoped>
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.search {
+    flex: 1;
+}
+
 .item-card {
     --card-size: calc(v-bind('cardSize') * 1rem);
 }
