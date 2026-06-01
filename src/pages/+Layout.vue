@@ -84,6 +84,10 @@ const pageContext = usePageContext()
 
 <style lang="css">
 
+.page-fill {
+    min-height: 100%;
+}
+
 .section {
     margin-block: 1rem;
 }
