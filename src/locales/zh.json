@@ -50,7 +50,7 @@
 "name": "名称",
 "new": "新",
 "or": "",
-"price": "",
+"price": "价格",
 "royal": "皇家",
 "wiki": "维基"
 },
@@ -219,9 +219,9 @@
 "home": {
 "description": "在这里，你可以了解更多关于{game_link} 游戏的信息，以及记录你在官游中收集到的所有物品！",
 "message": {
-"affiliates": "",
+"affiliates": "友情链接",
 "game_name": "小马宝莉：魔法公主",
-"links": ""
+"links": "链接"
 },
 "things_to_do": {
 "browse": "浏览",
