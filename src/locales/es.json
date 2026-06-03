@@ -1,433 +1,433 @@
 {
-  "about": {
-    "description": {
-      "body": "",
-      "quiz_link": ""
-    },
-    "sections": {
-      "credits": {
-        "message": {
-          "credits_list": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": ""
-          }
-        },
-        "title": ""
-      },
-      "translations": {
-        "title": ""
-      }
-    },
-    "title": "Acerca De"
-  },
-  "button": {
-    "cancel": "Cancelar",
-    "hint": "",
-    "no": "No",
-    "ok": "Ok",
-    "share": "Compartir",
-    "skip": "Omitir",
-    "start": "Empezar",
-    "stop": "",
-    "yes": "Sí"
-  },
-  "check_save": {
-    "messages": {
-      "check": "Ver"
-    }
-  },
-  "common": {
-    "date": {
-      "current": "",
-      "range": ""
-    },
-    "export": "",
-    "help": "Ayuda",
-    "import": "",
-    "info": "",
-    "name": "Nombre",
-    "new": "Estreno",
-    "or": "",
-    "price": "",
-    "royal": "Real",
-    "wiki": ""
-  },
-  "contact": {
-    "description": "",
-    "message": {
-      "discord": {
-        "button": "",
-        "description": "",
-        "title": ""
-      },
-      "discord_message": "",
-      "discord_server": "",
-      "github": {
-        "button": "",
-        "description": "",
-        "title": ""
-      },
-      "help_wanted": {
-        "description": "",
-        "title": ""
-      },
-      "mlp_game_hangout": {
-        "button": "",
-        "description": "",
-        "title": ""
-      }
-    },
-    "title": ""
-  },
-  "dialog": {
-    "filter": "",
-    "select_item": {
-      "title": ""
-    },
-    "sort_by": ""
-  },
-  "filter": {
-    "decor": {
-      "can_fuse": "",
-      "regular": ""
-    },
-    "pony": {
-      "not_owned": "",
-      "npc": "",
-      "playable": "",
-      "pro": "",
-      "quest": "",
-      "unused": ""
-    },
-    "shop": {
-      "gem_shop": "Tiendas De Gemas",
-      "maze": "Laberinto",
-      "not_owned": "",
-      "others": ""
-    }
-  },
-  "fortune_shop": {
-    "messages": {
-      "regular": "",
-      "royal": "Real"
-    },
-    "price_rarities": {
-      "discount": "Descuento",
-      "regular": "",
-      "super": "",
-      "ultra": ""
-    },
-    "rarities": {
-      "common": "Común",
-      "legendary": "Legendario",
-      "rare": "Raro",
-      "uncommon": "Poco Común"
-    },
-    "title": "Tienda De Fortuna"
-  },
-  "game": {
-    "content_version": "",
-    "game_version": "",
-    "message": {
-      "you_won": "¡Has Ganado!"
-    }
-  },
-  "game_object": {
-    "building": {
-      "build_reward": "",
-      "build_skip_cost": "",
-      "build_time": "",
-      "skip_cost": ""
-    },
-    "common": {
-      "size": "",
-      "unlock_level": ""
-    },
-    "decor": {
-      "cannot_fuse": "",
-      "decor": "Decoración",
-      "effect": "",
-      "fusion_points": "Puntos De Fusión",
-      "pro_decor": "",
-      "pro_decors": "Decoraciones De Profesional"
-    },
-    "house": {
-      "house": "",
-      "resident": "",
-      "visitor": ""
-    },
-    "pony": {
-      "arrival_bonus": "",
-      "character": "Personajes",
-      "level_up_rewards": "",
-      "minigame_cooldown": "",
-      "minigame_skip_cost": "",
-      "pony": "Ponis",
-      "transform": "Transformar",
-      "transformable": ""
-    },
-    "profile_decorations": {
-      "avatar": {
-        "animated": "",
-        "avatar": "Avatar | Avatares"
-      },
-      "background": {
-        "background": "Fondo | Fondos"
-      },
-      "background_frame": {
-        "background_frame": "Marco de fondo"
-      },
-      "frame": {
-        "frame": "Marco | Marcos"
-      },
-      "is_default": ""
-    },
-    "road": {
-      "road": "Carreteras"
-    },
-    "shop": {
-      "gem_shop": "Tiendas De Gemas",
-      "product": "",
-      "production_time": "",
-      "profit": "",
-      "shop": "Negocios"
-    },
-    "token": {
-      "token": "Fichas"
-    }
-  },
-  "group_quests": {
-    "name_seasonal": "{name} (@:group_quests.seasonal)",
-    "name_tutorial": "{name} (@:group_quests.tutorial)",
-    "pro": "",
-    "random_pro": "",
-    "seasonal": "Temporada",
-    "title": "Misiones De Grupo",
-    "tutorial": ""
-  },
-  "guesser": {
-    "description": "",
-    "message": {
-      "correct_guesses": "",
-      "guessed_correctly": "",
-      "time": ""
-    },
-    "title": ""
-  },
-  "home": {
-    "description": "",
-    "message": {
-      "affiliates": "",
-      "game_name": "",
-      "links": ""
-    },
-    "things_to_do": {
-      "browse": "",
-      "title": ""
-    }
-  },
-  "inventory": {
-    "message": {
-      "add_more": "",
-      "dialog": {
-        "export": {
-          "category": "",
-          "format": ""
-        }
-      }
-    },
-    "stats": {
-      "gem_shops": "",
-      "houses": "",
-      "ponies": "",
-      "shops": "",
-      "stars": "",
-      "transformable": ""
-    },
-    "title": "Inventario"
-  },
-  "lists": {
-    "button": {
-      "add_to_list": "",
-      "create_list": "",
-      "edit": "",
-      "new_wishlist": ""
-    },
-    "dialog": {
-      "add_to_list": {
-        "title": ""
-      },
-      "choose_image": {
-        "title": ""
-      },
-      "confirm_delete": {
-        "body": "",
-        "title": ""
-      },
-      "create_list": {
-        "message": {
-          "name": "",
-          "name_required": "",
-          "wishlist": ""
-        },
-        "title": ""
-      }
-    },
-    "messages": {
-      "empty_list": "",
-      "no_lists": "",
-      "wishlist": ""
-    },
-    "title": ""
-  },
-  "location": {
-    "canterlot": "Canterlot",
-    "changeling_kingdom": "Changeling Kingdom",
-    "crystal_empire": "Crystal Empire",
-    "everfree_forest": "Everfree Forest",
-    "klugetown": "Klugetown",
-    "ponyville": "Ponyville",
-    "sweet_apple_acres": "Sweet Apple Acres",
-    "town": "",
-    "unknown": ""
-  },
-  "notices": {
-    "corrupt_save": {
-      "body": "",
-      "button": "",
-      "title": ""
-    },
-    "help_wanted": {
-      "body": "",
-      "discord": "",
-      "title": ""
-    }
-  },
-  "player_info": {
-    "friend_code": "Código De Amigo",
-    "join_date": "",
-    "total_playtime": ""
-  },
-  "pony_quiz": {
-    "description": "",
-    "message": {
-      "win_message": ""
-    },
-    "options": {
-      "case_sensitive": "",
-      "ignore_accents": "",
-      "ignore_punctuation": "",
-      "ignore_spaces": "",
-      "include_unused": ""
-    },
-    "time": "",
-    "title": ""
-  },
-  "price_history": {
-    "header": {
-      "date": "",
-      "price": "",
-      "royal": "Real",
-      "tokens": "Fichas"
-    },
-    "message": {
-      "whats_hot": "Novedades"
-    },
-    "title": ""
-  },
-  "save_check": {
-    "description": "",
-    "messages": {
-      "explanation": {
-        "first": "",
-        "fourth": "",
-        "second": "",
-        "third": ""
-      },
-      "status": {
-        "affected": "",
-        "safe": ""
-      },
-      "what_can_you_do": {
-        "body": "",
-        "customer_support": "",
-        "title": ""
-      },
-      "what_this_means": {
-        "body": {
-          "affected": "",
-          "safe": ""
-        },
-        "title": ""
-      },
-      "what_to_say": {
-        "body": {
-          "affected": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": ""
-          },
-          "safe": {
-            "1": "",
-            "2": ""
-          }
-        },
-        "title": ""
-      }
-    },
-    "title": ""
-  },
-  "search": {
-    "message": {
-      "search": ""
-    },
-    "no_results": "",
-    "title": ""
-  },
-  "site": {
-    "description": "",
-    "title": ""
-  },
-  "socials": {
-    "discord": "",
-    "donate": "",
-    "github": "",
-    "mlp_game_hangout": "",
-    "wiki": ""
-  },
-  "sorting": {
-    "alphabetically": "",
-    "date_added": "",
-    "decor": {
-      "pro_rate": ""
-    },
-    "game_order": "",
-    "relevance": "",
-    "reverse": "",
-    "shop": {
-      "production": "",
-      "xp_rate": ""
-    }
-  },
-  "stats": {
-    "description": "",
-    "message": {
-      "ponies": {
-        "total": ""
-      }
-    },
-    "title": ""
-  },
-  "store": {
-    "description": "",
-    "message": {
-      "for": "con",
-      "if": "si",
-      "percent_off": "MENOS"
-    },
-    "title": "Tienda"
-  }
+"about": {
+"description": {
+"body": "",
+"quiz_link": ""
+},
+"sections": {
+"credits": {
+"message": {
+"credits_list": {
+"1": "",
+"2": "",
+"3": "",
+"4": ""
+}
+},
+"title": ""
+},
+"translations": {
+"title": ""
+}
+},
+"title": "Acerca De"
+},
+"button": {
+"cancel": "Cancelar",
+"hint": "",
+"no": "No",
+"ok": "Ok",
+"share": "Compartir",
+"skip": "Omitir",
+"start": "Empezar",
+"stop": "",
+"yes": "Sí"
+},
+"check_save": {
+"messages": {
+"check": "Ver"
+}
+},
+"common": {
+"date": {
+"current": "",
+"range": ""
+},
+"export": "",
+"help": "Ayuda",
+"import": "",
+"info": "",
+"name": "Nombre",
+"new": "Estreno",
+"or": "",
+"price": "",
+"royal": "Real",
+"wiki": ""
+},
+"contact": {
+"description": "",
+"message": {
+"discord": {
+"button": "",
+"description": "",
+"title": ""
+},
+"discord_message": "",
+"discord_server": "",
+"github": {
+"button": "",
+"description": "",
+"title": ""
+},
+"help_wanted": {
+"description": "",
+"title": ""
+},
+"mlp_game_hangout": {
+"button": "",
+"description": "",
+"title": ""
+}
+},
+"title": ""
+},
+"dialog": {
+"filter": "",
+"select_item": {
+"title": ""
+},
+"sort_by": ""
+},
+"filter": {
+"decor": {
+"can_fuse": "",
+"regular": ""
+},
+"pony": {
+"not_owned": "",
+"npc": "",
+"playable": "",
+"pro": "",
+"quest": "",
+"unused": ""
+},
+"shop": {
+"gem_shop": "Tiendas De Gemas",
+"maze": "Laberinto",
+"not_owned": "",
+"others": ""
+}
+},
+"fortune_shop": {
+"messages": {
+"regular": "",
+"royal": "Real"
+},
+"price_rarities": {
+"discount": "Descuento",
+"regular": "",
+"super": "",
+"ultra": ""
+},
+"rarities": {
+"common": "Común",
+"legendary": "Legendario",
+"rare": "Raro",
+"uncommon": "Poco Común"
+},
+"title": "Tienda De Fortuna"
+},
+"game": {
+"content_version": "",
+"game_version": "",
+"message": {
+"you_won": "¡Has Ganado!"
+}
+},
+"game_object": {
+"building": {
+"build_reward": "",
+"build_skip_cost": "",
+"build_time": "",
+"skip_cost": ""
+},
+"common": {
+"size": "",
+"unlock_level": ""
+},
+"decor": {
+"cannot_fuse": "",
+"decor": "Decoración",
+"effect": "",
+"fusion_points": "Puntos De Fusión",
+"pro_decor": "",
+"pro_decors": "Decoraciones De Profesional"
+},
+"house": {
+"house": "",
+"resident": "",
+"visitor": ""
+},
+"pony": {
+"arrival_bonus": "",
+"character": "Personajes",
+"level_up_rewards": "",
+"minigame_cooldown": "",
+"minigame_skip_cost": "",
+"pony": "Ponis",
+"transform": "Transformar",
+"transformable": ""
+},
+"profile_decorations": {
+"avatar": {
+"animated": "",
+"avatar": "Avatar | Avatares"
+},
+"background": {
+"background": "Fondo | Fondos"
+},
+"background_frame": {
+"background_frame": "Marco de fondo"
+},
+"frame": {
+"frame": "Marco | Marcos"
+},
+"is_default": ""
+},
+"road": {
+"road": "Carreteras"
+},
+"shop": {
+"gem_shop": "Tiendas De Gemas",
+"product": "",
+"production_time": "",
+"profit": "",
+"shop": "Negocios"
+},
+"token": {
+"token": "Fichas"
+}
+},
+"group_quests": {
+"name_seasonal": "{name} (@:group_quests.seasonal)",
+"name_tutorial": "{name} (@:group_quests.tutorial)",
+"pro": "",
+"random_pro": "",
+"seasonal": "Temporada",
+"title": "Misiones De Grupo",
+"tutorial": ""
+},
+"guesser": {
+"description": "",
+"message": {
+"correct_guesses": "",
+"guessed_correctly": "",
+"time": ""
+},
+"title": ""
+},
+"home": {
+"description": "",
+"message": {
+"affiliates": "",
+"game_name": "",
+"links": ""
+},
+"things_to_do": {
+"browse": "",
+"title": ""
+}
+},
+"inventory": {
+"message": {
+"add_more": "",
+"dialog": {
+"export": {
+"category": "",
+"format": ""
+}
+}
+},
+"stats": {
+"gem_shops": "",
+"houses": "",
+"ponies": "",
+"shops": "",
+"stars": "",
+"transformable": ""
+},
+"title": "Inventario"
+},
+"lists": {
+"button": {
+"add_to_list": "",
+"create_list": "",
+"edit": "",
+"new_wishlist": ""
+},
+"dialog": {
+"add_to_list": {
+"title": ""
+},
+"choose_image": {
+"title": ""
+},
+"confirm_delete": {
+"body": "",
+"title": ""
+},
+"create_list": {
+"message": {
+"name": "",
+"name_required": "",
+"wishlist": ""
+},
+"title": ""
+}
+},
+"messages": {
+"empty_list": "",
+"no_lists": "",
+"wishlist": ""
+},
+"title": ""
+},
+"location": {
+"canterlot": "Canterlot",
+"changeling_kingdom": "Changeling Kingdom",
+"crystal_empire": "Crystal Empire",
+"everfree_forest": "Everfree Forest",
+"klugetown": "Klugetown",
+"ponyville": "Ponyville",
+"sweet_apple_acres": "Sweet Apple Acres",
+"town": "",
+"unknown": ""
+},
+"notices": {
+"corrupt_save": {
+"body": "",
+"button": "Más información",
+"title": "Importante"
+},
+"help_wanted": {
+"body": "",
+"discord": "Unete al servidor",
+"title": ""
+}
+},
+"player_info": {
+"friend_code": "Código De Amigo",
+"join_date": "",
+"total_playtime": ""
+},
+"pony_quiz": {
+"description": "",
+"message": {
+"win_message": ""
+},
+"options": {
+"case_sensitive": "",
+"ignore_accents": "",
+"ignore_punctuation": "",
+"ignore_spaces": "",
+"include_unused": ""
+},
+"time": "",
+"title": ""
+},
+"price_history": {
+"header": {
+"date": "",
+"price": "",
+"royal": "Real",
+"tokens": "Fichas"
+},
+"message": {
+"whats_hot": "Novedades"
+},
+"title": ""
+},
+"save_check": {
+"description": "",
+"messages": {
+"explanation": {
+"first": "",
+"fourth": "",
+"second": "",
+"third": ""
+},
+"status": {
+"affected": "",
+"safe": ""
+},
+"what_can_you_do": {
+"body": "",
+"customer_support": "",
+"title": ""
+},
+"what_this_means": {
+"body": {
+"affected": "",
+"safe": ""
+},
+"title": ""
+},
+"what_to_say": {
+"body": {
+"affected": {
+"1": "",
+"2": "",
+"3": "",
+"4": ""
+},
+"safe": {
+"1": "",
+"2": ""
+}
+},
+"title": ""
+}
+},
+"title": ""
+},
+"search": {
+"message": {
+"search": ""
+},
+"no_results": "",
+"title": ""
+},
+"site": {
+"description": "",
+"title": "Todos los ponis"
+},
+"socials": {
+"discord": "",
+"donate": "",
+"github": "",
+"mlp_game_hangout": "",
+"wiki": ""
+},
+"sorting": {
+"alphabetically": "",
+"date_added": "",
+"decor": {
+"pro_rate": ""
+},
+"game_order": "",
+"relevance": "",
+"reverse": "",
+"shop": {
+"production": "",
+"xp_rate": ""
+}
+},
+"stats": {
+"description": "",
+"message": {
+"ponies": {
+"total": ""
+}
+},
+"title": ""
+},
+"store": {
+"description": "",
+"message": {
+"for": "con",
+"if": "si",
+"percent_off": "MENOS"
+},
+"title": "Tienda"
+}
 }
