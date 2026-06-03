@@ -1,7 +1,7 @@
 # All The Ponies
 
 [![Discord](https://img.shields.io/discord/1459275396490072237?logo=discord&logoColor=white&label=Discord&color=%235865F2)](https://discord.gg/vk4KaFFggS "Join the discord server")
-[![i18n](https://img.shields.io/badge/i18n-vue--i18n-green?logo=vuedotjs)](TRANSLATING.md)
+[![Translation status](https://hosted.weblate.org/widget/all-the-ponies/svg-badge.svg)](https://hosted.weblate.org/engage/all-the-ponies/)
 ![License](https://img.shields.io/github/license/all-the-ponies/all-the-ponies)
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/egolayatmanbay)
 
@@ -9,7 +9,9 @@
 
 ## Translating
 
-Please see [TRANSLATING.md](TRANSLATING.md)
+All The Ponies uses [Weblate](https://hosted.weblate.org/engage/all-the-ponies/) to make translating easier. If you would like to help translate any of the following languages, you can go here: https://hosted.weblate.org/engage/all-the-ponies/, absolutely no programming knowledge is required.
+
+[![Translation status](https://hosted.weblate.org/widget/all-the-ponies/multi-auto.svg)](https://hosted.weblate.org/engage/all-the-ponies/)
 
 ## Development
 
