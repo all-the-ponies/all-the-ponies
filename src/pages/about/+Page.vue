@@ -2,6 +2,11 @@
 import { Config } from 'vike-vue/Config'
 import Link from '@/components/Link.vue'
 import { language } from '@/globals';
+import { useData } from 'vike-vue/useData';
+
+const { credits } = useData()
+
+console.log('credits', credits)
 
 </script>
 
