@@ -1,116 +1,131 @@
 {
-  "site": {
-    "title": "All The Ponies",
-    "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game"
-  },
-  "notices": {
-    "help_wanted": {
-      "title": "Help Wanted!",
-      "body": "I only speak English, so I can't translate All The Ponies to other languages. If your language is not fully translated, I would really love your help translating it, no coding knowledge is required because Weblate makes translating easy for anyone."
-    },
-    "corrupt_save": {
-      "title": "Important",
-      "body": "A recent bug has been found that can cause your cloud save to be corrupt. You can check if you're affected by clicking \"@:{'notices.corrupt_save.button'}\"",
-      "button": "Learn more"
-    }
-  },
-  "home": {
-    "description": "Get info about {game_link} and track what you have!",
-    "message": {
-      "game_name": "My Little Pony: Magic Princess",
-      "links": "LInks",
-      "affiliates": "Affiliates"
-    },
-    "things_to_do": {
-      "title": "Things To Do",
-      "browse": "Browse"
-    }
-  },
-  "socials": {
-    "discord": "Discord",
-    "mlp_game_hangout": "MLP Game Hangout",
-    "github": "GitHub",
-    "wiki": "Wiki",
-    "donate": "Donate",
-    "help_translate": "Help Translate"
-  },
   "about": {
-    "title": "About",
     "description": {
       "body": "All The Ponies was initially created by {me} as a website to {quiz_link}, because one quiz I found online barely scratched the surface of ponies. It later expanded it to a resource for accurate information about stuff in the game, tracking what you have, and of course small activities you can play.",
       "quiz_link": "name as many ponies you can"
     },
     "sections": {
       "credits": {
-        "title": "Credits",
         "message": {
           "credits_list": {
             "1": "The website is built by {ego}.",
             "2": "Thanks to {bass} for help with loading ponies with a friend code.",
             "3": "The font used is {font}, which is also used in the game.",
             "4": "The website was built using {vue} to make my life easier and allow for a more dynamic experience."
-          },
-          "fetch_failed": "Error: Could not fetch translators"
-        }
+          }
+        },
+        "title": "Credits"
       },
       "translations": {
         "title": "Translations"
       }
-    }
+    },
+    "title": "About"
   },
   "button": {
     "cancel": "Cancel",
+    "hint": "Hint",
     "no": "No",
     "ok": "Ok",
     "share": "Share",
+    "skip": "Skip",
     "start": "Start",
     "stop": "Stop",
-    "yes": "Yes",
-    "skip": "Skip",
-    "hint": "Hint"
+    "yes": "Yes"
+  },
+  "check_save": {
+    "messages": {
+      "check": "Check"
+    }
   },
   "common": {
+    "date": {
+      "current": "current",
+      "range": "{start} to {end}"
+    },
+    "export": "Export",
     "help": "Help",
+    "import": "Import",
     "info": "Info",
     "name": "Name",
-    "import": "Import",
-    "export": "Export",
-    "wiki": "Wiki",
-    "royal": "Royal",
     "new": "New",
-    "date": {
-      "range": "{start} to {end}",
-      "current": "current"
-    },
+    "or": "or",
     "price": "Price",
-    "or": "or"
+    "royal": "Royal",
+    "wiki": "Wiki"
+  },
+  "contact": {
+    "description": "Have questions, suggestions, bug reports, or want to contribute? This is the right place for that!",
+    "message": {
+      "discord": {
+        "button": "Join Server",
+        "description": "Ask questions, make suggestions, report bugs, or just chat with the community.",
+        "title": "Join the Discord server"
+      },
+      "discord_message": "Have any questions, suggestions, or bug reports? Join the {server}!",
+      "discord_server": "discord server",
+      "github": {
+        "button": "Open Repository",
+        "description": "Check out the source code, open issues, or make a pull request.",
+        "title": "View on GitHub"
+      },
+      "help_wanted": {
+        "description": "I am just one person who only knows English, so there are many things that I can't do, most notably translations. The things that I've been able to translate, are things that I was able to pull from the game. If your language isn't translated well, PLEASE either create a pull request on github, or join the discord server so you can help translate. I'm also not great at designing layouts, so if you are good at designing websites, I'd love to have your help. If you want to just help code the website, that's also very welcome.",
+        "title": "Help Wanted!"
+      },
+      "mlp_game_hangout": {
+        "button": "Join Server",
+        "description": "Community server for the game. Connected to r/MLPIOS subreddit.",
+        "title": "MLP Game Hangout"
+      }
+    },
+    "title": "Contact"
   },
   "dialog": {
     "filter": "Filter",
-    "sort_by": "Sort By",
     "select_item": {
       "title": "Select Item"
-    }
+    },
+    "sort_by": "Sort By"
   },
   "filter": {
+    "decor": {
+      "can_fuse": "Can fuse",
+      "regular": "Regular"
+    },
     "pony": {
+      "not_owned": "Not owned",
       "npc": "NPC",
       "playable": "Playable",
       "pro": "Pro",
       "quest": "Quest",
-      "unused": "Unused",
-      "not_owned": "Not owned"
-    },
-    "decor": {
-      "regular": "Regular",
-      "can_fuse": "Can fuse"
+      "unused": "Unused"
     },
     "shop": {
-      "maze": "Maze",
       "gem_shop": "Gem Shops",
-      "others": "Others",
-      "not_owned": "Not owned"
+      "maze": "Maze",
+      "not_owned": "Not owned",
+      "others": "Others"
     }
+  },
+  "fortune_shop": {
+    "messages": {
+      "regular": "Regular",
+      "royal": "Royal"
+    },
+    "price_rarities": {
+      "discount": "Discount",
+      "regular": "Regular",
+      "super": "Super",
+      "ultra": "Ultra"
+    },
+    "rarities": {
+      "common": "Common",
+      "legendary": "Legendary",
+      "rare": "Rare",
+      "uncommon": "Uncommon"
+    },
+    "title": "Fortune Shop"
   },
   "game": {
     "content_version": "Content version: {version}",
@@ -133,10 +148,10 @@
     "decor": {
       "cannot_fuse": "Cannot fuse",
       "decor": "Décor",
+      "effect": "Effect",
       "fusion_points": "Fusion Points",
-      "pro_decors": "Pro Decorations",
       "pro_decor": "Pro @:game_object.decor.decor",
-      "effect": "Effect"
+      "pro_decors": "Pro Decorations"
     },
     "house": {
       "house": "House | Houses",
@@ -155,8 +170,8 @@
     },
     "profile_decorations": {
       "avatar": {
-        "avatar": "Avatar | Avatars",
-        "animated": "Animated?"
+        "animated": "Animated?",
+        "avatar": "Avatar | Avatars"
       },
       "background": {
         "background": "Background | Backgrounds"
@@ -173,56 +188,99 @@
       "road": "Road | Roads"
     },
     "shop": {
+      "gem_shop": "Gem Shops",
       "product": "Product",
       "production_time": "Production time",
       "profit": "Profit",
-      "shop": "Shop | Shops",
-      "gem_shop": "Gem Shops"
+      "shop": "Shop | Shops"
     },
     "token": {
       "token": "Token | Tokens"
     }
   },
-  "price_history": {
-    "title": "Price History",
-    "header": {
-      "date": "Date",
-      "price": "Price",
-      "tokens": "Tokens",
-      "royal": "Royal"
-    },
+  "group_quests": {
+    "name_seasonal": "{name} (@:group_quests.seasonal)",
+    "name_tutorial": "{name} (@:group_quests.tutorial)",
+    "pro": "Pro",
+    "random_pro": "Random",
+    "seasonal": "Seasonal",
+    "title": "Group Quests",
+    "tutorial": "Tutorial"
+  },
+  "guesser": {
+    "description": "Guess the pony from the silhouette",
     "message": {
-      "whats_hot": "What'S Hot"
+      "correct_guesses": "Correct guesses",
+      "guessed_correctly": "Guessed correctly: {ponies}/{total}",
+      "time": "Time: {time}"
+    },
+    "title": "Who's That Pony?"
+  },
+  "home": {
+    "description": "Get info about {game_link} and track what you have!",
+    "message": {
+      "affiliates": "Affiliates",
+      "game_name": "My Little Pony: Magic Princess",
+      "links": "LInks"
+    },
+    "things_to_do": {
+      "browse": "Browse",
+      "title": "Things To Do"
     }
   },
-  "group_quests": {
-    "title": "Group Quests",
-    "random_pro": "Random",
-    "pro": "Pro",
-    "tutorial": "Tutorial",
-    "seasonal": "Seasonal",
-    "name_tutorial": "{name} (@:group_quests.tutorial)",
-    "name_seasonal": "{name} (@:group_quests.seasonal)"
-  },
   "inventory": {
-    "title": "Inventory",
     "message": {
       "add_more": "Add some {category}",
       "dialog": {
         "export": {
-          "format": "Format:",
-          "category": "Category:"
+          "category": "Category:",
+          "format": "Format:"
         }
       }
     },
     "stats": {
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "stars": "Stars: {count}"
-    }
+      "houses": "@:game_object.house.house{':'} {count}",
+      "ponies": "@:game_object.pony.pony{':'} {count}",
+      "shops": "@:game_object.shop.shop{':'} {count}",
+      "stars": "Stars: {count}",
+      "transformable": "@:game_object.pony.transformable{':'} {count}"
+    },
+    "title": "Inventory"
+  },
+  "lists": {
+    "button": {
+      "add_to_list": "Add to wishlist",
+      "create_list": "Create wishlist",
+      "edit": "Edit",
+      "new_wishlist": "+ New wishlist"
+    },
+    "dialog": {
+      "add_to_list": {
+        "title": "Add to Wishlist"
+      },
+      "choose_image": {
+        "title": "Choose Image"
+      },
+      "confirm_delete": {
+        "body": "Are you sure you want to delete \"{list}\"?",
+        "title": "Delete wishlist?"
+      },
+      "create_list": {
+        "message": {
+          "name": "Name:",
+          "name_required": "A name is required",
+          "wishlist": "Wishlist"
+        },
+        "title": "Create Wishlist"
+      }
+    },
+    "messages": {
+      "empty_list": "There's nothing here right now. Consider adding {ponies}.",
+      "no_lists": "It looks there are no wishlists yet. ",
+      "wishlist": "Wishlist"
+    },
+    "title": "Wishlists"
   },
   "location": {
     "canterlot": "Canterlot",
@@ -235,6 +293,17 @@
     "town": "Town",
     "unknown": "Unknown"
   },
+  "notices": {
+    "corrupt_save": {
+      "body": "A recent bug has been found that can cause your cloud save to be corrupt. You can check if you're affected by clicking \"@:{'notices.corrupt_save.button'}\"",
+      "button": "Learn more",
+      "title": "Important"
+    },
+    "help_wanted": {
+      "body": "I only speak English, so I can't translate All The Ponies to other languages. If your language that is already on the site is not fully or well translated, I would really love your help. No coding knowledge is required because Weblate makes translating easy for anyone.",
+      "title": "Help Wanted!"
+    }
+  },
   "player_info": {
     "friend_code": "Friend Code",
     "join_date": "Join date: {join_date}",
@@ -242,156 +311,57 @@
   },
   "pony_quiz": {
     "description": "Test your knowledge of the My Little Pony: Magic Princess mobile game, and see how many ponies you can name. It can still be fun even if you don't play the game, because most ponies in G4 are in the game (there's some G1 ponies as well).",
-    "time": "Time",
-    "title": "Quiz",
     "message": {
       "win_message": "Congratulations! It took you {time} to name all {num_ponies} @.lower:game_object.pony.pony"
     },
     "options": {
-      "ignore_spaces": "Ignore spaces",
       "case_sensitive": "Case sensitive",
       "ignore_accents": "Ignore accents",
       "ignore_punctuation": "Ignore punctuation",
+      "ignore_spaces": "Ignore spaces",
       "include_unused": "Include unused ponies"
-    }
-  },
-  "guesser": {
-    "title": "Who's That Pony?",
-    "description": "Guess the pony from the silhouette",
-    "message": {
-      "correct_guesses": "Correct guesses",
-      "guessed_correctly": "Guessed correctly: {ponies}/{total}",
-      "time": "Time: {time}"
-    }
-  },
-  "sorting": {
-    "relevance": "Relevance",
-    "alphabetically": "Alphabetically",
-    "game_order": "Game Order",
-    "date_added": "Date added",
-    "reverse": "Reverse",
-    "shop": {
-      "production": "Production rate",
-      "xp_rate": "XP rate"
     },
-    "decor": {
-      "pro_rate": "Pro rate"
-    }
+    "time": "Time",
+    "title": "Quiz"
   },
-  "stats": {
-    "title": "Stats",
-    "description": "See your stats in the My Little Pony: Magic Princess game",
-    "message": {
-      "ponies": {
-        "total": "Total ponies: {count}"
-      }
-    }
-  },
-  "store": {
-    "title": "Store",
-    "description": "See everything currently in the store in real time",
-    "message": {
-      "percent_off": "OFF",
-      "if": "if",
-      "for": "for"
-    }
-  },
-  "search": {
-    "title": "Search",
-    "no_results": "No results",
-    "message": {
-      "search": "Search"
-    }
-  },
-  "contact": {
-    "title": "Contact",
-    "description": "Have questions, suggestions, bug reports, or want to contribute? This is the right place for that!",
-    "message": {
-      "discord_message": "Have any questions, suggestions, or bug reports? Join the {server}!",
-      "discord_server": "discord server",
-      "discord": {
-        "title": "Join the Discord server",
-        "description": "Ask questions, make suggestions, report bugs, or just chat with the community.",
-        "button": "Join Server"
-      },
-      "github": {
-        "title": "View on GitHub",
-        "description": "Check out the source code, open issues, or make a pull request.",
-        "button": "Open Repository"
-      },
-      "mlp_game_hangout": {
-        "title": "MLP Game Hangout",
-        "description": "Community server for the game. Connected to r/MLPIOS subreddit.",
-        "button": "Join Server"
-      },
-      "help_wanted": {
-        "title": "Help Wanted!",
-        "description": "I am just one person who only knows English, so there are many things that I can't do, most notably translations. The things that I've been able to translate, are things that I was able to pull from the game. If your language isn't translated well, PLEASE either create a pull request on github, or join the discord server so you can help translate. I'm also not great at designing layouts, so if you are good at designing websites, I'd love to have your help. If you want to just help code the website, that's also very welcome."
-      }
-    }
-  },
-  "lists": {
-    "title": "Wishlists",
-    "messages": {
-      "no_lists": "It looks there are no wishlists yet. ",
-      "wishlist": "Wishlist",
-      "empty_list": "There's nothing here right now. Consider adding {ponies}."
+  "price_history": {
+    "header": {
+      "date": "Date",
+      "price": "Price",
+      "royal": "Royal",
+      "tokens": "Tokens"
     },
-    "button": {
-      "add_to_list": "Add to wishlist",
-      "create_list": "Create wishlist",
-      "new_wishlist": "+ New wishlist",
-      "edit": "Edit"
+    "message": {
+      "whats_hot": "What'S Hot"
     },
-    "dialog": {
-      "create_list": {
-        "title": "Create Wishlist",
-        "message": {
-          "wishlist": "Wishlist",
-          "name": "Name:",
-          "name_required": "A name is required"
-        }
-      },
-      "choose_image": {
-        "title": "Choose Image"
-      },
-      "add_to_list": {
-        "title": "Add to Wishlist"
-      },
-      "confirm_delete": {
-        "title": "Delete wishlist?",
-        "body": "Are you sure you want to delete \"{list}\"?"
-      }
-    }
+    "title": "Price History"
   },
   "save_check": {
-    "title": "Check your save file",
     "description": "Check if your save file has been corrupted",
     "messages": {
       "explanation": {
         "first": "You may have noticed that after the game's maintenance, many of you have not been able to view your saves on All The Ponies, which was the same error that is causing the issue with not being able visit friends due to \"having no internet\".",
+        "fourth": "You can check if you are affected here.",
         "second": "After some investigation, dataminers have found where this error is coming from, and it's not pretty.",
-        "third": "This error is actually the result of your cloud save becoming corrupt. I'm not sure how this is happening, but it is a really scary thing.",
-        "fourth": "You can check if you are affected here."
+        "third": "This error is actually the result of your cloud save becoming corrupt. I'm not sure how this is happening, but it is a really scary thing."
       },
       "status": {
-        "safe": "It looks like your save file is safe for now",
-        "affected": "Unfortunately it looks like you may be affected"
+        "affected": "Unfortunately it looks like you may be affected",
+        "safe": "It looks like your save file is safe for now"
+      },
+      "what_can_you_do": {
+        "body": "In simple, contact {support}. We must say, do this at your own caution. If you email about this and mention that this was found out from data mining, we do not know how Gameloft will feel or what they could possibly do to your account, seeing that knowing this info could be against their rules. You can also spread the word so we can have as many people contacting support as possible, which should hopefully alert the devs to fix this issue.",
+        "customer_support": "Customer Support",
+        "title": "What can you do?"
       },
       "what_this_means": {
-        "title": "What does this mean?",
         "body": {
           "affected": "Your local save file is fine, but if you uninstall your game, or need to transfer, your cloud save is not.",
           "safe": "Your cloud save is currently fine, but please note that it does not mean that it will always be fine, as many player's accounts that were previously fine, are now not."
-        }
-      },
-      "what_can_you_do": {
-        "title": "What can you do?",
-        "body": "In simple, contact {support}. We must say, do this at your own caution. If you email about this and mention that this was found out from data mining, we do not know how Gameloft will feel or what they could possibly do to your account, seeing that knowing this info could be against their rules. You can also spread the word so we can have as many people contacting support as possible, which should hopefully alert the devs to fix this issue.",
-        "customer_support": "Customer Support"
+        },
+        "title": "What does this mean?"
       },
       "what_to_say": {
-        "title": "What to say to support?",
         "body": {
           "affected": {
             "1": "You could simply mention that people cannot visit you, adding the message it gives, and suggesting that you’re worried there is an issue with the save file for your account and would like them to forward this to their technical team.",
@@ -403,32 +373,61 @@
             "1": "You can talk about how you cannot visit other players towns, and mention that you have a stable internet connection.",
             "2": "You could mention outright what is going on, even though you're not affected."
           }
-        }
+        },
+        "title": "What to say to support?"
       }
+    },
+    "title": "Check your save file"
+  },
+  "search": {
+    "message": {
+      "search": "Search"
+    },
+    "no_results": "No results",
+    "title": "Search"
+  },
+  "site": {
+    "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game",
+    "title": "All The Ponies"
+  },
+  "socials": {
+    "discord": "Discord",
+    "donate": "Donate",
+    "github": "GitHub",
+    "help_translate": "Help Translate",
+    "mlp_game_hangout": "MLP Game Hangout",
+    "wiki": "Wiki"
+  },
+  "sorting": {
+    "alphabetically": "Alphabetically",
+    "date_added": "Date added",
+    "decor": {
+      "pro_rate": "Pro rate"
+    },
+    "game_order": "Game Order",
+    "relevance": "Relevance",
+    "reverse": "Reverse",
+    "shop": {
+      "production": "Production rate",
+      "xp_rate": "XP rate"
     }
   },
-  "check_save": {
-    "messages": {
-      "check": "Check"
-    }
+  "stats": {
+    "description": "See your stats in the My Little Pony: Magic Princess game",
+    "message": {
+      "ponies": {
+        "total": "Total ponies: {count}"
+      }
+    },
+    "title": "Stats"
   },
-  "fortune_shop": {
-    "title": "Fortune Shop",
-    "messages": {
-      "regular": "Regular",
-      "royal": "Royal"
+  "store": {
+    "description": "See everything currently in the store in real time",
+    "message": {
+      "for": "for",
+      "if": "if",
+      "percent_off": "OFF"
     },
-    "price_rarities": {
-      "regular": "Regular",
-      "discount": "Discount",
-      "super": "Super",
-      "ultra": "Ultra"
-    },
-    "rarities": {
-      "common": "Common",
-      "uncommon": "Uncommon",
-      "rare": "Rare",
-      "legendary": "Legendary"
-    }
+    "title": "Store"
   }
 }

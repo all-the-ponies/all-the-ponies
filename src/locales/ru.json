@@ -1,433 +1,433 @@
 {
- "about": {
-  "description": {
-   "body": "Изначально Все Пони был создан {me} как веб-сайт для {quiz_link}, потому что один тест, который я нашел в интернете, едва затронул тему пони. Позже сайт был расширен до ресурса с точной информацией о том, что происходит в игре, отслеживания того, что вы получили, и, конечно же, небольших игровых активностей",
-   "quiz_link": "назови как можно больше пони, которых знаешь"
-  },
-  "sections": {
-   "credits": {
-    "message": {
-     "credits_list": {
-      "1": "Сайт был создан {ego}.",
-      "2": "Спасибо {bass} за помощь с загрузкой пони по коду дружбы.",
-      "3": "Используемый шрифт {font}, который также используется в игре.",
-      "4": "Сайт был создан с использованием {vue} чтобы упростить мне работу и сделать взаимодействие более динамичным."
-     }
+  "about": {
+    "description": {
+      "body": "Изначально Все Пони был создан {me} как веб-сайт для {quiz_link}, потому что один тест, который я нашел в интернете, едва затронул тему пони. Позже сайт был расширен до ресурса с точной информацией о том, что происходит в игре, отслеживания того, что вы получили, и, конечно же, небольших игровых активностей",
+      "quiz_link": "назови как можно больше пони, которых знаешь"
     },
-    "title": "Примечания"
-   },
-   "translations": {
-    "title": "Переводчики"
-   }
+    "sections": {
+      "credits": {
+        "message": {
+          "credits_list": {
+            "1": "Сайт был создан {ego}.",
+            "2": "Спасибо {bass} за помощь с загрузкой пони по коду дружбы.",
+            "3": "Используемый шрифт {font}, который также используется в игре.",
+            "4": "Сайт был создан с использованием {vue} чтобы упростить мне работу и сделать взаимодействие более динамичным."
+          }
+        },
+        "title": "Примечания"
+      },
+      "translations": {
+        "title": "Переводчики"
+      }
+    },
+    "title": "О сайте"
   },
-  "title": "О сайте"
- },
- "button": {
-  "cancel": "Отмена",
-  "hint": "Подсказка",
-  "no": "Нет",
-  "ok": "Ок",
-  "share": "Поделиться",
-  "skip": "Пропуск",
-  "start": "Старт",
-  "stop": "Остановить",
-  "yes": "Да"
- },
- "check_save": {
-  "messages": {
-   "check": "Проверить"
-  }
- },
- "common": {
-  "date": {
-   "current": "настоящее",
-   "range": "с {start} по {end}"
+  "button": {
+    "cancel": "Отмена",
+    "hint": "Подсказка",
+    "no": "Нет",
+    "ok": "Ок",
+    "share": "Поделиться",
+    "skip": "Пропуск",
+    "start": "Старт",
+    "stop": "Остановить",
+    "yes": "Да"
   },
-  "export": "Экспорт",
-  "help": "Помощь",
-  "import": "Импорт",
-  "info": "Информация",
-  "name": "Имя",
-  "new": "Новинка",
-  "or": "или",
-  "price": "Стоимость",
-  "royal": "Клуб",
-  "wiki": "Википедия"
- },
- "contact": {
-  "description": "У вас есть вопросы, предложения, сообщения об ошибках или вы хотите внести свой вклад? Это подходящее место для этого!",
-  "message": {
-   "discord": {
-    "button": "Присоединиться к серверу",
-    "description": "Задавайте вопросы, высказывайте предложения, сообщайте об ошибках или просто общайтесь с сообществом.",
-    "title": "Присоединяйтесь к серверу Discord"
-   },
-   "discord_message": "",
-   "discord_server": "",
-   "github": {
-    "button": "Открыть репозиторий",
-    "description": "Ознакомьтесь с исходным кодом, открытыми проблемами или отправьте запрос на добавление ваших изменений в проект.",
-    "title": "Посмотреть на GitHub"
-   },
-   "help_wanted": {
-    "description": "Я всего лишь человек, который знает только английский, поэтому есть много вещей, которые я не могу делать, особенно переводы. То, что я смог перевести, - это то, что я смог извлечь из игры. Если ваш язык плохо переведен, ПОЖАЛУЙСТА, создайте запрос на обновление на github или присоединяйтесь к серверу Discord, чтобы помочь с переводом. Я также не силен в разработке макетов, поэтому, если вы разбираетесь в веб-дизайне, я был бы рад вашей помощи. Если вы хотите просто помочь с написанием кода для веб-сайта, это тоже очень приветствуется.",
-    "title": "Нужна помощь!"
-   },
-   "mlp_game_hangout": {
-    "button": "Присоединиться к серверу",
-    "description": "Сервер сообщества для игры. Подключен к сабреддиту r/MLPIOS.",
-    "title": "MLP Game Hangout"
-   }
-  },
-  "title": "Контакты"
- },
- "dialog": {
-  "filter": "Фильтрация",
-  "select_item": {
-   "title": "Выбрать объект"
-  },
-  "sort_by": "Сортировка"
- },
- "filter": {
-  "decor": {
-   "can_fuse": "Можно синтезировать",
-   "regular": "Обычный"
-  },
-  "pony": {
-   "not_owned": "Не приобретен",
-   "npc": "НИП",
-   "playable": "Игровой",
-   "pro": "Профи",
-   "quest": "Сюжетный",
-   "unused": "Неиспользуемый"
-  },
-  "shop": {
-   "gem_shop": "Магазины Камней",
-   "maze": "Лабиринт",
-   "not_owned": "Не приобретен",
-   "others": "Другое"
-  }
- },
- "fortune_shop": {
-  "messages": {
-   "regular": "Обычная",
-   "royal": "Клуб"
-  },
-  "price_rarities": {
-   "discount": "Скидка",
-   "regular": "Обычная",
-   "super": "Супер",
-   "ultra": "Ультра"
-  },
-  "rarities": {
-   "common": "Обычный",
-   "legendary": "Легендарный",
-   "rare": "Редкий",
-   "uncommon": "Необычный"
-  },
-  "title": "Лавка Фортуны"
- },
- "game": {
-  "content_version": "Версия контента: {version}",
-  "game_version": "Версия игры: {version}",
-  "message": {
-   "you_won": "Вы Выиграли!"
-  }
- },
- "game_object": {
-  "building": {
-   "build_reward": "Награда за постройку",
-   "build_skip_cost": "Стоимость пропуска постройки",
-   "build_time": "Время постройки",
-   "skip_cost": "Стоимость пропуска"
+  "check_save": {
+    "messages": {
+      "check": "Проверить"
+    }
   },
   "common": {
-   "size": "Размер",
-   "unlock_level": "Уровень разблокировки"
+    "date": {
+      "current": "настоящее",
+      "range": "с {start} по {end}"
+    },
+    "export": "Экспорт",
+    "help": "Помощь",
+    "import": "Импорт",
+    "info": "Информация",
+    "name": "Имя",
+    "new": "Новинка",
+    "or": "или",
+    "price": "Стоимость",
+    "royal": "Клуб",
+    "wiki": "Википедия"
   },
-  "decor": {
-   "cannot_fuse": "Нельзя синтезировать",
-   "decor": "Декор",
-   "effect": "Влияние",
-   "fusion_points": "Очки Синтеза",
-   "pro_decor": "Супердекорация @:game_object.decor.decor",
-   "pro_decors": "Супердекорации"
-  },
-  "house": {
-   "house": "Дом | Дома",
-   "resident": "Житель | Жители",
-   "visitor": "Посетитель | Посетители"
-  },
-  "pony": {
-   "arrival_bonus": "Бонус прибытия",
-   "character": "Персонаж | Персонажи",
-   "level_up_rewards": "Награды за повышение уровня",
-   "minigame_cooldown": "Время перезарядки мини-игры",
-   "minigame_skip_cost": "Стоимость пропуска перезарядки",
-   "pony": "Пони",
-   "transform": "Превратить",
-   "transformable": "Пони-перевертыш | Пони-перевертыши"
-  },
-  "profile_decorations": {
-   "avatar": {
-    "animated": "Анимированный?",
-    "avatar": "Аватар | Аватары"
-   },
-   "background": {
-    "background": "Задний план | Задние планы"
-   },
-   "background_frame": {
-    "background_frame": "Рамка фона | Рамки фона"
-   },
-   "frame": {
-    "frame": "Рамка | Рамки"
-   },
-   "is_default": "По умолчанию"
-  },
-  "road": {
-   "road": "Дорога | Дороги"
-  },
-  "shop": {
-   "gem_shop": "Магазины камней",
-   "product": "Товар",
-   "production_time": "Время производства",
-   "profit": "Прибыль",
-   "shop": "Магазин | Магазины"
-  },
-  "token": {
-   "token": "Жетон | Жетоны"
-  }
- },
- "group_quests": {
-  "name_seasonal": "{name} (@:group_quests.seasonal)",
-  "name_tutorial": "{name} (@:group_quests.tutorial)",
-  "pro": "Профи",
-  "random_pro": "Случайные",
-  "seasonal": "Сезонный",
-  "title": "Групповые задания",
-  "tutorial": ""
- },
- "guesser": {
-  "description": "Угадайте пони по силуэту",
-  "message": {
-   "correct_guesses": "Правильные ответы",
-   "guessed_correctly": "Правильно угадано: {ponies}/{total}",
-   "time": "Время: {time}"
-  },
-  "title": "Кто Этот Пони?"
- },
- "home": {
-  "description": "Узнайте информацию о {game_link} и следите за тем, что у вас есть!",
-  "message": {
-   "affiliates": "Партнёры",
-   "game_name": "My Little Pony: Магия Принцесс",
-   "links": "Ссылки"
-  },
-  "things_to_do": {
-   "browse": "Навигация",
-   "title": "Что осталось сделать"
-  }
- },
- "inventory": {
-  "message": {
-   "add_more": "Добавьте чуть-чуть {category}",
-   "dialog": {
-    "export": {
-     "category": "Категория",
-     "format": "Формат"
-    }
-   }
-  },
-  "stats": {
-   "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-   "houses": "@:game_object.house.house{':'} {count}",
-   "ponies": "@:game_object.pony.pony{':'} {count}",
-   "shops": "@:game_object.shop.shop{':'} {count}",
-   "stars": "Количество звезд: {count}",
-   "transformable": "@:game_object.pony.transformable{':'} {count}"
-  },
-  "title": "Инвентарь"
- },
- "lists": {
-  "button": {
-   "add_to_list": "Добавить в список желаний",
-   "create_list": "Создать список желаний",
-   "edit": "Редактировать",
-   "new_wishlist": "+ Новый список желаний"
+  "contact": {
+    "description": "У вас есть вопросы, предложения, сообщения об ошибках или вы хотите внести свой вклад? Это подходящее место для этого!",
+    "message": {
+      "discord": {
+        "button": "Присоединиться к серверу",
+        "description": "Задавайте вопросы, высказывайте предложения, сообщайте об ошибках или просто общайтесь с сообществом.",
+        "title": "Присоединяйтесь к серверу Discord"
+      },
+      "discord_message": "",
+      "discord_server": "",
+      "github": {
+        "button": "Открыть репозиторий",
+        "description": "Ознакомьтесь с исходным кодом, открытыми проблемами или отправьте запрос на добавление ваших изменений в проект.",
+        "title": "Посмотреть на GitHub"
+      },
+      "help_wanted": {
+        "description": "Я всего лишь человек, который знает только английский, поэтому есть много вещей, которые я не могу делать, особенно переводы. То, что я смог перевести, - это то, что я смог извлечь из игры. Если ваш язык плохо переведен, ПОЖАЛУЙСТА, создайте запрос на обновление на github или присоединяйтесь к серверу Discord, чтобы помочь с переводом. Я также не силен в разработке макетов, поэтому, если вы разбираетесь в веб-дизайне, я был бы рад вашей помощи. Если вы хотите просто помочь с написанием кода для веб-сайта, это тоже очень приветствуется.",
+        "title": "Нужна помощь!"
+      },
+      "mlp_game_hangout": {
+        "button": "Присоединиться к серверу",
+        "description": "Сервер сообщества для игры. Подключен к сабреддиту r/MLPIOS.",
+        "title": "MLP Game Hangout"
+      }
+    },
+    "title": "Контакты"
   },
   "dialog": {
-   "add_to_list": {
-    "title": "Добавить в список желаний"
-   },
-   "choose_image": {
-    "title": "Выбрать изображение"
-   },
-   "confirm_delete": {
-    "body": "Вы уверены, что хотите удалить \"{list}\"?",
-    "title": "Удалить список желаний?"
-   },
-   "create_list": {
+    "filter": "Фильтрация",
+    "select_item": {
+      "title": "Выбрать объект"
+    },
+    "sort_by": "Сортировка"
+  },
+  "filter": {
+    "decor": {
+      "can_fuse": "Можно синтезировать",
+      "regular": "Обычный"
+    },
+    "pony": {
+      "not_owned": "Не приобретен",
+      "npc": "НИП",
+      "playable": "Игровой",
+      "pro": "Профи",
+      "quest": "Сюжетный",
+      "unused": "Неиспользуемый"
+    },
+    "shop": {
+      "gem_shop": "Магазины Камней",
+      "maze": "Лабиринт",
+      "not_owned": "Не приобретен",
+      "others": "Другое"
+    }
+  },
+  "fortune_shop": {
+    "messages": {
+      "regular": "Обычная",
+      "royal": "Клуб"
+    },
+    "price_rarities": {
+      "discount": "Скидка",
+      "regular": "Обычная",
+      "super": "Супер",
+      "ultra": "Ультра"
+    },
+    "rarities": {
+      "common": "Обычный",
+      "legendary": "Легендарный",
+      "rare": "Редкий",
+      "uncommon": "Необычный"
+    },
+    "title": "Лавка Фортуны"
+  },
+  "game": {
+    "content_version": "Версия контента: {version}",
+    "game_version": "Версия игры: {version}",
     "message": {
-     "name": "Название:",
-     "name_required": "Имя обязательно",
-     "wishlist": "Список желаний"
+      "you_won": "Вы Выиграли!"
+    }
+  },
+  "game_object": {
+    "building": {
+      "build_reward": "Награда за постройку",
+      "build_skip_cost": "Стоимость пропуска постройки",
+      "build_time": "Время постройки",
+      "skip_cost": "Стоимость пропуска"
     },
-    "title": "Создание списка желаний"
-   }
+    "common": {
+      "size": "Размер",
+      "unlock_level": "Уровень разблокировки"
+    },
+    "decor": {
+      "cannot_fuse": "Нельзя синтезировать",
+      "decor": "Декор",
+      "effect": "Влияние",
+      "fusion_points": "Очки Синтеза",
+      "pro_decor": "Супердекорация @:game_object.decor.decor",
+      "pro_decors": "Супердекорации"
+    },
+    "house": {
+      "house": "Дом | Дома",
+      "resident": "Житель | Жители",
+      "visitor": "Посетитель | Посетители"
+    },
+    "pony": {
+      "arrival_bonus": "Бонус прибытия",
+      "character": "Персонаж | Персонажи",
+      "level_up_rewards": "Награды за повышение уровня",
+      "minigame_cooldown": "Время перезарядки мини-игры",
+      "minigame_skip_cost": "Стоимость пропуска перезарядки",
+      "pony": "Пони",
+      "transform": "Превратить",
+      "transformable": "Пони-перевертыш | Пони-перевертыши"
+    },
+    "profile_decorations": {
+      "avatar": {
+        "animated": "Анимированный?",
+        "avatar": "Аватар | Аватары"
+      },
+      "background": {
+        "background": "Задний план | Задние планы"
+      },
+      "background_frame": {
+        "background_frame": "Рамка фона | Рамки фона"
+      },
+      "frame": {
+        "frame": "Рамка | Рамки"
+      },
+      "is_default": "По умолчанию"
+    },
+    "road": {
+      "road": "Дорога | Дороги"
+    },
+    "shop": {
+      "gem_shop": "Магазины камней",
+      "product": "Товар",
+      "production_time": "Время производства",
+      "profit": "Прибыль",
+      "shop": "Магазин | Магазины"
+    },
+    "token": {
+      "token": "Жетон | Жетоны"
+    }
   },
-  "messages": {
-   "empty_list": "Похоже, в данный момент здесь ничего нет. Подумайте о том, чтобы добавить {ponies}.",
-   "no_lists": "Похоже, списков желаний пока нет.",
-   "wishlist": "Список желаний"
+  "group_quests": {
+    "name_seasonal": "{name} (@:group_quests.seasonal)",
+    "name_tutorial": "{name} (@:group_quests.tutorial)",
+    "pro": "Профи",
+    "random_pro": "Случайные",
+    "seasonal": "Сезонный",
+    "title": "Групповые задания",
+    "tutorial": ""
   },
-  "title": "Списки желаний"
- },
- "location": {
-  "canterlot": "Кантерлот",
-  "changeling_kingdom": "Королевство Оборотней",
-  "crystal_empire": "Кристальная Империя",
-  "everfree_forest": "Вечнозеленый Лес",
-  "klugetown": "Клуджтаун",
-  "ponyville": "Понивилль",
-  "sweet_apple_acres": "Ферма Сладкое Яблоко",
-  "town": "Расположение",
-  "unknown": "Неизвестно"
- },
- "notices": {
-  "corrupt_save": {
-   "body": "",
-   "button": "",
-   "title": ""
+  "guesser": {
+    "description": "Угадайте пони по силуэту",
+    "message": {
+      "correct_guesses": "Правильные ответы",
+      "guessed_correctly": "Правильно угадано: {ponies}/{total}",
+      "time": "Время: {time}"
+    },
+    "title": "Кто Этот Пони?"
   },
-  "help_wanted": {
-   "body": "",
-   "title": "Нужна помощь!"
+  "home": {
+    "description": "Узнайте информацию о {game_link} и следите за тем, что у вас есть!",
+    "message": {
+      "affiliates": "Партнёры",
+      "game_name": "My Little Pony: Магия Принцесс",
+      "links": "Ссылки"
+    },
+    "things_to_do": {
+      "browse": "Навигация",
+      "title": "Что осталось сделать"
+    }
+  },
+  "inventory": {
+    "message": {
+      "add_more": "Добавьте чуть-чуть {category}",
+      "dialog": {
+        "export": {
+          "category": "Категория",
+          "format": "Формат"
+        }
+      }
+    },
+    "stats": {
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
+      "houses": "@:game_object.house.house{':'} {count}",
+      "ponies": "@:game_object.pony.pony{':'} {count}",
+      "shops": "@:game_object.shop.shop{':'} {count}",
+      "stars": "Количество звезд: {count}",
+      "transformable": "@:game_object.pony.transformable{':'} {count}"
+    },
+    "title": "Инвентарь"
+  },
+  "lists": {
+    "button": {
+      "add_to_list": "Добавить в список желаний",
+      "create_list": "Создать список желаний",
+      "edit": "Редактировать",
+      "new_wishlist": "+ Новый список желаний"
+    },
+    "dialog": {
+      "add_to_list": {
+        "title": "Добавить в список желаний"
+      },
+      "choose_image": {
+        "title": "Выбрать изображение"
+      },
+      "confirm_delete": {
+        "body": "Вы уверены, что хотите удалить \"{list}\"?",
+        "title": "Удалить список желаний?"
+      },
+      "create_list": {
+        "message": {
+          "name": "Название:",
+          "name_required": "Имя обязательно",
+          "wishlist": "Список желаний"
+        },
+        "title": "Создание списка желаний"
+      }
+    },
+    "messages": {
+      "empty_list": "Похоже, в данный момент здесь ничего нет. Подумайте о том, чтобы добавить {ponies}.",
+      "no_lists": "Похоже, списков желаний пока нет.",
+      "wishlist": "Список желаний"
+    },
+    "title": "Списки желаний"
+  },
+  "location": {
+    "canterlot": "Кантерлот",
+    "changeling_kingdom": "Королевство Оборотней",
+    "crystal_empire": "Кристальная Империя",
+    "everfree_forest": "Вечнозеленый Лес",
+    "klugetown": "Клуджтаун",
+    "ponyville": "Понивилль",
+    "sweet_apple_acres": "Ферма Сладкое Яблоко",
+    "town": "Расположение",
+    "unknown": "Неизвестно"
+  },
+  "notices": {
+    "corrupt_save": {
+      "body": "",
+      "button": "",
+      "title": ""
+    },
+    "help_wanted": {
+      "body": "",
+      "title": "Нужна помощь!"
+    }
+  },
+  "player_info": {
+    "friend_code": "Код дружбы",
+    "join_date": "Дата регистрации: {join_date}",
+    "total_playtime": "Общее время игры: {total_playtime}"
+  },
+  "pony_quiz": {
+    "description": "Проверьте свои знания о мобильной игры My Little Pony: Магия Принцесс и посмотрите, сколько пони вы сможете назвать. Даже если вы не играете в эту игру, все равно будет весело, потому что большинство пони из 4-го поколения присутствуют в игре (есть также несколько пони из 1-го поколения).",
+    "message": {
+      "win_message": "Поздравляю! У тебя заняло {time}, чтобы назвать всех {num_ponies} пони @.lower:game_object.pony.pony"
+    },
+    "options": {
+      "case_sensitive": "Чувствительный к регистру",
+      "ignore_accents": "Игнорировать акценты",
+      "ignore_punctuation": "Игнорировать пунктуацию",
+      "ignore_spaces": "Игнорировать пробелы",
+      "include_unused": "Включать неиспользуемых пони"
+    },
+    "time": "Время",
+    "title": "Викторина"
+  },
+  "price_history": {
+    "header": {
+      "date": "Дата",
+      "price": "Стоимость",
+      "royal": "Клуб",
+      "tokens": "Жетоны"
+    },
+    "message": {
+      "whats_hot": "Актуальное"
+    },
+    "title": "История цен"
+  },
+  "save_check": {
+    "description": "",
+    "messages": {
+      "explanation": {
+        "first": "",
+        "fourth": "",
+        "second": "",
+        "third": ""
+      },
+      "status": {
+        "affected": "",
+        "safe": ""
+      },
+      "what_can_you_do": {
+        "body": "",
+        "customer_support": "",
+        "title": ""
+      },
+      "what_this_means": {
+        "body": {
+          "affected": "",
+          "safe": ""
+        },
+        "title": ""
+      },
+      "what_to_say": {
+        "body": {
+          "affected": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          },
+          "safe": {
+            "1": "",
+            "2": ""
+          }
+        },
+        "title": ""
+      }
+    },
+    "title": ""
+  },
+  "search": {
+    "message": {
+      "search": "Поиск"
+    },
+    "no_results": "Не найдено",
+    "title": "Поиск"
+  },
+  "site": {
+    "description": "Получите всю необходимую точную информацию обо всем в игре My Little Pony: Магия Принцесс",
+    "title": "Все Пони"
+  },
+  "socials": {
+    "discord": "",
+    "donate": "",
+    "github": "",
+    "help_translate": "",
+    "mlp_game_hangout": "",
+    "wiki": ""
+  },
+  "sorting": {
+    "alphabetically": "В алфавитном порядке",
+    "date_added": "По дате добавления",
+    "decor": {
+      "pro_rate": "Супердекорации"
+    },
+    "game_order": "Порядок игры",
+    "relevance": "По релевантности",
+    "reverse": "Обратный порядок",
+    "shop": {
+      "production": "Время производства",
+      "xp_rate": "Количество очков опыта"
+    }
+  },
+  "stats": {
+    "description": "Смотрите свою статистику в игре My Little Pony: Магия Принцесс",
+    "message": {
+      "ponies": {
+        "total": "Всего пони: {count}"
+      }
+    },
+    "title": "Статистика"
+  },
+  "store": {
+    "description": "Смотрите все, что сейчас есть в магазине в режиме реального времени",
+    "message": {
+      "for": "за",
+      "if": "если",
+      "percent_off": "СКИДКА"
+    },
+    "title": "Магазин"
   }
- },
- "player_info": {
-  "friend_code": "Код дружбы",
-  "join_date": "Дата регистрации: {join_date}",
-  "total_playtime": "Общее время игры: {total_playtime}"
- },
- "pony_quiz": {
-  "description": "Проверьте свои знания о мобильной игры My Little Pony: Магия Принцесс и посмотрите, сколько пони вы сможете назвать. Даже если вы не играете в эту игру, все равно будет весело, потому что большинство пони из 4-го поколения присутствуют в игре (есть также несколько пони из 1-го поколения).",
-  "message": {
-   "win_message": "Поздравляю! У тебя заняло {time}, чтобы назвать всех {num_ponies} пони @.lower:game_object.pony.pony"
-  },
-  "options": {
-   "case_sensitive": "Чувствительный к регистру",
-   "ignore_accents": "Игнорировать акценты",
-   "ignore_punctuation": "Игнорировать пунктуацию",
-   "ignore_spaces": "Игнорировать пробелы",
-   "include_unused": "Включать неиспользуемых пони"
-  },
-  "time": "Время",
-  "title": "Викторина"
- },
- "price_history": {
-  "header": {
-   "date": "Дата",
-   "price": "Стоимость",
-   "royal": "Клуб",
-   "tokens": "Жетоны"
-  },
-  "message": {
-   "whats_hot": "Актуальное"
-  },
-  "title": "История цен"
- },
- "save_check": {
-  "description": "",
-  "messages": {
-   "explanation": {
-    "first": "",
-    "fourth": "",
-    "second": "",
-    "third": ""
-   },
-   "status": {
-    "affected": "",
-    "safe": ""
-   },
-   "what_can_you_do": {
-    "body": "",
-    "customer_support": "",
-    "title": ""
-   },
-   "what_this_means": {
-    "body": {
-     "affected": "",
-     "safe": ""
-    },
-    "title": ""
-   },
-   "what_to_say": {
-    "body": {
-     "affected": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": ""
-     },
-     "safe": {
-      "1": "",
-      "2": ""
-     }
-    },
-    "title": ""
-   }
-  },
-  "title": ""
- },
- "search": {
-  "message": {
-   "search": "Поиск"
-  },
-  "no_results": "Не найдено",
-  "title": "Поиск"
- },
- "site": {
-  "description": "Получите всю необходимую точную информацию обо всем в игре My Little Pony: Магия Принцесс",
-  "title": "Все Пони"
- },
- "socials": {
-  "discord": "",
-  "donate": "",
-  "github": "",
-  "help_translate": "",
-  "mlp_game_hangout": "",
-  "wiki": ""
- },
- "sorting": {
-  "alphabetically": "В алфавитном порядке",
-  "date_added": "По дате добавления",
-  "decor": {
-   "pro_rate": "Супердекорации"
-  },
-  "game_order": "Порядок игры",
-  "relevance": "По релевантности",
-  "reverse": "Обратный порядок",
-  "shop": {
-   "production": "Время производства",
-   "xp_rate": "Количество очков опыта"
-  }
- },
- "stats": {
-  "description": "Смотрите свою статистику в игре My Little Pony: Магия Принцесс",
-  "message": {
-   "ponies": {
-    "total": "Всего пони: {count}"
-   }
-  },
-  "title": "Статистика"
- },
- "store": {
-  "description": "Смотрите все, что сейчас есть в магазине в режиме реального времени",
-  "message": {
-   "for": "за",
-   "if": "если",
-   "percent_off": "СКИДКА"
-  },
-  "title": "Магазин"
- }
 }
