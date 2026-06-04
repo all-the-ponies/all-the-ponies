@@ -17,6 +17,7 @@ import GitHubButton from '@/components/buttons/socials/GitHubButton.vue';
 import KofiButton from '@/components/buttons/socials/KofiButton.vue';
 import RedditButton from '@/components/buttons/socials/RedditButton.vue';
 import WikiButton from '@/components/buttons/socials/WikiButton.vue';
+import WeblateButton from '@/components/buttons/socials/WeblateButton.vue';
 
 
 const pony = ref<PonyType>(null)
@@ -124,6 +125,7 @@ function openSidebar() {
                 <DiscordButton :href="links.discordServer">{{ $t('socials.discord') }}</DiscordButton>
                 <GitHubButton :href="links.githubRepo">{{ $t('socials.github') }}</GitHubButton>
                 <KofiButton :href="links.kofi">{{ $t('socials.donate') }}</KofiButton>
+                <WeblateButton :href="links.weblate">{{ $t('socials.help_translate') }}</WeblateButton>
             </div>
         </section>
         <section class="section">

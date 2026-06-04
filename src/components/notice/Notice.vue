@@ -8,9 +8,10 @@ const globalState = useGlobalStateStore()
 
 const props = defineProps<{
     noticeId: string,
+    hidden?: boolean,
 }>()
 
-const closed = computed(() => globalState.dismissedNotices.includes(props.noticeId))
+const closed = computed(() => props.hidden || globalState.dismissedNotices.includes(props.noticeId))
 
 function close() {
     // console.log('Closing')

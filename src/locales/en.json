@@ -6,8 +6,7 @@
   "notices": {
     "help_wanted": {
       "title": "Help Wanted!",
-      "body": "I only speak English, so I can't translate All The Ponies on my own. If your language is not fully translated, I would really love your help translating it. You can find more info in the discord server and GitHub.",
-      "discord": "Join Server"
+      "body": "I only speak English, so I can't translate All The Ponies to other languages. If your language is not fully translated, I would really love your help translating it, no coding knowledge is required because Weblate makes translating easy for anyone."
     },
     "corrupt_save": {
       "title": "Important",
@@ -32,7 +31,8 @@
     "mlp_game_hangout": "MLP Game Hangout",
     "github": "GitHub",
     "wiki": "Wiki",
-    "donate": "Donate"
+    "donate": "Donate",
+    "help_translate": "Help Translate"
   },
   "about": {
     "title": "About",

@@ -1,6 +1,7 @@
 # All The Ponies
 
 [![Discord](https://img.shields.io/discord/1459275396490072237?logo=discord&logoColor=white&label=Discord&color=%235865F2)](https://discord.gg/vk4KaFFggS "Join the discord server")
+[![Translation status](https://hosted.weblate.org/widget/all-the-ponies/language-badge.svg)](https://hosted.weblate.org/engage/all-the-ponies/)
 [![Translation status](https://hosted.weblate.org/widget/all-the-ponies/svg-badge.svg)](https://hosted.weblate.org/engage/all-the-ponies/)
 ![License](https://img.shields.io/github/license/all-the-ponies/all-the-ponies)
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/egolayatmanbay)

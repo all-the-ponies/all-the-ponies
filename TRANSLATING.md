@@ -1,6 +1,17 @@
 # Translating
 
-Any translations for any of the languages already on the site (and in the game) are welcome, as long as you know the language, **Google Translate is not allowed**. While there are some things I have been able to pull from the game already, there is a lot more text that I can't, and your help is very much appreciated.
+Translations are done using [Weblate](https://hosted.weblate.org/engage/all-the-ponies/), which makes it easy to translate, so if your language is not fully translated, then I would appreciate your help.
+
+[![Translation status](https://hosted.weblate.org/widget/all-the-ponies/multi-auto.svg)](https://hosted.weblate.org/engage/all-the-ponies/)
+
+You can find the Weblate project here: https://hosted.weblate.org/engage/all-the-ponies/
+
+# Technical Instructions
+
+> [!NOTE]
+> Everything below is for manually editing the translation files. You can ignore all of this if you're using weblate, which makes it much easier to translate.
+
+If you want to edit the translation files directly and create a pull request, keep reading.
 
 ## Getting Started
 

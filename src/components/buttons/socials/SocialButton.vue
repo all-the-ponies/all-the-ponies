@@ -32,6 +32,7 @@ const props = withDefaults(defineProps<{
     border-radius: 0.5rem;
     text-decoration: none;
     font-weight: bold;
+    font-size: var(--font-size);
     color: white;
     
     transition: background-color 150ms linear,

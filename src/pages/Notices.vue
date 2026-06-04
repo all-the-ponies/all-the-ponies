@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DiscordButton from '@/components/buttons/socials/DiscordButton.vue';
 import GitHubButton from '@/components/buttons/socials/GitHubButton.vue';
+import WeblateButton from '@/components/buttons/socials/WeblateButton.vue';
 import Link from '@/components/Link.vue';
 import Notice from '@/components/notice/Notice.vue'
 import links from '@/globals/links';
@@ -8,7 +9,7 @@ import links from '@/globals/links';
 </script>
 
 <template>
-    <Notice noticeId="corrupt-save">
+    <Notice noticeId="corrupt-save" hidden>
         <div class="notice-container">
             <div class="main-body">
                 <div class="body">
@@ -21,7 +22,7 @@ import links from '@/globals/links';
             </div>
         </div>
     </Notice>
-    <Notice noticeId="help-wanted">
+    <Notice noticeId="help-wanted2">
         <div class="notice-container">
             <div class="main-body">
                 <div class="body">
@@ -29,8 +30,7 @@ import links from '@/globals/links';
                     <p>{{ $t('notices.help_wanted.body') }}</p>
                 </div>
                 <div class="buttons">
-                    <DiscordButton class="notice-button" :href="links.discordServer">{{ $t('notices.help_wanted.discord') }}</DiscordButton>
-                    <GitHubButton class="notice-button" :href="links.translating">{{ $t('socials.github') }}</GitHubButton>
+                    <WeblateButton class="notice-button" :href="links.weblate">Weblate</WeblateButton>
                 </div>
             </div>
         </div>
