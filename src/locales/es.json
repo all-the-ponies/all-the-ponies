@@ -277,7 +277,7 @@
     },
     "messages": {
       "empty_list": "No hay nada aquí por el momento. Considera añadir {ponies}.",
-      "no_lists": "Parece que no tienes ninguna lista de deseos aún. ",
+      "no_lists": "Parece que no tienes ninguna lista de deseos aún.",
       "wishlist": "Lista de Deseos"
     },
     "title": "Listas de Deseos"
