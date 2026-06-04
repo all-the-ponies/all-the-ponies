@@ -12,15 +12,16 @@
     "build:sitemap": "tsx ./scripts/generate-sitemap.ts",
     "preview": "npm run build && vike preview",
     "deploy": "npm run build && wrangler deploy",
-    "type-check": "vue-tsc --build"
+    "type-check": "vue-tsc --build",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
-    "@cloudflare/vite-plugin": "^1.37.2",
+    "@cloudflare/vite-plugin": "^1.39.2",
     "@nozbe/microfuzz": "^1.0.0",
     "@vikejs/hono": "^0.2.0",
     "@vueuse/core": "^14.3.0",
     "accept-language": "^3.0.20",
-    "hono": "^4.12.21",
+    "hono": "^4.12.23",
     "ky": "^1.14.3",
     "papaparse": "^5.5.3",
     "pinia": "^3.0.4",
@@ -30,10 +31,10 @@
     "vike": "^0.4.259",
     "vike-vue": "^0.9.11",
     "vike-vue-pinia": "^0.2.6",
-    "vue": "^3.5.34",
+    "vue": "^3.5.35",
     "vue-i18n": "^11.4.4",
     "vue-virtual-scroller": "^2.0.1",
-    "wrangler": "^4.93.0"
+    "wrangler": "^4.97.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.5",
@@ -44,11 +45,11 @@
     "@vue/tsconfig": "^0.7.0",
     "navigation-api-types": "^0.6.1",
     "npm-run-all2": "^8.0.4",
-    "sass-embedded": "^1.99.0",
-    "tsx": "^4.22.3",
+    "sass-embedded": "^1.100.0",
+    "tsx": "^4.22.4",
     "typescript": "~5.8.3",
-    "vite": "^7.3.3",
+    "vite": "^7.3.5",
     "vite-plugin-vue-devtools": "^8.1.2",
-    "vue-tsc": "^3.3.1"
+    "vue-tsc": "^3.3.3"
   }
 }
