@@ -3,8 +3,9 @@ import { Config } from 'vike-vue/Config'
 import Link from '@/components/Link.vue'
 import { language } from '@/globals';
 import { useData } from 'vike-vue/useData';
+import type { Data } from './+data.server';
 
-const { credits } = useData()
+const { credits, error: creditsError } = useData<Data>()
 
 console.log('credits', credits)
 
@@ -58,12 +59,19 @@ console.log('credits', credits)
                 </li>
             </ul>
             <h2>{{ $t('about.sections.translations.title') }}</h2>
-            <ul class="list">
-                <li><span class="text-green">Pamcezya</span> - {{ new Intl.DisplayNames([language.code], { type: "language" }).of('tr') }}</li>
-                <li><span class="text-green">Double Dove</span> - {{ new Intl.DisplayNames([language.code], { type: "language" }).of('zh') }}</li>
-                <li><span class="text-green">justfeydan</span> - {{ new Intl.DisplayNames([language.code], { type: "language" }).of('ru') }}</li>
-                <li><span class="text-green">Hurmeow</span> - {{ new Intl.DisplayNames([language.code], { type: "language" }).of('ru') }}</li>
+            <ul class="list" v-if="!creditsError">
+                <li v-for="user in credits">
+                    <span class="text-green">{{ user.full_name }}</span> - 
+                    {{
+                        new Intl.ListFormat([language.code], {style: 'short'}).format(
+                            user.languages.map(lang => 
+                                new Intl.DisplayNames([language.code], { type: 'language' }).of(lang)
+                            )
+                        )
+                    }}
+                </li>
             </ul>
+            <p v-else class="error-message">{{ $t('about.sections.credits.message.fetch_failed') }}</p>
         </section>
     </div>
 </template>
@@ -75,5 +83,9 @@ section {
 
 .list li {
       margin-left: 1rem;
+}
+
+.error-message {
+    color: var(--red);
 }
 </style>

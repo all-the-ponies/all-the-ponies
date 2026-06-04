@@ -83,7 +83,7 @@
     }
     
     .text-green {
-        color: var(--green);
+        color: var(--green-dark);
     }
     
     .text-pink {
