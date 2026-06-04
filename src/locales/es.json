@@ -315,7 +315,7 @@
       "win_message": "¡Felicitaciones! Te tomo {time} para nombrar todos los {num_ponies} @.lower:game_object.pony.pony"
     },
     "options": {
-      "case_sensitive": "",
+      "case_sensitive": "Sensitividad a Mayúsculas y minúsculas",
       "ignore_accents": "Ignorar acentos",
       "ignore_punctuation": "Ignorar signos de puntuación",
       "ignore_spaces": "Ignorar espacios",
