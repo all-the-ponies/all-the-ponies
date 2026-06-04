@@ -6,6 +6,7 @@
     },
     "sections": {
       "credits": {
+        "check_failed": "Error: Could not fetch translators",
         "message": {
           "credits_list": {
             "1": "The website is built by {ego}.",
@@ -14,8 +15,7 @@
             "4": "The website was built using {vue} to make my life easier and allow for a more dynamic experience."
           }
         },
-        "title": "Credits",
-        "check_failed": "Error: Could not fetch translators"
+        "title": "Credits"
       },
       "translations": {
         "title": "Translations"
@@ -278,7 +278,7 @@
     },
     "messages": {
       "empty_list": "There's nothing here right now. Consider adding {ponies}.",
-      "no_lists": "It looks there are no wishlists yet. ",
+      "no_lists": "It looks there are no wishlists yet.",
       "wishlist": "Wishlist"
     },
     "title": "Wishlists"
