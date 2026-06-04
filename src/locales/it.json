@@ -1,432 +1,433 @@
 {
-"about": {
-"description": {
-"body": "",
-"quiz_link": ""
-},
-"sections": {
-"credits": {
-"message": {
-"credits_list": {
-"1": "",
-"2": "",
-"3": "",
-"4": ""
-}
-},
-"title": ""
-},
-"translations": {
-"title": ""
-}
-},
-"title": "Riconoscimenti"
-},
-"button": {
-"cancel": "Annulla",
-"hint": "",
-"no": "No",
-"ok": "Ok",
-"share": "Condividi",
-"skip": "Salta",
-"start": "Inizia",
-"stop": "",
-"yes": "Sì"
-},
-"check_save": {
-"messages": {
-"check": "Controlla"
-}
-},
-"common": {
-"date": {
-"current": "",
-"range": ""
-},
-"export": "",
-"help": "Aiuto",
-"import": "",
-"info": "",
-"name": "Nome",
-"new": "Novità",
-"or": "",
-"price": "",
-"royal": "Reale",
-"wiki": ""
-},
-"contact": {
-"description": "",
-"message": {
-"discord": {
-"button": "",
-"description": "",
-"title": ""
-},
-"discord_message": "",
-"discord_server": "",
-"github": {
-"button": "",
-"description": "",
-"title": ""
-},
-"help_wanted": {
-"description": "",
-"title": ""
-},
-"mlp_game_hangout": {
-"button": "",
-"description": "",
-"title": ""
-}
-},
-"title": ""
-},
-"dialog": {
-"filter": "",
-"select_item": {
-"title": ""
-},
-"sort_by": ""
-},
-"filter": {
-"decor": {
-"can_fuse": "",
-"regular": ""
-},
-"pony": {
-"not_owned": "",
-"npc": "",
-"playable": "",
-"pro": "",
-"quest": "",
-"unused": ""
-},
-"shop": {
-"gem_shop": "Negozi Di Gemme",
-"maze": "Labirinto",
-"not_owned": "",
-"others": ""
-}
-},
-"fortune_shop": {
-"messages": {
-"regular": "",
-"royal": "Reale"
-},
-"price_rarities": {
-"discount": "Sconto",
-"regular": "",
-"super": "",
-"ultra": ""
-},
-"rarities": {
-"common": "Comune",
-"legendary": "Leggendaria",
-"rare": "Rara",
-"uncommon": "Non Comune"
-},
-"title": "Negozio Della Fortuna"
-},
-"game": {
-"content_version": "",
-"game_version": "",
-"message": {
-"you_won": "Hai Vinto!"
-}
-},
-"game_object": {
-"building": {
-"build_reward": "",
-"build_skip_cost": "",
-"build_time": "",
-"skip_cost": ""
-},
-"common": {
-"size": "",
-"unlock_level": ""
-},
-"decor": {
-"cannot_fuse": "",
-"decor": "Decorazioni",
-"effect": "",
-"fusion_points": "Punti Unione",
-"pro_decor": "",
-"pro_decors": "Decorazioni Pro"
-},
-"house": {
-"house": "",
-"resident": "",
-"visitor": ""
-},
-"pony": {
-"arrival_bonus": "",
-"character": "Personaggi",
-"level_up_rewards": "",
-"minigame_cooldown": "",
-"minigame_skip_cost": "",
-"pony": "Pony",
-"transform": "Trasforma",
-"transformable": ""
-},
-"profile_decorations": {
-"avatar": {
-"animated": "",
-"avatar": "Avatar | Avatar"
-},
-"background": {
-"background": "Sfondo | Sfondi"
-},
-"background_frame": {
-"background_frame": "Cornice sfondo"
-},
-"frame": {
-"frame": "Cornice | Cornici"
-},
-"is_default": ""
-},
-"road": {
-"road": "Strade"
-},
-"shop": {
-"gem_shop": "Negozi Di Gemme",
-"product": "",
-"production_time": "",
-"profit": "",
-"shop": "Stand"
-},
-"token": {
-"token": "Accessori"
-}
-},
-"group_quests": {
-"name_seasonal": "{name} (@:group_quests.seasonal)",
-"name_tutorial": "{name} (@:group_quests.tutorial)",
-"pro": "",
-"random_pro": "",
-"seasonal": "Stagionale",
-"title": "Missioni Di Gruppo",
-"tutorial": ""
-},
-"guesser": {
-"description": "",
-"message": {
-"correct_guesses": "",
-"guessed_correctly": "",
-"time": ""
-},
-"title": ""
-},
-"home": {
-"description": "",
-"message": {
-"affiliates": "",
-"game_name": "",
-"links": ""
-},
-"things_to_do": {
-"browse": "",
-"title": ""
-}
-},
-"inventory": {
-"message": {
-"add_more": "",
-"dialog": {
-"export": {
-"category": "",
-"format": ""
-}
-}
-},
-"stats": {
-"gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-"houses": "@:game_object.house.house{':'} {count}",
-"ponies": "@:game_object.pony.pony{':'} {count}",
-"shops": "@:game_object.shop.shop{':'} {count}",
-"stars": "",
-"transformable": "@:game_object.pony.transformable{':'} {count}"
-},
-"title": "Inventario"
-},
-"lists": {
-"button": {
-"add_to_list": "",
-"create_list": "",
-"edit": "",
-"new_wishlist": ""
-},
-"dialog": {
-"add_to_list": {
-"title": ""
-},
-"choose_image": {
-"title": ""
-},
-"confirm_delete": {
-"body": "",
-"title": ""
-},
-"create_list": {
-"message": {
-"name": "",
-"name_required": "",
-"wishlist": ""
-},
-"title": ""
-}
-},
-"messages": {
-"empty_list": "",
-"no_lists": "",
-"wishlist": ""
-},
-"title": ""
-},
-"location": {
-"canterlot": "Canterlot",
-"changeling_kingdom": "Changeling Kingdom",
-"crystal_empire": "Crystal Empire",
-"everfree_forest": "Everfree Forest",
-"klugetown": "Klugetown",
-"ponyville": "Ponyville",
-"sweet_apple_acres": "Sweet Apple Acres",
-"town": "",
-"unknown": ""
-},
-"notices": {
-"corrupt_save": {
-"body": "",
-"button": "",
-"title": ""
-},
-"help_wanted": {
-"body": "",
-"title": ""
-}
-},
-"player_info": {
-"friend_code": "Codice Amico",
-"join_date": "",
-"total_playtime": ""
-},
-"pony_quiz": {
-"description": "",
-"message": {
-"win_message": ""
-},
-"options": {
-"case_sensitive": "",
-"ignore_accents": "",
-"ignore_punctuation": "",
-"ignore_spaces": "",
-"include_unused": ""
-},
-"time": "",
-"title": ""
-},
-"price_history": {
-"header": {
-"date": "",
-"price": "",
-"royal": "Reale",
-"tokens": "Accessori"
-},
-"message": {
-"whats_hot": "Novità"
-},
-"title": ""
-},
-"save_check": {
-"description": "",
-"messages": {
-"explanation": {
-"first": "",
-"fourth": "",
-"second": "",
-"third": ""
-},
-"status": {
-"affected": "",
-"safe": ""
-},
-"what_can_you_do": {
-"body": "",
-"customer_support": "",
-"title": ""
-},
-"what_this_means": {
-"body": {
-"affected": "",
-"safe": ""
-},
-"title": ""
-},
-"what_to_say": {
-"body": {
-"affected": {
-"1": "",
-"2": "",
-"3": "",
-"4": ""
-},
-"safe": {
-"1": "",
-"2": ""
-}
-},
-"title": ""
-}
-},
-"title": ""
-},
-"search": {
-"message": {
-"search": ""
-},
-"no_results": "",
-"title": ""
-},
-"site": {
-"description": "",
-"title": ""
-},
-"socials": {
-"discord": "",
-"donate": "",
-"github": "",
-"mlp_game_hangout": "",
-"wiki": ""
-},
-"sorting": {
-"alphabetically": "",
-"date_added": "",
-"decor": {
-"pro_rate": ""
-},
-"game_order": "",
-"relevance": "",
-"reverse": "",
-"shop": {
-"production": "",
-"xp_rate": ""
-}
-},
-"stats": {
-"description": "",
-"message": {
-"ponies": {
-"total": ""
-}
-},
-"title": ""
-},
-"store": {
-"description": "",
-"message": {
-"for": "per",
-"if": "se",
-"percent_off": "IN MENO"
-},
-"title": "Negozio"
-}
+ "about": {
+  "description": {
+   "body": "",
+   "quiz_link": ""
+  },
+  "sections": {
+   "credits": {
+    "message": {
+     "credits_list": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": ""
+     }
+    },
+    "title": ""
+   },
+   "translations": {
+    "title": ""
+   }
+  },
+  "title": "Riconoscimenti"
+ },
+ "button": {
+  "cancel": "Annulla",
+  "hint": "",
+  "no": "No",
+  "ok": "Ok",
+  "share": "Condividi",
+  "skip": "Salta",
+  "start": "Inizia",
+  "stop": "",
+  "yes": "Sì"
+ },
+ "check_save": {
+  "messages": {
+   "check": "Controlla"
+  }
+ },
+ "common": {
+  "date": {
+   "current": "",
+   "range": ""
+  },
+  "export": "",
+  "help": "Aiuto",
+  "import": "",
+  "info": "",
+  "name": "Nome",
+  "new": "Novità",
+  "or": "",
+  "price": "",
+  "royal": "Reale",
+  "wiki": ""
+ },
+ "contact": {
+  "description": "",
+  "message": {
+   "discord": {
+    "button": "",
+    "description": "",
+    "title": ""
+   },
+   "discord_message": "",
+   "discord_server": "",
+   "github": {
+    "button": "",
+    "description": "",
+    "title": ""
+   },
+   "help_wanted": {
+    "description": "",
+    "title": ""
+   },
+   "mlp_game_hangout": {
+    "button": "",
+    "description": "",
+    "title": ""
+   }
+  },
+  "title": ""
+ },
+ "dialog": {
+  "filter": "",
+  "select_item": {
+   "title": ""
+  },
+  "sort_by": ""
+ },
+ "filter": {
+  "decor": {
+   "can_fuse": "",
+   "regular": ""
+  },
+  "pony": {
+   "not_owned": "",
+   "npc": "",
+   "playable": "",
+   "pro": "",
+   "quest": "",
+   "unused": ""
+  },
+  "shop": {
+   "gem_shop": "Negozi Di Gemme",
+   "maze": "Labirinto",
+   "not_owned": "",
+   "others": ""
+  }
+ },
+ "fortune_shop": {
+  "messages": {
+   "regular": "",
+   "royal": "Reale"
+  },
+  "price_rarities": {
+   "discount": "Sconto",
+   "regular": "",
+   "super": "",
+   "ultra": ""
+  },
+  "rarities": {
+   "common": "Comune",
+   "legendary": "Leggendaria",
+   "rare": "Rara",
+   "uncommon": "Non Comune"
+  },
+  "title": "Negozio Della Fortuna"
+ },
+ "game": {
+  "content_version": "",
+  "game_version": "",
+  "message": {
+   "you_won": "Hai Vinto!"
+  }
+ },
+ "game_object": {
+  "building": {
+   "build_reward": "",
+   "build_skip_cost": "",
+   "build_time": "",
+   "skip_cost": ""
+  },
+  "common": {
+   "size": "",
+   "unlock_level": ""
+  },
+  "decor": {
+   "cannot_fuse": "",
+   "decor": "Decorazioni",
+   "effect": "",
+   "fusion_points": "Punti Unione",
+   "pro_decor": "",
+   "pro_decors": "Decorazioni Pro"
+  },
+  "house": {
+   "house": "",
+   "resident": "",
+   "visitor": ""
+  },
+  "pony": {
+   "arrival_bonus": "",
+   "character": "Personaggi",
+   "level_up_rewards": "",
+   "minigame_cooldown": "",
+   "minigame_skip_cost": "",
+   "pony": "Pony",
+   "transform": "Trasforma",
+   "transformable": ""
+  },
+  "profile_decorations": {
+   "avatar": {
+    "animated": "",
+    "avatar": "Avatar | Avatar"
+   },
+   "background": {
+    "background": "Sfondo | Sfondi"
+   },
+   "background_frame": {
+    "background_frame": "Cornice sfondo"
+   },
+   "frame": {
+    "frame": "Cornice | Cornici"
+   },
+   "is_default": ""
+  },
+  "road": {
+   "road": "Strade"
+  },
+  "shop": {
+   "gem_shop": "Negozi Di Gemme",
+   "product": "",
+   "production_time": "",
+   "profit": "",
+   "shop": "Stand"
+  },
+  "token": {
+   "token": "Accessori"
+  }
+ },
+ "group_quests": {
+  "name_seasonal": "{name} (@:group_quests.seasonal)",
+  "name_tutorial": "{name} (@:group_quests.tutorial)",
+  "pro": "",
+  "random_pro": "",
+  "seasonal": "Stagionale",
+  "title": "Missioni Di Gruppo",
+  "tutorial": ""
+ },
+ "guesser": {
+  "description": "",
+  "message": {
+   "correct_guesses": "",
+   "guessed_correctly": "",
+   "time": ""
+  },
+  "title": ""
+ },
+ "home": {
+  "description": "",
+  "message": {
+   "affiliates": "",
+   "game_name": "",
+   "links": ""
+  },
+  "things_to_do": {
+   "browse": "",
+   "title": ""
+  }
+ },
+ "inventory": {
+  "message": {
+   "add_more": "",
+   "dialog": {
+    "export": {
+     "category": "",
+     "format": ""
+    }
+   }
+  },
+  "stats": {
+   "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
+   "houses": "@:game_object.house.house{':'} {count}",
+   "ponies": "@:game_object.pony.pony{':'} {count}",
+   "shops": "@:game_object.shop.shop{':'} {count}",
+   "stars": "",
+   "transformable": "@:game_object.pony.transformable{':'} {count}"
+  },
+  "title": "Inventario"
+ },
+ "lists": {
+  "button": {
+   "add_to_list": "",
+   "create_list": "",
+   "edit": "",
+   "new_wishlist": ""
+  },
+  "dialog": {
+   "add_to_list": {
+    "title": ""
+   },
+   "choose_image": {
+    "title": ""
+   },
+   "confirm_delete": {
+    "body": "",
+    "title": ""
+   },
+   "create_list": {
+    "message": {
+     "name": "",
+     "name_required": "",
+     "wishlist": ""
+    },
+    "title": ""
+   }
+  },
+  "messages": {
+   "empty_list": "",
+   "no_lists": "",
+   "wishlist": ""
+  },
+  "title": ""
+ },
+ "location": {
+  "canterlot": "Canterlot",
+  "changeling_kingdom": "Changeling Kingdom",
+  "crystal_empire": "Crystal Empire",
+  "everfree_forest": "Everfree Forest",
+  "klugetown": "Klugetown",
+  "ponyville": "Ponyville",
+  "sweet_apple_acres": "Sweet Apple Acres",
+  "town": "",
+  "unknown": ""
+ },
+ "notices": {
+  "corrupt_save": {
+   "body": "",
+   "button": "",
+   "title": ""
+  },
+  "help_wanted": {
+   "body": "",
+   "title": ""
+  }
+ },
+ "player_info": {
+  "friend_code": "Codice Amico",
+  "join_date": "",
+  "total_playtime": ""
+ },
+ "pony_quiz": {
+  "description": "",
+  "message": {
+   "win_message": ""
+  },
+  "options": {
+   "case_sensitive": "",
+   "ignore_accents": "",
+   "ignore_punctuation": "",
+   "ignore_spaces": "",
+   "include_unused": ""
+  },
+  "time": "",
+  "title": ""
+ },
+ "price_history": {
+  "header": {
+   "date": "",
+   "price": "",
+   "royal": "Reale",
+   "tokens": "Accessori"
+  },
+  "message": {
+   "whats_hot": "Novità"
+  },
+  "title": ""
+ },
+ "save_check": {
+  "description": "",
+  "messages": {
+   "explanation": {
+    "first": "",
+    "fourth": "",
+    "second": "",
+    "third": ""
+   },
+   "status": {
+    "affected": "",
+    "safe": ""
+   },
+   "what_can_you_do": {
+    "body": "",
+    "customer_support": "",
+    "title": ""
+   },
+   "what_this_means": {
+    "body": {
+     "affected": "",
+     "safe": ""
+    },
+    "title": ""
+   },
+   "what_to_say": {
+    "body": {
+     "affected": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": ""
+     },
+     "safe": {
+      "1": "",
+      "2": ""
+     }
+    },
+    "title": ""
+   }
+  },
+  "title": ""
+ },
+ "search": {
+  "message": {
+   "search": ""
+  },
+  "no_results": "",
+  "title": ""
+ },
+ "site": {
+  "description": "",
+  "title": ""
+ },
+ "socials": {
+  "discord": "",
+  "donate": "",
+  "github": "",
+  "help_translate": "",
+  "mlp_game_hangout": "",
+  "wiki": ""
+ },
+ "sorting": {
+  "alphabetically": "",
+  "date_added": "",
+  "decor": {
+   "pro_rate": ""
+  },
+  "game_order": "",
+  "relevance": "",
+  "reverse": "",
+  "shop": {
+   "production": "",
+   "xp_rate": ""
+  }
+ },
+ "stats": {
+  "description": "",
+  "message": {
+   "ponies": {
+    "total": ""
+   }
+  },
+  "title": ""
+ },
+ "store": {
+  "description": "",
+  "message": {
+   "for": "per",
+   "if": "se",
+   "percent_off": "IN MENO"
+  },
+  "title": "Negozio"
+ }
 }
