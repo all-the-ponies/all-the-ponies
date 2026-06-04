@@ -14,7 +14,8 @@
             "4": "The website was built using {vue} to make my life easier and allow for a more dynamic experience."
           }
         },
-        "title": "Credits"
+        "title": "Credits",
+        "check_failed": "Error: Could not fetch translators"
       },
       "translations": {
         "title": "Translations"
