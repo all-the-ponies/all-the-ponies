@@ -1,432 +1,433 @@
 {
-"about": {
-"description": {
-"body": "",
-"quiz_link": ""
-},
-"sections": {
-"credits": {
-"message": {
-"credits_list": {
-"1": "",
-"2": "",
-"3": "",
-"4": ""
-}
-},
-"title": ""
-},
-"translations": {
-"title": ""
-}
-},
-"title": "เกี่ยวกับ"
-},
-"button": {
-"cancel": "ยกเลิก",
-"hint": "",
-"no": "ไม่",
-"ok": "ตกลง",
-"share": "แชร์",
-"skip": "ข้าม",
-"start": "เริ่ม",
-"stop": "",
-"yes": "ใช่"
-},
-"check_save": {
-"messages": {
-"check": "ตรวจสอบ"
-}
-},
-"common": {
-"date": {
-"current": "",
-"range": ""
-},
-"export": "",
-"help": "ความช่วยเหลือ",
-"import": "",
-"info": "",
-"name": "ชื่อ",
-"new": "ใหม่",
-"or": "",
-"price": "",
-"royal": "รอยัล",
-"wiki": ""
-},
-"contact": {
-"description": "",
-"message": {
-"discord": {
-"button": "",
-"description": "",
-"title": ""
-},
-"discord_message": "",
-"discord_server": "",
-"github": {
-"button": "",
-"description": "",
-"title": ""
-},
-"help_wanted": {
-"description": "",
-"title": ""
-},
-"mlp_game_hangout": {
-"button": "",
-"description": "",
-"title": ""
-}
-},
-"title": ""
-},
-"dialog": {
-"filter": "",
-"select_item": {
-"title": ""
-},
-"sort_by": ""
-},
-"filter": {
-"decor": {
-"can_fuse": "",
-"regular": ""
-},
-"pony": {
-"not_owned": "",
-"npc": "",
-"playable": "",
-"pro": "",
-"quest": "",
-"unused": ""
-},
-"shop": {
-"gem_shop": "ร้านค้าเพชร",
-"maze": "เขาวงกต",
-"not_owned": "",
-"others": ""
-}
-},
-"fortune_shop": {
-"messages": {
-"regular": "",
-"royal": "รอยัล"
-},
-"price_rarities": {
-"discount": "ลดราคา",
-"regular": "",
-"super": "",
-"ultra": ""
-},
-"rarities": {
-"common": "ธรรมดา",
-"legendary": "ในตำนาน",
-"rare": "หายาก",
-"uncommon": "ไม่ธรรมดา"
-},
-"title": "ร้านเสี่ยงทาย"
-},
-"game": {
-"content_version": "",
-"game_version": "",
-"message": {
-"you_won": "คุณชนะ!"
-}
-},
-"game_object": {
-"building": {
-"build_reward": "",
-"build_skip_cost": "",
-"build_time": "",
-"skip_cost": ""
-},
-"common": {
-"size": "",
-"unlock_level": ""
-},
-"decor": {
-"cannot_fuse": "",
-"decor": "ของตกแต่ง",
-"effect": "",
-"fusion_points": "แต้ม|หลอมรวม",
-"pro_decor": "",
-"pro_decors": "ของตกแต่ง|ระดับโปร"
-},
-"house": {
-"house": "",
-"resident": "",
-"visitor": ""
-},
-"pony": {
-"arrival_bonus": "",
-"character": "ตัวละคร",
-"level_up_rewards": "",
-"minigame_cooldown": "",
-"minigame_skip_cost": "",
-"pony": "โพนี่",
-"transform": "เปลี่ยนร่าง",
-"transformable": ""
-},
-"profile_decorations": {
-"avatar": {
-"animated": "",
-"avatar": "อวาตาร์ | อวาตาร์"
-},
-"background": {
-"background": "ฉากหลัง | ฉากหลัง"
-},
-"background_frame": {
-"background_frame": "กรอบ|ฉากหลัง"
-},
-"frame": {
-"frame": "กรอบ | กรอบ"
-},
-"is_default": ""
-},
-"road": {
-"road": "ถนน"
-},
-"shop": {
-"gem_shop": "ร้านค้าเพชร",
-"product": "",
-"production_time": "",
-"profit": "",
-"shop": "ร้าน"
-},
-"token": {
-"token": "โทเค็น"
-}
-},
-"group_quests": {
-"name_seasonal": "{name} (@:group_quests.seasonal)",
-"name_tutorial": "{name} (@:group_quests.tutorial)",
-"pro": "",
-"random_pro": "",
-"seasonal": "ฤดูกาล",
-"title": "เควสท์|กลุ่ม",
-"tutorial": ""
-},
-"guesser": {
-"description": "",
-"message": {
-"correct_guesses": "",
-"guessed_correctly": "",
-"time": ""
-},
-"title": ""
-},
-"home": {
-"description": "",
-"message": {
-"affiliates": "",
-"game_name": "",
-"links": ""
-},
-"things_to_do": {
-"browse": "",
-"title": ""
-}
-},
-"inventory": {
-"message": {
-"add_more": "",
-"dialog": {
-"export": {
-"category": "",
-"format": ""
-}
-}
-},
-"stats": {
-"gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-"houses": "@:game_object.house.house{':'} {count}",
-"ponies": "@:game_object.pony.pony{':'} {count}",
-"shops": "@:game_object.shop.shop{':'} {count}",
-"stars": "",
-"transformable": "@:game_object.pony.transformable{':'} {count}"
-},
-"title": "ที่เก็บของ"
-},
-"lists": {
-"button": {
-"add_to_list": "",
-"create_list": "",
-"edit": "",
-"new_wishlist": ""
-},
-"dialog": {
-"add_to_list": {
-"title": ""
-},
-"choose_image": {
-"title": ""
-},
-"confirm_delete": {
-"body": "",
-"title": ""
-},
-"create_list": {
-"message": {
-"name": "",
-"name_required": "",
-"wishlist": ""
-},
-"title": ""
-}
-},
-"messages": {
-"empty_list": "",
-"no_lists": "",
-"wishlist": ""
-},
-"title": ""
-},
-"location": {
-"canterlot": "แคนเทอร์ล็อต",
-"changeling_kingdom": "อาณาจักร|เชนเจอลิ่ง",
-"crystal_empire": "คริสตัลเอ็มไพร์",
-"everfree_forest": "ป่าเอเวอร์ฟรี",
-"klugetown": "คลูจทาวน์",
-"ponyville": "โพนี่วิลล์",
-"sweet_apple_acres": "ไร่แอปเปิ้ลหวาน",
-"town": "",
-"unknown": ""
-},
-"notices": {
-"corrupt_save": {
-"body": "",
-"button": "",
-"title": ""
-},
-"help_wanted": {
-"body": "",
-"title": ""
-}
-},
-"player_info": {
-"friend_code": "รหัส|เพื่อน",
-"join_date": "",
-"total_playtime": ""
-},
-"pony_quiz": {
-"description": "",
-"message": {
-"win_message": ""
-},
-"options": {
-"case_sensitive": "",
-"ignore_accents": "",
-"ignore_punctuation": "",
-"ignore_spaces": "",
-"include_unused": ""
-},
-"time": "",
-"title": ""
-},
-"price_history": {
-"header": {
-"date": "",
-"price": "",
-"royal": "รอยัล",
-"tokens": "โทเค็น"
-},
-"message": {
-"whats_hot": "มี|อะไร|ฮ็อต ๆ |บ้าง"
-},
-"title": ""
-},
-"save_check": {
-"description": "",
-"messages": {
-"explanation": {
-"first": "",
-"fourth": "",
-"second": "",
-"third": ""
-},
-"status": {
-"affected": "",
-"safe": ""
-},
-"what_can_you_do": {
-"body": "",
-"customer_support": "",
-"title": ""
-},
-"what_this_means": {
-"body": {
-"affected": "",
-"safe": ""
-},
-"title": ""
-},
-"what_to_say": {
-"body": {
-"affected": {
-"1": "",
-"2": "",
-"3": "",
-"4": ""
-},
-"safe": {
-"1": "",
-"2": ""
-}
-},
-"title": ""
-}
-},
-"title": ""
-},
-"search": {
-"message": {
-"search": ""
-},
-"no_results": "",
-"title": ""
-},
-"site": {
-"description": "",
-"title": ""
-},
-"socials": {
-"discord": "",
-"donate": "",
-"github": "",
-"mlp_game_hangout": "",
-"wiki": ""
-},
-"sorting": {
-"alphabetically": "",
-"date_added": "",
-"decor": {
-"pro_rate": ""
-},
-"game_order": "",
-"relevance": "",
-"reverse": "",
-"shop": {
-"production": "",
-"xp_rate": ""
-}
-},
-"stats": {
-"description": "",
-"message": {
-"ponies": {
-"total": ""
-}
-},
-"title": ""
-},
-"store": {
-"description": "",
-"message": {
-"for": "ถ้าใช้",
-"if": "ถ้าเป็น",
-"percent_off": "ลด"
-},
-"title": "สโตร์"
-}
+  "site": {
+    "title": "",
+    "description": ""
+  },
+  "notices": {
+    "help_wanted": {
+      "title": "",
+      "body": ""
+    },
+    "corrupt_save": {
+      "title": "",
+      "body": "",
+      "button": ""
+    }
+  },
+  "home": {
+    "description": "",
+    "message": {
+      "game_name": "",
+      "links": "",
+      "affiliates": ""
+    },
+    "things_to_do": {
+      "title": "",
+      "browse": ""
+    }
+  },
+  "socials": {
+    "discord": "",
+    "mlp_game_hangout": "",
+    "github": "",
+    "wiki": "",
+    "donate": "",
+    "help_translate": ""
+  },
+  "about": {
+    "title": "เกี่ยวกับ",
+    "description": {
+      "body": "",
+      "quiz_link": ""
+    },
+    "sections": {
+      "credits": {
+        "title": "",
+        "message": {
+          "credits_list": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          }
+        }
+      },
+      "translations": {
+        "title": ""
+      }
+    }
+  },
+  "button": {
+    "cancel": "ยกเลิก",
+    "no": "ไม่",
+    "ok": "ตกลง",
+    "share": "แชร์",
+    "start": "เริ่ม",
+    "stop": "",
+    "yes": "ใช่",
+    "skip": "ข้าม",
+    "hint": ""
+  },
+  "common": {
+    "help": "ความช่วยเหลือ",
+    "info": "",
+    "name": "ชื่อ",
+    "import": "",
+    "export": "",
+    "wiki": "",
+    "royal": "รอยัล",
+    "new": "ใหม่",
+    "date": {
+      "range": "",
+      "current": ""
+    },
+    "price": "",
+    "or": ""
+  },
+  "dialog": {
+    "filter": "",
+    "sort_by": "",
+    "select_item": {
+      "title": ""
+    }
+  },
+  "filter": {
+    "pony": {
+      "npc": "",
+      "playable": "",
+      "pro": "",
+      "quest": "",
+      "unused": "",
+      "not_owned": ""
+    },
+    "decor": {
+      "regular": "",
+      "can_fuse": ""
+    },
+    "shop": {
+      "maze": "เขาวงกต",
+      "gem_shop": "ร้านค้าเพชร",
+      "others": "",
+      "not_owned": ""
+    }
+  },
+  "game": {
+    "content_version": "",
+    "game_version": "",
+    "message": {
+      "you_won": "คุณชนะ!"
+    }
+  },
+  "game_object": {
+    "building": {
+      "build_reward": "",
+      "build_skip_cost": "",
+      "build_time": "",
+      "skip_cost": ""
+    },
+    "common": {
+      "size": "",
+      "unlock_level": ""
+    },
+    "decor": {
+      "cannot_fuse": "",
+      "decor": "ของตกแต่ง",
+      "fusion_points": "แต้ม|หลอมรวม",
+      "pro_decors": "ของตกแต่ง|ระดับโปร",
+      "pro_decor": "",
+      "effect": ""
+    },
+    "house": {
+      "house": "",
+      "resident": "",
+      "visitor": ""
+    },
+    "pony": {
+      "arrival_bonus": "",
+      "character": "ตัวละคร",
+      "level_up_rewards": "",
+      "minigame_cooldown": "",
+      "minigame_skip_cost": "",
+      "pony": "โพนี่",
+      "transform": "เปลี่ยนร่าง",
+      "transformable": ""
+    },
+    "profile_decorations": {
+      "avatar": {
+        "avatar": "อวาตาร์ | อวาตาร์",
+        "animated": ""
+      },
+      "background": {
+        "background": "ฉากหลัง | ฉากหลัง"
+      },
+      "background_frame": {
+        "background_frame": "กรอบ|ฉากหลัง"
+      },
+      "frame": {
+        "frame": "กรอบ | กรอบ"
+      },
+      "is_default": ""
+    },
+    "road": {
+      "road": "ถนน"
+    },
+    "shop": {
+      "product": "",
+      "production_time": "",
+      "profit": "",
+      "shop": "ร้าน",
+      "gem_shop": "ร้านค้าเพชร"
+    },
+    "token": {
+      "token": "โทเค็น"
+    }
+  },
+  "price_history": {
+    "title": "",
+    "header": {
+      "date": "",
+      "price": "",
+      "tokens": "โทเค็น",
+      "royal": "รอยัล"
+    },
+    "message": {
+      "whats_hot": "มี|อะไร|ฮ็อต ๆ |บ้าง"
+    }
+  },
+  "group_quests": {
+    "title": "เควสท์|กลุ่ม",
+    "random_pro": "",
+    "pro": "",
+    "tutorial": "",
+    "seasonal": "ฤดูกาล",
+    "name_tutorial": "{name} (@:group_quests.tutorial)",
+    "name_seasonal": "{name} (@:group_quests.seasonal)"
+  },
+  "inventory": {
+    "title": "ที่เก็บของ",
+    "message": {
+      "add_more": "",
+      "dialog": {
+        "export": {
+          "format": "",
+          "category": ""
+        }
+      }
+    },
+    "stats": {
+      "ponies": "@:game_object.pony.pony{':'} {count}",
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "houses": "@:game_object.house.house{':'} {count}",
+      "shops": "@:game_object.shop.shop{':'} {count}",
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
+      "stars": ""
+    }
+  },
+  "location": {
+    "canterlot": "แคนเทอร์ล็อต",
+    "changeling_kingdom": "อาณาจักร|เชนเจอลิ่ง",
+    "crystal_empire": "คริสตัลเอ็มไพร์",
+    "everfree_forest": "ป่าเอเวอร์ฟรี",
+    "klugetown": "คลูจทาวน์",
+    "ponyville": "โพนี่วิลล์",
+    "sweet_apple_acres": "ไร่แอปเปิ้ลหวาน",
+    "town": "",
+    "unknown": ""
+  },
+  "player_info": {
+    "friend_code": "รหัส|เพื่อน",
+    "join_date": "",
+    "total_playtime": ""
+  },
+  "pony_quiz": {
+    "description": "",
+    "time": "",
+    "title": "",
+    "message": {
+      "win_message": ""
+    },
+    "options": {
+      "ignore_spaces": "",
+      "case_sensitive": "",
+      "ignore_accents": "",
+      "ignore_punctuation": "",
+      "include_unused": ""
+    }
+  },
+  "guesser": {
+    "title": "",
+    "description": "",
+    "message": {
+      "correct_guesses": "",
+      "guessed_correctly": "",
+      "time": ""
+    }
+  },
+  "sorting": {
+    "relevance": "",
+    "alphabetically": "",
+    "game_order": "",
+    "date_added": "",
+    "reverse": "",
+    "shop": {
+      "production": "",
+      "xp_rate": ""
+    },
+    "decor": {
+      "pro_rate": ""
+    }
+  },
+  "stats": {
+    "title": "",
+    "description": "",
+    "message": {
+      "ponies": {
+        "total": ""
+      }
+    }
+  },
+  "store": {
+    "title": "สโตร์",
+    "description": "",
+    "message": {
+      "percent_off": "ลด",
+      "if": "ถ้าเป็น",
+      "for": "ถ้าใช้"
+    }
+  },
+  "search": {
+    "title": "",
+    "no_results": "",
+    "message": {
+      "search": ""
+    }
+  },
+  "contact": {
+    "title": "",
+    "description": "",
+    "message": {
+      "discord_message": "",
+      "discord_server": "",
+      "discord": {
+        "title": "",
+        "description": "",
+        "button": ""
+      },
+      "github": {
+        "title": "",
+        "description": "",
+        "button": ""
+      },
+      "mlp_game_hangout": {
+        "title": "",
+        "description": "",
+        "button": ""
+      },
+      "help_wanted": {
+        "title": "",
+        "description": ""
+      }
+    }
+  },
+  "lists": {
+    "title": "",
+    "messages": {
+      "no_lists": "",
+      "wishlist": "",
+      "empty_list": ""
+    },
+    "button": {
+      "add_to_list": "",
+      "create_list": "",
+      "new_wishlist": "",
+      "edit": ""
+    },
+    "dialog": {
+      "create_list": {
+        "title": "",
+        "message": {
+          "wishlist": "",
+          "name": "",
+          "name_required": ""
+        }
+      },
+      "choose_image": {
+        "title": ""
+      },
+      "add_to_list": {
+        "title": ""
+      },
+      "confirm_delete": {
+        "title": "",
+        "body": ""
+      }
+    }
+  },
+  "save_check": {
+    "title": "",
+    "description": "",
+    "messages": {
+      "explanation": {
+        "first": "",
+        "second": "",
+        "third": "",
+        "fourth": ""
+      },
+      "status": {
+        "safe": "",
+        "affected": ""
+      },
+      "what_this_means": {
+        "title": "",
+        "body": {
+          "affected": "",
+          "safe": ""
+        }
+      },
+      "what_can_you_do": {
+        "title": "",
+        "body": "",
+        "customer_support": ""
+      },
+      "what_to_say": {
+        "title": "",
+        "body": {
+          "affected": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": ""
+          },
+          "safe": {
+            "1": "",
+            "2": ""
+          }
+        }
+      }
+    }
+  },
+  "check_save": {
+    "messages": {
+      "check": "ตรวจสอบ"
+    }
+  },
+  "fortune_shop": {
+    "title": "ร้านเสี่ยงทาย",
+    "messages": {
+      "regular": "",
+      "royal": "รอยัล"
+    },
+    "price_rarities": {
+      "regular": "",
+      "discount": "ลดราคา",
+      "super": "",
+      "ultra": ""
+    },
+    "rarities": {
+      "common": "ธรรมดา",
+      "uncommon": "ไม่ธรรมดา",
+      "rare": "หายาก",
+      "legendary": "ในตำนาน"
+    }
+  }
 }
