@@ -49,7 +49,8 @@
             "2": "Thanks to {bass} for help with loading ponies with a friend code.",
             "3": "The font used is {font}, which is also used in the game.",
             "4": "The website was built using {vue} to make my life easier and allow for a more dynamic experience."
-          }
+          },
+          "fetch_failed": "Error: Could not fetch translators"
         }
       },
       "translations": {
