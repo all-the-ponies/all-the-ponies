@@ -8,7 +8,7 @@
       "credits": {
         "message": {
           "credits_list": {
-            "1": "",
+            "1": "Die Website wurde von {ego} erstellt.",
             "2": "",
             "3": "",
             "4": ""
@@ -17,20 +17,20 @@
         "title": ""
       },
       "translations": {
-        "title": ""
+        "title": "Übersetzungen"
       }
     },
     "title": "Spielinfos"
   },
   "button": {
     "cancel": "Abbrechen",
-    "hint": "",
+    "hint": "Hinweis",
     "no": "Nein",
     "ok": "Ok",
     "share": "Teilen",
     "skip": "Übsp.",
     "start": "Start",
-    "stop": "",
+    "stop": "Stopp",
     "yes": "Ja"
   },
   "check_save": {
@@ -43,46 +43,46 @@
       "current": "",
       "range": ""
     },
-    "export": "",
+    "export": "Export",
     "help": "Hilfe",
-    "import": "",
-    "info": "",
+    "import": "Import",
+    "info": "Info",
     "name": "Name",
     "new": "Neu",
-    "or": "",
-    "price": "",
+    "or": "oder",
+    "price": "Preis",
     "royal": "Königlich",
-    "wiki": ""
+    "wiki": "Wiki"
   },
   "contact": {
     "description": "",
     "message": {
       "discord": {
-        "button": "",
+        "button": "Server beitreten",
         "description": "",
-        "title": ""
+        "title": "Dem Discord Server beitreten"
       },
       "discord_message": "",
-      "discord_server": "",
+      "discord_server": "Discord Server",
       "github": {
         "button": "",
         "description": "",
-        "title": ""
+        "title": "Auf GitHub anzeigen"
       },
       "help_wanted": {
         "description": "",
-        "title": ""
+        "title": "Hilfe gesucht!"
       },
       "mlp_game_hangout": {
-        "button": "",
+        "button": "Server beitreten",
         "description": "",
-        "title": ""
+        "title": "MLP Game Hangout"
       }
     },
-    "title": ""
+    "title": "Kontakt"
   },
   "dialog": {
-    "filter": "",
+    "filter": "Filter",
     "select_item": {
       "title": ""
     },
