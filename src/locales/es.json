@@ -52,7 +52,7 @@
     "or": "o",
     "price": "Precio",
     "royal": "Real",
-    "wiki": ""
+    "wiki": "Wiki"
   },
   "contact": {
     "description": "¿Tienes preguntas, sugerencias, reporte de errores o quieres contribuir? ¡Este es el lugar para eso!",
@@ -65,8 +65,8 @@
       "discord_message": "¿Alguna pregunta, sugerencia o reporte de errores? ¡Únete a {server}!",
       "discord_server": "Servidor de Discord",
       "github": {
-        "button": "",
-        "description": "",
+        "button": "Abrir Repositorio",
+        "description": "Consulta el código fuente, reportes de fallos o haz una solicitud de extracción.",
         "title": "Ver en GitHub"
       },
       "help_wanted": {
@@ -76,7 +76,7 @@
       "mlp_game_hangout": {
         "button": "Unete al Servidor",
         "description": "Servidor comunitario del juego. Conectado al subreddit de r/MLPIOS.",
-        "title": ""
+        "title": "MLP Game Hangout"
       }
     },
     "title": "Contacto"
@@ -91,13 +91,13 @@
   "filter": {
     "decor": {
       "can_fuse": "Puede fusionarse",
-      "regular": ""
+      "regular": "Regular"
     },
     "pony": {
       "not_owned": "No adquirido",
-      "npc": "",
+      "npc": "NPC",
       "playable": "Jugable",
-      "pro": "",
+      "pro": "Pro",
       "quest": "Misiones",
       "unused": "Sin usar"
     },
@@ -110,14 +110,14 @@
   },
   "fortune_shop": {
     "messages": {
-      "regular": "",
+      "regular": "Regular",
       "royal": "Real"
     },
     "price_rarities": {
       "discount": "Descuento",
-      "regular": "",
-      "super": "",
-      "ultra": ""
+      "regular": "Regular",
+      "super": "Super",
+      "ultra": "Ultra"
     },
     "rarities": {
       "common": "Común",
@@ -150,7 +150,7 @@
       "decor": "Decoración",
       "effect": "Efecto",
       "fusion_points": "Puntos De Fusión",
-      "pro_decor": "",
+      "pro_decor": "Pro @:game_object.decor.decor",
       "pro_decors": "Decoraciones De Profesional"
     },
     "house": {
@@ -166,7 +166,7 @@
       "minigame_skip_cost": "Costo de Salto de Tiempo de Espera",
       "pony": "Ponis",
       "transform": "Transformar",
-      "transformable": ""
+      "transformable": "Transformable"
     },
     "profile_decorations": {
       "avatar": {
@@ -185,7 +185,7 @@
       "is_default": "Es predeterminado"
     },
     "road": {
-      "road": "Carreteras"
+      "road": "Camino | Caminos"
     },
     "shop": {
       "gem_shop": "Tiendas De Gemas",
@@ -201,11 +201,11 @@
   "group_quests": {
     "name_seasonal": "{name} (@:group_quests.seasonal)",
     "name_tutorial": "{name} (@:group_quests.tutorial)",
-    "pro": "",
-    "random_pro": "",
+    "pro": "Pro",
+    "random_pro": "Random",
     "seasonal": "Temporada",
     "title": "Misiones De Grupo",
-    "tutorial": ""
+    "tutorial": "Tutorial"
   },
   "guesser": {
     "description": "Adivina el poni por su silueta",
@@ -230,7 +230,7 @@
   },
   "inventory": {
     "message": {
-      "add_more": "",
+      "add_more": "Añade alguna {category}",
       "dialog": {
         "export": {
           "category": "Categoria:",
@@ -277,7 +277,7 @@
     },
     "messages": {
       "empty_list": "No hay nada aquí por el momento. Considera añadir {ponies}.",
-      "no_lists": "Parece que no tienes ninguna lista de deseos aún. ",
+      "no_lists": "Parece que no tienes ninguna lista de deseos aún.",
       "wishlist": "Lista de Deseos"
     },
     "title": "Listas de Deseos"
@@ -391,12 +391,12 @@
     "title": "Todos los Ponis"
   },
   "socials": {
-    "discord": "",
+    "discord": "Discord",
     "donate": "Donaciones",
-    "github": "",
+    "github": "GitHub",
     "help_translate": "Ayuda con la traducción",
-    "mlp_game_hangout": "",
-    "wiki": ""
+    "mlp_game_hangout": "MLP Game Hangout",
+    "wiki": "Wiki"
   },
   "sorting": {
     "alphabetically": "Alfabéticamente",
