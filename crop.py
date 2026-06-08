@@ -5,12 +5,16 @@ def crop_image(pil_image: Image.Image):
     # pil_image = Image.open(pil_image)
     pil_image = pil_image.convert('RGBA')
     np_array = np.array(pil_image)
-    blank_px = pil_image.getpixel((0,0))
-    mask = np_array != blank_px
-    mask = np.take(mask,axis=2,indices=3)
+    alpha = pil_image.getchannel('A')
+    alpha_array = np.array(alpha)
+    
+    # Tolerance for almost invisible pixels messing up cropping
+    mask: np.typing.NDArray = alpha_array >= 25
+    
     coords = np.argwhere(mask)
     x0, y0 = coords.min(axis=0)
     x1, y1 = coords.max(axis=0) + 1
+
     cropped_box = np_array[x0:x1, y0:y1]
     pil_image = Image.fromarray(cropped_box)
     return pil_image
