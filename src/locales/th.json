@@ -182,7 +182,10 @@
       "frame": {
         "frame": "กรอบ | กรอบ"
       },
-      "is_default": ""
+      "is_default": "",
+      "avatar_frame": {
+        "avatar_frame": "กรอบ | กรอบ"
+      }
     },
     "road": {
       "road": "ถนน"

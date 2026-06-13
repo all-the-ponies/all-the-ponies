@@ -183,7 +183,10 @@
       "frame": {
         "frame": "Cadre | Cadres"
       },
-      "is_default": "Est par défaut"
+      "is_default": "Est par défaut",
+      "avatar_frame": {
+        "avatar_frame": "Cadre | Cadres"
+      }
     },
     "road": {
       "road": "Routes"

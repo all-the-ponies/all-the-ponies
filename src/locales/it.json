@@ -182,7 +182,10 @@
       "frame": {
         "frame": "Cornice | Cornici"
       },
-      "is_default": ""
+      "is_default": "",
+      "avatar_frame": {
+        "avatar_frame": "Cornice | Cornici"
+      }
     },
     "road": {
       "road": "Strade"

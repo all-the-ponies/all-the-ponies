@@ -182,7 +182,10 @@
       "frame": {
         "frame": "프레임 | 프레임"
       },
-      "is_default": ""
+      "is_default": "",
+      "avatar_frame": {
+        "avatar_frame": "프레임 | 프레임"
+      }
     },
     "road": {
       "road": "도로"

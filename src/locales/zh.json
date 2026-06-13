@@ -182,7 +182,10 @@
       "frame": {
         "frame": "头像框 | 头像框"
       },
-      "is_default": "是否为常驻头像"
+      "is_default": "是否为常驻头像",
+      "avatar_frame": {
+        "avatar_frame": "头像框 | 头像框"
+      }
     },
     "road": {
       "road": "道路"

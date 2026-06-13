@@ -182,7 +182,10 @@
       "frame": {
         "frame": "Rahmen | Rahmen"
       },
-      "is_default": ""
+      "is_default": "",
+      "avatar_frame": {
+        "avatar_frame": "Rahmen | Rahmen"
+      }
     },
     "road": {
       "road": "Straßen"
