@@ -2,7 +2,6 @@
 import DialogComponent from '@/components/DialogComponent.vue';
 import GameCard from '@/components/GameCard.vue';
 import { createAssetUrl } from '@/scripts/assets';
-import { staticImage } from '@/scripts/common';
 import gameData from '@/scripts/gameData';
 import type { GameObject, GameObjectId, RenamedFile } from '@/types/gameDataTypes';
 import { computed, useTemplateRef } from 'vue';

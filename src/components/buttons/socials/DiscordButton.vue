@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import discordLogo from '@/assets/images/logos/discord/discord-symbol-light-blurple.svg';
 import type { AnchorHTMLAttributes } from 'vue';
 import SocialButton from './SocialButton.vue';
-import discordLogo from '@/assets/images/logos/discord/discord-symbol-light-blurple.svg'
 
 const props = defineProps<{
     href: string,

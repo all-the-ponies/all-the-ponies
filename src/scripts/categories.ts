@@ -1,9 +1,8 @@
 import { language } from "@/globals"
+import { useSaveStore } from "@/stores/saveManager"
+import type { Ref } from "vue"
 import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType } from "../types/gameDataTypes"
 import { getObject, groupQuests, translateName } from "./gameData"
-import type { Ref } from "vue"
-import { useSaveStore } from "@/stores/saveManager"
-import { isClient, useMounted } from "@vueuse/core"
 
 let saveManager: ReturnType<typeof useSaveStore>
 

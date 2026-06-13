@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import { type PriceHistoryEntry } from '@/scripts/api.types'
-import type { GameObjectId } from '@/types/gameDataTypes'
-import { computedAsync } from '@vueuse/core'
-import { ClientOnly } from 'vike-vue/ClientOnly'
-import { computed, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
-import CurrencyImage from '../CurrencyImage.vue'
 import { notNullIsh } from '@/scripts/common'
 import gameData from '@/scripts/gameData'
+import type { GameObjectId } from '@/types/gameDataTypes'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import CurrencyImage from '../CurrencyImage.vue'
 import Table from '../table/Table.vue'
 import TableBody from '../table/TableBody.vue'
-import TableRow from '../table/TableRow.vue'
-import TableHeader from '../table/TableHeader.vue'
-import TableHeaderCell from '../table/TableHeaderCell.vue'
 import TableCell from '../table/TableCell.vue'
 import TableContainer from '../table/TableContainer.vue'
+import TableHeader from '../table/TableHeader.vue'
+import TableHeaderCell from '../table/TableHeaderCell.vue'
+import TableRow from '../table/TableRow.vue'
 
 const { t, d } = useI18n()
 

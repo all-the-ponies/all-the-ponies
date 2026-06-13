@@ -1,20 +1,17 @@
 <script setup lang="tsx">
-import SearchComponent from '@/components/SearchComponent.vue'
-import { gameObjects, getNames } from '@/scripts/gameData'
-import { computed, ref, watchEffect } from 'vue';
-import { CATEGORIES, SortFunctions, FilterFunctions, PLURAL_CATEGORY_MAP } from '@/scripts/categories'
+import SearchComponent from '@/components/SearchComponent.vue';
+import { CATEGORIES, FilterFunctions, PLURAL_CATEGORY_MAP, SortFunctions } from '@/scripts/categories';
+import { gameObjects, getNames } from '@/scripts/gameData';
+import { computed } from 'vue';
 // import { useSeoMeta } from '@unhead/vue';
-import { useI18n } from 'vue-i18n';
+import ObjectCard from '@/components/ObjectCard.vue';
+import { useGameCardSize } from '@/composables/useGameCardSize';
+import { useRem } from '@/composables/useRem';
+import { useSaveStore } from '@/stores/saveManager';
 import type { CategoryName, GameObject } from '@/types/gameDataTypes';
-import PriceButton from '@/components/buttons/PriceButton.vue';
 import { Config } from 'vike-vue/Config';
 import { usePageContext } from 'vike-vue/usePageContext';
-import { useSaveStore } from '@/stores/saveManager';
-import { language } from '@/globals';
-import ObjectCard from '@/components/ObjectCard.vue';
-import { useRem } from '@/composables/useRem';
-import { useMounted } from '@vueuse/core';
-import { useGameCardSize } from '@/composables/useGameCardSize';
+import { useI18n } from 'vue-i18n';
 
 const pageContext = usePageContext()
 const saveStore = useSaveStore()

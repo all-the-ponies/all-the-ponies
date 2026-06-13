@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Config } from 'vike-vue/Config'
-import Link from '@/components/Link.vue'
+import Link from '@/components/Link.vue';
 import { language } from '@/globals';
+import { Config } from 'vike-vue/Config';
 import { useData } from 'vike-vue/useData';
 import type { Data } from './+data.server';
 

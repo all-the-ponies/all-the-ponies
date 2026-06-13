@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import AddToListButton from '@/components/buttons/AddToListButton.vue';
 import { createAssetUrl } from '@/scripts/assets';
-import { getObject, translateName } from '@/scripts/gameData'
-import type { GameObject, GameObjectId } from '@/types/gameDataTypes'
-import { computed } from 'vue'
+import { getObject, translateName } from '@/scripts/gameData';
+import type { GameObject, GameObjectId } from '@/types/gameDataTypes';
+import { computed } from 'vue';
 
 
 const props = defineProps<{

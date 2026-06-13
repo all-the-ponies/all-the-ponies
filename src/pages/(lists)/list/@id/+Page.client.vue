@@ -7,12 +7,9 @@ import SearchComponent from '@/components/SearchComponent.vue';
 import { useGameCardSize } from '@/composables/useGameCardSize';
 import { useRem } from '@/composables/useRem';
 import { language } from '@/globals';
-import { FilterFunctions, SortFunctions } from '@/scripts/categories';
-import { staticImage } from '@/scripts/common';
-import gameData, { getNames, getObject, translateName } from '@/scripts/gameData';
-import { useListStore, type Wishlist } from '@/stores/listStore';
-import { useData } from 'vike-vue/useData';
-import { usePageContext } from 'vike-vue/usePageContext'
+import { getNames, getObject, translateName } from '@/scripts/gameData';
+import { useListStore } from '@/stores/listStore';
+import { usePageContext } from 'vike-vue/usePageContext';
 import { render } from 'vike/abort';
 import { computed, useTemplateRef } from 'vue';
 

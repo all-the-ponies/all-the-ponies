@@ -2,12 +2,11 @@
 import { language } from '@/globals'
 import { LOCALES } from '@/i18n'
 import absoluteUrl from '@/scripts/absoluteUrl'
-import SidebarView from './SidebarView.vue'
 import { Head } from 'vike-vue/Head'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
 import Notices from './Notices.vue'
-import { extractLocale } from './extractLocale'
+import SidebarView from './SidebarView.vue'
 
 const pageContext = usePageContext()
 

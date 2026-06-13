@@ -1,8 +1,8 @@
 import { LOCALES } from '@/i18n'
+import acceptLanguage from 'accept-language'
 import { redirect } from 'vike/abort'
 import { modifyUrl } from 'vike/modifyUrl'
 import type { PageContextServer } from 'vike/types'
-import acceptLanguage from 'accept-language'
 import { extractLocale } from './extractLocale'
  
 export function onBeforeRoute(pageContext: PageContextServer) {

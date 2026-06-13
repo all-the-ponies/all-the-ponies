@@ -1,23 +1,22 @@
 <script setup lang="ts">
-import GameCard from '@/components/GameCard.vue';
-import Link from '@/components/Link.vue'
-import { pickRandom } from '@/scripts/common';
-import { gameObjects, translateName } from '@/scripts/gameData';
-import type { AvatarType, DecorType, HouseType, PonyType, ShopType } from '@/types/gameDataTypes';
-import { Config } from 'vike-vue/Config'
-import { h } from 'vue'
-import links from '@/globals/links';
-
-
-const BASE_URL = __BASE_URL__ // __BASE_URL__ cannot be used in the template
-import { onMounted, ref } from 'vue';
 import DiscordButton from '@/components/buttons/socials/DiscordButton.vue';
 import GitHubButton from '@/components/buttons/socials/GitHubButton.vue';
 import KofiButton from '@/components/buttons/socials/KofiButton.vue';
 import RedditButton from '@/components/buttons/socials/RedditButton.vue';
-import WikiButton from '@/components/buttons/socials/WikiButton.vue';
 import WeblateButton from '@/components/buttons/socials/WeblateButton.vue';
+import WikiButton from '@/components/buttons/socials/WikiButton.vue';
+import GameCard from '@/components/GameCard.vue';
+import Link from '@/components/Link.vue';
+import links from '@/globals/links';
 import { createAssetUrl } from '@/scripts/assets.ts';
+import { pickRandom } from '@/scripts/common';
+import { gameObjects, translateName } from '@/scripts/gameData';
+import type { AvatarType, DecorType, HouseType, PonyType, ShopType } from '@/types/gameDataTypes';
+import { Config } from 'vike-vue/Config';
+import { h, onMounted, ref } from 'vue';
+
+
+const BASE_URL = __BASE_URL__ // __BASE_URL__ cannot be used in the template
 
 
 const pony = ref<PonyType>(null)

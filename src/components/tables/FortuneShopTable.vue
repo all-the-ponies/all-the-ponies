@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { FortuneShopItem } from '@/types/gameDataTypes';
 import { computed } from 'vue';
-import TableContainer from '../table/TableContainer.vue';
+import CurrencyImage from '../CurrencyImage.vue';
 import Table from '../table/Table.vue';
 import TableBody from '../table/TableBody.vue';
+import TableCell from '../table/TableCell.vue';
+import TableContainer from '../table/TableContainer.vue';
 import TableHeader from '../table/TableHeader.vue';
 import TableHeaderCell from '../table/TableHeaderCell.vue';
 import TableRow from '../table/TableRow.vue';
-import TableCell from '../table/TableCell.vue';
-import CurrencyImage from '../CurrencyImage.vue';
 
 
 const props = defineProps<{

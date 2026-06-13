@@ -5,9 +5,9 @@ import {
   type I18nOptions,
 } from 'vue-i18n'
 
+import { isClient } from '@vueuse/core'
 import en_locale from './locales/en.json'
 import type { Language } from './types/gameDataTypes'
-import { isClient } from '@vueuse/core'
 
 export const LOCALES: Record<string, {
   name: string,

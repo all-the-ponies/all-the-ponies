@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { language } from '@/globals';
-import { LOCALES } from '@/i18n';
 import { fixUrl } from '@/scripts/fixUrl';
-import { usePageContext } from 'vike-vue/usePageContext'
-import { useAttrs, computed, type AnchorHTMLAttributes } from 'vue'
+import { usePageContext } from 'vike-vue/usePageContext';
+import { computed, type AnchorHTMLAttributes } from 'vue';
 
 const pageContext = usePageContext()
 

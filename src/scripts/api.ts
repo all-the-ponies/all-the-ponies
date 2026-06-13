@@ -1,8 +1,8 @@
-import { isDev } from "./common.js"
+import { FRIEND_CODE_PATTERN } from "@/globals/constants.js"
 import type { GameObjectId } from "@/types/gameDataTypes.js"
 import ky from 'ky'
 import type { PriceHistoryType, SaveData, ShopEntry } from "./api.types.js"
-import { FRIEND_CODE_PATTERN } from "@/globals/constants.js"
+import { isDev } from "./common.js"
 
 const API_DOMAIN = 'https://api.all-the-ponies.com'
 

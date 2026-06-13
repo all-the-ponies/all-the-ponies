@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import weblateLogo from '@/assets/images/logos/weblate/weblate-symbol.svg';
 import type { AnchorHTMLAttributes } from 'vue';
 import SocialButton from './SocialButton.vue';
-import weblateLogo from '@/assets/images/logos/weblate/weblate-symbol.svg'
 
 const props = defineProps<{
     href: string,

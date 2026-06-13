@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import DiscordButton from '@/components/buttons/socials/DiscordButton.vue'
-import GitHubButton from '@/components/buttons/socials/GitHubButton.vue'
-import links from '@/globals/links'
-import { Config } from 'vike-vue/Config'
+import DiscordButton from '@/components/buttons/socials/DiscordButton.vue';
+import GitHubButton from '@/components/buttons/socials/GitHubButton.vue';
+import links from '@/globals/links';
+import { Config } from 'vike-vue/Config';
 </script>
 
 <template>

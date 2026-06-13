@@ -1,13 +1,12 @@
 <script lang="ts" setup>
-import VLazyImage from "v-lazy-image"
-import { computed, type AnchorHTMLAttributes } from 'vue'
+import { notNullIsh } from "@/scripts/common"
 import type { PriceData } from "@/stores/shopManager"
+import { computed, type AnchorHTMLAttributes } from 'vue'
 import PriceButton from "./buttons/PriceButton.vue"
 import RoyalIcon from "./icons/store/RoyalIcon.vue"
-import ObjectImage from "./ObjectImage.vue"
-import { notNullIsh } from "@/scripts/common"
-import Link from "./Link.vue"
 import LazyImage from "./LazyImage.vue"
+import Link from "./Link.vue"
+import ObjectImage from "./ObjectImage.vue"
 
 const props = defineProps<{
     title: string,

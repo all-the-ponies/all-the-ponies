@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import gameData, { getObject, translateName } from '@/scripts/gameData'
+import BackButton from '@/components/buttons/BackButton.vue';
+import CurrencyImage from '@/components/CurrencyImage.vue';
+import Link from '@/components/Link.vue';
 import { language } from '@/globals';
-import CurrencyImage from '@/components/CurrencyImage.vue'
-import type { HouseType, Location, PonyType } from '@/types/gameDataTypes'
-import { staticImage } from '@/scripts/common'
-import { formatTime } from '@/scripts/timeFunctions'
-import BackButton from '@/components/buttons/BackButton.vue'
-import { LOCATIONS } from '@/scripts/categories'
-import { usePageContext } from 'vike-vue/usePageContext'
-import { Config } from 'vike-vue/Config'
-import absoluteUrl from '@/scripts/absoluteUrl'
-import Link from '@/components/Link.vue'
-import { useData } from 'vike-vue/useData'
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import { createAssetUrl } from '@/scripts/assets';
+import { LOCATIONS } from '@/scripts/categories';
+import gameData, { getObject, translateName } from '@/scripts/gameData';
+import { formatTime } from '@/scripts/timeFunctions';
+import type { HouseType, Location, PonyType } from '@/types/gameDataTypes';
+import { Config } from 'vike-vue/Config';
+import { useData } from 'vike-vue/useData';
+import { usePageContext } from 'vike-vue/usePageContext';
+import { computed } from 'vue';
 
 
 const pageContext = usePageContext()

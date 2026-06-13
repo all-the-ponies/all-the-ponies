@@ -1,9 +1,9 @@
 import ky from 'ky'
 import { computed } from 'vue'
 import { language } from '../globals'
-import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, Language } from '../types/gameDataTypes'
+import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests } from '../types/gameDataTypes'
 import { createAssetUrl } from './assets'
-import { fixName, removeSymbols, transformName } from './common'
+import { removeSymbols } from './common'
 
 
 interface GameVersion {

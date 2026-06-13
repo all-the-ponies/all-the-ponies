@@ -1,6 +1,6 @@
-import type { Server } from 'vike/types'
-import { Hono } from 'hono'
 import vike from '@vikejs/hono'
+import { Hono } from 'hono'
+import type { Server } from 'vike/types'
 
 
 function getApp() {

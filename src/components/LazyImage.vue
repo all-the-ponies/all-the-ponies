@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computedAsync, isClient, useIntersectionObserver } from '@vueuse/core';
 import { computed, nextTick, shallowRef, useTemplateRef, watch, type ImgHTMLAttributes } from 'vue';
 
 const EMPTY_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
