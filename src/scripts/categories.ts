@@ -45,11 +45,11 @@ export const CATEGORIES: Partial<Record<CategoryName, {
       string: 'game_object.profile_decorations.avatar_frame.avatar_frame',
       plural: 'avatar_frames',
     },
+    background: {
+        string: 'game_object.profile_decorations.background.background',
+    },
     // background_frame: {
     //     string: 'game_object.profile_decorations.background_frame.background_frame',
-    // },
-    // background: {
-    //     string: 'game_object.profile_decorations.background.background',
     // },
 }
 
@@ -60,6 +60,7 @@ export const PLURAL_CATEGORY_MAP = {
     decor: 'decor',
     avatars: 'avatar',
     avatar_frames: 'avatar_frame',
+    backgrounds: 'background',
 }
 
 export interface SortFunctionsType {
