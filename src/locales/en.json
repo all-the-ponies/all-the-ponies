@@ -174,19 +174,16 @@
         "animated": "Animated?",
         "avatar": "Avatar | Avatars"
       },
+      "avatar_frame": {
+        "avatar_frame": "Frame | Frames"
+      },
       "background": {
         "background": "Background | Backgrounds"
       },
       "background_frame": {
         "background_frame": "Background Frame | Background Frames"
       },
-      "frame": {
-        "frame": "Frame | Frames"
-      },
-      "is_default": "Is default",
-      "avatar_frame": {
-        "avatar_frame": "Frame | Frames"
-      }
+      "is_default": "Is default"
     },
     "road": {
       "road": "Road | Roads"
