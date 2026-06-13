@@ -182,7 +182,10 @@
       "frame": {
         "frame": "Marco | Marcos"
       },
-      "is_default": "Es predeterminado"
+      "is_default": "Es predeterminado",
+      "avatar_frame": {
+        "avatar_frame": "Marco | Marcos"
+      }
     },
     "road": {
       "road": "Camino | Caminos"

@@ -182,7 +182,10 @@
       "frame": {
         "frame": "Рамка | Рамки"
       },
-      "is_default": "По умолчанию"
+      "is_default": "По умолчанию",
+      "avatar_frame": {
+        "avatar_frame": "Рамка | Рамки"
+      }
     },
     "road": {
       "road": "Дорога | Дороги"

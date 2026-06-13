@@ -182,7 +182,10 @@
       "frame": {
         "frame": "إطار | الإطارات"
       },
-      "is_default": ""
+      "is_default": "",
+      "avatar_frame": {
+        "avatar_frame": "إطار | الإطارات"
+      }
     },
     "road": {
       "road": "الطرق"

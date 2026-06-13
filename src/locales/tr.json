@@ -182,7 +182,10 @@
       "frame": {
         "frame": "Çerçeve | Çerçeveler"
       },
-      "is_default": "Varsayılan"
+      "is_default": "Varsayılan",
+      "avatar_frame": {
+        "avatar_frame": "Çerçeve | Çerçeveler"
+      }
     },
     "road": {
       "road": "Yol | Yollar"
