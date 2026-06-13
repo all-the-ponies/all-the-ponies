@@ -90,9 +90,9 @@ const shops = computed(() => {
         const product = getObject(shop.product, 'consumable')
 
         shops.total++
-        if (product.consume.bits > 0) {
+        if (product?.consume.bits > 0) {
             shops.bits++
-        } else if (product.consume.gems > 0) {
+        } else if (product?.consume.gems > 0) {
             shops.gems++
         } else {
             shops.others++

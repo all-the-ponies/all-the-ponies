@@ -2,7 +2,7 @@
 import { language } from '@/globals'
 import { LOCALES } from '@/i18n'
 import absoluteUrl from '@/scripts/absoluteUrl'
-import SidebarView from '@/views/SidebarView.vue'
+import SidebarView from './SidebarView.vue'
 import { Head } from 'vike-vue/Head'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
