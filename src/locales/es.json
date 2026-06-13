@@ -182,7 +182,10 @@
       "background_frame": {
         "background_frame": "Marco de fondo"
       },
-      "is_default": "Es predeterminado"
+      "is_default": "Es predeterminado",
+      "cutie_mark": {
+        "cutie_mark": "Marca De Belleza | Marca De Belleza"
+      }
     },
     "road": {
       "road": "Camino | Caminos"

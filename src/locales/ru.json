@@ -182,7 +182,10 @@
       "background_frame": {
         "background_frame": "Рамка фона | Рамки фона"
       },
-      "is_default": "По умолчанию"
+      "is_default": "По умолчанию",
+      "cutie_mark": {
+        "cutie_mark": "Метка | Знаки Отличия"
+      }
     },
     "road": {
       "road": "Дорога | Дороги"

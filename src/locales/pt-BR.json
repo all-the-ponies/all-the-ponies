@@ -182,7 +182,10 @@
       "background_frame": {
         "background_frame": "Moldura de Plano de Fundo"
       },
-      "is_default": ""
+      "is_default": "",
+      "cutie_mark": {
+        "cutie_mark": "Cutie Mark | Cutie Marks"
+      }
     },
     "road": {
       "road": "Estradas"
