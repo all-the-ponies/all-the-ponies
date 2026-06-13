@@ -173,19 +173,16 @@
         "animated": "",
         "avatar": "アバター | アバター"
       },
+      "avatar_frame": {
+        "avatar_frame": "フレーム | フレーム"
+      },
       "background": {
         "background": "はいけい | はいけい"
       },
       "background_frame": {
         "background_frame": "はいけい|フレーム"
       },
-      "frame": {
-        "frame": "フレーム | フレーム"
-      },
-      "is_default": "",
-      "avatar_frame": {
-        "avatar_frame": "フレーム | フレーム"
-      }
+      "is_default": ""
     },
     "road": {
       "road": "道"
