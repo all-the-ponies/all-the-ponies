@@ -22,7 +22,7 @@ export interface Translator {
     languages: string[],
 }
 
-export async function data(pageContext: PageContextServer): Data {
+export async function data(pageContext: PageContextServer): Promise<Data> {
     try {
         const languages = await ky<Record<'name' | 'code', string>[]>('https://hosted.weblate.org/api/projects/all-the-ponies/languages/', {
             headers: {

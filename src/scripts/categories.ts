@@ -1,6 +1,6 @@
 import { language } from "@/globals"
 import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType } from "../types/gameDataTypes"
-import gameData from "./gameData"
+import { getObject, groupQuests, translateName } from "./gameData"
 import type { Ref } from "vue"
 import { useSaveStore } from "@/stores/saveManager"
 import { isClient, useMounted } from "@vueuse/core"
@@ -42,15 +42,12 @@ export const CATEGORIES: Partial<Record<CategoryName, {
         string: 'game_object.profile_decorations.avatar.avatar',
         plural: 'avatars',
     },
-    frame: {
-        string: 'game_object.profile_decorations.frame.frame',
-    },
-    background_frame: {
-        string: 'game_object.profile_decorations.background_frame.background_frame',
-    },
-    background: {
-        string: 'game_object.profile_decorations.background.background',
-    },
+    // background_frame: {
+    //     string: 'game_object.profile_decorations.background_frame.background_frame',
+    // },
+    // background: {
+    //     string: 'game_object.profile_decorations.background.background',
+    // },
 }
 
 export const PLURAL_CATEGORY_MAP = {
@@ -80,8 +77,8 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
         alphabetically: {
             name: 'sorting.alphabetically',
             check(a, b) {
-                const name1 = gameData.translateName(a).value
-                const name2 = gameData.translateName(b).value
+                const name1 = translateName(a).value
+                const name2 = translateName(b).value
                 return new Intl.Collator(language.value.code).compare(name1, name2)
             }
         }
@@ -91,59 +88,65 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
       production: {
         name: 'sorting.shop.production',
         check(a: ShopType, b: ShopType) {
-          if (!(a.product && Object.keys(a.product).length) ||
-              !(b.product && Object.keys(b.product).length)) {
-              if (a.product && Object.keys(a.product).length) {
+          const productA = getObject(a.product, 'consumable')
+          const productB = getObject(b.product, 'consumable')
+
+          if (!(productA && Object.keys(productA.consume).length) ||
+              !(productB && Object.keys(productB.consume).length)) {
+              if (productA && Object.keys(productA.consume).length) {
                 return 1
-              } else if (b.product && Object.keys(b.product).length) {
+              } else if (productB && Object.keys(productB.consume).length) {
                 return -1
               }
 
               return 0
           }
           
-          if (a.product.gems > 0 || b.product.gems > 0) {
-            if (a.product.gems === 0) {
+          if (productA.consume.gems > 0 || productB.consume.gems > 0) {
+            if (productA.consume.gems === 0) {
               return 1
-            } else if (b.product.gems === 0) {
+            } else if (productB.consume.gems === 0) {
               return -1
             }
             
-            return (b.product.gems / b.product.time) - (a.product.gems / a.product.time)
-          } else if (a.product.bits > 0 || b.product.bits > 0) {
-            if (a.product.bits === 0) {
+            return (productB.consume.gems / productB.time) - (productA.consume.gems / productA.time)
+          } else if (productA.consume.bits > 0 || productB.consume.bits > 0) {
+            if (productA.consume.bits === 0) {
               return 1
-            } else if (b.product.bits === 0) {
+            } else if (productB.consume.bits === 0) {
               return -1
             }
             
-            return (b.product.bits / b.product.time) - (a.product.bits / a.product.time)
-          } else if (a.product.tls > 0 || b.product.tls > 0) {
-            if (a.product.tls === 0) {
+            return (productB.consume.bits / productB.time) - (productA.consume.bits / productA.time)
+          } else if (productA.consume.tls > 0 || productB.consume.tls > 0) {
+            if (productA.consume.tls === 0) {
               return 1
-            } else if (b.product.tls === 0) {
+            } else if (productB.consume.tls === 0) {
               return -1
             }
             
-            return (b.product.tls / b.product.time) - (a.product.tls / a.product.time)
+            return (productB.consume.tls / productB.time) - (productA.consume.tls / productA.time)
           }
         }
       },
       xp: {
         name: 'sorting.shop.xp_rate',
         check(a: ShopType, b: ShopType) {
-          if (!(a.product && Object.keys(a.product).length) ||
-              !(b.product && Object.keys(b.product).length)) {
-              if (a.product && Object.keys(a.product).length) {
+          const productA = getObject(a.product, 'consumable')
+          const productB = getObject(b.product, 'consumable')
+
+          if (!(productA && Object.keys(productA.consume).length) ||
+              !(productB && Object.keys(productB.consume).length)) {
+              if (productA && Object.keys(productA.consume).length) {
                 return 1
-              } else if (b.product && Object.keys(b.product).length) {
+              } else if (productB && Object.keys(productB.consume).length) {
                 return -1
               }
 
               return 0
           }
 
-          return (b.product.xp / b.product.time) - (a.product.xp / a.product.time)
+          return (productB.consume.xp / productB.time) - (productA.consume.xp / productA.time)
         }
       }
     },
@@ -208,7 +211,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
                   showPro = true
                   break
                 }
-                if (!gameData.data.group_quests.quests[quest].special) {
+                if (!groupQuests.quests[quest].special) {
                   showPro = true
                   break
                 }
@@ -247,30 +250,34 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
       //   default: true,
       // },
       bits: {
-        name: gameData.translateName(gameData.getObject('Bits', 'item')),
+        name: translateName(getObject('Bits', 'item')),
         check(gameObject: ShopType) {
-          return gameObject.product && gameObject.product.bits > 0
+          const product = getObject(gameObject.product, 'consumable')
+          return product && product.consume.bits > 0
         },
         // default: true
       },
       gems: {
         name: 'filter.shop.gem_shop',
         check(gameObject: ShopType) {
-          return gameObject.product && gameObject.product.gems > 0
+          const product = getObject(gameObject.product, 'consumable')
+          return product && product.consume.gems > 0
         },
         // default: true
       },
       maze: {
         name: 'filter.shop.maze',
         check(gameObject: ShopType) {
-          return gameObject.product && gameObject.product.tls > 0
+          const product = getObject(gameObject.product, 'consumable')
+          return product && product.consume.tls > 0
         },
         // default: true
       },
       other: {
         name: 'filter.shop.others',
         check(gameObject: ShopType) {
-          return !(gameObject.product && (gameObject.product.bits || gameObject.product.gems || gameObject.product.tls))
+          const product = getObject(gameObject.product, 'consumable')
+          return !(product && (product.consume.bits || product.consume.gems || product.consume.tls))
         },
         // default: true,
       },

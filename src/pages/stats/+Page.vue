@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import { formatTime } from '@/scripts/timeFunctions'
-import gameData from '@/scripts/gameData'
+import gameData, { getObject, translateName } from '@/scripts/gameData'
 import saveStats from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
 import { ClientOnly } from 'vike-vue/ClientOnly'
@@ -152,13 +152,13 @@ async function importFriendCode() {
                     </li>
                     <li>
                         <CurrencyImage object="Gems">
-                            {{gameData.translateName(gameData.getObject('Gems'))}}:
+                            {{translateName(getObject('Gems'))}}:
                             {{ $n(saveStore.playerInfo.currency.gems) }}
                         </CurrencyImage>
                     </li>
                     <li>
                         <CurrencyImage object="Bits">
-                            {{gameData.translateName(gameData.getObject('Bits'))}}:
+                            {{translateName(getObject('Bits'))}}:
                             {{ $n(saveStore.playerInfo.currency.bits) }}
                         </CurrencyImage>
                     </li>

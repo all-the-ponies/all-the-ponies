@@ -59,9 +59,9 @@ function toggleSidebar(e: Event) {
 
                     </ul>
                     <div class="version-numbers">
-                        <span id="app-version">{{ $t('game.game_version', {version: gameData.gameVersion}) }}</span>
+                        <span id="app-version">{{ $t('game.game_version', {version: gameData.gameVersions.game_version}) }}</span>
                         <br>
-                        <span id="content-version">{{ $t('game.content_version', {version: gameData.contentVersion}) }}</span>
+                        <span id="content-version">{{ $t('game.content_version', {version: gameData.gameVersions.content_version}) }}</span>
                     </div>
                 </nav>
                 <label for="sidebar-toggle" class="sidebar-background"></label>

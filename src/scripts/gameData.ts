@@ -1,29 +1,63 @@
-import { transformName, fixName, removeSymbols } from './common'
-import type { CategoryName, CategoryType, FortuneShopItem, GAME_DATA_Type, GameObject, GameObjectId, Language } from '../types/gameDataTypes'
-import GAME_DATA from '../assets/game-data/game-data.json'
+import ky from 'ky'
 import { computed } from 'vue'
 import { language } from '../globals'
+import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, Language } from '../types/gameDataTypes'
+import { createAssetUrl } from './assets'
+import { fixName, removeSymbols, transformName } from './common'
 
-const gameVersion = GAME_DATA.game_version
-const contentVersion = GAME_DATA.content_version
 
-// for (let [categoryName, category] of Object.entries(GAME_DATA.categories)) {
-//     for (let [id, object] of Object.entries(category.objects)) {
-//         object.id = id
-//         object.category = categoryName
-//     }
-// }
+interface GameVersion {
+    game_version: string
+    content_version: string
+}
 
-function getObject<T extends CategoryName>(
+export let gameVersions: GameVersion | null = null
+export let gameObjects: GameObjects | null = null
+export let groupQuests: GroupQuests | null = null
+export let fortuneShop: FortuneShop | null = null
+
+export let loading = true
+export let error: string | null = null
+
+let resolveReady: () => void
+export const ready = new Promise<void>(resolve => { resolveReady = resolve })
+
+export async function loadGameData(): Promise<void> {
+    loading = true
+    error = null
+    try {
+        const [versions, objects, quests, fortune] = await Promise.all([
+            ky<GameVersion>(createAssetUrl('game_version.json')).json(),
+            ky<GameObjects>(createAssetUrl('game_objects.json')).json(),
+            ky<GroupQuests>(createAssetUrl('group_quests.json')).json(),
+            ky<FortuneShop>(createAssetUrl('fortune_shop.json')).json(),
+        ])
+        gameVersions = versions
+        gameObjects = objects
+        groupQuests = quests
+        fortuneShop = fortune
+        resolveReady()
+    } catch (e) {
+        error = (e as Error).message
+        throw e
+    } finally {
+        loading = false
+    }
+}
+
+export function getObject<T extends CategoryName>(
     id: GameObjectId | GameObject,
     category: T = null,
     usedName: string | null = null,
 ): CategoryType<T> | null {
+    if (!gameObjects) return null
     if (id instanceof Object && id.constructor === Object) {
         return id as CategoryType<T>
     }
     if (category === null) {
-        for (const c of (Object.keys(GAME_DATA.categories) as CategoryName[])) {
+         for (const c of (Object.keys(gameObjects) as (CategoryName | 'file_version')[])) {
+            if (c === 'file_version') continue
+            
             let object = getObject(id, c)
             if (object != null) {
                 return object as CategoryType<T>
@@ -31,9 +65,9 @@ function getObject<T extends CategoryName>(
         }
         return null
     } else if (typeof id === 'string') {
-        if (!GAME_DATA.categories[category as CategoryName]?.objects[id]) {
-            if (category as CategoryName === 'item') {
-                for (const item of Object.values(GAME_DATA.categories[category as 'item'].objects)) {
+        if (!gameObjects[category as CategoryName]?.objects[id]) {
+            if (category === 'item') {
+                for (const item of Object.values(gameObjects['item'].objects)) {
                     if (item.alt_ids.includes(id)) {
                         return item as CategoryType<T>
                     }
@@ -41,13 +75,14 @@ function getObject<T extends CategoryName>(
             }
             return null
         }
-        return GAME_DATA.categories[category as CategoryName]?.objects[id]
+        return gameObjects[category as CategoryName]?.objects[id] as CategoryType<T>
     }
     return null
 }
 
-function getFortuneShopData(id: GameObjectId): FortuneShopItem | null {
-    for (let items of Object.values(GAME_DATA.fortune_shop.items)) {
+export function getFortuneShopData(id: GameObjectId): FortuneShopItem | null {
+    if (!fortuneShop) return null
+    for (let items of Object.values(fortuneShop.items)) {
         let item = items[id]
         if (item) {
             return item
@@ -56,65 +91,9 @@ function getFortuneShopData(id: GameObjectId): FortuneShopItem | null {
     return null
 }
 
-function searchName(
-    name: string,
-    category: CategoryName | string[] | GameObject[] = 'pony',
-    language: Language = 'english',
-):  GameObject[] {
-    let objects: GameObject[] = []
-    
-    if (typeof category == 'string') {
-        if (!(category in GAME_DATA.categories)) {
-            throw RangeError(`Category ${category} does not exist`)
-        }
-        objects = Object.values(GAME_DATA.categories[category].objects)
-    } else if (Array.isArray(category)) {
-        for (let gameObject of category) {
-            if (gameObject instanceof Object && gameObject.constructor === Object) {
-                objects.push(gameObject)
-            } else if (typeof gameObject == 'string') {
-                objects.push(getObject(gameObject))
-            }
-        }
-        // objects = category.map((id) => getObject(id))
-    }
-    
-    const originalName = name
-    name = transformName(name)
-    if (name == '') {
-        return Object.values(objects)
-    }
-    let result: GameObject[] = []
-
-    function addResult(object: GameObject) {
-        if (!result.includes(object)) {
-            result.push(object)
-        }
-    }
-
-    for (let item of Object.values(objects)) {
-        if (transformName(fixName(item.name[language])).includes(name)) {
-            addResult(item)
-        } else if (
-            item.alt_name && item.alt_name[language] &&
-            item.alt_name[language].some((searchName) => transformName(fixName(searchName)).includes(name))
-        ) {
-            addResult(item)
-        } else if (
-          item.preferred_name && item.preferred_name[language] &&
-          transformName(fixName(item.preferred_name[language])).includes(name)
-        ) {
-            addResult(item)
-        } else if (item.id === originalName) {
-            addResult(item)
-        }
-    }
-    return result
-}
-
-function translateName(gameObject: GameObject) {
+export function translateName(gameObject: GameObject) {
   return computed(() => {
-    if (!gameObject) {
+    if (!gameObject || gameObject.category === 'costume_part') {
       return null
     }
     if (gameObject.preferred_name && gameObject.preferred_name[language.value.key]) {
@@ -125,7 +104,8 @@ function translateName(gameObject: GameObject) {
   })
 }
 
-function getNames(gameObject: GameObject) {
+export function getNames(gameObject: GameObject) {
+    if (gameObject.category === 'costume_part') return null
     let names = [gameObject.name[language.value.key]]
     if (gameObject.preferred_name && gameObject.preferred_name[language.value.key]) {
         names.push(gameObject.preferred_name[language.value.key])
@@ -136,16 +116,20 @@ function getNames(gameObject: GameObject) {
     return names
 }
 
-function getNamesForSearch(gameObject: GameObject) {
+export function getNamesForSearch(gameObject: GameObject) {
     return getNames(gameObject).map(name => removeSymbols(name))
 }
 
 export default {
-    gameVersion,
-    contentVersion,
-    data: GAME_DATA,
+    get gameVersions() { return gameVersions },
+    get gameObjects() { return gameObjects },
+    get groupQuests() { return groupQuests },
+    get fortuneShop() { return fortuneShop },
+    get loading() { return loading },
+    get error() { return error },
+    get ready() { return ready },
+    loadGameData,
     getObject,
-    searchName,
     translateName,
     getNames,
     getNamesForSearch,

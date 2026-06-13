@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import SearchComponent from '@/components/SearchComponent.vue'
-import gameData from '@/scripts/gameData'
+import { gameObjects, getNames } from '@/scripts/gameData'
 import { computed, ref, watchEffect } from 'vue';
 import { CATEGORIES, SortFunctions, FilterFunctions, PLURAL_CATEGORY_MAP } from '@/scripts/categories'
 // import { useSeoMeta } from '@unhead/vue';
@@ -31,8 +31,6 @@ const categoryName = computed(() => t(CATEGORIES[category?.value].string, 2))
 //     title: () => categoryName.value,
 //     ogTitle: () => `${t('search.title')} ${categoryName.value}`,
 // })
-
-// console.log('ponies', Object.keys(gameData.data.categories.ponies.objects))
 
 const sortFunctions = computed(() => {
     let functions = {
@@ -68,7 +66,7 @@ function infoGetter(gameObject: GameObject) {
     // return <PriceButton currency='Bits'>10,000</PriceButton>
 }
 
-const objects = computed(() => Object.values(gameData.data.categories[category.value].objects as GameObject[]))
+const objects = computed(() => gameObjects ? Object.values(gameObjects[category.value].objects) as GameObject[] : [])
 
 const cardSize = 9
 
@@ -85,7 +83,7 @@ const itemGap = useRem(.3)
     <SearchComponent
         v-if="category != null"
         :data="objects"
-        :get-search-text="gameData.getNames"
+        :get-search-text="getNames"
         :get-exact-search-text="(item) => item.id"
         :sorters="sortFunctions"
         :filters="filterFunctions"

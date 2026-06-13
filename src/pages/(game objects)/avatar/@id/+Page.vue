@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import gameData from '@/scripts/gameData'
+import gameData, { getFortuneShopData, getObject, translateName } from '@/scripts/gameData'
 import BackButton from '@/components/buttons/BackButton.vue';
 import { staticImage } from '@/scripts/common';
 import { usePageContext } from 'vike-vue/usePageContext';
@@ -14,6 +14,7 @@ import type { PriceHistoryType } from '@/scripts/api.types';
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import CurrencyImage from '@/components/CurrencyImage.vue';
+import { createAssetUrl } from '@/scripts/assets';
 
 
 const pageContext = usePageContext()
@@ -48,18 +49,18 @@ const basePrice = computed(() => {
 })
 
 const name = computed(() => {
-    let name = gameData.translateName(avatar.value).value
+    let name = translateName(avatar.value).value
     return name
 })
 
-const pony = computed(() => gameData.getObject(avatar.value.pony, 'pony'))
+const pony = computed(() => getObject(avatar.value.pony, 'pony'))
 
-const fortuneShopData = computed(() => gameData.getFortuneShopData(avatar.value.id))
+const fortuneShopData = computed(() => getFortuneShopData(avatar.value.id))
 
 </script>
 
 <template>
-    <Config :title="name" description="" :image="absoluteUrl(staticImage(avatar.image.preview))"></Config>
+    <Config :title="name" description="" :image="createAssetUrl(avatar.image.preview.path)"></Config>
 
     <div>
         <back-button fallback="/search/avatars" />
@@ -107,7 +108,7 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(avatar.value.
                                         class="link"
                                         :href="`/pony/${pony.id}`"
                                     >
-                                        {{ gameData.translateName(pony) }}
+                                        {{ translateName(pony) }}
                                     </Link>
                                 </td>
                             </tr>

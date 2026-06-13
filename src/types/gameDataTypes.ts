@@ -29,21 +29,40 @@ export type CategoryName = 'pony' |
                     'house' |
                     'shop' |
                     'decor' |
-                    'item' |
-                    'token' |
                     'avatar' |
-                    'frame' |
+                    'avatar_frame' |
+                    'background' |
                     'background_frame' |
-                    'background'
+                    'cutie_mark' |
+                    'pet' |
+                    'theme' |
+                    'path' |
+                    'item' |
+                    'booster' |
+                    'token' |
+                    'consumable' |
+                    'costume' |
+                    'costume_part'
 
 export type CategoryType<T> = 
     T extends 'pony' ? PonyType :
     T extends 'house' ? HouseType :
     T extends 'shop' ? ShopType :
     T extends 'decor' ? DecorType :
-    T extends 'item' ? ItemType :
-    T extends 'token' ? TokenType :
     T extends 'avatar' ? AvatarType :
+    T extends 'avatar_frame' ? AvatarFrameType :
+    T extends 'background' ? BackgroundType :
+    T extends 'background_frame' ? BackgroundFrameType :
+    T extends 'cutie_mark' ? CutieMarkType :
+    T extends 'pet' ? PetType :
+    T extends 'theme' ? ThemeType :
+    T extends 'path' ? PathType :
+    T extends 'item' ? ItemType :
+    T extends 'booster' ? BoosterType :
+    T extends 'token' ? TokenType :
+    T extends 'consumable' ? ConsumableType :
+    T extends 'costume' ? CostumeType :
+    T extends 'costume_part' ? CostumePartType :
     T extends null ? GenericObjectType :
     never
 
@@ -51,158 +70,185 @@ export type GameObject = PonyType |
                         HouseType |
                         ShopType |
                         DecorType |
-                        ItemType |
-                        TokenType |
                         AvatarType |
+                        AvatarFrameType |
+                        BackgroundType |
+                        BackgroundFrameType |
+                        CutieMarkType |
+                        PetType |
+                        ThemeType |
+                        PathType |
+                        ItemType |
+                        BoosterType |
+                        TokenType |
+                        ConsumableType |
+                        CostumeType |
+                        CostumePartType |
                         GenericObjectType
 
-export interface GAME_DATA_Type {
+export interface GameObjects {
     file_version: number,
-    game_version: string,
-    content_version: string,
-    categories: {
-        pony: CategoryData<PonyType> & {clones: object},
-        house: CategoryData<HouseType>,
-        shop: CategoryData<ShopType>,
-        decor: CategoryData<DecorType>,
-        item: CategoryData<ItemType>,
-        token: CategoryData<TokenType>,
-        avatar: CategoryData<AvatarType>,
-    },
-    group_quests: GroupQuests,
-    fortune_shop: FortuneShop,
+    pony: CategoryData<PonyType>,
+    house: CategoryData<HouseType>,
+    shop: CategoryData<ShopType>,
+    decor: CategoryData<DecorType>,
+    avatar: CategoryData<AvatarType>,
+    avatar_frame: CategoryData<AvatarFrameType>,
+    background_frame: CategoryData<BackgroundFrameType>,
+    background: CategoryData<BackgroundType>,
+    cutie_mark: CategoryData<CutieMarkType>,
+    pet: CategoryData<PetType>,
+    theme: CategoryData<ThemeType>,
+    path: CategoryData<PathType>,
+    item: CategoryData<ItemType>,
+    booster: CategoryData<BoosterType>,
+    token: CategoryData<TokenType>,
+    consumable: CategoryData<ConsumableType>,
+    costume: CategoryData<CostumeType>,
+    costume_part: CategoryData<CostumePartType>,
 }
 
 interface CategoryData<T> {
     objects: Record<GameObjectId, T>,
 }
 
-
 type TranslatableString = Record<Language, string>
-type AltName = Partial<Record<Language, string[]>> 
+type AltName = Partial<Record<Language, string[]>>
+
+export interface RenamedFile {
+    path: string,
+    original?: string | null,
+}
+
+export type ImageBase<T extends string | void = void> = T extends string
+                    ? Record<T | 'main', RenamedFile>
+                    : Record<'main', RenamedFile>
 
 export interface StarReward {
     item: string,
     amount: number,
 }
 
+export interface PriceBase {
+    currency: Currency | null,
+    amount: number,
+}
+
 export interface Price {
-    base: {
-        currency: Currency | null,
-        amount: number,
-    },
+    base: PriceBase,
     token: GameObjectId | null,
-    daily_goals: number
+    daily_goals: number,
 }
 
 interface GenericObjectType {
-    locked?: boolean,
     index: number,
-    category: CategoryName,
     id: string,
+    category: CategoryName,
     name: TranslatableString,
-    preferred_name?: TranslatableString,
-    alt_name?: AltName,
-    image: {main: string},
-    tags?: string[],
-    price?: Price,
+    image: ImageBase,
+    preferred_name?: TranslatableString | null,
+    alt_name?: AltName | null,
+    price?: Price | null,
+    tags: string[],
 }
 
 export interface PonyType extends Omit<GenericObjectType, 'category' | 'image'> {
     category: 'pony',
-    note: object,
-    preferred_name: TranslatableString,
     description: TranslatableString,
-    tags: string[],
-    image: {
-        portrait: string,
-        main: string,
-    },
+    image: ImageBase<'portrait'>,
     location: Location,
-    house: string,
-    inns: string[],
-    changeling: {
-        id: string,
-        IAmAlterSet: boolean,
-    },
+    house: string | null,
+    inns: GameObjectId[],
+    changeling: ChangelingData,
     group_master: boolean,
     group: string[],
     max_level: boolean,
     rewards: StarReward[],
-    minigame: {
-        can_play_minecart: boolean,
-        cooldown: number,
-        skip_cost: number,
-        exp_rank: number,
-    },
+    minigame: MinigameData,
     arrival_xp: number,
     unlock_level: number,
-    tasks: {[ type: string ]: {
-                "name": TranslatableString,
-                "time": number,
-                "xp": number,
-                "bits": number,
-                "gems": number,
-                "token": string,
-                "chance": number,
-                "token_amount": number,
-                "requires": string,
-            }
-        },
-    pro: ('random' | string)[],
+    ai_type: number,
+    not_pony: boolean,
+    ban_pets: boolean,
+    tasks: string[],
+    pro: string[],
     collections: string[],
     wiki_path: string,
 }
 
-export interface HouseType extends Omit<GenericObjectType, 'category'> {
-    category: 'house',
-    preferred_name: TranslatableString,
-    location: Location[],
-    grid_size: number,
-    build: {
-        time: number,
-        skip_cost: number,
-        xp: number,
-    },
-    residents: string[],
-    visitors: string[],
-    tags: string[],
+export interface ChangelingData {
+    id: string,
+    IAmAlterSet: boolean,
 }
 
-export interface ShopType extends Omit<HouseType, 'category' | 'location'> {
+export interface MinigameData {
+    can_play_minecart: boolean,
+    hard_lock: boolean,
+    cooldown: number,
+    skip_cost: number,
+    exp_rank: number,
+    has_wings: boolean,
+}
+
+export interface TaskData {
+    name: TranslatableString,
+    time: number,
+    xp: number,
+    bits: number,
+    gems: number,
+    token: string,
+    chance: number,
+    token_amount: number,
+    requires: string,
+}
+
+export interface HouseBuild {
+    time: number,
+    skip_cost: number,
+    xp: number,
+}
+
+export interface HouseType extends Omit<GenericObjectType, 'category'> {
+    category: 'house',
+    location: Location[],
+    grid_size: number,
+    build: HouseBuild,
+    residents: string[],
+    visitors: string[],
+    wiki_path: string,
+}
+
+export interface ShopType extends Omit<GenericObjectType, 'category'> {
     category: 'shop',
+    grid_size: number,
+    build: HouseBuild,
+    residents: string[],
+    visitors: string[],
     unlock_level: number,
     location: Location,
-    product: {
-        name: TranslatableString,
-        image: string,
-        time: number,
-        skip_cost: number,
-        xp: number,
-        bits: number,
-        gems: number,
-        tls: number,
-    },
+    product: GameObjectId,
+    special: 'lotto' | 'ck_entrance' | 'ferris_wheel' | null,
     can_sell: boolean,
     cost: Price,
+    wiki_path: string,
+}
+
+export interface DecorPro {
+    is_pro: boolean,
+    size: number,
+    time: number,
+    bits: number,
 }
 
 export interface DecorType extends Omit<GenericObjectType, 'category'> {
     category: 'decor',
-    image: {main: string},
     location: Location,
     unlock_level: number,
     limit: number,
     grid_size: number,
     xp: number,
-    cost: Price,
     fusion_points: number,
-    pro: {
-        is_pro: boolean,
-        size: number,
-        time: number,
-        bits: number,
-    },
+    pro: DecorPro,
 }
 
 export interface ItemType extends Omit<GenericObjectType, 'category'> {
@@ -212,36 +258,166 @@ export interface ItemType extends Omit<GenericObjectType, 'category'> {
 
 export interface TokenType extends Omit<GenericObjectType, 'category'> {
     category: 'token',
+    consumable: GameObjectId,
     chance: number,
     tasks: string[],
     unlimited: boolean,
     no_reset: boolean,
+    special: number,
 }
 
 export interface AvatarType extends Omit<GenericObjectType, 'category' | 'image'> {
     category: 'avatar',
-    image: {
-        main: string,
-        preview: string,
-    },
+    image: ImageBase<'preview'>,
     is_default: boolean,
-    pony: string,
+    pony: GameObjectId | null,
     animated: boolean,
 }
 
-interface GroupQuests {
-    random_pros: string[],
-    quests: {[ type: string ]: {
-        name: TranslatableString,
-        description: TranslatableString,
-        pro: string[],
-        special: 'seasonal' | 'tutorial' | null,
-    }}
+export interface AvatarFrameType extends Omit<GenericObjectType, 'category' | 'image'> {
+    category: 'avatar_frame',
+    image: ImageBase<'preview'>,
+    is_default: boolean,
+    animated: boolean,
 }
 
+export interface BackgroundType extends Omit<GenericObjectType, 'category' | 'image'> {
+    category: 'background',
+    image: ImageBase<'preview'>,
+    is_default: boolean,
+}
 
-export type FortuneShopRarities = 'rare' | 'common' | 'uncommon'
+export interface BackgroundFrameType extends Omit<GenericObjectType, 'category'> {
+    category: 'background_frame',
+    is_default: boolean,
+}
+
+export interface CutieMarkType extends Omit<GenericObjectType, 'category'> {
+    category: 'cutie_mark',
+    pony: GameObjectId,
+    is_default: boolean,
+}
+
+export interface PetType extends Omit<GenericObjectType, 'category'> {
+    category: 'pet',
+    pony: GameObjectId,
+    flying: boolean,
+    task_bonus: number,
+    minecart_bonus: number,
+}
+
+export interface ThemeType extends Omit<GenericObjectType, 'category'> {
+    category: 'theme',
+    location: Location,
+    season: string,
+    shop_bonus: number,
+    quest: string,
+    texture_suffix: string,
+}
+
+export interface PathType extends Omit<GenericObjectType, 'category'> {
+    category: 'path',
+    location: Location,
+    sprite: string,
+}
+
+export interface BoosterType extends Omit<GenericObjectType, 'category'> {
+    category: 'booster',
+    type: 'xp' | 'bits' | null,
+    time: number,
+    multiplier: number,
+}
+
+export interface FarmCost {
+    shard: GameObjectId,
+    shard_cost: number,
+    item: GameObjectId,
+    item_cost: number,
+}
+
+export interface CritterUpgrade {
+    currency: GameObjectId,
+    cost: number,
+    shard: GameObjectId,
+    shard_cost: number,
+}
+
+export interface ConsumableCritter {
+    critter: GameObjectId,
+    main_feed: GameObjectId,
+    additional_feed: GameObjectId,
+    phases: { main: number, additional: number }[],
+    upgrade: CritterUpgrade,
+    final_cooldown: number,
+    final_reward: { gems: number, xp: number },
+}
+
+export interface ConsumableType extends Omit<GenericObjectType, 'category'> {
+    category: 'consumable',
+    consume: Partial<Record<'xp' | 'bits' | 'gems' | 'hearts' | 'wheels' | 'blitz_energy' | 'tls', number>>,
+    time: number,
+    skip_cost: number,
+    farm?: FarmCost[] | null,
+    critter?: ConsumableCritter | null,
+}
+
+export interface CostumeBonus {
+    type: 'MineCart' | 'ShopProduction' | 'MiniGames' | '',
+    amount: number,
+}
+
+export interface CostumeType extends Omit<GenericObjectType, 'category' | 'image'> {
+    category: 'costume',
+    image: ImageBase<'alt'>,
+    enabled: boolean,
+    can_be_new: boolean,
+    is_subset: boolean,
+    is_only_alternate_mesh: boolean,
+    parts: { body: GameObjectId | null, mane: GameObjectId | null, tail: GameObjectId | null },
+    bonus: CostumeBonus,
+    tls_background: RenamedFile | null,
+    subsets: GameObjectId[],
+}
+
+export interface CostumePartType {
+    index: number,
+    id: GameObjectId,
+    category: 'costume_part',
+    image: ImageBase<'alt'>,
+    model_name: string,
+    linked_part: GameObjectId | null,
+    type: 'body' | 'mane' | 'tail',
+    apply_time: number,
+    ingredients: number[],
+    gem_price: number,
+}
+
+export interface QuestDetail {
+    name: TranslatableString,
+    description: TranslatableString,
+    pro: string[],
+    special: 'seasonal' | 'tutorial' | null,
+}
+
+export interface GroupQuests {
+    random_pros: string[],
+    quests: Record<string, QuestDetail>,
+}
+
+export type FortuneShopRarities = 'common' | 'uncommon' | 'rare'
 export type FortuneShopPrices = 'regular' | 'discount' | 'super' | 'ultra'
+
+export interface FortuneShopItemPricesList {
+    regular: Record<FortuneShopPrices, number>,
+    royal: Record<FortuneShopPrices, number>,
+}
+
+export interface FortuneShopItem {
+    id: GameObjectId,
+    rarity: FortuneShopRarities,
+    amount: number,
+    prices: FortuneShopItemPricesList,
+}
 
 export interface FortuneShop {
     max_items_in_shop: number,
@@ -249,14 +425,4 @@ export interface FortuneShop {
     item_rarity_chances: Record<FortuneShopRarities, number>,
     item_price_chances: Record<FortuneShopPrices, number>,
     items: Record<FortuneShopRarities, Record<GameObjectId, FortuneShopItem>>,
-}
-
-export interface FortuneShopItem {
-    id: GameObjectId,
-    rarity: FortuneShopRarities,
-    amount: number,
-    prices: {
-        regular: Record<FortuneShopPrices, number>,
-        royal: Record<FortuneShopPrices, number>,
-    },
 }

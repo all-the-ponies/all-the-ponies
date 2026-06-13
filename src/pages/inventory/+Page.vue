@@ -8,7 +8,7 @@ import { useGameCardSize } from '@/composables/useGameCardSize'
 import { useRem } from '@/composables/useRem'
 import { language } from '@/globals'
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories'
-import gameData from '@/scripts/gameData'
+import { getNames, getObject } from '@/scripts/gameData'
 import saveStats from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
 import type { CategoryName } from '@/types/gameDataTypes'
@@ -198,8 +198,8 @@ const itemGap = useRem(.3)
         <section>
             <ClientOnly>
                 <SearchComponent
-                    :data="gameObjects.map(objectId => gameData.getObject(objectId, category))"
-                    :get-search-text="gameData.getNames"
+                    :data="gameObjects.map(objectId => getObject(objectId, category))"
+                    :get-search-text="getNames"
                     :filters="filterFunctions"
                     :sorters="sortFunctions"
                     :query="query"

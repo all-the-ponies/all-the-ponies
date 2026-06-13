@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import gameData from '@/scripts/gameData'
+import { getFortuneShopData, getObject, groupQuests, translateName } from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import { staticImage } from '@/scripts/common'
@@ -23,6 +23,7 @@ import type { PriceHistoryType } from '@/scripts/api.types'
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import { useI18n } from 'vue-i18n';
+import { createAssetUrl } from '@/scripts/assets';
 
 const { t } = useI18n()
 const isMounted = useMounted()
@@ -84,7 +85,7 @@ const stars = computed({
 
 
 const name = computed(() => {
-    let name = gameData.translateName(pony.value).value
+    let name = translateName(pony.value).value
     return name
 })
 
@@ -93,10 +94,10 @@ const description = computed(() => {
     return description
 })
 
-const house = computed(() => gameData.getObject(pony.value?.house))
-const houseName = computed(() => house.value?.name[language.value.key])
+const house = computed(() => getObject(pony.value?.house, 'house'))
+const houseName = computed(() => translateName(house.value).value)
 
-const fortuneShopData = computed(() => gameData.getFortuneShopData(pony.value.id))
+const fortuneShopData = computed(() => getFortuneShopData(pony.value.id))
 
 const showProIcon = computed(() => {
     let showPro = false
@@ -106,7 +107,7 @@ const showProIcon = computed(() => {
             showPro = true
             break
         }
-        if (!gameData.data.group_quests.quests[quest].special) {
+        if (!groupQuests.quests[quest].special) {
             showPro = true
             break
         }
@@ -122,8 +123,8 @@ const groupQuestName = computed(() => {
             names.push(t('group_quests.random_pro'))
         } else {
             console.log(quest)
-            let name = gameData.data.group_quests.quests[quest].name[language.value.key]
-            let special = gameData.data.group_quests.quests[quest].special
+            let name = groupQuests.quests[quest].name[language.value.key]
+            let special = groupQuests.quests[quest].special
             switch (special) {
                 case 'seasonal': name = t('group_quests.name_seasonal', {name}); break
                 case 'tutorial':name = t('group_quests.name_tutorial', {name}); break
@@ -143,7 +144,7 @@ const groupQuestName = computed(() => {
         v-if="pony"
         :title="name"
         :description="description"
-        :image="absoluteUrl(staticImage(pony?.image?.main))"
+        :image="createAssetUrl(pony.image.main.path)"
     >
     </Config>
 
@@ -155,7 +156,7 @@ const groupQuestName = computed(() => {
         <div v-else>
             <ObjectPage :gameObject="pony">
                 <template #name>
-                    <img class="portrait" :src="`/images/${pony.image.portrait}`" :alt="name">
+                    <img class="portrait" :src="createAssetUrl(pony.image.portrait.path)" :alt="name">
                     {{ name }}
                 </template>
                 <template #image-left>
@@ -172,7 +173,7 @@ const groupQuestName = computed(() => {
                                 v-model="stars"
                                 interractive
                             >
-                                <img class="full-image" :src="staticImage(pony.image.main)" :alt="name">
+                                <img class="full-image" :src="createAssetUrl(pony.image.main.path)" :alt="name">
                             </Stars>
                             <Link
                                 v-if="pony.changeling.id"

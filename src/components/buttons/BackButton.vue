@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { fixUrl } from '@/scripts/fixUrl';
+import { navigate } from 'vike/client/router';
 import { computed } from 'vue';
-import { navigate } from 'vike/client/router'
 
 
 const props = defineProps<{

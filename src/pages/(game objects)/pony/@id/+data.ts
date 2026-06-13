@@ -1,13 +1,13 @@
 import api from "@/scripts/api"
 import type { PriceHistoryType } from "@/scripts/api.types"
-import gameData from "@/scripts/gameData"
+import { getObject } from "@/scripts/gameData"
 import { render } from "vike/abort"
 import type { PageContext } from "vike/types"
 
 export async function data(pageContext: PageContext) {
     const { id } = pageContext.routeParams
     
-    const pony = gameData.getObject(id, 'pony')
+    const pony = getObject(id, 'pony')
 
     if (pony === null) {
         throw render(404, `Pony with id ${id} doesn't exist`)

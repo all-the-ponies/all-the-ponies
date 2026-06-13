@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import GameCard from '@/components/GameCard.vue';
 import Link from '@/components/Link.vue'
-import { pickRandom, staticImage } from '@/scripts/common';
-import gameData from '@/scripts/gameData';
+import { pickRandom } from '@/scripts/common';
+import { gameObjects, translateName } from '@/scripts/gameData';
 import type { AvatarType, DecorType, HouseType, PonyType, ShopType } from '@/types/gameDataTypes';
 import { Config } from 'vike-vue/Config'
-import Head from '../+Head.vue'
 import { h } from 'vue'
 import links from '@/globals/links';
 
@@ -18,6 +17,7 @@ import KofiButton from '@/components/buttons/socials/KofiButton.vue';
 import RedditButton from '@/components/buttons/socials/RedditButton.vue';
 import WikiButton from '@/components/buttons/socials/WikiButton.vue';
 import WeblateButton from '@/components/buttons/socials/WeblateButton.vue';
+import { createAssetUrl } from '@/scripts/assets.ts';
 
 
 const pony = ref<PonyType>(null)
@@ -27,19 +27,13 @@ const decor = ref<DecorType>(null)
 const avatar = ref<AvatarType>(null)
 
 onMounted(() => {
-    pony.value = pickRandom(Object.values(gameData.data.categories.pony.objects))
-    house.value = pickRandom(Object.values(gameData.data.categories.house.objects))
-    shop.value = pickRandom(Object.values(gameData.data.categories.shop.objects))
-    decor.value = pickRandom(Object.values(gameData.data.categories.decor.objects))
-    avatar.value = pickRandom(Object.values(gameData.data.categories.avatar.objects))
+    if (!gameObjects) return
+    pony.value = pickRandom(Object.values(gameObjects.pony.objects))
+    house.value = pickRandom(Object.values(gameObjects.house.objects))
+    shop.value = pickRandom(Object.values(gameObjects.shop.objects))
+    decor.value = pickRandom(Object.values(gameObjects.decor.objects))
+    avatar.value = pickRandom(Object.values(gameObjects.avatar.objects))
 })
-
-function openSidebar() {
-    const sidebarToggle = document.getElementById('sidebar-toggle')
-    sidebarToggle.checked = true
-    if (sidebarToggle != null) {
-    }
-}
 
 </script>
 
@@ -79,40 +73,40 @@ function openSidebar() {
             <div class="things-container">
                 <GameCard
                     :title="$t('game_object.pony.pony', 2)"
-                    :image="pony ? staticImage(pony.image.main) : null"
-                    :alt="gameData.translateName(pony).value"
+                    :image="pony ? createAssetUrl(pony.image.main.path) : null"
+                    :alt="translateName(pony).value"
                     href="/search/ponies/"
                     class="thing-card"
                 >
                 </GameCard>
                 <GameCard
                     :title="$t('game_object.house.house', 2)"
-                    :image="house ? staticImage(house.image.main) : null"
-                    :alt="gameData.translateName(house).value"
+                    :image="house ? createAssetUrl(house.image.main.path) : null"
+                    :alt="translateName(house).value"
                     href="/search/houses/"
                     class="thing-card"
                 >
                 </GameCard>
                 <GameCard
                     :title="$t('game_object.shop.shop', 2)"
-                    :image="shop ? staticImage(shop.image.main) : null"
-                    :alt="gameData.translateName(shop).value"
+                    :image="shop ? createAssetUrl(shop.image.main.path) : null"
+                    :alt="translateName(shop).value"
                     href="/search/shops/"
                     class="thing-card"
                 >
                 </GameCard>
                 <GameCard
                     :title="$t('game_object.decor.decor', 2)"
-                    :image="decor ? staticImage(decor.image.main) : null"
-                    :alt="gameData.translateName(decor).value"
+                    :image="decor ? createAssetUrl(decor.image.main.path) : null"
+                    :alt="translateName(decor).value"
                     href="/search/decor/"
                     class="thing-card"
                 >
                 </GameCard>
                 <GameCard
                     :title="$t('game_object.profile_decorations.avatar.avatar', 2)"
-                    :image="avatar ? staticImage(avatar.image.preview) : null"
-                    :alt="gameData.translateName(avatar).value"
+                    :image="avatar ? createAssetUrl(avatar.image.preview.path) : null"
+                    :alt="translateName(avatar).value"
                     href="/search/avatars/"
                     class="thing-card"
                 >

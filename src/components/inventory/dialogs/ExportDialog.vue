@@ -2,8 +2,8 @@
 import DialogComponent from '@/components/DialogComponent.vue'
 import { language } from '@/globals'
 import { CATEGORIES, LOCATIONS } from '@/scripts/categories'
-import { downloadFile } from '@/scripts/common'
-import gameData from '@/scripts/gameData'
+import { any, downloadFile } from '@/scripts/common'
+import { groupQuests, getObject, translateName } from '@/scripts/gameData'
 import { useSaveStore } from '@/stores/saveManager'
 import type { CategoryName, GameObjectId } from '@/types/gameDataTypes'
 import Papa from 'papaparse'
@@ -44,13 +44,13 @@ function exportCSV() {
     switch (category.value) {
         case 'pony':
             for (let [ponyId, ponyInfo] of Object.entries(saveStore.ponies)) {
-                const pony = gameData.getObject(ponyId, 'pony')
+                const pony = getObject(ponyId, 'pony')
                 if (pony.group.length > 0 && !pony.group_master) {
                     continue
                 }
 
-                const house = gameData.getObject(pony.house, 'house')
-                const houseName = house !== null ? gameData.translateName(house).value : ''
+                const house = getObject(pony.house, 'house')
+                const houseName = house !== null ? translateName(house).value : ''
 
                 const pro = []
 
@@ -58,20 +58,20 @@ function exportCSV() {
                     if (quest === 'random') {
                         pro.push(t('group_quests.random_pro'))
                     } else {
-                        pro.push(gameData.data.group_quests.quests[quest].name[language.value.key])
+                        pro.push(groupQuests.quests[quest].name[language.value.key])
                     }
                 }
 
                 let changeling = ''
 
                 if (pony.changeling.id) {
-                    const changeling_pony = gameData.getObject(pony.changeling.id, 'pony')
-                    changeling = gameData.translateName(changeling_pony).value
+                    const changeling_pony = getObject(pony.changeling.id, 'pony')
+                    changeling = translateName(changeling_pony).value
                 }
 
                 const row = {
                     id: pony.id,
-                    name: gameData.translateName(pony).value,
+                    name: translateName(pony).value,
                     location: t(LOCATIONS[pony.location].string),
                     house: houseName,
                     stars: ponyInfo.level as number,
@@ -84,10 +84,10 @@ function exportCSV() {
             break
         case 'house':
             for (let houseId of saveStore.houses) {
-                const house = gameData.getObject(houseId, 'house')
+                const house = getObject(houseId, 'house')
                 table.push({
                     id: house.id,
-                    name: gameData.translateName(house).value,
+                    name: translateName(house).value,
                     location: new Intl.ListFormat(language.value.code, {
                             style: 'narrow',
                         })
@@ -97,7 +97,7 @@ function exportCSV() {
             break
         case 'shop':
             for (let shopId of Object.keys(saveStore.shops)) {
-                const shop = gameData.getObject(shopId, 'shop')
+                const shop = getObject(shopId, 'shop')
 
                 interface ShopRow {
                     id: GameObjectId,
@@ -109,18 +109,19 @@ function exportCSV() {
                     time: number,
                 }
 
-                if (shop.product.bits == 0 && shop.product.gems == 0) {
+                let product = getObject(shop.product, 'consumable')
+                if (any(Object.values(product.consume))) {
                     continue
                 }
                 
                 table.push({
                     id: shopId,
-                    name: gameData.translateName(shop).value,
+                    name: translateName(shop).value,
                     location: t(LOCATIONS[shop.location].string),
-                    bits: shop.product.bits,
-                    gems: shop.product.gems,
-                    xp: shop.product.xp,
-                    time: shop.product.time,
+                    bits: product.consume.bits,
+                    gems: product.consume.gems,
+                    xp: product.consume.xp,
+                    time: product.time,
                 })
             }
             break
@@ -144,11 +145,11 @@ function exportJSON() {
     }
 
     for (let [ponyId, ponyInfo] of Object.entries(saveStore.ponies)) {
-        const pony = gameData.getObject(ponyId, 'pony')
+        const pony = getObject(ponyId, 'pony')
 
         result.inventory.ponies[ponyId] = {
             id: pony.id,
-            name: gameData.translateName(pony).value,
+            name: translateName(pony).value,
             stars: ponyInfo.level,
             location: pony.location,
             house: pony.house,

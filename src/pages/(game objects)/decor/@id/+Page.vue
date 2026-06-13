@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import gameData from '@/scripts/gameData'
+import gameData, { getFortuneShopData, getObject, translateName } from '@/scripts/gameData'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import BackButton from '@/components/buttons/BackButton.vue';
 import { LOCATIONS } from '@/scripts/categories';
@@ -14,6 +14,7 @@ import PriceHistory from '@/components/tables/PriceHistory.vue';
 import type { PriceHistoryType } from '@/scripts/api.types';
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
+import { createAssetUrl } from '@/scripts/assets';
 
 
 const pageContext = usePageContext()
@@ -48,16 +49,16 @@ const basePrice = computed(() => {
 })
 
 const name = computed(() => {
-    let name = gameData.translateName(decor.value).value
+    let name = translateName(decor.value).value
     return name
 })
 
-const fortuneShopData = computed(() => gameData.getFortuneShopData(decor.value.id))
+const fortuneShopData = computed(() => getFortuneShopData(decor.value.id))
 
 </script>
 
 <template>
-    <Config :title="name" description="" :image="absoluteUrl(staticImage(decor.image.main))"></Config>
+    <Config :title="name" description="" :image="createAssetUrl(decor.image.main.path)"></Config>
 
     <div>
         <back-button fallback="/search/decor" />
@@ -99,7 +100,7 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(decor.value.i
                                 <td>{{ decor.grid_size }}x{{ decor.grid_size }}</td>
                             </tr>
                             <tr>
-                                <td>{{ gameData.translateName(gameData.getObject('XP', 'item')) }}</td>
+                                <td>{{ translateName(getObject('XP', 'item')) }}</td>
                                 <td><currency-image object="XP">{{ $n(decor.xp) }}</currency-image></td>
                             </tr>
                             <tr>
