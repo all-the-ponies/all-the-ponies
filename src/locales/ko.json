@@ -173,19 +173,16 @@
         "animated": "",
         "avatar": "아바타 | 아바타"
       },
+      "avatar_frame": {
+        "avatar_frame": "프레임 | 프레임"
+      },
       "background": {
         "background": "배경 | 배경"
       },
       "background_frame": {
         "background_frame": "배경 프레임"
       },
-      "frame": {
-        "frame": "프레임 | 프레임"
-      },
-      "is_default": "",
-      "avatar_frame": {
-        "avatar_frame": "프레임 | 프레임"
-      }
+      "is_default": ""
     },
     "road": {
       "road": "도로"

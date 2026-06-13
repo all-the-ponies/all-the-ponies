@@ -173,19 +173,16 @@
         "animated": "",
         "avatar": "Avatar | Avatarlar"
       },
+      "avatar_frame": {
+        "avatar_frame": "Çerçeve | Çerçeveler"
+      },
       "background": {
         "background": "Arka Plan | Arka Planlar"
       },
       "background_frame": {
         "background_frame": "Arka Plan Çerçevesi"
       },
-      "frame": {
-        "frame": "Çerçeve | Çerçeveler"
-      },
-      "is_default": "Varsayılan",
-      "avatar_frame": {
-        "avatar_frame": "Çerçeve | Çerçeveler"
-      }
+      "is_default": "Varsayılan"
     },
     "road": {
       "road": "Yol | Yollar"

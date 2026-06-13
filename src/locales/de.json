@@ -173,19 +173,16 @@
         "animated": "",
         "avatar": "Avatar | Avatare"
       },
+      "avatar_frame": {
+        "avatar_frame": "Rahmen | Rahmen"
+      },
       "background": {
         "background": "Hintergrund | Hintergründe"
       },
       "background_frame": {
         "background_frame": "Hintergrundrahmen"
       },
-      "frame": {
-        "frame": "Rahmen | Rahmen"
-      },
-      "is_default": "",
-      "avatar_frame": {
-        "avatar_frame": "Rahmen | Rahmen"
-      }
+      "is_default": ""
     },
     "road": {
       "road": "Straßen"

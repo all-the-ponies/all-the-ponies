@@ -173,19 +173,16 @@
         "animated": "",
         "avatar": "Avatar | Avatar"
       },
+      "avatar_frame": {
+        "avatar_frame": "Cornice | Cornici"
+      },
       "background": {
         "background": "Sfondo | Sfondi"
       },
       "background_frame": {
         "background_frame": "Cornice sfondo"
       },
-      "frame": {
-        "frame": "Cornice | Cornici"
-      },
-      "is_default": "",
-      "avatar_frame": {
-        "avatar_frame": "Cornice | Cornici"
-      }
+      "is_default": ""
     },
     "road": {
       "road": "Strade"

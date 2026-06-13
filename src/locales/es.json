@@ -173,19 +173,16 @@
         "animated": "¿Animado?",
         "avatar": "Avatar | Avatares"
       },
+      "avatar_frame": {
+        "avatar_frame": "Marco | Marcos"
+      },
       "background": {
         "background": "Fondo | Fondos"
       },
       "background_frame": {
         "background_frame": "Marco de fondo"
       },
-      "frame": {
-        "frame": "Marco | Marcos"
-      },
-      "is_default": "Es predeterminado",
-      "avatar_frame": {
-        "avatar_frame": "Marco | Marcos"
-      }
+      "is_default": "Es predeterminado"
     },
     "road": {
       "road": "Camino | Caminos"

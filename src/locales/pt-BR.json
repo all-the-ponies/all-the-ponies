@@ -173,19 +173,16 @@
         "animated": "",
         "avatar": "Avatar | Avatares"
       },
+      "avatar_frame": {
+        "avatar_frame": "Moldura | Molduras"
+      },
       "background": {
         "background": "Plano De Fundo | Planos De Fundo"
       },
       "background_frame": {
         "background_frame": "Moldura de Plano de Fundo"
       },
-      "frame": {
-        "frame": "Moldura | Molduras"
-      },
-      "is_default": "",
-      "avatar_frame": {
-        "avatar_frame": "Moldura | Molduras"
-      }
+      "is_default": ""
     },
     "road": {
       "road": "Estradas"

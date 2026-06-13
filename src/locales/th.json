@@ -173,19 +173,16 @@
         "animated": "",
         "avatar": "อวาตาร์ | อวาตาร์"
       },
+      "avatar_frame": {
+        "avatar_frame": "กรอบ | กรอบ"
+      },
       "background": {
         "background": "ฉากหลัง | ฉากหลัง"
       },
       "background_frame": {
         "background_frame": "กรอบ|ฉากหลัง"
       },
-      "frame": {
-        "frame": "กรอบ | กรอบ"
-      },
-      "is_default": "",
-      "avatar_frame": {
-        "avatar_frame": "กรอบ | กรอบ"
-      }
+      "is_default": ""
     },
     "road": {
       "road": "ถนน"
