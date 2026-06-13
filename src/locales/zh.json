@@ -173,19 +173,16 @@
         "animated": "是否为动态头像",
         "avatar": "头像 | 头像"
       },
+      "avatar_frame": {
+        "avatar_frame": "头像框 | 头像框"
+      },
       "background": {
         "background": "背景 | 背景"
       },
       "background_frame": {
         "background_frame": "背景框"
       },
-      "frame": {
-        "frame": "头像框 | 头像框"
-      },
-      "is_default": "是否为常驻头像",
-      "avatar_frame": {
-        "avatar_frame": "头像框 | 头像框"
-      }
+      "is_default": "是否为常驻头像"
     },
     "road": {
       "road": "道路"
