@@ -7,7 +7,7 @@ import { useRem } from '@/composables/useRem'
 import { language } from '@/globals'
 import type { ShopEntry } from '@/scripts/api.types'
 import { CATEGORIES, FilterFunctions, SortFunctions, type FilterFunctionsType } from '@/scripts/categories'
-import gameData from '@/scripts/gameData'
+import { getNamesForSearch, getObject } from '@/scripts/gameData'
 import { shopStore } from '@/stores/shopManager'
 import type { CategoryName } from '@/types/gameDataTypes'
 import { computedAsync } from '@vueuse/core'
@@ -54,15 +54,18 @@ const gameObjects = computed(() => {
         return []
     }
 
-    return Object.keys(shop.value).map((id) => gameData.getObject(id)).filter((gameObject) => gameObject !== null && gameObject.category != 'house')
+    return Object.keys(shop.value).map((id) => getObject(id)).filter((gameObject) => gameObject !== null && gameObject.category != 'house')
 })
 
 const availableCategories = computed((): CategoryName[] => {
-    const categories: Set<CategoryName> = new Set()
+    const categoriesSet: Set<CategoryName> = new Set()
 
-    gameObjects.value.forEach((gameObject) => categories.add(gameObject.category))
+    gameObjects.value.forEach((gameObject) => categoriesSet.add(gameObject.category))
 
     const categoriesMap = Object.keys(CATEGORIES)
+
+    let categories = [...categoriesSet]
+    categories = categories.filter(c => CATEGORIES[c])
     
     console.log('categories', categories)
     
@@ -146,7 +149,7 @@ const itemGap = useRem(.3)
         <SearchComponent
             class="search"
             :data="shop ? shownObjects : []"
-            :get-search-text="gameData.getNamesForSearch"
+            :get-search-text="getNamesForSearch"
             :get-exact-search-text="(item) => item.id"
             :filters="filterFunctions"
             :sorters="sortFunctions"

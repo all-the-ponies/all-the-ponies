@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import gameData from '@/scripts/gameData'
+import { getObject, translateName } from '@/scripts/gameData'
 import { computed } from 'vue'
 import VLazyImage from "v-lazy-image"
-import { language } from '@/globals'
 import type { GameObject, GameObjectId } from '@/types/gameDataTypes';
-import { staticImage } from '@/scripts/common';
+import { createAssetUrl } from '@/scripts/assets';
 
 const props = withDefaults(defineProps<{
     object: GameObjectId | GameObject | null,
@@ -13,14 +12,14 @@ const props = withDefaults(defineProps<{
     type: 'main',
 })
 
-const objectInfo = computed(() => gameData.getObject(props.object))
+const objectInfo = computed(() => getObject(props.object))
 
 const image = computed(() => {
-    return objectInfo.value?.image[props.type]
+    return objectInfo.value?.image[props.type].path
 })
 
 const name = computed(() => {
-    let name = objectInfo.value?.name[language.value.key]
+    let name = translateName(objectInfo.value).value
     return name
 })
 
@@ -30,7 +29,7 @@ const name = computed(() => {
 
 <template>
     <span v-if="object === null || !image"></span>
-    <VLazyImage v-else :src="staticImage(image)" :alt="name"></VLazyImage>
+    <VLazyImage v-else :src="createAssetUrl(image)" :alt="name"></VLazyImage>
 </template>
 <!-- <img v-else :src="staticImage(image)" :alt="name" loading="lazy"> -->
 

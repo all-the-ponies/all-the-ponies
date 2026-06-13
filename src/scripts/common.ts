@@ -152,3 +152,11 @@ export function findGap(sortedList: number[], start: number = 0) {
 
   return sortedList.at(-1) + 1
 }
+
+export function any(values: any[]): boolean {
+  return values.some(Boolean)
+}
+
+export function all(values: any[]): boolean {
+  return values.every(Boolean)
+}

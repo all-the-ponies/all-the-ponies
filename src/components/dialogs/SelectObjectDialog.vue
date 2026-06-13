@@ -4,7 +4,7 @@ import DialogComponent from '../DialogComponent.vue';
 import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
 import SearchComponent from '../SearchComponent.vue';
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories';
-import gameData from '@/scripts/gameData';
+import { gameObjects, getNames } from '@/scripts/gameData';
 import ObjectCard from '../ObjectCard.vue';
 import { language } from '@/globals';
 import { useRem } from '@/composables/useRem';
@@ -54,10 +54,10 @@ function selectObject(objectId: GameObjectId) {
 
 
 const selectedCategory = ref<CategoryName>('pony')
-const gameObjects = computed(() => Object.values(gameData.data.categories[selectedCategory.value].objects) as GameObject[])
+const objects = computed(() => gameObjects ? Object.values(gameObjects[selectedCategory.value].objects) as GameObject[] : [])
 
 
-const availableCategories = Object.keys(gameData.data.categories)
+const availableCategories = gameObjects ? Object.keys(gameObjects) : []
 
 
 const sortFunctions = computed(() => {
@@ -108,8 +108,8 @@ const itemGap = useRem(.3)
     >
         <SearchComponent
             class="search-section"
-            :data="gameObjects"
-            :get-search-text="gameData.getNames"
+            :data="objects"
+            :get-search-text="getNames"
             :get-exact-search-text="(item) => item.id"
             :sorters="sortFunctions"
             :filters="filterFunctions"

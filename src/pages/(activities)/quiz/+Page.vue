@@ -4,7 +4,7 @@ import Link from '@/components/Link.vue'
 import { language } from '@/globals'
 import { scrollIntoViewWithOffset, staticImage, transformName } from '@/scripts/common'
 import { formatTime, formatTimestamp } from '@/scripts/timeFunctions'
-import gameData from '@/scripts/gameData'
+import { gameObjects, translateName } from '@/scripts/gameData'
 import type { PonyType } from '@/types/gameDataTypes'
 // import { useSeoMeta } from '@unhead/vue'
 import { useMounted } from '@vueuse/core'
@@ -12,6 +12,7 @@ import { Config } from 'vike-vue/Config'
 // import { useConfig } from 'vike-vue/useConfig'
 import { computed, nextTick, onUnmounted, ref, useTemplateRef } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { createAssetUrl } from '@/scripts/assets'
 
 const { t } = useI18n()
 
@@ -46,7 +47,8 @@ const guessedPonies = ref<PonyType[]>([])
 const ponies = computed(() => {
     const ponies: PonyType[] = []
 
-    for (let pony of Object.values(gameData.data.categories.pony.objects)) {
+    if (!gameObjects) return []
+    for (let pony of Object.values(gameObjects.pony.objects)) {
         if (!options.value.includeUnused && (pony.tags.includes('unused') || pony.tags.includes('npc'))) {
           continue
         }
@@ -195,8 +197,8 @@ function win() {
                                 }
                             }"
                         >
-                            <img class="pony-portrait" :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]">
-                            {{ gameData.translateName(pony) }}
+                            <img class="pony-portrait" :src="createAssetUrl(pony.image.portrait.path)" :alt="translateName(pony).value">
+                            {{ translateName(pony) }}
                         </Link>
                     </div>
                 </div>

@@ -5,8 +5,9 @@ import CreateListDialog from '@/components/lists/createList/CreateListDialog.vue
 import SearchComponent from '@/components/SearchComponent.vue';
 import { useGameCardSize } from '@/composables/useGameCardSize';
 import { useRem } from '@/composables/useRem';
+import { createAssetUrl } from '@/scripts/assets';
 import { staticImage, transformName } from '@/scripts/common';
-import gameData from '@/scripts/gameData';
+import gameData, { getObject } from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
 import { ClientOnly } from 'vike-vue/ClientOnly';
 import { ref, useTemplateRef } from 'vue';
@@ -21,11 +22,11 @@ function createList() {
 }
 
 function getListImage(wishlist: Wishlist) {
-    const gameObject = gameData.getObject(wishlist.image.item)
+    const gameObject = getObject(wishlist.image.item)
     if (!gameObject) {
         return
     }
-    return gameObject.image[wishlist.image.image]
+    return gameObject.image[wishlist.image.image].path
 }
 
 async function deleteList(wishlist: Wishlist) {
@@ -64,7 +65,7 @@ const itemGap = useRem(.3)
                     <GameCard
                         class="item-card"
                         :title="item.name"
-                        :image="staticImage(getListImage(item))"
+                        :image="createAssetUrl(getListImage(item))"
                         :href="`/list/${item.id}/`"
                     >
                         <template #right>

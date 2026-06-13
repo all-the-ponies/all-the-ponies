@@ -9,7 +9,7 @@ import { useRem } from '@/composables/useRem';
 import { language } from '@/globals';
 import { FilterFunctions, SortFunctions } from '@/scripts/categories';
 import { staticImage } from '@/scripts/common';
-import gameData from '@/scripts/gameData';
+import gameData, { getNames, getObject, translateName } from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
 import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext'
@@ -36,7 +36,7 @@ console.log('wishlist', wishlist.value)
 const objects = computed(() => wishlist.value.items.map(item => {
     return {
         ...item,
-        item: gameData.getObject(item.item),
+        item: getObject(item.item),
         id: item.item,
     }
 }))
@@ -65,8 +65,8 @@ const sortFunctions = computed(() => {
         alphabetically: {
             name: 'sorting.alphabetically',
             check(a, b) {
-                const name1 = gameData.translateName(a.item).value
-                const name2 = gameData.translateName(b.item).value
+                const name1 = translateName(a.item).value
+                const name2 = translateName(b.item).value
                 return new Intl.Collator(language.value.code).compare(name1, name2)
             }
         },
@@ -106,7 +106,7 @@ const itemGap = useRem(.3)
         <section class="section">
             <SearchComponent
                 :data="objects"
-                :get-search-text="(item) => gameData.getNames(item.item)"
+                :get-search-text="(item) => getNames(item.item)"
                 :placeholder="$t('lists.messages.wishlist')"
                 :sorters="sortFunctions"
                 save-url

@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import gameData from '@/scripts/gameData'
-import { language } from '@/globals';
+import { getFortuneShopData, getObject, translateName } from '@/scripts/gameData'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { Location, PonyType, ShopType } from '@/types/gameDataTypes'
-import { staticImage } from '@/scripts/common'
 import { formatTime } from '@/scripts/timeFunctions';
 import BackButton from '@/components/buttons/BackButton.vue';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
@@ -18,6 +16,7 @@ import PriceHistory from '@/components/tables/PriceHistory.vue';
 import type { PriceHistoryType } from '@/scripts/api.types';
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
+import { createAssetUrl } from '@/scripts/assets';
 
 const pageContext = usePageContext()
 const data = useData<{shop: ShopType, priceHistory: PriceHistoryType | null}>()
@@ -51,14 +50,14 @@ const basePrice = computed(() => {
 })
 
 const name = computed(() => {
-    let name = gameData.translateName(shop.value).value
+    let name = translateName(shop.value).value
     return name
 })
 
 const residents = computed(() => {
     const residents: {[ L in Location ]+?: PonyType[]} = {}
     for (let ponyId of shop.value.residents) {
-        let pony = gameData.getObject(ponyId, 'pony')
+        let pony = getObject(ponyId, 'pony')
         if (!(pony.location in residents)) {
             residents[pony.location] = []
         }
@@ -68,22 +67,24 @@ const residents = computed(() => {
     return residents
 })
 
+const product = computed(() => getObject(shop.value.product, 'consumable'))
+
 const productCurrency = computed(() => {
-    if (shop.value.product.bits) {
+    if (product.value.consume.bits) {
         return 'Bits'
-    } else if (shop.value.product.gems) {
+    } else if (product.value.consume.gems) {
         return 'Gems'
     } else {
         return null
     }
 })
 
-const fortuneShopData = computed(() => gameData.getFortuneShopData(shop.value.id))
+const fortuneShopData = computed(() => getFortuneShopData(shop.value.id))
 
 </script>
 
 <template>
-    <Config :title="name" description="" :image="absoluteUrl(staticImage(shop.image.main))"></Config>
+    <Config :title="name" description="" :image="createAssetUrl(shop.image.main.path)"></Config>
 
     <div>
         <back-button fallback="/search/shops" />
@@ -94,7 +95,7 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(shop.value.id
             <ObjectPage :gameObject="shop">
                 <template #image>
                     <div class="shop-container">
-                        <img class="full-image" :src="`/images/${shop.image.main}`" :alt="name">
+                        <img class="full-image" :src="createAssetUrl(shop.image.main.path)" :alt="name">
                     </div>
                 </template>
                 <template #image-right>
@@ -156,25 +157,25 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(shop.value.id
                                     <th colspan="2">{{ $t('game_object.shop.product') }}</th>
                                 </tr>
                                 <tr>
-                                    <td>{{ shop.product.name[language.key] }}</td>
-                                    <td><img :src="`/images/${shop.product.image}`" style="height: 1em;"></td>
+                                    <td>{{ translateName(product) }}</td>
+                                    <td><img :src="createAssetUrl(product.image.main.path)" style="height: 1em;"></td>
                                 </tr>
                                 <tr>
                                     <td>{{ $t('game_object.shop.production_time') }}</td>
-                                    <td>{{ formatTime(shop.product.time) }}</td>
+                                    <td>{{ formatTime(product.time) }}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ $t('game_object.shop.profit') }}</td>
-                                    <td v-if="productCurrency"><currency-image :object="productCurrency">{{ shop.product.bits || shop.product.gems || shop.product.tls }}</currency-image></td>
-                                    <td v-else>{{ shop.product.tls }} <img :src="`/images/${shop.product.image}`" style="height: 1em;"></td>
+                                    <td v-if="productCurrency"><currency-image :object="productCurrency">{{ product.consume.bits || product.consume.gems || product.consume.tls }}</currency-image></td>
+                                    <td v-else>{{ product.consume.tls }} <img :src="createAssetUrl(product.image.main.path)" style="height: 1em;"></td>
                                 </tr>
                                 <tr>
-                                    <td>{{ gameData.translateName(gameData.getObject('XP', 'item')) }}</td>
-                                    <td><currency-image object="XP">{{ shop.product.xp }}</currency-image></td>
+                                    <td>{{ translateName(getObject('XP', 'item')) }}</td>
+                                    <td><currency-image object="XP">{{ product.consume.xp }}</currency-image></td>
                                 </tr>
                                 <tr>
                                     <td>{{ $t('game_object.building.skip_cost') }}</td>
-                                    <td><currency-image object="Gems">{{ shop.product.skip_cost }}</currency-image></td>
+                                    <td><currency-image object="Gems">{{ product.skip_cost }}</currency-image></td>
                                 </tr>
                             </template>
                         </tbody>
@@ -194,8 +195,8 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(shop.value.id
                             :href="`/${pony.category}/${pony.id}`"
                             class="resident link"
                         >
-                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
-                            <span class="resident-name">{{ gameData.translateName(pony) }}</span>
+                            <img :src="createAssetUrl(pony.image.portrait.path)" :alt="translateName(pony).value" :title="translateName(pony).value">
+                            <span class="resident-name">{{ translateName(pony) }}</span>
                         </Link>
                     </div>
                 </div>
@@ -207,12 +208,12 @@ const fortuneShopData = computed(() => gameData.getFortuneShopData(shop.value.id
                 <div>
                     <div class="residents">
                         <Link
-                            v-for="pony in shop.visitors.map((id) => gameData.getObject(id, 'pony'))"
+                            v-for="pony in shop.visitors.map((id) => getObject(id, 'pony'))"
                             :href="`/${pony.category}/${pony.id}`"
                             class="resident link"
                             >
-                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
-                            <span class="resident-name">{{ gameData.translateName(pony) }}</span>
+                            <img :src="createAssetUrl(pony.image.portrait.path)" :alt="translateName(pony).value" :title="translateName(pony).value">
+                            <span class="resident-name">{{ translateName(pony) }}</span>
                         </Link>
                     </div>
                 </div>

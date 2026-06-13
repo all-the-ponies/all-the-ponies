@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import gameData from '@/scripts/gameData'
+import gameData, { getObject, translateName } from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { HouseType, Location, PonyType } from '@/types/gameDataTypes'
@@ -14,6 +14,7 @@ import absoluteUrl from '@/scripts/absoluteUrl'
 import Link from '@/components/Link.vue'
 import { useData } from 'vike-vue/useData'
 import ObjectPage from '@/layouts/ObjectPage.vue';
+import { createAssetUrl } from '@/scripts/assets';
 
 
 const pageContext = usePageContext()
@@ -23,14 +24,14 @@ const house = computed(() => data.house)
 
 
 const name = computed(() => {
-    let name = gameData.translateName(house.value).value
+    let name = translateName(house.value).value
     return name
 })
 
 const residents = computed(() => {
     const residents: {[ L in Location ]+?: PonyType[]} = {}
     for (let ponyId of house.value.residents) {
-        let pony = gameData.getObject(ponyId, 'pony')
+        let pony = getObject(ponyId, 'pony')
         if (!(pony.location in residents)) {
             residents[pony.location] = []
         }
@@ -43,7 +44,7 @@ const residents = computed(() => {
 </script>
 
 <template>
-    <Config :title="name" description="" :image="absoluteUrl(staticImage(house.image.main))"></Config>
+    <Config :title="name" description="" :image="createAssetUrl(house.image.main.path)"></Config>
 
     <div>
         <back-button fallback="/search/houses" />
@@ -104,7 +105,7 @@ const residents = computed(() => {
                             :href="`/${pony.category}/${pony.id}`"
                             class="resident link"
                         >
-                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
+                            <img :src="createAssetUrl(pony.image.portrait.path)" :alt="translateName(pony).value" :title="translateName(pony).value">
                             <span class="resident-name">{{ gameData.translateName(pony) }}</span>
                         </Link>
                     </div>
@@ -117,11 +118,11 @@ const residents = computed(() => {
                 <div>
                     <div class="residents">
                         <Link
-                            v-for="pony in house.visitors.map((id) => gameData.getObject(id, 'pony'))"
+                            v-for="pony in house.visitors.map((id) => getObject(id, 'pony'))"
                             :href="`/${pony.category}/${pony.id}`"
                             class="resident link"
                             >
-                            <img :src="staticImage(pony.image.portrait)" :alt="pony.name[language.key]" :title="pony.name[language.key]">
+                            <img :src="createAssetUrl(pony.image.portrait.path)" :alt="translateName(pony).value" :title="translateName(pony).value">
                             <span class="resident-name">{{ gameData.translateName(pony) }}</span>
                         </Link>
                     </div>

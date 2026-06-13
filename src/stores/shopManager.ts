@@ -1,7 +1,7 @@
 import api from "@/scripts/api"
 import type { ShopEntry } from "@/scripts/api.types"
 import { notNullIsh } from "@/scripts/common"
-import gameData from "@/scripts/gameData"
+import { getObject } from "@/scripts/gameData"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
 import { HTTPError } from "ky"
 
@@ -109,9 +109,13 @@ class ShopStore {
     }
 
     async getShopInfo(id: GameObjectId | GameObject) {
-        const gameObject = gameData.getObject(id)
+        const gameObject = getObject(id)
         let token = null
         let entry: ShopEntry | null = null
+        let basePrice = {
+            currency: '',
+            amount: 0,
+        }
         if (gameObject.id in await this.shop) {
             entry = (await this.shop)[gameObject.id]
             if (entry?.in_shop) {
@@ -123,25 +127,31 @@ class ShopStore {
             }
         }
 
+        if (gameObject.category !== 'costume_part') {
+            token = gameObject.price?.token || token
+            basePrice.currency = gameObject.price?.base.currency
+            basePrice.amount = gameObject.price?.base.amount
+        }
+
         const result: PriceData = {
             id: gameObject.id,
             inShop: entry?.in_shop || false,
             hidden: entry?.hidden || false,
             tags: entry?.tags || [],
-            token: gameObject.price?.token || token || null,
+            token: token || null,
             price: {
                 base: {
-                    currency: chooseExisting(entry?.price?.base?.currency, gameObject?.price?.base?.currency),
-                    price: chooseExisting(entry?.price?.base?.price, gameObject?.price?.base?.amount),
+                    currency: chooseExisting(entry?.price?.base?.currency, basePrice.currency),
+                    price: chooseExisting(entry?.price?.base?.price, basePrice.amount),
                     tokens: chooseExisting(entry?.price?.base?.tokens),
                 },
                 sale: {
-                    currency: chooseExisting(entry?.price?.sale?.currency, gameObject?.price?.base?.currency),
+                    currency: chooseExisting(entry?.price?.sale?.currency, basePrice.currency),
                     price: chooseExisting(entry?.price?.sale?.price),
                     tokens: chooseExisting(entry?.price?.sale?.tokens),
                 },
                 royal: {
-                    currency: chooseExisting(entry?.price?.royal?.currency, gameObject?.price?.base?.currency),
+                    currency: chooseExisting(entry?.price?.royal?.currency, basePrice.currency),
                     price: chooseExisting(entry?.price?.royal?.price),
                     tokens: chooseExisting(entry?.price?.royal?.tokens),
                 },

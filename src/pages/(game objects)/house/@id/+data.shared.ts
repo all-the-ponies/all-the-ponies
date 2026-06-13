@@ -1,11 +1,11 @@
-import gameData from "@/scripts/gameData"
+import { getObject } from "@/scripts/gameData"
 import { render } from "vike/abort"
 import type { PageContext } from "vike/types"
 
-export function data(pageContext: PageContext) {
+export async function data(pageContext: PageContext) {
     const { id } = pageContext.routeParams
     
-    const house = gameData.getObject(id, 'house')
+    const house = getObject(id, 'house')
 
     if (house === null) {
         throw render(404, `House with id ${id} doesn't exist`)

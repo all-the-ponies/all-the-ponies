@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from 'vue';
-import DialogComponent from '../DialogComponent.vue';
-import AddToListDialog from '../dialogs/AddToListDialog.vue';
 import type { GameObjectId } from '@/types/gameDataTypes';
-import CreateListDialog from '../lists/createList/CreateListDialog.vue';
+import { useTemplateRef } from 'vue';
+import AddToListDialog from '../dialogs/AddToListDialog.vue';
 
 const props = defineProps<{
     gameObject: GameObjectId,

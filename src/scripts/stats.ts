@@ -1,7 +1,7 @@
 import { useSaveStore } from "@/stores/saveManager"
 import type { _DeepPartial } from "pinia"
 import { computed, reactive, type Ref } from "vue"
-import gameData from "./gameData"
+import { getObject } from "./gameData"
 import type { GameObjectId } from "@/types/gameDataTypes"
 
 
@@ -49,7 +49,7 @@ const ponies = computed(() => {
     }
 
     for (let [ponyId, ponyInfo] of Object.entries(save.ponies)) {
-        const pony = gameData.getObject(ponyId, 'pony')
+        const pony = getObject(ponyId, 'pony')
         if (!pony) {
             continue
         }
@@ -86,12 +86,13 @@ const shops = computed(() => {
     }
 
     for (let shopId of Object.keys(save.shops)) {
-        const shop = gameData.getObject(shopId, 'shop')
+        const shop = getObject(shopId, 'shop')
+        const product = getObject(shop.product, 'consumable')
 
         shops.total++
-        if (shop.product.bits > 0) {
+        if (product.consume.bits > 0) {
             shops.bits++
-        } else if (shop.product.gems > 0) {
+        } else if (product.consume.gems > 0) {
             shops.gems++
         } else {
             shops.others++

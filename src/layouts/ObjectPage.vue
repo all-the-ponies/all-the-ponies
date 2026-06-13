@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AddToListButton from '@/components/buttons/AddToListButton.vue';
-import { staticImage } from '@/scripts/common'
-import gameData from '@/scripts/gameData'
+import { createAssetUrl } from '@/scripts/assets';
+import { getObject, translateName } from '@/scripts/gameData'
 import type { GameObject, GameObjectId } from '@/types/gameDataTypes'
 import { computed } from 'vue'
 
@@ -10,9 +10,9 @@ const props = defineProps<{
     gameObject: GameObjectId | GameObject,
 }>()
 
-const gameObject = computed(() => gameData.getObject(props.gameObject))
-const name = computed(() => gameData.translateName(gameObject.value).value)
-const image = computed(() => gameObject.value?.image?.main)
+const gameObject = computed(() => getObject(props.gameObject))
+const name = computed(() => translateName(gameObject.value).value)
+const image = computed(() => gameObject.value?.image?.main.path)
 
 
 </script>
@@ -27,7 +27,7 @@ const image = computed(() => gameObject.value?.image?.main)
                         <slot name="image-left"></slot>
                     </div>
                     <slot name="image">
-                        <img :src="staticImage(image)" :alt="name">
+                        <img :src="createAssetUrl(image)" :alt="name">
                     </slot>
                     <div class="right-image-container">
                         <slot name="image-right"></slot>

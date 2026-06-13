@@ -3,13 +3,14 @@ import DialogComponent from '@/components/DialogComponent.vue';
 import SelectObjectDialog from '@/components/dialogs/SelectObjectDialog.vue';
 import GameCard from '@/components/GameCard.vue';
 import { pickRandom, staticImage } from '@/scripts/common';
-import gameData from '@/scripts/gameData';
+import { gameObjects, getObject } from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
 import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 import ChooseImageDialog from './ChooseImageDialog.vue';
 import { CATEGORIES } from '@/scripts/categories';
 import { useI18n } from 'vue-i18n';
+import { createAssetUrl } from '@/scripts/assets.ts';
 
 const { t } = useI18n()
 
@@ -30,7 +31,7 @@ const image = ref<{item: GameObjectId | null, image: string | null}>({
     image: null,
 })
 const tempItem = ref<GameObjectId>(null)
-const gameObject = computed(() => gameData.getObject(image.value?.item))
+const gameObject = computed(() => getObject(image.value?.item))
 const wishlistId = ref<number | null>(null)
 
 watch(name, () => errorMessage.value = '')
@@ -38,9 +39,9 @@ watch(name, () => errorMessage.value = '')
 function createList() {
     wishlistId.value = null
     name.value = ''
-    const randomObject = pickRandom(Object.values(gameData.data.categories[
-        pickRandom(Object.keys(gameData.data.categories).filter(category => category in CATEGORIES) as CategoryName[])
-    ].objects as GameObject[]))
+    const randomObject = gameObjects ? pickRandom(Object.values(gameObjects[
+        pickRandom(Object.keys(gameObjects).filter(category => category in CATEGORIES) as CategoryName[])
+    ].objects) as GameObject[]) as GameObject : null
 
     image.value.item = randomObject.id
     image.value.image = pickRandom(Object.keys(randomObject.image))
@@ -104,7 +105,7 @@ function submitObject(objectId: GameObjectId) {
 }
 
 function selectImage() {
-    const tempObject = gameData.getObject(tempItem.value)
+    const tempObject = getObject(tempItem.value)
     if (Object.keys(tempObject.image).length <= 1) {
         submitImage(Object.keys(tempObject.image)[0])
     } else {
@@ -148,7 +149,7 @@ defineExpose({
             <GameCard
                 :title="name || $t('lists.dialog.create_list.message.wishlist')"
                 hover
-                :image="staticImage(gameObject ? gameObject.image[image.image] : null)"
+                :image="createAssetUrl(gameObject ? gameObject.image[image.image].path : null)"
                 @click="selectObject()"
             ></GameCard>
         </div>

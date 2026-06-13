@@ -7,6 +7,7 @@ import acceptLanguage from 'accept-language'
 import { LOCALES } from '@/i18n'
 import { chooseDefaultLocale } from '@/scripts/chooseDefaultLocale'
 import { extractLocale } from './extractLocale'
+import { loadGameData } from '@/scripts/gameData'
 // import { inject as injectAnalytics } from "@vercel/analytics"
  
 export async function onCreateApp(pageContext: PageContext & {locale: string}) {
@@ -39,6 +40,8 @@ export async function onCreateApp(pageContext: PageContext & {locale: string}) {
     await setLanguage(pageContext.locale)
 
     app.use(i18n)
+
+    await loadGameData()
 
     // injectAnalytics()
 }

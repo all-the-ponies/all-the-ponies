@@ -3,7 +3,7 @@ import DialogComponent from '@/components/DialogComponent.vue'
 import { language } from '@/globals'
 import { pickRandom, staticImage, transformName } from '@/scripts/common'
 import { formatTime, formatTimestamp } from '@/scripts/timeFunctions'
-import gameData from '@/scripts/gameData'
+import { gameObjects, getObject, translateName } from '@/scripts/gameData'
 import type { PonyType } from '@/types/gameDataTypes'
 import { computed, nextTick, onUnmounted, ref, useTemplateRef, watch } from 'vue'
 import Link from '@/components/Link.vue'
@@ -12,6 +12,7 @@ import { useEventListener, useLocalStorage } from '@vueuse/core'
 import DevOnly from '@/components/DevOnly.vue'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { useActivityState } from '@/stores/activityState'
+import { createAssetUrl } from '@/scripts/assets'
 
 useEventListener('beforeunload', (e) => {
     if (playing.value) {
@@ -42,7 +43,8 @@ const loadFailedPonies = ref<PonyType[]>([])
 const ponies = computed(() => {
     const ponies: PonyType[] = []
 
-    for (let pony of Object.values(gameData.data.categories.pony.objects)) {
+    if (!gameObjects) return []
+    for (let pony of Object.values(gameObjects.pony.objects)) {
         if (loadFailedPonies.value.includes(pony)) {
             continue
         } else if (!options.value.includeUnused && (pony.tags.includes('unused') || pony.tags.includes('npc'))) {
@@ -65,7 +67,7 @@ const currentPony = ref<PonyType | null>(null)
 const displayName = ref<string>('')
 const imageUrl = computed(() => {
     if (currentPony.value !== null) {
-        return staticImage(currentPony.value.image.main)
+        return staticImage(currentPony.value.image.main.path)
     }
     return ''
 })
@@ -114,9 +116,9 @@ function resume() {
 }
 
 function restoreState() {
-    currentPony.value = gameData.getObject(activityState.guesser.currentPony, 'pony')
+    currentPony.value = getObject(activityState.guesser.currentPony, 'pony')
     timeElapsed.value = activityState.guesser.time
-    guessedPonies.value = activityState.guesser.guessedPonies.map(id => gameData.getObject(id, 'pony'))
+    guessedPonies.value = activityState.guesser.guessedPonies.map(id => getObject(id, 'pony'))
 }
 
 watch(
@@ -217,7 +219,7 @@ function guessedCorrectly() {
 
 function nextPony() {
     silhouette.value = false
-    displayName.value = gameData.translateName(currentPony.value).value
+    displayName.value = translateName(currentPony.value).value
     description.value = currentPony.value.description[language.value.key]
     canGuess.value = false
     nameInput.value.focus()
@@ -366,8 +368,8 @@ function imageLoadFailed() {
                             target="_blank"
                             :key="pony.id"
                         >
-                            <img class="pony-portrait" :src="staticImage(pony.image.portrait)" :alt="gameData.translateName(pony).value">
-                            <span>{{ gameData.translateName(pony).value }}</span>
+                            <img class="pony-portrait" :src="createAssetUrl(pony.image.portrait.path)" :alt="translateName(pony).value">
+                            <span>{{ translateName(pony).value }}</span>
                         </Link>
                     </div>
                 </div>

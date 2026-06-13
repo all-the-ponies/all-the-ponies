@@ -2,7 +2,7 @@
 import VLazyImage from "v-lazy-image"
 import InventoryAddButton from "./buttons/InventoryAddButton.vue"
 
-import gameData from '@/scripts/gameData'
+import gameData, { getObject, groupQuests, translateName } from '@/scripts/gameData'
 import { computed, shallowRef } from 'vue'
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
 import { shopStore } from "@/stores/shopManager"
@@ -14,6 +14,7 @@ import { staticImage, notNullIsh } from "@/scripts/common"
 import Link from "./Link.vue"
 import GameCard from "./GameCard.vue"
 import AddToListButton from "./buttons/AddToListButton.vue"
+import { createAssetUrl } from "@/scripts/assets.ts"
 
 const shopManager = shopStore
 
@@ -25,14 +26,15 @@ const props = defineProps<{
     hover?: boolean,
 }>()
 
-const gameObject = computed(() => gameData.getObject(props.object))
+const gameObject = computed(() => getObject(props.object))
+
 
 const name = computed(() => {
-    let name = gameData.translateName(gameObject.value).value
+    let name = translateName(gameObject.value).value
     return name
 })
 
-const image = computed(() => 'preview' in gameObject.value.image ? gameObject.value.image.preview : gameObject.value.image.main)
+const image = computed(() => 'preview' in gameObject.value.image ? gameObject.value.image.preview.path : gameObject.value.image.main.path)
 
 const canAdd = computed(() => ['pony', 'shop'].includes(gameObject.value.category))
 
@@ -48,7 +50,7 @@ const showProIcon = computed(() => {
             showPro = true
             break
         }
-        if (!gameData.data.group_quests.quests[id].special) {
+        if (!groupQuests.quests[id].special) {
             showPro = true
             break
         }
@@ -89,7 +91,7 @@ const shopInfo = computedAsync(
     <GameCard
         class="object-card"
         :title="name"
-        :image="staticImage(image)"
+        :image="createAssetUrl(image)"
         :alt="name"
         :priceData="!gettingShopInfo && showPrice ? shopInfo : null"
         :href="props.isLink ? `/${gameObject.category}/${gameObject.id}/` : null"

@@ -1,10 +1,12 @@
 import { LOCALES } from "../src/i18n"
-import gameData from "../src/scripts/gameData"
+import gameData, { loadGameData, gameObjects } from "../src/scripts/gameData"
 import fs from 'fs'
 import path from "path"
 import { resolve } from 'path'
 import { Readable } from 'stream'
 import { SitemapAndIndexStream, SitemapStream } from 'sitemap'
+
+await loadGameData()
 
 const BASE_URL = 'https://all-the-ponies.com'
 // const CHUNK_SIZE = 1000
@@ -83,7 +85,7 @@ PAGES.forEach((page) => {
 
 
 for (let category of CATEGORY_NAMES) {
-    for (let gameObject of Object.keys(gameData.data.categories[category].objects)) {
+    for (let gameObject of Object.keys(gameObjects[category].objects)) {
         for (let locale of LOCALE_CODES) {
             sitemapStream.write({
                 url: `/${locale}/${category}/${gameObject}/`,

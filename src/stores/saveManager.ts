@@ -1,7 +1,7 @@
 import { FRIEND_CODE_PATTERN } from "@/globals/constants"
 import api from "@/scripts/api"
 import { notNullIsh } from "@/scripts/common"
-import gameData from "@/scripts/gameData"
+import { getObject } from "@/scripts/gameData"
 import type { TDateISO } from "@/types/date"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
 import type { HTTPError } from "ky"
@@ -53,7 +53,7 @@ export const useSaveStore = defineStore('save', {
         houses: (state) => {
             const houses: Set<GameObjectId> = new Set()
             for (let ponyId of Object.keys(state.ponies)) {
-                const pony = gameData.getObject(ponyId, 'pony')
+                const pony = getObject(ponyId, 'pony')
                 if (pony != null && !houses.has(pony.house)) {
                     houses.add(pony.house)
                 }
@@ -75,7 +75,7 @@ export const useSaveStore = defineStore('save', {
     },
     actions: {
         addPony(id: GameObjectId | GameObject, info: Partial<Omit<PonyInventoryEntry, 'id'>> = {}) {
-            const pony = gameData.getObject(id, 'pony')
+            const pony = getObject(id, 'pony')
             if (pony === null) {
                 throw TypeError(`Invalid pony id: ${id}`)
             }
@@ -87,7 +87,7 @@ export const useSaveStore = defineStore('save', {
             }
 
             if (pony.changeling.id) {
-                const changelingPony = gameData.getObject(pony.changeling.id, 'pony')
+                const changelingPony = getObject(pony.changeling.id, 'pony')
                 if (changelingPony.max_level) {
                     ponyInfo.level = 5
                 }
@@ -112,7 +112,7 @@ export const useSaveStore = defineStore('save', {
             this.ponies[pony.id] = ponyInfo
         },
         addShop(id: GameObjectId, info: Partial<Omit<ShopInventoryEntry, 'id'>> = {}) {
-            const shop = gameData.getObject(id, 'shop')
+            const shop = getObject(id, 'shop')
             if (shop === null) {
                 throw TypeError(`Invalid shop id: ${id}`)
             }
@@ -139,7 +139,7 @@ export const useSaveStore = defineStore('save', {
 
         removePony(id: GameObjectId) {
             if (id in this.ponies) {
-                const pony = gameData.getObject(id, 'pony')
+                const pony = getObject(id, 'pony')
                 delete this.ponies[id]
                 if (pony.group.length) {
                     for (let friend of pony.group) {
@@ -157,7 +157,7 @@ export const useSaveStore = defineStore('save', {
         },
 
         ownedRef(id: GameObjectId) {
-            const gameObject = gameData.getObject(id)
+            const gameObject = getObject(id)
             switch (gameObject.category) {
                 case 'pony':
                     return computed(() => id in this.ponies)
@@ -194,7 +194,7 @@ export const useSaveStore = defineStore('save', {
             let ponies = Array.isArray(saveData.inventory.ponies) ? saveData.inventory.ponies : Object.values(saveData.inventory.ponies)
             
             for (let pony of ponies) {
-                const ponyInfo = gameData.getObject(pony.id, 'pony')
+                const ponyInfo = getObject(pony.id, 'pony')
                 
                 if (
                     ponyInfo.tags.includes('npc') ||
