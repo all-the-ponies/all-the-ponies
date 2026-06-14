@@ -27,6 +27,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2}'],
+        cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/assets\.all-the-ponies\.com\/.*/i,
@@ -42,24 +43,104 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: 'All The Ponies',
-        short_name: 'ATP',
-        description: 'Get accurate info about MLP: Magic Princess and track your collection',
-        theme_color: '#FF6B9B',
-        background_color: '#e1f2fa',
-        display: 'standalone',
-        start_url: '/',
+        id: "https://all-the-ponies.com/",
+        start_url: "/",
+        display: "standalone",
+        name: "All The Ponies",
+        scope: "/",
+        short_name: "All The Ponies",
+        theme_color: "#ff6b9b",
+        background_color: "rgba(225, 242, 250, 1)",
+        description: "Get accurate info about MLP: Magic Princess and track your collection",
+        shortcuts: [
+          {
+            name: "Ponies",
+            url: "/search/ponies",
+            description: "Search all the ponies in the game"
+          },
+          {
+            name: "Inventory",
+            url: "/inventory",
+            description: "View your inventory"
+          },
+          {
+            name: "Who's That Pony?",
+            url: "/guesser",
+            description: "Guess the pony from the silhouette"
+          }
+        ],
+        categories: [
+          "entertainment",
+          "games",
+          "reference"
+        ],
         icons: [
           {
-            src: '/favicon/favicon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
+            src: "/icons/icon-72x72.png",
+            sizes: "72x72",
+            type: "image/png",
+            purpose: "any"
           },
           {
-            src: '/favicon/favicon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
+            src: "/icons/icon-96x96.png",
+            sizes: "96x96",
+            type: "image/png",
+            purpose: "any"
           },
+          {
+            src: "/icons/icon-128x128.png",
+            sizes: "128x128",
+            type: "image/png",
+            purpose: "any"
+          },
+          {
+            src: "/icons/icon-144x144.png",
+            sizes: "144x144",
+            type: "image/png",
+            purpose: "any"
+          },
+          {
+            src: "/icons/icon-152x152.png",
+            sizes: "152x152",
+            type: "image/png",
+            purpose: "any"
+          },
+          {
+            src: "/icons/icon-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "any"
+          },
+          {
+            src: "/icons/maskable-icon-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
+            purpose: "maskable"
+          },
+          {
+            src: "/icons/icon-384x384.png",
+            sizes: "384x384",
+            type: "image/png",
+            purpose: "any"
+          },
+          {
+            src: "/icons/maskable-icon-384x384.png",
+            sizes: "384x384",
+            type: "image/png",
+            purpose: "maskable"
+          },
+          {
+            src: "/icons/icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any"
+          },
+          {
+            src: "/icons/maskable-icon-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable"
+          }
         ],
       },
     }),
