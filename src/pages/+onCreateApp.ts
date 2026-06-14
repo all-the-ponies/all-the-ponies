@@ -2,12 +2,12 @@
 
  
 import { i18n, setLanguage } from '@/globals'
-import type { PageContext } from 'vike/types'
-import acceptLanguage from 'accept-language'
 import { LOCALES } from '@/i18n'
 import { chooseDefaultLocale } from '@/scripts/chooseDefaultLocale'
-import { extractLocale } from './extractLocale'
 import { loadGameData } from '@/scripts/gameData'
+import acceptLanguage from 'accept-language'
+import type { PageContext } from 'vike/types'
+import { extractLocale } from './extractLocale'
 // import { inject as injectAnalytics } from "@vercel/analytics"
  
 export async function onCreateApp(pageContext: PageContext & {locale: string}) {

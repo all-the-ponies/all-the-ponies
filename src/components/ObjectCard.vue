@@ -1,20 +1,14 @@
 <script lang="ts" setup>
-import VLazyImage from "v-lazy-image"
 import InventoryAddButton from "./buttons/InventoryAddButton.vue"
 
-import gameData, { getObject, groupQuests, translateName } from '@/scripts/gameData'
-import { computed, shallowRef } from 'vue'
-import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
-import { shopStore } from "@/stores/shopManager"
-import { computedAsync } from "@vueuse/core"
-import PriceButton from "./buttons/PriceButton.vue"
-import RoyalIcon from "./icons/store/RoyalIcon.vue"
-import ObjectImage from "./ObjectImage.vue"
-import { staticImage, notNullIsh } from "@/scripts/common"
-import Link from "./Link.vue"
-import GameCard from "./GameCard.vue"
-import AddToListButton from "./buttons/AddToListButton.vue"
 import { createAssetUrl } from "@/scripts/assets.ts"
+import { getObject, groupQuests, translateName } from '@/scripts/gameData'
+import { shopStore } from "@/stores/shopManager"
+import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
+import { computedAsync } from "@vueuse/core"
+import { computed, shallowRef } from 'vue'
+import AddToListButton from "./buttons/AddToListButton.vue"
+import GameCard from "./GameCard.vue"
 
 const shopManager = shopStore
 

@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { getObject, translateName } from '@/scripts/gameData'
-import { computed } from 'vue'
-import VLazyImage from "v-lazy-image"
-import type { GameObject, GameObjectId } from '@/types/gameDataTypes';
 import { createAssetUrl } from '@/scripts/assets';
+import { getObject, translateName } from '@/scripts/gameData';
+import type { GameObject, GameObjectId } from '@/types/gameDataTypes';
+import VLazyImage from "v-lazy-image";
+import { computed } from 'vue';
 
 const props = withDefaults(defineProps<{
     object: GameObjectId | GameObject | null,

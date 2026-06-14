@@ -1,16 +1,14 @@
 <script lang="ts" setup generic="ITEM extends {id: string | number, [key: string]: any}">
-import { computed, ref, useTemplateRef, watch, watchEffect } from 'vue'
-import { language } from '@/globals'
-import Paginator from './Paginator.vue'
-import DialogComponent from './DialogComponent.vue'
 import type { FilterFunctionsType, SortFunctionsType } from '@/scripts/categories'
-import { usePageContext } from 'vike-vue/usePageContext'
-import { modifyUrl } from 'vike/modifyUrl'
+import { removeSymbols } from '@/scripts/common'
 import createFuzzySearch from '@nozbe/microfuzz'
 import { isClient, useElementSize, useMounted } from '@vueuse/core'
-import { RecycleScroller, WindowScroller } from 'vue-virtual-scroller'
+import { usePageContext } from 'vike-vue/usePageContext'
+import { modifyUrl } from 'vike/modifyUrl'
+import { computed, ref, useTemplateRef, watch } from 'vue'
+import { WindowScroller } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
-import { removeSymbols } from '@/scripts/common'
+import DialogComponent from './DialogComponent.vue'
 
 const pageContext = usePageContext()
 const isMounted = useMounted()

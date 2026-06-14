@@ -1,5 +1,5 @@
-import { useElementSize, useMounted } from "@vueuse/core";
-import { computed, onMounted, ref, toValue, watch, watchEffect, type MaybeRefOrGetter } from "vue";
+import { useMounted } from "@vueuse/core";
+import { computed, toValue, type MaybeRefOrGetter } from "vue";
 
 
 // Currently not listening for font size changes

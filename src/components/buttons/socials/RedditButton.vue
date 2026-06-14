@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import redditLogo from '@/assets/images/logos/reddit/Reddit-symbol-flat.svg';
 import type { AnchorHTMLAttributes } from 'vue';
 import SocialButton from './SocialButton.vue';
-import redditLogo from '@/assets/images/logos/reddit/Reddit-symbol-flat.svg'
 
 const props = defineProps<{
     href: string,

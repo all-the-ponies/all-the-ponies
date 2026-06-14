@@ -2,17 +2,15 @@
 import DialogComponent from '@/components/DialogComponent.vue'
 import Link from '@/components/Link.vue'
 import { language } from '@/globals'
-import { scrollIntoViewWithOffset, staticImage, transformName } from '@/scripts/common'
-import { formatTime, formatTimestamp } from '@/scripts/timeFunctions'
+import { createAssetUrl } from '@/scripts/assets'
+import { scrollIntoViewWithOffset, transformName } from '@/scripts/common'
 import { gameObjects, translateName } from '@/scripts/gameData'
+import { formatTime, formatTimestamp } from '@/scripts/timeFunctions'
 import type { PonyType } from '@/types/gameDataTypes'
-// import { useSeoMeta } from '@unhead/vue'
 import { useMounted } from '@vueuse/core'
 import { Config } from 'vike-vue/Config'
-// import { useConfig } from 'vike-vue/useConfig'
 import { computed, nextTick, onUnmounted, ref, useTemplateRef } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { createAssetUrl } from '@/scripts/assets'
 
 const { t } = useI18n()
 

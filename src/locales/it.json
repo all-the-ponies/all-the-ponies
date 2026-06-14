@@ -182,7 +182,10 @@
       "background_frame": {
         "background_frame": "Cornice sfondo"
       },
-      "is_default": ""
+      "is_default": "",
+      "cutie_mark": {
+        "cutie_mark": "Cutie Mark | Cutie Mark"
+      }
     },
     "road": {
       "road": "Strade"
@@ -196,6 +199,9 @@
     },
     "token": {
       "token": "Accessori"
+    },
+    "pet": {
+      "pet": "Animale Da Compagnia | Pets"
     }
   },
   "group_quests": {

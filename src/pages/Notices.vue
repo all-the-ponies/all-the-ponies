@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import DiscordButton from '@/components/buttons/socials/DiscordButton.vue';
-import GitHubButton from '@/components/buttons/socials/GitHubButton.vue';
 import WeblateButton from '@/components/buttons/socials/WeblateButton.vue';
 import Link from '@/components/Link.vue';
-import Notice from '@/components/notice/Notice.vue'
+import Notice from '@/components/notice/Notice.vue';
 import links from '@/globals/links';
 
 </script>

@@ -1,9 +1,8 @@
 import { language } from "@/globals"
+import { useSaveStore } from "@/stores/saveManager"
+import type { Ref } from "vue"
 import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType } from "../types/gameDataTypes"
 import { getObject, groupQuests, translateName } from "./gameData"
-import type { Ref } from "vue"
-import { useSaveStore } from "@/stores/saveManager"
-import { isClient, useMounted } from "@vueuse/core"
 
 let saveManager: ReturnType<typeof useSaveStore>
 
@@ -46,21 +45,35 @@ export const CATEGORIES: Partial<Record<CategoryName, {
       string: 'game_object.profile_decorations.avatar_frame.avatar_frame',
       plural: 'avatar_frames',
     },
-    // background_frame: {
-    //     string: 'game_object.profile_decorations.background_frame.background_frame',
-    // },
-    // background: {
-    //     string: 'game_object.profile_decorations.background.background',
-    // },
+    background: {
+        string: 'game_object.profile_decorations.background.background',
+        plural: 'backgrounds',
+    },
+    background_frame: {
+        string: 'game_object.profile_decorations.background_frame.background_frame',
+        plural: 'background_frames',
+    },
+    cutie_mark: {
+        string: 'game_object.profile_decorations.cutie_mark.cutie_mark',
+        plural: 'cutie_marks',
+    },
+    pet: {
+        string: 'game_object.pet.pet',
+        plural: 'pets',
+    },
 }
 
-export const PLURAL_CATEGORY_MAP = {
+export const PLURAL_CATEGORY_MAP: Record<string, CategoryName> = {
     ponies: 'pony',
     houses: 'house',
     shops: 'shop',
     decor: 'decor',
     avatars: 'avatar',
     avatar_frames: 'avatar_frame',
+    backgrounds: 'background',
+    background_frames: 'background_frame',
+    cutie_marks: 'cutie_mark',
+    pets: 'pet',
 }
 
 export interface SortFunctionsType {

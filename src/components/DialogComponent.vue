@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ClientOnly } from 'vike-vue/ClientOnly'
-import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
-import XButton from './buttons/XButton.vue'
-import { resolve } from 'path';
+import { ClientOnly } from 'vike-vue/ClientOnly';
+import { nextTick, ref, useTemplateRef } from 'vue';
+import XButton from './buttons/XButton.vue';
 
 const emit = defineEmits({
     open: null,

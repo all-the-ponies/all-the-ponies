@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { computed, ref, useTemplateRef } from 'vue';
-import DialogComponent from '../DialogComponent.vue';
-import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
-import SearchComponent from '../SearchComponent.vue';
+import { useGameCardSize } from '@/composables/useGameCardSize';
+import { useRem } from '@/composables/useRem';
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories';
 import { gameObjects, getNames } from '@/scripts/gameData';
+import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
+import { computed, ref, useTemplateRef } from 'vue';
+import DialogComponent from '../DialogComponent.vue';
 import ObjectCard from '../ObjectCard.vue';
-import { language } from '@/globals';
-import { useRem } from '@/composables/useRem';
-import { useGameCardSize } from '@/composables/useGameCardSize';
+import SearchComponent from '../SearchComponent.vue';
 
 const props = defineProps<{
 

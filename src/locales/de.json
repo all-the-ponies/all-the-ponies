@@ -182,7 +182,10 @@
       "background_frame": {
         "background_frame": "Hintergrundrahmen"
       },
-      "is_default": ""
+      "is_default": "",
+      "cutie_mark": {
+        "cutie_mark": "Schönheitsfleck | Schönheitsflecken"
+      }
     },
     "road": {
       "road": "Straßen"
@@ -196,6 +199,9 @@
     },
     "token": {
       "token": "Marken"
+    },
+    "pet": {
+      "pet": "Haustier | Pets"
     }
   },
   "group_quests": {

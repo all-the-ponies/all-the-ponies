@@ -1,6 +1,6 @@
-import type { PageContextServer } from "vike/types"
 import { env } from 'cloudflare:workers'
 import ky from "ky"
+import type { PageContextServer } from "vike/types"
 
 export type Data = {
     credits: Record<string, Translator>,

@@ -182,7 +182,10 @@
       "background_frame": {
         "background_frame": "背景框"
       },
-      "is_default": "是否为常驻头像"
+      "is_default": "是否为常驻头像",
+      "cutie_mark": {
+        "cutie_mark": "可爱标志 | 可爱标志"
+      }
     },
     "road": {
       "road": "道路"
@@ -196,6 +199,9 @@
     },
     "token": {
       "token": "礼物"
+    },
+    "pet": {
+      "pet": "宠物 | Pets"
     }
   },
   "group_quests": {

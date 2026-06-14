@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import kofiLogo from '@/assets/images/logos/kofi/kofi-symbol.webp';
 import type { AnchorHTMLAttributes } from 'vue';
 import SocialButton from './SocialButton.vue';
-import kofiLogo from '@/assets/images/logos/kofi/kofi-symbol.webp'
 
 const props = defineProps<{
     href: string,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import wikiLogo from '@/assets/images/logos/wiki/wiki-symbol.png';
 import type { AnchorHTMLAttributes } from 'vue';
 import SocialButton from './SocialButton.vue';
-import wikiLogo from '@/assets/images/logos/wiki/wiki-symbol.png'
 
 const props = defineProps<{
     href: string,

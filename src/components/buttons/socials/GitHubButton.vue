@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import githubLogo from '@/assets/images/logos/github/github-symbol-white.svg';
 import type { AnchorHTMLAttributes } from 'vue';
 import SocialButton from './SocialButton.vue';
-import githubLogo from '@/assets/images/logos/github/github-symbol-white.svg'
 
 const props = defineProps<{
     href: string,

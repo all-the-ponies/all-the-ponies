@@ -183,7 +183,10 @@
       "background_frame": {
         "background_frame": "Background Frame | Background Frames"
       },
-      "is_default": "Is default"
+      "is_default": "Is default",
+      "cutie_mark": {
+        "cutie_mark": "Cutie Mark | Cutie Marks"
+      }
     },
     "road": {
       "road": "Road | Roads"
@@ -197,6 +200,9 @@
     },
     "token": {
       "token": "Token | Tokens"
+    },
+    "pet": {
+      "pet": "Pet | Pets"
     }
   },
   "group_quests": {

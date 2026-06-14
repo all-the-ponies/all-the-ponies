@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import Link from './Link.vue'
+import { isClient } from '@vueuse/core'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
-import { isClient } from '@vueuse/core'
+import { computed } from 'vue'
+import Link from './Link.vue'
 
 const pageContext = usePageContext()
 const searchQuery = computed(() => pageContext.urlParsed.search)

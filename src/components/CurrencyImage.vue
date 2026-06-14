@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ObjectImage from './ObjectImage.vue'
+import ObjectImage from './ObjectImage.vue';
 
 const props = defineProps({
     object: {

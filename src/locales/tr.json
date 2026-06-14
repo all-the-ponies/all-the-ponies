@@ -182,7 +182,10 @@
       "background_frame": {
         "background_frame": "Arka Plan Çerçevesi"
       },
-      "is_default": "Varsayılan"
+      "is_default": "Varsayılan",
+      "cutie_mark": {
+        "cutie_mark": "Güzellik İşareti | Cutie Marks"
+      }
     },
     "road": {
       "road": "Yol | Yollar"
@@ -196,6 +199,9 @@
     },
     "token": {
       "token": "Obje | Objeler"
+    },
+    "pet": {
+      "pet": "Evcil Hayvan | Pets"
     }
   },
   "group_quests": {

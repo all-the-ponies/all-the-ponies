@@ -1,8 +1,7 @@
 import { useSaveStore } from "@/stores/saveManager"
-import type { _DeepPartial } from "pinia"
+import type { GameObjectId } from "@/types/gameDataTypes"
 import { computed, reactive, type Ref } from "vue"
 import { getObject } from "./gameData"
-import type { GameObjectId } from "@/types/gameDataTypes"
 
 
 interface SaveStats {

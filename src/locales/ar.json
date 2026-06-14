@@ -182,7 +182,10 @@
       "background_frame": {
         "background_frame": "إطار الخلفية"
       },
-      "is_default": ""
+      "is_default": "",
+      "cutie_mark": {
+        "cutie_mark": "علامة الجمال | علامات الجمال"
+      }
     },
     "road": {
       "road": "الطرق"
@@ -196,6 +199,9 @@
     },
     "token": {
       "token": "القطع"
+    },
+    "pet": {
+      "pet": "حيوان أليف | Pets"
     }
   },
   "group_quests": {

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import CurrencyImage from '@/components/CurrencyImage.vue'
-import { formatTime } from '@/scripts/timeFunctions'
-import gameData, { getObject, translateName } from '@/scripts/gameData'
+import { getObject, translateName } from '@/scripts/gameData'
 import saveStats from '@/scripts/stats'
+import { formatTime } from '@/scripts/timeFunctions'
 import { useSaveStore } from '@/stores/saveManager'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'

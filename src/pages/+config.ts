@@ -1,6 +1,6 @@
+import vikeVuePinia from 'vike-vue-pinia/config';
+import vikeVue from 'vike-vue/config';
 import type { Config } from "vike/types";
-import vikeVue from 'vike-vue/config'
-import vikeVuePinia from 'vike-vue-pinia/config'
 
 export default {
     extends: [vikeVue, vikeVuePinia],

@@ -2,15 +2,15 @@
 import DialogComponent from '@/components/DialogComponent.vue';
 import SelectObjectDialog from '@/components/dialogs/SelectObjectDialog.vue';
 import GameCard from '@/components/GameCard.vue';
-import { pickRandom, staticImage } from '@/scripts/common';
+import { createAssetUrl } from '@/scripts/assets.ts';
+import { CATEGORIES } from '@/scripts/categories';
+import { pickRandom } from '@/scripts/common';
 import { gameObjects, getObject } from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
 import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
-import ChooseImageDialog from './ChooseImageDialog.vue';
-import { CATEGORIES } from '@/scripts/categories';
 import { useI18n } from 'vue-i18n';
-import { createAssetUrl } from '@/scripts/assets.ts';
+import ChooseImageDialog from './ChooseImageDialog.vue';
 
 const { t } = useI18n()
 

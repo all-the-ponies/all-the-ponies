@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import XButton from '../buttons/XButton.vue';
-import { ClientOnly } from 'vike-vue/ClientOnly';
 import { useGlobalStateStore } from '@/stores/globalState';
+import { ClientOnly } from 'vike-vue/ClientOnly';
+import { computed } from 'vue';
+import XButton from '../buttons/XButton.vue';
 
 const globalState = useGlobalStateStore()
 

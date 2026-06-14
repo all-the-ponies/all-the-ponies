@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { GameObjectId } from '@/types/gameDataTypes';
-import DialogComponent from '../DialogComponent.vue';
-import { computed, ref, useTemplateRef } from 'vue';
 import { useListStore, type Wishlist } from '@/stores/listStore';
+import type { GameObjectId } from '@/types/gameDataTypes';
+import { computed, ref, useTemplateRef } from 'vue';
+import DialogComponent from '../DialogComponent.vue';
 import CreateListDialog from '../lists/createList/CreateListDialog.vue';
 
 const listStore = useListStore()

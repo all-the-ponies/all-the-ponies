@@ -182,7 +182,10 @@
       "background_frame": {
         "background_frame": "배경 프레임"
       },
-      "is_default": ""
+      "is_default": "",
+      "cutie_mark": {
+        "cutie_mark": "큐티 마크 | 큐티 마크"
+      }
     },
     "road": {
       "road": "도로"
@@ -196,6 +199,9 @@
     },
     "token": {
       "token": "토큰"
+    },
+    "pet": {
+      "pet": "애완동물 | Pets"
     }
   },
   "group_quests": {

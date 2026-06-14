@@ -1,9 +1,8 @@
-import { LOCALES } from '@/i18n'
+import { chooseDefaultLocale } from '@/scripts/chooseDefaultLocale'
 import { redirect } from 'vike/abort'
 import { modifyUrl } from 'vike/modifyUrl'
 import type { PageContextClient } from 'vike/types'
 import { extractLocale } from './extractLocale'
-import { chooseDefaultLocale } from '@/scripts/chooseDefaultLocale'
  
 export function onBeforeRoute(pageContext: PageContextClient) {
   let { urlWithoutLocale, pathnameWithoutLocale, locale } = extractLocale(pageContext.urlParsed)

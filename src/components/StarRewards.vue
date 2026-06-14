@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import ObjectImage from './ObjectImage.vue'
 import { type StarReward } from '@/types/gameDataTypes';
+import { computed } from 'vue';
+import ObjectImage from './ObjectImage.vue';
 
 const props = defineProps<{
   modelValue?: number,

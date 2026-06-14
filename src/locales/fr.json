@@ -183,7 +183,10 @@
       "background_frame": {
         "background_frame": "Cadre de fond"
       },
-      "is_default": "Est par défaut"
+      "is_default": "Est par défaut",
+      "cutie_mark": {
+        "cutie_mark": "Marque De Beauté | Marques De Beauté"
+      }
     },
     "road": {
       "road": "Routes"
@@ -197,6 +200,9 @@
     },
     "token": {
       "token": "Jetons"
+    },
+    "pet": {
+      "pet": "Familier | Pets"
     }
   },
   "group_quests": {
