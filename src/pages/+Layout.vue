@@ -14,7 +14,7 @@ const pageContext = usePageContext()
 
 <template>
     <Head>
-        <meta name="theme-color" content="#FF6B9B" />
+        <meta name="application-name" :content="$t('site.title')">
 
         <link rel="canonical" :href="absoluteUrl(
                 modifyUrl(
