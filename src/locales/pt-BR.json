@@ -1,36 +1,37 @@
 {
   "about": {
     "description": {
-      "body": "",
-      "quiz_link": ""
+      "body": "All The Ponies foi inicialmente criado por {me} como um site para {quiz_link}, porque um quiz que eu achei online mal cobria a superfície de pôneis. Mais tarde isso se expandiu para um recurso de informações precisas sobre coisas no jogo, gerenciar o que você tem, e é claro, pequenas atividades que você pode jogar.",
+      "quiz_link": "Nomeie quantos pôneis você conseguir"
     },
     "sections": {
       "credits": {
+        "check_failed": "Erro: não pode achar tradutores",
         "message": {
           "credits_list": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": ""
+            "1": "Este site foi construído por {ego}.",
+            "2": "Obrigada a {bass} por ajudar a carregar os pôneis com um código de amigo.",
+            "3": "A fonte usada é {font}, que também é usada no jogo.",
+            "4": "O site foi construído usando {vue} para deixar minha vida mais fácil e permitir uma experiência mais dinâmica."
           }
         },
-        "title": ""
+        "title": "Créditos"
       },
       "translations": {
-        "title": ""
+        "title": "Traduções"
       }
     },
     "title": "Sobre"
   },
   "button": {
     "cancel": "Cancelar",
-    "hint": "",
+    "hint": "Dica",
     "no": "Não",
     "ok": "Ok",
     "share": "Publicar",
     "skip": "Pular",
     "start": "Iniciar",
-    "stop": "",
+    "stop": "Pare",
     "yes": "Sim"
   },
   "check_save": {
@@ -40,72 +41,72 @@
   },
   "common": {
     "date": {
-      "current": "",
-      "range": ""
+      "current": "atual",
+      "range": "{start} até {end}"
     },
-    "export": "",
+    "export": "Exportar",
     "help": "Ajuda",
-    "import": "",
-    "info": "",
+    "import": "Importar",
+    "info": "Info",
     "name": "Nome",
     "new": "Novo",
-    "or": "",
-    "price": "",
+    "or": "ou",
+    "price": "Preço",
     "royal": "Royal",
-    "wiki": ""
+    "wiki": "Wiki"
   },
   "contact": {
-    "description": "",
+    "description": "Tem perguntas, sugestões denúncia de bugs ou quer contribuir? Esse é o lugar para isso!",
     "message": {
       "discord": {
-        "button": "",
-        "description": "",
-        "title": ""
+        "button": "Junte-se ao server",
+        "description": "Pergunte, sugira, reporte bugs ou só converse com a comunidade.",
+        "title": "Junte-se ao server do Discord"
       },
-      "discord_message": "",
-      "discord_server": "",
+      "discord_message": "Tem perguntas, sugestões ou encontrou bugs? Junte-se ao {server}!",
+      "discord_server": "server do Discord",
       "github": {
-        "button": "",
-        "description": "",
-        "title": ""
+        "button": "Repositório aberto",
+        "description": "Olhe o código open source, open issues, ou faça um pull request.",
+        "title": "Veja no GitHub"
       },
       "help_wanted": {
-        "description": "",
-        "title": ""
+        "description": "Eu sou apenas uma pessoa que sei inglês, então têm muitas coisas que eu não posso fazer, principalmente traduções. As coisas que eu consegui traduzir são coisas que eu tirei do jogo. Se sua língua não estiver bem traduzida, POR FAVOR crie um pull request no GitHub ou ou se junte no discord para que você me ajude a traduzir. Eu também não sou ótimo em design de layouts, então se você for bom nisso, eu iria adorar sua ajuda. Se você quiser ajudar a programar o site, isso também é bem vindo. (Esse texto foi traduzido por um terceiro, não o dev original).",
+        "title": "Ajuda necessária!"
       },
       "mlp_game_hangout": {
-        "button": "",
-        "description": "",
-        "title": ""
+        "button": "Junte-se ao server",
+        "description": "Comunidade do jogo. Conectada ao subreddit r/MLPIOS.",
+        "title": "Conversas sobre MLP Game"
       }
     },
-    "title": ""
+    "title": "Contato"
   },
   "dialog": {
-    "filter": "",
+    "filter": "Filtro",
     "select_item": {
-      "title": ""
+      "title": "Selecione o item"
     },
-    "sort_by": ""
+    "sort_by": "Filtrado por"
   },
   "filter": {
     "decor": {
       "can_fuse": "",
-      "regular": ""
+      "regular": "Comum"
     },
     "pony": {
-      "not_owned": "",
-      "npc": "",
-      "playable": "",
-      "pro": "",
-      "quest": "",
-      "unused": ""
+      "not_owned": "Não adquirido",
+      "npc": "NPC",
+      "playable": "Jogável",
+      "pro": "Pro",
+      "quest": "Missão",
+      "unused": "Não usado"
     },
     "shop": {
       "gem_shop": "Lojas De Joias",
       "maze": "Labirinto",
-      "not_owned": "",
-      "others": ""
+      "not_owned": "Não adquirido",
+      "others": "Outros"
     }
   },
   "fortune_shop": {
@@ -116,8 +117,8 @@
     "price_rarities": {
       "discount": "Desconto",
       "regular": "",
-      "super": "",
-      "ultra": ""
+      "super": "Super",
+      "ultra": "Ultra"
     },
     "rarities": {
       "common": "Comum",
@@ -128,49 +129,52 @@
     "title": "Loja Da Sorte"
   },
   "game": {
-    "content_version": "",
-    "game_version": "",
+    "content_version": "Versão do conteúdo: {version}",
+    "game_version": "Versão do jogo: {version}",
     "message": {
       "you_won": "Você Ganhou!"
     }
   },
   "game_object": {
     "building": {
-      "build_reward": "",
-      "build_skip_cost": "",
-      "build_time": "",
-      "skip_cost": ""
+      "build_reward": "Recompensa de cosntrução",
+      "build_skip_cost": "Custo de pular construção",
+      "build_time": "Tempo de construção",
+      "skip_cost": "Custo de pular"
     },
     "common": {
-      "size": "",
-      "unlock_level": ""
+      "size": "Tamanho",
+      "unlock_level": "Nível do desbloqueio"
     },
     "decor": {
-      "cannot_fuse": "",
+      "cannot_fuse": "Fusão impossível",
       "decor": "Decoração",
-      "effect": "",
+      "effect": "Efeito",
       "fusion_points": "Pontos De Fusão",
-      "pro_decor": "",
+      "pro_decor": "Pro @:game_object.decor.decor",
       "pro_decors": "Decorações Profissionais"
     },
     "house": {
-      "house": "",
-      "resident": "",
-      "visitor": ""
+      "house": "Casa | Casas",
+      "resident": "Residente | Residentes",
+      "visitor": "Visitante | Visitantes"
+    },
+    "pet": {
+      "pet": "Bichinho | Pets"
     },
     "pony": {
-      "arrival_bonus": "",
+      "arrival_bonus": "Bônus de chegada",
       "character": "Personagens",
-      "level_up_rewards": "",
-      "minigame_cooldown": "",
-      "minigame_skip_cost": "",
+      "level_up_rewards": "Prêmios de nível",
+      "minigame_cooldown": "Recarga de minigame",
+      "minigame_skip_cost": "Custo de pular minigame",
       "pony": "Pôneis",
       "transform": "Transformar",
-      "transformable": ""
+      "transformable": "Transformável"
     },
     "profile_decorations": {
       "avatar": {
-        "animated": "",
+        "animated": "Animado?",
         "avatar": "Avatar | Avatares"
       },
       "avatar_frame": {
@@ -182,65 +186,62 @@
       "background_frame": {
         "background_frame": "Moldura de Plano de Fundo"
       },
-      "is_default": "",
       "cutie_mark": {
         "cutie_mark": "Cutie Mark | Cutie Marks"
-      }
+      },
+      "is_default": "É padrão"
     },
     "road": {
       "road": "Estradas"
     },
     "shop": {
       "gem_shop": "Lojas De Joias",
-      "product": "",
-      "production_time": "",
-      "profit": "",
+      "product": "Produto",
+      "production_time": "Tempo de produção",
+      "profit": "Lucro",
       "shop": "Lojas"
     },
     "token": {
       "token": "Fichas"
-    },
-    "pet": {
-      "pet": "Bichinho | Pets"
     }
   },
   "group_quests": {
     "name_seasonal": "{name} (@:group_quests.seasonal)",
     "name_tutorial": "{name} (@:group_quests.tutorial)",
-    "pro": "",
-    "random_pro": "",
+    "pro": "Profissionais",
+    "random_pro": "Aleatório",
     "seasonal": "Sazonal",
     "title": "Missões De Grupo",
-    "tutorial": ""
+    "tutorial": "Tutorial"
   },
   "guesser": {
-    "description": "",
+    "description": "Adivinhe o pônei pela silhueta",
     "message": {
-      "correct_guesses": "",
-      "guessed_correctly": "",
-      "time": ""
+      "correct_guesses": "Respostas certas",
+      "guessed_correctly": "Respondeu certo: {ponies}/{total}",
+      "time": "Tempo: {time}"
     },
-    "title": ""
+    "title": "Quem é esse pônei?"
   },
   "home": {
-    "description": "",
+    "description": "Tenha informações sobre {game_link} e gerencie o que você tem!",
     "message": {
-      "affiliates": "",
-      "game_name": "",
-      "links": ""
+      "affiliates": "Afiliações",
+      "game_name": "My Little Pony: Princesa Mágica",
+      "links": "Links"
     },
     "things_to_do": {
-      "browse": "",
-      "title": ""
+      "browse": "Pesquise",
+      "title": "Coisas para fazer"
     }
   },
   "inventory": {
     "message": {
-      "add_more": "",
+      "add_more": "Adicione {category}",
       "dialog": {
         "export": {
-          "category": "",
-          "format": ""
+          "category": "Categoria:",
+          "format": "Formato:"
         }
       }
     },
@@ -249,44 +250,44 @@
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "",
+      "stars": "Estrelas: {count}",
       "transformable": "@:game_object.pony.transformable{':'} {count}"
     },
     "title": "Inventário"
   },
   "lists": {
     "button": {
-      "add_to_list": "",
-      "create_list": "",
-      "edit": "",
-      "new_wishlist": ""
+      "add_to_list": "Adicione à lista de desejos",
+      "create_list": "Crie lista de desejos",
+      "edit": "Editar",
+      "new_wishlist": "+ Nova lista de desejos"
     },
     "dialog": {
       "add_to_list": {
-        "title": ""
+        "title": "Adicione à lista de desejos"
       },
       "choose_image": {
-        "title": ""
+        "title": "Escolha a imagem"
       },
       "confirm_delete": {
-        "body": "",
-        "title": ""
+        "body": "Tem certeza que quer deletar \"{list}\"?",
+        "title": "Deletar lista de desejos?"
       },
       "create_list": {
         "message": {
-          "name": "",
-          "name_required": "",
-          "wishlist": ""
+          "name": "Nome:",
+          "name_required": "Um nome é obrigatório",
+          "wishlist": "Lista de desejos"
         },
-        "title": ""
+        "title": "Crie uma lista de desejos"
       }
     },
     "messages": {
-      "empty_list": "",
-      "no_lists": "",
-      "wishlist": ""
+      "empty_list": "Não há nada aqui agora. Talvez adicione {ponies}.",
+      "no_lists": "Parece que não há listas de desejo ainda.",
+      "wishlist": "Lista de desejos"
     },
-    "title": ""
+    "title": "Listas de desejos"
   },
   "location": {
     "canterlot": "Canterlot",
@@ -296,18 +297,18 @@
     "klugetown": "Klugetown",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
-    "town": "",
-    "unknown": ""
+    "town": "Cidade",
+    "unknown": "Desconhecido"
   },
   "notices": {
     "corrupt_save": {
-      "body": "",
-      "button": "",
-      "title": ""
+      "body": "Um bug foi encontrado que pode causar a corrupção dos seus dados na nuvem. Você pode checar se foi afetado clicando \"@:{'notices.corrupt_save.button'}\"",
+      "button": "Aprenda mais",
+      "title": "Importante"
     },
     "help_wanted": {
-      "body": "",
-      "title": ""
+      "body": "Eu só falo inglês, então eu não posso traduzir All The Ponies pra outras línguas. Se sua língua já está no site mas não está totalmente traduzida, eu adoraria sua ajuda. Não é necessário conhecimento de programação porque o Weblate faz a tradução fácil pra todo mundo.",
+      "title": "Ajuda necessária!"
     }
   },
   "player_info": {
