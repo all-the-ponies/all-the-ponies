@@ -199,6 +199,9 @@
     },
     "token": {
       "token": "Жетон | Жетоны"
+    },
+    "pet": {
+      "pet": "Питомец | Pets"
     }
   },
   "group_quests": {

@@ -199,6 +199,9 @@
     },
     "token": {
       "token": "Obje | Objeler"
+    },
+    "pet": {
+      "pet": "Evcil Hayvan | Pets"
     }
   },
   "group_quests": {

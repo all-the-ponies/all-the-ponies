@@ -57,9 +57,13 @@ export const CATEGORIES: Partial<Record<CategoryName, {
         string: 'game_object.profile_decorations.cutie_mark.cutie_mark',
         plural: 'cutie_marks',
     },
+    pet: {
+        string: 'game_object.pet.pet',
+        plural: 'pets',
+    },
 }
 
-export const PLURAL_CATEGORY_MAP = {
+export const PLURAL_CATEGORY_MAP: Record<string, CategoryName> = {
     ponies: 'pony',
     houses: 'house',
     shops: 'shop',
@@ -69,6 +73,7 @@ export const PLURAL_CATEGORY_MAP = {
     backgrounds: 'background',
     background_frames: 'background_frame',
     cutie_marks: 'cutie_mark',
+    pets: 'pet',
 }
 
 export interface SortFunctionsType {

@@ -199,6 +199,9 @@
     },
     "token": {
       "token": "Fichas"
+    },
+    "pet": {
+      "pet": "Mascota | Pets"
     }
   },
   "group_quests": {

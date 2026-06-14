@@ -200,6 +200,9 @@
     },
     "token": {
       "token": "Token | Tokens"
+    },
+    "pet": {
+      "pet": "Pet | Pets"
     }
   },
   "group_quests": {

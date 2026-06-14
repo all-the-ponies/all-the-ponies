@@ -199,6 +199,9 @@
     },
     "token": {
       "token": "礼物"
+    },
+    "pet": {
+      "pet": "宠物 | Pets"
     }
   },
   "group_quests": {

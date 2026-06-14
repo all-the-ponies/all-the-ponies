@@ -199,6 +199,9 @@
     },
     "token": {
       "token": "토큰"
+    },
+    "pet": {
+      "pet": "애완동물 | Pets"
     }
   },
   "group_quests": {

@@ -199,6 +199,9 @@
     },
     "token": {
       "token": "โทเค็น"
+    },
+    "pet": {
+      "pet": "สัตว์เลี้ยง | Pets"
     }
   },
   "group_quests": {

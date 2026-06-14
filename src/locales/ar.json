@@ -199,6 +199,9 @@
     },
     "token": {
       "token": "القطع"
+    },
+    "pet": {
+      "pet": "حيوان أليف | Pets"
     }
   },
   "group_quests": {

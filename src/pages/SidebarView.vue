@@ -44,6 +44,7 @@ function toggleSidebar(e: Event) {
                         <Link href="/search/houses/">{{ $t('game_object.house.house', 2) }}</Link>
                         <Link href="/search/shops/">{{ $t('game_object.shop.shop', 2) }}</Link>
                         <Link href="/search/decor/">{{ $t('game_object.decor.decor', 2) }}</Link>
+                        <Link href="/search/pets/">{{ $t('game_object.pet.pet', 2) }}</Link>
                         <Link href="/search/avatars/">{{ $t('game_object.profile_decorations.avatar.avatar', 2) }}</Link>
                         <Link href="/search/avatar_frames/">{{ $t('game_object.profile_decorations.avatar_frame.avatar_frame', 2) }}</Link>
                         <Link href="/search/backgrounds/">{{ $t('game_object.profile_decorations.background.background', 2) }}</Link>

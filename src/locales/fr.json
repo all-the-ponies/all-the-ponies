@@ -200,6 +200,9 @@
     },
     "token": {
       "token": "Jetons"
+    },
+    "pet": {
+      "pet": "Familier | Pets"
     }
   },
   "group_quests": {
