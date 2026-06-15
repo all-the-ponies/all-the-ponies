@@ -11,6 +11,8 @@ import { extractLocale } from './extractLocale'
 // import { inject as injectAnalytics } from "@vercel/analytics"
  
 export async function onCreateApp(pageContext: PageContext & {locale: string}) {
+    await loadGameData()
+    
     if (pageContext.isRenderingHead) {
         // Don't add plugins when rendering <head> — see https://vike.dev/onCreateApp#lifecycle
         return
@@ -41,7 +43,6 @@ export async function onCreateApp(pageContext: PageContext & {locale: string}) {
 
     app.use(i18n)
 
-    await loadGameData()
 
     // injectAnalytics()
 }

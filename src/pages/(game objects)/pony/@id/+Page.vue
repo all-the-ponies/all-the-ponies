@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { getFortuneShopData, getObject, groupQuests, translateName } from '@/scripts/gameData'
+import { getFortuneShopData, getObject, translateName, useGroupQuests } from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import { staticImage } from '@/scripts/common'
@@ -11,7 +11,7 @@ import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue'
 import { useSaveStore } from '@/stores/saveManager'
 import Stars from '@/components/Stars.vue'
 import { LOCATIONS } from '@/scripts/categories'
-import { isClient, useArrayFilter, useMounted } from '@vueuse/core'
+import { computedAsync, isClient, useArrayFilter, useMounted } from '@vueuse/core'
 import { usePageContext } from 'vike-vue/usePageContext'
 import Link from '@/components/Link.vue'
 import { Config } from 'vike-vue/Config'
@@ -27,6 +27,7 @@ import { createAssetUrl } from '@/scripts/assets';
 
 const { t } = useI18n()
 const isMounted = useMounted()
+const groupQuests = useGroupQuests()
 
 const pageContext = usePageContext()
 
@@ -70,14 +71,14 @@ const stars = computed({
         return 0
     }
 
-    if (saveStore.hasPony(pony.value.id)) {
-      return saveStore.ponies[pony.value.id].level
+    if (saveStore.hasPony(pony.value?.id)) {
+      return saveStore.ponies[pony.value?.id].level
     } else {
       return 0
     }
   },
   set(stars: 0 | 1 | 2 | 3 | 4 | 5) {
-    saveStore.addPony(pony.value.id, {
+    saveStore.addPony(pony.value?.id, {
       level: stars,
     })
   }
@@ -94,10 +95,10 @@ const description = computed(() => {
     return description
 })
 
-const house = computed(() => getObject(pony.value?.house, 'house'))
+const house = computedAsync(async () => await getObject(pony.value?.house, 'house'))
 const houseName = computed(() => translateName(house.value).value)
 
-const fortuneShopData = computed(() => getFortuneShopData(pony.value.id))
+const fortuneShopData = computedAsync(async () => await getFortuneShopData(pony.value?.id))
 
 const showProIcon = computed(() => {
     let showPro = false
@@ -107,7 +108,7 @@ const showProIcon = computed(() => {
             showPro = true
             break
         }
-        if (!groupQuests.quests[quest].special) {
+        if (!groupQuests.value?.quests[quest].special) {
             showPro = true
             break
         }
@@ -123,8 +124,8 @@ const groupQuestName = computed(() => {
             names.push(t('group_quests.random_pro'))
         } else {
             console.log(quest)
-            let name = groupQuests.quests[quest].name[language.value.key]
-            let special = groupQuests.quests[quest].special
+            let name = groupQuests.value?.quests[quest].name[language.value.key]
+            let special = groupQuests.value?.quests[quest].special
             switch (special) {
                 case 'seasonal': name = t('group_quests.name_seasonal', {name}); break
                 case 'tutorial':name = t('group_quests.name_tutorial', {name}); break
@@ -163,7 +164,7 @@ const groupQuestName = computed(() => {
                     <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
                 </template>
                 <template #image-right>
-                    <inventory-add-button :gameObject="pony.id"></inventory-add-button>
+                    <inventory-add-button :gameObject="pony?.id"></inventory-add-button>
                 </template>
                 <template #image>
                     <div class="character-wrapper">
@@ -233,7 +234,7 @@ const groupQuestName = computed(() => {
                                     <Link
                                         v-if="house !== null"
                                         class="link"
-                                        :href="`/house/${house.id}`"
+                                        :href="`/house/${house?.id}`"
                                     >
                                         {{ houseName }}
                                     </Link>
@@ -282,7 +283,7 @@ const groupQuestName = computed(() => {
             </ObjectPage>
             <section class="section" v-if="filteredPriceHistory.length">
                 <h2 class="h2">{{ $t('price_history.title') }}</h2>
-                <PriceHistory :object="pony.id" :priceHistory="filteredPriceHistory"></PriceHistory>
+                <PriceHistory :object="pony?.id" :priceHistory="filteredPriceHistory"></PriceHistory>
             </section>
             <section class="section" v-if="fortuneShopData">
                 <h2 class="h2">{{ $t('fortune_shop.title') }}</h2>

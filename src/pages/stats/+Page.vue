@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import CurrencyImage from '@/components/CurrencyImage.vue'
-import { getObject, translateName } from '@/scripts/gameData'
-import saveStats from '@/scripts/stats'
+import { getObject, translateName, useGameObject, useObjectName } from '@/scripts/gameData'
+import { useSaveStats } from '@/scripts/stats'
 import { formatTime } from '@/scripts/timeFunctions'
 import { useSaveStore } from '@/stores/saveManager'
+import { computedAsync } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'
 import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
 
 const saveStore = useSaveStore()
+const saveStats = useSaveStats()
 
 const friendCodeInput = useTemplateRef('friend-code')
 const importDisabled = ref<boolean>(false)
@@ -37,6 +39,9 @@ async function importFriendCode() {
 
     importDisabled.value = false
 }
+
+const gemsName = translateName(useGameObject('Gems', 'item'))
+const bitsName = translateName(useGameObject('Bits', 'item'))
 
 </script>
 
@@ -68,13 +73,13 @@ async function importFriendCode() {
             </label>
             <p class="error-message">{{ errorMessage }}</p>
         </section>
-        <section class="stats-section">
-            <ClientOnly>
+        <ClientOnly>
+            <section class="stats-section">
                 <ul class="stats">
                     <li>
                         {{
                             $t('player_info.join_date', {
-                                join_date: saveStore.playerInfo.joinDate ? $d(new Date(saveStore.playerInfo.joinDate), {
+                                join_date: saveStore?.playerInfo.joinDate ? $d(new Date(saveStore?.playerInfo.joinDate), {
                                     year: "numeric",
                                     month: "long",
                                     day: "numeric",
@@ -85,22 +90,22 @@ async function importFriendCode() {
                     <li>
                         {{ 
                             $t('player_info.total_playtime', {
-                                total_playtime: formatTime(saveStore.playerInfo.totalPlaytime),
+                                total_playtime: formatTime(saveStore?.playerInfo.totalPlaytime),
                             })
                         }}
                     </li>
-                    <!--
+                    
                     <li>
                         {{ 
                             $t('stats.message.ponies.total', saveStats.ponies.total)
                         }}
                     </li>
-                    -->
+                   
                     <li>
                         {{
                             $t('inventory.stats.ponies', 2, {
                                 named: {
-                                    count: $n(saveStats.ponies.unique,)
+                                    count: $n(saveStats?.ponies.unique,)
                                 },
                             })
                         }}
@@ -109,7 +114,7 @@ async function importFriendCode() {
                         {{
                             $t('inventory.stats.transformable', 2, {
                                 named: {
-                                    count: $n(saveStats.ponies.changelings)
+                                    count: $n(saveStats?.ponies.changelings)
                                 }
                             })
                         }}
@@ -118,7 +123,7 @@ async function importFriendCode() {
                         {{
                             $t('inventory.stats.stars', 2, {
                                 named: {
-                                    count: $n(saveStats.ponies.stars)
+                                    count: $n(saveStats?.ponies.stars)
                                 }
                             })
                         }}
@@ -127,7 +132,7 @@ async function importFriendCode() {
                         {{
                             $t('inventory.stats.houses', 2, {
                                 named: {
-                                    count: $n(saveStats.houses.total)
+                                    count: $n(saveStats?.houses.total)
                                 }
                             })
                         }}
@@ -136,7 +141,7 @@ async function importFriendCode() {
                         {{
                             $t('inventory.stats.shops', 2, {
                                 named: {
-                                    count: $n(saveStats.shops.bits + saveStats.shops.others)
+                                    count: $n(saveStats?.shops.bits + saveStats?.shops.others)
                                 }
                             })
                         }}
@@ -145,26 +150,26 @@ async function importFriendCode() {
                         {{
                             $t('inventory.stats.gem_shops', 2, {
                                 named: {
-                                    count: $n(saveStats.shops.gems)
+                                    count: $n(saveStats?.shops.gems)
                                 }
                             })
                         }}
                     </li>
                     <li>
                         <CurrencyImage object="Gems">
-                            {{translateName(getObject('Gems'))}}:
-                            {{ $n(saveStore.playerInfo.currency.gems) }}
+                            {{ gemsName }}:
+                            {{ $n(saveStore?.playerInfo.currency.gems) }}
                         </CurrencyImage>
                     </li>
                     <li>
                         <CurrencyImage object="Bits">
-                            {{translateName(getObject('Bits'))}}:
-                            {{ $n(saveStore.playerInfo.currency.bits) }}
+                            {{ bitsName }}:
+                            {{ $n(saveStore?.playerInfo.currency.bits) }}
                         </CurrencyImage>
                     </li>
                 </ul>
-            </ClientOnly>
-        </section>
+            </section>
+        </ClientOnly>
     </div>
 </template>
 

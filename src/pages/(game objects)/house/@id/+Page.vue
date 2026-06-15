@@ -9,6 +9,7 @@ import { LOCATIONS } from '@/scripts/categories';
 import gameData, { getObject, translateName } from '@/scripts/gameData';
 import { formatTime } from '@/scripts/timeFunctions';
 import type { HouseType, Location, PonyType } from '@/types/gameDataTypes';
+import { computedAsync } from '@vueuse/core';
 import { Config } from 'vike-vue/Config';
 import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext';
@@ -26,10 +27,10 @@ const name = computed(() => {
     return name
 })
 
-const residents = computed(() => {
+const residents = computedAsync(async () => {
     const residents: {[ L in Location ]+?: PonyType[]} = {}
     for (let ponyId of house.value.residents) {
-        let pony = getObject(ponyId, 'pony')
+        let pony = await getObject(ponyId, 'pony')
         if (!(pony.location in residents)) {
             residents[pony.location] = []
         }
@@ -37,7 +38,13 @@ const residents = computed(() => {
     }
 
     return residents
-})
+}, {})
+
+const visitors = computedAsync(async () => {
+    return await Promise.all(
+        house.value.visitors.map(async (id) => await getObject(id, 'pony'))
+    )
+}, [])
 
 </script>
 
@@ -116,7 +123,7 @@ const residents = computed(() => {
                 <div>
                     <div class="residents">
                         <Link
-                            v-for="pony in house.visitors.map((id) => getObject(id, 'pony'))"
+                            v-for="pony in visitors"
                             :href="`/${pony.category}/${pony.id}`"
                             class="resident link"
                             >

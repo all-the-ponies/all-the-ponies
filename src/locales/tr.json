@@ -31,7 +31,8 @@
     "skip": "Geç",
     "start": "Başla",
     "stop": "Dur",
-    "yes": "Evet"
+    "yes": "Evet",
+    "resume": "Sürdür"
   },
   "check_save": {
     "messages": {

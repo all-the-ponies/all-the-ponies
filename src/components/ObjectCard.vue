@@ -2,7 +2,7 @@
 import InventoryAddButton from "./buttons/InventoryAddButton.vue"
 
 import { createAssetUrl } from "@/scripts/assets.ts"
-import { getObject, groupQuests, translateName } from '@/scripts/gameData'
+import { getObject, useGroupQuests, translateName } from '@/scripts/gameData'
 import { shopStore } from "@/stores/shopManager"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
 import { computedAsync } from "@vueuse/core"
@@ -11,6 +11,7 @@ import AddToListButton from "./buttons/AddToListButton.vue"
 import GameCard from "./GameCard.vue"
 
 const shopManager = shopStore
+const groupQuests = useGroupQuests()
 
 const props = defineProps<{
     object: GameObjectId | GameObject,
@@ -20,7 +21,7 @@ const props = defineProps<{
     hover?: boolean,
 }>()
 
-const gameObject = computed(() => getObject(props.object))
+const gameObject = computedAsync(async () => await getObject(props.object))
 
 
 const name = computed(() => {
@@ -28,23 +29,23 @@ const name = computed(() => {
     return name
 })
 
-const image = computed(() => 'preview' in gameObject.value.image ? gameObject.value.image.preview.path : gameObject.value.image.main.path)
+const image = computed(() => gameObject.value ? ('preview' in gameObject.value?.image ? gameObject.value.image.preview.path : gameObject.value.image.main.path) : null)
 
-const canAdd = computed(() => ['pony', 'shop'].includes(gameObject.value.category))
+const canAdd = computed(() => ['pony', 'shop'].includes(gameObject.value?.category))
 
 const showProIcon = computed(() => {
-    if (gameObject.value.category != 'pony') {
+    if (gameObject.value?.category != 'pony') {
         return false
     }
 
     let showPro = false
 
-    for (let id of gameObject.value.pro) {
+    for (let id of gameObject.value?.pro) {
         if (id === 'random') {
             showPro = true
             break
         }
-        if (!groupQuests.quests[id].special) {
+        if (!groupQuests.value?.quests[id].special) {
             showPro = true
             break
         }
@@ -74,7 +75,9 @@ const shopInfo = computedAsync(
     async () => {
         // console.log('getting shop data for', gameObject.id)
         // return null
-        return await shopManager.getShopInfo(gameObject.value)
+        if (gameObject.value) {
+            return await shopManager.getShopInfo(gameObject.value)
+        }
     },
     null,
     { evaluating: gettingShopInfo, lazy: true, shallow: true },
@@ -84,19 +87,19 @@ const shopInfo = computedAsync(
 <template>
     <GameCard
         class="object-card"
-        :title="name"
+        :title="name || ''"
         :image="createAssetUrl(image)"
-        :alt="name"
+        :alt="name || ''"
         :priceData="!gettingShopInfo && showPrice ? shopInfo : null"
-        :href="props.isLink ? `/${gameObject.category}/${gameObject.id}/` : null"
+        :href="gameObject && props.isLink ? `/${gameObject.category}/${gameObject.id}/` : null"
         :hover="props.hover"
     >
         <template #left>
             <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
         </template>
         <template #right>
-            <inventory-add-button v-if="props.hasButtons && canAdd" :gameObject="gameObject.id" />
-            <AddToListButton v-if="props.hasButtons" :gameObject="gameObject.id"></AddToListButton>
+            <inventory-add-button v-if="gameObject && props.hasButtons && canAdd" :gameObject="gameObject?.id" />
+            <AddToListButton v-if="gameObject && props.hasButtons" :gameObject="gameObject?.id"></AddToListButton>
         </template>
         <template #info>
             <slot name="info"></slot>

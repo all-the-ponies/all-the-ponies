@@ -3,7 +3,7 @@ import DialogComponent from '@/components/DialogComponent.vue'
 import { language } from '@/globals'
 import { CATEGORIES, LOCATIONS } from '@/scripts/categories'
 import { any, downloadFile } from '@/scripts/common'
-import { getObject, groupQuests, translateName } from '@/scripts/gameData'
+import { getObject, useGroupQuests, translateName } from '@/scripts/gameData'
 import { useSaveStore } from '@/stores/saveManager'
 import type { CategoryName, GameObjectId } from '@/types/gameDataTypes'
 import Papa from 'papaparse'
@@ -13,13 +13,14 @@ import { useI18n } from 'vue-i18n'
 const saveStore = useSaveStore()
 
 const { t } = useI18n()
+const groupQuests = useGroupQuests()
 
 type Format = 'csv' | 'json'
 const format = ref<Format>('csv')
 
 const category = ref<CategoryName>('pony')
 
-function exportSave() {
+async function exportSave() {
     let result: string = ''
     let filename: string = ''
     let type: string = 'application/*'
@@ -27,29 +28,29 @@ function exportSave() {
     
     switch (format.value) {
         case 'csv':
-            result = exportCSV()
+            result = await exportCSV()
             filename = `${t(CATEGORIES[category.value].string, 2)}.csv`
             type = 'application/csv'
             break
         case 'json':
-            result = exportJSON()
+            result = await exportJSON()
             break
     }
 
     downloadFile(result, type, filename)
 }
 
-function exportCSV() {
+async function exportCSV() {
     const table: Record<string, string | number>[] = []
     switch (category.value) {
         case 'pony':
             for (let [ponyId, ponyInfo] of Object.entries(saveStore.ponies)) {
-                const pony = getObject(ponyId, 'pony')
+                const pony = await getObject(ponyId, 'pony')
                 if (pony.group.length > 0 && !pony.group_master) {
                     continue
                 }
 
-                const house = getObject(pony.house, 'house')
+                const house = await getObject(pony.house, 'house')
                 const houseName = house !== null ? translateName(house).value : ''
 
                 const pro = []
@@ -58,14 +59,14 @@ function exportCSV() {
                     if (quest === 'random') {
                         pro.push(t('group_quests.random_pro'))
                     } else {
-                        pro.push(groupQuests.quests[quest].name[language.value.key])
+                        pro.push(groupQuests.value.quests[quest].name[language.value.key])
                     }
                 }
 
                 let changeling = ''
 
                 if (pony.changeling.id) {
-                    const changeling_pony = getObject(pony.changeling.id, 'pony')
+                    const changeling_pony = await getObject(pony.changeling.id, 'pony')
                     changeling = translateName(changeling_pony).value
                 }
 
@@ -83,8 +84,8 @@ function exportCSV() {
             }
             break
         case 'house':
-            for (let houseId of saveStore.houses) {
-                const house = getObject(houseId, 'house')
+            for (let houseId of await saveStore.houses) {
+                const house = await getObject(houseId, 'house')
                 table.push({
                     id: house.id,
                     name: translateName(house).value,
@@ -97,7 +98,7 @@ function exportCSV() {
             break
         case 'shop':
             for (let shopId of Object.keys(saveStore.shops)) {
-                const shop = getObject(shopId, 'shop')
+                const shop = await getObject(shopId, 'shop')
 
                 interface ShopRow {
                     id: GameObjectId,
@@ -109,8 +110,8 @@ function exportCSV() {
                     time: number,
                 }
 
-                let product = getObject(shop.product, 'consumable')
-                if (any(Object.values(product.consume))) {
+                let product = await getObject(shop.product, 'consumable')
+                if (!product || !any(Object.values(product.consume))) {
                     continue
                 }
                 
@@ -130,7 +131,7 @@ function exportCSV() {
     return Papa.unparse(table)
 }
 
-function exportJSON() {
+async function exportJSON() {
     let result = {
         player_info: {
             friend_code: saveStore.playerInfo.friendCode,
@@ -145,7 +146,7 @@ function exportJSON() {
     }
 
     for (let [ponyId, ponyInfo] of Object.entries(saveStore.ponies)) {
-        const pony = getObject(ponyId, 'pony')
+        const pony = await getObject(ponyId, 'pony')
 
         result.inventory.ponies[ponyId] = {
             id: pony.id,

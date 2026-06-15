@@ -2,8 +2,9 @@
 import DialogComponent from '@/components/DialogComponent.vue';
 import GameCard from '@/components/GameCard.vue';
 import { createAssetUrl } from '@/scripts/assets';
-import gameData from '@/scripts/gameData';
+import { getObject } from '@/scripts/gameData';
 import type { GameObject, GameObjectId, RenamedFile } from '@/types/gameDataTypes';
+import { computedAsync } from '@vueuse/core';
 import { computed, useTemplateRef } from 'vue';
 
 
@@ -21,7 +22,7 @@ const emit = defineEmits<{
 
 const imageDialog = useTemplateRef('image-dialog')
 
-const gameObject = computed(() => gameData.getObject(props.gameObject))
+const gameObject = computedAsync(async () => await getObject(props.gameObject))
 const images = computed<Record<string, RenamedFile>>(() => gameObject.value?.image || {})
 
 function open() {

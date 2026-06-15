@@ -31,7 +31,8 @@
     "skip": "ข้าม",
     "start": "เริ่ม",
     "stop": "",
-    "yes": "ใช่"
+    "yes": "ใช่",
+    "resume": "เล่นต่อ"
   },
   "check_save": {
     "messages": {

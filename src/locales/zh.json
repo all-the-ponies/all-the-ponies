@@ -31,7 +31,8 @@
     "skip": "跳过",
     "start": "开始",
     "stop": "暂停",
-    "yes": "是"
+    "yes": "是",
+    "resume": "继续"
   },
   "check_save": {
     "messages": {

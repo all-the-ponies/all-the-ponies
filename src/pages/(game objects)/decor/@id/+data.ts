@@ -7,7 +7,7 @@ import type { PageContext } from "vike/types"
 export async function data(pageContext: PageContext) {
     const { id } = pageContext.routeParams
 
-    const decor = getObject(id, 'decor')
+    const decor = await getObject(id, 'decor')
 
     if (decor === null) {
         throw render(404, `Decor with id ${id} doesn't exist`)

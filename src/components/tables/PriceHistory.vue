@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type PriceHistoryEntry } from '@/scripts/api.types'
 import { notNullIsh } from '@/scripts/common'
-import gameData from '@/scripts/gameData'
+import gameData, { getObject } from '@/scripts/gameData'
 import type { GameObjectId } from '@/types/gameDataTypes'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -13,6 +13,7 @@ import TableContainer from '../table/TableContainer.vue'
 import TableHeader from '../table/TableHeader.vue'
 import TableHeaderCell from '../table/TableHeaderCell.vue'
 import TableRow from '../table/TableRow.vue'
+import { computedAsync } from '@vueuse/core'
 
 const { t, d } = useI18n()
 
@@ -22,7 +23,7 @@ const props = defineProps<{
 }>()
 
 const priceHistory = computed(() => props.priceHistory)
-const gameObject = computed(() => gameData.getObject(props.object))
+const gameObject = computedAsync(async () => await getObject(props.object))
 
 // const priceHistory = computedAsync(async () => {
 //     if (!gameObject.value?.id) {
@@ -149,11 +150,11 @@ function formatDateRange(start: string, end: string) {
                                 </template>
                             </TableCell>
                             <TableCell v-if="shownColumns.tokens">
-                                <template v-if="gameObject.category !== 'costume_part' && gameObject.price?.token || entry.tags?.includes('pvsar1') || entry.tags?.includes('pvsar2')">
+                                <template v-if="gameObject?.category !== 'costume_part' && gameObject?.price?.token || entry.tags?.includes('pvsar1') || entry.tags?.includes('pvsar2')">
                                     <CurrencyImage :object="
                                         entry.tags?.includes('pvsar1') ?'Token_Event_Rare' :
                                         entry.tags?.includes('pvsar2') ? 'Token_Event_Common' :
-                                        gameObject.category !== 'costume_part' ? gameObject.price?.token :
+                                        gameObject?.category !== 'costume_part' ? gameObject.price?.token :
                                         null
                                     ">
                                         {{ entry.price.base.tokens }}

@@ -1,11 +1,11 @@
 <script lang="ts" setup generic="ITEM extends {id: string | number, [key: string]: any}">
 import type { FilterFunctionsType, SortFunctionsType } from '@/scripts/categories'
-import { removeSymbols } from '@/scripts/common'
+import { all, removeSymbols } from '@/scripts/common'
 import createFuzzySearch from '@nozbe/microfuzz'
-import { isClient, useElementSize, useMounted } from '@vueuse/core'
+import { computedAsync, isClient, useElementSize, useMounted } from '@vueuse/core'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
-import { computed, ref, useTemplateRef, watch } from 'vue'
+import { computed, nextTick, ref, useTemplateRef, watch, watchEffect } from 'vue'
 import { WindowScroller } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 import DialogComponent from './DialogComponent.vue'
@@ -15,6 +15,7 @@ const isMounted = useMounted()
 
 const currentPage = ref(Number(pageContext.urlParsed.search.page) || 1)
 const perPage = ref(250)
+const checkFilters = ref<boolean>(true)
 
 const props = withDefaults(defineProps<{
         data: ITEM[],
@@ -94,6 +95,8 @@ watch(
 
 const filters = computed(() => {
     const filters: string[] = []
+
+    // console.log('filters', props.filters)
 
     if (!props.filters) {
         return filters
@@ -219,22 +222,28 @@ if (props.saveUrl) {
 
 const items = computed(() => props.data)
 
-function checkObject(item: ITEM, filterKey: string) {
+async function checkObject(item: ITEM, filterKey: string) {
     const filter = props.filters[filterKey]
-    const mainCheck =filter.check ? filter.check(item) : true
+    const mainCheck = await (filter.check ? filter.check(item) : true)
     let excludeCheck = true
     let includeCheck = true
     if (mainCheck && filter.exclude) {
-        excludeCheck = filter.exclude.every((excludeFilter) => (
-            filters.value.includes(excludeFilter) ||
-            (!checkObject(item, excludeFilter))
+        excludeCheck = all(await Promise.all(
+            filter.exclude.map(async (excludeFilter) => (
+                filters.value.includes(excludeFilter) ||
+                (!await checkObject(item, excludeFilter))
+            ))
         ))
+        
     }
     if (mainCheck && filter.include) {
-        includeCheck = filter.include.every((includeFilter) => (
-            filters.value.includes(includeFilter) ||
-            checkObject(item, includeFilter)
+        includeCheck = all(await Promise.all(
+            filter.include.map(async (includeFilter) => (
+                filters.value.includes(includeFilter) ||
+                await checkObject(item, includeFilter)
+            ))
         ))
+        
     }
 
     return mainCheck && excludeCheck && includeCheck
@@ -248,14 +257,28 @@ function sortItems(items: ITEM[], func?: (a: ITEM, b: ITEM) => number) {
     }
 }
 
-const filteredItems = computed(() => {
+// Can't use computedAsync because of race condition when navigating to a different page
+const filteredItems = ref<ITEM[]>([])
+watchEffect(async () => {
     let filtered = items.value
-    if (filters.value.length) {
-        filtered = filtered.filter(
-            gameObject => filters.value.every((key) => checkObject(gameObject, key))
-        )
+    if (checkFilters.value && filters.value.length) {
+        filtered = []
+
+        for (let item of items.value) {
+            let filterResults = await Promise.all(
+                filters.value.map(async (key) => {
+                    return await checkObject(item, key)
+                })
+            )
+            if (
+                all(filterResults)
+            ) {
+                filtered.push(item)
+            }
+        }
+        // console.log('filtered', filtered)
     }
-    return filtered
+    filteredItems.value = filtered
 })
 
 const computedItems = computed(() => {
@@ -293,7 +316,7 @@ const searchResults = computed(() => {
         if (results.length == 0) {
             let items = computedItems.value(removeSymbols(query))
             if (isClient) {
-                console.debug('items', items)
+                // console.debug('items', items)
             }
             items = items.filter(item => item.score <= 4)
             results = items.map(item => item.item)
@@ -348,11 +371,14 @@ watch(
     computed(() => pageContext.urlParsed.pathname),
     (newUrl, oldUrl) => {
         if (newUrl != oldUrl) {
+            // console.log('Resetting')
             searchQuery.value = ''
             sortMethod.value = defaultSortMethod.value
             selectedFilters.value = {}
             reversed.value = false
             currentPage.value = 1
+            checkFilters.value = false
+            nextTick(() => checkFilters.value = true)
         }
     }
 )

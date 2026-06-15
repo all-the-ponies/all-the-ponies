@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { getFortuneShopData, getObject, translateName } from '@/scripts/gameData'
+import { getFortuneShopData, getObject, translateName, useGameObject } from '@/scripts/gameData'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { Location, PonyType, ShopType } from '@/types/gameDataTypes'
 import { formatTime } from '@/scripts/timeFunctions';
@@ -17,6 +17,7 @@ import type { PriceHistoryType } from '@/scripts/api.types';
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import { createAssetUrl } from '@/scripts/assets';
+import { computedAsync } from '@vueuse/core';
 
 const pageContext = usePageContext()
 const data = useData<{shop: ShopType, priceHistory: PriceHistoryType | null}>()
@@ -54,10 +55,10 @@ const name = computed(() => {
     return name
 })
 
-const residents = computed(() => {
+const residents = computedAsync(async () => {
     const residents: {[ L in Location ]+?: PonyType[]} = {}
     for (let ponyId of shop.value.residents) {
-        let pony = getObject(ponyId, 'pony')
+        let pony = await getObject(ponyId, 'pony')
         if (!(pony.location in residents)) {
             residents[pony.location] = []
         }
@@ -65,21 +66,27 @@ const residents = computed(() => {
     }
 
     return residents
-})
+}, {})
 
-const product = computed(() => getObject(shop.value.product, 'consumable'))
+const visitors = computedAsync(async () => {
+    return await Promise.all(
+        shop.value.visitors.map(async (id) => await getObject(id, 'pony'))
+    )
+}, [])
+
+const product = computedAsync(async () => await getObject(shop.value.product, 'consumable'))
 
 const productCurrency = computed(() => {
-    if (product.value.consume.bits) {
+    if (product.value?.consume.bits) {
         return 'Bits'
-    } else if (product.value.consume.gems) {
+    } else if (product.value?.consume.gems) {
         return 'Gems'
     } else {
         return null
     }
 })
 
-const fortuneShopData = computed(() => getFortuneShopData(shop.value.id))
+const fortuneShopData = computedAsync(async () => await getFortuneShopData(shop.value.id))
 
 </script>
 
@@ -170,7 +177,7 @@ const fortuneShopData = computed(() => getFortuneShopData(shop.value.id))
                                     <td v-else>{{ product.consume.tls }} <img :src="createAssetUrl(product.image.main.path)" style="height: 1em;"></td>
                                 </tr>
                                 <tr>
-                                    <td>{{ translateName(getObject('XP', 'item')) }}</td>
+                                    <td>{{ translateName(useGameObject('XP', 'item')) }}</td>
                                     <td><currency-image object="XP">{{ product.consume.xp }}</currency-image></td>
                                 </tr>
                                 <tr>
@@ -208,7 +215,7 @@ const fortuneShopData = computed(() => getFortuneShopData(shop.value.id))
                 <div>
                     <div class="residents">
                         <Link
-                            v-for="pony in shop.visitors.map((id) => getObject(id, 'pony'))"
+                            v-for="pony in visitors"
                             :href="`/${pony.category}/${pony.id}`"
                             class="resident link"
                             >

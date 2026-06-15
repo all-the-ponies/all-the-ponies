@@ -1,12 +1,13 @@
 import { LOCALES } from "../src/i18n"
-import gameData, { loadGameData, gameObjects } from "../src/scripts/gameData"
+import { loadGameData } from "../src/scripts/gameData"
 import fs from 'fs'
 import path from "path"
 import { resolve } from 'path'
 import { Readable } from 'stream'
 import { SitemapAndIndexStream, SitemapStream } from 'sitemap'
 
-await loadGameData()
+const gameData = await loadGameData()
+const gameObjects = gameData.gameObjects
 
 const BASE_URL = 'https://all-the-ponies.com'
 // const CHUNK_SIZE = 1000
@@ -16,6 +17,11 @@ const CATEGORY_NAMES = [
     'shop',
     'decor',
     'avatar',
+    'avatar_frame',
+    'background',
+    'background_frame',
+    'cutie_mark',
+    'pet',
 ]
 
 const LOCALE_CODES = Object.keys(LOCALES)

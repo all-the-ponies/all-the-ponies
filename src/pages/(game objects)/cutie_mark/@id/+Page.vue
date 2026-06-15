@@ -15,6 +15,7 @@ import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import CurrencyImage from '@/components/CurrencyImage.vue';
 import { createAssetUrl } from '@/scripts/assets';
+import { computedAsync } from '@vueuse/core';
 
 
 const pageContext = usePageContext()
@@ -53,9 +54,9 @@ const name = computed(() => {
     return name
 })
 
-const pony = computed(() => getObject(cutie_mark.value.pony))
+const pony = computedAsync(async () => await getObject(cutie_mark.value?.pony))
 
-const fortuneShopData = computed(() => getFortuneShopData(cutie_mark.value.id))
+const fortuneShopData = computedAsync(async () => await getFortuneShopData(cutie_mark.value?.id))
 
 </script>
 

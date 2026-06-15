@@ -10,13 +10,16 @@ import Link from '@/components/Link.vue';
 import links from '@/globals/links';
 import { createAssetUrl } from '@/scripts/assets.ts';
 import { pickRandom } from '@/scripts/common';
-import { gameObjects, translateName } from '@/scripts/gameData';
+import { useGameObjects, translateName } from '@/scripts/gameData';
 import type { AvatarType, DecorType, HouseType, PonyType, ShopType } from '@/types/gameDataTypes';
+import { whenever } from '@vueuse/core';
 import { Config } from 'vike-vue/Config';
-import { h, onMounted, ref } from 'vue';
+import { h, onMounted, ref, watch } from 'vue';
 
 
 const BASE_URL = __BASE_URL__ // __BASE_URL__ cannot be used in the template
+
+const gameObjects = useGameObjects()
 
 
 const pony = ref<PonyType>(null)
@@ -26,12 +29,13 @@ const decor = ref<DecorType>(null)
 const avatar = ref<AvatarType>(null)
 
 onMounted(() => {
-    if (!gameObjects) return
-    pony.value = pickRandom(Object.values(gameObjects.pony.objects))
-    house.value = pickRandom(Object.values(gameObjects.house.objects))
-    shop.value = pickRandom(Object.values(gameObjects.shop.objects))
-    decor.value = pickRandom(Object.values(gameObjects.decor.objects))
-    avatar.value = pickRandom(Object.values(gameObjects.avatar.objects))
+    whenever(gameObjects, () => {
+        pony.value = pickRandom(Object.values(gameObjects.value.pony.objects))
+        house.value = pickRandom(Object.values(gameObjects.value.house.objects))
+        shop.value = pickRandom(Object.values(gameObjects.value.shop.objects))
+        decor.value = pickRandom(Object.values(gameObjects.value.decor.objects))
+        avatar.value = pickRandom(Object.values(gameObjects.value.avatar.objects))
+    })
 })
 
 </script>

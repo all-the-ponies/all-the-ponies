@@ -3,9 +3,10 @@ import { setLanguage } from '@/globals'
 import { LOCALES } from '@/i18n'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
-import { shallowRef, watch } from 'vue'
+import type { PageContext } from 'vike/types'
+import { shallowRef, watch, type ShallowReactive } from 'vue'
 
-const pageContext = usePageContext()
+const pageContext = usePageContext() as ShallowReactive<PageContext & {locale: string}>
 
 const selectedLanguage = shallowRef<string>(pageContext.locale)
 

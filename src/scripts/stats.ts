@@ -1,7 +1,8 @@
 import { useSaveStore } from "@/stores/saveManager"
 import type { GameObjectId } from "@/types/gameDataTypes"
-import { computed, reactive, type Ref } from "vue"
+import { computed, onMounted, reactive, shallowRef, type Ref } from "vue"
 import { getObject } from "./gameData"
+import { computedAsync } from "@vueuse/core"
 
 
 interface SaveStats {
@@ -33,7 +34,7 @@ type ReactiveObject<T> = { [K in keyof T]: ToReactive<T[K]> }
 
 type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
 
-const ponies = computed(() => {
+const ponies = computedAsync(async () => {
     const save = useSaveStore()
     const changelingTransformations: GameObjectId[] = []
     
@@ -48,7 +49,7 @@ const ponies = computed(() => {
     }
 
     for (let [ponyId, ponyInfo] of Object.entries(save.ponies)) {
-        const pony = getObject(ponyId, 'pony')
+        const pony = await getObject(ponyId, 'pony')
         if (!pony) {
             continue
         }
@@ -73,9 +74,17 @@ const ponies = computed(() => {
     }
 
     return ponies
-})
+}, {
+    total: 0,
+    unique: 0,
+    regular: 0,
+    changelings: 0,
+    gems: 0,
+    groups: 0,
+    stars: 0,
+}, {lazy: true})
 
-const shops = computed(() => {
+const shops = computedAsync(async () => {
     const save = useSaveStore()
     const shops: DeepWriteable<SaveStats['shops']> = {
         total: 0,
@@ -85,8 +94,8 @@ const shops = computed(() => {
     }
 
     for (let shopId of Object.keys(save.shops)) {
-        const shop = getObject(shopId, 'shop')
-        const product = getObject(shop.product, 'consumable')
+        const shop = await getObject(shopId, 'shop')
+        const product = await getObject(shop.product, 'consumable')
 
         shops.total++
         if (product?.consume.bits > 0) {
@@ -99,17 +108,42 @@ const shops = computed(() => {
     }
 
     return shops
-})
+}, {
+    total: 0,
+    bits: 0,
+    gems: 0,
+    others: 0,
+}, {lazy: true})
 
-const saveStats = reactive<ReactiveObject<SaveStats>>({
-    ponies,
-    houses: {
-        total: computed(() => {
-            const save = useSaveStore()
-            return save.houses.size
-        }),
-    },
-    shops,
-}) as SaveStats
+export function useSaveStats() {
+    const saveStats = shallowRef<SaveStats>(null)
 
-export default saveStats
+    onMounted(() => {
+        saveStats.value = reactive<ReactiveObject<SaveStats>>({
+            ponies,
+            houses: {
+                total: computedAsync(async () => {
+                    const save = useSaveStore()
+                    return (await save.houses).size
+                }, 0),
+            },
+            shops,
+        }) as SaveStats
+    })
+    
+    return saveStats
+}
+
+// const saveStats = reactive<ReactiveObject<SaveStats>>({
+//     ponies,
+//     houses: {
+//         total: computedAsync(async () => {
+//     //         const save = useSaveStore()
+//     //         return (await save.houses).size
+//                 return 0
+//         }, 0, {lazy: true}),
+//     },
+//     shops,
+// }) as SaveStats
+// 
+// export default saveStats
