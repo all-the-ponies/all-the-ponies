@@ -4,7 +4,7 @@ import Link from '@/components/Link.vue'
 import { language } from '@/globals'
 import { createAssetUrl } from '@/scripts/assets'
 import { scrollIntoViewWithOffset, transformName } from '@/scripts/common'
-import { gameObjects, translateName } from '@/scripts/gameData'
+import { useGameObjects, translateName } from '@/scripts/gameData'
 import { formatTime, formatTimestamp } from '@/scripts/timeFunctions'
 import type { PonyType } from '@/types/gameDataTypes'
 import { useMounted } from '@vueuse/core'
@@ -13,6 +13,7 @@ import { computed, nextTick, onUnmounted, ref, useTemplateRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+const gameObjects = useGameObjects()
 
 // useSeoMeta({
 //     title: () => t('pony_quiz.title'),
@@ -45,8 +46,8 @@ const guessedPonies = ref<PonyType[]>([])
 const ponies = computed(() => {
     const ponies: PonyType[] = []
 
-    if (!gameObjects) return []
-    for (let pony of Object.values(gameObjects.pony.objects)) {
+    if (!gameObjects.value) return []
+    for (let pony of Object.values(gameObjects.value.pony.objects)) {
         if (!options.value.includeUnused && (pony.tags.includes('unused') || pony.tags.includes('npc'))) {
           continue
         }

@@ -48,13 +48,14 @@ const shop = computedAsync(
     { evaluating: loadingShop },
 )
 
-const gameObjects = computed(() => {
+const gameObjects = computedAsync(async () => {
     if (loadingShop.value) {
         return []
     }
 
-    return Object.keys(shop.value).map((id) => getObject(id)).filter((gameObject) => gameObject !== null && gameObject.category != 'house')
-})
+    return (await Promise.all(Object.keys(shop.value).map(async (id) => await getObject(id))))
+                .filter((gameObject) => gameObject !== null && gameObject.category != 'house')
+}, [])
 
 const availableCategories = computed((): CategoryName[] => {
     const categoriesSet: Set<CategoryName> = new Set()

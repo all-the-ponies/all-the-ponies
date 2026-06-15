@@ -5,7 +5,7 @@ import Link from '@/components/Link.vue'
 import { language } from '@/globals'
 import { createAssetUrl } from '@/scripts/assets'
 import { pickRandom, staticImage, transformName } from '@/scripts/common'
-import { gameObjects, getObject, translateName } from '@/scripts/gameData'
+import { useGameObjects, getObject, translateName } from '@/scripts/gameData'
 import { formatTime, formatTimestamp } from '@/scripts/timeFunctions'
 import { useActivityState } from '@/stores/activityState'
 import type { PonyType } from '@/types/gameDataTypes'
@@ -19,6 +19,8 @@ useEventListener('beforeunload', (e) => {
         e.preventDefault()
     }
 })
+
+const gameObjects = useGameObjects()
 
 const options = ref({
     ignoreSpaces: true,
@@ -43,8 +45,8 @@ const loadFailedPonies = ref<PonyType[]>([])
 const ponies = computed(() => {
     const ponies: PonyType[] = []
 
-    if (!gameObjects) return []
-    for (let pony of Object.values(gameObjects.pony.objects)) {
+    if (!gameObjects.value) return []
+    for (let pony of Object.values(gameObjects.value.pony.objects)) {
         if (loadFailedPonies.value.includes(pony)) {
             continue
         } else if (!options.value.includeUnused && (pony.tags.includes('unused') || pony.tags.includes('npc'))) {
@@ -67,7 +69,7 @@ const currentPony = ref<PonyType | null>(null)
 const displayName = ref<string>('')
 const imageUrl = computed(() => {
     if (currentPony.value !== null) {
-        return staticImage(currentPony.value.image.main.path)
+        return createAssetUrl(currentPony.value.image.main.path)
     }
     return ''
 })
@@ -98,15 +100,16 @@ function start() {
     guessedPonies.value = []
     resetTimer()
     startTimer()
-    pickPony()
+    currentPony.value = gameObjects.value.pony.objects['Pony_Rockin_Medley_Brook']
+    // pickPony()
     nextTick(() => {
         nameInput.value.focus()
         gameContainer.value.scrollIntoView()
     })
 }
 
-function resume() {
-    restoreState()
+async function resume() {
+    await restoreState()
     playing.value = true
     startTimer()
     nextTick(() => {
@@ -115,10 +118,10 @@ function resume() {
     })
 }
 
-function restoreState() {
-    currentPony.value = getObject(activityState.guesser.currentPony, 'pony')
+async function restoreState() {
+    currentPony.value = await getObject(activityState.guesser.currentPony, 'pony')
     timeElapsed.value = activityState.guesser.time
-    guessedPonies.value = activityState.guesser.guessedPonies.map(id => getObject(id, 'pony'))
+    guessedPonies.value = await Promise.all(activityState.guesser.guessedPonies.map(async (id) => await getObject(id, 'pony')))
 }
 
 watch(
@@ -298,7 +301,7 @@ function imageLoadFailed() {
             <p>{{ $t('guesser.description') }}</p>
             <button @click="togglePlaying" class="button button-green">{{ $t(playing ? 'button.stop' : 'button.start') }}</button>
             <ClientOnly>
-                <button v-if="!playing && activityState.guesser.playing" @click="resume()" class="button button-green">Resume</button>
+                <button v-if="!playing && activityState.guesser.playing" @click="resume()" class="button button-green">{{ $t('button.resume') }}</button>
             </ClientOnly>
             <DevOnly>
                 <button @click="win()" class="button button-green">Win</button>

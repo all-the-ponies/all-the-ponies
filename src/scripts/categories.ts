@@ -2,7 +2,9 @@ import { language } from "@/globals"
 import { useSaveStore } from "@/stores/saveManager"
 import type { Ref } from "vue"
 import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType } from "../types/gameDataTypes"
-import { getObject, groupQuests, translateName } from "./gameData"
+import { getObject, useGroupQuests, translateName } from "./gameData"
+
+const groupQuests = useGroupQuests()
 
 let saveManager: ReturnType<typeof useSaveStore>
 
@@ -103,70 +105,70 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
     },
     
     shop: {
-      production: {
-        name: 'sorting.shop.production',
-        check(a: ShopType, b: ShopType) {
-          const productA = getObject(a.product, 'consumable')
-          const productB = getObject(b.product, 'consumable')
-
-          if (!(productA && Object.keys(productA.consume).length) ||
-              !(productB && Object.keys(productB.consume).length)) {
-              if (productA && Object.keys(productA.consume).length) {
-                return 1
-              } else if (productB && Object.keys(productB.consume).length) {
-                return -1
-              }
-
-              return 0
-          }
-          
-          if (productA.consume.gems > 0 || productB.consume.gems > 0) {
-            if (productA.consume.gems === 0) {
-              return 1
-            } else if (productB.consume.gems === 0) {
-              return -1
-            }
-            
-            return (productB.consume.gems / productB.time) - (productA.consume.gems / productA.time)
-          } else if (productA.consume.bits > 0 || productB.consume.bits > 0) {
-            if (productA.consume.bits === 0) {
-              return 1
-            } else if (productB.consume.bits === 0) {
-              return -1
-            }
-            
-            return (productB.consume.bits / productB.time) - (productA.consume.bits / productA.time)
-          } else if (productA.consume.tls > 0 || productB.consume.tls > 0) {
-            if (productA.consume.tls === 0) {
-              return 1
-            } else if (productB.consume.tls === 0) {
-              return -1
-            }
-            
-            return (productB.consume.tls / productB.time) - (productA.consume.tls / productA.time)
-          }
-        }
-      },
-      xp: {
-        name: 'sorting.shop.xp_rate',
-        check(a: ShopType, b: ShopType) {
-          const productA = getObject(a.product, 'consumable')
-          const productB = getObject(b.product, 'consumable')
-
-          if (!(productA && Object.keys(productA.consume).length) ||
-              !(productB && Object.keys(productB.consume).length)) {
-              if (productA && Object.keys(productA.consume).length) {
-                return 1
-              } else if (productB && Object.keys(productB.consume).length) {
-                return -1
-              }
-
-              return 0
-          }
-
-          return (productB.consume.xp / productB.time) - (productA.consume.xp / productA.time)
-        }
-      }
+//       production: {
+//         name: 'sorting.shop.production',
+//         check(a: ShopType, b: ShopType) {
+//           const productA = await getObject(a.product, 'consumable')
+//           const productB = await getObject(b.product, 'consumable')
+// 
+//           if (!(productA && Object.keys(productA.consume).length) ||
+//               !(productB && Object.keys(productB.consume).length)) {
+//               if (productA && Object.keys(productA.consume).length) {
+//                 return 1
+//               } else if (productB && Object.keys(productB.consume).length) {
+//                 return -1
+//               }
+// 
+//               return 0
+//           }
+//           
+//           if (productA.consume.gems > 0 || productB.consume.gems > 0) {
+//             if (productA.consume.gems === 0) {
+//               return 1
+//             } else if (productB.consume.gems === 0) {
+//               return -1
+//             }
+//             
+//             return (productB.consume.gems / productB.time) - (productA.consume.gems / productA.time)
+//           } else if (productA.consume.bits > 0 || productB.consume.bits > 0) {
+//             if (productA.consume.bits === 0) {
+//               return 1
+//             } else if (productB.consume.bits === 0) {
+//               return -1
+//             }
+//             
+//             return (productB.consume.bits / productB.time) - (productA.consume.bits / productA.time)
+//           } else if (productA.consume.tls > 0 || productB.consume.tls > 0) {
+//             if (productA.consume.tls === 0) {
+//               return 1
+//             } else if (productB.consume.tls === 0) {
+//               return -1
+//             }
+//             
+//             return (productB.consume.tls / productB.time) - (productA.consume.tls / productA.time)
+//           }
+//         }
+//       },
+//       xp: {
+//         name: 'sorting.shop.xp_rate',
+//         async check(a: ShopType, b: ShopType) {
+//           const productA = await getObject(a.product, 'consumable')
+//           const productB = await getObject(b.product, 'consumable')
+// 
+//           if (!(productA && Object.keys(productA.consume).length) ||
+//               !(productB && Object.keys(productB.consume).length)) {
+//               if (productA && Object.keys(productA.consume).length) {
+//                 return 1
+//               } else if (productB && Object.keys(productB.consume).length) {
+//                 return -1
+//               }
+// 
+//               return 0
+//           }
+// 
+//           return (productB.consume.xp / productB.time) - (productA.consume.xp / productA.time)
+//         }
+//       }
     },
 
     decor: {
@@ -197,7 +199,7 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
 export interface FilterFunctionsType {
     name?: string | Ref,
     // type: 'checkbox' | 'radio' | 'text' | 'number',
-    check?(gameObject: GameObject): boolean,
+    check?(gameObject: GameObject): Promise<boolean> | boolean,
     default?: boolean,
     category?: CategoryName,
     group?: string,
@@ -211,13 +213,18 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
     pony: {
         playable: {
             name: "filter.pony.playable",
-            check(gameObject: PonyType) {return (gameObject.group.length == 0 || gameObject.group.length && gameObject.group_master)},
+            check(gameObject: PonyType) {
+              return (gameObject.group.length == 0 || gameObject.group.length && gameObject.group_master)},
             default: true,
             exclude: ['npc', 'unused', 'quest'],
         },
         pro: {
             name: 'filter.pony.pro',
             check(gameObject: PonyType) {
+              if (!groupQuests.value) {
+                return false
+              }
+              
               let showPro = false
 
               if (!gameObject.pro) {
@@ -229,7 +236,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
                   showPro = true
                   break
                 }
-                if (!groupQuests.quests[quest].special) {
+                if (!groupQuests.value.quests[quest].special) {
                   showPro = true
                   break
                 }
@@ -268,33 +275,33 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
       //   default: true,
       // },
       bits: {
-        name: translateName(getObject('Bits', 'item')),
-        check(gameObject: ShopType) {
-          const product = getObject(gameObject.product, 'consumable')
+        name: translateName(await getObject('Bits', 'item')),
+        async check(gameObject: ShopType) {
+          const product = await getObject(gameObject.product, 'consumable')
           return product && product.consume.bits > 0
         },
         // default: true
       },
       gems: {
         name: 'filter.shop.gem_shop',
-        check(gameObject: ShopType) {
-          const product = getObject(gameObject.product, 'consumable')
+        async check(gameObject: ShopType) {
+          const product = await getObject(gameObject.product, 'consumable')
           return product && product.consume.gems > 0
         },
         // default: true
       },
       maze: {
         name: 'filter.shop.maze',
-        check(gameObject: ShopType) {
-          const product = getObject(gameObject.product, 'consumable')
+        async check(gameObject: ShopType) {
+          const product = await getObject(gameObject.product, 'consumable')
           return product && product.consume.tls > 0
         },
         // default: true
       },
       other: {
         name: 'filter.shop.others',
-        check(gameObject: ShopType) {
-          const product = getObject(gameObject.product, 'consumable')
+        async check(gameObject: ShopType) {
+          const product = await getObject(gameObject.product, 'consumable')
           return !(product && (product.consume.bits || product.consume.gems || product.consume.tls))
         },
         // default: true,

@@ -31,7 +31,8 @@
     "skip": "スキップ",
     "start": "スタート",
     "stop": "",
-    "yes": "はい"
+    "yes": "はい",
+    "resume": "さいかい"
   },
   "check_save": {
     "messages": {

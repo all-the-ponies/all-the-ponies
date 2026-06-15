@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import LanguageSelector from '@/components/LanguageSelector.vue'
 import Link from '@/components/Link.vue'
-import gameData from '@/scripts/gameData'
+import { useGameVersions } from '@/scripts/gameData'
 import { ref } from 'vue'
 
 const sidebarShown = ref<boolean>(false)
+const gameVersions = useGameVersions()
 
 const emit = defineEmits<{
     change: [state: boolean],
@@ -64,9 +65,9 @@ function toggleSidebar(e: Event) {
 
                     </ul>
                     <div class="version-numbers">
-                        <span id="app-version">{{ $t('game.game_version', {version: gameData.gameVersions.game_version}) }}</span>
+                        <span id="app-version">{{ $t('game.game_version', {version: gameVersions?.game_version}) }}</span>
                         <br>
-                        <span id="content-version">{{ $t('game.content_version', {version: gameData.gameVersions.content_version}) }}</span>
+                        <span id="content-version">{{ $t('game.content_version', {version: gameVersions?.content_version}) }}</span>
                     </div>
                 </nav>
                 <label for="sidebar-toggle" class="sidebar-background"></label>

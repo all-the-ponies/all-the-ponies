@@ -8,15 +8,17 @@ import { useGameCardSize } from '@/composables/useGameCardSize'
 import { useRem } from '@/composables/useRem'
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories'
 import { getNames, getObject } from '@/scripts/gameData'
-import saveStats from '@/scripts/stats'
+import { useSaveStats } from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
 import type { CategoryName } from '@/types/gameDataTypes'
+import { computedAsync } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { computed, ref, useTemplateRef, watch } from 'vue'
 
 const saveStore = useSaveStore()
+const saveStats = useSaveStats()
 
 const pageContext = usePageContext()
 
@@ -50,16 +52,22 @@ watch(
 )
 
 
-const gameObjects = computed(() => {
+const gameObjects = computedAsync(async () => {
     switch (category.value) {
         case 'pony':
             return Object.keys(saveStore.ponies)
         case 'shop':
             return Object.keys(saveStore.shops)
         case 'house':
-            return [...saveStore.houses]
+            return [...await saveStore.houses]
     }
-})
+}, [])
+
+const items = computedAsync(async () => {
+    return Promise.all(
+        gameObjects.value.map(async (objectId) => await getObject(objectId, category.value))
+    )
+}, [])
 
 
 const sortFunctions = computed(() => {
@@ -138,7 +146,7 @@ const itemGap = useRem(.3)
                         {{
                             $t('inventory.stats.ponies', 2, {
                                 named: {
-                                    count: $n(saveStats.ponies.unique,)
+                                    count: $n(saveStats?.ponies.unique)
                                 },
                             })
                         }}
@@ -147,7 +155,7 @@ const itemGap = useRem(.3)
                         {{
                             $t('inventory.stats.transformable', 2, {
                                 named: {
-                                    count: $n(saveStats.ponies.changelings)
+                                    count: $n(saveStats?.ponies.changelings)
                                 }
                             })
                         }}
@@ -156,7 +164,7 @@ const itemGap = useRem(.3)
                         {{
                             $t('inventory.stats.stars', 2, {
                                 named: {
-                                    count: $n(saveStats.ponies.stars)
+                                    count: $n(saveStats?.ponies.stars)
                                 }
                             })
                         }}
@@ -165,7 +173,7 @@ const itemGap = useRem(.3)
                         {{
                             $t('inventory.stats.houses', 2, {
                                 named: {
-                                    count: $n(saveStats.houses.total)
+                                    count: $n(saveStats?.houses.total)
                                 }
                             })
                         }}
@@ -174,7 +182,7 @@ const itemGap = useRem(.3)
                         {{
                             $t('inventory.stats.shops', 2, {
                                 named: {
-                                    count: $n(saveStats.shops.bits + saveStats.shops.others)
+                                    count: $n(saveStats?.shops.bits + saveStats?.shops.others)
                                 }
                             })
                         }}
@@ -183,7 +191,7 @@ const itemGap = useRem(.3)
                         {{
                             $t('inventory.stats.gem_shops', 2, {
                                 named: {
-                                    count: $n(saveStats.shops.gems)
+                                    count: $n(saveStats?.shops.gems)
                                 }
                             })
                         }}
@@ -197,7 +205,7 @@ const itemGap = useRem(.3)
         <section>
             <ClientOnly>
                 <SearchComponent
-                    :data="gameObjects.map(objectId => getObject(objectId, category))"
+                    :data="items"
                     :get-search-text="getNames"
                     :filters="filterFunctions"
                     :sorters="sortFunctions"

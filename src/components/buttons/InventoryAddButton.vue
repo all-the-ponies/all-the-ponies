@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import gameData from '@/scripts/gameData'
+import { getObject } from '@/scripts/gameData'
 import { useSaveStore } from '@/stores/saveManager'
 import type { GameObjectId } from '@/types/gameDataTypes'
+import { computedAsync } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { computed } from 'vue'
 
@@ -10,10 +11,10 @@ const props = defineProps<{
 }>()
 
 const saveStore = useSaveStore()
-const gameObject = computed(() => gameData.getObject(props.gameObject))
+const gameObject = computedAsync(async () => await getObject(props.gameObject))
 
 const owned = computed(() => {
-    switch (gameObject.value.category) {
+    switch (gameObject.value?.category) {
         case 'pony':
             return saveStore.hasPony(gameObject.value.id)
         case 'shop':
@@ -25,7 +26,7 @@ function toggleOwned(event: Event) {
     // event.preventDefault()
     // event.stopPropagation()
     if (owned.value) {
-        switch (gameObject.value.category) {
+        switch (gameObject.value?.category) {
             case 'pony':
                 saveStore.removePony(gameObject.value.id)
                 break
@@ -34,7 +35,7 @@ function toggleOwned(event: Event) {
                 break
         }
     } else {
-        switch (gameObject.value.category) {
+        switch (gameObject.value?.category) {
             case 'pony':
                 saveStore.addPony(gameObject.value.id)
                 break

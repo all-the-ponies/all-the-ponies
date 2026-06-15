@@ -109,12 +109,16 @@ class ShopStore {
     }
 
     async getShopInfo(id: GameObjectId | GameObject) {
-        const gameObject = getObject(id)
+        const gameObject = await getObject(id)
         let token = null
         let entry: ShopEntry | null = null
         let basePrice = {
             currency: '',
             amount: 0,
+        }
+        if (!gameObject) {
+            console.log('Could not find', id)
+            return
         }
         if (gameObject.id in await this.shop) {
             entry = (await this.shop)[gameObject.id]

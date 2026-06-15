@@ -7,7 +7,7 @@ import type { PageContext } from "vike/types"
 export async function data(pageContext: PageContext) {
     const { id } = pageContext.routeParams
     
-    const cutie_mark = getObject(id, 'cutie_mark')
+    const cutie_mark = await getObject(id, 'cutie_mark')
 
     if (cutie_mark === null) {
         throw render(404, `Avatar frame with id ${id} doesn't exist`)

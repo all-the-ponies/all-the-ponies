@@ -9,9 +9,10 @@ import { useRem } from '@/composables/useRem';
 import { language } from '@/globals';
 import { getNames, getObject, translateName } from '@/scripts/gameData';
 import { useListStore } from '@/stores/listStore';
+import { computedAsync } from '@vueuse/core';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { render } from 'vike/abort';
-import { computed, useTemplateRef } from 'vue';
+import { computed, ref, useTemplateRef, watchEffect } from 'vue';
 
 const listStore = useListStore()
 const pageContext = usePageContext()
@@ -30,13 +31,20 @@ const wishlist = computed(() => {
 })
 console.log('wishlist', wishlist.value)
 
-const objects = computed(() => wishlist.value.items.map(item => {
-    return {
-        ...item,
-        item: getObject(item.item),
-        id: item.item,
-    }
-}))
+
+// We use a ref and watchEffect instead of computedAsync because of
+// a race condition when going back to the lists page
+
+const objects = ref([])
+watchEffect(async () => {
+    objects.value = await Promise.all(wishlist.value.items.map(async (item) => {
+        return {
+            ...item,
+            item: await getObject(item.item),
+            id: item.item,
+        }
+    }))
+})
 
 function editList() {
     createListDialog.value.editList(wishlist.value.id)

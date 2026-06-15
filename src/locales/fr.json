@@ -32,7 +32,8 @@
     "skip": "Passer",
     "start": "Commencer",
     "stop": "Arrêt",
-    "yes": "Oui"
+    "yes": "Oui",
+    "resume": "Reprendre"
   },
   "check_save": {
     "messages": {

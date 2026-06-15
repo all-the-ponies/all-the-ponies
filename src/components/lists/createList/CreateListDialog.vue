@@ -5,14 +5,16 @@ import GameCard from '@/components/GameCard.vue';
 import { createAssetUrl } from '@/scripts/assets.ts';
 import { CATEGORIES } from '@/scripts/categories';
 import { pickRandom } from '@/scripts/common';
-import { gameObjects, getObject } from '@/scripts/gameData';
+import { useGameObjects, getObject } from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
 import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ChooseImageDialog from './ChooseImageDialog.vue';
+import { computedAsync } from '@vueuse/core';
 
 const { t } = useI18n()
+const gameObjects = useGameObjects()
 
 const emit = defineEmits<{
     submit: [listId: Wishlist],
@@ -31,7 +33,7 @@ const image = ref<{item: GameObjectId | null, image: string | null}>({
     image: null,
 })
 const tempItem = ref<GameObjectId>(null)
-const gameObject = computed(() => getObject(image.value?.item))
+const gameObject = computedAsync(async () => await getObject(image.value?.item))
 const wishlistId = ref<number | null>(null)
 
 watch(name, () => errorMessage.value = '')
@@ -39,8 +41,8 @@ watch(name, () => errorMessage.value = '')
 function createList() {
     wishlistId.value = null
     name.value = ''
-    const randomObject = gameObjects ? pickRandom(Object.values(gameObjects[
-        pickRandom(Object.keys(gameObjects).filter(category => category in CATEGORIES) as CategoryName[])
+    const randomObject = gameObjects.value ? pickRandom(Object.values(gameObjects.value[
+        pickRandom(Object.keys(gameObjects.value).filter(category => category in CATEGORIES) as CategoryName[])
     ].objects) as GameObject[]) as GameObject : null
 
     image.value.item = randomObject.id
@@ -104,8 +106,8 @@ function submitObject(objectId: GameObjectId) {
     selectImage()
 }
 
-function selectImage() {
-    const tempObject = getObject(tempItem.value)
+async function selectImage() {
+    const tempObject = await getObject(tempItem.value)
     if (Object.keys(tempObject.image).length <= 1) {
         submitImage(Object.keys(tempObject.image)[0])
     } else {

@@ -31,7 +31,8 @@
     "skip": "تخطي",
     "start": "ابدأ",
     "stop": "",
-    "yes": "نعم"
+    "yes": "نعم",
+    "resume": "متابعة"
   },
   "check_save": {
     "messages": {

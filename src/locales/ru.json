@@ -31,7 +31,8 @@
     "skip": "Пропуск",
     "start": "Старт",
     "stop": "Остановить",
-    "yes": "Да"
+    "yes": "Да",
+    "resume": "Далее"
   },
   "check_save": {
     "messages": {

@@ -1,13 +1,17 @@
 import api from "@/scripts/api"
 import type { PriceHistoryType } from "@/scripts/api.types"
-import { getObject } from "@/scripts/gameData"
+import { getObject, ready } from "@/scripts/gameData"
 import { render } from "vike/abort"
 import type { PageContext } from "vike/types"
 
 export async function data(pageContext: PageContext) {
     const { id } = pageContext.routeParams
+
+    // await ready
     
-    const pony = getObject(id, 'pony')
+    console.log('Getting object')
+    const pony = await getObject(id, 'pony')
+    console.log('Got object')
 
     if (pony === null) {
         throw render(404, `Pony with id ${id} doesn't exist`)

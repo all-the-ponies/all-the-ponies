@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import gameData, { getFortuneShopData, getObject, translateName } from '@/scripts/gameData'
+import { computed, onUnmounted, ref, watchEffect } from 'vue';
+import gameData, { getFortuneShopData, getObject, translateName, useGameObject } from '@/scripts/gameData'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import BackButton from '@/components/buttons/BackButton.vue';
 import { LOCATIONS } from '@/scripts/categories';
@@ -9,12 +9,13 @@ import { usePageContext } from 'vike-vue/usePageContext';
 import { Config } from 'vike-vue/Config';
 import absoluteUrl from '@/scripts/absoluteUrl';
 import { useData } from 'vike-vue/useData';
-import type { DecorType } from '@/types/gameDataTypes';
+import type { DecorType, FortuneShopItem } from '@/types/gameDataTypes';
 import PriceHistory from '@/components/tables/PriceHistory.vue';
 import type { PriceHistoryType } from '@/scripts/api.types';
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import { createAssetUrl } from '@/scripts/assets';
+import { computedAsync } from '@vueuse/core';
 
 
 const pageContext = usePageContext()
@@ -52,8 +53,15 @@ const name = computed(() => {
     let name = translateName(decor.value).value
     return name
 })
+const fortuneShopData = computedAsync(async () => await getFortuneShopData(decor.value?.id))
+// const fortuneShopData = ref<FortuneShopItem>()
+// 
+// watchEffect(() => {
+//     getFortuneShopData(decor.value.id)
+//         .then(info => fortuneShopData.value = info)
+// })
 
-const fortuneShopData = computed(() => getFortuneShopData(decor.value.id))
+const xpName = translateName(useGameObject('XP', 'item'))
 
 </script>
 
@@ -100,7 +108,7 @@ const fortuneShopData = computed(() => getFortuneShopData(decor.value.id))
                                 <td>{{ decor.grid_size }}x{{ decor.grid_size }}</td>
                             </tr>
                             <tr>
-                                <td>{{ translateName(getObject('XP', 'item')) }}</td>
+                                <td>{{ xpName }}</td>
                                 <td><currency-image object="XP">{{ $n(decor.xp) }}</currency-image></td>
                             </tr>
                             <tr>

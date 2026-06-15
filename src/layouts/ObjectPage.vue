@@ -3,6 +3,7 @@ import AddToListButton from '@/components/buttons/AddToListButton.vue';
 import { createAssetUrl } from '@/scripts/assets';
 import { getObject, translateName } from '@/scripts/gameData';
 import type { GameObject, GameObjectId } from '@/types/gameDataTypes';
+import { computedAsync } from '@vueuse/core';
 import { computed } from 'vue';
 
 
@@ -10,7 +11,7 @@ const props = defineProps<{
     gameObject: GameObjectId | GameObject,
 }>()
 
-const gameObject = computed(() => getObject(props.gameObject))
+const gameObject = computedAsync(async () => await getObject(props.gameObject), null)
 const name = computed(() => translateName(gameObject.value).value)
 const image = computed(() => gameObject.value?.image?.main.path)
 
@@ -31,7 +32,7 @@ const image = computed(() => gameObject.value?.image?.main.path)
                     </slot>
                     <div class="right-image-container">
                         <slot name="image-right"></slot>
-                        <AddToListButton :gameObject="gameObject.id"></AddToListButton>
+                        <AddToListButton v-if="gameObject" :gameObject="gameObject?.id"></AddToListButton>
                     </div>
                 </div>
                 <slot name="left-info"></slot>

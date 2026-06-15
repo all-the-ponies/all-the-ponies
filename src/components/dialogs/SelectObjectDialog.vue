@@ -2,12 +2,14 @@
 import { useGameCardSize } from '@/composables/useGameCardSize';
 import { useRem } from '@/composables/useRem';
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories';
-import { gameObjects, getNames } from '@/scripts/gameData';
+import { useGameObjects, getNames } from '@/scripts/gameData';
 import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTypes';
 import { computed, ref, useTemplateRef } from 'vue';
 import DialogComponent from '../DialogComponent.vue';
 import ObjectCard from '../ObjectCard.vue';
 import SearchComponent from '../SearchComponent.vue';
+
+const gameObjects = useGameObjects()
 
 const props = defineProps<{
 
@@ -53,10 +55,10 @@ function selectObject(objectId: GameObjectId) {
 
 
 const selectedCategory = ref<CategoryName>('pony')
-const objects = computed(() => gameObjects ? Object.values(gameObjects[selectedCategory.value].objects) as GameObject[] : [])
+const objects = computed(() => gameObjects.value ? Object.values(gameObjects.value[selectedCategory.value].objects) as GameObject[] : [])
 
 
-const availableCategories = gameObjects ? Object.keys(gameObjects) : []
+const availableCategories = gameObjects.value ? Object.keys(gameObjects.value) : []
 
 
 const sortFunctions = computed(() => {

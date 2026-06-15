@@ -8,6 +8,7 @@ import { useRem } from '@/composables/useRem';
 import { createAssetUrl } from '@/scripts/assets';
 import { getObject } from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
+import { computedAsync } from '@vueuse/core';
 import { ClientOnly } from 'vike-vue/ClientOnly';
 import { ref, useTemplateRef } from 'vue';
 
@@ -20,13 +21,26 @@ function createList() {
     createListDialog.value.createList()
 }
 
-function getListImage(wishlist: Wishlist) {
-    const gameObject = getObject(wishlist.image.item)
+async function getListImage(wishlist: Wishlist) {
+    const gameObject = await getObject(wishlist.image.item)
     if (!gameObject) {
         return
     }
     return gameObject.image[wishlist.image.image].path
 }
+
+const imageMap = computedAsync(
+    async () => {
+        const images: Record<string, string> = {}
+        await Promise.all(
+            [...listsStore.lists.values()].map((wishlist) => 
+                getListImage(wishlist).then(path => images[wishlist.id] = path)
+            )
+        )
+        return images
+    },
+    {},
+)
 
 async function deleteList(wishlist: Wishlist) {
     listToDelete.value = wishlist
@@ -64,7 +78,7 @@ const itemGap = useRem(.3)
                     <GameCard
                         class="item-card"
                         :title="item.name"
-                        :image="createAssetUrl(getListImage(item))"
+                        :image="createAssetUrl(imageMap[item.id])"
                         :href="`/list/${item.id}/`"
                     >
                         <template #right>

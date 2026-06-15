@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import SearchComponent from '@/components/SearchComponent.vue';
 import { CATEGORIES, FilterFunctions, PLURAL_CATEGORY_MAP, SortFunctions } from '@/scripts/categories';
-import { gameObjects, getNames } from '@/scripts/gameData';
+import { useGameObjects, getNames } from '@/scripts/gameData';
 import { computed } from 'vue';
 // import { useSeoMeta } from '@unhead/vue';
 import ObjectCard from '@/components/ObjectCard.vue';
@@ -15,6 +15,7 @@ import { useI18n } from 'vue-i18n';
 
 const pageContext = usePageContext()
 const saveStore = useSaveStore()
+const gameObjects = useGameObjects()
 
 const { t } = useI18n()
 
@@ -56,14 +57,17 @@ const filterFunctions = computed(() => {
         }
     }
 
+    console.log('Got filters', category.value)
     return functions
 })
 
-function infoGetter(gameObject: GameObject) {
-    // return <PriceButton currency='Bits'>10,000</PriceButton>
-}
-
-const objects = computed(() => gameObjects ? Object.values(gameObjects[category.value].objects) as GameObject[] : [])
+const objects = computed(() => {
+    if (!gameObjects.value) {
+        return []
+    }
+    const values = Object.values(gameObjects.value[category.value].objects) as GameObject[]
+    return values
+})
 
 const cardSize = 9
 

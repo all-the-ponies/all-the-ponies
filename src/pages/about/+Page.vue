@@ -65,7 +65,7 @@ console.log('credits', credits)
                     {{
                         new Intl.ListFormat([language.code], {style: 'short'}).format(
                             user.languages.map(lang => 
-                                new Intl.DisplayNames([language.code], { type: 'language' }).of(lang)
+                                new Intl.DisplayNames([language.code], { type: 'language' }).of(lang.replaceAll('_', '-'))
                             )
                         )
                     }}
