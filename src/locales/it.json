@@ -1,36 +1,36 @@
 {
   "about": {
     "description": {
-      "body": "",
+      "body": "\"All The Ponies\" è stato inizialmente creato da {me} come sito per il quiz {quiz_link}, perché suddetto quiz che ho trovato online a malapena scalfiva la superficie dei pony esistenti. Successivamente è stato espanso e reso una fonte di informazioni accurate riguardanti le componenti del gioco, tenendo conto di cosa si possegga, e ovviamente delle piccole attività che si possono svolgere.",
       "quiz_link": ""
     },
     "sections": {
       "credits": {
         "message": {
           "credits_list": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": ""
+            "1": "Questo sito è stato ideato da {ego}.",
+            "2": "Un ringraziamento speciale a {bass} per l'aiuto nello scaricare i pony tramite il codice amici.",
+            "3": "Il carattere utilizzato è {font}, usato anche all'interno del gioco stesso.",
+            "4": "Il sito è stato ideato utilizzando {vue} per facilitarmi il lavoro e permettere un'esperienza più dinamica."
           }
         },
-        "title": ""
+        "title": "Crediti"
       },
       "translations": {
-        "title": ""
+        "title": "Traduzioni"
       }
     },
     "title": "Riconoscimenti"
   },
   "button": {
     "cancel": "Annulla",
-    "hint": "",
+    "hint": "Indizio",
     "no": "No",
     "ok": "Ok",
     "share": "Condividi",
     "skip": "Salta",
     "start": "Inizia",
-    "stop": "",
+    "stop": "Metti in Pausa",
     "yes": "Sì"
   },
   "check_save": {
@@ -40,84 +40,84 @@
   },
   "common": {
     "date": {
-      "current": "",
+      "current": "Attuali",
       "range": ""
     },
-    "export": "",
+    "export": "Esporta",
     "help": "Aiuto",
-    "import": "",
-    "info": "",
+    "import": "Importa",
+    "info": "Informazioni",
     "name": "Nome",
     "new": "Novità",
-    "or": "",
-    "price": "",
+    "or": "o",
+    "price": "Costo",
     "royal": "Reale",
-    "wiki": ""
+    "wiki": "Wiki"
   },
   "contact": {
-    "description": "",
+    "description": "Hai delle domande, dei suggerimenti, dei bug da contrassegnare, o vuoi contribuire? Questo è il posto giusto per farlo!",
     "message": {
       "discord": {
-        "button": "",
-        "description": "",
-        "title": ""
+        "button": "Unisciti al Server",
+        "description": "Fai domande, dai suggerimenti, contrassegna bug oppure conversa con la community.",
+        "title": "Unisciti al Server Discord"
       },
-      "discord_message": "",
-      "discord_server": "",
+      "discord_message": "Hai delle domande, dei suggerimenti o dei bug da contrassegnare? Unisciti a {server}!",
+      "discord_server": "Server Discord",
       "github": {
         "button": "",
-        "description": "",
-        "title": ""
+        "description": "Dai un'occhiata al codice, segnala dei problemi, o richiedi cambiamenti.",
+        "title": "Vedi su GitHub"
       },
       "help_wanted": {
-        "description": "",
-        "title": ""
+        "description": "Sono una singola persona che sa solo l'inglese, dunque ci sono tante cose che io non posso fare, più notoriamente le traduzioni. Le cose che sono riuscito a tradurre sono quelle che sono riuscito a raccattare dal gioco stesso. Se la tua lingua non è stata tradotta a dovere, per favore fai una richiesta di cambiamento su GitHub oppure unisciti al Server Discord così da dare il tuo aiuto nel tradurre. Inoltre non sono molto bravo a ideare i layout, quindi se sei competente nell'ideare siti web, mi farebbe tanto piacere se mi aiutassi. Se vuoi solamente contribuire nel programmare il sito, anche ciò è ben accetto.",
+        "title": "Cercasi Aiuto!"
       },
       "mlp_game_hangout": {
-        "button": "",
-        "description": "",
-        "title": ""
+        "button": "Unisciti al Server",
+        "description": "Server del Gioco per la Community. Connesso al subreddit di r/MLPIOS.",
+        "title": "Ritrovo del Gioco di MLP"
       }
     },
-    "title": ""
+    "title": "Contatti"
   },
   "dialog": {
-    "filter": "",
+    "filter": "Filtro",
     "select_item": {
-      "title": ""
+      "title": "Seleziona Oggetto"
     },
-    "sort_by": ""
+    "sort_by": "Filtra a Seconda di"
   },
   "filter": {
     "decor": {
-      "can_fuse": "",
-      "regular": ""
+      "can_fuse": "Capacità di fondersi",
+      "regular": "Standard"
     },
     "pony": {
-      "not_owned": "",
-      "npc": "",
-      "playable": "",
-      "pro": "",
-      "quest": "",
-      "unused": ""
+      "not_owned": "Non possedute",
+      "npc": "NPC",
+      "playable": "Giocabili",
+      "pro": "Pro",
+      "quest": "Per le Missioni",
+      "unused": "Inutilizzati"
     },
     "shop": {
       "gem_shop": "Negozi Di Gemme",
       "maze": "Labirinto",
-      "not_owned": "",
-      "others": ""
+      "not_owned": "Non Posseduti",
+      "others": "Altri"
     }
   },
   "fortune_shop": {
     "messages": {
-      "regular": "",
+      "regular": "Standard",
       "royal": "Reale"
     },
     "price_rarities": {
       "discount": "Sconto",
-      "regular": "",
-      "super": "",
-      "ultra": ""
+      "regular": "Standard",
+      "super": "Super",
+      "ultra": "Ultra"
     },
     "rarities": {
       "common": "Comune",
@@ -128,8 +128,8 @@
     "title": "Negozio Della Fortuna"
   },
   "game": {
-    "content_version": "",
-    "game_version": "",
+    "content_version": "Versione dei Contenuti: {version}",
+    "game_version": "Versione del Gioco: {version}",
     "message": {
       "you_won": "Hai Vinto!"
     }
@@ -137,40 +137,43 @@
   "game_object": {
     "building": {
       "build_reward": "",
-      "build_skip_cost": "",
-      "build_time": "",
-      "skip_cost": ""
+      "build_skip_cost": "Costo per saltare",
+      "build_time": "Tempo di Costruzione",
+      "skip_cost": "Costo per Saltare"
     },
     "common": {
-      "size": "",
-      "unlock_level": ""
+      "size": "Grandezza",
+      "unlock_level": "Livello per Sbloccare"
     },
     "decor": {
-      "cannot_fuse": "",
+      "cannot_fuse": "Non si possono unire",
       "decor": "Decorazioni",
-      "effect": "",
+      "effect": "Effetti",
       "fusion_points": "Punti Unione",
       "pro_decor": "",
       "pro_decors": "Decorazioni Pro"
     },
     "house": {
-      "house": "",
-      "resident": "",
-      "visitor": ""
+      "house": "Casa | Abitazioni",
+      "resident": "Residente | Residenti",
+      "visitor": "Visitatore | Visitatori"
+    },
+    "pet": {
+      "pet": "Animale Da Compagnia | Pets"
     },
     "pony": {
       "arrival_bonus": "",
       "character": "Personaggi",
-      "level_up_rewards": "",
+      "level_up_rewards": "Premi di Livello",
       "minigame_cooldown": "",
-      "minigame_skip_cost": "",
+      "minigame_skip_cost": "Costo per Saltare (Minigame)",
       "pony": "Pony",
       "transform": "Trasforma",
-      "transformable": ""
+      "transformable": "Trasformabile"
     },
     "profile_decorations": {
       "avatar": {
-        "animated": "",
+        "animated": "Animate?",
         "avatar": "Avatar | Avatar"
       },
       "avatar_frame": {
@@ -182,10 +185,10 @@
       "background_frame": {
         "background_frame": "Cornice sfondo"
       },
-      "is_default": "",
       "cutie_mark": {
         "cutie_mark": "Cutie Mark | Cutie Mark"
-      }
+      },
+      "is_default": ""
     },
     "road": {
       "road": "Strade"
@@ -199,9 +202,6 @@
     },
     "token": {
       "token": "Accessori"
-    },
-    "pet": {
-      "pet": "Animale Da Compagnia | Pets"
     }
   },
   "group_quests": {
