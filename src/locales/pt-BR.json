@@ -28,12 +28,12 @@
     "hint": "Dica",
     "no": "Não",
     "ok": "Ok",
+    "resume": "Continuar",
     "share": "Publicar",
     "skip": "Pular",
     "start": "Iniciar",
     "stop": "Pare",
-    "yes": "Sim",
-    "resume": "Continuar"
+    "yes": "Sim"
   },
   "check_save": {
     "messages": {
@@ -88,18 +88,18 @@
     "select_item": {
       "title": "Selecione o item"
     },
-    "sort_by": "Filtrado por"
+    "sort_by": "Filtrar"
   },
   "filter": {
     "decor": {
-      "can_fuse": "",
+      "can_fuse": "Fusão possível",
       "regular": "Comum"
     },
     "pony": {
       "not_owned": "Não adquirido",
       "npc": "NPC",
       "playable": "Jogável",
-      "pro": "Pro",
+      "pro": "Profissional",
       "quest": "Missão",
       "unused": "Não usado"
     },
@@ -117,7 +117,7 @@
     },
     "price_rarities": {
       "discount": "Desconto",
-      "regular": "",
+      "regular": "Comum",
       "super": "Super",
       "ultra": "Ultra"
     },
@@ -314,38 +314,38 @@
   },
   "player_info": {
     "friend_code": "Código De Amigo",
-    "join_date": "",
-    "total_playtime": ""
+    "join_date": "Data de criação: {join_date}",
+    "total_playtime": "Tempo jogado: {total_playtime}"
   },
   "pony_quiz": {
-    "description": "",
+    "description": "Teste seu conhecimento sobre o jogo My Little Pony: Princesa Mágica e veja quantos pôneis você consegue nomear. Você ainda pode se divertir se não jogar o jogo, a maioria dos pôneis da G4 estão no jogo (também tem alguns pôneis da G1).",
     "message": {
-      "win_message": ""
+      "win_message": "Parabéns! Você demorou {time} para nomear {num_ponies} @.lower:game_object.pony.pony"
     },
     "options": {
-      "case_sensitive": "",
-      "ignore_accents": "",
-      "ignore_punctuation": "",
-      "ignore_spaces": "",
-      "include_unused": ""
+      "case_sensitive": "Sensível à caixa alta",
+      "ignore_accents": "Ignore acentos",
+      "ignore_punctuation": "Ignore pontuação",
+      "ignore_spaces": "Ignore espaços",
+      "include_unused": "Incluir pôneis não utilizados"
     },
-    "time": "",
-    "title": ""
+    "time": "Tempo",
+    "title": "Quiz"
   },
   "price_history": {
     "header": {
-      "date": "",
-      "price": "",
+      "date": "Data",
+      "price": "Preço",
       "royal": "Royal",
       "tokens": "Fichas"
     },
     "message": {
       "whats_hot": "Novidades"
     },
-    "title": ""
+    "title": "Histórico de preços"
   },
   "save_check": {
-    "description": "",
+    "description": "Cheque se seus dados da nuvem foram corrompidos",
     "messages": {
       "explanation": {
         "first": "",
@@ -382,55 +382,55 @@
             "2": ""
           }
         },
-        "title": ""
+        "title": "O que dizer ao suporte?"
       }
     },
     "title": ""
   },
   "search": {
     "message": {
-      "search": ""
+      "search": "Buscar"
     },
-    "no_results": "",
-    "title": ""
+    "no_results": "Sem resultados",
+    "title": "Buscar"
   },
   "site": {
-    "description": "",
-    "title": ""
+    "description": "Tenha informações precisas sobre qualquer coisa no My Little Pony: Princesa Mágica",
+    "title": "All The Ponies"
   },
   "socials": {
-    "discord": "",
-    "donate": "",
-    "github": "",
-    "help_translate": "",
-    "mlp_game_hangout": "",
-    "wiki": ""
+    "discord": "Discord",
+    "donate": "Ajude-me",
+    "github": "GitHub",
+    "help_translate": "Ajude a traduzir",
+    "mlp_game_hangout": "MLP Game Hangout",
+    "wiki": "Wiki"
   },
   "sorting": {
-    "alphabetically": "",
-    "date_added": "",
+    "alphabetically": "Alfabético",
+    "date_added": "Data de adição",
     "decor": {
-      "pro_rate": ""
+      "pro_rate": "Decoração Profissional"
     },
-    "game_order": "",
-    "relevance": "",
-    "reverse": "",
+    "game_order": "Ordem no jogo",
+    "relevance": "Relevância",
+    "reverse": "Reverso",
     "shop": {
-      "production": "",
-      "xp_rate": ""
+      "production": "Taxa de produção",
+      "xp_rate": "Taxa de XP"
     }
   },
   "stats": {
-    "description": "",
+    "description": "Veja seu status no My Little Pony: Princesa Mágica",
     "message": {
       "ponies": {
-        "total": ""
+        "total": "Total de pôneis: {count}"
       }
     },
-    "title": ""
+    "title": "Status"
   },
   "store": {
-    "description": "",
+    "description": "Veja tudo na loja em tempo real",
     "message": {
       "for": "por",
       "if": "se",
