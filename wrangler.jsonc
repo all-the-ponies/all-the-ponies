@@ -16,6 +16,10 @@
   },
   "routes": [
     {
+      "pattern": "all-the-ponies.com/*",
+      "zone_name": "all-the-ponies.com"
+    },
+    {
       "pattern": "all-the-ponies.com/game-assets/*",
       "zone_name": "all-the-ponies.com"
     }
@@ -24,7 +28,7 @@
     {
       "binding": "GAME_ASSETS_BUCKET",
       "bucket_name": "all-the-ponies-assets",
-      "remote": true,
+      "remote": true
     }
   ]
 }
