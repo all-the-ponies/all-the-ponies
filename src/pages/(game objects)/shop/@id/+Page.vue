@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { getFortuneShopData, getObject, translateName, useGameObject } from '@/scripts/gameData'
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import type { Location, PonyType, ShopType } from '@/types/gameDataTypes'
@@ -18,6 +18,7 @@ import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import { createAssetUrl } from '@/scripts/assets';
 import { computedAsync } from '@vueuse/core';
+import { any } from '@/scripts/common';
 
 const pageContext = usePageContext()
 const data = useData<{shop: ShopType, priceHistory: PriceHistoryType | null}>()
@@ -68,11 +69,13 @@ const residents = computedAsync(async () => {
     return residents
 }, {})
 
-const visitors = computedAsync(async () => {
-    return await Promise.all(
+const visitors = ref([])
+
+watchEffect(() => {
+    Promise.all(
         shop.value.visitors.map(async (id) => await getObject(id, 'pony'))
-    )
-}, [])
+    ).then(results => visitors.value = results)
+})
 
 const product = computedAsync(async () => await getObject(shop.value.product, 'consumable'))
 
@@ -87,6 +90,8 @@ const productCurrency = computed(() => {
 })
 
 const fortuneShopData = computedAsync(async () => await getFortuneShopData(shop.value.id))
+
+const xpName = translateName(useGameObject('XP', 'item'))
 
 </script>
 
@@ -159,25 +164,25 @@ const fortuneShopData = computedAsync(async () => await getFortuneShopData(shop.
                                 <td><currency-image object="XP">{{ shop.build.xp }}</currency-image></td>
                             </tr>
                             
-                            <template v-if="Object.keys(shop.product).length > 0">
+                            <template v-if="product && any(Object.values(product.consume))">
                                 <tr>
                                     <th colspan="2">{{ $t('game_object.shop.product') }}</th>
                                 </tr>
                                 <tr>
                                     <td>{{ translateName(product) }}</td>
-                                    <td><img :src="createAssetUrl(product.image.main.path)" style="height: 1em;"></td>
+                                    <td><img :src="createAssetUrl(product?.image.main.path)" style="height: 1em;"></td>
                                 </tr>
                                 <tr>
                                     <td>{{ $t('game_object.shop.production_time') }}</td>
-                                    <td>{{ formatTime(product.time) }}</td>
+                                    <td>{{ formatTime(product?.time) }}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ $t('game_object.shop.profit') }}</td>
-                                    <td v-if="productCurrency"><currency-image :object="productCurrency">{{ product.consume.bits || product.consume.gems || product.consume.tls }}</currency-image></td>
+                                    <td v-if="productCurrency"><currency-image :object="productCurrency">{{ product?.consume.bits || product?.consume.gems || product?.consume.tls }}</currency-image></td>
                                     <td v-else>{{ product.consume.tls }} <img :src="createAssetUrl(product.image.main.path)" style="height: 1em;"></td>
                                 </tr>
                                 <tr>
-                                    <td>{{ translateName(useGameObject('XP', 'item')) }}</td>
+                                    <td>{{ xpName }}</td>
                                     <td><currency-image object="XP">{{ product.consume.xp }}</currency-image></td>
                                 </tr>
                                 <tr>
