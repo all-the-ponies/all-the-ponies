@@ -29,5 +29,6 @@ export function createAssetUrl(asset: string) {
     baseUrl = baseUrl + basePath
 
     const url = new URL(asset, baseUrl)
+    console.log('Getting asset', String(url))
     return String(url)
 }
