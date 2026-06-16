@@ -18,9 +18,9 @@ export function createAssetUrl(asset: string) {
     } else if (typeof __BASE_URL__ !== 'undefined') {
         baseUrl = __BASE_URL__
     } else {
-        baseUrl = 'https://assets.all-the-ponies.com/'
-        basePath = ''
     }
+    baseUrl = 'https://assets.all-the-ponies.com/'
+    basePath = ''
 
     if (!baseUrl.endsWith('/')) {
         baseUrl += '/'

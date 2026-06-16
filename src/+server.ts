@@ -15,6 +15,8 @@ function getApp() {
     app.use('/game-assets/:key{.+}', async (c) => {
         const key = c.req.param('key')
 
+        console.log('Fetching asset', key)
+
         let object: R2Object | R2ObjectBody
 
         const requestHeaders = new Headers(c.req.header())
