@@ -9,6 +9,9 @@
     "logs": {
       "enabled": true,
       "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true
     }
   },
   "r2_buckets": [
