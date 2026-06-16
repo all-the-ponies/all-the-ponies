@@ -5,7 +5,7 @@ import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObje
 import { createAssetUrl } from './assets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
-import { computedAsync } from '@vueuse/core'
+import { computedAsync, isClient } from '@vueuse/core'
 import { getGlobalContext } from 'vike'
 import type { GlobalContext } from 'vike/types'
 
@@ -79,7 +79,7 @@ export async function loadGameData() {
 
 
     async function fetchData<T>(key: string): T {
-        if (import.meta.env && import.meta.env.SSR) {
+        if (!isClient) {
             const cloudflareModule = 'cloudflare:workers'
             const { env } = await import(/* @vite-ignore */ cloudflareModule)
             const object = await env.GAME_ASSETS_BUCKET.get(key)
