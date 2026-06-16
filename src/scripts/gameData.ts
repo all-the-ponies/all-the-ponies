@@ -5,7 +5,7 @@ import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObje
 import { createAssetUrl } from './assets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
-import { computedAsync } from '@vueuse/core'
+import { computedAsync, isClient } from '@vueuse/core'
 import { getGlobalContext } from 'vike'
 import type { GlobalContext } from 'vike/types'
 
@@ -76,15 +76,30 @@ export async function loadGameData() {
     // if (loaded) {
     //     return
     // }
+
+
+    async function fetchData<T>(key: string): T {
+        if (!isClient) {
+            const cloudflareModule = 'cloudflare:workers'
+            const { env } = await import(/* @vite-ignore */ cloudflareModule)
+            const object = await env.GAME_ASSETS_BUCKET.get(key)
+            if (!object) {
+                throw new Error(`Could not find asset ${key}`)
+            }
+            return await object.json() as T
+        } else {
+            return ky<T>(createAssetUrl(key)).json()
+        }
+    }
     
     loading = true
     error = null
     try {
         const [versions, objects, quests, fortune] = await Promise.all([
-            ky<GameVersion>(createAssetUrl('game_version.json')).json(),
-            ky<GameObjects>(createAssetUrl('game_objects.json')).json(),
-            ky<GroupQuests>(createAssetUrl('group_quests.json')).json(),
-            ky<FortuneShop>(createAssetUrl('fortune_shop.json')).json(),
+            fetchData<GameVersion>('game_version.json'),
+            fetchData<GameObjects>('game_objects.json'),
+            fetchData<GroupQuests>('group_quests.json'),
+            fetchData<FortuneShop>('fortune_shop.json'),
         ])
         resolveReady()
         loaded = true

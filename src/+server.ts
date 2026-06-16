@@ -12,8 +12,11 @@ interface Bindings {
 function getApp() {
     console.log('starting server')
     const app = new Hono<{ Bindings: Bindings }>()
-    app.use('/game-assets/:key{.+}', async (c) => {
-        const key = c.req.param('key')
+
+    app.get('/game-assets/*', async (c) => {
+        const url = new URL(c.req.url)
+
+        const key = url.pathname.replace('/game-assets/', '')
 
         console.log('Fetching asset', key)
 
@@ -69,6 +72,7 @@ function getApp() {
             Object.fromEntries(headers.entries()),
         );
     })
+    
     app.use('*', async (c, next) => {
         if (c.req.method === 'HEAD') {
             // Manually override the method to GET so it matches app.get() routes
