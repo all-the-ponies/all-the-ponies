@@ -61,10 +61,10 @@ export default defineConfig({
       manifest: {
         id: "https://all-the-ponies.com/",
         start_url: "/",
-        display: "standalone",
+        display: "minimal-ui",
         name: "All The Ponies",
         scope: "/",
-        short_name: "All The Ponies",
+        short_name: "Ponies",
         theme_color: "#ff6b9b",
         background_color: "rgba(225, 242, 250, 1)",
         description: "Get accurate info about MLP: Magic Princess and track your collection",
