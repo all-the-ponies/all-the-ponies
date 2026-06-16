@@ -97,7 +97,7 @@ const bitsName = translateName(useGameObject('Bits', 'item'))
                     
                     <li>
                         {{ 
-                            $t('stats.message.ponies.total', saveStats.ponies.total)
+                            $t('stats.message.ponies.total', saveStats?.ponies.total)
                         }}
                     </li>
                    
