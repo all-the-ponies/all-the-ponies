@@ -56,7 +56,6 @@ function getApp() {
         let status: ContentfulStatusCode | StatusCode = 500
 
         if ('body' in object) {
-            console.log('body in object')
             status = 200
         } else if (!c.req.header('If-Match')) {
             status = 304
