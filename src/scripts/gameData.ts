@@ -1,4 +1,4 @@
-import ky from 'ky'
+import ky, { HTTPError } from 'ky'
 import { computed, ref, toValue, unref, watch, watchEffect, type MaybeRef } from 'vue'
 import { language } from '../globals'
 import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests } from '../types/gameDataTypes'
@@ -98,6 +98,10 @@ export async function loadGameData() {
         
     } catch (e) {
         error = (e as Error).message
+        console.error('Error loading game data', e)
+        if (e instanceof HTTPError) {
+            console.error(await e.response.text())
+        }
         throw e
     } finally {
         loading = false
