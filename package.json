@@ -10,7 +10,7 @@
     "dev": "vike dev",
     "build": "vike build && npm run build:sitemap",
     "build:sitemap": "tsx ./scripts/generate-sitemap.ts",
-    "preview": "npm run build && vike preview",
+    "preview": "npm run build && vike preview --port 5000",
     "deploy": "npm run build && wrangler deploy",
     "type-check": "vue-tsc --build",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
