@@ -6,6 +6,8 @@ import { resolve } from 'path'
 import { Readable } from 'stream'
 import { SitemapAndIndexStream, SitemapStream } from 'sitemap'
 
+process.env.GENERATING_SITEMAP = 'true'
+
 const gameData = await loadGameData()
 const gameObjects = gameData.gameObjects
 
