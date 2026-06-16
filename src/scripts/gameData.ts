@@ -98,6 +98,7 @@ export async function loadGameData() {
         
     } catch (e) {
         error = (e as Error).message
+        console.error('Error loading game data', e)
         if (e instanceof HTTPError) {
             console.error(await e.response.text())
         }
