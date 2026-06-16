@@ -1,11 +1,75 @@
 import vike from '@vikejs/hono'
 import { Hono } from 'hono'
+import type { ContentfulStatusCode, StatusCode } from 'hono/utils/http-status';
 import type { Server } from 'vike/types'
+
+interface Bindings {
+	GAME_ASSETS_BUCKET: R2Bucket;
+	WEBLATE_API_TOKEN: string;
+}
 
 
 function getApp() {
     console.log('starting server')
-    const app = new Hono()
+    const app = new Hono<{ Bindings: Bindings }>()
+    app.use('/game-assets/:key{.+}', async (c) => {
+        const key = c.req.param('key')
+
+        console.log('Fetching asset', key)
+
+        let object: R2Object | R2ObjectBody
+
+        const requestHeaders = new Headers(c.req.header())
+
+        switch (c.req.method) {
+            case 'GET':
+                object = await c.env.GAME_ASSETS_BUCKET.get(key, {
+                  onlyIf: requestHeaders,
+                  range: requestHeaders,
+                })
+                break
+            case 'HEAD':
+                object = await c.env.GAME_ASSETS_BUCKET.head(key)
+                break
+            default:
+                return c.text('Method not allowed', 405, {
+                    Allow: "GET HEAD",
+                })
+        }
+
+
+        if (!object) {
+            return c.text('Asset Not Found', 404)
+        }
+
+        const headers = new Headers()
+        object.writeHttpMetadata(headers)
+        
+        headers.set('etag', object.httpEtag)
+
+        if (object.customMetadata) {
+            for (const [key, value] of Object.entries(object.customMetadata)) {
+                headers.set(`X-Asset-${key}`, value)
+            }
+        }
+
+        let status: ContentfulStatusCode | StatusCode = 500
+
+        if ('body' in object) {
+            console.log('body in object')
+            status = 200
+        } else if (!c.req.header('If-Match')) {
+            status = 304
+        } else {
+            status = 412
+        }
+
+        return c.body(
+            "body" in object ? object.body : undefined,
+            status,
+            Object.fromEntries(headers.entries()),
+        );
+    })
     app.use('*', async (c, next) => {
         if (c.req.method === 'HEAD') {
             // Manually override the method to GET so it matches app.get() routes

@@ -30,12 +30,28 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/assets\.all-the-ponies\.com\/.*/i,
-            handler: 'CacheFirst',
+            urlPattern: (options) => [
+              '/game-assets/game_version.json',
+              '/game-assets/game_objects.json',
+              '/game-assets/group_quests.json',
+              '/game-assets/fortune_shop.json',
+            ].includes(options.url.pathname),
+            handler: 'NetworkFirst',
             options: {
               cacheName: 'game-data-cache',
               expiration: {
                 maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 30,
+              },
+            },
+          },
+          {
+            urlPattern: (options) => options.url.pathname.startsWith('/game-assets/'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'game-assets-cache',
+              expiration: {
+                maxEntries: 600,
                 maxAgeSeconds: 60 * 60 * 24 * 30,
               },
             },

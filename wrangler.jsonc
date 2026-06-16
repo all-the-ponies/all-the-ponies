@@ -11,4 +11,11 @@
       "invocation_logs": true
     }
   },
+  "r2_buckets": [
+    {
+      "binding": "GAME_ASSETS_BUCKET",
+      "bucket_name": "all-the-ponies-assets",
+      "remote": true,
+    }
+  ]
 }
