@@ -15,8 +15,6 @@ function getApp() {
     app.use('/game-assets/:key{.+}', async (c) => {
         const key = c.req.param('key')
 
-        console.log('Fetching asset', key)
-
         let object: R2Object | R2ObjectBody
 
         const requestHeaders = new Headers(c.req.header())
@@ -56,7 +54,6 @@ function getApp() {
         let status: ContentfulStatusCode | StatusCode = 500
 
         if ('body' in object) {
-            console.log('body in object')
             status = 200
         } else if (!c.req.header('If-Match')) {
             status = 304
