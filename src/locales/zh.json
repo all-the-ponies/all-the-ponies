@@ -27,12 +27,12 @@
     "hint": "提示",
     "no": "否",
     "ok": "确认",
+    "resume": "继续",
     "share": "分享",
     "skip": "跳过",
     "start": "开始",
     "stop": "暂停",
-    "yes": "是",
-    "resume": "继续"
+    "yes": "是"
   },
   "check_save": {
     "messages": {
@@ -159,6 +159,9 @@
       "resident": "住客",
       "visitor": "访客"
     },
+    "pet": {
+      "pet": "宠物 | Pets"
+    },
     "pony": {
       "arrival_bonus": "到达奖励",
       "character": "角色",
@@ -183,10 +186,10 @@
       "background_frame": {
         "background_frame": "背景框"
       },
-      "is_default": "是否为常驻头像",
       "cutie_mark": {
         "cutie_mark": "可爱标志 | 可爱标志"
-      }
+      },
+      "is_default": "是否为常驻头像"
     },
     "road": {
       "road": "道路"
@@ -200,9 +203,6 @@
     },
     "token": {
       "token": "礼物"
-    },
-    "pet": {
-      "pet": "宠物 | Pets"
     }
   },
   "group_quests": {
@@ -384,7 +384,7 @@
         "title": "应该怎么和客服说？"
       }
     },
-    "title": ""
+    "title": "云存档自助检测"
   },
   "search": {
     "message": {

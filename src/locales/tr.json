@@ -1,23 +1,23 @@
 {
   "about": {
     "description": {
-      "body": "",
-      "quiz_link": ""
+      "body": "All The Ponies, başlangıçta {me} tarafından {quiz_link} için bir web sitesi olarak oluşturuldu, çünkü internette bulduğum bir test ponyler hakkında sadece yüzeysel bilgi veriyordu. Daha sonra, oyun içindeki şeyler hakkında kesin bilgiler sunan, sahip olduklarınızı takip edebileceğiniz ve elbette oynayabileceğiniz küçük etkinlikler içeren bir kaynak haline geldi.",
+      "quiz_link": "Olabildiğince çok pony ismi tahin edin"
     },
     "sections": {
       "credits": {
         "message": {
           "credits_list": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": ""
+            "1": "Bu web sitesi {ego} tarafından yapıldı.",
+            "2": "Ponyleri arkadaş koduyla yüklemede yardımcı olduğu için {bass}'a teşekkürler.",
+            "3": "Kullanılan yazı tipi aynı zamanda oyunda da kullanılan {font}",
+            "4": "Bu web sitesi hayatı kolaylaştırmak ve daha dinamik bir deneyim sunabilmek için {vue} ile tasarlandı."
           }
         },
-        "title": ""
+        "title": "Katkıda bulunanlar"
       },
       "translations": {
-        "title": ""
+        "title": "Çeviriler"
       }
     },
     "title": "Hakkında"
@@ -27,12 +27,12 @@
     "hint": "İpucu",
     "no": "Hayır",
     "ok": "Tamam",
+    "resume": "Sürdür",
     "share": "Paylaş",
     "skip": "Geç",
     "start": "Başla",
     "stop": "Dur",
-    "yes": "Evet",
-    "resume": "Sürdür"
+    "yes": "Evet"
   },
   "check_save": {
     "messages": {
@@ -50,8 +50,8 @@
     "info": "Bilgi",
     "name": "İsim",
     "new": "Yeni",
-    "or": "",
-    "price": "",
+    "or": "veya",
+    "price": "Fiyat",
     "royal": "Asil",
     "wiki": "Wiki"
   },
@@ -85,7 +85,7 @@
   "dialog": {
     "filter": "Filtrele",
     "select_item": {
-      "title": ""
+      "title": "Öğe seçin"
     },
     "sort_by": "Sırala"
   },
@@ -116,9 +116,9 @@
     },
     "price_rarities": {
       "discount": "İndi̇ri̇m",
-      "regular": "",
-      "super": "",
-      "ultra": ""
+      "regular": "Normal",
+      "super": "Süper",
+      "ultra": "Aşırı"
     },
     "rarities": {
       "common": "Sıradan",
@@ -159,6 +159,9 @@
       "resident": "Ev Sakini  | Ev Sakinleri",
       "visitor": "Ziyaretçi | Ziyaretçiler"
     },
+    "pet": {
+      "pet": "Evcil Hayvan | Pets"
+    },
     "pony": {
       "arrival_bonus": "Varış Bonusu",
       "character": "Karakter",
@@ -171,7 +174,7 @@
     },
     "profile_decorations": {
       "avatar": {
-        "animated": "",
+        "animated": "Animasyonlu?",
         "avatar": "Avatar | Avatarlar"
       },
       "avatar_frame": {
@@ -183,10 +186,10 @@
       "background_frame": {
         "background_frame": "Arka Plan Çerçevesi"
       },
-      "is_default": "Varsayılan",
       "cutie_mark": {
         "cutie_mark": "Güzellik İşareti | Cutie Marks"
-      }
+      },
+      "is_default": "Varsayılan"
     },
     "road": {
       "road": "Yol | Yollar"
@@ -200,9 +203,6 @@
     },
     "token": {
       "token": "Obje | Objeler"
-    },
-    "pet": {
-      "pet": "Evcil Hayvan | Pets"
     }
   },
   "group_quests": {
@@ -226,9 +226,9 @@
   "home": {
     "description": "{game_link} hakkında bilgi al ve ilerlemeni takip et!",
     "message": {
-      "affiliates": "",
+      "affiliates": "İştirakler",
       "game_name": "My Little Pony: Büyülü Prenses",
-      "links": ""
+      "links": "Bağlantılar"
     },
     "things_to_do": {
       "browse": "Göz At",
@@ -257,37 +257,37 @@
   },
   "lists": {
     "button": {
-      "add_to_list": "",
-      "create_list": "",
-      "edit": "",
-      "new_wishlist": ""
+      "add_to_list": "İstek listesine ekle",
+      "create_list": "İstek listesi yarat",
+      "edit": "Düzenle",
+      "new_wishlist": "+ Yeni istek listesi"
     },
     "dialog": {
       "add_to_list": {
-        "title": ""
+        "title": "İstek Listesine Ekle"
       },
       "choose_image": {
-        "title": ""
+        "title": "Resim seç"
       },
       "confirm_delete": {
-        "body": "",
-        "title": ""
+        "body": "\"{list}\"'yi silmek istediğinden emin misin?",
+        "title": "İstek listesini sil?"
       },
       "create_list": {
         "message": {
-          "name": "",
-          "name_required": "",
-          "wishlist": ""
+          "name": "İsim:",
+          "name_required": "İsim gereklidir",
+          "wishlist": "İstek Listesi"
         },
-        "title": ""
+        "title": "İstek Listesi Oluştur"
       }
     },
     "messages": {
-      "empty_list": "",
-      "no_lists": "",
-      "wishlist": ""
+      "empty_list": "Şu anda hiçbir şey yok. {ponies} eklemeyi düşün.",
+      "no_lists": "Henüz hiçbir istek listesi yok gibi görünüyor.",
+      "wishlist": "İstek Listesi"
     },
-    "title": ""
+    "title": "İstek Listesi"
   },
   "location": {
     "canterlot": "Canterlot",
@@ -302,19 +302,19 @@
   },
   "notices": {
     "corrupt_save": {
-      "body": "",
-      "button": "",
-      "title": ""
+      "body": "Bulut kaydının bozulmasına sebep olan bir hata bulundu. Etkilenip etkilendmediğini kontrol etmek için burayı tıklayınız: \"@:{'notices.corrupt_save.button'}\"",
+      "button": "Daha fazlasını öğren",
+      "title": "Önemli"
     },
     "help_wanted": {
-      "body": "Sadece İngilizce konuşuyorum, bu yüzden All The Ponies sitesini diğer dillere çeviremiyorum. Eğer başka bir dil biliyorsan, Siteyi çevirme konusunda yardımın beni çok mutlu eder.",
+      "body": "Sadece İngilizce konuşuyorum, bu yüzden All The Ponies sitesini kendi başıma diğer dillere çeviremiyorum. Eğer web sitesinde zaten var olan dilin tamamen veya yanlış çevrildiyse yardımından memnuniyet duyarım. Yazılım bilgisi gerektirmez çğnkü Weblate çevirileri herkes için kolaylaştırıyor.",
       "title": "Yardım Aranıyor!"
     }
   },
   "player_info": {
     "friend_code": "Arkadaş Kodu",
-    "join_date": "Katılım Tarihi",
-    "total_playtime": "Toplam Oynama Süresi"
+    "join_date": "Katılım Tarihi: {join_date}",
+    "total_playtime": "Toplam Oynama Süresi: {total_playtime}"
   },
   "pony_quiz": {
     "description": "My Little Pony: Büyülü Prenses mobil oyunu hakkında bilginizi test edin ve kaç tane Pony'i adlandırabileceğinizi görün. Oyunu oynamasanız bile eğlenceli olabilir çünkü G4'deki çoğu Pony oyunda da var (bazı G1 Pony'leri de var).",
@@ -341,32 +341,32 @@
     "message": {
       "whats_hot": "Öne Çikanlar"
     },
-    "title": ""
+    "title": "Fiyat Geçmişi"
   },
   "save_check": {
-    "description": "",
+    "description": "Saklama kütüğün bozulmuş mu kontrol et",
     "messages": {
       "explanation": {
-        "first": "",
-        "fourth": "",
-        "second": "",
-        "third": ""
+        "first": "Oyunun bakımından sonra birçoğunuzun All The Ponies'de saklama kütüğünüzü görüntüleyemediğini fark etmiş olabilirsiniz; bu, \"internet bağlantısı yok\" uyarısı nedeniyle arkadaşlarınızı ziyaret edememe sorununa da neden olan aynı hatadır.",
+        "fourth": "Etkilenip etkilenmediğinizi buradan kontrol edebilirsiniz.",
+        "second": "Yapılan araştırmalar sonucunda, veri madencileri bu hatanın nereden kaynaklandığını buldular ve durum hiç de iç açıcı değil.",
+        "third": "Bu hata aslında bulut kaydınızın bozulmasından kaynaklanıyor. Bunun nasıl olduğunu bilmiyorum ama gerçekten korkutucu bir şey."
       },
       "status": {
-        "affected": "",
-        "safe": ""
+        "affected": "Maalesef etkilenmişsin gibi görünüyor",
+        "safe": "Görünüşe göre saklama kütüğün şimdilik güvende"
       },
       "what_can_you_do": {
-        "body": "",
-        "customer_support": "",
-        "title": ""
+        "body": "Basitçe söylemek gerekirse, {support} ile iletişime geçin. Ancak bunu kendi sorumluluğunuzda yapmanız gerektiğini belirtmeliyiz. Bu konuda e-posta gönderirken bunun veri madenciliği yoluyla öğrenildiğini belirtirseniz, Gameloft'un ne düşüneceği veya hesabınıza ne gibi bir işlem yapabileceğini bilmiyoruz, çünkü bu bilgiyi bilmek onların kurallarına aykırı olabilir. Ayrıca, mümkün olduğunca çok kişinin destekle iletişime geçmesini sağlamak için bu durumu yayabilirsiniz; bu da umarım geliştiricileri bu sorunu düzeltmeye teşvik eder.",
+        "customer_support": "Müşteri Destek",
+        "title": "Ne yapabilirsin?"
       },
       "what_this_means": {
         "body": {
-          "affected": "",
-          "safe": ""
+          "affected": "Yerel kayıt dosyanız sorunsuz çalışıyor fakat oyunu silerseniz veya aktarmanız gerekirse bulut kaydınız sorunlu.",
+          "safe": "Bulut kaydınız şu anda sorunsuz, ancak bunun her zaman sorunsuz olacağı anlamına gelmediğini lütfen unutmayın; çünkü daha önce sorunsuz olan birçok oyuncunun hesabı artık sorunsuz değil."
         },
-        "title": ""
+        "title": "Bu ne demek?"
       },
       "what_to_say": {
         "body": {
