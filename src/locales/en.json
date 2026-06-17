@@ -147,6 +147,10 @@
       "size": "Size",
       "unlock_level": "Unlock Level"
     },
+    "costume": {
+      "costume": "Costume | Costumes",
+      "set": "Set"
+    },
     "decor": {
       "cannot_fuse": "Cannot fuse",
       "decor": "Décor",

@@ -173,6 +173,7 @@ export interface PonyType extends Omit<GenericObjectType, 'category' | 'image'> 
     tasks: string[],
     pro: string[],
     collections: string[],
+    costumes: string[],
     wiki_path: string,
 }
 
@@ -369,6 +370,7 @@ export interface CostumeBonus {
 export interface CostumeType extends Omit<GenericObjectType, 'category' | 'image'> {
     category: 'costume',
     image: ImageBase<'alt'>,
+    pony: GameObjectId,
     enabled: boolean,
     can_be_new: boolean,
     is_subset: boolean,
@@ -388,7 +390,7 @@ export interface CostumePartType {
     linked_part: GameObjectId | null,
     type: 'body' | 'mane' | 'tail',
     apply_time: number,
-    ingredients: number[],
+    materials: number[],
     gem_price: number,
 }
 

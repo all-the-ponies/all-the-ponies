@@ -63,6 +63,10 @@ export const CATEGORIES: Partial<Record<CategoryName, {
         string: 'game_object.pet.pet',
         plural: 'pets',
     },
+    costume: {
+      string: 'game_object.costume.costume',
+      plural: 'costumes'
+    }
 }
 
 export const PLURAL_CATEGORY_MAP: Record<string, CategoryName> = {
@@ -76,6 +80,7 @@ export const PLURAL_CATEGORY_MAP: Record<string, CategoryName> = {
     background_frames: 'background_frame',
     cutie_marks: 'cutie_mark',
     pets: 'pet',
+    costumes: 'costume',
 }
 
 export interface SortFunctionsType {
