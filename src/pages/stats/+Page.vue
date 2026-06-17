@@ -95,17 +95,18 @@ const bitsName = translateName(useGameObject('Bits', 'item'))
                         }}
                     </li>
                     
-                    <li>
+                    <!-- Keep disabled -->
+                    <!-- <li>
                         {{ 
                             $t('stats.message.ponies.total', saveStats?.ponies.total)
                         }}
-                    </li>
+                    </li> -->
                    
                     <li>
                         {{
                             $t('inventory.stats.ponies', 2, {
                                 named: {
-                                    count: $n(saveStats?.ponies.unique,)
+                                    count: $n(saveStats?.ponies.unique)
                                 },
                             })
                         }}
