@@ -58,7 +58,7 @@ const selectedCategory = ref<CategoryName>('pony')
 const objects = computed(() => gameObjects.value ? Object.values(gameObjects.value[selectedCategory.value].objects) as GameObject[] : [])
 
 
-const availableCategories = gameObjects.value ? Object.keys(gameObjects.value) : []
+const availableCategories = computed(() => gameObjects.value ? Object.keys(gameObjects.value) : [])
 
 
 const sortFunctions = computed(() => {

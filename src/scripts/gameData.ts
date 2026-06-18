@@ -45,10 +45,10 @@ export function useGameVersions() {
         return await getGameVersions()
     }, null, {lazy: true})
 }
-export function useGameObjects() {
+export function useGameObjects(lazy: boolean = false) {
     return computedAsync(async () => {
         return await getGameObjects()
-    }, null, {lazy: true})
+    }, null, { lazy })
 }
 export function useGroupQuests() {
     return computedAsync(async () => {
