@@ -70,6 +70,14 @@ const fortuneShopData = computedAsync(async () => await getFortuneShopData(pet.v
         </div>
         <template v-else>
             <ObjectPage :gameObject="pet">
+                <template #left-info>
+                    <div class="bonus-info">
+                        <img src="@/assets/images/ui/icons/minecart-icon.png" alt="Minecart bonus">
+                        +{{ $n(pet.minecart_bonus / 100, {style: 'percent'}) }}
+                        <img src="@/assets/images/ui/icons/quest-book.png" alt="Quest bonus">
+                        -{{ $n(pet.minecart_bonus / 100, {style: 'percent'}) }}
+                    </div>
+                </template>
                 <template #info>
                     <table class="infobox">
                         <tbody>
@@ -115,5 +123,16 @@ const fortuneShopData = computedAsync(async () => await getFortuneShopData(pet.v
 </template>
 
 <style lang="css" scoped>
+
+.bonus-info {
+    font-size: 1.6rem;
+    margin-block: 1rem;
+}
+
+.bonus-info img {
+    height: 1em;
+    object-fit: contain;
+    object-position: center;
+}
 
 </style>
