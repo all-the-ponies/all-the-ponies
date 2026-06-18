@@ -37,6 +37,14 @@ const pony = computedAsync(async () => await getObject(costume.value?.pony, 'pon
         </div>
         <template v-else>
             <ObjectPage :gameObject="costume">
+                <template #left-info v-if="costume.bonus.type">
+                    <div class="bonus-info">
+                        <img v-if="costume.bonus.type == 'MineCart'" src="@/assets/images/ui/icons/minecart-icon.png" alt="Minecart bonus">
+                        <img v-if="costume.bonus.type == 'MiniGames'" src="@/assets/images/ui/icons/costume-minigame-boost.png" alt="Minigame bonus">
+                        <img v-if="costume.bonus.type == 'ShopProduction'" src="@/assets/images/ui/icons/bits-boost.png" alt="Bits bonus">
+                        +{{ $n(costume.bonus.amount / 100, {style: 'percent'}) }}
+                    </div>
+                </template>
                 <template #info>
                     <table class="infobox">
                         <tbody>
@@ -74,7 +82,7 @@ const pony = computedAsync(async () => await getObject(costume.value?.pony, 'pon
                 </template>
             </ObjectPage>
             <section class="section" v-if="subsets.length">
-                <h2 class="h2">{{ $t('game_object.costume.set') }}</h2>
+                <h2 class="h2">{{ $t('game_object.costume.collection') }}</h2>
                 <div class="subsets">
                     <Link
                         v-for="subCostume in subsets"
@@ -91,6 +99,20 @@ const pony = computedAsync(async () => await getObject(costume.value?.pony, 'pon
 </template>
 
 <style lang="css" scoped>
+
+.bonus-info {
+    font-size: 1.6rem;
+    margin-block: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bonus-info img {
+    height: 1em;
+    object-fit: contain;
+    object-position: center;
+}
 
 .subsets {
     --item-width: 8rem;
