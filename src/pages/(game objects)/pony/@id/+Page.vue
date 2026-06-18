@@ -101,6 +101,10 @@ const houseName = computed(() => translateName(house.value).value)
 const fortuneShopData = computedAsync(async () => await getFortuneShopData(pony.value?.id))
 
 const showProIcon = computed(() => {
+    if (!groupQuests.value) {
+        return false
+    }
+    
     let showPro = false
 
     for (let quest of pony.value.pro) {
@@ -118,12 +122,15 @@ const showProIcon = computed(() => {
 
 const groupQuestName = computed(() => {
     const names = []
+
+    if (!groupQuests.value) {
+        return
+    }
     
     for (let quest of pony.value.pro) {
         if (quest === 'random') {
             names.push(t('group_quests.random_pro'))
         } else {
-            console.log(quest)
             let name = groupQuests.value?.quests[quest].name[language.value.key]
             let special = groupQuests.value?.quests[quest].special
             switch (special) {
