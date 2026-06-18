@@ -149,7 +149,7 @@
     },
     "costume": {
       "costume": "Costume | Costumes",
-      "set": "Set"
+      "collection": "Costume Set"
     },
     "decor": {
       "cannot_fuse": "Cannot fuse",
