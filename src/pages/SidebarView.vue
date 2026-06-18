@@ -46,12 +46,12 @@ function toggleSidebar(e: Event) {
                         <Link href="/search/shops/">{{ $t('game_object.shop.shop', 2) }}</Link>
                         <Link href="/search/decor/">{{ $t('game_object.decor.decor', 2) }}</Link>
                         <Link href="/search/pets/">{{ $t('game_object.pet.pet', 2) }}</Link>
+                        <Link href="/search/costumes/">{{ $t('game_object.costume.costume', 2) }}</Link>
                         <Link href="/search/avatars/">{{ $t('game_object.profile_decorations.avatar.avatar', 2) }}</Link>
                         <Link href="/search/avatar_frames/">{{ $t('game_object.profile_decorations.avatar_frame.avatar_frame', 2) }}</Link>
                         <Link href="/search/backgrounds/">{{ $t('game_object.profile_decorations.background.background', 2) }}</Link>
                         <Link href="/search/background_frames/">{{ $t('game_object.profile_decorations.background_frame.background_frame', 2) }}</Link>
                         <Link href="/search/cutie_marks/">{{ $t('game_object.profile_decorations.cutie_mark.cutie_mark', 2) }}</Link>
-                        <Link href="/search/costumes/">{{ $t('game_object.costume.costume', 2) }}</Link>
                         <hr class="sidebar-separator">
                         <Link href="/store/">{{ $t('store.title') }}</Link>
                         <Link href="/inventory/">{{ $t('inventory.title') }}</Link>
