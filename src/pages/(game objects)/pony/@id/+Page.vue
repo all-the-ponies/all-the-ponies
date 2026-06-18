@@ -145,6 +145,16 @@ const groupQuestName = computed(() => {
     return new Intl.ListFormat(language.value.code, {style: 'short'}).format(names)
 })
 
+const costumes = computedAsync(() => {
+    if (!pony.value?.costumes.length) {
+        return []
+    }
+
+    return Promise.all(
+        pony.value.costumes.map(costume => getObject(costume, 'costume'))
+    )
+}, [])
+
 </script>
 
 <template>
@@ -296,6 +306,20 @@ const groupQuestName = computed(() => {
                 <h2 class="h2">{{ $t('fortune_shop.title') }}</h2>
                 <FortuneShopTable :prices="fortuneShopData.prices"></FortuneShopTable>
             </section>
+            <section class="section" v-if="pony.costumes.length">
+                <h2 class="h2">{{ $t('game_object.costume.costume', 2) }}</h2>
+                <div class="costumes">
+
+                    <Link
+                        v-for="costume in costumes"
+                        :href="`/${costume.category}/${costume.id}`"
+                        class="costume link"
+                    >
+                        <img :src="createAssetUrl(costume.image.main.path)" :alt="translateName(costume).value" :title="translateName(costume).value">
+                        <span class="costume-name">{{ translateName(costume) }}</span>
+                    </Link>
+                </div>
+            </section>
         </div>
     </div>
 </template>
@@ -359,6 +383,33 @@ const groupQuestName = computed(() => {
     /*aspect-ratio: 1 / 1;*/
 
     margin: 0;
+}
+
+
+.costumes {
+    --item-width: 8rem;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--item-width), 1fr));
+    /* grid-template-rows: subgrid; */
+    gap: 0.8rem;
+}
+
+.costume {
+    display: grid;
+    text-align: center;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+    width: 100%;
+    justify-items: center;
+    align-items: stretch;
+    
+    img {
+        object-fit: contain;
+        object-position: center;
+        width: var(--item-width);
+    }
 }
 
 </style>
