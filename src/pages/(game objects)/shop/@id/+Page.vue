@@ -119,6 +119,13 @@ const xpName = translateName(useGameObject('XP', 'item'))
                             <tr>
                                 <th colspan="2">{{ $t('common.info') }}</th>
                             </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <Link :href="`https://mlp-game-wiki.no/wiki/${shop.wiki_path}`" class="link" target="_blank">
+                                        {{ $t('common.wiki') }}
+                                    </Link>
+                                </td>
+                            </tr>
                             <tr v-if="(basePrice.currency && basePrice.price) || (basePrice.token && basePrice.tokens)">
                                 <td>{{ $t('common.price') }}</td>
                                 <td>
