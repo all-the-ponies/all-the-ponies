@@ -65,6 +65,13 @@ const visitors = computedAsync(async () => {
                                 <th colspan="2">{{ $t('common.info') }}</th>
                             </tr>
                             <tr>
+                                <td colspan="2">
+                                    <Link :href="`https://mlp-game-wiki.no/wiki/${house.wiki_path}`" class="link" target="_blank">
+                                        {{ $t('common.wiki') }}
+                                    </Link>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>{{ $t('location.town') }}</td>
                                 <td>
                                     {{
