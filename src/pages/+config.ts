@@ -12,5 +12,5 @@ export default {
 
     viewport: null,
 
-    passToClient: ['locale', 'gameData'],
+    passToClient: ['locale'],
 } satisfies Config
