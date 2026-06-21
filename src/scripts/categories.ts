@@ -1,7 +1,7 @@
 import { language } from "@/globals"
 import { useSaveStore } from "@/stores/saveManager"
 import type { Ref } from "vue"
-import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType } from "../types/gameDataTypes"
+import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType } from "../types/gameDataTypes"
 import { getObject, useGroupQuests, translateName } from "./gameData"
 
 const groupQuests = useGroupQuests()
@@ -346,7 +346,18 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
           name: "filter.pony.unused",
           check(gameObject: DecorType) {return gameObject.tags?.includes('unused')},
       },
-    }
+    },
+    costume: {
+      used: {
+        name: 'filter.costume.used',
+        exclude: ['unused'],
+        default: true,
+      },
+      unused: {
+          name: "filter.pony.unused",
+          check(gameObject: CostumeType) {return gameObject.tags?.includes('unused')},
+      },
+    },
 }
 
 export const LOCATIONS: Record<Location, {string: string}> = {
