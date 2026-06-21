@@ -64,7 +64,7 @@ const fortuneShopData = computedAsync(async () => await getFortuneShopData(pet.v
     <Config :title="name" description="" :image="createAssetUrl(pet.image.main.path)"></Config>
 
     <div>
-        <back-button fallback="/search/avatars" />
+        <back-button fallback="/search/pets" />
         <div v-if="pet === null">
             Decor {{ pageContext.routeParams.id }} not found
         </div>

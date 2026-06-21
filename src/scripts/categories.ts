@@ -66,7 +66,7 @@ export const CATEGORIES: Partial<Record<CategoryName, {
     costume: {
       string: 'game_object.costume.costume',
       plural: 'costumes'
-    }
+    },
 }
 
 export const PLURAL_CATEGORY_MAP: Record<string, CategoryName> = {
