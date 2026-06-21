@@ -64,7 +64,7 @@ const fortuneShopData = computedAsync(async () => await getFortuneShopData(cutie
     <Config :title="name" description="" :image="createAssetUrl(cutie_mark.image.main.path)"></Config>
 
     <div>
-        <back-button fallback="/search/avatars" />
+        <back-button fallback="/search/cutie_marks" />
         <div v-if="cutie_mark === null">
             Decor {{ pageContext.routeParams.id }} not found
         </div>

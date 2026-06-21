@@ -31,7 +31,7 @@ const pony = computedAsync(async () => await getObject(costume.value?.pony, 'pon
     <Config :title="name" description="" :image="createAssetUrl(costume.image.main.path)"></Config>
 
     <div>
-        <back-button fallback="/search/avatars" />
+        <back-button fallback="/search/costumes" />
         <div v-if="costume === null">
             Costume {{ pageContext.routeParams.id }} not found
         </div>
