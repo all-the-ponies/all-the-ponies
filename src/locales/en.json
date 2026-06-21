@@ -91,6 +91,9 @@
     "sort_by": "Sort By"
   },
   "filter": {
+    "costume": {
+      "used": "Used"
+    },
     "decor": {
       "can_fuse": "Can fuse",
       "regular": "Regular"
