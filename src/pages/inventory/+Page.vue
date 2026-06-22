@@ -60,6 +60,16 @@ const gameObjects = computedAsync(async () => {
             return Object.keys(saveStore.shops)
         case 'house':
             return [...await saveStore.houses]
+        case 'avatar':
+            return [...await saveStore.avatars]
+        case 'avatar_frame':
+            return [...await saveStore.avatarFrames]
+        case 'background':
+            return [...await saveStore.backgrounds]
+        case 'background_frame':
+            return [...await saveStore.backgroundFrames]
+        case 'cutie_mark':
+            return [...await saveStore.cutieMarks]
     }
 }, [])
 
@@ -231,6 +241,11 @@ const itemGap = useRem(.3)
                             <option value="pony">{{ $t('game_object.pony.pony', 2) }}</option>
                             <option value="house">{{ $t('game_object.house.house', 2) }}</option>
                             <option value="shop">{{ $t('game_object.shop.shop', 2) }}</option>
+                            <option value="avatar">{{ $t('game_object.profile_decorations.avatar.avatar', 2) }}</option>
+                            <option value="avatar_frame">{{ $t('game_object.profile_decorations.avatar_frame.avatar_frame', 2) }}</option>
+                            <option value="background">{{ $t('game_object.profile_decorations.background.background', 2) }}</option>
+                            <option value="background_frame">{{ $t('game_object.profile_decorations.background_frame.background_frame', 2) }}</option>
+                            <option value="cutie_mark">{{ $t('game_object.profile_decorations.cutie_mark.cutie_mark', 2) }}</option>
                         </select>
                     </template>
                     <template #empty>

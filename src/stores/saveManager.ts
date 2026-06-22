@@ -1,6 +1,7 @@
 import { FRIEND_CODE_PATTERN } from "@/globals/constants"
 import api from "@/scripts/api"
 import { notNullIsh } from "@/scripts/common"
+import { extendedDeserialize, extendedSerialize } from "@/scripts/extendedSerialize"
 import { getObject } from "@/scripts/gameData"
 import type { TDateISO } from "@/types/date"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
@@ -27,27 +28,52 @@ interface DecorInventoryEntry extends GenericInventoryEntry {
     count: number,
 }
 
+
+function createBaseSave() {
+    return {
+        playerInfo: {
+            friendCode: '',
+            joinDate: null as TDateISO | null,
+            totalPlaytime: 0,
+            level: 0,
+            xp: 0,
+            required_xp: 0,
+            currency: {
+                gems: 0,
+                bits: 0,
+            },
+            player_card: {
+                name: {
+                    left: '',
+                    right: '',
+                },
+                display_stats: {
+                    left: null,
+                    right: null,
+                },
+                avatar: null,
+                avatar_frame: null,
+                background: null,
+                background_frame: null,
+                cutie_mark: null,
+            },
+        },
+        ponies: {} as Record<GameObjectId, PonyInventoryEntry>,
+        shops: {} as Record<GameObjectId, ShopInventoryEntry>,
+        decor: {} as Record<GameObjectId, DecorInventoryEntry>,
+        avatars: new Set<GameObjectId>(),
+        avatarFrames: new Set<GameObjectId>(),
+        backgrounds: new Set<GameObjectId>(),
+        backgroundFrames: new Set<GameObjectId>(),
+        cutieMarks: new Set<GameObjectId>(),
+        notes: {} as Record<GameObjectId, string>,
+    }
+}
+
+
 export const useSaveStore = defineStore('save', {
     state: () => {
-        return {
-            playerInfo: {
-                friendCode: '',
-                joinDate: null as TDateISO | null,
-                totalPlaytime: 0,
-                currency: {
-                    gems: 0,
-                    bits: 0,
-                }
-            },
-            ponies: {} as Record<GameObjectId, PonyInventoryEntry>,
-            shops: {} as Record<GameObjectId, ShopInventoryEntry>,
-            decor: {} as Record<GameObjectId, DecorInventoryEntry>,
-            avatars: new Set<GameObjectId>(),
-            avatarFrames: new Set<GameObjectId>(),
-            backgrounds: new Set<GameObjectId>(),
-            backgroundFrames: new Set<GameObjectId>(),
-            notes: {} as Record<GameObjectId, string>,
-        }
+        return createBaseSave()
     },
     getters: {
         houses: async (state) => {
@@ -188,17 +214,26 @@ export const useSaveStore = defineStore('save', {
 
             console.log('saveData', saveData)
 
-            this.$reset()
-            this.playerInfo.friendCode = friendCode
-            this.playerInfo.joinDate = saveData.player_info.join_date
-            this.playerInfo.totalPlaytime = saveData.player_info.total_playtime
-            this.playerInfo.currency.gems = saveData.player_info.currency.gems
-            this.playerInfo.currency.bits = saveData.player_info.currency.bits
+            
+            const newSave = createBaseSave()
+
+            newSave.playerInfo.friendCode = friendCode
+            newSave.playerInfo.joinDate = saveData.player_info.join_date
+            newSave.playerInfo.totalPlaytime = saveData.player_info.total_playtime
+            newSave.playerInfo.currency.gems = saveData.player_info.currency.gems
+            newSave.playerInfo.currency.bits = saveData.player_info.currency.bits
+            newSave.playerInfo.level = saveData.player_info.level
+            newSave.playerInfo.xp = saveData.player_info.xp
+            newSave.playerInfo.required_xp = saveData.player_info.required_xp
+            newSave.playerInfo.player_card.avatar = saveData.player_info.player_card.avatar
+            newSave.playerInfo.player_card.avatar_frame = saveData.player_info.player_card.avatar_frame
+            newSave.playerInfo.player_card.background = saveData.player_info.player_card.background
+            newSave.playerInfo.player_card.background_frame = saveData.player_info.player_card.background_frame
+            newSave.playerInfo.player_card.cutie_mark = saveData.player_info.player_card.cutie_mark
+            newSave.playerInfo.player_card.name = saveData.player_info.player_card.name
 
             let ponies = Array.isArray(saveData.inventory.ponies) ? saveData.inventory.ponies : Object.values(saveData.inventory.ponies)
 
-            const poniesState = {}
-            
             for (let pony of ponies) {
                 const ponyInfo = await getObject(pony.id, 'pony')
                 
@@ -212,22 +247,32 @@ export const useSaveStore = defineStore('save', {
 
                 await this.addPony(ponyInfo, {
                     level: pony.level,
-                }, poniesState)
+                }, newSave.ponies)
             }
-
-            this.ponies = poniesState
-
-            const shopsState = {}
 
             for (let shop of saveData.inventory.shops) {
                 try {
-                    await this.addShop(shop, {}, shopsState)
+                    await this.addShop(shop, {}, newSave.shops)
                 } catch (error) {
                     console.error(error)
                 }
             }
-            this.shops = shopsState
             
+            newSave.avatars = new Set(saveData.inventory.avatars)
+            newSave.avatarFrames = new Set(saveData.inventory.avatar_frames)
+            newSave.backgrounds = new Set(saveData.inventory.backgrounds)
+            newSave.backgroundFrames = new Set(saveData.inventory.background_frames)
+            newSave.cutieMarks = new Set(saveData.inventory.cutie_marks)
+
+            this.playerInfo = newSave.playerInfo
+            this.ponies = newSave.ponies
+            this.shops = newSave.shops
+            this.avatars = newSave.avatars
+            this.avatarFrames = newSave.avatarFrames
+            this.backgrounds = newSave.backgrounds
+            this.backgroundFrames = newSave.backgroundFrames
+            this.cutieMarks = newSave.cutieMarks
+
             this.$persist()
         },
     },
@@ -243,6 +288,14 @@ export const useSaveStore = defineStore('save', {
         {
             pick: ['shops'],
             key: 'shops',
+        },
+        {
+            pick: ['avatars', 'avatarFrames', 'backgrounds', 'backgroundFrames', 'cutieMarks'],
+            key: 'profile_decorations',
+            serializer: {
+                serialize: extendedSerialize,
+                deserialize: extendedDeserialize,
+            },
         },
         {
             pick: ['notes'],

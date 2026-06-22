@@ -68,6 +68,9 @@ const fortuneShopData = computedAsync(async () => await getFortuneShopData(backg
         </div>
         <template v-else>
             <ObjectPage :gameObject="background_frame">
+                <template #image-right>
+                    <InventoryAddButton :gameObject="background_frame.id"></InventoryAddButton>
+                </template>
                 <template #info>
                     <table class="infobox">
                         <tbody>

@@ -16,6 +16,7 @@ import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import CurrencyImage from '@/components/CurrencyImage.vue';
 import { createAssetUrl } from '@/scripts/assets';
 import { computedAsync } from '@vueuse/core';
+import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 
 
 const pageContext = usePageContext()
@@ -70,6 +71,9 @@ const fortuneShopData = computedAsync(async () => await getFortuneShopData(cutie
         </div>
         <template v-else>
             <ObjectPage :gameObject="cutie_mark">
+                <template #image-right>
+                    <InventoryAddButton :gameObject="cutie_mark.id"></InventoryAddButton>
+                </template>
                 <template #info>
                     <table class="infobox">
                         <tbody>

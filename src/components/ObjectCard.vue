@@ -31,7 +31,7 @@ const name = computed(() => {
 
 const image = computed(() => gameObject.value ? ('preview' in gameObject.value?.image ? gameObject.value.image.preview.path : gameObject.value.image.main.path) : null)
 
-const canAdd = computed(() => ['pony', 'shop'].includes(gameObject.value?.category))
+const canAdd = computed(() => ['pony', 'shop', 'avatar', 'avatar_frame', 'background', 'background_frame', 'cutie_mark'].includes(gameObject.value?.category))
 
 const showProIcon = computed(() => {
     if (gameObject.value?.category != 'pony') {

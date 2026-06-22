@@ -19,6 +19,16 @@ const owned = computed(() => {
             return saveStore.hasPony(gameObject.value.id)
         case 'shop':
             return saveStore.hasShop(gameObject.value.id)
+        case 'avatar':
+            return saveStore.avatars.has(gameObject.value.id)
+        case 'avatar_frame':
+            return saveStore.avatarFrames.has(gameObject.value.id)
+        case 'background':
+            return saveStore.backgrounds.has(gameObject.value.id)
+        case 'background_frame':
+            return saveStore.backgroundFrames.has(gameObject.value.id)
+        case 'cutie_mark':
+            return saveStore.cutieMarks.has(gameObject.value.id)
     }
 })
 
@@ -33,6 +43,21 @@ function toggleOwned(event: Event) {
             case 'shop':
                 saveStore.removeShop(gameObject.value.id)
                 break
+            case 'avatar':
+                saveStore.avatars.delete(gameObject.value.id)
+                break
+            case 'avatar_frame':
+                saveStore.avatarFrames.delete(gameObject.value.id)
+                break
+            case 'background':
+                saveStore.backgrounds.delete(gameObject.value.id)
+                break
+            case 'background_frame':
+                saveStore.backgroundFrames.delete(gameObject.value.id)
+                break
+            case 'cutie_mark':
+                saveStore.cutieMarks.delete(gameObject.value.id)
+                break
         }
     } else {
         switch (gameObject.value?.category) {
@@ -41,6 +66,21 @@ function toggleOwned(event: Event) {
                 break
             case 'shop':
                 saveStore.addShop(gameObject.value.id)
+                break
+            case 'avatar':
+                saveStore.avatars.add(gameObject.value.id)
+                break
+            case 'avatar_frame':
+                saveStore.avatarFrames.add(gameObject.value.id)
+                break
+            case 'background':
+                saveStore.backgrounds.add(gameObject.value.id)
+                break
+            case 'background_frame':
+                saveStore.backgroundFrames.add(gameObject.value.id)
+                break
+            case 'cutie_mark':
+                saveStore.cutieMarks.add(gameObject.value.id)
                 break
         }
     }

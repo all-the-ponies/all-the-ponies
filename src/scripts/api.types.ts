@@ -6,9 +6,27 @@ export interface SaveData {
     player_info: {
         join_date: TDateISO,
         total_playtime: number,
+        level: number,
+        xp: number,
+        required_xp: number,
         currency: {
             gems: number,
             bits: number,
+        },
+        player_card: {
+            name: {
+                left: string,
+                right: string,
+            },
+            display_stats: {
+                left: string,
+                right: string,
+            },
+            avatar: string,
+            avatar_frame: string,
+            background: string,
+            background_frame: string,
+            cutie_mark: string,
         },
     },
     inventory: {
@@ -19,6 +37,11 @@ export interface SaveData {
             notWelcomed?: boolean,
         }>,
         shops: GameObjectId[],
+        avatars: string[],
+        avatar_frames: string[],
+        backgrounds: string[],
+        background_frames: string[],
+        cutie_marks: string[],
     }
 }
 
