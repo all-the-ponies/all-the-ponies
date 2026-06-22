@@ -66,7 +66,7 @@ export default defineConfig({
         scope: "/",
         short_name: "Ponies",
         theme_color: "#ff6b9b",
-        background_color: "rgba(225, 242, 250, 1)",
+        background_color: "#e1f2faff",
         description: "Get accurate info about MLP: Magic Princess and track your collection",
         shortcuts: [
           {
