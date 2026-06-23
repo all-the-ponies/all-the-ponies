@@ -373,7 +373,7 @@ watch(
         if (newUrl != oldUrl) {
             // console.log('Resetting')
             searchQuery.value = ''
-            sortMethod.value = defaultSortMethod.value
+            sortMethod.value = 'relevance'
             selectedFilters.value = {}
             reversed.value = false
             currentPage.value = 1
