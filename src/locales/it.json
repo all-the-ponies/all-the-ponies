@@ -2,7 +2,7 @@
   "about": {
     "description": {
       "body": "\"All The Ponies\" è stato inizialmente creato da {me} come sito per il quiz {quiz_link}, perché suddetto quiz che ho trovato online a malapena scalfiva la superficie dei pony esistenti. Successivamente è stato espanso e reso una fonte di informazioni accurate riguardanti le componenti del gioco, tenendo conto di cosa si possegga, e ovviamente delle piccole attività che si possono svolgere.",
-      "quiz_link": ""
+      "quiz_link": "Elenca Tutti i Pony che Puoi!"
     },
     "sections": {
       "credits": {
@@ -27,12 +27,12 @@
     "hint": "Indizio",
     "no": "No",
     "ok": "Ok",
+    "resume": "Riprendi",
     "share": "Condividi",
     "skip": "Salta",
     "start": "Inizia",
     "stop": "Metti in Pausa",
-    "yes": "Sì",
-    "resume": "Riprendi"
+    "yes": "Sì"
   },
   "check_save": {
     "messages": {
@@ -42,7 +42,7 @@
   "common": {
     "date": {
       "current": "Attuali",
-      "range": ""
+      "range": "{start} a {end}"
     },
     "export": "Esporta",
     "help": "Aiuto",
@@ -137,7 +137,7 @@
   },
   "game_object": {
     "building": {
-      "build_reward": "",
+      "build_reward": "Ricompensa dell'Edificio",
       "build_skip_cost": "Costo per saltare",
       "build_time": "Tempo di Costruzione",
       "skip_cost": "Costo per Saltare"
@@ -145,6 +145,9 @@
     "common": {
       "size": "Grandezza",
       "unlock_level": "Livello per Sbloccare"
+    },
+    "costume": {
+      "costume": "Costume | Costumi"
     },
     "decor": {
       "cannot_fuse": "Non si possono unire",
@@ -196,9 +199,9 @@
     },
     "shop": {
       "gem_shop": "Negozi Di Gemme",
-      "product": "",
-      "production_time": "",
-      "profit": "",
+      "product": "Prodotto",
+      "production_time": "Tempo di Produzione",
+      "profit": "Profitto",
       "shop": "Stand"
     },
     "token": {
@@ -208,8 +211,8 @@
   "group_quests": {
     "name_seasonal": "{name} (@:group_quests.seasonal)",
     "name_tutorial": "{name} (@:group_quests.tutorial)",
-    "pro": "",
-    "random_pro": "",
+    "pro": "Pro",
+    "random_pro": "Casuale",
     "seasonal": "Stagionale",
     "title": "Missioni Di Gruppo",
     "tutorial": ""
@@ -224,24 +227,24 @@
     "title": ""
   },
   "home": {
-    "description": "",
+    "description": "Ottieni informazioni riguardanti {game_link} e tieni conto di ciò che possiedi!",
     "message": {
       "affiliates": "",
       "game_name": "",
-      "links": ""
+      "links": "Link"
     },
     "things_to_do": {
-      "browse": "",
-      "title": ""
+      "browse": "Ricerca",
+      "title": "Cose da Fare"
     }
   },
   "inventory": {
     "message": {
-      "add_more": "",
+      "add_more": "Aggiungi {category}",
       "dialog": {
         "export": {
-          "category": "",
-          "format": ""
+          "category": "Categoria:",
+          "format": "Formato:"
         }
       }
     },
@@ -250,44 +253,44 @@
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "",
+      "stars": "Stelle: {count}",
       "transformable": "@:game_object.pony.transformable{':'} {count}"
     },
     "title": "Inventario"
   },
   "lists": {
     "button": {
-      "add_to_list": "",
-      "create_list": "",
-      "edit": "",
-      "new_wishlist": ""
+      "add_to_list": "Aggiungi alla Lista dei Desideri",
+      "create_list": "Crea una Lista dei Desideri",
+      "edit": "Modifica",
+      "new_wishlist": "+ Nuova Lista dei Desideri"
     },
     "dialog": {
       "add_to_list": {
-        "title": ""
+        "title": "Aggiungi alla Lista dei Desideri"
       },
       "choose_image": {
-        "title": ""
+        "title": "Scegli un'Immagine"
       },
       "confirm_delete": {
-        "body": "",
-        "title": ""
+        "body": "Sei sicuro/a di voler eliminare \"{list}\"?",
+        "title": "Eliminare la Lista dei Desideri?"
       },
       "create_list": {
         "message": {
-          "name": "",
-          "name_required": "",
-          "wishlist": ""
+          "name": "Nome:",
+          "name_required": "È richiesto un nome",
+          "wishlist": "Lista dei Desideri"
         },
-        "title": ""
+        "title": "Crea una Lista dei Desideri"
       }
     },
     "messages": {
-      "empty_list": "",
-      "no_lists": "",
-      "wishlist": ""
+      "empty_list": "Non c'è ancora niente da vedere qui. Considera aggiungere {ponies}.",
+      "no_lists": "Sembra che non ci sia ancora alcuna Lista dei Desideri.",
+      "wishlist": "Lista dei Desideri."
     },
-    "title": ""
+    "title": "Liste dei Desideri"
   },
   "location": {
     "canterlot": "Canterlot",
@@ -297,29 +300,29 @@
     "klugetown": "Klugetown",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
-    "town": "",
-    "unknown": ""
+    "town": "Città",
+    "unknown": "Sconosciuto"
   },
   "notices": {
     "corrupt_save": {
-      "body": "",
-      "button": "",
-      "title": ""
+      "body": "È stato segnalato un bug recente che può causare la corruzione del tuo salvataggio Cloud. Puoi controllare se tale bug può nuocerti premendo \"@:{'notices.corrupt_save.button'}\".",
+      "button": "Scopri di più",
+      "title": "Importante"
     },
     "help_wanted": {
-      "body": "",
-      "title": ""
+      "body": "Io parlo solo Inglese, quindi non posso tradurre \"All The Ponies\" in altre lingue. Se la tua lingua già presente sul sito non è stata tradotta bene o a pieno, apprezzerei molto il tuo aiuto. Non è richiesta esperienza nel coding perché Weblate rende facile tradurre per chiunque.",
+      "title": "Cercasi Aiuto!"
     }
   },
   "player_info": {
     "friend_code": "Codice Amico",
-    "join_date": "",
-    "total_playtime": ""
+    "join_date": "Data di Unione: {join_date}",
+    "total_playtime": "Tempo di Gioco totale: {total_playtime}"
   },
   "pony_quiz": {
-    "description": "",
+    "description": "Testa la tua conoscenza del gioco mobile di My Little Pony, e scopri quanti Pony riesci ad elencare. Può essere divertente pure se non ci giochi, dato che la maggior parte dei Pony nella G4 si trovano nel gioco (ci sono anche alcuni Pony della G1).",
     "message": {
-      "win_message": ""
+      "win_message": "Congratulazioni! Ti ci è voluto {time} per elencare tutti e {num_ponies} @.lower:game_object.pony.pony"
     },
     "options": {
       "case_sensitive": "",

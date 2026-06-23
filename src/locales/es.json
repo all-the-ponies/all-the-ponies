@@ -6,6 +6,7 @@
     },
     "sections": {
       "credits": {
+        "check_failed": "Error: No se pudieron obtener los traductores",
         "message": {
           "credits_list": {
             "1": "El sitio web está construido por {ego}.",
@@ -27,12 +28,12 @@
     "hint": "Pista",
     "no": "No",
     "ok": "Ok",
+    "resume": "Reanudar",
     "share": "Compartir",
     "skip": "Omitir",
     "start": "Empezar",
     "stop": "Parar",
-    "yes": "Sí",
-    "resume": "Reanudar"
+    "yes": "Sí"
   },
   "check_save": {
     "messages": {
@@ -90,6 +91,9 @@
     "sort_by": "Ordenar por"
   },
   "filter": {
+    "costume": {
+      "used": "Usados"
+    },
     "decor": {
       "can_fuse": "Puede fusionarse",
       "regular": "Regular"
@@ -138,13 +142,17 @@
   "game_object": {
     "building": {
       "build_reward": "Recompenza por construir",
-      "build_skip_cost": "Costo de saltar la construcción",
+      "build_skip_cost": "Costo de omitir la construcción",
       "build_time": "Tiempo de Construcción",
-      "skip_cost": "Costo de Salto de tiempo"
+      "skip_cost": "Omitir espera"
     },
     "common": {
       "size": "Tamaño",
       "unlock_level": "Nivel en que se desbloquea"
+    },
+    "costume": {
+      "collection": "Conjunto de trajes",
+      "costume": "Traje | Trajes"
     },
     "decor": {
       "cannot_fuse": "No puede fusionarse",
@@ -159,12 +167,15 @@
       "resident": "Residente | Residentes",
       "visitor": "Visitante | Visitantes"
     },
+    "pet": {
+      "pet": "Mascota | Mascotas"
+    },
     "pony": {
       "arrival_bonus": "Bonus de llegada",
       "character": "Personaje | Personajes",
       "level_up_rewards": "Recompenzas al subir de nivel",
       "minigame_cooldown": "Cooldown del Minijuego",
-      "minigame_skip_cost": "Costo de Salto de Tiempo de Espera",
+      "minigame_skip_cost": "Costo de omitir espera de Minijuegos",
       "pony": "Ponis",
       "transform": "Transformar",
       "transformable": "Transformable"
@@ -183,10 +194,10 @@
       "background_frame": {
         "background_frame": "Marco de fondo"
       },
-      "is_default": "Es predeterminado",
       "cutie_mark": {
-        "cutie_mark": "Marca De Belleza | Marca De Belleza"
-      }
+        "cutie_mark": "Cutie Mark | Cutie Marks"
+      },
+      "is_default": "Es predeterminado"
     },
     "road": {
       "road": "Camino | Caminos"
@@ -200,9 +211,6 @@
     },
     "token": {
       "token": "Fichas"
-    },
-    "pet": {
-      "pet": "Mascota | Pets"
     }
   },
   "group_quests": {
@@ -246,12 +254,12 @@
       }
     },
     "stats": {
-      "gem_shops": "",
-      "houses": "",
-      "ponies": "",
-      "shops": "",
+      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
+      "houses": "@:game_object.house.house{':'} {count}",
+      "ponies": "@:game_object.pony.pony{':'} {count}",
+      "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Estrellas: {count}",
-      "transformable": ""
+      "transformable": "@:game_object.pony.transformable{':'} {count}"
     },
     "title": "Inventario"
   },
