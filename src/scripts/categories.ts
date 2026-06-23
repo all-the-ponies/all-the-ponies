@@ -2,7 +2,7 @@ import { language } from "@/globals"
 import { useSaveStore } from "@/stores/saveManager"
 import type { Ref } from "vue"
 import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType } from "../types/gameDataTypes"
-import { getObject, useGroupQuests, translateName } from "./gameData"
+import { getObject, useGroupQuests, translateName, getTaskInfo } from "./gameData"
 
 const groupQuests = useGroupQuests()
 
@@ -249,6 +249,13 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
               return showPro
             },
             // default: true,
+        },
+        gem: {
+          name: 'filter.pony.gem_pony',
+          async check(gameObject: PonyType) {
+            const tasks = await Promise.all(gameObject.tasks.map(task => getTaskInfo(task)))
+            return tasks.some(task => task?.reward.gems)
+          }
         },
         npc: {
             name: "filter.pony.npc",
