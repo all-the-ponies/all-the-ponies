@@ -1,7 +1,7 @@
 import ky, { HTTPError } from 'ky'
 import { computed, ref, toValue, unref, watch, watchEffect, type MaybeRef } from 'vue'
 import { language } from '../globals'
-import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests } from '../types/gameDataTypes'
+import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, TasksData } from '../types/gameDataTypes'
 import { createAssetUrl } from './assets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
@@ -20,6 +20,7 @@ export interface GameData {
     gameObjects: GameObjects,
     groupQuests: GroupQuests,
     fortuneShop: FortuneShop,
+    tasksData: TasksData,
 }
 
 export async function getGameVersions(): Promise<GameVersion> {
@@ -37,6 +38,10 @@ export async function getGroupQuests(): Promise<GroupQuests> {
 export async function getFortuneShop(): Promise<FortuneShop> {
     const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
     return globalContext.gameData?.fortuneShop
+}
+export async function getTasksData(): Promise<TasksData> {
+    const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
+    return globalContext.gameData?.tasksData
 }
 
 
@@ -60,6 +65,11 @@ export function useFortuneShop() {
         return await getFortuneShop()
     }, null, {lazy: true})
 }
+export function useTasksData() {
+    return computedAsync(async () => {
+        return await getTasksData()
+    }, null, {lazy: true})
+}
 
 
 
@@ -78,7 +88,7 @@ export async function loadGameData() {
     // }
 
 
-    async function fetchData<T>(key: string): T {
+    async function fetchData<T>(key: string): Promise<T> {
         if (!isClient) {
             const cloudflareModule = 'cloudflare:workers'
             const { env } = await import(/* @vite-ignore */ cloudflareModule)
@@ -95,11 +105,12 @@ export async function loadGameData() {
     loading = true
     error = null
     try {
-        const [versions, objects, quests, fortune] = await Promise.all([
+        const [versions, objects, quests, fortune, tasks] = await Promise.all([
             fetchData<GameVersion>('game_version.json'),
             fetchData<GameObjects>('game_objects.json'),
             fetchData<GroupQuests>('group_quests.json'),
             fetchData<FortuneShop>('fortune_shop.json'),
+            fetchData<TasksData>('tasks_data.json'),
         ])
         resolveReady()
         loaded = true
@@ -109,6 +120,7 @@ export async function loadGameData() {
             gameObjects: objects,
             groupQuests: quests,
             fortuneShop: fortune,
+            tasksData: tasks,
         } as GameData
         
     } catch (e) {
@@ -170,6 +182,10 @@ export async function getFortuneShopData(id: GameObjectId): Promise<FortuneShopI
     return null
 }
 
+export async function getTaskInfo(taskId: string) {
+    return (await getTasksData()).tasks[taskId] ?? null
+}
+
 export function translateName(gameObject: MaybeRef<GameObject>) {
     return computed(() => {
       const obj = toValue(gameObject)
@@ -192,12 +208,8 @@ export function useObjectName(id: GameObjectId | GameObject, category: CategoryN
 
     const getName = () => {
         // name.value = id
-        // getObject(id, category)
-        new Promise((resolve) => {
-            setTimeout(() => {resolve(0)}, 1000)
-        })
-            .then(() => name.value = id)
-        //     .then(gameObject => name.value = translateName(gameObject))
+        getObject(id, category)
+            .then(gameObject => name.value = translateName(gameObject).value)
         // const gameObject = 
         // console.log('found object')
         // console.log('gameObject', gameObject)

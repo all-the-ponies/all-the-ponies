@@ -191,18 +191,6 @@ export interface MinigameData {
     has_wings: boolean,
 }
 
-export interface TaskData {
-    name: TranslatableString,
-    time: number,
-    xp: number,
-    bits: number,
-    gems: number,
-    token: string,
-    chance: number,
-    token_amount: number,
-    requires: string,
-}
-
 export interface HouseBuild {
     time: number,
     skip_cost: number,
@@ -390,6 +378,7 @@ export interface CostumePartType {
     linked_part: GameObjectId | null,
     type: 'body' | 'mane' | 'tail',
     apply_time: number,
+    apply_cost: number,
     materials: number[],
     gem_price: number,
 }
@@ -427,4 +416,39 @@ export interface FortuneShop {
     item_rarity_chances: Record<FortuneShopRarities, number>,
     item_price_chances: Record<FortuneShopPrices, number>,
     items: Record<FortuneShopRarities, Record<GameObjectId, FortuneShopItem>>,
+}
+
+
+export interface TasksData {
+    tasks: Record<string, TaskEntry>
+}
+
+export interface TaskEntry {
+    id: string
+    index: number
+    pony: GameObjectId
+    name: TranslatableString
+    image: RenamedFile
+    requirement: TaskRequirement
+    reward: TaskReward
+    chance: number
+    skip_cost: number
+    duration: number
+    hidden: boolean
+}
+
+export interface TaskReward {
+    bits: number
+    gems: number
+    xp: number
+    consumable: GameObjectId
+    consumable_amount: number
+    token: GameObjectId
+    token_amount: number
+}
+
+export interface TaskRequirement {
+    pony: GameObjectId
+    house: GameObjectId | '<Home>'
+    quests: string[]
 }
