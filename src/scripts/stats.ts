@@ -34,7 +34,7 @@ type ReactiveObject<T> = { [K in keyof T]: ToReactive<T[K]> }
 
 type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
 
-const ponies = computedAsync(async () => {
+const ponies = computed(() => {
     const save = useSaveStore()
     const changelingTransformations: GameObjectId[] = []
     
@@ -49,7 +49,7 @@ const ponies = computedAsync(async () => {
     }
 
     for (let [ponyId, ponyInfo] of Object.entries(save.ponies)) {
-        const pony = await getObject(ponyId, 'pony')
+        const pony = getObject(ponyId, 'pony')
         if (!pony) {
             continue
         }
@@ -74,17 +74,9 @@ const ponies = computedAsync(async () => {
     }
 
     return ponies
-}, {
-    total: 0,
-    unique: 0,
-    regular: 0,
-    changelings: 0,
-    gems: 0,
-    groups: 0,
-    stars: 0,
-}, {lazy: true})
+})
 
-const shops = computedAsync(async () => {
+const shops = computed(() => {
     const save = useSaveStore()
     const shops: DeepWriteable<SaveStats['shops']> = {
         total: 0,
@@ -94,8 +86,8 @@ const shops = computedAsync(async () => {
     }
 
     for (let shopId of Object.keys(save.shops)) {
-        const shop = await getObject(shopId, 'shop')
-        const product = await getObject(shop.product, 'consumable')
+        const shop = getObject(shopId, 'shop')
+        const product = getObject(shop.product, 'consumable')
 
         shops.total++
         if (product?.consume.bits > 0) {
@@ -108,12 +100,7 @@ const shops = computedAsync(async () => {
     }
 
     return shops
-}, {
-    total: 0,
-    bits: 0,
-    gems: 0,
-    others: 0,
-}, {lazy: true})
+})
 
 export function useSaveStats() {
     const saveStats = shallowRef<SaveStats>(null)
@@ -122,10 +109,10 @@ export function useSaveStats() {
         saveStats.value = reactive<ReactiveObject<SaveStats>>({
             ponies,
             houses: {
-                total: computedAsync(async () => {
+                total: computed(() => {
                     const save = useSaveStore()
-                    return (await save.houses).size
-                }, 0),
+                    return save.houses.size
+                }),
             },
             shops,
         }) as SaveStats

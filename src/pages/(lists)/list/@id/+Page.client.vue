@@ -35,15 +35,14 @@ console.log('wishlist', wishlist.value)
 // We use a ref and watchEffect instead of computedAsync because of
 // a race condition when going back to the lists page
 
-const objects = ref([])
-watchEffect(async () => {
-    objects.value = await Promise.all(wishlist.value.items.map(async (item) => {
+const objects = computed(() => {
+    return wishlist.value.items.map((item) => {
         return {
             ...item,
-            item: await getObject(item.item),
+            item: getObject(item.item),
             id: item.item,
         }
-    }))
+    })
 })
 
 function editList() {

@@ -55,9 +55,9 @@ const name = computed(() => {
     return name
 })
 
-const pony = computedAsync(async () => await getObject(cutie_mark.value?.pony))
+const pony = computed(() => getObject(cutie_mark.value?.pony))
 
-const fortuneShopData = computedAsync(async () => await getFortuneShopData(cutie_mark.value?.id))
+const fortuneShopData = computed(() => getFortuneShopData(cutie_mark.value?.id))
 
 </script>
 

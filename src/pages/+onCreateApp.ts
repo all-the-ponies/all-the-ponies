@@ -12,9 +12,7 @@ import { extractLocale } from './extractLocale'
 
  
 export async function onCreateApp(pageContext: PageContext & {locale: string}) {
-    console.log('Loading game data (onCreateApp)')
-    setGameData(await loadGameData())
-    console.log('Loaded game data (onCreateApp)')
+    await setGameData()
     
     if (pageContext.isRenderingHead) {
         // Don't add plugins when rendering <head> — see https://vike.dev/onCreateApp#lifecycle

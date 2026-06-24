@@ -25,57 +25,62 @@ export interface GameData {
 
 let gameDataCache: GameData = null
 
-export async function getGameVersions(): Promise<GameVersion> {
-    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    console.log('Is game data loaded', !!gameDataCache)
+export function getGameVersions(): GameVersion {
+    if (!gameDataCache) {
+        console.log('Game data not loaded')
+    }
     return gameDataCache?.gameVersions
 }
-export async function getGameObjects(): Promise<GameObjects> {
-    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    console.log('Is game data loaded', !!gameDataCache)
+export function getGameObjects(): GameObjects {
+    if (!gameDataCache) {
+        console.log('Game data not loaded')
+    }
     return gameDataCache?.gameObjects
 }
-export async function getGroupQuests(): Promise<GroupQuests> {
-    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    console.log('Is game data loaded', !!gameDataCache)
+export function getGroupQuests(): GroupQuests {
+    if (!gameDataCache) {
+        console.log('Game data not loaded')
+    }
     return gameDataCache?.groupQuests
 }
-export async function getFortuneShop(): Promise<FortuneShop> {
-    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    console.log('Is game data loaded', !!gameDataCache)
+export function getFortuneShop(): FortuneShop {
+    if (!gameDataCache) {
+        console.log('Game data not loaded')
+    }
     return gameDataCache?.fortuneShop
 }
-export async function getTasksData(): Promise<TasksData> {
-    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    console.log('Is game data loaded', !!gameDataCache)
+export function getTasksData(): TasksData {
+    if (!gameDataCache) {
+        console.log('Game data not loaded')
+    }
     return gameDataCache?.tasksData
 }
 
 
 export function useGameVersions() {
-    return computedAsync(async () => {
-        return await getGameVersions()
-    }, null, {lazy: true})
+    return computed(() => {
+        return getGameVersions()
+    })
 }
 export function useGameObjects(lazy: boolean = false) {
-    return computedAsync(async () => {
-        return await getGameObjects()
-    }, null, { lazy })
+    return computed(() => {
+        return getGameObjects()
+    })
 }
 export function useGroupQuests() {
-    return computedAsync(async () => {
-        return await getGroupQuests()
-    }, null, {lazy: false})
+    return computedAsync(() => {
+        return getGroupQuests()
+    })
 }
 export function useFortuneShop() {
-    return computedAsync(async () => {
-        return await getFortuneShop()
-    }, null, {lazy: true})
+    return computed(() => {
+        return getFortuneShop()
+    })
 }
 export function useTasksData() {
-    return computedAsync(async () => {
-        return await getTasksData()
-    }, null, {lazy: true})
+    return computed(() => {
+        return getTasksData()
+    })
 }
 
 
@@ -86,8 +91,14 @@ export let error: string | null = null
 let resolveReady: () => void
 export const ready = new Promise<void>(resolve => { resolveReady = resolve })
 
-export function setGameData(gameData: GameData) {
-    gameDataCache = gameData
+export async function setGameData() {
+    if (!gameDataCache) {
+        console.log('Loading game data')
+        gameDataCache = await loadGameData()
+        console.log('Loaded game data')
+    } else {
+        console.log('Game data already loaded')
+    }
 }
 
 export async function loadGameData() {
@@ -144,11 +155,11 @@ export async function loadGameData() {
     }
 }
 
-export async function getObject<T extends CategoryName>(
+export function getObject<T extends CategoryName>(
     id: GameObjectId | GameObject,
     category: T = null,
-): Promise<CategoryType<T> | null> {
-    const objs = await getGameObjects()
+): CategoryType<T> | null {
+    const objs = getGameObjects()
     if (!objs) return null
     if (id instanceof Object && id.constructor === Object) {
         return id as CategoryType<T>
@@ -157,7 +168,7 @@ export async function getObject<T extends CategoryName>(
          for (const c of (Object.keys(objs) as (CategoryName | 'file_version')[])) {
             if (c === 'file_version') continue
             
-            let object = await getObject(id, c)
+            let object = getObject(id, c)
             if (object != null) {
                 return object as CategoryType<T>
             }
@@ -179,8 +190,8 @@ export async function getObject<T extends CategoryName>(
     return null
 }
 
-export async function getFortuneShopData(id: GameObjectId): Promise<FortuneShopItem | null> {
-    const fs = await getFortuneShop()
+export function getFortuneShopData(id: GameObjectId): FortuneShopItem | null {
+    const fs = getFortuneShop()
     if (!fs) return null
     for (let items of Object.values(fs.items)) {
         let item = items[id]
@@ -191,8 +202,8 @@ export async function getFortuneShopData(id: GameObjectId): Promise<FortuneShopI
     return null
 }
 
-export async function getTaskInfo(taskId: string) {
-    return (await getTasksData()).tasks[taskId] ?? null
+export function getTaskInfo(taskId: string) {
+    return (getTasksData()).tasks[taskId] ?? null
 }
 
 export function translateName(gameObject: MaybeRef<GameObject>) {
@@ -213,17 +224,17 @@ export function translateName(gameObject: MaybeRef<GameObject>) {
 export function useObjectName(id: GameObjectId | GameObject, category: CategoryName) {
     // return ref(id)
     
-    const name = ref<string>(null)
+    // const name = ref<string>(null)
 
-    const getName = () => {
+    // const getName = () => {
         // name.value = id
-        getObject(id, category)
-            .then(gameObject => name.value = translateName(gameObject).value)
+        // getObject(id, category)
+        //     .then(gameObject => name.value = translateName(gameObject).value)
         // const gameObject = 
         // console.log('found object')
         // console.log('gameObject', gameObject)
         // name.value = translateName(gameObject)
-    }
+    // }
 
     // watch(
     //     computed(() => [id, category]),
@@ -234,13 +245,13 @@ export function useObjectName(id: GameObjectId | GameObject, category: CategoryN
     //     }
     // )
 
-     getName()
+    //  getName()
 
     // watchEffect(() => {
     //     getName()
     // })
     
-    return {name}
+    // return {name}
 
     // return computedAsync(
     //     async () => {
@@ -276,13 +287,11 @@ export function useGameObject<T extends CategoryName>(
     id: MaybeRef<GameObjectId | GameObject>,
     category: MaybeRef<T> = null,
 ) {
-    return computedAsync(
-        async () => {
-            const result = await getObject(unref(id), unref(category))
+    return computed(
+        () => {
+            const result = getObject(unref(id), unref(category))
             return result
         },
-        null,
-        // {lazy: true},
     )
 }
 

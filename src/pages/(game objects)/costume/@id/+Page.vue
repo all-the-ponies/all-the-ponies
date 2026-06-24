@@ -24,7 +24,7 @@ const subsets = computed(() => data.subsets)
 
 const name = translateName(costume)
 
-const pony = computedAsync(async () => await getObject(costume.value?.pony, 'pony'))
+const pony = computed(() => getObject(costume.value?.pony, 'pony'))
 
 </script>
 

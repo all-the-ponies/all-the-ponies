@@ -109,7 +109,7 @@ class ShopStore {
     }
 
     async getShopInfo(id: GameObjectId | GameObject) {
-        const gameObject = await getObject(id)
+        const gameObject = getObject(id)
         let token = null
         let entry: ShopEntry | null = null
         let basePrice = {
