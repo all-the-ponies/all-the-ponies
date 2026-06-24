@@ -433,7 +433,8 @@
     "message": {
       "for": "için:",
       "if": "eğer:",
-      "percent_off": "İNDİRİM"
+      "percent_off": "İNDİRİM",
+      "seasonal_shop": "Sezonluk Dükkan"
     },
     "title": "Mağaza"
   }

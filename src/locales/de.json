@@ -433,7 +433,8 @@
     "message": {
       "for": "für",
       "if": "wenn",
-      "percent_off": "RABATT"
+      "percent_off": "RABATT",
+      "seasonal_shop": "Saisonaler Shop"
     },
     "title": "Shop"
   }

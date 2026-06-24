@@ -434,7 +434,8 @@
     "message": {
       "for": "por",
       "if": "se",
-      "percent_off": "MENOS"
+      "percent_off": "MENOS",
+      "seasonal_shop": "Loja Da Temporada"
     },
     "title": "Loja"
   }

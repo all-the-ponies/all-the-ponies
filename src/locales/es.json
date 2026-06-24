@@ -441,7 +441,8 @@
     "message": {
       "for": "con",
       "if": "si",
-      "percent_off": "MENOS"
+      "percent_off": "MENOS",
+      "seasonal_shop": "Tienda De Temporada"
     },
     "title": "Tienda"
   }

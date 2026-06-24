@@ -433,7 +433,8 @@
     "message": {
       "for": "コスト：",
       "if": "：",
-      "percent_off": "オフ"
+      "percent_off": "オフ",
+      "seasonal_shop": "シーズン|ショップ"
     },
     "title": "ストア"
   }

@@ -433,7 +433,8 @@
     "message": {
       "for": "مقابل",
       "if": "في حالة",
-      "percent_off": "خصم"
+      "percent_off": "خصم",
+      "seasonal_shop": "متجر موسمي"
     },
     "title": "المتجر"
   }
