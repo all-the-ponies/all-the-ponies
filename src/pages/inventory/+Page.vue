@@ -10,12 +10,12 @@ import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories
 import { getNames, getObject } from '@/scripts/gameData'
 import { useSaveStats } from '@/scripts/stats'
 import { useSaveStore } from '@/stores/saveManager'
-import type { CategoryName } from '@/types/gameDataTypes'
+import type { GameObject, CategoryName, GameObjectId } from '@/types/gameDataTypes'
 import { computedAsync } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'
 import { usePageContext } from 'vike-vue/usePageContext'
-import { computed, ref, useTemplateRef, watch } from 'vue'
+import { computed, ref, shallowRef, useTemplateRef, watch, watchEffect } from 'vue'
 
 const saveStore = useSaveStore()
 const saveStats = useSaveStats()
@@ -44,40 +44,57 @@ watch(
     category,
     () => {
         query.value.category = category.value
+        // gettingObjects.value = true
+        gameObjects.value = []
+        items.value = []
 
         if (!query.value.category || query.value.category === 'pony') {
-            delete query.value.category
+            query.value.category = null
         }
     }
 )
 
+const gameObjects = ref<GameObjectId[]>([])
 
-const gameObjects = computedAsync(async () => {
+watchEffect(async () => {
     switch (category.value) {
         case 'pony':
-            return Object.keys(saveStore.ponies)
+            gameObjects.value = Object.keys(saveStore.ponies)
+            break
         case 'shop':
-            return Object.keys(saveStore.shops)
+            gameObjects.value = Object.keys(saveStore.shops)
+            break
         case 'house':
-            return [...await saveStore.houses]
+            gameObjects.value = [...await saveStore.houses]
+            break
+        case 'costume':
+            gameObjects.value = [...await saveStore.costumes]
+            break
         case 'avatar':
-            return [...await saveStore.avatars]
+            gameObjects.value = [...saveStore.avatars]
+            break
         case 'avatar_frame':
-            return [...await saveStore.avatarFrames]
+            gameObjects.value = [...saveStore.avatarFrames]
+            break
         case 'background':
-            return [...await saveStore.backgrounds]
+            gameObjects.value = [...saveStore.backgrounds]
+            break
         case 'background_frame':
-            return [...await saveStore.backgroundFrames]
+            gameObjects.value = [...saveStore.backgroundFrames]
+            break
         case 'cutie_mark':
-            return [...await saveStore.cutieMarks]
+            gameObjects.value = [...saveStore.cutieMarks]
+            break
     }
-}, [])
+})
 
-const items = computedAsync(async () => {
-    return Promise.all(
+const items = ref<GameObject[]>([])
+
+watchEffect(async () => {
+    items.value = await Promise.all(
         gameObjects.value.map(async (objectId) => await getObject(objectId, category.value))
     )
-}, [])
+})
 
 
 const sortFunctions = computed(() => {
@@ -241,6 +258,7 @@ const itemGap = useRem(.3)
                             <option value="pony">{{ $t('game_object.pony.pony', 2) }}</option>
                             <option value="house">{{ $t('game_object.house.house', 2) }}</option>
                             <option value="shop">{{ $t('game_object.shop.shop', 2) }}</option>
+                            <option value="costume">{{ $t('game_object.costume.costume', 2) }}</option>
                             <option value="avatar">{{ $t('game_object.profile_decorations.avatar.avatar', 2) }}</option>
                             <option value="avatar_frame">{{ $t('game_object.profile_decorations.avatar_frame.avatar_frame', 2) }}</option>
                             <option value="background">{{ $t('game_object.profile_decorations.background.background', 2) }}</option>
@@ -253,9 +271,9 @@ const itemGap = useRem(.3)
                             <template #category>
                                 <Link
                                     class="link"
-                                    :href="`/${CATEGORIES[category === 'house' ? 'ponies' : category].plural || category === 'house' ? 'ponies' : category}/`"
+                                    :href="`/${CATEGORIES[category === 'house' ? 'pony' : category].plural || category === 'house' ? 'pony' : category}/`"
                                 >
-                                    {{ $t(CATEGORIES[category === 'house' ? 'ponies' : category ].string, 2).toLocaleLowerCase() }}
+                                    {{ $t(CATEGORIES[category === 'house' ? 'pony' : category ].string, 2).toLocaleLowerCase() }}
                                 </Link>
                             </template>
                         </i18n-t>

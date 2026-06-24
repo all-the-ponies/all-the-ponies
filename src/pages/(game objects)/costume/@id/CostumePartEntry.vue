@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import CurrencyImage from '@/components/CurrencyImage.vue';
 import { createAssetUrl } from '@/scripts/assets';
 import type { CostumePartType } from '@/types/gameDataTypes';
@@ -17,6 +18,9 @@ const costumePart = computed(() => props.costumePart)
     <div class="costume-part">
         <div class="part-image-container">
             <img class="part-image" :src="createAssetUrl(costumePart.image.main.path)" alt="">
+        </div>
+        <div>
+            <InventoryAddButton :game-object="costumePart.id"></InventoryAddButton>
         </div>
         <div class="part-info">
             <ul class="price-list"> 
@@ -40,11 +44,15 @@ const costumePart = computed(() => props.costumePart)
 <style lang="css" scoped>
 .costume-part {
     display: grid;
-    grid-template-columns: 5rem 1fr;
+    grid-template-columns: 5rem auto 1fr;
     min-height: 5rem;
     gap: 1rem;
     align-items: center;
     justify-items: center;
+}
+
+.part-image-container {
+    display: flex;
 }
 
 .part-image {

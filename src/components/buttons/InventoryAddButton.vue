@@ -19,6 +19,10 @@ const owned = computed(() => {
             return saveStore.hasPony(gameObject.value.id)
         case 'shop':
             return saveStore.hasShop(gameObject.value.id)
+        case 'costume':
+            return Object.values(gameObject.value.parts).every(part => !part || saveStore.costumeParts.has(part))
+        case 'costume_part':
+            return saveStore.costumeParts.has(gameObject.value.id)
         case 'avatar':
             return saveStore.avatars.has(gameObject.value.id)
         case 'avatar_frame':
@@ -46,6 +50,12 @@ function toggleOwned(event: Event) {
             case 'avatar':
                 saveStore.avatars.delete(gameObject.value.id)
                 break
+            case 'costume':
+                saveStore.removeCostume(gameObject.value.id)
+                break
+            case 'costume_part':
+                saveStore.costumeParts.delete(gameObject.value.id)
+                break
             case 'avatar_frame':
                 saveStore.avatarFrames.delete(gameObject.value.id)
                 break
@@ -66,6 +76,12 @@ function toggleOwned(event: Event) {
                 break
             case 'shop':
                 saveStore.addShop(gameObject.value.id)
+                break
+            case 'costume':
+                saveStore.addCostume(gameObject.value.id)
+                break
+            case 'costume_part':
+                saveStore.costumeParts.add(gameObject.value.id)
                 break
             case 'avatar':
                 saveStore.avatars.add(gameObject.value.id)

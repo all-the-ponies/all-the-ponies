@@ -37,6 +37,7 @@ export interface SaveData {
             notWelcomed?: boolean,
         }>,
         shops: GameObjectId[],
+        costume_parts: string[],
         avatars: string[],
         avatar_frames: string[],
         backgrounds: string[],
