@@ -13,13 +13,15 @@ import { computedAsync } from '@vueuse/core'
 import { Config } from 'vike-vue/Config'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { computed, ref, shallowRef } from 'vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 
 const pageContext = usePageContext()
 
 const loadingShop = shallowRef<boolean>(true)
 const errorMessage = ref<string>('')
-const selectedCategory = ref<CategoryName>((pageContext.urlParsed.search.category as CategoryName) || 'pony')
+const selectedCategory = ref<CategoryName | 'seasonal-shop'>((pageContext.urlParsed.search.category as CategoryName) || 'pony')
 
 const shop = computedAsync(
     async () => {
@@ -72,9 +74,18 @@ const availableCategories = computed((): CategoryName[] => {
     return [...categories].sort((a, b) => categoriesMap.indexOf(a) - categoriesMap.indexOf(b))
 })
 
+const seasonalShopAvailable = computed(() => Object.values(shop.value).some(
+    item => item.tags.includes('pvsar1') || item.tags.includes('pvsar2')
+))
+
+const isSpecialCategory = computed(() => ['seasonal-shop'].includes(selectedCategory.value))
 
 const shownObjects = computed(() => {
     return gameObjects.value.filter((gameObject) => {
+        if (selectedCategory.value === 'seasonal-shop') {
+            return shop.value[gameObject.id].tags.includes('pvsar1') || shop.value[gameObject.id].tags.includes('pvsar2')
+        }
+        
         if (gameObject.category !== selectedCategory.value) {
             return false
         }
@@ -93,6 +104,10 @@ const shownObjects = computed(() => {
 const sortFunctions = computed(() => {
     let functions = {
         ...SortFunctions.common
+    }
+
+    if (isSpecialCategory.value) {
+        return functions
     }
 
     if (selectedCategory.value in SortFunctions) {
@@ -116,6 +131,10 @@ const filterFunctions = computed(() => {
         }
     }
 
+    if (isSpecialCategory.value) {
+        return functions
+    }
+
     if (selectedCategory.value in FilterFunctions) {
         functions = {
             ...functions,
@@ -136,6 +155,15 @@ const cardSize = 9
 const { width: itemWidth, height: itemHeight } = useGameCardSize(cardSize)
 const itemGap = useRem(.3)
 
+const placeholder = computed(() => {
+    switch (selectedCategory.value) {
+        case 'seasonal-shop':
+            return t(CATEGORIES.pony.string)
+        default:
+            return t(CATEGORIES[selectedCategory.value].string)
+    }
+})
+
 </script>
 
 <template>
@@ -154,7 +182,7 @@ const itemGap = useRem(.3)
             :filters="filterFunctions"
             :sorters="sortFunctions"
             :query="query"
-            :placeholder="$t(CATEGORIES[selectedCategory].string)"
+            :placeholder="placeholder"
             page-param="page"
             save-url
             :item-width="itemWidth"
@@ -178,6 +206,7 @@ const itemGap = useRem(.3)
                         :value="category"
                         :key="`category-${category}`"
                     >{{ $t(CATEGORIES[category].string, 2) }}</option>
+                    <option v-if="seasonalShopAvailable" value="seasonal-shop">{{ $t('store.message.seasonal_shop') }}</option>
                 </select>
             </template>
             <template #item="{ item }">
