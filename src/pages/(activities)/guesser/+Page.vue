@@ -100,8 +100,8 @@ function start() {
     guessedPonies.value = []
     resetTimer()
     startTimer()
-    currentPony.value = gameObjects.value.pony.objects['Pony_Rockin_Medley_Brook']
-    // pickPony()
+    // currentPony.value = gameObjects.value.pony.objects['Pony_Rockin_Medley_Brook']
+    pickPony()
     nextTick(() => {
         nameInput.value.focus()
         gameContainer.value.scrollIntoView()
