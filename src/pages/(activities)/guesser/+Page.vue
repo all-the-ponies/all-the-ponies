@@ -108,8 +108,8 @@ function start() {
     })
 }
 
-async function resume() {
-    await restoreState()
+function resume() {
+    restoreState()
     playing.value = true
     startTimer()
     nextTick(() => {
@@ -118,10 +118,10 @@ async function resume() {
     })
 }
 
-async function restoreState() {
-    currentPony.value = await getObject(activityState.guesser.currentPony, 'pony')
+function restoreState() {
+    currentPony.value = getObject(activityState.guesser.currentPony, 'pony')
     timeElapsed.value = activityState.guesser.time
-    guessedPonies.value = await Promise.all(activityState.guesser.guessedPonies.map(async (id) => await getObject(id, 'pony')))
+    guessedPonies.value = activityState.guesser.guessedPonies.map((id) => getObject(id, 'pony'))
 }
 
 watch(
