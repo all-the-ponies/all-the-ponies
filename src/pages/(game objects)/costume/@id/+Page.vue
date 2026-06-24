@@ -12,6 +12,7 @@ import { computed } from 'vue';
 import type { Data } from './+data';
 import ObjectImage from '@/components/ObjectImage.vue';
 import CostumePartEntry from './CostumePartEntry.vue';
+import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 
 
 const pageContext = usePageContext()
@@ -44,6 +45,9 @@ const pony = computedAsync(async () => await getObject(costume.value?.pony, 'pon
                         <img v-if="costume.bonus.type == 'ShopProduction'" src="@/assets/images/ui/icons/bits-boost.png" alt="Bits bonus">
                         +{{ $n(costume.bonus.amount / 100, {style: 'percent'}) }}
                     </div>
+                </template>
+                <template #image-right>
+                    <InventoryAddButton :game-object="costume.id"></InventoryAddButton>
                 </template>
                 <template #info>
                     <table class="infobox">

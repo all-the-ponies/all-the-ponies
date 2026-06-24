@@ -2,12 +2,12 @@ import { FRIEND_CODE_PATTERN } from "@/globals/constants"
 import api from "@/scripts/api"
 import { notNullIsh } from "@/scripts/common"
 import { extendedDeserialize, extendedSerialize } from "@/scripts/extendedSerialize"
-import { getObject } from "@/scripts/gameData"
+import { getGameObjects, getObject } from "@/scripts/gameData"
 import type { TDateISO } from "@/types/date"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
 import type { HTTPError } from "ky"
 import { defineStore } from "pinia"
-import { computed } from "vue"
+import { computed, shallowRef, toValue, watchEffect, type MaybeRef } from "vue"
 
 
 interface GenericInventoryEntry {
@@ -61,6 +61,7 @@ function createBaseSave() {
         ponies: {} as Record<GameObjectId, PonyInventoryEntry>,
         shops: {} as Record<GameObjectId, ShopInventoryEntry>,
         decor: {} as Record<GameObjectId, DecorInventoryEntry>,
+        costumeParts: new Set<GameObjectId>(),
         avatars: new Set<GameObjectId>(),
         avatarFrames: new Set<GameObjectId>(),
         backgrounds: new Set<GameObjectId>(),
@@ -86,6 +87,17 @@ export const useSaveStore = defineStore('save', {
             }
 
             return houses
+        },
+        costumes: async (state) => {
+            const costumes = new Set(
+                Object.values((await getGameObjects()).costume.objects).filter(
+                    costume => Object.values(costume.parts).every(
+                        part => !part || state.costumeParts.has(part)
+                    )
+                ).map(costume => costume.id)
+            )
+
+            return costumes
         },
 
         // Making these getters allows them to be reactive
@@ -186,16 +198,29 @@ export const useSaveStore = defineStore('save', {
             }
         },
 
-        async ownedRef(id: GameObjectId) {
-            const gameObject = await getObject(id)
-            switch (gameObject.category) {
-                case 'pony':
-                    return computed(() => id in this.ponies)
-                case 'shop':
-                    return computed(() => id in this.shops)
-                case 'house':
-                    return computed(() => id in this.houses)
+        async addCostume(id: GameObjectId) {
+            const costume = await getObject(id, 'costume')
+            if (!costume) {
+                return
             }
+
+            Object.values(costume.parts).forEach(part => {
+                if (part) {
+                    this.costumeParts.add(part)
+                }
+            })
+        },
+        async removeCostume(id: GameObjectId) {
+            const costume = await getObject(id, 'costume')
+            if (!costume) {
+                return
+            }
+
+            Object.values(costume.parts).forEach(part => {
+                if (part) {
+                    this.costumeParts.delete(part)
+                }
+            })
         },
 
         async loadFromCloud(friendCode: string) {
@@ -257,6 +282,8 @@ export const useSaveStore = defineStore('save', {
                     console.error(error)
                 }
             }
+
+            newSave.costumeParts = new Set(saveData.inventory.costume_parts)
             
             newSave.avatars = new Set(saveData.inventory.avatars)
             newSave.avatarFrames = new Set(saveData.inventory.avatar_frames)
@@ -267,6 +294,7 @@ export const useSaveStore = defineStore('save', {
             this.playerInfo = newSave.playerInfo
             this.ponies = newSave.ponies
             this.shops = newSave.shops
+            this.costumeParts = newSave.costumeParts
             this.avatars = newSave.avatars
             this.avatarFrames = newSave.avatarFrames
             this.backgrounds = newSave.backgrounds
@@ -292,6 +320,14 @@ export const useSaveStore = defineStore('save', {
         {
             pick: ['avatars', 'avatarFrames', 'backgrounds', 'backgroundFrames', 'cutieMarks'],
             key: 'profile_decorations',
+            serializer: {
+                serialize: extendedSerialize,
+                deserialize: extendedDeserialize,
+            },
+        },
+        {
+            pick: ['costumeParts'],
+            key: 'costume_parts',
             serializer: {
                 serialize: extendedSerialize,
                 deserialize: extendedDeserialize,

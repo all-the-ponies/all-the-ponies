@@ -219,7 +219,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         playable: {
             name: "filter.pony.playable",
             check(gameObject: PonyType) {
-              return (gameObject.group.length == 0 || gameObject.group.length && gameObject.group_master)},
+              return (gameObject.group.length == 0 || gameObject.group?.length && gameObject.group_master)},
             default: true,
             exclude: ['npc', 'unused', 'quest'],
         },
