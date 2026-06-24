@@ -91,17 +91,17 @@ export let error: string | null = null
 let resolveReady: () => void
 export const ready = new Promise<void>(resolve => { resolveReady = resolve })
 
-export async function setGameData() {
+export async function loadGameData() {
     if (!gameDataCache) {
         console.log('Loading game data')
-        gameDataCache = await loadGameData()
+        gameDataCache = await fetchGameData()
         console.log('Loaded game data')
     } else {
         console.log('Game data already loaded')
     }
 }
 
-export async function loadGameData() {
+export async function fetchGameData() {
     // if (loaded) {
     //     return
     // }
@@ -299,7 +299,7 @@ export default {
     get loading() { return loading },
     get error() { return error },
     get ready() { return ready },
-    loadGameData,
+    loadGameData: fetchGameData,
     getObject,
     translateName,
     getNames,

@@ -4,7 +4,7 @@
 import { i18n, setLanguage } from '@/globals'
 import { LOCALES } from '@/i18n'
 import { chooseDefaultLocale } from '@/scripts/chooseDefaultLocale'
-import { loadGameData, setGameData } from '@/scripts/gameData'
+import { fetchGameData, loadGameData } from '@/scripts/gameData'
 import acceptLanguage from 'accept-language'
 import type { PageContext } from 'vike/types'
 import { extractLocale } from './extractLocale'
@@ -12,8 +12,6 @@ import { extractLocale } from './extractLocale'
 
  
 export async function onCreateApp(pageContext: PageContext & {locale: string}) {
-    await setGameData()
-    
     if (pageContext.isRenderingHead) {
         // Don't add plugins when rendering <head> — see https://vike.dev/onCreateApp#lifecycle
         return

@@ -1,13 +1,7 @@
-import { loadGameData, setGameData, type GameData } from "@/scripts/gameData";
+import { fetchGameData, loadGameData, type GameData } from "@/scripts/gameData";
 import type { GlobalContext } from "vike/types";
 
 
-export async function onCreateGlobalContext(globalContext: GlobalContext & {gameData: GameData}) {
-    await setGameData()
-    
-    if (!globalContext.gameData) {
-        // console.log('loading')
-        // globalContext.gameData = await loadGameData()
-        // console.log('loaded')
-    }
+export async function onCreateGlobalContext(globalContext: GlobalContext) {
+    await loadGameData()
 }
