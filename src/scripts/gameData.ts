@@ -23,25 +23,32 @@ export interface GameData {
     tasksData: TasksData,
 }
 
+let gameDataCache: GameData = null
+
 export async function getGameVersions(): Promise<GameVersion> {
-    const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    return globalContext.gameData?.gameVersions
+    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
+    console.log('Is game data loaded', !!gameDataCache)
+    return gameDataCache?.gameVersions
 }
 export async function getGameObjects(): Promise<GameObjects> {
-    const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    return globalContext.gameData?.gameObjects
+    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
+    console.log('Is game data loaded', !!gameDataCache)
+    return gameDataCache?.gameObjects
 }
 export async function getGroupQuests(): Promise<GroupQuests> {
-    const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    return globalContext.gameData?.groupQuests
+    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
+    console.log('Is game data loaded', !!gameDataCache)
+    return gameDataCache?.groupQuests
 }
 export async function getFortuneShop(): Promise<FortuneShop> {
-    const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    return globalContext.gameData?.fortuneShop
+    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
+    console.log('Is game data loaded', !!gameDataCache)
+    return gameDataCache?.fortuneShop
 }
 export async function getTasksData(): Promise<TasksData> {
-    const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
-    return globalContext.gameData?.tasksData
+    // const globalContext = await getGlobalContext() as GlobalContext & {gameData: GameData}
+    console.log('Is game data loaded', !!gameDataCache)
+    return gameDataCache?.tasksData
 }
 
 
@@ -72,15 +79,16 @@ export function useTasksData() {
 }
 
 
-
-
-
 export let loading = true
 export let loaded = false
 export let error: string | null = null
 
 let resolveReady: () => void
 export const ready = new Promise<void>(resolve => { resolveReady = resolve })
+
+export function setGameData(gameData: GameData) {
+    gameDataCache = gameData
+}
 
 export async function loadGameData() {
     // if (loaded) {
@@ -89,7 +97,8 @@ export async function loadGameData() {
 
 
     async function fetchData<T>(key: string): Promise<T> {
-        if (!isClient) {
+        const isSitemap = typeof process !== 'undefined' && process.env.GENERATING_SITEMAP === 'true'
+        if (!isSitemap && !isClient) {
             const cloudflareModule = 'cloudflare:workers'
             const { env } = await import(/* @vite-ignore */ cloudflareModule)
             const object = await env.GAME_ASSETS_BUCKET.get(key)
