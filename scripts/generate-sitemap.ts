@@ -1,5 +1,5 @@
 import { LOCALES } from "../src/i18n"
-import { loadGameData } from "../src/scripts/gameData"
+import { fetchGameData } from "../src/scripts/gameData"
 import fs from 'fs'
 import path from "path"
 import { resolve } from 'path'
@@ -8,7 +8,7 @@ import { SitemapAndIndexStream, SitemapStream } from 'sitemap'
 
 process.env.GENERATING_SITEMAP = 'true'
 
-const gameData = await loadGameData()
+const gameData = await fetchGameData()
 const gameObjects = gameData.gameObjects
 
 const BASE_URL = 'https://all-the-ponies.com'

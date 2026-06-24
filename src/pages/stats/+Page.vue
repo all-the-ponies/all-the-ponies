@@ -40,8 +40,8 @@ async function importFriendCode() {
     importDisabled.value = false
 }
 
-const gemsName = translateName(useGameObject('Gems', 'item'))
-const bitsName = translateName(useGameObject('Bits', 'item'))
+const gemsName = translateName(getObject('Gems', 'item'))
+const bitsName = translateName(getObject('Bits', 'item'))
 
 </script>
 

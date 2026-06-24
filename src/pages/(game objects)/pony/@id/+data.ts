@@ -10,7 +10,7 @@ export async function data(pageContext: PageContext) {
     // await ready
     
     console.log('Getting object')
-    const pony = await getObject(id, 'pony')
+    const pony = getObject(id, 'pony')
     console.log('Got object')
 
     if (pony === null) {

@@ -21,7 +21,7 @@ const props = defineProps<{
     hover?: boolean,
 }>()
 
-const gameObject = computedAsync(async () => await getObject(props.object))
+const gameObject = computed(() => getObject(props.object))
 
 
 const name = computed(() => {

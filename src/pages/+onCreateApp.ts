@@ -4,15 +4,14 @@
 import { i18n, setLanguage } from '@/globals'
 import { LOCALES } from '@/i18n'
 import { chooseDefaultLocale } from '@/scripts/chooseDefaultLocale'
-import { loadGameData } from '@/scripts/gameData'
+import { fetchGameData, loadGameData } from '@/scripts/gameData'
 import acceptLanguage from 'accept-language'
 import type { PageContext } from 'vike/types'
 import { extractLocale } from './extractLocale'
 // import { inject as injectAnalytics } from "@vercel/analytics"
+
  
 export async function onCreateApp(pageContext: PageContext & {locale: string}) {
-    await loadGameData()
-    
     if (pageContext.isRenderingHead) {
         // Don't add plugins when rendering <head> — see https://vike.dev/onCreateApp#lifecycle
         return

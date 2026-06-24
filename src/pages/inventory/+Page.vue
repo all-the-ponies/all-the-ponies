@@ -45,8 +45,8 @@ watch(
     () => {
         query.value.category = category.value
         // gettingObjects.value = true
-        gameObjects.value = []
-        items.value = []
+        // gameObjects.value = []
+        // items.value = []
 
         if (!query.value.category || query.value.category === 'pony') {
             query.value.category = null
@@ -54,47 +54,30 @@ watch(
     }
 )
 
-const gameObjects = ref<GameObjectId[]>([])
-
-watchEffect(async () => {
+const gameObjects = computed(() => {
     switch (category.value) {
         case 'pony':
-            gameObjects.value = Object.keys(saveStore.ponies)
-            break
+            return Object.keys(saveStore.ponies)
         case 'shop':
-            gameObjects.value = Object.keys(saveStore.shops)
-            break
+            return Object.keys(saveStore.shops)
         case 'house':
-            gameObjects.value = [...await saveStore.houses]
-            break
+            return [...saveStore.houses]
         case 'costume':
-            gameObjects.value = [...await saveStore.costumes]
-            break
+            return [...saveStore.costumes]
         case 'avatar':
-            gameObjects.value = [...saveStore.avatars]
-            break
+            return [...saveStore.avatars]
         case 'avatar_frame':
-            gameObjects.value = [...saveStore.avatarFrames]
-            break
+            return [...saveStore.avatarFrames]
         case 'background':
-            gameObjects.value = [...saveStore.backgrounds]
-            break
+            return [...saveStore.backgrounds]
         case 'background_frame':
-            gameObjects.value = [...saveStore.backgroundFrames]
-            break
+            return [...saveStore.backgroundFrames]
         case 'cutie_mark':
-            gameObjects.value = [...saveStore.cutieMarks]
-            break
+            return [...saveStore.cutieMarks]
     }
 })
 
-const items = ref<GameObject[]>([])
-
-watchEffect(async () => {
-    items.value = await Promise.all(
-        gameObjects.value.map(async (objectId) => await getObject(objectId, category.value))
-    )
-})
+const items = computed(() => gameObjects.value.map((objectId) => getObject(objectId, category.value)))
 
 
 const sortFunctions = computed(() => {

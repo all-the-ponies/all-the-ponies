@@ -27,10 +27,10 @@ const name = computed(() => {
     return name
 })
 
-const residents = computedAsync(async () => {
+const residents = computed(() => {
     const residents: {[ L in Location ]+?: PonyType[]} = {}
     for (let ponyId of house.value.residents) {
-        let pony = await getObject(ponyId, 'pony')
+        let pony = getObject(ponyId, 'pony')
         if (!(pony.location in residents)) {
             residents[pony.location] = []
         }
@@ -38,13 +38,11 @@ const residents = computedAsync(async () => {
     }
 
     return residents
-}, {})
+})
 
-const visitors = computedAsync(async () => {
-    return await Promise.all(
-        house.value.visitors.map(async (id) => await getObject(id, 'pony'))
-    )
-}, [])
+const visitors = computed(() => {
+    return house.value.visitors.map((id) => getObject(id, 'pony'))
+})
 
 </script>
 

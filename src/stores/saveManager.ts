@@ -77,10 +77,10 @@ export const useSaveStore = defineStore('save', {
         return createBaseSave()
     },
     getters: {
-        houses: async (state) => {
+        houses: (state) => {
             const houses: Set<GameObjectId> = new Set()
             for (let ponyId of Object.keys(state.ponies)) {
-                const pony = await getObject(ponyId, 'pony')
+                const pony = getObject(ponyId, 'pony')
                 if (pony != null && !houses.has(pony.house)) {
                     houses.add(pony.house)
                 }
@@ -88,9 +88,9 @@ export const useSaveStore = defineStore('save', {
 
             return houses
         },
-        costumes: async (state) => {
+        costumes: (state) => {
             const costumes = new Set(
-                Object.values((await getGameObjects()).costume.objects).filter(
+                Object.values((getGameObjects()).costume.objects).filter(
                     costume => Object.values(costume.parts).every(
                         part => !part || state.costumeParts.has(part)
                     )
@@ -108,12 +108,12 @@ export const useSaveStore = defineStore('save', {
             return (id: GameObjectId) => id in state.shops
         },
         hasHouse() {
-            return async (id: GameObjectId) => id in await this.houses
+            return (id: GameObjectId) => id in this.houses
         },
     },
     actions: {
-        async addPony(id: GameObjectId | GameObject, info: Partial<Omit<PonyInventoryEntry, 'id'>> = {}, state: Record<GameObjectId, PonyInventoryEntry> = null) {
-            const pony = await getObject(id, 'pony')
+        addPony(id: GameObjectId | GameObject, info: Partial<Omit<PonyInventoryEntry, 'id'>> = {}, state: Record<GameObjectId, PonyInventoryEntry> = null) {
+            const pony = getObject(id, 'pony')
             if (pony === null) {
                 throw TypeError(`Invalid pony id: ${id}`)
             }
@@ -127,7 +127,7 @@ export const useSaveStore = defineStore('save', {
             const ponies = state || this.ponies
 
             if (pony.changeling.id) {
-                const changelingPony = await getObject(pony.changeling.id, 'pony')
+                const changelingPony = getObject(pony.changeling.id, 'pony')
                 if (changelingPony.max_level) {
                     ponyInfo.level = 5
                 }
@@ -151,8 +151,8 @@ export const useSaveStore = defineStore('save', {
 
             ponies[pony.id] = ponyInfo
         },
-        async addShop(id: GameObjectId, info: Partial<Omit<ShopInventoryEntry, 'id'>> = {}, state: Record<GameObjectId, ShopInventoryEntry> = null) {
-            const shop = await getObject(id, 'shop')
+        addShop(id: GameObjectId, info: Partial<Omit<ShopInventoryEntry, 'id'>> = {}, state: Record<GameObjectId, ShopInventoryEntry> = null) {
+            const shop = getObject(id, 'shop')
             if (shop === null) {
                 throw TypeError(`Invalid shop id: ${id}`)
             }
@@ -179,9 +179,9 @@ export const useSaveStore = defineStore('save', {
         //     return id in this.houses
         // },
 
-        async removePony(id: GameObjectId) {
+        removePony(id: GameObjectId) {
             if (id in this.ponies) {
-                const pony = await getObject(id, 'pony')
+                const pony = getObject(id, 'pony')
                 delete this.ponies[id]
                 if (pony.group.length) {
                     for (let friend of pony.group) {
@@ -198,8 +198,8 @@ export const useSaveStore = defineStore('save', {
             }
         },
 
-        async addCostume(id: GameObjectId) {
-            const costume = await getObject(id, 'costume')
+        addCostume(id: GameObjectId) {
+            const costume = getObject(id, 'costume')
             if (!costume) {
                 return
             }
@@ -210,8 +210,8 @@ export const useSaveStore = defineStore('save', {
                 }
             })
         },
-        async removeCostume(id: GameObjectId) {
-            const costume = await getObject(id, 'costume')
+        removeCostume(id: GameObjectId) {
+            const costume = getObject(id, 'costume')
             if (!costume) {
                 return
             }
@@ -260,7 +260,7 @@ export const useSaveStore = defineStore('save', {
             let ponies = Array.isArray(saveData.inventory.ponies) ? saveData.inventory.ponies : Object.values(saveData.inventory.ponies)
 
             for (let pony of ponies) {
-                const ponyInfo = await getObject(pony.id, 'pony')
+                const ponyInfo = getObject(pony.id, 'pony')
                 
                 if (
                     ponyInfo.tags.includes('npc') ||
@@ -277,7 +277,7 @@ export const useSaveStore = defineStore('save', {
 
             for (let shop of saveData.inventory.shops) {
                 try {
-                    await this.addShop(shop, {}, newSave.shops)
+                    this.addShop(shop, {}, newSave.shops)
                 } catch (error) {
                     console.error(error)
                 }

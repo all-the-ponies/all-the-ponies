@@ -95,10 +95,10 @@ const description = computed(() => {
     return description
 })
 
-const house = computedAsync(async () => await getObject(pony.value?.house, 'house'))
+const house = computed(() => getObject(pony.value?.house, 'house'))
 const houseName = computed(() => translateName(house.value).value)
 
-const fortuneShopData = computedAsync(async () => await getFortuneShopData(pony.value?.id))
+const fortuneShopData = computed(() => getFortuneShopData(pony.value?.id))
 
 const showProIcon = computed(() => {
     if (!groupQuests.value) {
@@ -145,15 +145,13 @@ const groupQuestName = computed(() => {
     return new Intl.ListFormat(language.value.code, {style: 'short'}).format(names)
 })
 
-const costumes = computedAsync(() => {
+const costumes = computed(() => {
     if (!pony.value?.costumes.length) {
         return []
     }
 
-    return Promise.all(
-        pony.value.costumes.map(costume => getObject(costume, 'costume'))
-    )
-}, [])
+    return pony.value.costumes.map(costume => getObject(costume, 'costume'))
+})
 
 </script>
 

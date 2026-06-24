@@ -12,7 +12,7 @@ export interface Data {
 export async function data(pageContext: PageContext) {
     const { id } = pageContext.routeParams
     
-    const costume = await getObject(id, 'costume')
+    const costume = getObject(id, 'costume')
     const parts: Record<'body' | 'mane' | 'tail', CostumePartType | null> = {
         body: null,
         mane: null,
@@ -24,24 +24,11 @@ export async function data(pageContext: PageContext) {
         throw render(404, `Avatar with id ${id} doesn't exist`)
     }
 
-    const fetchParts = () => {
-        return Promise.all([
-            getObject(costume.parts.body, 'costume_part').then(part => parts.body = part),
-            getObject(costume.parts.mane, 'costume_part').then(part => parts.mane = part),
-            getObject(costume.parts.tail, 'costume_part').then(part => parts.tail = part),
-        ])
-    }
+    parts.body = getObject(costume.parts.body, 'costume_part')
+    parts.mane = getObject(costume.parts.mane, 'costume_part')
+    parts.tail = getObject(costume.parts.tail, 'costume_part')
 
-    const fetchSubsets = () => {
-        return Promise.all(
-            costume.subsets.map(subset => getObject(subset, 'costume'))
-        ).then(costumes => subsets.push(...costumes))
-    }
-
-    await Promise.all([
-        fetchParts(),
-        fetchSubsets(),
-    ])
+    subsets.push(...costume.subsets.map(subset => getObject(subset, 'costume')))
 
     return {
         costume,

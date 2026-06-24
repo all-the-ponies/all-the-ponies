@@ -56,10 +56,10 @@ const name = computed(() => {
     return name
 })
 
-const residents = computedAsync(async () => {
+const residents = computed(() => {
     const residents: {[ L in Location ]+?: PonyType[]} = {}
     for (let ponyId of shop.value.residents) {
-        let pony = await getObject(ponyId, 'pony')
+        let pony = getObject(ponyId, 'pony')
         if (!(pony.location in residents)) {
             residents[pony.location] = []
         }
@@ -67,17 +67,11 @@ const residents = computedAsync(async () => {
     }
 
     return residents
-}, {})
-
-const visitors = ref([])
-
-watchEffect(() => {
-    Promise.all(
-        shop.value.visitors.map(async (id) => await getObject(id, 'pony'))
-    ).then(results => visitors.value = results)
 })
 
-const product = computedAsync(async () => await getObject(shop.value.product, 'consumable'))
+const visitors = computed(() => shop.value.visitors.map((id) => getObject(id, 'pony')))
+
+const product = computed(() => getObject(shop.value.product, 'consumable'))
 
 const productCurrency = computed(() => {
     if (product.value?.consume.bits) {
@@ -89,9 +83,9 @@ const productCurrency = computed(() => {
     }
 })
 
-const fortuneShopData = computedAsync(async () => await getFortuneShopData(shop.value.id))
+const fortuneShopData = computed(() => getFortuneShopData(shop.value.id))
 
-const xpName = translateName(useGameObject('XP', 'item'))
+const xpName = translateName(getObject('XP', 'item'))
 
 </script>
 

@@ -54,9 +54,9 @@ const name = computed(() => {
     return name
 })
 
-const pony = computedAsync(async () => await getObject(pet.value.pony))
+const pony = computed(() => getObject(pet.value.pony))
 
-const fortuneShopData = computedAsync(async () => await getFortuneShopData(pet.value.id))
+const fortuneShopData = computed(() => getFortuneShopData(pet.value.id))
 
 </script>
 
@@ -66,7 +66,7 @@ const fortuneShopData = computedAsync(async () => await getFortuneShopData(pet.v
     <div>
         <back-button fallback="/search/pets" />
         <div v-if="pet === null">
-            Decor {{ pageContext.routeParams.id }} not found
+            Pet {{ pageContext.routeParams.id }} not found
         </div>
         <template v-else>
             <ObjectPage :gameObject="pet">

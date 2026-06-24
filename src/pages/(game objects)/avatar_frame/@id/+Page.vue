@@ -55,7 +55,7 @@ const name = computed(() => {
     return name
 })
 
-const fortuneShopData = computedAsync(async () => await getFortuneShopData(avatar_frame.value?.id))
+const fortuneShopData = computed(() => getFortuneShopData(avatar_frame.value?.id))
 
 </script>
 

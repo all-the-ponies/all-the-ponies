@@ -53,7 +53,7 @@ const name = computed(() => {
     let name = translateName(decor.value).value
     return name
 })
-const fortuneShopData = computedAsync(async () => await getFortuneShopData(decor.value?.id))
+const fortuneShopData = computed(() => getFortuneShopData(decor.value?.id))
 // const fortuneShopData = ref<FortuneShopItem>()
 // 
 // watchEffect(() => {
@@ -61,7 +61,7 @@ const fortuneShopData = computedAsync(async () => await getFortuneShopData(decor
 //         .then(info => fortuneShopData.value = info)
 // })
 
-const xpName = translateName(useGameObject('XP', 'item'))
+const xpName = translateName(getObject('XP', 'item'))
 
 </script>
 

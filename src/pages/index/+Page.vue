@@ -29,13 +29,11 @@ const decor = ref<DecorType>(null)
 const avatar = ref<AvatarType>(null)
 
 onMounted(() => {
-    whenever(gameObjects, () => {
-        pony.value = pickRandom(Object.values(gameObjects.value.pony.objects))
-        house.value = pickRandom(Object.values(gameObjects.value.house.objects))
-        shop.value = pickRandom(Object.values(gameObjects.value.shop.objects))
-        decor.value = pickRandom(Object.values(gameObjects.value.decor.objects))
-        avatar.value = pickRandom(Object.values(gameObjects.value.avatar.objects))
-    })
+    pony.value = pickRandom(Object.values(gameObjects.value.pony.objects))
+    house.value = pickRandom(Object.values(gameObjects.value.house.objects))
+    shop.value = pickRandom(Object.values(gameObjects.value.shop.objects))
+    decor.value = pickRandom(Object.values(gameObjects.value.decor.objects))
+    avatar.value = pickRandom(Object.values(gameObjects.value.avatar.objects))
 })
 
 </script>

@@ -10,7 +10,7 @@ import { getObject } from '@/scripts/gameData';
 import { useListStore, type Wishlist } from '@/stores/listStore';
 import { computedAsync } from '@vueuse/core';
 import { ClientOnly } from 'vike-vue/ClientOnly';
-import { ref, useTemplateRef } from 'vue';
+import { computed, ref, useTemplateRef } from 'vue';
 
 const listsStore = useListStore()
 const createListDialog = useTemplateRef('create-list-dialog')
@@ -21,25 +21,22 @@ function createList() {
     createListDialog.value.createList()
 }
 
-async function getListImage(wishlist: Wishlist) {
-    const gameObject = await getObject(wishlist.image.item)
+function getListImage(wishlist: Wishlist): string {
+    const gameObject = getObject(wishlist.image.item)
     if (!gameObject) {
         return
     }
     return gameObject.image[wishlist.image.image].path
 }
 
-const imageMap = computedAsync(
-    async () => {
+const imageMap = computed(
+    () => {
         const images: Record<string, string> = {}
-        await Promise.all(
-            [...listsStore.lists.values()].map((wishlist) => 
-                getListImage(wishlist).then(path => images[wishlist.id] = path)
-            )
-        )
+        for (let wishlist of listsStore.lists.values()) {
+            images[wishlist.id] = getListImage(wishlist)
+        }
         return images
-    },
-    {},
+    }
 )
 
 async function deleteList(wishlist: Wishlist) {
