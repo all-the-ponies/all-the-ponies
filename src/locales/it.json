@@ -436,7 +436,8 @@
     "message": {
       "for": "per",
       "if": "se",
-      "percent_off": "IN MENO"
+      "percent_off": "IN MENO",
+      "seasonal_shop": "Negozio Stagionale"
     },
     "title": "Negozio"
   }

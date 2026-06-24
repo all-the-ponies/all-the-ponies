@@ -433,7 +433,8 @@
     "message": {
       "for": "가격:",
       "if": "조건:",
-      "percent_off": "할인"
+      "percent_off": "할인",
+      "seasonal_shop": "시즌 상점"
     },
     "title": "상점"
   }

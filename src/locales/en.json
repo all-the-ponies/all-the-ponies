@@ -442,7 +442,8 @@
     "message": {
       "for": "for",
       "if": "if",
-      "percent_off": "OFF"
+      "percent_off": "OFF",
+      "seasonal_shop": "Seasonal Shop"
     },
     "title": "Store"
   }

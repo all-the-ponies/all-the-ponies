@@ -433,7 +433,8 @@
     "message": {
       "for": "ถ้าใช้",
       "if": "ถ้าเป็น",
-      "percent_off": "ลด"
+      "percent_off": "ลด",
+      "seasonal_shop": "ร้านค้า|ประจำ|ฤดูกาล"
     },
     "title": "สโตร์"
   }

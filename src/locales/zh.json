@@ -433,7 +433,8 @@
     "message": {
       "for": "价格：",
       "if": "条件：",
-      "percent_off": "折扣"
+      "percent_off": "折扣",
+      "seasonal_shop": "赛季商店"
     },
     "title": "商店"
   }

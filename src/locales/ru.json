@@ -441,7 +441,8 @@
     "message": {
       "for": "за",
       "if": "если",
-      "percent_off": "СКИДКА"
+      "percent_off": "СКИДКА",
+      "seasonal_shop": "Сезонный Магазин"
     },
     "title": "Магазин"
   }

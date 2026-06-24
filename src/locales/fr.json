@@ -434,7 +434,8 @@
     "message": {
       "for": "avec",
       "if": "si",
-      "percent_off": "EN -"
+      "percent_off": "EN -",
+      "seasonal_shop": "Boutique Saisonnière"
     },
     "title": "Boutique"
   }
