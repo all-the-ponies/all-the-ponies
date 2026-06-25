@@ -155,10 +155,38 @@ const costumes = computed(() => {
     return pony.value.costumes.map(costume => getObject(costume, 'costume'))
 })
 
-const tasks = computed(
-    () => pony.value.tasks.map(taskId => getTaskInfo(taskId))
-            .filter(task => !task.id.includes('TLS'))
-)
+const tasks = computed(() => {
+    /**
+     * Sort tasks by
+     * 1. Tokens first
+     * 2. Gems
+     * 3. Bits/gems to duration ratio
+     */
+    
+    let tasks = pony.value.tasks
+    if (!tasks?.length && pony.value.changeling.id) {
+        tasks = getObject(pony.value.changeling.id, 'pony')?.tasks
+    }
+
+    if (!tasks) {
+        return []
+    }
+
+    let result = tasks.map(taskId => getTaskInfo(taskId))
+                    .filter(task => !task.id.includes('TLS'))
+    
+    result.sort((a, b) => {
+        if (Boolean(a.reward.token) !== Boolean(b.reward.token)) {
+            return a.reward.token ? -1 : 1
+        }
+        return (a.reward.gems - b.reward.gems) || (
+            ((a.reward.gems || a.reward.bits) / a.duration) - 
+            ((b.reward.gems || b.reward.bits) / b.duration)
+        )
+    })
+
+    return result
+})
 
 </script>
 
