@@ -1,7 +1,7 @@
 import ky, { HTTPError } from 'ky'
 import { computed, ref, toValue, unref, watch, watchEffect, type MaybeRef } from 'vue'
 import { language } from '../globals'
-import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, TasksData } from '../types/gameDataTypes'
+import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, TaskEntry, TasksData } from '../types/gameDataTypes'
 import { createAssetUrl } from './assets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
@@ -202,7 +202,10 @@ export function getFortuneShopData(id: GameObjectId): FortuneShopItem | null {
     return null
 }
 
-export function getTaskInfo(taskId: string) {
+export function getTaskInfo(taskId: string | TaskEntry) {
+    if (typeof taskId !== 'string') {
+        return taskId
+    }
     return (getTasksData()).tasks[taskId] ?? null
 }
 

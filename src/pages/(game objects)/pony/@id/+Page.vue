@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { getFortuneShopData, getObject, translateName, useGroupQuests } from '@/scripts/gameData'
+import { getFortuneShopData, getObject, getTaskInfo, translateName, useGroupQuests } from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import { staticImage } from '@/scripts/common'
@@ -24,6 +24,8 @@ import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import { useI18n } from 'vue-i18n';
 import { createAssetUrl } from '@/scripts/assets';
+import TaskInfo from '@/components/TaskInfo.vue';
+import LazyImage from '@/components/LazyImage.vue';
 
 const { t } = useI18n()
 const isMounted = useMounted()
@@ -152,6 +154,10 @@ const costumes = computed(() => {
 
     return pony.value.costumes.map(costume => getObject(costume, 'costume'))
 })
+
+const tasks = computed(
+    () => pony.value.tasks.map(taskId => getTaskInfo(taskId))
+)
 
 </script>
 
@@ -313,9 +319,21 @@ const costumes = computed(() => {
                         :href="`/${costume.category}/${costume.id}`"
                         class="costume link"
                     >
-                        <img :src="createAssetUrl(costume.image.main.path)" :alt="translateName(costume).value" :title="translateName(costume).value">
+                        <img
+                            :src="createAssetUrl(costume.image.main.path)"
+                            :alt="translateName(costume).value"
+                            :title="translateName(costume).value"
+                            loading="lazy"
+                
+                        >
                         <span class="costume-name">{{ translateName(costume) }}</span>
                     </Link>
+                </div>
+            </section>
+            <section class="section" v-if="tasks.length">
+                <h2 class="h2">{{ $t('tasks.task', 2) }}</h2>
+                <div class="tasks">
+                    <TaskInfo v-for="task in tasks" :task-id="task"></TaskInfo>
                 </div>
             </section>
         </div>
@@ -407,6 +425,7 @@ const costumes = computed(() => {
         object-fit: contain;
         object-position: center;
         width: var(--item-width);
+        height: 8rem;
     }
 }
 

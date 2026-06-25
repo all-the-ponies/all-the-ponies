@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, shallowRef, useTemplateRef, watch, type ImgHTMLAttributes } from 'vue';
+import { computed, nextTick, onMounted, shallowRef, useTemplateRef, watch, type ImgHTMLAttributes } from 'vue';
 
 const EMPTY_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 
@@ -9,7 +9,13 @@ const props = defineProps<{
 
 const src = computed(() => props.src)
 const lazyImage = useTemplateRef('lazy-image')
-const isVisible = shallowRef<boolean>(false)
+const isVisible = shallowRef<boolean>(true)
+
+onMounted(() => {
+    if (!lazyImage.value.complete) {
+        isVisible.value = false
+    }
+})
 
 // const url = computedAsync(
 //     async () => {

@@ -446,5 +446,13 @@
       "seasonal_shop": "Seasonal Shop"
     },
     "title": "Store"
+  },
+  "tasks": {
+    "task": "Task | Tasks",
+    "message": {
+      "task_icon": "Task Icon",
+      "duration": "Duration",
+      "skip_price": "Skip: {price}"
+    }
   }
 }

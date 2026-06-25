@@ -3,23 +3,25 @@ import { createAssetUrl } from '@/scripts/assets';
 import { getObject, translateName, useGameObject } from '@/scripts/gameData';
 import type { GameObject, GameObjectId } from '@/types/gameDataTypes';
 import { computedAsync } from '@vueuse/core';
-import VLazyImage from "v-lazy-image";
 import { computed } from 'vue';
+import LazyImage from './LazyImage.vue';
 
 const props = withDefaults(defineProps<{
     object: GameObjectId | GameObject | null,
-    type?: 'preview' | 'main',
+    type?: string,
 }>(), {
     type: 'main',
 })
 
-const objectId = computed(() => props.object)
-const objectInfo = useGameObject(objectId)
+const objectInfo = computed(() => getObject(props.object))
 
 // const objectInfo = computedAsync(async () => await getObject(props.object))
 
 const image = computed(() => {
-    return objectInfo.value?.image[props.type].path
+    if (props.type in objectInfo.value?.image) {
+        return objectInfo.value?.image[props.type].path
+    }
+    return objectInfo.value?.image['main'].path
 })
 
 // const name = computed(() => {
@@ -28,7 +30,7 @@ const image = computed(() => {
 // })
 
 const name = computed(() => {
-    return translateName(objectInfo.value)
+    return translateName(objectInfo.value).value
 })
 
 
@@ -36,7 +38,7 @@ const name = computed(() => {
 
 <template>
     <span v-if="object === null || !image"></span>
-    <VLazyImage v-else :src="createAssetUrl(image)" :alt="name"></VLazyImage>
+    <LazyImage v-else :src="createAssetUrl(image)" :alt="name" :title="name"></LazyImage>
 </template>
 <!-- <img v-else :src="staticImage(image)" :alt="name" loading="lazy"> -->
 
