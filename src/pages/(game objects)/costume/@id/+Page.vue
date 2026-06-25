@@ -13,6 +13,7 @@ import type { Data } from './+data';
 import ObjectImage from '@/components/ObjectImage.vue';
 import CostumePartEntry from './CostumePartEntry.vue';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
+import LazyImage from '@/components/LazyImage.vue';
 
 
 const pageContext = usePageContext()
@@ -93,7 +94,14 @@ const pony = computed(() => getObject(costume.value?.pony, 'pony'))
                         :href="`/${subCostume.category}/${subCostume.id}`"
                         class="sub-costume link"
                     >
-                        <img :class="{'costume-glow': subCostume.id === costume.id}" :src="createAssetUrl(subCostume.image.main.path)" :alt="translateName(subCostume).value" :title="translateName(subCostume).value">
+                        <img
+                            :class="{'costume-glow':
+                            subCostume.id === costume.id}"
+                            :src="createAssetUrl(subCostume.image.main.path)"
+                            :alt="translateName(subCostume).value"
+                            :title="translateName(subCostume).value"
+                            loading="lazy"
+                        >
                         <span class="sub-costume-name">{{ translateName(subCostume) }}</span>
                     </Link>
                 </div>
@@ -141,6 +149,7 @@ const pony = computed(() => getObject(costume.value?.pony, 'pony'))
         object-fit: contain;
         object-position: center;
         width: var(--item-width);
+        height: 8rem;
     }
 }
 

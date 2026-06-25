@@ -1,12 +1,10 @@
 <script setup lang="ts">
+import type { GameObject } from '@/types/gameDataTypes.ts';
 import ObjectImage from './ObjectImage.vue';
 
-const props = defineProps({
-    object: {
-        type: String,
-        required: true,
-    }
-})
+const props = defineProps<{
+    object: string | GameObject,
+}>()
 
 </script>
 
