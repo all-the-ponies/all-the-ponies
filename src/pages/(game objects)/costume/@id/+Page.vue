@@ -93,6 +93,7 @@ const pony = computed(() => getObject(costume.value?.pony, 'pony'))
                         v-for="subCostume in subsets"
                         :href="`/${subCostume.category}/${subCostume.id}`"
                         class="sub-costume link"
+                        keep-scroll-position
                     >
                         <img
                             :class="{'costume-glow':
