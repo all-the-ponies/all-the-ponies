@@ -132,7 +132,7 @@ const xpName = translateName(getObject('XP', 'item'))
                                     </td>
                                     <td v-else>
                                         -{{ decor.pro.time }}%
-                                        <img src="@/assets/images/ui/timer.png" alt="Cooldown" class="object-image">
+                                        <img src="@/assets/images/ui/timer.png" alt="Cooldown" class="timer-image">
                                     </td>
                                 </tr>
                             </template>
@@ -153,5 +153,11 @@ const xpName = translateName(getObject('XP', 'item'))
 </template>
 
 <style lang="css" scoped>
+
+.timer-image {
+    height: 1em;
+    object-fit: contain;
+    object-position: center;
+}
 
 </style>
