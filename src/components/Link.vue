@@ -15,6 +15,7 @@ const props = defineProps<{
   target?: AnchorHTMLAttributes['target'],
   type?: AnchorHTMLAttributes['type'],
   referrerpolicy?: AnchorHTMLAttributes['referrerpolicy'],
+  keepScrollPosition?: boolean,
 }>()
 
 const isActive = computed(() => {
@@ -32,6 +33,7 @@ const transformedHref = computed(() => fixUrl(props.href))
       ...props,
       href: transformedHref,
     }"
+    :keep-scroll-position="props.keepScrollPosition"
   >
     <slot></slot>
   </a>
