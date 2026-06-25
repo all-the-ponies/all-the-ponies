@@ -13,9 +13,11 @@ import ChanceBar from './ChanceBar.vue';
 
 const props = defineProps<{
     taskId: string | TaskEntry,
+    href?: string,
 }>()
 
 const taskInfo = computed(() => getTaskInfo(props.taskId))
+const href = computed(() => props.href)
 
 const pony = computed(() => getObject(taskInfo.value.pony, 'pony'))
 
@@ -32,12 +34,15 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
 </script>
 
 <template>
-    <div class="task">
+    <div class="task" :class="{hidden: taskInfo.hidden}">
         <div class="header">
             <div class="task-image-container">
                 <img :src="createAssetUrl(taskInfo.image.path)" :alt="$t('tasks.message.task_icon')">
             </div>
-            <span class="title">
+            <Link v-if="href" class="title" :href="href">
+                {{ taskInfo.name[language.key] }}
+            </Link>
+            <span v-else class="title">
                 {{ taskInfo.name[language.key] }}
             </span>
         </div>
@@ -114,6 +119,10 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
     margin: 0.5rem;
 }
 
+.task.hidden {
+    background-color: rgb(200, 200, 200);
+}
+
 .header {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -145,15 +154,23 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
 }
 
 .title {
-    display: grid;
-    align-items: center;
+    align-self: center;
+    justify-self: center;
     text-align: center;
     font-size: 1.6rem;
     padding: 0.3rem;
+
+    color: white;
+    text-decoration: none;
+}
+
+a.title:hover {
+    text-decoration: underline;
 }
 
 .body {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     justify-content: space-between;
     align-items: center;
 
@@ -180,13 +197,11 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
     position: absolute;
     bottom: 0;
     left: 0;
-    /* filter: drop-shadow(0 0 0.1rem black); */
 }
 
 .pony-names {
-    /* display: flex;
-    flex-direction: column; */
     font-size: 1.2rem;
+    justify-self: center;
 }
 
 .duration img {
@@ -199,7 +214,7 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
     border-radius: inherit;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1.5fr;
     justify-items: center;
     align-items: center;
     
@@ -209,8 +224,10 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
 }
 
 .token {
+    flex: 1;
     display: grid;
-    grid-template-columns: 5rem 2.5rem;
+    justify-self: right;
+    grid-template-columns: 1fr 2.5rem;
     gap: 0.8rem;
 }
 

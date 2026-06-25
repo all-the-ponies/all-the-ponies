@@ -157,6 +157,7 @@ const costumes = computed(() => {
 
 const tasks = computed(
     () => pony.value.tasks.map(taskId => getTaskInfo(taskId))
+            .filter(task => !task.id.includes('TLS'))
 )
 
 </script>
@@ -201,6 +202,7 @@ const tasks = computed(
                                 v-if="pony.changeling.id"
                                 :href="`/pony/${pony.changeling.id}/`"
                                 class="button button-blue"
+                                keep-scroll-position
                             >
                                 {{ $t('game_object.pony.transform') }}
                             </Link>

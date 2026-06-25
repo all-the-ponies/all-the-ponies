@@ -9,7 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <slot></slot> <object-image class="object-image" :object="props.object"></object-image>
+    <slot></slot>&nbsp;<object-image class="object-image" :object="props.object"></object-image>
 </template>
 
 <style lang="css" scoped>
