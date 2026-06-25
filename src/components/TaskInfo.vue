@@ -153,7 +153,8 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
 }
 
 .body {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     justify-content: space-between;
     align-items: center;
 
@@ -187,6 +188,7 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
     /* display: flex;
     flex-direction: column; */
     font-size: 1.2rem;
+    justify-self: center;
 }
 
 .duration img {
@@ -199,7 +201,7 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
     border-radius: inherit;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1.5fr;
     justify-items: center;
     align-items: center;
     
@@ -209,8 +211,10 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
 }
 
 .token {
+    flex: 1;
     display: grid;
-    grid-template-columns: 5rem 2.5rem;
+    justify-self: right;
+    grid-template-columns: 1fr 2.5rem;
     gap: 0.8rem;
 }
 
