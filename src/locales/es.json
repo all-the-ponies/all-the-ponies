@@ -446,5 +446,13 @@
       "seasonal_shop": "Tienda De Temporada"
     },
     "title": "Tienda"
+  },
+  "tasks": {
+    "message": {
+      "duration": "Duración",
+      "skip_price": "Omitir: {price}",
+      "task_icon": "Icono de tarea"
+    },
+    "task": "Tarea | Tareas"
   }
 }
