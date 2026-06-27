@@ -252,8 +252,8 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         },
         gem: {
           name: 'filter.pony.gem_pony',
-          async check(gameObject: PonyType) {
-            const tasks = await Promise.all(gameObject.tasks.map(task => getTaskInfo(task)))
+          check(gameObject: PonyType) {
+            const tasks = gameObject.tasks.map(task => getTaskInfo(task))
             return tasks.some(task => task?.reward.gems)
           }
         },
@@ -287,9 +287,9 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
       //   default: true,
       // },
       bits: {
-        name: translateName(await getObject('Bits', 'item')),
-        async check(gameObject: ShopType) {
-          const product = await getObject(gameObject.product, 'consumable')
+        name: translateName(getObject('Bits', 'item')),
+        check(gameObject: ShopType) {
+          const product = getObject(gameObject.product, 'consumable')
           return product && product.consume.bits > 0
         },
         // default: true

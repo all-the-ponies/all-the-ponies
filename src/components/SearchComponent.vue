@@ -222,27 +222,27 @@ if (props.saveUrl) {
 
 const items = computed(() => props.data)
 
-async function checkObject(item: ITEM, filterKey: string) {
+function checkObject(item: ITEM, filterKey: string) {
     const filter = props.filters[filterKey]
-    const mainCheck = await (filter.check ? filter.check(item) : true)
+    const mainCheck = filter.check ? filter.check(item) : true
     let excludeCheck = true
     let includeCheck = true
     if (mainCheck && filter.exclude) {
-        excludeCheck = all(await Promise.all(
-            filter.exclude.map(async (excludeFilter) => (
+        excludeCheck = all(
+            filter.exclude.map((excludeFilter) => (
                 filters.value.includes(excludeFilter) ||
-                (!await checkObject(item, excludeFilter))
+                (!checkObject(item, excludeFilter))
             ))
-        ))
+        )
         
     }
     if (mainCheck && filter.include) {
-        includeCheck = all(await Promise.all(
-            filter.include.map(async (includeFilter) => (
+        includeCheck = all(
+            filter.include.map((includeFilter) => (
                 filters.value.includes(includeFilter) ||
-                await checkObject(item, includeFilter)
+                checkObject(item, includeFilter)
             ))
-        ))
+        )
         
     }
 
@@ -257,28 +257,22 @@ function sortItems(items: ITEM[], func?: (a: ITEM, b: ITEM) => number) {
     }
 }
 
-// Can't use computedAsync because of race condition when navigating to a different page
-const filteredItems = ref<ITEM[]>([])
-watchEffect(async () => {
+const filteredItems = computed(() => {
     let filtered = items.value
     if (checkFilters.value && filters.value.length) {
         filtered = []
 
         for (let item of items.value) {
-            let filterResults = await Promise.all(
-                filters.value.map(async (key) => {
-                    return await checkObject(item, key)
-                })
-            )
-            if (
-                all(filterResults)
-            ) {
+            let filterResults = filters.value.map((key) => {
+                return checkObject(item, key)
+            })
+            if (all(filterResults)) {
                 filtered.push(item)
             }
         }
         // console.log('filtered', filtered)
     }
-    filteredItems.value = filtered
+    return filtered
 })
 
 const computedItems = computed(() => {
