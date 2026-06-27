@@ -99,6 +99,7 @@
       "regular": "Regular"
     },
     "pony": {
+      "gem_pony": "Ponis de Gemas",
       "not_owned": "No adquirido",
       "npc": "NPC",
       "playable": "Jugable",
@@ -445,5 +446,13 @@
       "seasonal_shop": "Tienda De Temporada"
     },
     "title": "Tienda"
+  },
+  "tasks": {
+    "message": {
+      "duration": "Duración",
+      "skip_price": "Omitir: {price}",
+      "task_icon": "Icono de tarea"
+    },
+    "task": "Tarea | Tareas"
   }
 }
