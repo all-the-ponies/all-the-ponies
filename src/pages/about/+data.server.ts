@@ -97,12 +97,6 @@ export async function data(pageContext: PageContextServer): Promise<Data> {
                 languages: ['zh'],
             },
             {
-                username: 'justfeydan',
-                full_name: 'feydan',
-                source: 'github',
-                languages: ['ru'],
-            },
-            {
                 username: 'Hurmeow',
                 full_name: 'Hurmeow',
                 source: 'github',
