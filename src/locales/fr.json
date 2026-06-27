@@ -28,12 +28,12 @@
     "hint": "Indice",
     "no": "Non",
     "ok": "Ok",
+    "resume": "Reprendre",
     "share": "Partager",
     "skip": "Passer",
     "start": "Commencer",
     "stop": "Arrêt",
-    "yes": "Oui",
-    "resume": "Reprendre"
+    "yes": "Oui"
   },
   "check_save": {
     "messages": {
@@ -91,6 +91,9 @@
     "sort_by": "Trier par"
   },
   "filter": {
+    "costume": {
+      "used": "utilise"
+    },
     "decor": {
       "can_fuse": "Peut être fusionné",
       "regular": "Normal"
@@ -147,6 +150,9 @@
       "size": "Taille",
       "unlock_level": "Niveau pour débloquer"
     },
+    "costume": {
+      "costume": "déguisements"
+    },
     "decor": {
       "cannot_fuse": "Ne peut pas être fusionné",
       "decor": "Décorations",
@@ -159,6 +165,9 @@
       "house": "Maison | Maisons",
       "resident": "Résident | Résidents",
       "visitor": "Visiteur | Visiteurs"
+    },
+    "pet": {
+      "pet": "Familier | Pets"
     },
     "pony": {
       "arrival_bonus": "Bonus d'arrivée",
@@ -184,10 +193,10 @@
       "background_frame": {
         "background_frame": "Cadre de fond"
       },
-      "is_default": "Est par défaut",
       "cutie_mark": {
         "cutie_mark": "Marque De Beauté | Marques De Beauté"
-      }
+      },
+      "is_default": "Est par défaut"
     },
     "road": {
       "road": "Routes"
@@ -201,9 +210,6 @@
     },
     "token": {
       "token": "Jetons"
-    },
-    "pet": {
-      "pet": "Familier | Pets"
     }
   },
   "group_quests": {
