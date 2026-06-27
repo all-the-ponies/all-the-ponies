@@ -11,7 +11,6 @@ import type { CategoryName, GameObject, GameObjectId } from '@/types/gameDataTyp
 import { computed, nextTick, ref, useTemplateRef, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ChooseImageDialog from './ChooseImageDialog.vue';
-import { computedAsync } from '@vueuse/core';
 
 const { t } = useI18n()
 const gameObjects = useGameObjects()
@@ -33,7 +32,7 @@ const image = ref<{item: GameObjectId | null, image: string | null}>({
     image: null,
 })
 const tempItem = ref<GameObjectId>(null)
-const gameObject = computedAsync(async () => await getObject(image.value?.item))
+const gameObject = computed(() => getObject(image.value?.item))
 const wishlistId = ref<number | null>(null)
 
 watch(name, () => errorMessage.value = '')
@@ -106,8 +105,8 @@ function submitObject(objectId: GameObjectId) {
     selectImage()
 }
 
-async function selectImage() {
-    const tempObject = await getObject(tempItem.value)
+function selectImage() {
+    const tempObject = getObject(tempItem.value)
     if (Object.keys(tempObject.image).length <= 1) {
         submitImage(Object.keys(tempObject.image)[0])
     } else {
