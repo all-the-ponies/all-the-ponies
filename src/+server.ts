@@ -99,10 +99,6 @@ function getApp() {
 
         let body = 'body' in object ? object.body : undefined
 
-        if (body) {
-            
-        }
-
         return c.body(
             body,
             status,
