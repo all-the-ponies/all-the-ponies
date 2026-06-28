@@ -8,6 +8,15 @@ interface Bindings {
 	WEBLATE_API_TOKEN: string;
 }
 
+async function getHash(text: string, algorithm: string = 'SHA-256'): Promise<string> {
+  const encoded = new TextEncoder().encode(text)
+  const hashBuffer = await crypto.subtle.digest({name: algorithm}, encoded)
+  const hashArray = Array.from(new Uint8Array(hashBuffer))
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
+
+  return hashHex
+}
+
 
 function getApp() {
     console.log('starting server')
@@ -59,15 +68,43 @@ function getApp() {
         let status: ContentfulStatusCode | StatusCode = 500
 
         if ('body' in object) {
-            status = 200
+            if (object.range) {
+                status = 206
+
+                const totalSize = object.size
+
+                if ('offset' in object.range || 'length' in object.range) {
+                    const start = object.range.offset ?? 0
+                    const length = object.range.length ?? (totalSize - start)
+                    const end = start + length - 1
+
+                    headers.set('content-range', `bytes ${start}-${end}/${totalSize}`)
+                    headers.set('content-length', String(length))
+                } else if ('suffix' in object.range) {
+                    const suffix = object.range.suffix
+                    const start = totalSize - suffix
+                    const end = totalSize - 1
+
+                    headers.set('content-range', `bytes ${start}-${end}/${totalSize}`)
+                    headers.set('content-length', String(suffix))
+                }
+            } else {
+                status = 200
+            }
         } else if (!c.req.header('If-Match')) {
             status = 304
         } else {
             status = 412
         }
 
+        let body = 'body' in object ? object.body : undefined
+
+        if (body) {
+            
+        }
+
         return c.body(
-            "body" in object ? object.body : undefined,
+            body,
             status,
             Object.fromEntries(headers.entries()),
         );
