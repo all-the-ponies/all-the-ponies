@@ -7,8 +7,30 @@ import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
 import Notices from './Notices.vue'
 import SidebarView from './SidebarView.vue'
+import { onMounted, ref } from 'vue'
+import { getGameVersions, type GameVersion } from '@/scripts/gameData.ts'
 
 const pageContext = usePageContext()
+
+// const showGameUpdate = ref<boolean>(false)
+
+onMounted(() => {
+    const currentVersion = getGameVersions()
+//     const rawPreviousVersion = localStorage.getItem('game_version')
+//     if (rawPreviousVersion) {
+//         const previousVersion: GameVersion = JSON.parse(rawPreviousVersion)
+// 
+//         if (previousVersion.game_version != currentVersion.game_version) {
+//             showGameUpdate.value = true
+//         } else if (previousVersion.content_version != currentVersion.content_version) {
+//             
+//         }
+//     } else {
+//         showGameUpdate.value = true
+//     }
+
+    localStorage.setItem('game_version', JSON.stringify(currentVersion))
+})
 
 </script>
 

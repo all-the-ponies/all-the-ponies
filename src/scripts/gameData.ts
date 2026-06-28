@@ -10,7 +10,7 @@ import { getGlobalContext } from 'vike'
 import type { GlobalContext } from 'vike/types'
 
 
-interface GameVersion {
+export interface GameVersion {
     game_version: string
     content_version: string
 }
