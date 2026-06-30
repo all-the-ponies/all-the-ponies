@@ -81,6 +81,7 @@ export const PLURAL_CATEGORY_MAP: Record<string, CategoryName> = {
     cutie_marks: 'cutie_mark',
     pets: 'pet',
     costumes: 'costume',
+    tokens: 'token',
 }
 
 export interface SortFunctionsType {
