@@ -79,7 +79,10 @@
     .link:hover,
     .link:focus {
         color: var(--pink-dark);
-        text-decoration: underline;
+        /* text-decoration: underline; */
+        text-decoration-line: underline;
+        text-decoration-color: var(--pink-dark);
+        /* text-dec */
     }
     
     .text-green {

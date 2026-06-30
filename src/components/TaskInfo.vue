@@ -120,7 +120,7 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
 }
 
 .task.hidden {
-    background-color: rgb(200, 200, 200);
+    background-color: hsl(0, 0%, 78%);
 }
 
 .header {
@@ -175,6 +175,10 @@ a.title:hover {
     align-items: center;
 
     padding: 0.7rem;
+
+    /* text-shadow: 0rem 0.1rem white; */
+    -webkit-text-stroke: 0.15rem white;
+    paint-order: stroke fill;
 }
 
 .portrait-container {
