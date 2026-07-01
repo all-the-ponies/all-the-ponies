@@ -370,7 +370,7 @@ const tasks = computed(() => {
     </div>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .portrait {
     height: 1em;

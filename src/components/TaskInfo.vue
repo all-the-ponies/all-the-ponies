@@ -109,7 +109,7 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
     </div>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .task {
     background-color: white;

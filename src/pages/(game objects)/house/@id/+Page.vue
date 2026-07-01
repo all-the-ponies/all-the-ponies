@@ -142,7 +142,7 @@ const visitors = computed(() => {
     </div>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .residents {
     --item-width: 5rem;

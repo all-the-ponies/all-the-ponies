@@ -35,7 +35,7 @@ import links from '@/globals/links';
     </Notice>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .notice-container {
     container-type: inline-size;
 
