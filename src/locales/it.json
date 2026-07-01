@@ -6,6 +6,7 @@
     },
     "sections": {
       "credits": {
+        "check_failed": "Errore: impossibile trovare traduttori",
         "message": {
           "credits_list": {
             "1": "Questo sito è stato ideato da {ego}.",
@@ -66,7 +67,7 @@
       "discord_message": "Hai delle domande, dei suggerimenti o dei bug da contrassegnare? Unisciti a {server}!",
       "discord_server": "Server Discord",
       "github": {
-        "button": "",
+        "button": "Aprire Deposito",
         "description": "Dai un'occhiata al codice, segnala dei problemi, o richiedi cambiamenti.",
         "title": "Vedi su GitHub"
       },
@@ -90,11 +91,15 @@
     "sort_by": "Filtra a Seconda di"
   },
   "filter": {
+    "costume": {
+      "used": "Utilizzati"
+    },
     "decor": {
       "can_fuse": "Capacità di fondersi",
       "regular": "Standard"
     },
     "pony": {
+      "gem_pony": "Pony Gemma",
       "not_owned": "Non possedute",
       "npc": "NPC",
       "playable": "Giocabili",
@@ -147,6 +152,7 @@
       "unlock_level": "Livello per Sbloccare"
     },
     "costume": {
+      "collection": "Set Costume",
       "costume": "Costume | Costumi"
     },
     "decor": {
@@ -154,7 +160,7 @@
       "decor": "Decorazioni",
       "effect": "Effetti",
       "fusion_points": "Punti Unione",
-      "pro_decor": "",
+      "pro_decor": "pro @:game_object.decor.decor",
       "pro_decors": "Decorazioni Pro"
     },
     "house": {
@@ -166,10 +172,10 @@
       "pet": "Animale Da Compagnia | Pets"
     },
     "pony": {
-      "arrival_bonus": "",
+      "arrival_bonus": "Bonus d’arrivo",
       "character": "Personaggi",
       "level_up_rewards": "Premi di Livello",
-      "minigame_cooldown": "",
+      "minigame_cooldown": "Cooldown del Minigioco",
       "minigame_skip_cost": "Costo per Saltare (Minigame)",
       "pony": "Pony",
       "transform": "Trasforma",
@@ -192,7 +198,7 @@
       "cutie_mark": {
         "cutie_mark": "Cutie Mark | Cutie Mark"
       },
-      "is_default": ""
+      "is_default": "È di default"
     },
     "road": {
       "road": "Strade"
@@ -215,22 +221,22 @@
     "random_pro": "Casuale",
     "seasonal": "Stagionale",
     "title": "Missioni Di Gruppo",
-    "tutorial": ""
+    "tutorial": "Tutorial"
   },
   "guesser": {
-    "description": "",
+    "description": "Indovina il pony dalla silhouette",
     "message": {
-      "correct_guesses": "",
-      "guessed_correctly": "",
-      "time": ""
+      "correct_guesses": "Risposte Corrette",
+      "guessed_correctly": "Risposte Corrette: {ponies}/{total}",
+      "time": "Tempo: {time}"
     },
-    "title": ""
+    "title": "Chi è questo pony?"
   },
   "home": {
     "description": "Ottieni informazioni riguardanti {game_link} e tieni conto di ciò che possiedi!",
     "message": {
-      "affiliates": "",
-      "game_name": "",
+      "affiliates": "Affiliati",
+      "game_name": "My Little Pony: L’Amicizia è Magica",
       "links": "Link"
     },
     "things_to_do": {
@@ -325,108 +331,108 @@
       "win_message": "Congratulazioni! Ti ci è voluto {time} per elencare tutti e {num_ponies} @.lower:game_object.pony.pony"
     },
     "options": {
-      "case_sensitive": "",
-      "ignore_accents": "",
-      "ignore_punctuation": "",
-      "ignore_spaces": "",
-      "include_unused": ""
+      "case_sensitive": "Differenzia maiuscole e minuscole",
+      "ignore_accents": "Ignorare gli accenti",
+      "ignore_punctuation": "Ignorare la punteggiatura",
+      "ignore_spaces": "Ignorare gli spazi",
+      "include_unused": "Includere pony non utilizzati"
     },
-    "time": "",
-    "title": ""
+    "time": "Tempo",
+    "title": "Quiz"
   },
   "price_history": {
     "header": {
-      "date": "",
-      "price": "",
+      "date": "Data",
+      "price": "Prezzo",
       "royal": "Reale",
       "tokens": "Accessori"
     },
     "message": {
       "whats_hot": "Novità"
     },
-    "title": ""
+    "title": "Cronologia Prezzi"
   },
   "save_check": {
-    "description": "",
+    "description": "Controlla se il tuo file salvato è stato corrotto",
     "messages": {
       "explanation": {
-        "first": "",
-        "fourth": "",
-        "second": "",
-        "third": ""
+        "first": "Avrete probabilmente notato che in seguito alla manutenzione del gioco, molti non sono stati in grado di vedere salvataggi su Tutti i Pony, si tratta dello stesso errore che sta causando il problema di non poter visitare gli amici causa “nessuna connessione”.",
+        "fourth": "Puoi controllare se ne sei interessato qui.",
+        "second": "Dopo qualche ricerca, i data miner hanno trovato la fonte dell’errore.",
+        "third": "Questo errore è risultato della corruzione del tuo salvataggio in cloud. Non sono certo di come stia accadendo, ma è qualcosa di veramente preoccupante."
       },
       "status": {
-        "affected": "",
-        "safe": ""
+        "affected": "Sfortunatamente, pare che tu sia interessato",
+        "safe": "Pare che il tuo file salvato sia al sicuro per ora"
       },
       "what_can_you_do": {
-        "body": "",
-        "customer_support": "",
-        "title": ""
+        "body": "Puoi semplicemente contattare il supporto tecnico qui {support} . Ci sono tuttavia dei rischi. Se contatti GameLoft a questo proposito e menzioni che queste informazioni sono state ottenute tramite data mining, non sappiamo come potrebbero reagire o fare al tuo account, in quanto essere a conoscenza di queste informazioni potrebbe essere contro le regole. puoi anche passare la parola in modo che più persone possibili contattino il supporto tecnico, così da far sì che gli sviluppatori siano avvisati e sistemino questo bug.",
+        "customer_support": "Servizio clienti",
+        "title": "Cosa puoi fare?"
       },
       "what_this_means": {
         "body": {
-          "affected": "",
-          "safe": ""
+          "affected": "Il tuo file locale è al sicuro, ma se disinstalli il gioco o lo trasferisci a un altro dispositivo, il tuo file cloud potrebbe non esserlo.",
+          "safe": "il tuo file salvato in cloud è al sicuro al momento, ma questo non significa che lo sarà per sempre, in quanto gli account di molti giocatori che prima erano al sicuro ora non lo sono."
         },
-        "title": ""
+        "title": "cosa significa questo?"
       },
       "what_to_say": {
         "body": {
           "affected": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": ""
+            "1": "potresti semplicemente menzionare che le persone non possono visitarti, aggiungi il testo che ti viene fuori, e suggerisci che ci potrebbe essere un problema con il file salvato per il tuo account e che vorresti che allertassero il team tecnico.",
+            "2": "potresti mentire e dire che il tuo file salvato è stato resettato, il che dovrebbe fargli controllare il suo stato.",
+            "3": "Potresti mentire e dire che non puoi visitare le persone e che ti appaiono pop up con la scritta che il tuo file locale e cloud non corrispondono, anche se non hai cambiato dispositivi e sei connesso a Internet.",
+            "4": "Potresti menzionare direttamente che il tuo file salvato è corrotto, ma fallo a tuo rischio."
           },
           "safe": {
-            "1": "",
-            "2": ""
+            "1": "Potresti dire come non puoi visitare le città di altri giocatori, e menzionare che hai una connessione Internet stabile.",
+            "2": "Potresti menzionare direttamente quello che sta succedendo, anche se non ne sei interessato."
           }
         },
-        "title": ""
+        "title": "Cosa dire al supporto tecnico?"
       }
     },
-    "title": ""
+    "title": "Controlla il tuo file salvato"
   },
   "search": {
     "message": {
-      "search": ""
+      "search": "Cerca"
     },
-    "no_results": "",
-    "title": ""
+    "no_results": "Nessun risultato",
+    "title": "Cerca"
   },
   "site": {
-    "description": "",
-    "title": ""
+    "description": "Ottieni informazioni accurate su qualsiasi aspetto del gioco My Little Pony: Magic Princess",
+    "title": "Tutti i Pony"
   },
   "socials": {
-    "discord": "",
-    "donate": "",
-    "github": "",
-    "help_translate": "",
-    "mlp_game_hangout": "",
-    "wiki": ""
+    "discord": "Discord",
+    "donate": "Dona",
+    "github": "GitHub",
+    "help_translate": "Aiuta con la traduzione",
+    "mlp_game_hangout": "MLP Game Hangout",
+    "wiki": "Wiki"
   },
   "sorting": {
-    "alphabetically": "",
-    "date_added": "",
+    "alphabetically": "Ordine alfabetico",
+    "date_added": "Data di aggiunta",
     "decor": {
-      "pro_rate": ""
+      "pro_rate": "Tasso Pro"
     },
-    "game_order": "",
-    "relevance": "",
-    "reverse": "",
+    "game_order": "Ordine del gioco",
+    "relevance": "Rilevanza",
+    "reverse": "Inverso",
     "shop": {
-      "production": "",
-      "xp_rate": ""
+      "production": "Tasso di produzione",
+      "xp_rate": "Tasso XP"
     }
   },
   "stats": {
-    "description": "",
+    "description": "Vedi le tue statistiche nel gioco My Little Pony: Magic Princess",
     "message": {
       "ponies": {
-        "total": ""
+        "total": "Totale pony: {count}"
       }
     },
     "title": ""
