@@ -207,12 +207,12 @@ const placeholder = computed(() => {
             </template>
             <template #menu-before>
                 <select v-model="selectedCategory" class="dropdown" name="category">
+                    <option v-if="seasonalShopAvailable" value="seasonal-shop">{{ $t('store.message.seasonal_shop') }}</option>
                     <option
                         v-for="category in availableCategories"
                         :value="category"
                         :key="`category-${category}`"
                     >{{ $t(CATEGORIES[category].string, 2) }}</option>
-                    <option v-if="seasonalShopAvailable" value="seasonal-shop">{{ $t('store.message.seasonal_shop') }}</option>
                 </select>
             </template>
             <template #item="{ item }">
