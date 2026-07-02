@@ -6,6 +6,7 @@
     },
     "sections": {
       "credits": {
+        "check_failed": "错误：无法获取译者信息",
         "message": {
           "credits_list": {
             "1": "本站站长为{ego}。",
@@ -50,7 +51,7 @@
     "info": "信息",
     "name": "名称",
     "new": "新",
-    "or": "",
+    "or": "或",
     "price": "价格",
     "royal": "皇家",
     "wiki": "维基"
@@ -90,11 +91,15 @@
     "sort_by": "排序"
   },
   "filter": {
+    "costume": {
+      "used": "已使用"
+    },
     "decor": {
       "can_fuse": "可融合的装饰品",
       "regular": "常规装饰品"
     },
     "pony": {
+      "gem_pony": "宝石小马",
       "not_owned": "未拥有的角色",
       "npc": "NPC角色",
       "playable": "可玩角色",
@@ -111,14 +116,14 @@
   },
   "fortune_shop": {
     "messages": {
-      "regular": "",
+      "regular": "常规",
       "royal": "皇家"
     },
     "price_rarities": {
       "discount": "折扣",
       "regular": "",
-      "super": "",
-      "ultra": ""
+      "super": "超级",
+      "ultra": "极高"
     },
     "rarities": {
       "common": "普通",
@@ -212,7 +217,7 @@
     "random_pro": "随机",
     "seasonal": "赛季",
     "title": "团队任务",
-    "tutorial": ""
+    "tutorial": "教程"
   },
   "guesser": {
     "description": "只看角色的阴影轮廓，你能说得出这个角色的名字吗？",
@@ -276,7 +281,7 @@
       "create_list": {
         "message": {
           "name": "名称",
-          "name_required": "",
+          "name_required": "需要一个名字",
           "wishlist": "心愿单"
         },
         "title": "创建心愿单"
@@ -364,7 +369,7 @@
       "what_this_means": {
         "body": {
           "affected": "若您保持单机游玩，不会出现任何问题；而一旦您卸载该游戏重装、或者更换设备，就有可能导致之前的游戏进度丢失。",
-          "safe": "您的云存档目前情况正常，但依然需要保持警惕。有些玩家反馈他们的云存档一开始也是正常的，但后来他们也陆续发现了存档丢失的情况。"
+          "safe": "您的云存档目前情况正常，但依然需要保持警惕。因为有些玩家反馈他们的云存档一开始也是正常的，但后来他们也陆续发现了存档丢失的情况。"
         },
         "title": "这是什么意思？"
       },
@@ -390,18 +395,18 @@
     "message": {
       "search": "搜索"
     },
-    "no_results": "",
+    "no_results": "无结果",
     "title": "搜索"
   },
   "site": {
-    "description": "简介",
+    "description": "获得关于在小马宝莉：魔法公主的你想要的所有准确信息",
     "title": "小马官游信息站"
   },
   "socials": {
     "discord": "本站群聊",
     "donate": "赞助我们",
     "github": "GitHub",
-    "help_translate": "",
+    "help_translate": "帮助我们翻译",
     "mlp_game_hangout": "官游维基百科",
     "wiki": "官游维基百科"
   },
@@ -412,7 +417,7 @@
       "pro_rate": "加成增益速率"
     },
     "game_order": "推出顺序",
-    "relevance": "",
+    "relevance": "相关性",
     "reverse": "倒序",
     "shop": {
       "production": "产出",
@@ -437,5 +442,10 @@
       "seasonal_shop": "赛季商店"
     },
     "title": "商店"
+  },
+  "tasks": {
+    "message": {
+      "duration": "持续时间"
+    }
   }
 }
