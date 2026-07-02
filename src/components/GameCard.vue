@@ -107,7 +107,7 @@ const replacedPrice = computed(() => {
                                 </div>
                                 <div v-if="(shopInfo?.token && shopInfo?.price?.base?.tokens) && shopInfo?.price?.sale?.price" class="token-discount">
                                     {{ $n(shopInfo?.price?.sale?.price) }}
-                                    <!-- {{ $t('store.message.for') }} -->
+                                    &nbsp;
                                     <ObjectImage :object="shopInfo.price.sale.currency" />
                                 </div>
                             </template>
