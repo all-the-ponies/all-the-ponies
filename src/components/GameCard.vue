@@ -25,7 +25,11 @@ const mainCurrency = computed(() => {
         return null
     }
     
-    if (notNullIsh(shopInfo.value?.token) && (notNullIsh(shopInfo.value?.price.base.tokens) || notNullIsh(shopInfo.value?.price.sale.tokens))) {
+    if (shopInfo.value?.tags?.includes('pvsar1')) {
+        return 'Token_Event_Rare'
+    } else if (shopInfo.value?.tags?.includes('pvsar2')) {
+        return 'Token_Event_Common'
+    } else if (notNullIsh(shopInfo.value?.token) && (notNullIsh(shopInfo.value?.price.base.tokens) || notNullIsh(shopInfo.value?.price.sale.tokens))) {
         return shopInfo.value?.token
     } else if (notNullIsh(shopInfo.value?.price.sale.price) && notNullIsh(shopInfo.value?.inShop)) {
         return shopInfo.value?.price.sale.currency || null
