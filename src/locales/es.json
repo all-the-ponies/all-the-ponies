@@ -78,7 +78,7 @@
       "mlp_game_hangout": {
         "button": "Unete al Servidor",
         "description": "Servidor comunitario del juego. Conectado al subreddit de r/MLPIOS.",
-        "title": "MLP Game Hangout"
+        "title": "Reunión de juegos MLP"
       }
     },
     "title": "Contacto"
@@ -122,7 +122,7 @@
     "price_rarities": {
       "discount": "Descuento",
       "regular": "Regular",
-      "super": "Super",
+      "super": "Súper",
       "ultra": "Ultra"
     },
     "rarities": {
@@ -196,7 +196,7 @@
         "background_frame": "Marco de fondo"
       },
       "cutie_mark": {
-        "cutie_mark": "Cutie Mark | Cutie Marks"
+        "cutie_mark": "Marca de belleza | Marcas de belleza"
       },
       "is_default": "Es predeterminado"
     },
@@ -218,7 +218,7 @@
     "name_seasonal": "{name} (@:group_quests.seasonal)",
     "name_tutorial": "{name} (@:group_quests.tutorial)",
     "pro": "Pro",
-    "random_pro": "Random",
+    "random_pro": "Aleatorio",
     "seasonal": "Temporada",
     "title": "Misiones De Grupo",
     "tutorial": "Tutorial"
@@ -237,7 +237,7 @@
     "message": {
       "affiliates": "Afiliados",
       "game_name": "My Little Pony: Magia",
-      "links": "Links"
+      "links": "Enlaces"
     },
     "things_to_do": {
       "browse": "Navegar",
@@ -305,7 +305,7 @@
     "everfree_forest": "Bosque Everfree",
     "klugetown": "Klugetown",
     "ponyville": "Ponyville",
-    "sweet_apple_acres": "Sweet Apple Acres",
+    "sweet_apple_acres": "Acres de Manzanas Dulces",
     "town": "Ciudad",
     "unknown": "Desconocido"
   },
@@ -411,7 +411,7 @@
     "donate": "Donaciones",
     "github": "GitHub",
     "help_translate": "Ayuda con la traducción",
-    "mlp_game_hangout": "MLP Game Hangout",
+    "mlp_game_hangout": "Reunión de juegos MLP",
     "wiki": "Wiki"
   },
   "sorting": {
