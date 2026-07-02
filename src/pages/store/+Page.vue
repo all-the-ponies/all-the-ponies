@@ -22,6 +22,7 @@ const pageContext = usePageContext()
 const loadingShop = shallowRef<boolean>(true)
 const errorMessage = ref<string>('')
 const selectedCategory = ref<CategoryName | 'seasonal-shop'>((pageContext.urlParsed.search.category as CategoryName) || 'pony')
+const selectedFilters = ref<Record<string, boolean>>({})
 
 const shop = computedAsync(
     async () => {
@@ -36,13 +37,15 @@ const shop = computedAsync(
         }
         if (shop) {
             console.log(`Got shop in ${(performance.now() - shopStart) / 1000}s`)
-            return Object.fromEntries(
+            const result = Object.fromEntries(
                 Object.entries(shop).filter(([id, info]) => 
                     info.in_shop && !info.hidden && (
                         !info.tags.includes('whthot')
                     )
                 )
             )
+            selectedFilters.value.sale = Object.values(result).some(entry => entry.price.sale.price || entry.price.sale.tokens)
+            return result
         }
         return {}
     },
@@ -182,6 +185,7 @@ const placeholder = computed(() => {
         </div> -->
         <SearchComponent
             class="search"
+            v-model:selected-filters="selectedFilters"
             :data="shop ? shownObjects : []"
             :get-search-text="getNamesForSearch"
             :get-exact-search-text="(item) => item.id"

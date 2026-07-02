@@ -48,7 +48,7 @@ const itemHeight = computed(() => props.itemHeight + itemGap.value)
 const sortDialog = useTemplateRef('sort-dialog')
 const filterDialog = useTemplateRef('filter-dialog')
 const scroller = useTemplateRef('scroller')
-const sortMethod = ref<string>('relevance')
+const sortMethod = defineModel<string | 'relevance'>('selectedSort', {default: 'relevance'})
 const reversed = ref<boolean>(props.saveUrl && 'reverse' in pageContext.urlParsed.search)
 const defaultSortMethod = computed(() => {
     if (props.sorters) {
@@ -64,7 +64,9 @@ const defaultSortMethod = computed(() => {
     return null
 })
 
-const selectedFilters = ref<Record<string, boolean>>({})
+const selectedFilters = defineModel<Record<string, boolean>>('selectedFilters', {
+    default: () => ({})
+})
 
 const _selectedSortMethod = ref<string>(sortMethod.value)
 const _reversed = ref<boolean>()
@@ -101,7 +103,7 @@ const filters = computed(() => {
     if (!props.filters) {
         return filters
     }
-    
+
     if (!Object.values(selectedFilters.value).includes(true)) {
         for (let [filter, filterInfo] of Object.entries(props.filters)) {
             if (filterInfo.default) {
@@ -156,9 +158,11 @@ function openFilterDialog() {
 }
 
 function submitFilterDialog() {
-    for (let [key, value] of Object.entries(_selectedFilters.value)) {
-        selectedFilters.value[key] = value
-    }
+    selectedFilters.value = Object.fromEntries(Object.entries(_selectedFilters.value))
+    // for (let [key, value] of Object.entries(_selectedFilters.value)) {
+    //     selectedFilters.value[key] = value
+    // }
+    console.log('Selected filters', selectedFilters.value)
 }
 
 
