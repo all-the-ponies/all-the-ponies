@@ -16,6 +16,7 @@ import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import CurrencyImage from '@/components/CurrencyImage.vue';
 import { createAssetUrl } from '@/scripts/assets';
 import { computedAsync } from '@vueuse/core';
+import { useBasePrice } from '@/composables/useBasePrice';
 
 
 const pageContext = usePageContext()
@@ -30,24 +31,7 @@ const priceHistory = computed(() => {
 
 const background_frame = computed(() => data.background_frame)
 
-const basePrice = computed(() => {
-    const result = {
-        token: background_frame.value.price?.token,
-        tokens: null,
-        currency: background_frame.value.price?.base.currency,
-        price: background_frame.value.price?.base.amount,
-        dailyGoals: background_frame.value.price?.daily_goals,
-    }
-    if (priceHistory.value.length) {
-        result.currency = priceHistory.value[0].price.base.currency
-        result.price = priceHistory.value[0].price.base.price
-        result.tokens = priceHistory.value[0].price.base.tokens
-    }
-    if (result.currency == 'Lotto') {
-        result.currency = null // hide "Lotto" prices
-    }
-    return result
-})
+const basePrice = useBasePrice(background_frame, priceHistory)
 
 const name = computed(() => {
     let name = translateName(background_frame.value).value

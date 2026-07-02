@@ -26,6 +26,7 @@ import { useI18n } from 'vue-i18n';
 import { createAssetUrl } from '@/scripts/assets';
 import TaskInfo from '@/components/TaskInfo.vue';
 import LazyImage from '@/components/LazyImage.vue';
+import { useBasePrice } from '@/composables/useBasePrice';
 
 const { t } = useI18n()
 const isMounted = useMounted()
@@ -48,24 +49,7 @@ const filteredPriceHistory = useArrayFilter(priceHistory, (item) => item.price.b
 
 const pony = computed(() => data.pony)
 
-const basePrice = computed(() => {
-    const result = {
-        token: pony.value.price?.token,
-        tokens: null,
-        currency: pony.value.price?.base.currency,
-        price: pony.value.price?.base.amount,
-        dailyGoals: pony.value.price?.daily_goals,
-    }
-    if (priceHistory.value.length) {
-        result.currency = priceHistory.value[0].price.base.currency
-        result.price = priceHistory.value[0].price.base.price
-        result.tokens = priceHistory.value[0].price.base.tokens
-    }
-    if (result.currency == 'Lotto') {
-        result.currency = null // hide "Lotto" prices
-    }
-    return result
-})
+const basePrice = useBasePrice(pony, priceHistory)
 
 const stars = computed({
   get() {

@@ -16,6 +16,7 @@ import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
 import { createAssetUrl } from '@/scripts/assets';
 import { computedAsync } from '@vueuse/core';
+import { useBasePrice } from '@/composables/useBasePrice';
 
 
 const pageContext = usePageContext()
@@ -30,24 +31,7 @@ const priceHistory = computed(() => {
 
 const decor = computed(() => data.decor)
 
-const basePrice = computed(() => {
-    const result = {
-        token: decor.value.price?.token,
-        tokens: null,
-        currency: decor.value.price?.base.currency,
-        price: decor.value.price?.base.amount,
-        dailyGoals: decor.value.price?.daily_goals,
-    }
-    if (priceHistory.value.length) {
-        result.currency = priceHistory.value[0].price.base.currency
-        result.price = priceHistory.value[0].price.base.price
-        result.tokens = priceHistory.value[0].price.base.tokens
-    }
-    if (result.currency == 'Lotto') {
-        result.currency = null // hide "Lotto" prices
-    }
-    return result
-})
+const basePrice = useBasePrice(decor, priceHistory)
 
 const name = computed(() => {
     let name = translateName(decor.value).value
