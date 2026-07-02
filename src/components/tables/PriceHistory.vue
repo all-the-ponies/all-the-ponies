@@ -150,7 +150,7 @@ function formatDateRange(start: string, end: string) {
                                 </template>
                             </TableCell>
                             <TableCell v-if="shownColumns.tokens">
-                                <template v-if="gameObject?.category !== 'costume_part' && gameObject?.price?.token || entry.tags?.includes('pvsar1') || entry.tags?.includes('pvsar2')">
+                                <template v-if="gameObject?.category !== 'costume_part' && (gameObject?.price?.token && entry.price.base.tokens) || entry.tags?.includes('pvsar1') || entry.tags?.includes('pvsar2')">
                                     <CurrencyImage :object="
                                         entry.tags?.includes('pvsar1') ?'Token_Event_Rare' :
                                         entry.tags?.includes('pvsar2') ? 'Token_Event_Common' :
