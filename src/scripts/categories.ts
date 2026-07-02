@@ -205,7 +205,7 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
 export interface FilterFunctionsType {
     name?: string | Ref,
     // type: 'checkbox' | 'radio' | 'text' | 'number',
-    check?(gameObject: GameObject): Promise<boolean> | boolean,
+    check?(gameObject: GameObject): boolean,
     default?: boolean,
     category?: CategoryName,
     group?: string,

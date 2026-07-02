@@ -123,6 +123,12 @@ const sortFunctions = computed(() => {
 const filterFunctions = computed(() => {
     let functions: Record<string, FilterFunctionsType> = {
         ...FilterFunctions.common,
+        sale: {
+            name: 'common.sale',
+            check(gameObject) {
+                return Boolean(shop.value[gameObject.id]?.price.sale.price || shop.value[gameObject.id]?.price.sale.tokens)
+            }
+        },
         'new': {
             name: 'common.new',
             check(gameObject) {
