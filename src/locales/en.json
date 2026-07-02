@@ -28,12 +28,12 @@
     "hint": "Hint",
     "no": "No",
     "ok": "Ok",
+    "resume": "Resume",
     "share": "Share",
     "skip": "Skip",
     "start": "Start",
     "stop": "Stop",
-    "yes": "Yes",
-    "resume": "Resume"
+    "yes": "Yes"
   },
   "check_save": {
     "messages": {
@@ -99,13 +99,13 @@
       "regular": "Regular"
     },
     "pony": {
+      "gem_pony": "Gem Ponies",
       "not_owned": "Not owned",
       "npc": "NPC",
       "playable": "Playable",
       "pro": "Pro",
       "quest": "Quest",
-      "unused": "Unused",
-      "gem_pony": "Gem Ponies"
+      "unused": "Unused"
     },
     "shop": {
       "gem_shop": "Gem Shops",
@@ -152,8 +152,8 @@
       "unlock_level": "Unlock Level"
     },
     "costume": {
-      "costume": "Costume | Costumes",
-      "collection": "Costume Set"
+      "collection": "Costume Set",
+      "costume": "Costume | Costumes"
     },
     "decor": {
       "cannot_fuse": "Cannot fuse",
@@ -167,6 +167,9 @@
       "house": "House | Houses",
       "resident": "Resident | Residents",
       "visitor": "Visitor | Visitors"
+    },
+    "pet": {
+      "pet": "Pet | Pets"
     },
     "pony": {
       "arrival_bonus": "Arrival Bonus",
@@ -192,10 +195,10 @@
       "background_frame": {
         "background_frame": "Background Frame | Background Frames"
       },
-      "is_default": "Is default",
       "cutie_mark": {
         "cutie_mark": "Cutie Mark | Cutie Marks"
-      }
+      },
+      "is_default": "Is default"
     },
     "road": {
       "road": "Road | Roads"
@@ -209,9 +212,6 @@
     },
     "token": {
       "token": "Token | Tokens"
-    },
-    "pet": {
-      "pet": "Pet | Pets"
     }
   },
   "group_quests": {
@@ -237,7 +237,7 @@
     "message": {
       "affiliates": "Affiliates",
       "game_name": "My Little Pony: Magic Princess",
-      "links": "LInks"
+      "links": "Links"
     },
     "things_to_do": {
       "browse": "Browse",
@@ -448,11 +448,11 @@
     "title": "Store"
   },
   "tasks": {
-    "task": "Task | Tasks",
     "message": {
-      "task_icon": "Task Icon",
       "duration": "Duration",
-      "skip_price": "Skip: {price}"
-    }
+      "skip_price": "Skip: {price}",
+      "task_icon": "Task Icon"
+    },
+    "task": "Task | Tasks"
   }
 }
