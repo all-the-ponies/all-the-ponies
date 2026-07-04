@@ -118,7 +118,7 @@ export async function fetchGameData() {
             }
             return await object.json() as T
         } else {
-            return ky<T>(createAssetUrl(key)).json()
+            return await ky<T>(createAssetUrl(key)).json()
         }
     }
     
