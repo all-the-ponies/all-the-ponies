@@ -424,29 +424,42 @@ watch(
             <section v-if="!items.length" class="main-section empty">
                 <slot name="empty"></slot>
             </section>
-            <section
-                ref="scroller"
-                v-else-if="shownResults.length > 0"
-                class="main-section search-results"
-            >
-                <WindowScroller
-                    class="scroller"
-                    :items="shownResults"
-                    :item-size="itemHeight"
-                    :grid-items="columnCount"
-                    :item-secondary-size="itemWidth"
-                    key-field="id"
-                    :buffer="itemHeight * 3"
-                >
-                    <template #default="{ item }">
-                        <div class="item" :data-key="item.id">
-                            <slot name="item" :item="item">
-                            </slot>
-                        </div>
-                    </template>
-                </WindowScroller>
-                <!-- <div class="item" v-for="item in shownResults" :key="item.id" :data-key="item.id"> -->
-            </section>
+            <template v-else-if="shownResults.length > 0">
+                <section class="main-section">
+                    <div class="num-results">
+                        {{ 
+                            $t(
+                                shownResults.length == filteredItems.length
+                                    ? 'search.message.showing_results'
+                                    : 'search.message.showing_of_results',
+                                    {
+                                        total_results: filteredItems.length,
+                                        shown_results: shownResults.length,
+                                    }
+                            )
+                        }}
+                    </div>
+
+                    <div ref="scroller" class="search-results">
+                        <WindowScroller
+                            class="scroller"
+                            :items="shownResults"
+                            :item-size="itemHeight"
+                            :grid-items="columnCount"
+                            :item-secondary-size="itemWidth"
+                            key-field="id"
+                            :buffer="itemHeight * 3"
+                        >
+                            <template #default="{ item }">
+                                <div class="item" :data-key="item.id">
+                                    <slot name="item" :item="item">
+                                    </slot>
+                                </div>
+                            </template>
+                        </WindowScroller>
+                    </div>
+                </section>
+            </template>
             <section v-else class="main-section empty">
                 <slot name="no-results">{{ $t('search.no_results') }}</slot>
             </section>
@@ -587,6 +600,11 @@ watch(
 
 .main-section {
     flex: 1;
+}
+
+.num-results {
+    text-align: center;
+    font-size: 1.1rem;
 }
 
 .empty {

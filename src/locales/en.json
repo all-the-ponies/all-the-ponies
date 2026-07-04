@@ -398,7 +398,9 @@
   },
   "search": {
     "message": {
-      "search": "Search"
+      "search": "Search",
+      "showing_results": "Showing {total_results} results",
+      "showing_of_results": "Showing {shown_results} of {total_results} results"
     },
     "no_results": "No results",
     "title": "Search"
