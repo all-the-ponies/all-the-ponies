@@ -51,7 +51,7 @@ const statImage = computedAsync(async () => {
       </g>
       <text
         x="57.38147"
-        y="26.752319"
+        y="26.3"
         font-family="Celestia Medium Redux, Arial, Helvetica, sans-serif"
         font-size="4.79214px"
         text-anchor="middle"
