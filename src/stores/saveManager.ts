@@ -1,5 +1,6 @@
 import { FRIEND_CODE_PATTERN } from "@/globals/constants"
 import api from "@/scripts/api"
+import type { PlayerStatName } from "@/scripts/api.types"
 import { notNullIsh } from "@/scripts/common"
 import { extendedDeserialize, extendedSerialize } from "@/scripts/extendedSerialize"
 import { getGameObjects, getObject } from "@/scripts/gameData"
@@ -48,8 +49,8 @@ function createBaseSave() {
                     right: '',
                 },
                 display_stats: {
-                    left: null,
-                    right: null,
+                    left: null as PlayerStatName,
+                    right: null as PlayerStatName,
                 },
                 avatar: null,
                 avatar_frame: null,
@@ -256,6 +257,8 @@ export const useSaveStore = defineStore('save', {
             newSave.playerInfo.player_card.background_frame = saveData.player_info.player_card.background_frame
             newSave.playerInfo.player_card.cutie_mark = saveData.player_info.player_card.cutie_mark
             newSave.playerInfo.player_card.name = saveData.player_info.player_card.name
+            newSave.playerInfo.player_card.display_stats.left = saveData.player_info.player_card.display_stats.left
+            newSave.playerInfo.player_card.display_stats.right = saveData.player_info.player_card.display_stats.right
 
             let ponies = Array.isArray(saveData.inventory.ponies) ? saveData.inventory.ponies : Object.values(saveData.inventory.ponies)
 

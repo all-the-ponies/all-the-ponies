@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import CurrencyImage from '@/components/CurrencyImage.vue'
+import PlayerCard from '@/components/PlayerCard/PlayerCard.vue'
+import type { PlayerStatName } from '@/scripts/api.types'
 import { getObject, translateName, useGameObject, useObjectName } from '@/scripts/gameData'
 import { useSaveStats } from '@/scripts/stats'
 import { formatTime } from '@/scripts/timeFunctions'
@@ -7,7 +9,7 @@ import { useSaveStore } from '@/stores/saveManager'
 import { computedAsync } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'
-import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
+import { computed, nextTick, onMounted, ref, useTemplateRef } from 'vue'
 
 const saveStore = useSaveStore()
 const saveStats = useSaveStats()
@@ -43,6 +45,27 @@ async function importFriendCode() {
 const gemsName = translateName(getObject('Gems', 'item'))
 const bitsName = translateName(getObject('Bits', 'item'))
 
+function getStat(stat: PlayerStatName) {
+    switch (stat) {
+        case 'pony': return saveStats.value.ponies.unique
+        case 'pony_alt': return saveStats.value.ponies.changelings
+        case 'shop': return saveStats.value.shops.bits + saveStats.value.shops.others
+        case 'gem_shop': return saveStats.value.shops.gems
+        case 'costume': return saveStore.costumes.size
+        default: return 0
+    }
+}
+
+const leftStat = computed(() => ({
+    type: saveStore.playerInfo.player_card.display_stats.left,
+    value: getStat(saveStore.playerInfo.player_card.display_stats.left),
+}))
+
+const rightStat = computed(() => ({
+    type: saveStore.playerInfo.player_card.display_stats.right,
+    value: getStat(saveStore.playerInfo.player_card.display_stats.right),
+}))
+
 </script>
 
 <template>
@@ -76,6 +99,26 @@ const bitsName = translateName(getObject('Bits', 'item'))
         <ClientOnly>
             <section class="stats-section">
                 <ul class="stats">
+                    <div class="player-card-container">
+                        <PlayerCard
+                            class="player-card"
+                            v-if="saveStore.playerInfo.friendCode"
+                            :friend-code="saveStore.playerInfo.friendCode"
+                            :left-name="saveStore.playerInfo.player_card.name.left"
+                            :right-name="saveStore.playerInfo.player_card.name.right"
+                            :level="saveStore.playerInfo.level"
+                            :xp="saveStore.playerInfo.xp"
+                            :required-xp="saveStore.playerInfo.required_xp"
+                            :background="saveStore.playerInfo.player_card.background"
+                            :background-frame="saveStore.playerInfo.player_card.background_frame"
+                            :avatar="saveStore.playerInfo.player_card.avatar"
+                            :avatar-frame="saveStore.playerInfo.player_card.avatar_frame"
+                            :cutie-mark="saveStore.playerInfo.player_card.cutie_mark"
+                            :left-stat="leftStat"
+                            :right-stat="rightStat"
+                        >
+                        </PlayerCard>
+                    </div>
                     <li>
                         {{
                             $t('player_info.join_date', {
@@ -175,6 +218,11 @@ const bitsName = translateName(getObject('Bits', 'item'))
 </template>
 
 <style lang="css" scoped>
+
+.player-card {
+    max-width: 30rem;
+}
+
 .stats li {
     list-style: none;
 }
