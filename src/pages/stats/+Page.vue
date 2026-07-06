@@ -6,7 +6,7 @@ import { getObject, translateName, useGameObject, useObjectName } from '@/script
 import { useSaveStats } from '@/scripts/stats'
 import { formatTime } from '@/scripts/timeFunctions'
 import { useSaveStore } from '@/stores/saveManager'
-import { computedAsync } from '@vueuse/core'
+import { computedAsync, useMounted } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'
 import { computed, nextTick, onMounted, ref, useTemplateRef } from 'vue'
@@ -18,6 +18,7 @@ const friendCodeInput = useTemplateRef('friend-code')
 const importDisabled = ref<boolean>(false)
 const friendCode = ref<string>()
 const errorMessage = ref<string>('')
+const isMounted = useMounted()
 
 onMounted(() => {
     friendCode.value = saveStore.playerInfo.friendCode
@@ -47,24 +48,32 @@ const bitsName = translateName(getObject('Bits', 'item'))
 
 function getStat(stat: PlayerStatName) {
     switch (stat) {
-        case 'pony': return saveStats.value.ponies.unique
-        case 'pony_alt': return saveStats.value.ponies.changelings
-        case 'shop': return saveStats.value.shops.bits + saveStats.value.shops.others
-        case 'gem_shop': return saveStats.value.shops.gems
-        case 'costume': return saveStore.costumes.size
+        case 'pony': return saveStats.value?.ponies.unique
+        case 'pony_alt': return saveStats.value?.ponies.changelings
+        case 'shop': return saveStats.value?.shops.bits + saveStats.value.shops.others
+        case 'gem_shop': return saveStats.value?.shops.gems
+        case 'costume': return saveStore?.costumes.size
         default: return 0
     }
 }
 
-const leftStat = computed(() => ({
-    type: saveStore.playerInfo.player_card.display_stats.left,
-    value: getStat(saveStore.playerInfo.player_card.display_stats.left),
-}))
+const leftStat = computed(() => {
+    if (isMounted.value) {
+        return {
+            type: saveStore.playerInfo.player_card.display_stats.left,
+            value: getStat(saveStore.playerInfo.player_card.display_stats.left),
+        }
+    }
+})
 
-const rightStat = computed(() => ({
-    type: saveStore.playerInfo.player_card.display_stats.right,
-    value: getStat(saveStore.playerInfo.player_card.display_stats.right),
-}))
+const rightStat = computed(() => {
+    if (isMounted.value) {
+        return {
+            type: saveStore.playerInfo.player_card.display_stats.right,
+            value: getStat(saveStore.playerInfo.player_card.display_stats.right),
+        }
+    }
+})
 
 </script>
 
@@ -97,28 +106,25 @@ const rightStat = computed(() => ({
             <p class="error-message">{{ errorMessage }}</p>
         </section>
         <ClientOnly>
-            <section class="stats-section">
+            <section class="section">
+                <PlayerCard
+                    class="player-card"
+                    v-if="saveStore.playerInfo.friendCode"
+                    :friend-code="saveStore.playerInfo.friendCode"
+                    :left-name="saveStore.playerInfo.player_card.name.left"
+                    :right-name="saveStore.playerInfo.player_card.name.right"
+                    :level="saveStore.playerInfo.level"
+                    :xp="saveStore.playerInfo.xp"
+                    :required-xp="saveStore.playerInfo.required_xp"
+                    :background="saveStore.playerInfo.player_card.background"
+                    :background-frame="saveStore.playerInfo.player_card.background_frame"
+                    :avatar="saveStore.playerInfo.player_card.avatar"
+                    :avatar-frame="saveStore.playerInfo.player_card.avatar_frame"
+                    :cutie-mark="saveStore.playerInfo.player_card.cutie_mark"
+                    :left-stat="leftStat"
+                    :right-stat="rightStat"
+                ></PlayerCard>
                 <ul class="stats">
-                    <div class="player-card-container">
-                        <PlayerCard
-                            class="player-card"
-                            v-if="saveStore.playerInfo.friendCode"
-                            :friend-code="saveStore.playerInfo.friendCode"
-                            :left-name="saveStore.playerInfo.player_card.name.left"
-                            :right-name="saveStore.playerInfo.player_card.name.right"
-                            :level="saveStore.playerInfo.level"
-                            :xp="saveStore.playerInfo.xp"
-                            :required-xp="saveStore.playerInfo.required_xp"
-                            :background="saveStore.playerInfo.player_card.background"
-                            :background-frame="saveStore.playerInfo.player_card.background_frame"
-                            :avatar="saveStore.playerInfo.player_card.avatar"
-                            :avatar-frame="saveStore.playerInfo.player_card.avatar_frame"
-                            :cutie-mark="saveStore.playerInfo.player_card.cutie_mark"
-                            :left-stat="leftStat"
-                            :right-stat="rightStat"
-                        >
-                        </PlayerCard>
-                    </div>
                     <li>
                         {{
                             $t('player_info.join_date', {
@@ -221,6 +227,8 @@ const rightStat = computed(() => ({
 
 .player-card {
     max-width: 30rem;
+    margin: 1rem auto;
+    display: block;
 }
 
 .stats li {
