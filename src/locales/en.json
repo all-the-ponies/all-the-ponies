@@ -440,6 +440,20 @@
     },
     "title": "Stats"
   },
+  "player_card": {
+    "name": "Name: {name}",
+    "level": "Level: {level}",
+    "current_xp": "Current XP: {current_value} of {max_value}",
+    "player_stat": {
+      "ponies": "{count} Ponies",
+      "transformables": "{count} Transformables",
+      "shops": "{count} Shops",
+      "gem_shops": "{count} Gem Shops",
+      "costumes": "{count} Costumes",
+      "collections": "{count} Collections",
+      "wh_collections": "{count} What's Hot Collections"
+    }
+  },
   "store": {
     "description": "See everything currently in the store in real time",
     "message": {

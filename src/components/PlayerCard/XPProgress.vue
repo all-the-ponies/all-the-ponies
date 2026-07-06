@@ -7,13 +7,29 @@ const props = defineProps<{
     max: number,
 }>()
 
+const currentValue = computed(() => props.value)
+const maxValue = computed(() => props.max)
+
 const percentage = computed(() => props.value / props.max)
 const progressId = useId()
 
 </script>
 
 <template>
-  <svg viewBox="0 0 272.89999 35.987" width="272.89999" height="35.987">
+    <svg
+        viewBox="0 0 272.89999 35.987"
+        width="272.89999"
+        height="35.987"
+        role="progressbar"
+        aria-valuemin="0"
+        :aria-valuemax="maxValue"
+        :aria-valuenow="String(currentValue)"
+        aria-label="Current xp"
+        :aria-valuetext="$t('player_card.current_xp', {
+            current_value: currentValue,
+            max_value: maxValue,
+        })"
+    >
     <defs>
         <clipPath :id="progressId">
             <path :d="`M ${257.55 * percentage},28 H 0 L 5.4,0 h ${257.55 * percentage} l -5.8,28`"></path>

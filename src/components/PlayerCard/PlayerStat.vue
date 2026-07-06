@@ -11,28 +11,50 @@ const props = defineProps<{
 const stat = computed(() => props.stat);
 const count = computed(() => props.count);
 
-const statNameMap: Record<PlayerStatName, string> = {
-  pony: "ponies",
-  pony_alt: "transformables",
-  shop: "shops",
-  gem_shop: "gem-shops",
-  costume: "costumes",
-  collection: "collections",
-  hots: "wh-collections",
-};
+const statNameMap: Record<PlayerStatName, {image: string, string: string}> = {
+  pony: {
+    image: "ponies",
+    string: "player_card.player_stat.ponies",
+  },
+  pony_alt: {
+    image: "transformables",
+    string: "player_card.player_stat.transformables",
+  },
+  shop: {
+    image: "shops",
+    string: "player_card.player_stat.shops",
+  },
+  gem_shop: {
+    image: "gem-shops",
+    string: "player_card.player_stat.gem_shops",
+  },
+  costume: {
+    image: "costumes",
+    string: "player_card.player_stat.costumes",
+  },
+  collection: {
+    image: "collections",
+    string: "player_card.player_stat.collections",
+  },
+  hots: {
+    image: "wh-collections",
+    string: "player_card.player_stat.wh_collections",
+  },
+}
 
 const statImage = computedAsync(async () => {
   return (
     await import(
-      `@/assets/images/ui/player-card/stat/stat-${statNameMap[stat.value]}.png`
+      `@/assets/images/ui/player-card/stat/stat-${statNameMap[stat.value].image}.png`
     )
   ).default;
-});
+})
 </script>
 
 <template>
-  <svg viewBox="0 0 25 12.619566" width="25" height="12.619566">
-    <g transform="matrix(1.0000094,0,0,1.0000094,-40.424552,-15.045318)">
+  <svg viewBox="0 0 25 12.619566" width="25" height="12.619566" role="img">
+    <title>{{ $t(statNameMap[stat].string, count) }}</title>
+    <g transform="matrix(1.0000094,0,0,1.0000094,-40.424552,-15.045318)" aria-hidden="true">
       <g transform="matrix(0.05587313,0,0,0.15736487,45.451381,21.659925)">
         <path
           d="m 262.45,32.25 5.8,-28.2 H 10.35 L 4.9,32.25 h 257.55 m 3.5,3.75 H 0 L 7.25,0 H 273 l -7.05,36"
@@ -59,6 +81,7 @@ const statImage = computedAsync(async () => {
         stroke="#efefef"
         stroke-width="0.17516"
         paint-order="stroke fill markers"
+        
       >
         <tspan>{{ count }}</tspan>
       </text>

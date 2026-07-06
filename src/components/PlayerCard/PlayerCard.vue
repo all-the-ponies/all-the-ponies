@@ -4,7 +4,7 @@ import { language } from '@/globals';
 import { createAssetUrl } from '@/scripts/assets';
 import { getObject } from '@/scripts/gameData';
 import type { AvatarFrameType, AvatarType, BackgroundFrameType, BackgroundType, CutieMarkType, GameObject, GameObjectId } from '@/types/gameDataTypes';
-import { computed } from 'vue';
+import { computed, useId } from 'vue';
 import LevelImage from './LevelImage.vue';
 import PlayerStat from './PlayerStat.vue';
 import XPProgress from './XPProgress.vue';
@@ -59,6 +59,11 @@ const avatarImage = computed(() => createAssetUrl(avatar.value?.image.main.path)
 const avatarFrameImage = computed(() => createAssetUrl(avatarFrame.value?.image.main.path))
 const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main.path))
 
+const nameId = useId()
+const levelId = useId()
+const xpId = useId()
+const leftStatId = useId()
+const rightStatId = useId()
 
 </script>
 
@@ -66,11 +71,12 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
     <svg
         viewBox="0 0 114.3 31.485416"
         class="player-card-container"
+        :aria-owns="`${nameId} ${levelId} ${xpId} ${leftStatId} ${rightStatId}`"
     >
-
         <!-- width="432"
         height="119" -->
-        <g class="background-group">
+
+        <g class="background-group" aria-hidden="true">
             <image
                 :href="backgroundImage"
                 preserveAspectRatio="none"
@@ -89,7 +95,7 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
             ></image>
         </g>
 
-        <g class="avatar-group">
+        <g class="avatar-group" aria-hidden="true">
             <image
                 :href="avatarImage"
                 preserveAspectRatio="none"
@@ -108,6 +114,7 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
             ></image>
         </g>
         <text
+            :id="nameId"
             class="name"
             x="30.219557"
             y="9.1718235"
@@ -118,11 +125,13 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
             stroke-width="0.423333"
             paint-order="stroke fill markers"
         >
+            <title>{{ $t('player_card.name', {name}) }}</title>
             <tspan>{{ name }}</tspan>
         </text>
 
         <g
             class="cutie-mark-group"
+            aria-hidden="true"
         >
             <!-- <rect
                 x="93.2462785"
@@ -147,6 +156,7 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
                 class="xp-bar"
             >
                 <XPProgress
+                    :id="xpId"
                     :value="xp"
                     :max="requiredXp"
                     transform="matrix(0.11305128,0,0,0.14288889,79.880273,4.1580001)"
@@ -154,6 +164,7 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
             </g>
             <g>
                 <LevelImage
+                    :id="levelId"
                     :level="level"
                     x="70.198265"
                     y="-2.3898842"
@@ -165,6 +176,7 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
 
         <g class="player-stats">
             <PlayerStat
+                :id="leftStatId"
                 v-if="leftStat && leftStat.type"
                 :stat="leftStat.type"
                 :count="leftStat.value"
@@ -172,6 +184,7 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
                 y="15.4"
             ></PlayerStat>
             <PlayerStat
+                :id="rightStatId"
                 v-if="rightStat && rightStat.type"
                 :stat="rightStat.type"
                 :count="rightStat?.value"

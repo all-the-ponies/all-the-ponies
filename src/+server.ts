@@ -32,6 +32,7 @@ function getApp() {
         let object: R2Object | R2ObjectBody
 
         const requestHeaders = new Headers(c.req.header())
+        console.log('headers', requestHeaders)
 
         switch (c.req.method) {
             case 'GET':
@@ -72,6 +73,7 @@ function getApp() {
                 status = 206
 
                 const totalSize = object.size
+                console.log(object.key, 'range', object.range)
 
                 if ('offset' in object.range || 'length' in object.range) {
                     const start = object.range.offset ?? 0

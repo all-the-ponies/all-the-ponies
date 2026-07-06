@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computedAsync } from '@vueuse/core';
-import { computed } from 'vue';
+import { computed, useId } from 'vue';
 
 
 const props = defineProps<{
@@ -40,18 +40,23 @@ const levelImage = computedAsync(
     async () => (await import(`@/assets/images/ui/player-card/level-stars/${levelGroup.value}.png`)).default
 )
 
+const titleId = useId()
+
 </script>
 
 <template>
     <svg
         viewBox="0 0 85 85"
+        role="img"
     >
+        <title :id="titleId">{{ $t('player_card.level', {level}) }}</title>
         <image
             :href="levelImage"
             x="0"
             y="0"
             width="85"
             height="85"
+            aria-hidden="true"
         ></image>
 
         <text
@@ -64,8 +69,10 @@ const levelImage = computedAsync(
             x="37"
             y="48"
             text-anchor="middle"
+            aria-hidden="true"
+            :aria-labelledby="titleId"
         >
-          <tspan> {{ level }}</tspan>
+          <tspan aria-hidden="true" :aria-labelledby="titleId"> {{ level }}</tspan>
         </text>
     </svg>
 </template>
