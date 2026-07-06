@@ -109,9 +109,14 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
         </g>
         <text
             class="name"
-            fill="#3c285c"
             x="30.219557"
             y="9.1718235"
+            font-family="Celestia Medium Redux, Arial, Helvetica, sans-serif"
+            font-size="6.06567px"
+            fill="#351858"
+            stroke="#efefef"
+            stroke-width="0.423333"
+            paint-order="stroke fill markers"
         >
             <tspan>{{ name }}</tspan>
         </text>
@@ -178,18 +183,5 @@ const cutieMarkImage = computed(() => createAssetUrl(cutieMark.value?.image.main
 </template>
 
 <style lang="css" scoped>
-
-.name {
-    font-size: 6.06567px;
-    line-height: 0.9;
-    font-family: 'Celestia Redux';
-    fill: #351858;
-    stroke: #efefef;
-    stroke-width: 0.423333;
-    stroke-linecap: round;
-    stroke-linejoin: miter;
-    stroke-dasharray: none;
-    paint-order: stroke fill markers;
-}
 
 </style>
