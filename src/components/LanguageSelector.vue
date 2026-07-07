@@ -24,9 +24,10 @@ watch(
 
 <template>
     <select
-     name="language"
-     id="language"
-    v-model="selectedLanguage"
+        name="language"
+        id="language"
+        v-model="selectedLanguage"
+        aria-label="Language"
     >
     <!-- @change="(event) => {setLanguage((event.target as HTMLSelectElement).value)}" -->
         <option
