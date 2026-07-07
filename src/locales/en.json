@@ -407,7 +407,8 @@
   },
   "site": {
     "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game",
-    "title": "All The Ponies"
+    "title": "All The Ponies",
+    "language": "Language"
   },
   "socials": {
     "discord": "Discord",

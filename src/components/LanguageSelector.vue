@@ -27,7 +27,7 @@ watch(
         name="language"
         id="language"
         v-model="selectedLanguage"
-        aria-label="Language"
+        :aria-label="$t('site.language')"
     >
     <!-- @change="(event) => {setLanguage((event.target as HTMLSelectElement).value)}" -->
         <option
