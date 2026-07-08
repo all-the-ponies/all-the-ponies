@@ -1,7 +1,7 @@
 import ky, { HTTPError } from 'ky'
 import { computed, ref, toValue, unref, watch, watchEffect, type MaybeRef } from 'vue'
 import { language } from '../globals'
-import type { CategoryName, CategoryType, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, TaskEntry, TasksData } from '../types/gameDataTypes'
+import type { CategoryName, CategoryType, CollectionData, CollectionEntry, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, TaskEntry, TasksData } from '../types/gameDataTypes'
 import { createAssetUrl } from './assets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
@@ -21,6 +21,7 @@ export interface GameData {
     groupQuests: GroupQuests,
     fortuneShop: FortuneShop,
     tasksData: TasksData,
+    collectionData: CollectionData,
 }
 
 let gameDataCache: GameData = null
@@ -54,6 +55,13 @@ export function getTasksData(): TasksData {
         console.log('Game data not loaded')
     }
     return gameDataCache?.tasksData
+}
+
+export function getCollectionData(): CollectionData {
+    if (!gameDataCache) {
+        console.log('Game data not loaded')
+    }
+    return gameDataCache?.collectionData
 }
 
 
@@ -125,12 +133,13 @@ export async function fetchGameData() {
     loading = true
     error = null
     try {
-        const [versions, objects, quests, fortune, tasks] = await Promise.all([
+        const [versions, objects, quests, fortune, tasks, collections] = await Promise.all([
             fetchData<GameVersion>('game_version.json'),
             fetchData<GameObjects>('game_objects.json'),
             fetchData<GroupQuests>('group_quests.json'),
             fetchData<FortuneShop>('fortune_shop.json'),
             fetchData<TasksData>('tasks_data.json'),
+            fetchData<CollectionData>('collection_data.json'),
         ])
         resolveReady()
         loaded = true
@@ -141,6 +150,7 @@ export async function fetchGameData() {
             groupQuests: quests,
             fortuneShop: fortune,
             tasksData: tasks,
+            collectionData: collections,
         } as GameData
         
     } catch (e) {
@@ -207,6 +217,20 @@ export function getTaskInfo(taskId: string | TaskEntry) {
         return taskId
     }
     return (getTasksData()).tasks[taskId] ?? null
+}
+
+export function getCollection(collectionId: string | CollectionEntry) {
+    if (typeof collectionId !== 'string') {
+        return collectionId
+    }
+    return getCollectionData().collections[collectionId] ?? null
+}
+
+export function getFashionShowCollection(collectionId: string | FashionShowEntry) {
+    if (typeof collectionId !== 'string') {
+        return collectionId
+    }
+    return getCollectionData().fashion_show[collectionId] ?? null
 }
 
 export function translateName(gameObject: MaybeRef<GameObject>) {

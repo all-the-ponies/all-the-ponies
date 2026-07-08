@@ -3,7 +3,7 @@ import api from "@/scripts/api"
 import type { PlayerStatName } from "@/scripts/api.types"
 import { notNullIsh } from "@/scripts/common"
 import { extendedDeserialize, extendedSerialize } from "@/scripts/extendedSerialize"
-import { getGameObjects, getObject } from "@/scripts/gameData"
+import { getCollectionData, getGameObjects, getObject } from "@/scripts/gameData"
 import type { TDateISO } from "@/types/date"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
 import type { HTTPError } from "ky"
@@ -58,6 +58,9 @@ function createBaseSave() {
                 background_frame: null,
                 cutie_mark: null,
             },
+            stats: {
+                whCollections: 0,
+            }
         },
         ponies: {} as Record<GameObjectId, PonyInventoryEntry>,
         shops: {} as Record<GameObjectId, ShopInventoryEntry>,
@@ -69,6 +72,7 @@ function createBaseSave() {
         backgroundFrames: new Set<GameObjectId>(),
         cutieMarks: new Set<GameObjectId>(),
         notes: {} as Record<GameObjectId, string>,
+        critters: {} as Record<GameObjectId, number>,
     }
 }
 
@@ -91,12 +95,14 @@ export const useSaveStore = defineStore('save', {
         },
         costumes: (state) => {
             const costumes = new Set(
-                Object.values((getGameObjects()).costume.objects).filter(
+                Object.values(getGameObjects().costume.objects).filter(
                     costume => Object.values(costume.parts).every(
                         part => !part || state.costumeParts.has(part)
                     )
                 ).map(costume => costume.id)
             )
+
+            console.log('costumes', costumes)
 
             return costumes
         },
@@ -111,6 +117,23 @@ export const useSaveStore = defineStore('save', {
         hasHouse() {
             return (id: GameObjectId) => id in this.houses
         },
+
+        collections() {
+            const collectionData = getCollectionData()
+            const collections: Set<string> = new Set()
+            for (let collection of Object.values(collectionData.collections)) {
+                if (collection.ponies.every(item => {
+                    const pony = getObject(item.item, 'pony')
+                    if (pony.critter_farm) {
+                        return this.critters[pony.critter_farm] >= item.count
+                    }
+                    return item.item in this.ponies || (item.alt && item.alt in this.ponies)
+                })) {
+                    collections.add(collection.id)
+                }
+            }
+            return collections
+        }
     },
     actions: {
         addPony(id: GameObjectId | GameObject, info: Partial<Omit<PonyInventoryEntry, 'id'>> = {}, state: Record<GameObjectId, PonyInventoryEntry> = null) {
@@ -260,6 +283,8 @@ export const useSaveStore = defineStore('save', {
             newSave.playerInfo.player_card.display_stats.left = saveData.player_info.player_card.display_stats.left
             newSave.playerInfo.player_card.display_stats.right = saveData.player_info.player_card.display_stats.right
 
+            newSave.playerInfo.stats.whCollections = saveData.stats.wh_collections
+
             let ponies = Array.isArray(saveData.inventory.ponies) ? saveData.inventory.ponies : Object.values(saveData.inventory.ponies)
 
             for (let pony of ponies) {
@@ -286,23 +311,13 @@ export const useSaveStore = defineStore('save', {
                 }
             }
 
+            newSave.critters = Object.fromEntries(
+                Object.entries(saveData.inventory.critters)
+                .map(([critter, count]) => [getObject(critter, 'pony').critter_farm, count])
+            )
             newSave.costumeParts = new Set(saveData.inventory.costume_parts)
-            
-            newSave.avatars = new Set(saveData.inventory.avatars)
-            newSave.avatarFrames = new Set(saveData.inventory.avatar_frames)
-            newSave.backgrounds = new Set(saveData.inventory.backgrounds)
-            newSave.backgroundFrames = new Set(saveData.inventory.background_frames)
-            newSave.cutieMarks = new Set(saveData.inventory.cutie_marks)
 
-            this.playerInfo = newSave.playerInfo
-            this.ponies = newSave.ponies
-            this.shops = newSave.shops
-            this.costumeParts = newSave.costumeParts
-            this.avatars = newSave.avatars
-            this.avatarFrames = newSave.avatarFrames
-            this.backgrounds = newSave.backgrounds
-            this.backgroundFrames = newSave.backgroundFrames
-            this.cutieMarks = newSave.cutieMarks
+            this.$state = newSave
 
             this.$persist()
         },
@@ -335,6 +350,10 @@ export const useSaveStore = defineStore('save', {
                 serialize: extendedSerialize,
                 deserialize: extendedDeserialize,
             },
+        },
+        {
+            pick: ['critters'],
+            key: 'critters'
         },
         {
             pick: ['notes'],

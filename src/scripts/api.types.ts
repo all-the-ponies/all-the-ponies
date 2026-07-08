@@ -31,6 +31,9 @@ export interface SaveData {
             cutie_mark: string,
         },
     },
+    stats: {
+        wh_collections: number,
+    },
     inventory: {
         ponies: Record<string, {
             id: GameObjectId,
@@ -45,7 +48,8 @@ export interface SaveData {
         backgrounds: string[],
         background_frames: string[],
         cutie_marks: string[],
-    }
+        critters: Record<GameObjectId, number>,
+    },
 }
 
 

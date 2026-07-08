@@ -53,6 +53,8 @@ function getStat(stat: PlayerStatName) {
         case 'shop': return saveStats.value?.shops.bits + saveStats.value.shops.others
         case 'gem_shop': return saveStats.value?.shops.gems
         case 'costume': return saveStore?.costumes.size
+        case 'collection': return saveStore?.collections.size
+        case 'hots': return saveStore?.playerInfo.stats.whCollections
         default: return 0
     }
 }
@@ -201,6 +203,33 @@ const rightStat = computed(() => {
                             $t('inventory.stats.gem_shops', 2, {
                                 named: {
                                     count: $n(saveStats?.shops.gems)
+                                }
+                            })
+                        }}
+                    </li>
+                    <li>
+                        {{
+                            $t('inventory.stats.costumes', 2, {
+                                named: {
+                                    count: $n(saveStore?.costumes.size)
+                                }
+                            })
+                        }}
+                    </li>
+                    <li>
+                        {{
+                            $t('inventory.stats.collections', 2, {
+                                named: {
+                                    count: $n(saveStore?.collections.size)
+                                }
+                            })
+                        }}
+                    </li>
+                    <li>
+                        {{
+                            $t('inventory.stats.wh_collections', 2, {
+                                named: {
+                                    count: $n(saveStore?.playerInfo.stats.whCollections)
                                 }
                             })
                         }}

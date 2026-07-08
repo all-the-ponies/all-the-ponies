@@ -174,6 +174,7 @@ export interface PonyType extends Omit<GenericObjectType, 'category' | 'image'> 
     pro: string[],
     collections: string[],
     costumes: string[],
+    critter_farm: GameObjectId | null,
     wiki_path: string,
 }
 
@@ -451,4 +452,45 @@ export interface TaskRequirement {
     pony: GameObjectId
     house: GameObjectId | '<Home>'
     quests: string[]
+}
+
+
+export interface CollectionData {
+    collections: Record<string, CollectionEntry>,
+    fashion_show: Record<string, FashionShowEntry>,
+}
+
+export interface CollectionItem {
+    item: GameObjectId,
+    alt: GameObjectId | null,
+    count: number,
+}
+
+export interface CollectionEntry {
+    index: number,
+    id: string,
+    name: TranslatableString,
+    ponies: CollectionItem[],
+    reward: CollectionReward,
+}
+
+export interface FashionShowEntry {
+    index: number,
+    id: string,
+    name: TranslatableString,
+    items: {
+        pony: GameObjectId,
+        parts: GameObjectId[],
+    }[],
+    reward: CollectionReward,
+}
+
+export interface CollectionReward {
+    main: CollectionRewardEntry,
+    alt: CollectionRewardEntry,
+}
+
+export interface CollectionRewardEntry {
+    item: GameObjectId,
+    amount: number,
 }

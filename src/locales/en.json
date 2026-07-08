@@ -261,7 +261,10 @@
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Stars: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "costumes": "Costumes: {count}",
+      "collections": "Collections: {count}",
+      "wh_collections": "What's Hot Collections: {count}"
     },
     "title": "Inventory"
   },
