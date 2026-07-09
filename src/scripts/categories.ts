@@ -85,10 +85,11 @@ export const PLURAL_CATEGORY_MAP: Record<string, CategoryName> = {
 }
 
 export interface SortFunctionsType {
-    name: string | Ref,
+    name?: string | Ref,
     check(a: GameObject, b: GameObject): number,
     default?: boolean,
     category?: CategoryName,
+    hidden?: boolean,
 }
 
 export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: SortFunctionsType}>> = {

@@ -511,10 +511,12 @@ watch(
                     <input type="radio" name="sortMethod" value="relevance" v-model="_selectedSortMethod">
                     {{ $t('sorting.relevance') }}
                 </label>
-                <label v-for="[sortKey, {name: sortName}] in Object.entries(props.sorters)" :key="sortKey">
-                    <input type="radio" name="sortMethod" :value="sortKey" v-model="_selectedSortMethod">
-                    {{ typeof sortName === 'string' ? $t(sortName) : sortName }}
-                </label>
+                <template v-for="[sortKey, {name: sortName, hidden}] in Object.entries(props.sorters)" :key="sortKey">
+                    <label v-if="!hidden">
+                        <input type="radio" name="sortMethod" :value="sortKey" v-model="_selectedSortMethod">
+                        {{ typeof sortName === 'string' ? $t(sortName) : sortName }}
+                    </label>
+                </template>
             </div>
 
             <template #menu>

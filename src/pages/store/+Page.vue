@@ -8,7 +8,7 @@ import type { ShopEntry } from '@/scripts/api.types'
 import { CATEGORIES, FilterFunctions, SortFunctions, type FilterFunctionsType } from '@/scripts/categories'
 import { getNamesForSearch, getObject } from '@/scripts/gameData'
 import { shopStore } from '@/stores/shopManager'
-import type { CategoryName } from '@/types/gameDataTypes'
+import type { CategoryName, GameObject } from '@/types/gameDataTypes'
 import { computedAsync } from '@vueuse/core'
 import { Config } from 'vike-vue/Config'
 import { usePageContext } from 'vike-vue/usePageContext'
@@ -44,7 +44,11 @@ const shop = computedAsync(
                     )
                 )
             )
-            selectedFilters.value.sale = Object.values(result).some(entry => entry.price.sale.price || entry.price.sale.tokens)
+            if (!pageContext.isHistoryNavigation) {
+                selectedFilters.value.sale = Object.values(result).some(
+                    entry => getObject(entry.id)?.category == selectedCategory.value && (entry.price.sale.price || entry.price.sale.tokens)
+                )
+            }
             return result
         }
         return {}
@@ -109,7 +113,35 @@ const sortFunctions = computed(() => {
         ...SortFunctions.common
     }
 
+
+    if (selectedCategory.value == 'seasonal-shop') {
+        console.log('Is seasonal shop')
+        functions.index = {
+            name: 'sorting.game_order',
+            check(a: GameObject, b: GameObject) {
+                if (a.category != b.category) {
+                    const categoryOrder: CategoryName[] = [
+                        'pony',
+                        'house',
+                        'shop',
+                        'decor',
+                        'avatar',
+                        'avatar_frame',
+                        'background',
+                        'background_frame',
+                        'cutie_mark',
+                        'pet',
+                    ]
+                    return categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category)
+                }
+                return a.index - b.index
+            },
+            default: true,
+        }
+    }
+
     if (isSpecialCategory.value) {
+        console.log('sorters', functions)
         return functions
     }
 
@@ -120,6 +152,7 @@ const sortFunctions = computed(() => {
         }
     }
 
+
     return functions
 })
 
@@ -129,7 +162,8 @@ const filterFunctions = computed(() => {
         sale: {
             name: 'common.sale',
             check(gameObject) {
-                return Boolean(shop.value[gameObject.id]?.price.sale.price || shop.value[gameObject.id]?.price.sale.tokens)
+                const shopValue = shop.value[gameObject.id]
+                return Boolean(shopValue?.price.sale.price || shopValue?.price.sale.tokens || shopValue.tags.includes('pvsar1') || shopValue.tags.includes('pvsar2'))
             }
         },
         'new': {
@@ -156,7 +190,7 @@ const filterFunctions = computed(() => {
 
 const query = computed(() => {
     return {
-        category: selectedCategory.value === 'pony' ? undefined : selectedCategory.value
+        category: selectedCategory.value === 'pony' ? null : selectedCategory.value
     }
 })
 
