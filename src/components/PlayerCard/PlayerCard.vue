@@ -159,8 +159,12 @@ const rightStatId = useId()
                     :id="xpId"
                     :value="xp"
                     :max="requiredXp"
-                    transform="matrix(0.11305128,0,0,0.14288889,79.880273,4.1580001)"
-                ></XPProgress>
+                    preserveAspectRatio="none"
+                    x="79.880273"
+                    y="4.158"
+                    width="30.851693181487203"
+                    height="5.14214248443"
+                    ></XPProgress>
             </g>
             <g>
                 <LevelImage
