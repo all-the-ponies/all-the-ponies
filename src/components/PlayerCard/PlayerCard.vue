@@ -148,13 +148,12 @@ const rightStatId = useId()
                 y="11.024493"
                 width="16.204844"
                 height="16.204844"
+                
             ></image>
         </g>
 
         <g class="level-group">
-            <g
-                class="xp-bar"
-            >
+            <g class="xp-bar">
                 <XPProgress
                     :id="xpId"
                     :value="xp"
