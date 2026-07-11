@@ -65,7 +65,7 @@ const fortuneShopData = computed(() => getFortuneShopData(token.value?.id))
 </script>
 
 <template>
-    <Config :title="name" description="" :image="createAssetUrl(token.image.main.path)"></Config>
+    <Config :title="name" description=""></Config>
 
     <div>
         <back-button fallback="/search/tokens/" />

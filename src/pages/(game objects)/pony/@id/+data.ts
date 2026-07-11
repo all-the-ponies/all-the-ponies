@@ -1,10 +1,16 @@
 import api from "@/scripts/api"
 import type { PriceHistoryType } from "@/scripts/api.types"
 import { getObject, ready } from "@/scripts/gameData"
+import type { PonyType } from "@/types/gameDataTypes"
 import { render } from "vike/abort"
 import type { PageContext } from "vike/types"
 
-export async function data(pageContext: PageContext) {
+export interface Data {
+    pony: PonyType,
+    priceHistory: PriceHistoryType | null,
+}
+
+export async function data(pageContext: PageContext): Promise<Data> {
     const { id } = pageContext.routeParams
 
     // await ready

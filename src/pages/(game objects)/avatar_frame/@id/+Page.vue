@@ -18,10 +18,11 @@ import { createAssetUrl } from '@/scripts/assets';
 import { computedAsync } from '@vueuse/core';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import { useBasePrice } from '@/composables/useBasePrice';
+import type { Data } from './+data';
 
 
 const pageContext = usePageContext()
-const data = useData<{avatar_frame: AvatarFrameType, priceHistory: PriceHistoryType | null}>()
+const data = useData<Data>()
 const priceHistory = computed(() => {
     if (!data.priceHistory) {
         return []
@@ -44,7 +45,7 @@ const fortuneShopData = computed(() => getFortuneShopData(avatar_frame.value?.id
 </script>
 
 <template>
-    <Config :title="name" description="" :image="createAssetUrl(avatar_frame.image.preview.path)"></Config>
+    <Config :title="name" description=""></Config>
 
     <div>
         <back-button fallback="/search/avatar_frames" />

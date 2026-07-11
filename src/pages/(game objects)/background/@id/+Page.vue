@@ -18,10 +18,11 @@ import { createAssetUrl } from '@/scripts/assets';
 import { computedAsync } from '@vueuse/core';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import { useBasePrice } from '@/composables/useBasePrice';
+import type { Data } from './+data';
 
 
 const pageContext = usePageContext()
-const data = useData<{background: BackgroundType, priceHistory: PriceHistoryType | null}>()
+const data = useData<Data>()
 const priceHistory = computed(() => {
     if (!data.priceHistory) {
         return []
@@ -44,7 +45,7 @@ const fortuneShopData = computed(() => getFortuneShopData(background.value?.id))
 </script>
 
 <template>
-    <Config :title="name" description="" :image="createAssetUrl(background.image.preview.path)"></Config>
+    <Config :title="name" description=""></Config>
 
     <div>
         <back-button fallback="/search/backgrounds" />

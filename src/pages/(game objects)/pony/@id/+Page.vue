@@ -27,6 +27,7 @@ import { createAssetUrl } from '@/scripts/assets';
 import TaskInfo from '@/components/TaskInfo.vue';
 import LazyImage from '@/components/LazyImage.vue';
 import { useBasePrice } from '@/composables/useBasePrice';
+import type { Data } from './+data';
 
 const { t } = useI18n()
 const isMounted = useMounted()
@@ -36,7 +37,7 @@ const pageContext = usePageContext()
 
 const saveStore = useSaveStore()
 
-const data = useData<{pony: PonyType, priceHistory: PriceHistoryType | null}>()
+const data = useData<Data>()
 const priceHistory = computed(() => {
     if (!data.priceHistory) {
         return []
@@ -179,7 +180,6 @@ const tasks = computed(() => {
         v-if="pony"
         :title="name"
         :description="description"
-        :image="createAssetUrl(pony.image.main.path)"
     >
     </Config>
 

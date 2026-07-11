@@ -9,7 +9,7 @@ export interface Data {
     subsets: CostumeType[],
 }
 
-export async function data(pageContext: PageContext) {
+export async function data(pageContext: PageContext): Promise<Data> {
     const { id } = pageContext.routeParams
     
     const costume = getObject(id, 'costume')
@@ -34,5 +34,5 @@ export async function data(pageContext: PageContext) {
         costume,
         parts,
         subsets,
-    } satisfies Data
+    }
 }

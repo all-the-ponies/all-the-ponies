@@ -30,7 +30,7 @@ const pony = computed(() => getObject(costume.value?.pony, 'pony'))
 </script>
 
 <template>
-    <Config :title="name" description="" :image="createAssetUrl(costume.image.main.path)"></Config>
+    <Config :title="name" description=""></Config>
 
     <div>
         <back-button fallback="/search/costumes" />

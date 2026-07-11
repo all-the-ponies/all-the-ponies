@@ -1,5 +1,5 @@
 import absoluteUrl from "@/scripts/absoluteUrl";
 
 export function image(pageContext) {
-    return absoluteUrl('/favicon/favicon.svg')
+    return absoluteUrl('/og-card.png')
 }

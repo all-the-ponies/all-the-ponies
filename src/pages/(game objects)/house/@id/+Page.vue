@@ -14,10 +14,11 @@ import { Config } from 'vike-vue/Config';
 import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { computed } from 'vue';
+import type { Data } from './+data';
 
 
 const pageContext = usePageContext()
-const data = useData<{house: HouseType}>()
+const data = useData<Data>()
 
 const house = computed(() => data.house)
 
@@ -47,7 +48,7 @@ const visitors = computed(() => {
 </script>
 
 <template>
-    <Config :title="name" description="" :image="createAssetUrl(house.image.main.path)"></Config>
+    <Config :title="name" description=""></Config>
 
     <div>
         <back-button fallback="/search/houses" />

@@ -17,10 +17,11 @@ import CurrencyImage from '@/components/CurrencyImage.vue';
 import { createAssetUrl } from '@/scripts/assets';
 import { computedAsync } from '@vueuse/core';
 import { useBasePrice } from '@/composables/useBasePrice';
+import type { Data } from './+data';
 
 
 const pageContext = usePageContext()
-const data = useData<{background_frame: BackgroundFrameType, priceHistory: PriceHistoryType | null}>()
+const data = useData<Data>()
 const priceHistory = computed(() => {
     if (!data.priceHistory) {
         return []
@@ -43,7 +44,7 @@ const fortuneShopData = computed(() => getFortuneShopData(background_frame.value
 </script>
 
 <template>
-    <Config :title="name" description="" :image="createAssetUrl(background_frame.image.main.path)"></Config>
+    <Config :title="name" description=""></Config>
 
     <div>
         <back-button fallback="/search/background_frames" />
