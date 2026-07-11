@@ -1,6 +1,13 @@
 import { isDev } from "./common"
 
-export function createAssetUrl(asset: string) {
+interface Options {
+    direct?: boolean
+}
+
+export function createAssetUrl(
+    asset: string,
+    {direct = false}: Options = {},
+) {
     if (!asset) {
         return null
     }
@@ -8,7 +15,7 @@ export function createAssetUrl(asset: string) {
     let basePath = 'game-assets/'
 
     let baseUrl: string
-    if (typeof process !== 'undefined' && process.env.GENERATING_SITEMAP) {
+    if (direct || (typeof process !== 'undefined' && process.env.GENERATING_SITEMAP)) {
         baseUrl = 'https://assets.all-the-ponies.com/'
         basePath = ''
     } else if (typeof location !== 'undefined') {

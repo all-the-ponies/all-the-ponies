@@ -4,5 +4,5 @@ import type { PageContext } from "vike/types";
 import type { Data } from "./+data";
 
 export function image(pageContext: PageContext<Data>) {
-    return makeOg(createAssetUrl(pageContext.data.avatar.image.preview.path))
+    return makeOg(createAssetUrl(pageContext.data.avatar.image.preview.path, {direct: true}))
 }
