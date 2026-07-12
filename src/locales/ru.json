@@ -54,6 +54,7 @@
     "or": "или",
     "price": "Стоимость",
     "royal": "Клуб",
+    "sale": "Акция",
     "wiki": "Википедия"
   },
   "contact": {
@@ -255,12 +256,15 @@
       }
     },
     "stats": {
+      "collections": "Коллекции: {count}",
+      "costumes": "Костюмы: {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Количество звезд: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "wh_collections": "Актуальные коллекции: {count}"
     },
     "title": "Инвентарь"
   },
@@ -318,6 +322,20 @@
     "help_wanted": {
       "body": "Я говорю только по-английски, поэтому не могу перевести All The Ponies на другие языки. Если ваш язык на сайте и имеет некачественный или неполный перевод, я был бы очень рад вашей помощи. Знание программирования не требуется, с Weblate делать переводы может кто угодно.",
       "title": "Нужна помощь!"
+    }
+  },
+  "player_card": {
+    "current_xp": "Текущий XP: {current_value} из {max_value}",
+    "level": "Уровень: {level}",
+    "name": "Имя: {name}",
+    "player_stat": {
+      "collections": "{count} Коллекции",
+      "costumes": "{count} Костюмы",
+      "gem_shops": "{count} Магазины камней",
+      "ponies": "{count} Пони",
+      "shops": "{count} Магазины",
+      "transformables": "{count} Пони-перевертыши",
+      "wh_collections": "{count} Актуальные коллекции"
     }
   },
   "player_info": {
@@ -397,13 +415,16 @@
   },
   "search": {
     "message": {
-      "search": "Поиск"
+      "search": "Поиск",
+      "showing_of_results": "Показано {shown_results} из {total_results} результатов",
+      "showing_results": "Показано {total_results} результатов"
     },
     "no_results": "Не найдено",
     "title": "Поиск"
   },
   "site": {
     "description": "Получите всю необходимую точную информацию обо всем в игре My Little Pony: Магия Принцесс",
+    "language": "Язык",
     "title": "Все Пони"
   },
   "socials": {
@@ -418,13 +439,13 @@
     "alphabetically": "В алфавитном порядке",
     "date_added": "По дате добавления",
     "decor": {
-      "pro_rate": "Супердекорации"
+      "pro_rate": "Полезность супердекораций"
     },
     "game_order": "Порядок игры",
     "relevance": "По релевантности",
     "reverse": "Обратный порядок",
     "shop": {
-      "production": "Время производства",
+      "production": "Темп производства",
       "xp_rate": "Количество очков опыта"
     }
   },
@@ -438,7 +459,7 @@
     "title": "Статистика"
   },
   "store": {
-    "description": "Смотрите все, что сейчас есть в магазине в режиме реального времени",
+    "description": "Смотрите все, что сейчас есть в магазине, в режиме реального времени",
     "message": {
       "for": "за",
       "if": "если",
@@ -450,7 +471,7 @@
   "tasks": {
     "message": {
       "duration": "Длительность",
-      "skip_price": "Пропуск:{price}",
+      "skip_price": "Пропуск: {price}",
       "task_icon": "Иконка задания"
     },
     "task": "Задание | Задания"
