@@ -527,7 +527,7 @@ watch(
     </div>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .search-section {
     display: flex;
@@ -562,8 +562,13 @@ watch(
 
     width: 100%;
 
-    .scroller {
+    .scroller::v-deep {
         min-width: calc(v-bind('itemWidth') * v-bind('columnCount') * 1px);
+        overflow: visible;
+
+        > .vue-recycle-scroller__item-wrapper {
+            overflow: visible;
+        }
     }
 
     .item {
