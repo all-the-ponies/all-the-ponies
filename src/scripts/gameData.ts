@@ -1,7 +1,7 @@
 import ky, { HTTPError } from 'ky'
 import { computed, ref, toValue, unref, watch, watchEffect, type MaybeRef } from 'vue'
 import { language } from '../globals'
-import type { CategoryName, CategoryType, CollectionData, CollectionEntry, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, TaskEntry, TasksData } from '../types/gameDataTypes'
+import type { CategoryName, CategoryType, CollectionData, CollectionType, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, TaskEntry, TasksData, TranslatableString } from '../types/gameDataTypes'
 import { createAssetUrl } from './assets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
@@ -219,7 +219,7 @@ export function getTaskInfo(taskId: string | TaskEntry) {
     return (getTasksData()).tasks[taskId] ?? null
 }
 
-export function getCollection(collectionId: string | CollectionEntry) {
+export function getCollection(collectionId: string | CollectionType) {
     if (typeof collectionId !== 'string') {
         return collectionId
     }
@@ -233,11 +233,14 @@ export function getFashionShowCollection(collectionId: string | FashionShowEntry
     return getCollectionData().fashion_show[collectionId] ?? null
 }
 
-export function translateName(gameObject: MaybeRef<GameObject>) {
+export function translateName(gameObject: MaybeRef<{
+    name: TranslatableString,
+    preferred_name?: TranslatableString,
+}>) {
     return computed(() => {
       const obj = toValue(gameObject)
       
-      if (!obj || obj.category === 'costume_part') {
+      if (!obj || !('name' in obj)) {
         return null
       }
       if (obj.preferred_name && obj.preferred_name[language.value.key]) {

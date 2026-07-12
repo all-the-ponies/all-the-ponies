@@ -475,5 +475,8 @@
       "task_icon": "Task Icon"
     },
     "task": "Task | Tasks"
+  },
+  "collection": {
+    "collection": "Collection | Collections"
   }
 }

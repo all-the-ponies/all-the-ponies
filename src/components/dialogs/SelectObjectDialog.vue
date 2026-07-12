@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useGameCardSize } from '@/composables/useGameCardSize';
+import { useGameCardSize } from '@/composables/useGameCardSize.ts';
 import { useRem } from '@/composables/useRem';
 import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories';
 import { useGameObjects, getNames } from '@/scripts/gameData';

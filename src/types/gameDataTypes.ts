@@ -112,7 +112,7 @@ interface CategoryData<T> {
     objects: Record<GameObjectId, T>,
 }
 
-type TranslatableString = Record<Language, string>
+export type TranslatableString = Record<Language, string>
 type AltName = Partial<Record<Language, string[]>>
 
 export interface RenamedFile {
@@ -456,7 +456,7 @@ export interface TaskRequirement {
 
 
 export interface CollectionData {
-    collections: Record<string, CollectionEntry>,
+    collections: Record<string, CollectionType>,
     fashion_show: Record<string, FashionShowEntry>,
 }
 
@@ -466,7 +466,7 @@ export interface CollectionItem {
     count: number,
 }
 
-export interface CollectionEntry {
+export interface CollectionType {
     index: number,
     id: string,
     name: TranslatableString,
