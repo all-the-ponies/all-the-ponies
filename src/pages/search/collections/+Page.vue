@@ -12,8 +12,8 @@ const collectionData = getCollectionData()
 
 const collections = Object.values(collectionData.collections)
 
-const cardSize = 10
-const { width: cardWidth, height: cardHeight } = useCollectionCardSize()
+const cardSize = 9
+const { width: cardWidth, height: cardHeight } = useCollectionCardSize(cardSize)
 const itemGap = useRem(.3)
 
 </script>
@@ -21,31 +21,33 @@ const itemGap = useRem(.3)
 <template>
     <Config :title="$t('collection.collection', 2)"></Config>
 
-    <section class="section">
-        <h1>{{ $t('collection.collection', 2) }}</h1>
-    </section>
-    <section class="section">
-        <SearchComponent
-            :data="collections"
-            :item-width="cardWidth"
-            :item-height="cardHeight"
-            :placeholder="$t('collection.collection')"
-            :get-search-text="(collection) => [collection.name[language.key]]"
-            :get-exact-search-text="(collection) => collection.id"
-            :item-gap="itemGap"
-            save-url
-        >
-            <template #item="{ item }">
-                <CollectionCard :collection="item" :href="`/collection/${item.id}`" class="item-card"></CollectionCard>
-            </template>
-        </SearchComponent>
-    </section>
+    <div>
+        <section>
+            <h1>{{ $t('collection.collection', 2) }}</h1>
+        </section>
+        <section>
+            <SearchComponent
+                :data="collections"
+                :item-width="cardWidth"
+                :item-height="cardHeight"
+                :placeholder="$t('collection.collection')"
+                :get-search-text="(collection) => [collection.name[language.key]]"
+                :get-exact-search-text="(collection) => collection.id"
+                :item-gap="itemGap"
+                save-url
+            >
+                <template #item="{ item }">
+                    <CollectionCard :collection="item" :href="`/collection/${item.id}`" class="item-card"></CollectionCard>
+                </template>
+            </SearchComponent>
+        </section>
+    </div>
 </template>
 
 <style lang="css" scoped>
 
 .item-card {
-    margin: 0 .3rem .3rem 0;
+    /* margin: 0 1rem 1rem 0; */
 }
 
 </style>

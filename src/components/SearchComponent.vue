@@ -576,6 +576,7 @@ watch(
         width: 100%;
         height: 100%;
         justify-items: center;
+        padding: 0 calc(v-bind('itemGap') * 1px) calc(v-bind('itemGap') * 1px) 0;
     }
 }
 
@@ -612,6 +613,7 @@ watch(
 .num-results {
     text-align: center;
     font-size: 1.1rem;
+    margin-bottom: 0.5rem;
 }
 
 .empty {

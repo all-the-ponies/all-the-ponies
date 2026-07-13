@@ -71,6 +71,7 @@ const progressFillId = useId()
         <text
             x="26.5"
             y="7"
+            font-family="Celestia Medium Redux, Arial, Helvetica, sans-serif"
             font-size="8"
             text-anchor="middle"
             fill="#0072B1"

@@ -7,6 +7,7 @@ import Link from '../Link.vue';
 import LazyImage from '../LazyImage.vue';
 import { createAssetUrl } from '@/scripts/assets.ts';
 import CollectionProgress from './CollectionProgress.vue';
+import CollectionCardReward from './CollectionCardReward.vue';
 
 const saveStore = useSaveStore()
 
@@ -56,16 +57,20 @@ const ponies = computed(() => {
                     ></LazyImage>
                 </div>
                 <div class="info">
-                    <div class="progress">
+                    <!-- <div class="progress-container"> -->
                         <CollectionProgress
                             class="progress-bar"
                             :value="ponies.filter(({owned}) => owned).length"
                             :total="ponies.length"
                         ></CollectionProgress>
-                    </div>
-                    <div class="reward">
-
-                    </div>
+                    <!-- </div> -->
+                    <CollectionCardReward
+                        :item="collection.reward.main.item"
+                        :amount="collection.reward.main.amount"
+                        class="reward"
+                    />
+                    <!-- <div class="reward-container">
+                    </div> -->
                 </div>
             </div>
         </component>
@@ -77,7 +82,7 @@ const ponies = computed(() => {
     left: 0px;
     background-color: white;
 
-    max-width: 100%;
+    width: 100%;
     aspect-ratio: 16 / 9;
 
     border-radius: 0.8rem;
@@ -134,7 +139,6 @@ const ponies = computed(() => {
     height: 80%;
     position: relative;
     display: grid;
-    grid-template-rows: 100%;
 }
 
 .ponies {
@@ -145,8 +149,8 @@ const ponies = computed(() => {
 }
 
 .pony {
-    max-width: 4rem;
-    height: 4rem;
+    max-width: 25cqw;
+    height: 25cqw;
     object-fit: contain;
     object-position: left;
     margin-right: -4rem;
@@ -174,24 +178,26 @@ const ponies = computed(() => {
 .info {
     width: 100%;
     /* height: 30%; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     /* padding: 0.5rem; */
+    display: grid;
+    grid-template-columns: 70% 1fr;
+    align-items: center;
 }
 
-.card-body {
-    /* height: 70%; */
-    grid-template-rows: 75% 25%;
-}
-
-.progress {
-
+.progress-container {
+    height: 100%;
 }
 
 .progress-bar {
-    width: 50%;
+    height: 60%;
+    max-width: 100%;
+    justify-self: end;
+}
+
+.reward-container {
+}
+
+.reward {
 }
 
 </style>
