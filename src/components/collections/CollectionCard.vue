@@ -149,8 +149,8 @@ const ponies = computed(() => {
 }
 
 .pony {
-    max-width: 25cqw;
-    height: 25cqw;
+    max-width: 22cqw;
+    height: 22cqw;
     object-fit: contain;
     object-position: left;
     margin-right: -4rem;
@@ -180,8 +180,9 @@ const ponies = computed(() => {
     /* height: 30%; */
     /* padding: 0.5rem; */
     display: grid;
-    grid-template-columns: 70% 1fr;
+    grid-template-columns: 65% 1fr;
     align-items: center;
+    gap: 0.3rem;
 }
 
 .progress-container {
@@ -189,15 +190,9 @@ const ponies = computed(() => {
 }
 
 .progress-bar {
-    height: 60%;
+    height: 50%;
     max-width: 100%;
     justify-self: end;
-}
-
-.reward-container {
-}
-
-.reward {
 }
 
 </style>
