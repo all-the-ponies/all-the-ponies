@@ -40,6 +40,9 @@
       "check": "Ver"
     }
   },
+  "collection": {
+    "collection": "Coleción | Colecciones"
+  },
   "common": {
     "date": {
       "current": "actual",
