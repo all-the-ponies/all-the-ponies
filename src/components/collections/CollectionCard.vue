@@ -6,6 +6,7 @@ import { computed } from 'vue';
 import Link from '../Link.vue';
 import LazyImage from '../LazyImage.vue';
 import { createAssetUrl } from '@/scripts/assets.ts';
+import CollectionProgress from './CollectionProgress.vue';
 
 const saveStore = useSaveStore()
 
@@ -23,7 +24,16 @@ const ponies = computed(() => {
         return []
     }
     return collection.value.ponies.map(
-        item => getObject(item.item, 'pony')
+        item => {
+            let owned = saveStore.hasPony(item.item) || saveStore.hasPony(item.alt)
+            const pony = getObject(item.item, 'pony')
+
+            if (pony.critter_farm) {
+                owned = saveStore.critters[pony.critter_farm] >= item.count
+            }
+            
+            return { pony, owned }
+        }
     )
 })
 
@@ -38,16 +48,20 @@ const ponies = computed(() => {
             <div class="card-body">
                 <div class="ponies">
                     <LazyImage
-                        v-for="(pony, i) in ponies"
+                        v-for="({pony, owned}, i) in ponies"
                         :src="createAssetUrl(pony.image.portrait.path)"
                         :style="{zIndex: ponies.length - i}"
                         class="pony"
-                        :class="{'not-owned': !saveStore.hasPony(pony.id)}"
+                        :class="{'not-owned': !owned}"
                     ></LazyImage>
                 </div>
                 <div class="info">
                     <div class="progress">
-
+                        <CollectionProgress
+                            class="progress-bar"
+                            :value="ponies.filter(({owned}) => owned).length"
+                            :total="ponies.length"
+                        ></CollectionProgress>
                     </div>
                     <div class="reward">
 
@@ -170,6 +184,14 @@ const ponies = computed(() => {
 .card-body {
     /* height: 70%; */
     grid-template-rows: 75% 25%;
+}
+
+.progress {
+
+}
+
+.progress-bar {
+    width: 50%;
 }
 
 </style>
