@@ -41,6 +41,8 @@ const ponies = computed(() => {
                         v-for="(pony, i) in ponies"
                         :src="createAssetUrl(pony.image.portrait.path)"
                         :style="{zIndex: ponies.length - i}"
+                        class="pony"
+                        :class="{'not-owned': !saveStore.hasPony(pony.id)}"
                     ></LazyImage>
                 </div>
                 <div class="info">
@@ -128,16 +130,31 @@ const ponies = computed(() => {
     grid-template-columns: repeat(v-bind('ponies.length'), 1fr);
 }
 
-.ponies img {
+.pony {
     max-width: 4rem;
     height: 4rem;
     object-fit: contain;
     object-position: left;
     margin-right: -4rem;
+
+    --drop-shadow: drop-shadow(0 0 0.1px hsl(0, 0%, 50%));
+    filter: var(--drop-shadow);
 }
 
-.ponies img:last-child {
+.pony:last-child {
     margin-right: 0;
+}
+
+.not-owned {
+    /*
+    Source - https://stackoverflow.com/a/78478074
+    Posted by Keavon, modified by community. See post 'Timeline' for change history
+    Retrieved 2026-07-12, License - CC BY-SA 4.0
+    */
+
+    --factor: 0.7; /* Should range only between 0 and 1 */
+    filter: invert(calc(var(--factor) / 1.7)) brightness(calc(1 + var(--factor)))
+            var(--drop-shadow);
 }
 
 .info {
