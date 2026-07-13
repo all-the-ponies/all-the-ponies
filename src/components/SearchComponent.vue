@@ -562,11 +562,11 @@ watch(
 
     width: 100%;
 
-    .scroller::v-deep {
+    .scroller {
         min-width: calc(v-bind('itemWidth') * v-bind('columnCount') * 1px);
         overflow: visible;
 
-        > .vue-recycle-scroller__item-wrapper {
+        :deep(> .vue-recycle-scroller__item-wrapper) {
             overflow: visible;
         }
     }
