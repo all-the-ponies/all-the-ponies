@@ -22,6 +22,7 @@ const progressFillId = useId()
         aria-valuemin="0"
         :aria-valuemax="total"
         :aria-valuenow="value"
+        data-allow-mismatch
     >
         <defs>
             <pattern
@@ -67,6 +68,7 @@ const progressFillId = useId()
             :d="`M 2 0.5 l ${50.5 * percentage} 0 l -1.5 7 l -${50.5 * percentage} 0 z`"
             stroke-width="0.5"
             :fill="`url(#${progressFillId})`"
+            data-allow-mismatch
         />
         <text
             x="26.5"
