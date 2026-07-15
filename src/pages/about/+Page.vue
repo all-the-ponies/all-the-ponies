@@ -71,7 +71,7 @@ console.log('credits', credits)
                     }}
                 </li>
             </ul>
-            <p v-else class="error-message">{{ $t('about.sections.credits.message.fetch_failed') }}</p>
+            <p v-else class="error-message">{{ $t('about.sections.credits.fetch_failed') }}</p>
         </section>
     </div>
 </template>
