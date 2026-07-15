@@ -112,6 +112,7 @@ export async function data(pageContext: PageContextServer): Promise<Data> {
     
         return { credits } satisfies Data
     } catch (error) {
+        console.error(error)
         return {error: String(error), credits: null}
     }
 }
