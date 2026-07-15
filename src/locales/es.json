@@ -41,7 +41,12 @@
     }
   },
   "collection": {
-    "collection": "Coleción | Colecciones"
+    "collection": "Coleción | Colecciones",
+    "message": {
+      "alt_reward": "Recompensa Alternativa",
+      "progress": "PROGRESO:",
+      "reward": "Recompensa"
+    }
   },
   "common": {
     "date": {
