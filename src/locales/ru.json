@@ -40,6 +40,9 @@
       "check": "Проверить"
     }
   },
+  "collection": {
+    "collection": "Коллекция | Коллекции"
+  },
   "common": {
     "date": {
       "current": "настоящее",
