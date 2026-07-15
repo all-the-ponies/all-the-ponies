@@ -12,10 +12,12 @@ import { createAssetUrl } from '@/scripts/assets';
 import CollectionReward from '@/components/collections/CollectionReward.vue';
 import BackButton from '@/components/buttons/BackButton.vue';
 import CollectionProgress from '@/components/collections/CollectionProgress.vue';
+import { useMounted } from '@vueuse/core';
 
 
 const data = useData<Data>()
 const saveStore = useSaveStore()
+const isMounted = useMounted()
 
 const collection = computed(() => data.collection)
 const title = translateName(collection)
@@ -76,9 +78,11 @@ const showAlt = computed(() => ['pony', 'shop'].includes(mainReward.value.item.c
                     <Link
                         v-for="{pony, owned, alt} in reorderedPonies"
                         :href="`/${pony.category}/${pony.id}`"
+                        :key="pony.id"
                         class="pony link"
+                        :class="{ 'unowned': isMounted && !owned }"
                     >
-                        <span>{{ translateName(pony) }}</span>
+                        <span class="pony-name">{{ translateName(pony) }}</span>
                         <LazyImage class="pony-image" :src="createAssetUrl(pony.image.main.path)" />
                     </Link>
                 </div>
@@ -172,6 +176,10 @@ const showAlt = computed(() => ['pony', 'shop'].includes(mainReward.value.item.c
     max-width: 100%;
     object-position: center;
     object-fit: contain;
+}
+
+.pony.unowned .pony-image {
+    filter: brightness(0.6);
 }
 
 .rewards {
