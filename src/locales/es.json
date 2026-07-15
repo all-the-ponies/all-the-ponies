@@ -40,6 +40,9 @@
       "check": "Ver"
     }
   },
+  "collection": {
+    "collection": "Coleción | Colecciones"
+  },
   "common": {
     "date": {
       "current": "actual",
@@ -136,7 +139,7 @@
   },
   "game": {
     "content_version": "Versión del contenido: {version}",
-    "game_version": "Version del Juego: {version}",
+    "game_version": "Versión del Juego: {version}",
     "message": {
       "you_won": "¡Has Ganado!"
     }
@@ -162,7 +165,7 @@
       "effect": "Efecto",
       "fusion_points": "Puntos De Fusión",
       "pro_decor": "Pro @:game_object.decor.decor",
-      "pro_decors": "Decoraciones De Profesional"
+      "pro_decors": "Decoraciones Profesionales"
     },
     "house": {
       "house": "Casa | Casas",
@@ -256,12 +259,15 @@
       }
     },
     "stats": {
+      "collections": "Colecciones: {count}",
+      "costumes": "Trajes: {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Estrellas: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "wh_collections": "Colecciones Novedosas: {count}"
     },
     "title": "Inventario"
   },
@@ -319,6 +325,20 @@
     "help_wanted": {
       "body": "Yo solo hablo inglés, así que no puedo traducir Todos los Ponis a otros idiomas. Si tu idioma ya se encuentra en la página pero no está completamente traducido, me encantaría tu ayuda. No se necesita conocimiento en programación porque Weblate hace que traducir sea fácil para todos.",
       "title": "¡Se necesita ayuda!"
+    }
+  },
+  "player_card": {
+    "current_xp": "XP actual: {current_value} de {max_value}",
+    "level": "Nivel: {level}",
+    "name": "Nombre: {name}",
+    "player_stat": {
+      "collections": "{count} Colecciones",
+      "costumes": "{count} Trajes",
+      "gem_shops": "{count} Tiendas de Gemas",
+      "ponies": "{count} Ponis",
+      "shops": "{count} Negocios",
+      "transformables": "{count} Transformables",
+      "wh_collections": "{count} Colecciones Novedosas"
     }
   },
   "player_info": {
@@ -398,13 +418,16 @@
   },
   "search": {
     "message": {
-      "search": "Buscar"
+      "search": "Buscar",
+      "showing_of_results": "Mostrando {shown_results} de {total_results} resultados",
+      "showing_results": "Mostrando {total_results} resultados"
     },
     "no_results": "Sin resultados",
     "title": "Buscar"
   },
   "site": {
     "description": "Obten toda la información precisa que desees sobre cualquier tema del juego My Little Pony: Magia",
+    "language": "Idioma",
     "title": "Todos los Ponis"
   },
   "socials": {
