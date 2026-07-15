@@ -59,6 +59,7 @@ const componentProps = computed(() => {
 
 .item-name {
     font-size: 1.2rem;
+    text-shadow: var(--text-shadow);
 }
 
 .item-container {
@@ -68,7 +69,10 @@ const componentProps = computed(() => {
 }
 
 .item-image {
-    width: 5rem;
+    width: 6rem;
+    max-height: 6rem;
+    object-position: center;
+    object-fit: contain;
 }
 
 a.reward:hover {
@@ -79,6 +83,7 @@ a.reward:hover {
     position: absolute;
     bottom: 0;
     right: 0;
+    text-shadow: var(--text-shadow);
 }
 
 </style>

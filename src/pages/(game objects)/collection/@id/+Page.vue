@@ -88,7 +88,7 @@ const showAlt = computed(() => ['pony', 'shop'].includes(mainReward.value.item.c
                 </div>
                 <div class="rewards">
                     <div class="reward-container">
-                        <h2 class="reward-title">Reward</h2>
+                        <h2 class="reward-title">{{ $t('collection.message.reward') }}</h2>
                         <CollectionReward
                             class="reward"
                             :item="mainReward.item"
@@ -97,7 +97,7 @@ const showAlt = computed(() => ['pony', 'shop'].includes(mainReward.value.item.c
                     </div>
                     <div class="reward-container">
                         <template v-if="showAlt">
-                            <span class="reward-title">Alt Reward</span>
+                            <span class="reward-title">{{ $t('collection.message.alt_reward') }}</span>
                             <CollectionReward
                                 class="reward"
                                 :item="altReward.item"
@@ -106,7 +106,7 @@ const showAlt = computed(() => ['pony', 'shop'].includes(mainReward.value.item.c
                         </template>
                     </div>
                     <div class="progress-section">
-                        <h2 class="progress-title">PROGRESS:</h2>
+                        <h2 class="progress-title">{{ $t('collection.message.progress') }}</h2>
                         <CollectionProgress
                             class="progress-bar"
                             :value="ponies.filter(item => item.owned).length"
@@ -204,6 +204,7 @@ const showAlt = computed(() => ['pony', 'shop'].includes(mainReward.value.item.c
 
 .reward-title {
     align-self: flex-end;
+    text-shadow: var(--text-shadow);
 }
 
 .progress-section {
@@ -217,6 +218,7 @@ const showAlt = computed(() => ['pony', 'shop'].includes(mainReward.value.item.c
     -webkit-text-stroke: 0.3rem white;
     paint-order: stroke fill;
     margin-block: 0.4rem;
+    text-transform: uppercase;
 }
 
 .progress-bar {

@@ -477,6 +477,11 @@
     "task": "Task | Tasks"
   },
   "collection": {
-    "collection": "Collection | Collections"
+    "collection": "Collection | Collections",
+    "message": {
+      "reward": "Reward",
+      "alt_reward": "Alt Reward",
+      "progress": "PROGRESS:"
+    }
   }
 }
