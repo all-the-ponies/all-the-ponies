@@ -3,11 +3,6 @@ import { Hono } from 'hono'
 import type { ContentfulStatusCode, StatusCode } from 'hono/utils/http-status';
 import type { Server } from 'vike/types'
 
-interface Bindings {
-	GAME_ASSETS_BUCKET: R2Bucket;
-	WEBLATE_API_TOKEN: string;
-}
-
 async function getHash(text: string, algorithm: string = 'SHA-256'): Promise<string> {
   const encoded = new TextEncoder().encode(text)
   const hashBuffer = await crypto.subtle.digest({name: algorithm}, encoded)
@@ -20,7 +15,7 @@ async function getHash(text: string, algorithm: string = 'SHA-256'): Promise<str
 
 function getApp() {
     console.log('starting server')
-    const app = new Hono<{ Bindings: Bindings }>()
+    const app = new Hono<{ Bindings: Cloudflare.Env }>()
 
     app.get('/game-assets/*', async (c) => {
         const url = new URL(c.req.url)
@@ -96,6 +91,8 @@ function getApp() {
         } else {
             status = 412
         }
+
+        headers.set('cache-control', 'max-age=2592000')
 
         let body = 'body' in object ? object.body : undefined
 
