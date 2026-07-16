@@ -30,5 +30,9 @@
       "bucket_name": "all-the-ponies-assets",
       "remote": true
     }
-  ]
+  ],
+  "kv_namespaces": [{
+    "binding": "ALL_THE_PONIES_KV",
+    "id": "f739af9221164ea98dfe6f46a8ad779c"
+  }]
 }
