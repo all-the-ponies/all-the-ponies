@@ -472,6 +472,7 @@ export interface CollectionType {
     name: TranslatableString,
     ponies: CollectionItem[],
     reward: CollectionReward,
+    image: Record<Language, string>,
 }
 
 export interface FashionShowEntry {
