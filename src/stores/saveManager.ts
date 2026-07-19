@@ -3,9 +3,9 @@ import api from "@/scripts/api"
 import type { PlayerStatName } from "@/scripts/api.types"
 import { notNullIsh } from "@/scripts/common"
 import { extendedDeserialize, extendedSerialize } from "@/scripts/extendedSerialize"
-import { getCollectionData, getGameObjects, getObject } from "@/scripts/gameData"
+import { getCollection, getCollectionData, getGameObjects, getObject } from "@/scripts/gameData"
 import type { TDateISO } from "@/types/date"
-import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
+import type { CollectionType, GameObject, GameObjectId } from "@/types/gameDataTypes"
 import type { HTTPError } from "ky"
 import { defineStore } from "pinia"
 import { computed, shallowRef, toValue, watchEffect, type MaybeRef } from "vue"
@@ -122,17 +122,24 @@ export const useSaveStore = defineStore('save', {
             const collectionData = getCollectionData()
             const collections: Set<string> = new Set()
             for (let collection of Object.values(collectionData.collections)) {
-                if (collection.ponies.every(item => {
+                if (this.hasCollection(collection)) {
+                    collections.add(collection.id)
+                }
+            }
+            return collections
+        },
+
+        hasCollection() {
+            return (collectionId: string | CollectionType) => {
+                const collection = getCollection(collectionId)
+                return collection.ponies.every(item => {
                     const pony = getObject(item.item, 'pony')
                     if (pony.critter_farm) {
                         return this.critters[pony.critter_farm] >= item.count
                     }
                     return item.item in this.ponies || (item.alt && item.alt in this.ponies)
-                })) {
-                    collections.add(collection.id)
-                }
+                })
             }
-            return collections
         }
     },
     actions: {

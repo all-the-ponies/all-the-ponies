@@ -1,6 +1,6 @@
 import type { Ref } from "vue";
 
-export interface FilterFunctionsType<T = unknown> {
+export interface FilterFunctionType<T = unknown> {
     name?: string | Ref,
     // type: 'checkbox' | 'radio' | 'text' | 'number',
     check?(gameObject: T): boolean,

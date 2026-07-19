@@ -3,7 +3,7 @@ import { useSaveStore } from "@/stores/saveManager"
 import type { Ref } from "vue"
 import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType, TranslatableString } from "../types/gameDataTypes"
 import { getObject, useGroupQuests, translateName, getTaskInfo } from "./gameData"
-import type { FilterFunctionsType, SortFunctionType } from "@/types/searchTypes"
+import type { FilterFunctionType, SortFunctionType } from "@/types/searchTypes"
 
 const groupQuests = useGroupQuests()
 
@@ -200,7 +200,7 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
 }
 
 
-export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: FilterFunctionsType<GameObject>}>> = {
+export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: FilterFunctionType<GameObject>}>> = {
     pony: {
         playable: {
             name: "filter.pony.playable",

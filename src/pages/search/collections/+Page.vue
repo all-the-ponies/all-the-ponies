@@ -6,12 +6,14 @@ import { useRem } from '@/composables/useRem';
 import { language } from '@/globals';
 import { SortFunctions } from '@/scripts/categories';
 import { getCollectionData, getObject, translateName } from '@/scripts/gameData';
+import { useSaveStore } from '@/stores/saveManager';
 import type { CollectionType } from '@/types/gameDataTypes';
-import type { SortFunctionType } from '@/types/searchTypes';
+import type { FilterFunctionType, SortFunctionType } from '@/types/searchTypes';
 import { Config } from 'vike-vue/Config';
 import { computed } from 'vue';
 
 const collectionData = getCollectionData()
+const saveStore = useSaveStore()
 
 const collections = Object.values(collectionData.collections)
 
@@ -68,6 +70,21 @@ const sortFunctions: Record<string, SortFunctionType<CollectionType>> = {
     alphabetically: SortFunctions.common.alphabetically,
 }
 
+const filterFunctions: Record<string, FilterFunctionType<CollectionType>> = {
+    completed: {
+        name: 'filter.collection.completed',
+        check(collection) {
+            return saveStore.hasCollection(collection)
+        },
+    },
+    incomplete: {
+        name: 'filter.collection.incomplete',
+        check(collection) {
+            return !saveStore.hasCollection(collection)
+        },
+    },
+}
+
 const cardSize = 9
 const { width: cardWidth, height: cardHeight } = useCollectionCardSize(cardSize)
 const itemGap = useRem(.3)
@@ -90,6 +107,7 @@ const itemGap = useRem(.3)
                 :get-search-text="getSearchText"
                 :get-exact-search-text="getExactSearchText"
                 :sorters="sortFunctions"
+                :filters="filterFunctions"
                 :item-gap="itemGap"
                 save-url
             >

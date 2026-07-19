@@ -113,6 +113,10 @@
       "maze": "Maze",
       "not_owned": "Not owned",
       "others": "Others"
+    },
+    "collection": {
+      "completed": "Completed",
+      "incomplete": "Incomplete"
     }
   },
   "fortune_shop": {
