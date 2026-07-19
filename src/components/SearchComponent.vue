@@ -20,7 +20,7 @@ const checkFilters = ref<boolean>(true)
 const props = withDefaults(defineProps<{
         data: ITEM[],
         getSearchText(item: ITEM): string[],
-        getExactSearchText?(item: ITEM): string,
+        getExactSearchText?(item: ITEM): string | string[],
         filters?: Record<string, FilterFunctionsType<ITEM>>,
         sorters?: Record<string, SortFunctionsType<ITEM>>,
         query?: Record<string, string | string[] | number | null>,
@@ -307,8 +307,11 @@ const searchResults = computed(() => {
     } else {
         if (props.getExactSearchText) {
             results = filteredItems.value.filter((item) => {
-                const text = props.getExactSearchText(item)
-                return text.toLocaleLowerCase() == query.toLocaleLowerCase()
+                let text = props.getExactSearchText(item)
+                if (!Array.isArray(text)) {
+                    text = [text]
+                }
+                return text.map(t => t.toLocaleLowerCase()).includes(query.toLocaleLowerCase())
             })
         }
         if (results.length == 0) {
