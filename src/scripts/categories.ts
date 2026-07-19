@@ -3,7 +3,7 @@ import { useSaveStore } from "@/stores/saveManager"
 import type { Ref } from "vue"
 import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType, TranslatableString } from "../types/gameDataTypes"
 import { getObject, useGroupQuests, translateName, getTaskInfo } from "./gameData"
-import type { FilterFunctionsType, SortFunctionsType } from "@/types/searchTypes"
+import type { FilterFunctionsType, SortFunctionType } from "@/types/searchTypes"
 
 const groupQuests = useGroupQuests()
 
@@ -85,7 +85,7 @@ export const PLURAL_CATEGORY_MAP: Record<string, CategoryName> = {
     tokens: 'token',
 }
 
-export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: SortFunctionsType}>> = {
+export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: SortFunctionType}>> = {
     common: {
         index: {
             name: 'sorting.game_order',

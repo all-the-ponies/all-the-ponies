@@ -8,7 +8,7 @@ import { computed, nextTick, ref, useTemplateRef, watch, watchEffect } from 'vue
 import { WindowScroller } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 import DialogComponent from './DialogComponent.vue'
-import type { FilterFunctionsType, SortFunctionsType } from '@/types/searchTypes.ts'
+import type { FilterFunctionsType, SortFunctionType } from '@/types/searchTypes.ts'
 
 const pageContext = usePageContext()
 const isMounted = useMounted()
@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<{
         getSearchText(item: ITEM): string[],
         getExactSearchText?(item: ITEM): string | string[],
         filters?: Record<string, FilterFunctionsType<ITEM>>,
-        sorters?: Record<string, SortFunctionsType<ITEM>>,
+        sorters?: Record<string, SortFunctionType<ITEM>>,
         query?: Record<string, string | string[] | number | null>,
         placeholder?: string,
         pageParam?: string,

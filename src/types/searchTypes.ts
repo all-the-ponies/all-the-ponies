@@ -12,7 +12,7 @@ export interface FilterFunctionsType<T = unknown> {
     client?: boolean,
 }
 
-export interface SortFunctionsType<T = unknown> {
+export interface SortFunctionType<T = unknown> {
     name?: string | Ref,
     check(a: T, b: T): number,
     default?: boolean,

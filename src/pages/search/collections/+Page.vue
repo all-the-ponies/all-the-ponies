@@ -4,8 +4,10 @@ import SearchComponent from '@/components/SearchComponent.vue';
 import { useCollectionCardSize } from '@/composables/useCollectionCardSize';
 import { useRem } from '@/composables/useRem';
 import { language } from '@/globals';
+import { SortFunctions } from '@/scripts/categories';
 import { getCollectionData, getObject, translateName } from '@/scripts/gameData';
 import type { CollectionType } from '@/types/gameDataTypes';
+import type { SortFunctionType } from '@/types/searchTypes';
 import { Config } from 'vike-vue/Config';
 import { computed } from 'vue';
 
@@ -53,6 +55,19 @@ function getExactSearchText(collection: CollectionType) {
     return ids
 }
 
+const sortFunctions: Record<string, SortFunctionType<CollectionType>> = {
+    index: {
+        name: 'sorting.game_order',
+        check(a, b) {
+            if (a.id > b.id) return 1
+            if (a.id < b.id) return -1
+            return 0
+        },
+        default: true,
+    },
+    alphabetically: SortFunctions.common.alphabetically,
+}
+
 const cardSize = 9
 const { width: cardWidth, height: cardHeight } = useCollectionCardSize(cardSize)
 const itemGap = useRem(.3)
@@ -74,6 +89,7 @@ const itemGap = useRem(.3)
                 :placeholder="$t('collection.collection')"
                 :get-search-text="getSearchText"
                 :get-exact-search-text="getExactSearchText"
+                :sorters="sortFunctions"
                 :item-gap="itemGap"
                 save-url
             >
