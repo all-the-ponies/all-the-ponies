@@ -442,7 +442,7 @@ watch(
 
                     <div ref="scroller" class="search-results">
                         <WindowScroller
-                            class="scroller"
+                            class="scroller page-mode"
                             :items="shownResults"
                             :item-size="itemHeight"
                             :grid-items="columnCount"
