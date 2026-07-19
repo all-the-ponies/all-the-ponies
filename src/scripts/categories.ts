@@ -1,8 +1,9 @@
 import { language } from "@/globals"
 import { useSaveStore } from "@/stores/saveManager"
 import type { Ref } from "vue"
-import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType } from "../types/gameDataTypes"
+import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType, TranslatableString } from "../types/gameDataTypes"
 import { getObject, useGroupQuests, translateName, getTaskInfo } from "./gameData"
+import type { FilterFunctionsType, SortFunctionsType } from "@/types/searchTypes"
 
 const groupQuests = useGroupQuests()
 
@@ -84,26 +85,21 @@ export const PLURAL_CATEGORY_MAP: Record<string, CategoryName> = {
     tokens: 'token',
 }
 
-export interface SortFunctionsType {
-    name?: string | Ref,
-    check(a: GameObject, b: GameObject): number,
-    default?: boolean,
-    category?: CategoryName,
-    hidden?: boolean,
-}
-
 export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: SortFunctionsType}>> = {
     common: {
         index: {
             name: 'sorting.game_order',
-            check(a, b) {
+            check(a: {index: number}, b: {index: number}) {
                 return a.index - b.index
             },
             default: true,
         },
         alphabetically: {
             name: 'sorting.alphabetically',
-            check(a, b) {
+            check(
+              a: {name: TranslatableString, preferred_name?: TranslatableString},
+              b: {name: TranslatableString, preferred_name?: TranslatableString},
+            ) {
                 const name1 = translateName(a).value
                 const name2 = translateName(b).value
                 return new Intl.Collator(language.value.code).compare(name1, name2)
@@ -203,20 +199,8 @@ export const SortFunctions: Partial<Record<'common' | CategoryName, {[keys: stri
     }
 }
 
-export interface FilterFunctionsType {
-    name?: string | Ref,
-    // type: 'checkbox' | 'radio' | 'text' | 'number',
-    check?(gameObject: GameObject): boolean,
-    default?: boolean,
-    category?: CategoryName,
-    group?: string,
-    include?: string[],
-    exclude?: string[],
-    hidden?: boolean,
-    client?: boolean,
-}
 
-export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: FilterFunctionsType}>> = {
+export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: string]: FilterFunctionsType<GameObject>}>> = {
     pony: {
         playable: {
             name: "filter.pony.playable",

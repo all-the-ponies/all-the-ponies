@@ -1,5 +1,4 @@
 <script lang="ts" setup generic="ITEM extends {id: string | number, [key: string]: any}">
-import type { FilterFunctionsType, SortFunctionsType } from '@/scripts/categories'
 import { all, removeSymbols } from '@/scripts/common'
 import createFuzzySearch from '@nozbe/microfuzz'
 import { computedAsync, isClient, useElementSize, useMounted } from '@vueuse/core'
@@ -9,6 +8,7 @@ import { computed, nextTick, ref, useTemplateRef, watch, watchEffect } from 'vue
 import { WindowScroller } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 import DialogComponent from './DialogComponent.vue'
+import type { FilterFunctionsType, SortFunctionsType } from '@/types/searchTypes.ts'
 
 const pageContext = usePageContext()
 const isMounted = useMounted()
@@ -21,8 +21,8 @@ const props = withDefaults(defineProps<{
         data: ITEM[],
         getSearchText(item: ITEM): string[],
         getExactSearchText?(item: ITEM): string,
-        filters?: Record<string, FilterFunctionsType>,
-        sorters?: Record<string, SortFunctionsType>,
+        filters?: Record<string, FilterFunctionsType<ITEM>>,
+        sorters?: Record<string, SortFunctionsType<ITEM>>,
         query?: Record<string, string | string[] | number | null>,
         placeholder?: string,
         pageParam?: string,
