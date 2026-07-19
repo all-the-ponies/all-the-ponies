@@ -234,7 +234,7 @@ export function getFashionShowCollection(collectionId: string | FashionShowEntry
 }
 
 export function translateName(gameObject: MaybeRef<{
-    name: TranslatableString,
+    name?: TranslatableString,
     preferred_name?: TranslatableString,
 }>) {
     return computed(() => {

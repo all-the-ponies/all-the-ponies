@@ -373,6 +373,7 @@ export interface CostumeType extends Omit<GenericObjectType, 'category' | 'image
 export interface CostumePartType {
     index: number,
     id: GameObjectId,
+    name?: TranslatableString, // This doesn't exist, it's so typing is cleaner
     category: 'costume_part',
     image: ImageBase<'alt'>,
     model_name: string,
