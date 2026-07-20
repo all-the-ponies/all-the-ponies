@@ -37,3 +37,4 @@ requirements.local.txt
 
 .wrangler/
 .env
+resources/designs/
