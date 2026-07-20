@@ -323,6 +323,11 @@ export const useSaveStore = defineStore('save', {
                 .map(([critter, count]) => [getObject(critter, 'pony').critter_farm, count])
             )
             newSave.costumeParts = new Set(saveData.inventory.costume_parts)
+            newSave.avatars = new Set(saveData.inventory.avatars)
+            newSave.avatarFrames = new Set(saveData.inventory.avatar_frames)
+            newSave.backgrounds = new Set(saveData.inventory.backgrounds)
+            newSave.backgroundFrames = new Set(saveData.inventory.background_frames)
+            newSave.cutieMarks = new Set(saveData.inventory.cutie_marks)
 
             this.$state = newSave
 
