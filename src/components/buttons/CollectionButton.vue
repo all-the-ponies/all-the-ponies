@@ -20,7 +20,7 @@ const elementProps = computed(() => {
 
 <template>
     <component :is="props.href ? Link : 'button'" class="collection-button button-circle button-blue" v-bind="elementProps">
-        <img class="collection-icon" src="@/assets/images/ui/icons/collection-icon.png" alt="">
+        <img class="collection-icon" src="@/assets/images/ui/icons/collection-icon.png" :alt="$t('collection.collection')">
     </component>
 </template>
 
