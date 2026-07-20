@@ -1,8 +1,8 @@
 {
   "about": {
     "description": {
-      "body": "Todos los Ponis fue creado inicialmente por {me} como una página web para {quiz_link}, porque los cuestionarios que encontré en línea apenas rozaban la superficie de todos los ponis. Posteriormente se expandió como un recurso de información precisa sobre el juego, mantenerse al tanto de lo que tienes y por supuesto pequeñas actividades que puedes jugar.",
-      "quiz_link": "Nombre tantos ponis como puedas"
+      "body": "Todos los Ponis fue creado inicialmente por {me} como una página web para el cuestionario {quiz_link}, porque los cuestionarios que encontré en línea apenas rozaban la superficie de todos los ponis. Posteriormente se expandió como un recurso de información precisa sobre el juego, para mantenerte al tanto de lo que tienes y por supuesto, pequeñas actividades que puedes jugar.",
+      "quiz_link": "Nombra todos los ponis que puedas"
     },
     "sections": {
       "credits": {
