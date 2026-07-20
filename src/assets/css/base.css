@@ -125,8 +125,10 @@
     }
     
     .button-circle {
-        display: inline-grid;
-        place-items: center;
+        /* display: inline-grid; */
+        /* place-items: center; */
+        /* align-content: center; */
+        text-align: center;
     
         font-size: 1.3rem;
         line-height: 0;

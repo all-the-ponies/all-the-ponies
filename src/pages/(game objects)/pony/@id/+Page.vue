@@ -28,6 +28,7 @@ import TaskInfo from '@/components/TaskInfo.vue';
 import LazyImage from '@/components/LazyImage.vue';
 import { useBasePrice } from '@/composables/useBasePrice';
 import type { Data } from './+data';
+import CollectionButton from '@/components/buttons/CollectionButton.vue';
 
 const { t } = useI18n()
 const isMounted = useMounted()
@@ -173,6 +174,15 @@ const tasks = computed(() => {
     return result
 })
 
+const collectionLink = computed(() => {
+    if (!pony.value.collections.length) {
+        return null
+    } else if (pony.value.collections.length === 1) {
+        return `/collection/${pony.value.collections[0]}`
+    }
+    return `/search/collections/?q=${pony.value.id}`
+})
+
 </script>
 
 <template>
@@ -196,6 +206,7 @@ const tasks = computed(() => {
                 </template>
                 <template #image-left>
                     <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
+                    <CollectionButton v-if="collectionLink" :href="collectionLink"></CollectionButton>
                 </template>
                 <template #image-right>
                     <inventory-add-button :gameObject="pony?.id"></inventory-add-button>

@@ -9,6 +9,7 @@ import { computedAsync } from "@vueuse/core"
 import { computed, shallowRef } from 'vue'
 import AddToListButton from "./buttons/AddToListButton.vue"
 import GameCard from "./GameCard.vue"
+import CollectionButton from "./buttons/CollectionButton.vue"
 
 const shopManager = shopStore
 const groupQuests = useGroupQuests()
@@ -63,6 +64,15 @@ const showProIcon = computed(() => {
     return showPro
 })
 
+const collectionLink = computed(() => {
+    if (gameObject.value.category !== 'pony' || !gameObject.value.collections.length) {
+        return null
+    } else if (gameObject.value.collections.length === 1) {
+        return `/collection/${gameObject.value.collections[0]}`
+    }
+    return `/search/collections/?q=${gameObject.value.id}`
+})
+
 // const stars = computed({
 //   get() {
 //     if (saveStore.hasPony(gameObject.id)) {
@@ -106,6 +116,7 @@ const shopInfo = computedAsync(
     >
         <template #left>
             <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
+            <CollectionButton v-if="collectionLink" :href="collectionLink"></CollectionButton>
         </template>
         <template #right>
             <inventory-add-button v-if="gameObject && props.hasButtons && canAdd" :gameObject="gameObject?.id" />
