@@ -50,6 +50,7 @@ const componentProps = computed(() => {
     display: grid;
     align-items: center;
     justify-content: center;
+    justify-items: center;
     
     text-align: center;
     color: white;
