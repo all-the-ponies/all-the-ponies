@@ -444,5 +444,10 @@
       "seasonal_shop": "Boutique Saisonnière"
     },
     "title": "Boutique"
+  },
+  "maze": {
+    "title": {
+      "long": "Ailes perdues et labyrinthe"
+    }
   }
 }

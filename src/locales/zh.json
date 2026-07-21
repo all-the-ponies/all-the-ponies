@@ -447,5 +447,10 @@
     "message": {
       "duration": "持续时间"
     }
+  },
+  "maze": {
+    "title": {
+      "long": "消失的翅膀和迷宫"
+    }
   }
 }

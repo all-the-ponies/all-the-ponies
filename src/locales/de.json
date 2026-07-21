@@ -437,5 +437,10 @@
       "seasonal_shop": "Saisonaler Shop"
     },
     "title": "Shop"
+  },
+  "maze": {
+    "title": {
+      "long": "Fehlende Flügel und Verwirrende Sachen"
+    }
   }
 }

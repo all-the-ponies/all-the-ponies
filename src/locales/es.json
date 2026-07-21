@@ -478,5 +478,10 @@
       "task_icon": "Icono de tarea"
     },
     "task": "Tarea | Tareas"
+  },
+  "maze": {
+    "title": {
+      "long": "Alas perdidas y cosas de laberintos"
+    }
   }
 }

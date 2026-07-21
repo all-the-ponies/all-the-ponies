@@ -438,5 +438,10 @@
       "seasonal_shop": "Loja Da Temporada"
     },
     "title": "Loja"
+  },
+  "maze": {
+    "title": {
+      "long": "Asas Perdidas e Coisas de Labirinto"
+    }
   }
 }

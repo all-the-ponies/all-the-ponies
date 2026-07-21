@@ -487,5 +487,11 @@
       "alt_reward": "Alt Reward",
       "progress": "PROGRESS:"
     }
+  },
+  "maze": {
+    "title": {
+      "short": "Maze",
+      "long": "Missing Wings and Maze-y Things"
+    }
   }
 }

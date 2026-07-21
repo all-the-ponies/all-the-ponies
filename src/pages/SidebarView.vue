@@ -55,6 +55,7 @@ function toggleSidebar(e: Event) {
                         <Link href="/search/tokens/">{{ $t('game_object.token.token', 2) }}</Link>
                         <hr class="sidebar-separator">
                         <Link href="/search/collections/">{{ $t('collection.collection', 2) }}</Link>
+                        <Link href="/events/maze/">{{ $t('maze.title.short') }}</Link>
                         <hr class="sidebar-separator">
                         <Link href="/store/">{{ $t('store.title') }}</Link>
                         <Link href="/inventory/">{{ $t('inventory.title') }}</Link>

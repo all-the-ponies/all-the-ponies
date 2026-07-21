@@ -437,5 +437,10 @@
       "seasonal_shop": "Sezonluk Dükkan"
     },
     "title": "Mağaza"
+  },
+  "maze": {
+    "title": {
+      "long": "Kayıp Kanatlar, Alengirli Olaylar"
+    }
   }
 }

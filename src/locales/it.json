@@ -446,5 +446,10 @@
       "seasonal_shop": "Negozio Stagionale"
     },
     "title": "Negozio"
+  },
+  "maze": {
+    "title": {
+      "long": "Ali perdute e labirinti"
+    }
   }
 }
