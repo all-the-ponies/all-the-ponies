@@ -100,6 +100,10 @@
     "sort_by": "Сортировка"
   },
   "filter": {
+    "collection": {
+      "completed": "Завершенный",
+      "incomplete": "Незавершенный"
+    },
     "costume": {
       "used": "Используемый"
     },
