@@ -265,6 +265,11 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         },
     },
     house: {
+      base: {
+        default: true,
+        hidden: true,
+        exclude: ['unused'],
+      },
       unused: {
         name: "filter.pony.unused",
         check(house: HouseType) {
@@ -280,6 +285,12 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
       //   hidden: true,
       //   default: true,
       // },
+
+      base: {
+        default: true,
+        hidden: true,
+        exclude: ['unused'],
+      },
       bits: {
         name: translateName(getObject('Bits', 'item')),
         check(gameObject: ShopType) {
@@ -320,6 +331,10 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         exclude: ['maze'],
         client: true,
       },
+      unused: {
+          name: "filter.pony.unused",
+          check(gameObject: ShopType) {return gameObject.tags?.includes('unused')},
+      },
     },
     decor: {
       regular: {
@@ -327,7 +342,8 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         check(gameObject: DecorType) {
           return !gameObject.pro.is_pro
         },
-        // default: true
+        default: true,
+        exclude: ['unused'],
       },
       pro: {
         name: 'game_object.decor.pro_decor',
