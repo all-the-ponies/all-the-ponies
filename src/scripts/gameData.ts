@@ -71,6 +71,12 @@ export function getMazeData(): MazeData {
     return gameDataCache?.mazeData
 }
 
+export const mazeGridSize = 18
+export const mazeGridOffset = {
+    x: 6,
+    y: 4,
+}
+
 
 export function useGameVersions() {
     return computed(() => {
