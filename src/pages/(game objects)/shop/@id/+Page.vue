@@ -105,7 +105,7 @@ const xpName = translateName(getObject('XP', 'item'))
                                     </Link>
                                 </td>
                             </tr>
-                            <tr v-if="(basePrice.currency && basePrice.price) || (basePrice.token && basePrice.tokens)">
+                            <tr v-if="(basePrice?.currency && basePrice?.price) || (basePrice?.token && basePrice?.tokens)">
                                 <td>{{ $t('common.price') }}</td>
                                 <td>
                                     <template v-if="basePrice.token && basePrice.tokens">
