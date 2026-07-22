@@ -1,7 +1,7 @@
 import { language } from "@/globals"
 import { useSaveStore } from "@/stores/saveManager"
 import type { Ref } from "vue"
-import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType, TranslatableString } from "../types/gameDataTypes"
+import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType, TranslatableString, HouseType } from "../types/gameDataTypes"
 import { getObject, useGroupQuests, translateName, getTaskInfo } from "./gameData"
 import type { FilterFunctionType, SortFunctionType } from "@/types/searchTypes"
 
@@ -263,6 +263,14 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
           include: ['playable'],
           client: true,
         },
+    },
+    house: {
+      unused: {
+        name: "filter.pony.unused",
+        check(house: HouseType) {
+          return house.tags.includes('unused')
+        }
+      }
     },
     shop: {
       // base: {
