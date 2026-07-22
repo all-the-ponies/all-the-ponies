@@ -1,7 +1,7 @@
 import { language } from "@/globals"
 import { useSaveStore } from "@/stores/saveManager"
 import type { Ref } from "vue"
-import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType, TranslatableString } from "../types/gameDataTypes"
+import type { CategoryName, DecorType, GameObject, Location, PonyType, ShopType, CostumeType, TranslatableString, HouseType } from "../types/gameDataTypes"
 import { getObject, useGroupQuests, translateName, getTaskInfo } from "./gameData"
 import type { FilterFunctionType, SortFunctionType } from "@/types/searchTypes"
 
@@ -264,6 +264,19 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
           client: true,
         },
     },
+    house: {
+      base: {
+        default: true,
+        hidden: true,
+        exclude: ['unused'],
+      },
+      unused: {
+        name: "filter.pony.unused",
+        check(house: HouseType) {
+          return house.tags.includes('unused')
+        }
+      }
+    },
     shop: {
       // base: {
       //   check(gameObject: ShopType) {
@@ -272,6 +285,12 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
       //   hidden: true,
       //   default: true,
       // },
+
+      base: {
+        default: true,
+        hidden: true,
+        exclude: ['unused'],
+      },
       bits: {
         name: translateName(getObject('Bits', 'item')),
         check(gameObject: ShopType) {
@@ -312,6 +331,10 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         exclude: ['maze'],
         client: true,
       },
+      unused: {
+          name: "filter.pony.unused",
+          check(gameObject: ShopType) {return gameObject.tags?.includes('unused')},
+      },
     },
     decor: {
       regular: {
@@ -319,7 +342,8 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         check(gameObject: DecorType) {
           return !gameObject.pro.is_pro
         },
-        // default: true
+        default: true,
+        exclude: ['unused'],
       },
       pro: {
         name: 'game_object.decor.pro_decor',

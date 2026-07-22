@@ -485,7 +485,9 @@ watch(
         >
 
             <div class="dialog-options">
-                <label v-for="filterKey in Object.keys(props.filters)" :key="filterKey">
+                <label v-for="filterKey in Object.keys(props.filters).filter(
+                    filterKey => !props.filters[filterKey].hidden
+                )" :key="filterKey">
                     <input type="checkbox" name="filterMethod" :value="filterKey" v-model="_selectedFilters[filterKey]">
                     {{ typeof props.filters[filterKey].name === 'string' ? $t(props.filters[filterKey].name) : props.filters[filterKey].name }}
                 </label>

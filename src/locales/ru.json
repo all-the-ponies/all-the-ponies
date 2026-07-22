@@ -41,7 +41,12 @@
     }
   },
   "collection": {
-    "collection": "Коллекция | Коллекции"
+    "collection": "Коллекция | Коллекции",
+    "message": {
+      "alt_reward": "Альтернативная награда",
+      "progress": "ПРОГРЕСС:",
+      "reward": "Награда"
+    }
   },
   "common": {
     "date": {
