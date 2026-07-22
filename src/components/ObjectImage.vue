@@ -18,10 +18,13 @@ const objectInfo = computed(() => getObject(props.object))
 // const objectInfo = computedAsync(async () => await getObject(props.object))
 
 const image = computed(() => {
+    if (!objectInfo.value?.image) {
+        return
+    }
     if (props.type in objectInfo.value?.image) {
         return objectInfo.value?.image[props.type].path
     }
-    return objectInfo.value?.image['main'].path
+    return objectInfo.value?.image?.main?.path
 })
 
 // const name = computed(() => {
