@@ -61,8 +61,8 @@ console.log('mapSize', mapSize, mapCenter)
 
 function rotateNeg90(x: number, y: number) {
     return {
-        x: Math.round(mapCenter.x + (y - mapCenter.x)),
-        y: Math.round(mapCenter.y - (x - mapCenter.y)),
+        x: Math.round(mapCenter.x + (y - mapCenter.y)),
+        y: Math.round(mapCenter.y - (x - mapCenter.x)),
     }
 }
 
@@ -112,7 +112,7 @@ function clickTile(tile: MapTile) {
     display: grid;
     max-width: 25rem;
     width: 100%;
-    grid-template-columns: repeat(v-bind('mapSize.width - 2'), 1fr);
+    grid-template-columns: repeat(v-bind('mapSize.height - 2'), 1fr);
     /* transform: rotate(-90deg); */
     /* rotate: -120deg; */
 }
@@ -130,9 +130,6 @@ function clickTile(tile: MapTile) {
     /* border: 1px solid rgba(211 211 211 / 0.2); */
     border: none;
     position: relative;
-
-    --border-width: 2px;
-    --border-color: black;
 }
 
 .maze-tile:hover,
