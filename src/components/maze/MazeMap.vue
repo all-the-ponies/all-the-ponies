@@ -111,6 +111,7 @@ function clickTile(tile: MapTile) {
 .maze-container {
     display: grid;
     max-width: 25rem;
+    width: 100%;
     grid-template-columns: repeat(v-bind('mapSize.width - 2'), 1fr);
     /* transform: rotate(-90deg); */
     /* rotate: -120deg; */

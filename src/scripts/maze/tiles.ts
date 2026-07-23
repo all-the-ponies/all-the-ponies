@@ -37,11 +37,6 @@ export const mazeTileConfig: Record<MazeTileType, MazeTileConfig> = {
         name: 'maze.tile.start',
         check: (tile) => tile.entity?.id == 'MazeBlock_Start',
     },
-    end: {
-        id: 'end',
-        color: '#fdd666',
-        name: 'maze.tile.end',
-    },
     miniboss: {
         id: 'miniboss',
         color: '#e99898',
@@ -57,7 +52,7 @@ export const mazeTileConfig: Record<MazeTileType, MazeTileConfig> = {
     boss: {
         id: 'boss',
         color: '#cc3e2d',
-        name: 'maze.tile.miniboss',
+        name: 'maze.tile.boss',
         check: (tile) => {
             if (tile.entity?.type != 'MazeBoss') {
                 return false
@@ -69,7 +64,7 @@ export const mazeTileConfig: Record<MazeTileType, MazeTileConfig> = {
     chest: {
         id: 'chest',
         color: '#b4d6a8',
-        name: 'maze.tile.miniboss',
+        name: 'maze.tile.chest',
         check: (tile) => tile.entity?.type == 'MazeChest',
     },
     helperShop: {

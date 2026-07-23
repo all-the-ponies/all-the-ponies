@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import MazeMap from '@/components/maze/MazeMap.vue';
+import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
 import { Config } from 'vike-vue/Config';
 
 
@@ -19,12 +20,20 @@ import { Config } from 'vike-vue/Config';
             </label>
             <button class="button button-blue">Import</button>
         </section>
-        <section class="section">
+        <section class="section map-zection">
             <MazeMap @click-tile="(tile) => console.log('tile', tile)"></MazeMap>
+            <MazeMapLegend></MazeMapLegend>
         </section>
     </div>
 </template>
 
 <style lang="css" scoped>
+
+.map-zection {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
 
 </style>
