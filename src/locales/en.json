@@ -502,6 +502,9 @@
       "helper_shop": "Helper Shop",
       "coin_shop": "Magic Coin Shop",
       "skippable": "Skippable Tile"
+    },
+    "message": {
+      "import_progress": "Import progress:"
     }
   }
 }

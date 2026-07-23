@@ -1,8 +1,18 @@
 <script setup lang="ts">
 import MazeMap from '@/components/maze/MazeMap.vue';
 import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
+import { getMazeData } from '@/scripts/gameData';
+import type { MapTile } from '@/scripts/maze/tiles';
 import { Config } from 'vike-vue/Config';
+import { ref } from 'vue';
 
+const mazeData = getMazeData()
+
+const selectedTile = ref<MapTile>()
+
+function selectTile(tile: MapTile) {
+    selectedTile.value = tile
+}
 
 </script>
 
@@ -15,21 +25,24 @@ import { Config } from 'vike-vue/Config';
         </section>
         <section class="section">
             <label>
-                Import progress:
-                <input class="text-box" placeholder="Friend code" type="text">
+                {{ $t('maze.message.import_progress') }}
+                <input class="text-box" :placeholder="$t('player_info.friend_code')" type="text">
             </label>
-            <button class="button button-blue">Import</button>
+            <button class="button button-blue">{{ $t('common.import') }}</button>
         </section>
-        <section class="section map-zection">
-            <MazeMap @click-tile="(tile) => console.log('tile', tile)"></MazeMap>
+        <section class="section map-section">
+            <MazeMap @click-tile="selectTile"></MazeMap>
             <MazeMapLegend></MazeMapLegend>
+        </section>
+        <section>
+
         </section>
     </div>
 </template>
 
 <style lang="css" scoped>
 
-.map-zection {
+.map-section {
     display: flex;
     gap: 0.5rem;
     justify-content: space-around;
