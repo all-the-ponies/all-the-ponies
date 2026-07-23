@@ -1,7 +1,7 @@
 import ky, { HTTPError } from 'ky'
 import { computed, ref, toValue, unref, watch, watchEffect, type MaybeRef } from 'vue'
 import { language } from '../globals'
-import type { CategoryName, CategoryType, CollectionData, CollectionType, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, MazeData, TaskEntry, TasksData, TranslatableString } from '../types/gameDataTypes'
+import type { CategoryName, CategoryType, CollectionData, CollectionType, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, MazeBossType, MazeChestType, MazeData, TaskEntry, TasksData, TranslatableString } from '../types/gameDataTypes'
 import { createAssetUrl } from './assets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
@@ -255,6 +255,21 @@ export function getFashionShowCollection(collectionId: string | FashionShowEntry
     }
     return getCollectionData().fashion_show[collectionId] ?? null
 }
+
+
+export function getMazeBoss(bossId: string | MazeBossType): MazeBossType | null {
+    if (typeof bossId !== 'string') {
+        return bossId
+    }
+    return getMazeData().bosses[bossId] ?? null
+}
+export function getMazeChest(chestId: string | MazeChestType): MazeChestType | null {
+    if (typeof chestId !== 'string') {
+        return chestId
+    }
+    return getMazeData().chests[chestId] ?? null
+}
+
 
 export function translateName(gameObject: MaybeRef<{
     name?: TranslatableString,

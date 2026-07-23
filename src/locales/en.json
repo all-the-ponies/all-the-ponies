@@ -492,6 +492,16 @@
     "title": {
       "short": "Maze",
       "long": "Missing Wings and Maze-y Things"
+    },
+    "tile": {
+      "start": "Start",
+      "end": "End",
+      "miniboss": "Minotaurocellus",
+      "boss": "Boss",
+      "chest": "Chest",
+      "helper_shop": "Helper Shop",
+      "coin_shop": "Magic Coin Shop",
+      "skippable": "Skippable Tile"
     }
   }
 }

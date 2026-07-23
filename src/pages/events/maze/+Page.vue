@@ -12,8 +12,15 @@ import { Config } from 'vike-vue/Config';
         <section>
             <h1>{{ $t('maze.title.long') }}</h1>
         </section>
-        <section>
-            <MazeMap></MazeMap>
+        <section class="section">
+            <label>
+                Import progress:
+                <input class="text-box" placeholder="Friend code" type="text">
+            </label>
+            <button class="button button-blue">Import</button>
+        </section>
+        <section class="section">
+            <MazeMap @click-tile="(tile) => console.log('tile', tile)"></MazeMap>
         </section>
     </div>
 </template>
