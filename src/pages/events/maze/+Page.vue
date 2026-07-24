@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import HelperShop from '@/components/maze/HelperShop.vue';
+import MazeInfoContainer from '@/components/maze/MazeInfoContainer.vue';
 import MazeMap from '@/components/maze/MazeMap.vue';
 import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
-import { getMazeData } from '@/scripts/gameData';
+import { getMazeChest, getMazeData } from '@/scripts/gameData';
 import type { MapTile } from '@/scripts/maze/tiles';
 import { Config } from 'vike-vue/Config';
 import { ref } from 'vue';
@@ -12,6 +14,10 @@ const selectedTile = ref<MapTile>()
 
 function selectTile(tile: MapTile) {
     selectedTile.value = tile
+}
+
+function close() {
+    selectedTile.value = null
 }
 
 </script>
@@ -32,10 +38,12 @@ function selectTile(tile: MapTile) {
         </section>
         <section class="section map-section">
             <MazeMap @click-tile="selectTile"></MazeMap>
-            <MazeMapLegend></MazeMapLegend>
+            <div class="info-container" v-if="selectedTile?.type == 'helperShop'">
+                <HelperShop :shop-id="selectedTile.entity.id" @close="close()"></HelperShop>
+            </div>
+            <MazeMapLegend v-else class="map-legend"></MazeMapLegend>
         </section>
-        <section>
-
+        <section class="section">
         </section>
     </div>
 </template>
@@ -45,8 +53,22 @@ function selectTile(tile: MapTile) {
 .map-section {
     display: flex;
     gap: 0.5rem;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.map-legend {
+    justify-self: center;
+    flex-grow: 1;
+}
+
+.info-container {
+    justify-self: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    min-width: 0;
+    flex-basis: 24rem;
 }
 
 </style>

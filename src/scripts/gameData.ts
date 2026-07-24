@@ -1,7 +1,7 @@
 import ky, { HTTPError } from 'ky'
 import { computed, ref, toValue, unref, watch, watchEffect, type MaybeRef } from 'vue'
 import { language } from '../globals'
-import type { CategoryName, CategoryType, CollectionData, CollectionType, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, MazeBossType, MazeChestType, MazeData, TaskEntry, TasksData, TranslatableString } from '../types/gameDataTypes'
+import type { CategoryName, CategoryType, CollectionData, CollectionType, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, MazeBossType, MazeChestType, MazeData, MazePonyType, TaskEntry, TasksData, TranslatableString } from '../types/gameDataTypes'
 import { createAssetUrl } from './assets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
@@ -268,6 +268,12 @@ export function getMazeChest(chestId: string | MazeChestType): MazeChestType | n
         return chestId
     }
     return getMazeData().chests[chestId] ?? null
+}
+export function getMazePony(mazePonyId: string | MazePonyType): MazePonyType | null {
+    if (typeof mazePonyId !== 'string') {
+        return mazePonyId
+    }
+    return getMazeData().ponies[mazePonyId] ?? null
 }
 
 
