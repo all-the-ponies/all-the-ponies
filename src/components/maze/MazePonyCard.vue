@@ -103,11 +103,12 @@ const name = translateName(pony)
 }
 
 .card-body {
+    display: grid;
+    justify-content: center;
     padding: 0.4rem;
     width: 100%;
     height: 80%;
     position: relative;
-    display: grid;
     grid-template-rows: 75% 25%;
 }
 
