@@ -19,10 +19,10 @@ const tierData = computed(() => mazeData.shop_tiers[shopInfo.value.tier])
 
 <template>
     <MazeInfoContainer class="maze-shop" @close="emit('close')">
-        <template #title>Secret Shop</template>
+        <template #title>{{ $t('maze.tile.helper_shop') }}</template>
         <div class="pony-card" v-for="pony in tierData.slots">
             <MazePonyCard :maze-pony="pony.id"></MazePonyCard>
-            <PriceButton currency="Consumable_Maze_Tier0">{{ pony.price }}</PriceButton>
+            <PriceButton currency="Consumable_Maze_Tier0">{{ $n(pony.price) }}</PriceButton>
         </div>
     </MazeInfoContainer>
 
