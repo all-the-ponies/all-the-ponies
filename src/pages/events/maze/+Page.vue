@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import ChestPreview from '@/components/maze/ChestPreview.vue';
 import HelperShop from '@/components/maze/HelperShop.vue';
+import MazeChestPreview from '@/components/maze/MazeChestPreview.vue';
 import MazeInfoContainer from '@/components/maze/MazeInfoContainer.vue';
 import MazeMap from '@/components/maze/MazeMap.vue';
 import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
@@ -40,6 +42,9 @@ function close() {
             <MazeMap @click-tile="selectTile"></MazeMap>
             <div class="info-container" v-if="selectedTile?.type == 'helperShop'">
                 <HelperShop :shop-id="selectedTile.entity.id" @close="close()"></HelperShop>
+            </div>
+            <div class="info-container" v-else-if="selectedTile?.type == 'chest'">
+                <MazeChestPreview :chest-id="selectedTile.entity.id" @close="close()"></MazeChestPreview>
             </div>
             <MazeMapLegend v-else class="map-legend"></MazeMapLegend>
         </section>
