@@ -28,7 +28,7 @@ const tierData = computed(() => mazeData.shop_tiers[shopInfo.value.tier])
     </MazeInfoContainer>
 
     <InfoCard type="tip">
-        Only buy the cheapest pony, and do not go back to previous shops
+        {{ $t('maze.tips.buying_helpers') }}
     </InfoCard>
 </template>
 

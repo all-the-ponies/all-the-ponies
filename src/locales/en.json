@@ -505,6 +505,9 @@
     },
     "message": {
       "import_progress": "Import progress:"
+    },
+    "tips": {
+      "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops"
     }
   },
   "info_card": {
