@@ -4,6 +4,7 @@ import MazePonyCard from './MazePonyCard.vue';
 import { computed } from 'vue';
 import PriceButton from '../buttons/PriceButton.vue';
 import MazeInfoContainer from './MazeInfoContainer.vue';
+import InfoCard from '../InfoCard.vue';
 
 const emit = defineEmits(['close'])
 
@@ -26,9 +27,9 @@ const tierData = computed(() => mazeData.shop_tiers[shopInfo.value.tier])
         </div>
     </MazeInfoContainer>
 
-    <p style="width: 100%; min-width: 0;">
-        Tip: Only buy the cheapest pony, and do not go back to previous shops
-    </p>
+    <InfoCard type="tip">
+        Only buy the cheapest pony, and do not go back to previous shops
+    </InfoCard>
 </template>
 
 <style lang="css" scoped>

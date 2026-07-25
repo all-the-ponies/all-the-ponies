@@ -506,5 +506,13 @@
     "message": {
       "import_progress": "Import progress:"
     }
+  },
+  "info_card": {
+    "info": "Info",
+    "note": "Note",
+    "tip": "Tip",
+    "important": "Important",
+    "warning": "Warning",
+    "error": "Error"
   }
 }
