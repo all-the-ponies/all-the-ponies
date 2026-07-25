@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ChestPreview from '@/components/maze/ChestPreview.vue';
 import HelperShop from '@/components/maze/HelperShop.vue';
 import MazeChestPreview from '@/components/maze/MazeChestPreview.vue';
 import MazeInfoContainer from '@/components/maze/MazeInfoContainer.vue';

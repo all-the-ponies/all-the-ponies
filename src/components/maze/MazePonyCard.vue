@@ -6,6 +6,7 @@ import ObjectImage from "../ObjectImage.vue"
 import type { MazePonyType } from '@/types/gameDataTypes.ts';
 import { getMazePony, getObject, translateName } from '@/scripts/gameData.ts';
 import { createAssetUrl } from '@/scripts/assets.ts';
+import { useSaveStore } from '@/stores/saveManager.ts';
 
 const props = defineProps<{
     mazePony: string | MazePonyType,
@@ -13,11 +14,14 @@ const props = defineProps<{
     hover?: boolean,
 }>()
 
+const saveStore = useSaveStore()
+
 const mazePony = computed(() => getMazePony(props.mazePony))
 const pony = computed(() => getObject(mazePony.value.pony, 'pony'))
 const name = translateName(pony)
 
 const href = computed(() => props.href || (pony.value ? `/${pony.value.category}/${pony.value.id}/` : null))
+const isOwned = computed(() => saveStore.hasPony(pony.value?.id))
 
 </script>
 
@@ -26,6 +30,7 @@ const href = computed(() => props.href || (pony.value ? `/${pony.value.category}
         <component :is="href ? Link : 'span'" class="card-inner" :href="href">
             <span class="object-name">
                 {{ name }}
+                <img v-if="isOwned" class="owned-icon" src="@/assets/images/ui/maze/maze-upgrade-icon.png" :alt="$t('maze.pony_card.upgraded')" :title="$t('maze.pony_card.upgraded')">
             </span>
             <div class="card-body">
                 <LazyImage v-if="pony" :src="createAssetUrl(pony.image.main.path)" :alt="name" loading="lazy" class="object-image" />
@@ -87,6 +92,8 @@ const href = computed(() => props.href || (pony.value ? `/${pony.value.category}
 }
 
 .object-name {
+    position: relative;
+
     font-size: 10cqw;
     word-break: break-word;
     text-shadow: var(--text-shadow);
@@ -102,6 +109,13 @@ const href = computed(() => props.href || (pony.value ? `/${pony.value.category}
     
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
+}
+
+.owned-icon {
+    position: absolute;
+    width: 20%;
+    right: 5%;
+    top: 70%;
 }
 
 .card-body {

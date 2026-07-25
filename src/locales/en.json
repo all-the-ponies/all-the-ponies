@@ -508,6 +508,9 @@
     },
     "tips": {
       "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops"
+    },
+    "pony_card": {
+      "upgraded": "Upgraded"
     }
   },
   "info_card": {
