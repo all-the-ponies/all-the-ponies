@@ -53,7 +53,7 @@ const chestRewards = computed(() => mazeData.chest_rewards[chest.value.tier])
     align-items: center;
     justify-content: center;
     justify-items: center;
-    max-height: 20rem;
+    max-height: 21rem;
     overflow-y: auto;
 }
 
