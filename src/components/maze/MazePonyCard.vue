@@ -17,11 +17,13 @@ const mazePony = computed(() => getMazePony(props.mazePony))
 const pony = computed(() => getObject(mazePony.value.pony, 'pony'))
 const name = translateName(pony)
 
+const href = computed(() => props.href || (pony.value ? `/${pony.value.category}/${pony.value.id}/` : null))
+
 </script>
 
 <template>
-    <div class="object-card" :class="{hoverable: (!!$props.href || props.hover)}">
-        <component :is="props.href ? Link : 'span'" class="card-inner" :href="props.href">
+    <div class="object-card" :class="{hoverable: (!!href || props.hover)}">
+        <component :is="href ? Link : 'span'" class="card-inner" :href="href">
             <span class="object-name">
                 {{ name }}
             </span>
