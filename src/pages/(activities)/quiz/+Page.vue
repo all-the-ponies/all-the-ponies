@@ -48,6 +48,9 @@ const ponies = computed(() => {
 
     if (!gameObjects.value) return []
     for (let pony of Object.values(gameObjects.value.pony.objects)) {
+        if (pony.critter_farm) {
+            continue
+        }
         if (!options.value.includeUnused && (pony.tags.includes('unused') || pony.tags.includes('npc'))) {
           continue
         }
