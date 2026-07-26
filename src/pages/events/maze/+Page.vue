@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import HelperShop from '@/components/maze/HelperShop.vue';
 import MazeChestPreview from '@/components/maze/MazeChestPreview.vue';
+import MazeCoinShop from '@/components/maze/MazeCoinShop.vue';
 import MazeInfoContainer from '@/components/maze/MazeInfoContainer.vue';
 import MazeMap from '@/components/maze/MazeMap.vue';
 import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
@@ -45,6 +46,9 @@ function close() {
             <div class="info-container" v-else-if="selectedTile?.type == 'chest'">
                 <MazeChestPreview :chest-id="selectedTile.entity.id" @close="close()"></MazeChestPreview>
             </div>
+            <div class="info-container" v-else-if="selectedTile?.type == 'coinShop'">
+                <MazeCoinShop :shop-id="selectedTile.coin_shop" @close="close()"></MazeCoinShop>
+            </div>
             <MazeMapLegend v-else class="map-legend"></MazeMapLegend>
         </section>
         <section class="section">
@@ -70,9 +74,11 @@ function close() {
 .info-container {
     justify-self: center;
     flex-grow: 1;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
     min-width: 0;
     flex-basis: 24rem;
+    
+    
 }
 
 </style>
