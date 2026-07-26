@@ -38,6 +38,7 @@ const chestRewards = computed(() => mazeData.chest_rewards[chest.value.tier])
     position: relative;
     /* width: 100%; */
     padding-block: 1rem;
+    padding-inline: 0.5rem;
     background-color: white;
 
     --border-color: hsl(211, 30%, 55%);
