@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import WeblateButton from '@/components/buttons/socials/WeblateButton.vue';
 import Link from '@/components/Link.vue';
+import DialogNotice from '@/components/notice/DialogNotice.vue';
 import Notice from '@/components/notice/Notice.vue';
 import links from '@/globals/links';
 
@@ -33,6 +34,13 @@ import links from '@/globals/links';
             </div>
         </div>
     </Notice>
+    <DialogNotice
+        notice-id="v5_arks"
+        start-date="2026-07-04T11:00Z"
+        :title="$t('notices.v5_arks.title')"
+    >
+        {{ $t('notices.v5_arks.body') }}
+    </DialogNotice>
 </template>
 
 <style lang="scss" scoped>

@@ -326,6 +326,14 @@
     "help_wanted": {
       "body": "I only speak English, so I can't translate All The Ponies to other languages. If your language that is already on the site is not fully or well translated, I would really love your help. No coding knowledge is required because Weblate makes translating easy for anyone.",
       "title": "Help Wanted!"
+    },
+    "v5_arks": {
+      "title": "Important",
+      "body": "Unfortunately All The Ponies won't get the latest update because Gameloft has changed how the game files are stored, breaking the tools that were used to read them. I and other dataminers are working hard to figure out how to extract the new files, but don't expect anything anytime soon."
+    },
+    "v5_arks_cracked": {
+      "title": "Update",
+      "body": "I am pleased to say that All The Ponies has been updated to {version} because dataminers have figured out how to read the new files! Thank you to everyone who helped, and thanks everyone else for being patient with us."
     }
   },
   "player_info": {
