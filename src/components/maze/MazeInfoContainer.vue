@@ -63,7 +63,7 @@ const emit = defineEmits(['close'])
     right: 0;
     translate: 50% -50%;
 
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: 1.2em;
     height: 1.2em;
 }
