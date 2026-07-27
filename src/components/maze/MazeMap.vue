@@ -22,6 +22,10 @@ function normalizePosition(x: number, y: number) {
     }
 }
 
+function createLabel(x: number, y: number) {
+    return `${String.fromCharCode(64 + y)}${x}`
+}
+
 for (let block of mazeData.map.blocks) {
     const {x,y} = normalizePosition(block.x, block.y)
 
@@ -31,8 +35,17 @@ for (let block of mazeData.map.blocks) {
 
     map[x][y] = {
         connections: block.connections,
-        x: x,
-        y: y,
+        position: {
+            original: {
+                x: block.x,
+                y: block.y,
+            },
+            normalized: {
+                x: x,
+                y: y,
+            },
+        },
+        label: createLabel(x,y),
         entity: block.entity,
     }
 }
@@ -64,13 +77,14 @@ function rotateNeg90(x: number, y: number) {
 map.flat().forEach(tile => tile.type = getTileType(tile))
 
 const flattenedMap = map.flat().filter(tile => 
-    tile.x !== 0 && tile.x + 1 !== mapSize.width &&
-    tile.y !== 0 && tile.y + 1 !== mapSize.height
-).map(tile => ({
-    tile: tile,
-    visualPos: rotateNeg90(tile.x, tile.y)
-})).sort((a, b) => 
-    a.visualPos.y - b.visualPos.y || a.visualPos.x - b.visualPos.x
+    tile.position.normalized.x !== 0 && tile.position.normalized.x + 1 !== mapSize.width &&
+    tile.position.normalized.y !== 0 && tile.position.normalized.y + 1 !== mapSize.height
+)
+flattenedMap.forEach(tile => 
+    tile.position.visual = rotateNeg90(tile.position.normalized.x, tile.position.normalized.y)
+)
+flattenedMap.sort((a, b) => 
+    a.position.visual.y - b.position.visual.y || a.position.visual.x - b.position.visual.x
 )
 
 const visualMapSize = {
@@ -83,10 +97,8 @@ function clickTile(tile: MapTile) {
     emit('clickTile', tile)
 }
 
-function selectTile(x: number, y: number) {
-    if (map[x] && map[x][y]) {
-        clickTile(map[x][y])
-    }
+function selectTile(label: string) {
+    clickTile(flattenedMap.find(tile => tile.label == label))
 }
 
 defineExpose({
@@ -118,20 +130,20 @@ defineExpose({
             class="maze-tile"
             v-for="tile in flattenedMap"
             :class="{
-                'tile-left': !tile.tile.connections.south_west,
-                'tile-bottom': !tile.tile.connections.south_east,
-                'tile-right': !tile.tile.connections.north_east,
-                'tile-top': !tile.tile.connections.north_west,
+                'tile-left': !tile.connections.south_west,
+                'tile-bottom': !tile.connections.south_east,
+                'tile-right': !tile.connections.north_east,
+                'tile-top': !tile.connections.north_west,
 
-                'selected-tile': selectedTile && tile.tile.x == selectedTile.x && tile.tile.y == selectedTile.y && selectableTiles.includes(tile.tile.type),
+                'selected-tile': selectedTile && tile.position.normalized.x == selectedTile.position.normalized.x && tile.position.normalized.y == selectedTile.position.normalized.y && selectableTiles.includes(tile.type),
             }"
             :style="{
-                gridColumn: tile.visualPos.x + 1,
-                gridRow: tile.visualPos.y + 1,
-                '--tile-color': tile.tile.type ? mazeTileConfig[tile.tile.type].color : 'white',
+                gridColumn: tile.position.visual.x + 1,
+                gridRow: tile.position.visual.y + 1,
+                '--tile-color': tile.type ? mazeTileConfig[tile.type].color : 'white',
             }"
-            :key="`tile-${tile.visualPos.x},${tile.visualPos.y}`"
-            @click="clickTile(tile.tile)"
+            :key="`tile-${tile.label}`"
+            @click="clickTile(tile)"
         ></button>
     </div>
 </template>

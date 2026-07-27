@@ -10,12 +10,15 @@ import { notNullIsh } from '@/scripts/common';
 import { getMazeChest, getMazeData } from '@/scripts/gameData';
 import type { MapTile } from '@/scripts/maze/tiles';
 import { Config } from 'vike-vue/Config';
+import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { modifyUrl } from 'vike/modifyUrl';
 import { onMounted, ref, useTemplateRef, watch } from 'vue';
+import type { Data } from './+data';
 
 const mazeData = getMazeData()
 const pageContext = usePageContext()
+const data = useData<Data>()
 const mapElement = useTemplateRef('map-element')
 
 const selectedTile = ref<MapTile>()
@@ -49,7 +52,7 @@ watch(
                 pageContext.urlOriginal,
                 {
                     search: {
-                        tile: `${selectedTile.value.x}x${selectedTile.value.y}`
+                        tile: `${selectedTile.value.label}`
                     }
                 }
             )
@@ -59,13 +62,7 @@ watch(
 
 onMounted(() => {
     if (pageContext.urlParsed.search.tile) {
-        const split = pageContext.urlParsed.search.tile.split('x')
-        const x = parseInt(split[0])
-        const y = parseInt(split[1])
-
-        if (notNullIsh(x) && notNullIsh(y)) {
-            mapElement.value.selectTile(x,y)
-        }
+        mapElement.value.selectTile(pageContext.urlParsed.search.tile)
     }
 })
 

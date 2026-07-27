@@ -5,8 +5,21 @@ export type MazeTileType = 'start' | 'end' | 'miniboss' | 'boss' | 'chest' | 'he
 
 export interface MapTile {
     connections: MazeMapBlock['connections'],
-    x: number,
-    y: number,
+    position: {
+        original: {
+            x: number,
+            y: number,
+        },
+        normalized: {
+            x: number,
+            y: number,
+        },
+        visual?: {
+            x: number,
+            y: number,
+        },
+    },
+    label: string,
     entity: MazeBlockEntity,
     coin_shop?: string,
     type?: MazeTileType,
