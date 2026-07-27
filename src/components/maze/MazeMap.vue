@@ -73,6 +73,11 @@ const flattenedMap = map.flat().filter(tile =>
     a.visualPos.y - b.visualPos.y || a.visualPos.x - b.visualPos.x
 )
 
+const visualMapSize = {
+    width: mapSize.height - 2,
+    height: mapSize.width - 2,
+}
+
 function clickTile(tile: MapTile) {
     selectedTile.value = tile
     emit('clickTile', tile)
@@ -92,6 +97,23 @@ defineExpose({
 
 <template>
     <div class="maze-container">
+        <span
+            class="grid-label"
+            v-for="index in visualMapSize.width"
+            :style="{
+                gridColumn: index + 1,
+                gridRow: 1,
+            }"
+        >{{ String.fromCharCode(64 + index) }}</span>
+        <span
+            class="grid-label"
+            v-for="index in visualMapSize.height"
+            :style="{
+                gridColumn: 1,
+                gridRow: index + 1,
+            }"
+        >{{ index }}</span>
+        
         <button
             class="maze-tile"
             v-for="tile in flattenedMap"
@@ -104,8 +126,8 @@ defineExpose({
                 'selected-tile': selectedTile && tile.tile.x == selectedTile.x && tile.tile.y == selectedTile.y && selectableTiles.includes(tile.tile.type),
             }"
             :style="{
-                gridColumn: tile.visualPos.x,
-                gridRow: tile.visualPos.y,
+                gridColumn: tile.visualPos.x + 1,
+                gridRow: tile.visualPos.y + 1,
                 '--tile-color': tile.tile.type ? mazeTileConfig[tile.tile.type].color : 'white',
             }"
             :key="`tile-${tile.visualPos.x},${tile.visualPos.y}`"
@@ -120,9 +142,35 @@ defineExpose({
     display: grid;
     max-width: 25rem;
     width: 100%;
-    grid-template-columns: repeat(v-bind('mapSize.height - 2'), 1fr);
+    grid-template-columns: repeat(v-bind('visualMapSize.width + 1'), 1fr);
     /* transform: rotate(-90deg); */
     /* rotate: -120deg; */
+}
+
+.grid-label {
+    display: inline;
+    text-align: center;
+    --tile-color: white;
+    color: black;
+    background-color: var(--tile-color);
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    font-size: 95%;
+
+    --border: 2px solid black;
+    /* border: 1px solid rgba(211 211 211 / 0.2); */
+    border: none;
+    position: relative;
+}
+
+.grid-label::after {
+    content: '';
+    position: absolute;
+    inset: -0.5px;
+    pointer-events: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
 
 .maze-tile {
