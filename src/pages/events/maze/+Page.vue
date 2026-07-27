@@ -13,19 +13,60 @@ import { Config } from 'vike-vue/Config';
 import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { modifyUrl } from 'vike/modifyUrl';
-import { onMounted, ref, useTemplateRef, watch } from 'vue';
+import { nextTick, onMounted, ref, useTemplateRef, watch } from 'vue';
 import type { Data } from './+data';
+import { useSaveStore } from '@/stores/saveManager';
 
 const mazeData = getMazeData()
+const saveStore = useSaveStore()
 const pageContext = usePageContext()
 const data = useData<Data>()
-const mapElement = useTemplateRef('map-element')
 
+const mapElement = useTemplateRef('map-element')
+const friendCodeInput = useTemplateRef('friend-code-input')
+
+const editMode = ref<boolean>(false)
 const selectedTile = ref<MapTile>()
+const errorMessage = ref<string>('')
+const friendCode = ref<string>('')
+const importDisabled = ref<boolean>(false)
+
+async function importFriendCode() {
+    errorMessage.value = ''
+    if (!friendCode.value) {
+        return
+    }
+    importDisabled.value = true
+    try {
+        const loadingSave = saveStore.loadFromCloud(friendCode.value)
+
+        const mazeActive = await saveStore.loadMazeProgressFromCloud(friendCode.value)
+
+        await loadingSave
+
+        if (!mazeActive) {
+            errorMessage.value = 'Maze not active'
+        }
+    } catch (error) {
+        console.error(error)
+        errorMessage.value = error
+        nextTick(() => {
+            friendCodeInput.value.focus()
+        })
+    }
+
+    importDisabled.value = false
+}
 
 function close() {
     selectedTile.value = null
 }
+
+
+function toggleEdit() {
+    editMode.value = !editMode.value
+}
+
 
 watch(
     selectedTile,
@@ -64,6 +105,7 @@ onMounted(() => {
     if (pageContext.urlParsed.search.tile) {
         mapElement.value.selectTile(pageContext.urlParsed.search.tile)
     }
+    friendCode.value = saveStore.playerInfo.friendCode
 })
 
 </script>
@@ -76,14 +118,39 @@ onMounted(() => {
             <h1>{{ $t('maze.title.long') }}</h1>
         </section>
         <section class="section">
-            <label>
-                {{ $t('maze.message.import_progress') }}
-                <input class="text-box" :placeholder="$t('player_info.friend_code')" type="text">
-            </label>
-            <button class="button button-blue">{{ $t('common.import') }}</button>
+            <div>
+                <label>
+                    {{ $t('maze.message.import_progress') }}
+                    <input
+                        ref="friend-code-input"
+                        class="text-box"
+                        :placeholder="$t('player_info.friend_code')"
+                        type="text"
+                        v-model="friendCode"
+                        :disabled="importDisabled"
+                        @submit="importFriendCode()"
+                        @input="errorMessage = ''"
+                    >
+                </label>
+                <button
+                    class="button button-blue"
+                    :disabled="importDisabled"
+                    @click="importFriendCode()"
+                >{{ $t('common.import') }}</button>
+                <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+            </div>
+            <div>
+                <button class="button button-blue" @click="toggleEdit()">
+                    {{ editMode ? 'Done' : 'Edit' }}
+                </button>
+            </div>
         </section>
         <section class="section map-section">
-            <MazeMap ref="map-element" v-model:selected-tile="selectedTile"></MazeMap>
+            <MazeMap
+                ref="map-element"
+                v-model:selected-tile="selectedTile"
+                :editable="editMode"
+            ></MazeMap>
             <div class="info-container" v-if="selectedTile?.type == 'helperShop'">
                 <HelperShop :shop-id="selectedTile.entity.id" @close="close()"></HelperShop>
             </div>
@@ -104,6 +171,10 @@ onMounted(() => {
 </template>
 
 <style lang="css" scoped>
+
+.error-message {
+    color: var(--red);
+}
 
 .map-section {
     display: flex;

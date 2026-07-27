@@ -1,7 +1,7 @@
 import type { MazeBlockEntity, MazeMapBlock } from "@/types/gameDataTypes";
 import { getMazeBoss, getMazeData } from "../gameData";
 
-export type MazeTileType = 'start' | 'end' | 'miniboss' | 'boss' | 'chest' | 'helperShop' | 'coinShop' | 'skippable'
+export type MazeTileType = 'start' | 'miniboss' | 'boss' | 'chest' | 'helperShop' | 'coinShop' | 'skippable'
 
 export interface MapTile {
     connections: MazeMapBlock['connections'],

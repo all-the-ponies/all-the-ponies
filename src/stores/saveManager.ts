@@ -3,9 +3,9 @@ import api from "@/scripts/api"
 import type { PlayerStatName } from "@/scripts/api.types"
 import { notNullIsh } from "@/scripts/common"
 import { extendedDeserialize, extendedSerialize } from "@/scripts/extendedSerialize"
-import { getCollection, getCollectionData, getGameObjects, getObject } from "@/scripts/gameData"
+import { getCollection, getCollectionData, getGameObjects, getMazePony, getObject } from "@/scripts/gameData"
 import type { TDateISO } from "@/types/date"
-import type { CollectionType, GameObject, GameObjectId } from "@/types/gameDataTypes"
+import type { CollectionType, GameObject, GameObjectId, MazePonyType } from "@/types/gameDataTypes"
 import type { HTTPError } from "ky"
 import { defineStore } from "pinia"
 import { computed, shallowRef, toValue, watchEffect, type MaybeRef } from "vue"
@@ -73,6 +73,26 @@ function createBaseSave() {
         cutieMarks: new Set<GameObjectId>(),
         notes: {} as Record<GameObjectId, string>,
         critters: {} as Record<GameObjectId, number>,
+
+        mazeProgress: {
+            position: {
+                x: 0,
+                y: 0,
+            },
+            energy: 0,
+            last_energy_time: 0,
+            currency: 0,
+            upgrade_tokens: 0,
+            level: 0,
+            xp: 0,
+            helpers: {} as Record<string, number>,
+            map: {
+                blocks: [] as {
+                    x: number,
+                    y: number,
+                }[],
+            }
+        }
     }
 }
 
@@ -254,6 +274,60 @@ export const useSaveStore = defineStore('save', {
             })
         },
 
+
+        addMazeBlock(x: number, y: number) {
+            let block = this.mazeProgress.map.blocks.find(tile => tile.x === x && tile.y === y)
+            if (!block) {
+                this.mazeProgress.map.blocks.push({x, y})
+            }
+        },
+
+        removeMazeBlock(x: number, y: number) {
+            let blockIndex = this.mazeProgress.map.blocks.findIndex(tile => tile.x === x && tile.y === y)
+            if (blockIndex > -1) {
+                this.mazeProgress.map.blocks.splice(blockIndex, 1)
+            }
+        },
+
+        hasMazeBlock(x: number, y: number) {
+            return this.mazeProgress.map.blocks.findIndex(tile => tile.x === x && tile.y === y) > -1
+        },
+
+        addMazePony(mazePonyId: string | MazePonyType, fights?: number) {
+            const mazePony = getMazePony(mazePonyId)
+            if (mazePony) {
+                this.mazeProgress.helpers[mazePony.id] = fights || mazePony.fights
+            }
+        },
+
+        subtractMazePony(mazePonyId: string | MazePonyType) {
+            const mazePony = getMazePony(mazePonyId)
+            
+            if (mazePony.id in this.mazeProgress.helpers) {
+                if (mazePony.pony in this.ponies) {
+                    delete this.mazeProgress.helpers[mazePony.id]
+                } else {
+                    this.mazeProgress.helpers[mazePony.id]--
+                    if (this.mazeProgress.helpers[mazePony.id] <= 0) {
+                        delete this.mazeProgress.helpers[mazePony.id]
+                    }
+                }
+            }
+        },
+
+        removeMazePony(mazePonyId: string | MazePonyType) {
+            const mazePony = getMazePony(mazePonyId)
+
+            if (mazePony.id in this.mazeProgress.helpers) {
+                delete this.mazeProgress.helpers[mazePony.id]
+            }
+        },
+
+        getMazePonyFights(mazePonyId: string) {
+            return this.mazeProgress.helpers[mazePonyId] ?? 0
+        },
+
+
         async loadFromCloud(friendCode: string) {
             friendCode = friendCode.trim().toLocaleLowerCase()
             if (!FRIEND_CODE_PATTERN.test(friendCode)) {
@@ -329,10 +403,57 @@ export const useSaveStore = defineStore('save', {
             newSave.backgroundFrames = new Set(saveData.inventory.background_frames)
             newSave.cutieMarks = new Set(saveData.inventory.cutie_marks)
 
-            this.$state = newSave
+            this.$state = {
+                ...newSave,
+                mazeProgress: this.mazeProgress,
+            }
 
             this.$persist()
         },
+
+        async loadMazeProgressFromCloud(friendCode: string) {
+            friendCode = friendCode.trim().toLocaleLowerCase()
+            if (!FRIEND_CODE_PATTERN.test(friendCode)) {
+                throw new Error(`Invalid friend code "${friendCode}"`)
+            }
+            
+            const mazeProgress = await api.getMazeProgress(friendCode).catch(async (error: HTTPError) => {
+                if (error.response) {
+                    throw new Error(await error.response.text())
+                } else {
+                    throw error
+                }
+            })
+
+            if (!mazeProgress.active) {
+                return false
+            }
+
+            this.mazeProgress.position.x = mazeProgress.position.x
+            this.mazeProgress.position.y = mazeProgress.position.y
+            this.mazeProgress.energy = mazeProgress.energy
+            this.mazeProgress.last_energy_time = mazeProgress.last_energy_time
+            this.mazeProgress.currency = mazeProgress.currency
+            this.mazeProgress.upgrade_tokens = mazeProgress.upgrade_tokens
+            this.mazeProgress.level = mazeProgress.level
+            this.mazeProgress.xp = mazeProgress.xp
+
+            for (let pony of mazeProgress.helpers) {
+                this.mazeProgress.helpers[pony.id] = pony.fights
+            }
+
+            this.mazeProgress.map.blocks = []
+
+            mazeProgress.map.blocks.forEach(tile => {
+                if (tile.uncovered) {
+                    this.addMazeBlock(tile.x, tile.y)
+                }
+            })
+
+            this.$persist()
+
+            return true
+        }
     },
     persist: [
         {
@@ -371,5 +492,9 @@ export const useSaveStore = defineStore('save', {
             pick: ['notes'],
             key: 'notes',
         },
+        {
+            pick: ['mazeProgress'],
+            key: 'maze_progress',
+        }
     ],
 })

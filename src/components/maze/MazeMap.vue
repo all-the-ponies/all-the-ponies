@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import { getMazeData, mazeGridOffset, mazeGridSize } from '@/scripts/gameData';
 import { getTileType, mazeTileConfig, type MapTile, type MazeTileType } from '@/scripts/maze/tiles';
+import { useSaveStore } from '@/stores/saveManager';
+import { useMounted } from '@vueuse/core';
+import { computed } from 'vue';
+
+const props = defineProps<{
+    enableProgress?: boolean,
+    editable?: boolean,
+}>()
+
+const progressEnabled = computed(() => props.enableProgress)
+const isEditable = computed(() => props.editable)
 
 const emit = defineEmits<{
     clickTile: [tile: MapTile],
@@ -8,6 +19,8 @@ const emit = defineEmits<{
 const selectedTile = defineModel<MapTile>('selectedTile')
 
 const mazeData = getMazeData()
+const saveStore = useSaveStore()
+const isMounted = useMounted()
 
 console.log('tileConfig', mazeTileConfig)
 
@@ -55,7 +68,6 @@ for (let coin_shop of mazeData.map.shops) {
     map[x][y].coin_shop = coin_shop.id
 }
 
-console.log('map', map)
 const mapSize = {
     width: map.length,
     height: map.reduce((x, y) => Math.max(x, y.length), 0)
@@ -64,8 +76,6 @@ const mapCenter = {
     x: (mapSize.width - 1) / 2,
     y: (mapSize.height - 1) / 2,
 }
-
-console.log('mapSize', mapSize, mapCenter)
 
 function rotateNeg90(x: number, y: number) {
     return {
@@ -93,12 +103,24 @@ const visualMapSize = {
 }
 
 function clickTile(tile: MapTile) {
-    selectedTile.value = tile
-    emit('clickTile', tile)
+    if (isEditable.value) {
+        if (saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y)) {
+            saveStore.removeMazeBlock(tile.position.original.x, tile.position.original.y)
+        } else {
+            saveStore.addMazeBlock(tile.position.original.x, tile.position.original.y)
+        }
+    } else {
+        selectedTile.value = tile
+        emit('clickTile', tile)
+    }
 }
 
 function selectTile(label: string) {
-    clickTile(flattenedMap.find(tile => tile.label == label))
+    const tile = flattenedMap.find(tile => tile.label == label)
+    selectedTile.value = tile
+    if (tile) {
+        emit('clickTile', tile)
+    }
 }
 
 defineExpose({
@@ -135,7 +157,9 @@ defineExpose({
                 'tile-right': !tile.connections.north_east,
                 'tile-top': !tile.connections.north_west,
 
-                'selected-tile': selectedTile && tile.position.normalized.x == selectedTile.position.normalized.x && tile.position.normalized.y == selectedTile.position.normalized.y && selectableTiles.includes(tile.type),
+                'selected-tile': !isEditable && selectedTile && tile.position.normalized.x == selectedTile.position.normalized.x && tile.position.normalized.y == selectedTile.position.normalized.y && selectableTiles.includes(tile.type),
+
+                'tile-covered': isMounted && !saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y),
             }"
             :style="{
                 gridColumn: tile.position.visual.x + 1,
@@ -188,7 +212,9 @@ defineExpose({
 .maze-tile {
     display: inline;
     --tile-color: white;
-    background-color: var(--tile-color);
+    --additional-fade: 0%;
+    --fade: 0%;
+    background-color: color-mix(in srgb, var(--tile-color), black calc(var(--fade) + var(--additional-fade)));
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
@@ -200,14 +226,18 @@ defineExpose({
     position: relative;
 }
 
+.tile-covered {
+    --additional-fade: 30%;
+}
+
 .maze-tile:hover,
 .maze-tile:focus-visible {
-    background-color: color-mix(in srgb, var(--tile-color), black 20%);
+    --fade: 20%;
     outline: none;
 }
 .maze-tile:active,
 .selected-tile {
-    background-color: color-mix(in srgb, var(--tile-color), black 30%);
+    --fade: 30%;
     outline: none;
 }
 
@@ -240,6 +270,11 @@ defineExpose({
 }
 .tile-bottom::after {
     border-bottom: var(--border);
+}
+
+.selected-tile::after {
+    border: 2px solid yellow;
+    z-index: 3;
 }
 
 </style>
