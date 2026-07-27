@@ -570,7 +570,7 @@ export interface MazeBossType {
     hp: number,
     required_energy: number,
     critical_multiplier: number,
-    drop_chest: number,
+    drop_chest: string,
     rewards: MazeBossReward[],
 }
 

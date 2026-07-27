@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HelperShop from '@/components/maze/HelperShop.vue';
+import MazeBossView from '@/components/maze/MazeBossView.vue';
 import MazeChestPreview from '@/components/maze/MazeChestPreview.vue';
 import MazeCoinShop from '@/components/maze/MazeCoinShop.vue';
 import MazeInfoContainer from '@/components/maze/MazeInfoContainer.vue';
@@ -48,6 +49,9 @@ function close() {
             </div>
             <div class="info-container" v-else-if="selectedTile?.type == 'coinShop'">
                 <MazeCoinShop :shop-id="selectedTile.coin_shop" @close="close()"></MazeCoinShop>
+            </div>
+            <div class="info-container" v-else-if="selectedTile?.type == 'boss' || selectedTile?.type == 'miniboss'">
+                <MazeBossView :boss-id="selectedTile.entity.id" @close="close()"></MazeBossView>
             </div>
             <MazeMapLegend v-else class="map-legend"></MazeMapLegend>
         </section>

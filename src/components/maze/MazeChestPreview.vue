@@ -37,8 +37,10 @@ const chestRewards = computed(() => mazeData.chest_rewards[chest.value.tier])
 .chest-container {
     position: relative;
     /* width: 100%; */
+    max-width: 30rem;
     padding-block: 1rem;
     padding-inline: 0.5rem;
+    margin-inline: auto;
     background-color: white;
 
     --border-color: hsl(211, 30%, 55%);
@@ -54,7 +56,7 @@ const chestRewards = computed(() => mazeData.chest_rewards[chest.value.tier])
     align-items: center;
     justify-content: center;
     justify-items: center;
-    max-height: 21rem;
+    max-height: 22rem;
     overflow-y: auto;
 }
 

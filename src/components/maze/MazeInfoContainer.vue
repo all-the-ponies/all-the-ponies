@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import XButton from '../buttons/XButton.vue';
 
+const props = defineProps<{
+    noCloseButton?: boolean,
+}>()
+
 const emit = defineEmits(['close'])
 
 </script>
@@ -8,7 +12,7 @@ const emit = defineEmits(['close'])
 <template>
     <div class="maze-info-container">
         <header class="info-header"><slot name="title"></slot></header>
-        <XButton @click="emit('close')" class="x-button"></XButton>
+        <XButton @click="emit('close')" class="x-button" v-if="!props.noCloseButton"></XButton>
         <slot class="content"></slot>
     </div>
 </template>
@@ -17,7 +21,7 @@ const emit = defineEmits(['close'])
 
 .maze-info-container {
     padding-top: 1.4rem;
-    margin-top: 1.5rem;
+    margin-top: 1.8rem;
     margin-inline: 0.5rem;
     position: relative;
 }
