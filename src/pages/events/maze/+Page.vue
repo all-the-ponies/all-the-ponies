@@ -80,9 +80,7 @@ function close() {
     flex-grow: 1;
     /* flex-shrink: 0; */
     min-width: 0;
-    flex-basis: 24rem;
-    
-    
+    flex-basis: 19rem;
 }
 
 </style>
