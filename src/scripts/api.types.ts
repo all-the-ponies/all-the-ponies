@@ -52,6 +52,32 @@ export interface SaveData {
     },
 }
 
+export interface MazeProgress {
+    active: boolean,
+    position: {
+        x: number,
+        y: number,
+    },
+    energy: number,
+    last_energy_time: number,
+    currency: number,
+    upgrade_tokens: number,
+    level: number,
+    xp: number,
+    helpers: {
+        id: string,
+        fights: number,
+    }[],
+    map: {
+        blocks: {
+            id: string,
+            x: number,
+            y: number,
+            uncovered: boolean,
+        }[],
+    }
+}
+
 
 
 export interface ShopPrice {
@@ -87,4 +113,26 @@ export interface PriceHistoryEntry {
 export interface PriceHistoryType {
     id: GameObjectId,
     price_history: PriceHistoryEntry[],
+}
+
+
+export interface EventReward {
+    rank_interval: number[],
+    gifts: {
+        name: string,
+        value: number,
+    }[]
+}
+
+export interface LTSEvent {
+    id: string,
+    start_date: string,
+    end_date: string,
+    construction: string | null,
+    rewards: EventReward[],
+}
+
+export interface LTSEvents {
+    current: LTSEvent,
+    next: LTSEvent,
 }

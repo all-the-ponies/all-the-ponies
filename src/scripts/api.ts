@@ -1,7 +1,7 @@
 import { FRIEND_CODE_PATTERN } from "@/globals/constants.js"
 import type { GameObjectId } from "@/types/gameDataTypes.js"
 import ky from 'ky'
-import type { PriceHistoryType, SaveData, ShopEntry } from "./api.types.js"
+import type { LTSEvents, MazeProgress, PriceHistoryType, SaveData, ShopEntry } from "./api.types.js"
 import { isDev } from "./common.js"
 
 const API_DOMAIN = 'https://api.all-the-ponies.com'
@@ -41,6 +41,17 @@ async function getSave(friendCode: string) {
     return result
 }
 
+async function getMazeProgress(friendCode: string) {
+    friendCode = friendCode.trim().toLocaleLowerCase()
+    if (!FRIEND_CODE_PATTERN.test(friendCode)) {
+        throw new Error(`Invalid friend code "${friendCode}"`)
+    }
+
+    const result = await api.get<MazeProgress>(`save/${friendCode.toLowerCase().trim()}/maze_progress`).json()
+
+    return result
+}
+
 async function getShop() {
     const result = await api.get<ShopEntry[]>('shop').json()
 
@@ -53,9 +64,18 @@ async function getPriceHistory(item: GameObjectId) {
     return result
 }
 
+
+async function getLTSEvents() {
+    const result = await api.get<LTSEvents>('events/lts').json()
+    return result
+}
+
+
 export default {
     API_DOMAIN,
     getSave,
+    getMazeProgress,
     getShop,
     getPriceHistory,
+    getLTSEvents,
 }
