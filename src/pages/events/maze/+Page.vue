@@ -6,22 +6,68 @@ import MazeCoinShop from '@/components/maze/MazeCoinShop.vue';
 import MazeInfoContainer from '@/components/maze/MazeInfoContainer.vue';
 import MazeMap from '@/components/maze/MazeMap.vue';
 import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
+import { notNullIsh } from '@/scripts/common';
 import { getMazeChest, getMazeData } from '@/scripts/gameData';
 import type { MapTile } from '@/scripts/maze/tiles';
 import { Config } from 'vike-vue/Config';
-import { ref } from 'vue';
+import { usePageContext } from 'vike-vue/usePageContext';
+import { modifyUrl } from 'vike/modifyUrl';
+import { onMounted, ref, useTemplateRef, watch } from 'vue';
 
 const mazeData = getMazeData()
+const pageContext = usePageContext()
+const mapElement = useTemplateRef('map-element')
 
 const selectedTile = ref<MapTile>()
-
-function selectTile(tile: MapTile) {
-    selectedTile.value = tile
-}
 
 function close() {
     selectedTile.value = null
 }
+
+watch(
+    selectedTile,
+    () => {
+        console.log('New tile', selectedTile.value)
+    if (!selectedTile.value) {
+        history.replaceState(
+            null,
+            '',
+            modifyUrl(
+                pageContext.urlOriginal,
+                {
+                    search: {
+                        tile: null
+                    }
+                }
+            )
+        )
+    } else {
+        history.replaceState(
+            null,
+            '',
+            modifyUrl(
+                pageContext.urlOriginal,
+                {
+                    search: {
+                        tile: `${selectedTile.value.x}x${selectedTile.value.y}`
+                    }
+                }
+            )
+        )
+    }
+})
+
+onMounted(() => {
+    if (pageContext.urlParsed.search.tile) {
+        const split = pageContext.urlParsed.search.tile.split('x')
+        const x = parseInt(split[0])
+        const y = parseInt(split[1])
+
+        if (notNullIsh(x) && notNullIsh(y)) {
+            mapElement.value.selectTile(x,y)
+        }
+    }
+})
 
 </script>
 
@@ -40,7 +86,7 @@ function close() {
             <button class="button button-blue">{{ $t('common.import') }}</button>
         </section>
         <section class="section map-section">
-            <MazeMap @click-tile="selectTile"></MazeMap>
+            <MazeMap ref="map-element" v-model:selected-tile="selectedTile"></MazeMap>
             <div class="info-container" v-if="selectedTile?.type == 'helperShop'">
                 <HelperShop :shop-id="selectedTile.entity.id" @close="close()"></HelperShop>
             </div>

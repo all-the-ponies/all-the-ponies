@@ -1,22 +1,17 @@
 <script setup lang="ts">
 import { getMazeData, mazeGridOffset, mazeGridSize } from '@/scripts/gameData';
-import { getTileType, mazeTileConfig, type MapTile } from '@/scripts/maze/tiles';
-import type { MazeBlockEntity, MazeMapBlock } from '@/types/gameDataTypes';
+import { getTileType, mazeTileConfig, type MapTile, type MazeTileType } from '@/scripts/maze/tiles';
 
 const emit = defineEmits<{
     clickTile: [tile: MapTile],
 }>()
-
-const entityTypeMap: Record<MazeBlockEntity['type'], string> =  {
-    'MazeBlock_Start': 'maze-tile-start',
-    'MazeBoss': 'maze-tile-boss',
-    'MazeChest': 'maze-tile-chest',
-    'MazeShop': 'maze-tile-shop',
-}
+const selectedTile = defineModel<MapTile>('selectedTile')
 
 const mazeData = getMazeData()
 
 console.log('tileConfig', mazeTileConfig)
+
+const selectableTiles: MazeTileType[] = ['chest', 'coinShop', 'helperShop', 'boss', 'miniboss']
 
 const map: MapTile[][] = []
 
@@ -79,8 +74,19 @@ const flattenedMap = map.flat().filter(tile =>
 )
 
 function clickTile(tile: MapTile) {
+    selectedTile.value = tile
     emit('clickTile', tile)
 }
+
+function selectTile(x: number, y: number) {
+    if (map[x] && map[x][y]) {
+        clickTile(map[x][y])
+    }
+}
+
+defineExpose({
+    selectTile,
+})
 
 </script>
 
@@ -94,6 +100,8 @@ function clickTile(tile: MapTile) {
                 'tile-bottom': !tile.tile.connections.south_east,
                 'tile-right': !tile.tile.connections.north_east,
                 'tile-top': !tile.tile.connections.north_west,
+
+                'selected-tile': selectedTile && tile.tile.x == selectedTile.x && tile.tile.y == selectedTile.y && selectableTiles.includes(tile.tile.type),
             }"
             :style="{
                 gridColumn: tile.visualPos.x,
@@ -137,7 +145,8 @@ function clickTile(tile: MapTile) {
     background-color: color-mix(in srgb, var(--tile-color), black 20%);
     outline: none;
 }
-.maze-tile:active {
+.maze-tile:active,
+.selected-tile {
     background-color: color-mix(in srgb, var(--tile-color), black 30%);
     outline: none;
 }
