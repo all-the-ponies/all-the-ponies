@@ -36,14 +36,22 @@ const ponyReward = computed(() => boss.value.rewards.find(reward => getMazePony(
         <div class="boss-info">
             <ObjectCard class="boss-card" :object="boss.pony" is-link></ObjectCard>
             <div class="fight-info">
-                <p>Required Energy: {{ $n(boss.required_energy) }} <img class="item-icon" src="@/assets/images/ui/maze/maze-energy-icon.png" alt="Maze Energy"></p>
-                <p>Required Power: {{ $n(boss.required_power) }} <img class="item-icon" src="@/assets/images/ui/maze/maze-power-icon.png" alt="Maze Power"></p>
+                <i18n-t keypath="maze.message.boss.required_energy" tag="p">
+                    <template #energy>
+                        {{ $n(boss.required_energy) }} <img class="item-icon" src="@/assets/images/ui/maze/maze-energy-icon.png" alt="Maze Energy">
+                    </template>
+                </i18n-t>
+                <i18n-t keypath="maze.message.boss.required_power" tag="p">
+                    <template #power>
+                        {{ $n(boss.required_power) }} <img class="item-icon" src="@/assets/images/ui/maze/maze-power-icon.png" alt="Maze Power">
+                    </template>
+                </i18n-t>
             </div>
         </div>
     </MazeInfoContainer>
     <MazeInfoContainer class="info-container" no-close-button>
         <template #title>
-            Rewards
+            {{ $t('maze.message.boss.rewards') }}
         </template>
 
         <div class="rewards-info">

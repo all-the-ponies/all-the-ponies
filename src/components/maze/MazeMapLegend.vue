@@ -6,7 +6,7 @@ import { mazeTileConfig } from '@/scripts/maze/tiles';
 
 <template>
     <div class="legend-container">
-        <h3 class="legend-heading">Legend</h3>
+        <h3 class="legend-heading">{{ $t('maze.message.legend') }}</h3>
         <dl class="legend">
             <template v-for="tile in mazeTileConfig" :key="tile.id">
                 <dt class="tile" :style="{backgroundColor: tile.color}"></dt>

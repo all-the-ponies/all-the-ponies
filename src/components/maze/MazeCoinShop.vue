@@ -29,10 +29,18 @@ const product = computed(() => getObject(shop.value?.product, 'consumable'))
         <div class="shop-info">
             <ObjectCard class="shop-card" :object="shop" is-link></ObjectCard>
             <div class="product-info">
-                <p class="product-title">Produces:</p>
+                <p class="product-title">{{ $t('maze.message.coin_shop.produces') }}</p>
                 <p><CurrencyImage :object="product.id">{{ $n(product.consume.tls) }}</CurrencyImage></p>
-                <p>Every {{ formatTime(product.time) }}</p>
-                <p>Skip: <CurrencyImage object="Gems">{{ $n(product.skip_cost) }}</CurrencyImage></p>
+                <p>
+                    {{ $t('maze.message.coin_shop.time', {
+                        duration: formatTime(product.time),
+                    }) }}
+                </p>
+                <i18n-t keypath="maze.message.coin_shop.skip_cost" tag="p">
+                    <template #cost>
+                        <CurrencyImage object="Gems">{{ $n(product.skip_cost) }}</CurrencyImage>
+                    </template>
+                </i18n-t>
             </div>
         </div>
     </MazeInfoContainer>
