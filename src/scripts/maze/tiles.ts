@@ -118,6 +118,15 @@ export function normalizePosition(x: number, y: number) {
     }
 }
 
+export function compareTiles(tileA: MapTile, tileB: MapTile) {
+    if (!tileA || !tileB) {
+        return false
+    }
+    
+    return tileA.position.original.x == tileB.position.original.x &&
+           tileA.position.original.x == tileB.position.original.x
+}
+
 
 // Pathfinding
 

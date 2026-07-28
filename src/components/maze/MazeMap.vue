@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getMazeData, mazeGridOffset, mazeGridSize } from '@/scripts/gameData';
-import { buildTileIndex, createLabel, findDependents, findPathToTile, getTileType, mazeTileConfig, normalizePosition, type MapTile, type MazeTileType } from '@/scripts/maze/tiles';
+import { getMazeData } from '@/scripts/gameData';
+import { buildTileIndex, compareTiles, createLabel, findDependents, findPathToTile, getTileType, mazeTileConfig, normalizePosition, type MapTile, type MazeTileType } from '@/scripts/maze/tiles';
 import { useSaveStore } from '@/stores/saveManager';
 import { useMounted } from '@vueuse/core';
 import { computed, inject, onMounted, ref } from 'vue';
@@ -18,6 +18,7 @@ const emit = defineEmits<{
     clickTile: [tile: MapTile],
 }>()
 const selectedTile = defineModel<MapTile>('selectedTile')
+const lastClickedTile = ref<MapTile>()
 
 const mazeData = getMazeData()
 const saveStore = useSaveStore()
@@ -132,6 +133,7 @@ const hoverPreview = computed(() => {
 
 
 function clickTile(tile: MapTile) {
+    lastClickedTile.value = tile
     if (isEditable.value) {
         if (uncoveredLabels.value.has(tile.label)) {
             if (tile.label === startTile?.label) return // start can't be deselected
@@ -153,11 +155,6 @@ function clickTile(tile: MapTile) {
             const path = findPathToTile(tile.label, uncoveredLabels.value, tileByLabel)
             path.forEach(tile => saveStore.addMazeBlock(tile.position.original.x, tile.position.original.y))
         }
-        // if (saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y)) {
-        //     saveStore.removeMazeBlock(tile.position.original.x, tile.position.original.y)
-        // } else {
-        //     saveStore.addMazeBlock(tile.position.original.x, tile.position.original.y)
-        // }
     } else {
         if (selectedTile.value?.label == tile?.label) {
             selectedTile.value = null
@@ -216,9 +213,9 @@ defineExpose({
                 'tile-right': !tile.connections.north_east,
                 'tile-top': !tile.connections.north_west,
 
-                'selected-tile': !isEditable && selectedTile && tile.position.normalized.x == selectedTile.position.normalized.x && tile.position.normalized.y == selectedTile.position.normalized.y && selectableTiles.includes(tile.type),
-                'preview-select-tile': hoverPreview.toUncover.has(tile.label),
-                'preview-deselect-tile': hoverPreview.toCover.has(tile.label),
+                'selected-tile': !isEditable && selectedTile && tile.position.normalized.x == selectedTile.position.normalized.x && tile.position.normalized.y == selectedTile.position.normalized.y,
+                'preview-select-tile': hoverPreview.toUncover.has(tile.label) && (!compareTiles(tile, lastClickedTile)),
+                'preview-deselect-tile': hoverPreview.toCover.has(tile.label) && (!compareTiles(tile, lastClickedTile)),
 
                 'tile-covered': mazeActive && tile.type != 'start' && isMounted && !saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y),
             }"
@@ -230,7 +227,7 @@ defineExpose({
             :key="`tile-${tile.label}`"
             @click="clickTile(tile)"
             @mouseenter="hoveredLabel = tile.label"
-            @mouseleave="hoveredLabel = null"
+            @mouseleave="hoveredLabel = null, lastClickedTile = null"
         ></button>
     </div>
 </template>
@@ -277,7 +274,8 @@ defineExpose({
     --tile-color: white;
     --additional-fade: 0%;
     --fade: 0%;
-    background-color: color-mix(in srgb, var(--tile-color), black calc(var(--fade) + var(--additional-fade)));
+    /* background-color: color-mix(in srgb, var(--tile-color), black calc(var(--fade) + var(--additional-fade))); */
+    background-color: oklab(from var(--tile-color) calc(l * (100% - (var(--fade) + var(--additional-fade)))) a b);
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
@@ -293,7 +291,7 @@ defineExpose({
     --additional-fade: 30%;
 }
 
-.maze-tile:hover,
+.maze-tile:hover:not(.preview-select-tile):not(.preview-deselect-tile),
 .maze-tile:focus-visible {
     --fade: 15%;
     outline: none;
@@ -308,6 +306,7 @@ defineExpose({
     --additional-fade: 0%;
     --fade: 5%;
 }
+
 .preview-deselect-tile {
     --additional-fade: 0%;
     --fade: 15%;
