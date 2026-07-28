@@ -515,10 +515,14 @@
         "required_energy": "Required Energy: {energy}",
         "required_power": "Required Power: {power}",
         "rewards": "Rewards"
+      },
+      "helpers": {
+        "title": "Helpers",
+        "no_helpers": "You have no helpers. You can import them with your friend code"
       }
     },
     "tips": {
-      "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops"
+      "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops!"
     },
     "pony_card": {
       "upgraded": "Upgraded"

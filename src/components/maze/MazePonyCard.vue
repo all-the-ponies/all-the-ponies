@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, type AnchorHTMLAttributes } from 'vue'
+import { computed, inject, ref, type AnchorHTMLAttributes } from 'vue'
 import LazyImage from "../LazyImage.vue"
 import Link from "../Link.vue"
 import ObjectImage from "../ObjectImage.vue"
@@ -7,14 +7,18 @@ import type { MazePonyType } from '@/types/gameDataTypes.ts';
 import { getMazePony, getObject, translateName } from '@/scripts/gameData.ts';
 import { createAssetUrl } from '@/scripts/assets.ts';
 import { useSaveStore } from '@/stores/saveManager.ts';
+import MazeAddButton from '../buttons/MazeAddButton.vue';
 
 const props = defineProps<{
     mazePony: string | MazePonyType,
     href?: AnchorHTMLAttributes['href'],
     hover?: boolean,
+    showSave?: boolean,
 }>()
 
 const saveStore = useSaveStore()
+
+const mazeActive = inject('mazeActive', ref(false))
 
 const mazePony = computed(() => getMazePony(props.mazePony))
 const pony = computed(() => getObject(mazePony.value.pony, 'pony'))
@@ -22,6 +26,17 @@ const name = translateName(pony)
 
 const href = computed(() => props.href || (pony.value ? `/${pony.value.category}/${pony.value.id}/` : null))
 const isOwned = computed(() => saveStore.hasPony(pony.value?.id))
+const showSave = computed(() => props.showSave)
+
+const fights = computed(() => {
+    if (!showSave.value) {
+        return mazePony.value.fights
+    }
+    if (isOwned.value) {
+        return '∞'
+    }
+    return saveStore.getMazePonyFights(mazePony.value.id) || mazePony.value.fights
+})
 
 </script>
 
@@ -35,13 +50,14 @@ const isOwned = computed(() => saveStore.hasPony(pony.value?.id))
             <div class="card-body">
                 <LazyImage v-if="pony" :src="createAssetUrl(pony.image.main.path)" :alt="name" loading="lazy" class="object-image" />
                 <div class="left-container">
+                    <MazeAddButton v-if="mazeActive" :maze-pony="mazePony.id" :subtract="showSave"></MazeAddButton>
                     <slot name="left"></slot>
                 </div>
                 <div class="right-container">
                     <slot name="right"></slot>
                 </div>
                 <div class="info">
-                    <span>{{ mazePony.fights }}</span>
+                    <span>{{ fights }}</span>
                     <img src="@/assets/images/ui/maze/maze-fights-icon.png" alt="Fights">
                     <span>{{ mazePony.power }}</span>
                     <img src="@/assets/images/ui/maze/maze-power-icon.png" alt="Fights">

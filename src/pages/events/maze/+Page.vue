@@ -6,21 +6,24 @@ import MazeCoinShop from '@/components/maze/MazeCoinShop.vue';
 import MazeInfoContainer from '@/components/maze/MazeInfoContainer.vue';
 import MazeMap from '@/components/maze/MazeMap.vue';
 import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
-import { notNullIsh } from '@/scripts/common';
+import { isDev, notNullIsh } from '@/scripts/common';
 import { getMazeChest, getMazeData } from '@/scripts/gameData';
 import type { MapTile } from '@/scripts/maze/tiles';
 import { Config } from 'vike-vue/Config';
 import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { modifyUrl } from 'vike/modifyUrl';
-import { nextTick, onMounted, ref, useTemplateRef, watch } from 'vue';
+import { computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from 'vue';
 import type { Data } from './+data';
 import { useSaveStore } from '@/stores/saveManager';
+import MazePonyCard from '@/components/maze/MazePonyCard.vue';
 
 const mazeData = getMazeData()
 const saveStore = useSaveStore()
 const pageContext = usePageContext()
 const data = useData<Data>()
+
+const mazeActive = computed(() => data.mazeActive || isDev())
 
 const mapElement = useTemplateRef('map-element')
 const friendCodeInput = useTemplateRef('friend-code-input')
@@ -30,6 +33,8 @@ const selectedTile = ref<MapTile>()
 const errorMessage = ref<string>('')
 const friendCode = ref<string>('')
 const importDisabled = ref<boolean>(false)
+
+provide('mazeActive', mazeActive)
 
 async function importFriendCode() {
     errorMessage.value = ''
@@ -165,7 +170,19 @@ onMounted(() => {
             </div>
             <MazeMapLegend v-else class="map-legend"></MazeMapLegend>
         </section>
-        <section class="section">
+        <section class="section helpers-section">
+            <h2>{{ $t('maze.message.helpers.title') }}</h2>
+            <p class="no-helpers" v-if="Object.keys(saveStore.mazeProgress.helpers).length === 0">
+                {{ $t('maze.message.helpers.no_helpers') }}
+            </p>
+            <div class="maze-helpers" v-else>
+                <MazePonyCard
+                    v-for="mazePony in Object.keys(saveStore.mazeProgress.helpers)"
+                    :maze-pony="mazePony"
+                    show-save
+                    :editable="editMode"
+                ></MazePonyCard>
+            </div>
         </section>
     </div>
 </template>
@@ -195,6 +212,23 @@ onMounted(() => {
     /* flex-shrink: 0; */
     min-width: 0;
     flex-basis: 19rem;
+}
+
+.helpers-section {
+    min-height: 10rem;
+}
+
+.no-helpers {
+    text-align: center;
+}
+
+.maze-helpers {
+    display: grid;
+    --card-size: 8rem;
+    grid-template-columns: repeat(auto-fit, 8.5rem);
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
 }
 
 </style>

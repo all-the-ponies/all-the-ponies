@@ -3,15 +3,16 @@ import { getMazeData, mazeGridOffset, mazeGridSize } from '@/scripts/gameData';
 import { getTileType, mazeTileConfig, type MapTile, type MazeTileType } from '@/scripts/maze/tiles';
 import { useSaveStore } from '@/stores/saveManager';
 import { useMounted } from '@vueuse/core';
-import { computed } from 'vue';
+import { computed, inject, ref } from 'vue';
 
 const props = defineProps<{
-    enableProgress?: boolean,
     editable?: boolean,
 }>()
 
-const progressEnabled = computed(() => props.enableProgress)
 const isEditable = computed(() => props.editable)
+const mazeActive = inject('mazeActive', ref(false))
+
+
 
 const emit = defineEmits<{
     clickTile: [tile: MapTile],
@@ -110,7 +111,11 @@ function clickTile(tile: MapTile) {
             saveStore.addMazeBlock(tile.position.original.x, tile.position.original.y)
         }
     } else {
-        selectedTile.value = tile
+        if (selectedTile.value?.label == tile?.label) {
+            selectedTile.value = null
+        } else {
+            selectedTile.value = tile
+        }
         emit('clickTile', tile)
     }
 }
@@ -159,7 +164,7 @@ defineExpose({
 
                 'selected-tile': !isEditable && selectedTile && tile.position.normalized.x == selectedTile.position.normalized.x && tile.position.normalized.y == selectedTile.position.normalized.y && selectableTiles.includes(tile.type),
 
-                'tile-covered': isMounted && !saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y),
+                'tile-covered': mazeActive && isMounted && !saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y),
             }"
             :style="{
                 gridColumn: tile.position.visual.x + 1,

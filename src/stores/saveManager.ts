@@ -438,6 +438,7 @@ export const useSaveStore = defineStore('save', {
             this.mazeProgress.level = mazeProgress.level
             this.mazeProgress.xp = mazeProgress.xp
 
+            this.mazeProgress.helpers = {}
             for (let pony of mazeProgress.helpers) {
                 this.mazeProgress.helpers[pony.id] = pony.fights
             }

@@ -11,7 +11,7 @@ const props = defineProps<{
 }>()
 
 const saveStore = useSaveStore()
-const gameObject = computedAsync(async () => await getObject(props.gameObject))
+const gameObject = computed(() => getObject(props.gameObject))
 
 const owned = computed(() => {
     switch (gameObject.value?.category) {
