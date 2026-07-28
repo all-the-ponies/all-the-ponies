@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { getMazeData, mazeGridOffset, mazeGridSize } from '@/scripts/gameData';
-import { getTileType, mazeTileConfig, type MapTile, type MazeTileType } from '@/scripts/maze/tiles';
+import { buildTileIndex, createLabel, findDependents, findPathToTile, getTileType, mazeTileConfig, normalizePosition, type MapTile, type MazeTileType } from '@/scripts/maze/tiles';
 import { useSaveStore } from '@/stores/saveManager';
 import { useMounted } from '@vueuse/core';
-import { computed, inject, ref } from 'vue';
+import { computed, inject, onMounted, ref } from 'vue';
 
 const props = defineProps<{
     editable?: boolean,
@@ -23,22 +23,9 @@ const mazeData = getMazeData()
 const saveStore = useSaveStore()
 const isMounted = useMounted()
 
-console.log('tileConfig', mazeTileConfig)
-
 const selectableTiles: MazeTileType[] = ['chest', 'coinShop', 'helperShop', 'boss', 'miniboss']
 
 const map: MapTile[][] = []
-
-function normalizePosition(x: number, y: number) {
-    return {
-        x: Math.round((x - mazeGridOffset.x) / mazeGridSize),
-        y: Math.round((y - mazeGridOffset.y) / mazeGridSize),
-    }
-}
-
-function createLabel(x: number, y: number) {
-    return `${String.fromCharCode(64 + y)}${x}`
-}
 
 for (let block of mazeData.map.blocks) {
     const {x,y} = normalizePosition(block.x, block.y)
@@ -103,13 +90,74 @@ const visualMapSize = {
     height: mapSize.width - 2,
 }
 
+const tileByLabel = buildTileIndex(flattenedMap)
+const startTile = flattenedMap.find(tile => tile.type === 'start')
+const uncoveredLabels = computed(() => {
+    const uncovered = new Set<string>()
+
+    if (!saveStore.hasMazeBlock(startTile.position.original.x, startTile.position.original.y)) {
+        saveStore.addMazeBlock(startTile.position.original.x, startTile.position.original.y)
+    }
+
+    for (let block of saveStore.mazeProgress.map.blocks) {
+        const {x,y} = normalizePosition(block.x, block.y)
+        const tile = map[x][y]
+        if (tileByLabel.has(tile.label)) {
+            uncovered.add(tile.label)
+        }
+    }
+
+    return uncovered
+})
+const hoveredLabel = ref<string | null>(null)
+
+const hoverPreview = computed(() => {
+    if (!hoveredLabel.value || !isEditable.value) {
+        return { toUncover: new Set<string>(), toCover: new Set<string>() }
+    }
+
+    if (uncoveredLabels.value.has(hoveredLabel.value)) {
+        if (hoveredLabel.value === startTile?.label) {
+            return { toUncover: new Set<string>(), toCover: new Set<string>() }
+        }
+        const dependents = findDependents(
+            hoveredLabel.value, startTile!.label, uncoveredLabels.value, tileByLabel,
+        )
+        return { toUncover: new Set<string>(), toCover: new Set([hoveredLabel.value, ...dependents]) }
+    }
+
+    const path = findPathToTile(hoveredLabel.value, uncoveredLabels.value, tileByLabel)
+    return { toUncover: new Set(path.map(t => t.label)), toCover: new Set<string>() }
+})
+
+
 function clickTile(tile: MapTile) {
     if (isEditable.value) {
-        if (saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y)) {
+        if (uncoveredLabels.value.has(tile.label)) {
+            if (tile.label === startTile?.label) return // start can't be deselected
+
+            const dependents = findDependents(
+                tile.label, startTile!.label, uncoveredLabels.value, tileByLabel,
+            )
+            console.log(`dependents of ${tile.label}:`, dependents)
             saveStore.removeMazeBlock(tile.position.original.x, tile.position.original.y)
+            dependents.forEach(label => {
+                const tile = tileByLabel.get(label)
+                if (!tile) {
+                    console.log('missing tile', label)
+                    return
+                }
+                saveStore.removeMazeBlock(tile.position.original.x, tile.position.original.y)
+            })
         } else {
-            saveStore.addMazeBlock(tile.position.original.x, tile.position.original.y)
+            const path = findPathToTile(tile.label, uncoveredLabels.value, tileByLabel)
+            path.forEach(tile => saveStore.addMazeBlock(tile.position.original.x, tile.position.original.y))
         }
+        // if (saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y)) {
+        //     saveStore.removeMazeBlock(tile.position.original.x, tile.position.original.y)
+        // } else {
+        //     saveStore.addMazeBlock(tile.position.original.x, tile.position.original.y)
+        // }
     } else {
         if (selectedTile.value?.label == tile?.label) {
             selectedTile.value = null
@@ -131,6 +179,12 @@ function selectTile(label: string) {
 defineExpose({
     selectTile,
 })
+
+// onMounted(() => {
+//     if (!saveStore.hasMazeBlock(startTile.position.original.x, startTile.position.original.y)) {
+//         saveStore.addMazeBlock(startTile.position.original.x, startTile.position.original.y)
+//     }
+// })
 
 </script>
 
@@ -163,8 +217,10 @@ defineExpose({
                 'tile-top': !tile.connections.north_west,
 
                 'selected-tile': !isEditable && selectedTile && tile.position.normalized.x == selectedTile.position.normalized.x && tile.position.normalized.y == selectedTile.position.normalized.y && selectableTiles.includes(tile.type),
+                'preview-select-tile': hoverPreview.toUncover.has(tile.label),
+                'preview-deselect-tile': hoverPreview.toCover.has(tile.label),
 
-                'tile-covered': mazeActive && isMounted && !saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y),
+                'tile-covered': mazeActive && tile.type != 'start' && isMounted && !saveStore.hasMazeBlock(tile.position.original.x, tile.position.original.y),
             }"
             :style="{
                 gridColumn: tile.position.visual.x + 1,
@@ -173,6 +229,8 @@ defineExpose({
             }"
             :key="`tile-${tile.label}`"
             @click="clickTile(tile)"
+            @mouseenter="hoveredLabel = tile.label"
+            @mouseleave="hoveredLabel = null"
         ></button>
     </div>
 </template>
@@ -244,6 +302,15 @@ defineExpose({
 .selected-tile {
     --fade: 30%;
     outline: none;
+}
+
+.preview-select-tile {
+    --additional-fade: 0%;
+    --fade: 5%;
+}
+.preview-deselect-tile {
+    --additional-fade: 0%;
+    --fade: 15%;
 }
 
 .maze-tile::before {

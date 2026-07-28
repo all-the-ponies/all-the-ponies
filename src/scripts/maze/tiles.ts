@@ -1,5 +1,5 @@
 import type { MazeBlockEntity, MazeMapBlock } from "@/types/gameDataTypes";
-import { getMazeBoss, getMazeData } from "../gameData";
+import { getMazeBoss, getMazeData, mazeGridOffset, mazeGridSize } from "../gameData";
 
 export type MazeTileType = 'start' | 'miniboss' | 'boss' | 'chest' | 'helperShop' | 'coinShop' | 'skippable'
 
@@ -105,4 +105,103 @@ export function getTileType(tile: MapTile): MazeTileType | null {
             return tileConfig.id
         }
     }
+}
+
+export function createLabel(x: number, y: number) {
+    return `${String.fromCharCode(64 + y)}${x}`
+}
+
+export function normalizePosition(x: number, y: number) {
+    return {
+        x: Math.round((x - mazeGridOffset.x) / mazeGridSize),
+        y: Math.round((y - mazeGridOffset.y) / mazeGridSize),
+    }
+}
+
+
+// Pathfinding
+
+export const connectionOffsets = {
+    north_west: { x: 1, y: 0 },   // right
+    north_east: { x: 0, y: 1 },   // down
+    south_east: { x: -1, y: 0 },  // left
+    south_west: { x: 0, y: -1 },  // up
+}
+
+export type ConnectionDirection = keyof typeof connectionOffsets
+
+export function getNeighborCoords(tile: MapTile) {
+    const { x, y } = tile.position.normalized
+    return Object.entries(connectionOffsets)
+        .filter(([dir]) => tile.connections[dir])
+        .map(([, offset]) => ({ x: x + offset.x, y: y + offset.y }))
+}
+
+export function buildTileIndex(tiles: MapTile[]) {
+    const byLabel = new Map<string, MapTile>()
+    tiles.forEach(t => byLabel.set(t.label, t))
+    return byLabel
+}
+
+function neighborsOf(tile: MapTile, byLabel: Map<string, MapTile>) {
+    return getNeighborCoords(tile)
+        .map(({ x, y }) => byLabel.get(createLabel(x, y)))
+        .filter((t): t is MapTile => Boolean(t))
+}
+
+/** Shortest path from the nearest tile already in `allocated` to `targetLabel`.
+ *  Returns the path EXCLUDING the allocated tile it starts from. Empty array
+ *  if target is already allocated or unreachable. */
+export function findPathToTile(
+    targetLabel: string,
+    allocated: Set<string>,
+    byLabel: Map<string, MapTile>,
+): MapTile[] {
+    if (allocated.has(targetLabel)) return []
+
+    const visited = new Set(allocated)
+    const queue: MapTile[][] = [...allocated]
+        .map(label => byLabel.get(label))
+        .filter((t): t is MapTile => Boolean(t))
+        .map(t => [t])
+
+    while (queue.length) {
+        const path = queue.shift()!
+        const current = path[path.length - 1]
+
+        for (const neighbor of neighborsOf(current, byLabel)) {
+            if (visited.has(neighbor.label)) continue
+            visited.add(neighbor.label)
+            const nextPath = [...path, neighbor]
+            if (neighbor.label === targetLabel) return nextPath.slice(1)
+            queue.push(nextPath)
+        }
+    }
+    return []
+}
+
+/** Given we're about to remove `label` from `allocated`, find every other
+ *  allocated tile that would become unreachable from `startLabel` — i.e.
+ *  everything "downstream" of the tile being deselected. */
+export function findDependents(
+    label: string,
+    startLabel: string,
+    allocated: Set<string>,
+    byLabel: Map<string, MapTile>,
+): string[] {
+    const reachable = new Set([startLabel])
+    const queue = [byLabel.get(startLabel)!]
+
+    while (queue.length) {
+        const current = queue.shift()!
+        for (const neighbor of neighborsOf(current, byLabel)) {
+            if (neighbor.label === label) continue // pretend it's removed
+            if (!allocated.has(neighbor.label)) continue
+            if (reachable.has(neighbor.label)) continue
+            reachable.add(neighbor.label)
+            queue.push(neighbor)
+        }
+    }
+
+    return [...allocated].filter(l => l !== label && !reachable.has(l))
 }
