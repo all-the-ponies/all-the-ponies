@@ -3,11 +3,10 @@ import HelperShop from '@/components/maze/HelperShop.vue';
 import MazeBossView from '@/components/maze/MazeBossView.vue';
 import MazeChestPreview from '@/components/maze/MazeChestPreview.vue';
 import MazeCoinShop from '@/components/maze/MazeCoinShop.vue';
-import MazeInfoContainer from '@/components/maze/MazeInfoContainer.vue';
 import MazeMap from '@/components/maze/MazeMap.vue';
 import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
-import { isDev, notNullIsh } from '@/scripts/common';
-import { getMazeChest, getMazeData } from '@/scripts/gameData';
+import { isDev } from '@/scripts/common';
+import { getMazeData } from '@/scripts/gameData';
 import type { MapTile } from '@/scripts/maze/tiles';
 import { Config } from 'vike-vue/Config';
 import { useData } from 'vike-vue/useData';
@@ -19,11 +18,9 @@ import { useSaveStore } from '@/stores/saveManager';
 import MazePonyCard from '@/components/maze/MazePonyCard.vue';
 import CurrencyImage from '@/components/CurrencyImage.vue';
 import { useMounted, useTimestamp } from '@vueuse/core';
-import { formatTimestamp } from '@/scripts/timeFunctions';
 import { ClientOnly } from 'vike-vue/ClientOnly';
 import DialogComponent from '@/components/DialogComponent.vue';
 
-const mazeData = getMazeData()
 const saveStore = useSaveStore()
 const pageContext = usePageContext()
 const data = useData<Data>()
