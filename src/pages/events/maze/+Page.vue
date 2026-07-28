@@ -13,7 +13,7 @@ import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { modifyUrl } from 'vike/modifyUrl';
 import { computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from 'vue';
-import type { Data } from './+data';
+import type { Data } from './+data.server';
 import { useSaveStore } from '@/stores/saveManager';
 import MazePonyCard from '@/components/maze/MazePonyCard.vue';
 import CurrencyImage from '@/components/CurrencyImage.vue';
