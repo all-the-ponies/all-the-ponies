@@ -342,9 +342,6 @@ export const useSaveStore = defineStore('save', {
                 }
             })
 
-            console.log('saveData', saveData)
-
-            
             const newSave = createBaseSave()
 
             newSave.playerInfo.friendCode = friendCode

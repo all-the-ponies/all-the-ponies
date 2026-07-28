@@ -237,7 +237,7 @@ defineExpose({
 
 .maze-tile:hover,
 .maze-tile:focus-visible {
-    --fade: 20%;
+    --fade: 15%;
     outline: none;
 }
 .maze-tile:active,
@@ -277,6 +277,7 @@ defineExpose({
     border-bottom: var(--border);
 }
 
+.maze-tile:focus-visible::after,
 .selected-tile::after {
     border: 2px solid yellow;
     z-index: 3;

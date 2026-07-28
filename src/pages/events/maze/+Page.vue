@@ -17,6 +17,10 @@ import { computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } fr
 import type { Data } from './+data';
 import { useSaveStore } from '@/stores/saveManager';
 import MazePonyCard from '@/components/maze/MazePonyCard.vue';
+import CurrencyImage from '@/components/CurrencyImage.vue';
+import { useMounted, useTimestamp } from '@vueuse/core';
+import { formatTimestamp } from '@/scripts/timeFunctions';
+import { ClientOnly } from 'vike-vue/ClientOnly';
 
 const mazeData = getMazeData()
 const saveStore = useSaveStore()
@@ -35,6 +39,20 @@ const friendCode = ref<string>('')
 const importDisabled = ref<boolean>(false)
 
 provide('mazeActive', mazeActive)
+
+const energyMax = 300
+const energyCooldown = 114
+const currentTime = useTimestamp()
+const isMounted = useMounted()
+
+const energy = computed(() => {
+    // This runs every millisecond
+    if (!isMounted.value || !mazeActive.value || !saveStore.mazeProgress.last_energy_time) {
+        return 0
+    }
+    const timeDiff = (currentTime.value / 1000) - saveStore.mazeProgress.last_energy_time
+    return Math.min(saveStore.mazeProgress.energy + Math.floor((timeDiff) / energyCooldown), energyMax)
+})
 
 async function importFriendCode() {
     errorMessage.value = ''
@@ -122,8 +140,8 @@ onMounted(() => {
         <section>
             <h1>{{ $t('maze.title.long') }}</h1>
         </section>
-        <section class="section">
-            <div>
+        <section class="section" v-if="mazeActive">
+            <div class="import-bar">
                 <label>
                     {{ $t('maze.message.import_progress') }}
                     <input
@@ -133,7 +151,7 @@ onMounted(() => {
                         type="text"
                         v-model="friendCode"
                         :disabled="importDisabled"
-                        @submit="importFriendCode()"
+                        @keydown="(e) => {if (e.key === 'Enter')importFriendCode()}"
                         @input="errorMessage = ''"
                     >
                 </label>
@@ -144,10 +162,24 @@ onMounted(() => {
                 >{{ $t('common.import') }}</button>
                 <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
             </div>
-            <div>
+            <div class="resources-bar">
                 <button class="button button-blue" @click="toggleEdit()">
                     {{ editMode ? 'Done' : 'Edit' }}
                 </button>
+                <span class="resource">
+                    {{ energy }}
+                    <img src="@/assets/images/ui/maze/maze-energy-icon.png" alt="Maze Energy" class="resource-image">
+                </span>
+                <span class="resource">
+                    <CurrencyImage object="Consumable_Maze_Tier0">
+                        {{ isMounted ? saveStore.mazeProgress.currency : 0 }}
+                    </CurrencyImage>
+                </span>
+                <span class="resource">
+                    <CurrencyImage object="Token_Maze_Upgrade_Token">
+                        {{ isMounted ? saveStore.mazeProgress.upgrade_tokens : 0 }}
+                    </CurrencyImage>
+                </span>
             </div>
         </section>
         <section class="section map-section">
@@ -170,28 +202,53 @@ onMounted(() => {
             </div>
             <MazeMapLegend v-else class="map-legend"></MazeMapLegend>
         </section>
-        <section class="section helpers-section">
-            <h2>{{ $t('maze.message.helpers.title') }}</h2>
-            <p class="no-helpers" v-if="Object.keys(saveStore.mazeProgress.helpers).length === 0">
-                {{ $t('maze.message.helpers.no_helpers') }}
-            </p>
-            <div class="maze-helpers" v-else>
-                <MazePonyCard
-                    v-for="mazePony in Object.keys(saveStore.mazeProgress.helpers)"
-                    :maze-pony="mazePony"
-                    show-save
-                    :editable="editMode"
-                ></MazePonyCard>
-            </div>
-        </section>
+        <ClientOnly>
+            <section class="section helpers-section" v-if="mazeActive">
+                <h2>{{ $t('maze.message.helpers.title') }}</h2>
+                <p class="no-helpers" v-if="Object.keys(saveStore.mazeProgress.helpers).length === 0">
+                    {{ $t('maze.message.helpers.no_helpers') }}
+                </p>
+                <div class="maze-helpers" v-else>
+                    <MazePonyCard
+                        v-for="mazePony in Object.keys(saveStore.mazeProgress.helpers)"
+                        :maze-pony="mazePony"
+                        show-save
+                        :editable="editMode"
+                    ></MazePonyCard>
+                </div>
+            </section>
+        </ClientOnly>
     </div>
 </template>
 
 <style lang="css" scoped>
 
+.import-bar {
+    margin-block: 1rem;
+
+}
+
 .error-message {
     color: var(--red);
 }
+
+
+.resources-bar {
+    display: flex;
+    align-items: center;
+    margin: 1rem 2rem;
+}
+
+.resource {
+    margin-inline: 0.5rem;
+}
+
+.resource-image {
+    height: 1em;
+    object-fit: contain;
+    object-position: center;
+}
+
 
 .map-section {
     display: flex;
