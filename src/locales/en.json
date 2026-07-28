@@ -522,7 +522,7 @@
       }
     },
     "tips": {
-      "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops!"
+      "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops, otherwise you will run out of coins and get softlocked!"
     },
     "pony_card": {
       "upgraded": "Upgraded"
