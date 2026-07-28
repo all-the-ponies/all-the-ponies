@@ -21,6 +21,7 @@ import CurrencyImage from '@/components/CurrencyImage.vue';
 import { useMounted, useTimestamp } from '@vueuse/core';
 import { formatTimestamp } from '@/scripts/timeFunctions';
 import { ClientOnly } from 'vike-vue/ClientOnly';
+import DialogComponent from '@/components/DialogComponent.vue';
 
 const mazeData = getMazeData()
 const saveStore = useSaveStore()
@@ -31,6 +32,7 @@ const mazeActive = computed(() => data.mazeActive || isDev())
 
 const mapElement = useTemplateRef('map-element')
 const friendCodeInput = useTemplateRef('friend-code-input')
+const confirmResetDialog = useTemplateRef('confirm-reset-dialog')
 
 const editMode = ref<boolean>(false)
 const selectedTile = ref<MapTile>()
@@ -124,6 +126,14 @@ watch(
     }
 })
 
+async function resetProgress() {
+    const willReset = await confirmResetDialog.value.open()
+
+    if (willReset) {
+        saveStore.resetMazeProgress()
+    }
+}
+
 onMounted(() => {
     if (pageContext.urlParsed.search.tile) {
         mapElement.value.selectTile(pageContext.urlParsed.search.tile)
@@ -160,6 +170,7 @@ onMounted(() => {
                     :disabled="importDisabled"
                     @click="importFriendCode()"
                 >{{ $t('common.import') }}</button>
+                <button class="button button-red" @click="resetProgress()">Reset</button>
                 <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
             </div>
             <div class="resources-bar">
@@ -219,6 +230,20 @@ onMounted(() => {
             </section>
         </ClientOnly>
     </div>
+
+    
+    <DialogComponent
+        ref="confirm-reset-dialog"
+        :title="$t('maze.dialog.reset.title')"
+    >
+        {{
+            $t('maze.dialog.reset.body')
+        }}
+        <template #menu>
+            <button @click="confirmResetDialog.submit()" class="button button-red">{{ $t('button.yes') }}</button>
+            <button @click="confirmResetDialog.cancel()" class="button button-green">{{ $t('button.no') }}</button>
+        </template>
+    </DialogComponent>
 </template>
 
 <style lang="css" scoped>

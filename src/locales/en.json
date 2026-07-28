@@ -526,6 +526,12 @@
     },
     "pony_card": {
       "upgraded": "Upgraded"
+    },
+    "dialog": {
+      "reset": {
+        "title": "Reset?",
+        "body": "Are you sure you want to reset your progress?"
+      }
     }
   },
   "info_card": {

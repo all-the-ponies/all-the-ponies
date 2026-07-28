@@ -74,24 +74,28 @@ function createBaseSave() {
         notes: {} as Record<GameObjectId, string>,
         critters: {} as Record<GameObjectId, number>,
 
-        mazeProgress: {
-            position: {
-                x: 0,
-                y: 0,
-            },
-            energy: 0,
-            last_energy_time: 0,
-            currency: 0,
-            upgrade_tokens: 0,
-            level: 0,
-            xp: 0,
-            helpers: {} as Record<string, number>,
-            map: {
-                blocks: [] as {
-                    x: number,
-                    y: number,
-                }[],
-            }
+        mazeProgress: createBaseMazeProgress()
+    }
+}
+
+function createBaseMazeProgress() {
+    return {
+        position: {
+            x: 0,
+            y: 0,
+        },
+        energy: 0,
+        last_energy_time: 0,
+        currency: 0,
+        upgrade_tokens: 0,
+        level: 0,
+        xp: 0,
+        helpers: {} as Record<string, number>,
+        map: {
+            blocks: [] as {
+                x: number,
+                y: number,
+            }[],
         }
     }
 }
@@ -325,6 +329,10 @@ export const useSaveStore = defineStore('save', {
 
         getMazePonyFights(mazePonyId: string) {
             return this.mazeProgress.helpers[mazePonyId] ?? 0
+        },
+
+        resetMazeProgress() {
+            this.mazeProgress = createBaseMazeProgress()
         },
 
 
