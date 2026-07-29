@@ -92,11 +92,6 @@ export const mazeTileConfig: Record<MazeTileType, MazeTileConfig> = {
         name: 'maze.tile.coin_shop',
         check: (tile) => Boolean(tile.coin_shop),
     },
-    skippable: {
-        id: 'skippable',
-        color: '#aaaaaa',
-        name: 'maze.tile.skippable',
-    },
 }
 
 export function getTileType(tile: MapTile): MazeTileType | null {

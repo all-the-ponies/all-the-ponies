@@ -500,8 +500,7 @@
       "boss": "Boss",
       "chest": "Chest",
       "helper_shop": "Secret Shop",
-      "coin_shop": "Magic Coin Shop",
-      "skippable": "Skippable Tile"
+      "coin_shop": "Magic Coin Shop"
     },
     "message": {
       "import_progress": "Import progress:",
