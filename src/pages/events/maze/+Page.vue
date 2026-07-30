@@ -6,7 +6,7 @@ import MazeCoinShop from '@/components/maze/MazeCoinShop.vue';
 import MazeMap from '@/components/maze/MazeMap.vue';
 import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
 import { isDev } from '@/scripts/common';
-import { getMazeData } from '@/scripts/gameData';
+import { getMazeData, translateName } from '@/scripts/gameData';
 import type { MapTile } from '@/scripts/maze/tiles';
 import { Config } from 'vike-vue/Config';
 import { useData } from 'vike-vue/useData';
@@ -21,6 +21,7 @@ import { useMounted, useTimestamp } from '@vueuse/core';
 import { ClientOnly } from 'vike-vue/ClientOnly';
 import DialogComponent from '@/components/DialogComponent.vue';
 
+const mazeData = getMazeData()
 const saveStore = useSaveStore()
 const pageContext = usePageContext()
 const data = useData<Data>()
@@ -31,6 +32,7 @@ const mapElement = useTemplateRef('map-element')
 const friendCodeInput = useTemplateRef('friend-code-input')
 const confirmResetDialog = useTemplateRef('confirm-reset-dialog')
 
+const mazeTitle = translateName(mazeData)
 const editMode = ref<boolean>(false)
 const selectedTile = ref<MapTile>()
 const errorMessage = ref<string>('')
@@ -141,11 +143,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <Config :title="$t('maze.title.long')"></Config>
+    <Config :title="mazeTitle"></Config>
 
     <div>
         <section>
-            <h1>{{ $t('maze.title.long') }}</h1>
+            <h1>{{ mazeTitle }}</h1>
         </section>
         <section class="section" v-if="mazeActive">
             <div class="import-bar">

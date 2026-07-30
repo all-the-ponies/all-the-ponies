@@ -499,6 +499,9 @@ export interface CollectionRewardEntry {
 
 
 export interface MazeData {
+    id: string,
+    name: TranslatableString,
+    image: ImageBase<'outro'>,
     map: MazeMap,
     shop_tiers: Record<string, MazeShopTier>,
     chest_rewards: Record<string, string[]>,
