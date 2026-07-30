@@ -247,6 +247,12 @@
     "things_to_do": {
       "browse": "Browse",
       "title": "Things To Do"
+    },
+    "events": {
+      "current_event": "Current Event",
+      "next_event": "Next Event",
+      "starts_in": "Starts in {timestamp}",
+      "ends_in": "Ends in {timestamp}"
     }
   },
   "inventory": {
