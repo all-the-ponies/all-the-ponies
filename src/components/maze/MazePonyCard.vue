@@ -58,9 +58,9 @@ const fights = computed(() => {
                 </div>
                 <div class="info">
                     <span>{{ fights }}</span>
-                    <img src="@/assets/images/ui/maze/maze-fights-icon.png" alt="Fights">
+                    <img src="@/assets/images/ui/maze/maze-fights-icon.png" :alt="$t('maze.pony_card.fights')">
                     <span>{{ mazePony.power }}</span>
-                    <img src="@/assets/images/ui/maze/maze-power-icon.png" alt="Fights">
+                    <img src="@/assets/images/ui/maze/maze-power-icon.png" :alt="$t('maze.pony_card.power')">
                 </div>
             </div>
         </component>

@@ -537,7 +537,9 @@
       "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops, otherwise you will run out of coins and get softlocked!"
     },
     "pony_card": {
-      "upgraded": "Upgraded"
+      "upgraded": "Upgraded",
+      "fights": "Fights",
+      "power": "Power"
     },
     "dialog": {
       "reset": {
