@@ -506,7 +506,9 @@
       "boss": "Boss",
       "chest": "Chest",
       "helper_shop": "Secret Shop",
-      "coin_shop": "Magic Coin Shop"
+      "coin_shop": "Magic Coin Shop",
+      "locked": "Locked",
+      "selected": "Selected"
     },
     "message": {
       "import_progress": "Import progress:",

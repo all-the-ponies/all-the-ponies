@@ -7,12 +7,12 @@ import MazeMap from '@/components/maze/MazeMap.vue';
 import MazeMapLegend from '@/components/maze/MazeMapLegend.vue';
 import { isDev } from '@/scripts/common';
 import { getMazeData, translateName } from '@/scripts/gameData';
-import type { MapTile } from '@/scripts/maze/tiles';
+import type { MapTile, MazeTileType } from '@/scripts/maze/tiles';
 import { Config } from 'vike-vue/Config';
 import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { modifyUrl } from 'vike/modifyUrl';
-import { computed, nextTick, onMounted, provide, ref, useTemplateRef, watch } from 'vue';
+import { computed, getCurrentInstance, nextTick, onMounted, provide, ref, useTemplateRef, watch } from 'vue';
 import type { Data } from './+data.server';
 import { useSaveStore } from '@/stores/saveManager';
 import MazePonyCard from '@/components/maze/MazePonyCard.vue';
@@ -20,11 +20,15 @@ import CurrencyImage from '@/components/CurrencyImage.vue';
 import { useMounted, useTimestamp } from '@vueuse/core';
 import { ClientOnly } from 'vike-vue/ClientOnly';
 import DialogComponent from '@/components/DialogComponent.vue';
+import { useI18n } from 'vue-i18n';
 
 const mazeData = getMazeData()
 const saveStore = useSaveStore()
 const pageContext = usePageContext()
 const data = useData<Data>()
+const { t } = useI18n()
+
+const selectableTiles: MazeTileType[] = ['chest', 'coinShop', 'helperShop', 'boss', 'miniboss']
 
 const mazeActive = computed(() => data.mazeActive || isDev())
 
@@ -38,6 +42,22 @@ const selectedTile = ref<MapTile>()
 const errorMessage = ref<string>('')
 const friendCode = ref<string>('')
 const importDisabled = ref<boolean>(false)
+const infoPanel = useTemplateRef('info-panel')
+
+const suppressNextAutoFocus = ref(false)
+
+// NOTE: `maze.message.legend.title` is a guess at a key for "legend" -
+// swap in whatever key you actually use for the legend heading, if any.
+const infoPanelLabel = computed(() => {
+    switch (selectedTile.value?.type) {
+        case 'helperShop': return t('maze.tile.helper_shop')
+        case 'chest': return t('maze.tile.chest')
+        case 'coinShop': return t('maze.tile.coin_shop')
+        case 'boss': return t('maze.tile.boss')
+        case 'miniboss': return t('maze.tile.miniboss')
+        default: return t('maze.message.legend')
+    }
+})
 
 provide('mazeActive', mazeActive)
 
@@ -83,7 +103,11 @@ async function importFriendCode() {
 }
 
 function close() {
+    const previousLabel = selectedTile.value?.label
     selectedTile.value = null
+    if (previousLabel) {
+        mapElement.value?.focusTile(previousLabel)
+    }
 }
 
 
@@ -122,6 +146,14 @@ watch(
                 }
             )
         )
+        // Move focus to the side panel so screen reader users notice the
+        // new content (a helper shop, chest, boss, etc.) as soon as it
+        // appears, instead of it silently changing next to a focused map tile.
+        if (!suppressNextAutoFocus.value) {
+            nextTick(() => infoPanel.value?.focus())
+        } else {
+            suppressNextAutoFocus.value = false
+        }
     }
 })
 
@@ -135,6 +167,7 @@ async function resetProgress() {
 
 onMounted(() => {
     if (pageContext.urlParsed.search.tile) {
+        suppressNextAutoFocus.value = true
         mapElement.value.selectTile(pageContext.urlParsed.search.tile)
     }
     friendCode.value = saveStore.playerInfo.friendCode
@@ -198,19 +231,19 @@ onMounted(() => {
                 v-model:selected-tile="selectedTile"
                 :editable="editMode"
             ></MazeMap>
-            <div class="info-container" v-if="selectedTile?.type == 'helperShop'">
-                <HelperShop :shop-id="selectedTile.entity.id" @close="close()"></HelperShop>
+            <div
+                :class="selectableTiles.includes(selectedTile?.type) ? 'info-container' : 'map-legend'"
+                ref="info-panel"
+                tabindex="-1"
+                role="region"
+                :aria-label="infoPanelLabel"
+            >
+                <HelperShop v-if="selectedTile?.type == 'helperShop'" :shop-id="selectedTile.entity.id" @close="close()"></HelperShop>
+                <MazeChestPreview v-else-if="selectedTile?.type == 'chest'" :chest-id="selectedTile.entity.id" @close="close()"></MazeChestPreview>
+                <MazeCoinShop v-else-if="selectedTile?.type == 'coinShop'" :shop-id="selectedTile.coin_shop" @close="close()"></MazeCoinShop>
+                <MazeBossView v-else-if="selectedTile?.type == 'boss' || selectedTile?.type == 'miniboss'" :boss-id="selectedTile.entity.id" @close="close()"></MazeBossView>
+                <MazeMapLegend v-else></MazeMapLegend>
             </div>
-            <div class="info-container" v-else-if="selectedTile?.type == 'chest'">
-                <MazeChestPreview :chest-id="selectedTile.entity.id" @close="close()"></MazeChestPreview>
-            </div>
-            <div class="info-container" v-else-if="selectedTile?.type == 'coinShop'">
-                <MazeCoinShop :shop-id="selectedTile.coin_shop" @close="close()"></MazeCoinShop>
-            </div>
-            <div class="info-container" v-else-if="selectedTile?.type == 'boss' || selectedTile?.type == 'miniboss'">
-                <MazeBossView :boss-id="selectedTile.entity.id" @close="close()"></MazeBossView>
-            </div>
-            <MazeMapLegend v-else class="map-legend"></MazeMapLegend>
         </section>
         <ClientOnly>
             <section class="section helpers-section" v-if="mazeActive">
