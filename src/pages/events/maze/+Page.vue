@@ -89,7 +89,7 @@ async function importFriendCode() {
         await loadingSave
 
         if (!mazeActive) {
-            errorMessage.value = 'Maze not active'
+            errorMessage.value = t('maze.message.not_active')
         }
     } catch (error) {
         console.error(error)
@@ -207,11 +207,11 @@ onMounted(() => {
             </div>
             <div class="resources-bar">
                 <button class="button button-blue" @click="toggleEdit()">
-                    {{ editMode ? 'Done' : 'Edit' }}
+                    {{ editMode ? $t('button.done') : $t('button.edit') }}
                 </button>
                 <span class="resource">
                     {{ energy }}
-                    <img src="@/assets/images/ui/maze/maze-energy-icon.png" alt="Maze Energy" class="resource-image">
+                    <img src="@/assets/images/ui/maze/maze-energy-icon.png" :alt="$t('maze.message.maze_energy')" class="resource-image">
                 </span>
                 <span class="resource">
                     <CurrencyImage object="Consumable_Maze_Tier0">

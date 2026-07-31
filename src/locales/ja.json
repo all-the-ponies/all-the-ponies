@@ -32,7 +32,9 @@
     "start": "スタート",
     "stop": "",
     "yes": "はい",
-    "resume": "さいかい"
+    "resume": "さいかい",
+    "edit": "エディット",
+    "close": "とじる"
   },
   "check_save": {
     "messages": {

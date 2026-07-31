@@ -33,7 +33,9 @@
     "skip": "Pular",
     "start": "Iniciar",
     "stop": "Pare",
-    "yes": "Sim"
+    "yes": "Sim",
+    "edit": "Editar",
+    "close": "Fechado"
   },
   "check_save": {
     "messages": {

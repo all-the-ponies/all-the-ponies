@@ -33,7 +33,10 @@
     "skip": "Skip",
     "start": "Start",
     "stop": "Stop",
-    "yes": "Yes"
+    "yes": "Yes",
+    "edit": "Edit",
+    "done": "Done",
+    "close": "Close"
   },
   "check_save": {
     "messages": {
@@ -513,6 +516,8 @@
     "message": {
       "import_progress": "Import progress:",
       "legend": "Legend",
+      "not_active": "Maze not active",
+      "maze_energy": "Maze Energy",
       "coin_shop": {
         "produces": "Produces:",
         "time": "Every {duration}",

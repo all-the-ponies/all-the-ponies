@@ -32,7 +32,9 @@
     "start": "เริ่ม",
     "stop": "",
     "yes": "ใช่",
-    "resume": "เล่นต่อ"
+    "resume": "เล่นต่อ",
+    "edit": "แก้ไข",
+    "close": "ปิด"
   },
   "check_save": {
     "messages": {

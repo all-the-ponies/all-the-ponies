@@ -33,7 +33,9 @@
     "skip": "Omitir",
     "start": "Empezar",
     "stop": "Parar",
-    "yes": "Sí"
+    "yes": "Sí",
+    "edit": "Editar",
+    "close": "Cerrar"
   },
   "check_save": {
     "messages": {

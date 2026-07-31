@@ -32,7 +32,9 @@
     "start": "ابدأ",
     "stop": "",
     "yes": "نعم",
-    "resume": "متابعة"
+    "resume": "متابعة",
+    "edit": "تعديل",
+    "close": "إغلاق"
   },
   "check_save": {
     "messages": {

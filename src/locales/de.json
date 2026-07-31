@@ -32,7 +32,9 @@
     "start": "Start",
     "stop": "Stopp",
     "yes": "Ja",
-    "resume": "Fortfahren"
+    "resume": "Fortfahren",
+    "edit": "Bearbeiten",
+    "close": "Beenden"
   },
   "check_save": {
     "messages": {
