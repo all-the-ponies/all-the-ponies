@@ -53,6 +53,8 @@ const ponies = computed(() => {
           continue
         } else if (pony.tags.includes('quest') || (pony.group.length > 0 && !pony.group_master)) {
           continue
+        } else if (pony.critter_farm) {
+            continue
         }
         ponies.push(pony)
     }

@@ -211,7 +211,7 @@ const rightStat = computed(() => {
                         {{
                             $t('inventory.stats.costumes', 2, {
                                 named: {
-                                    count: $n(saveStore?.costumes.size)
+                                    count: $n(saveStats?.costumes.total)
                                 }
                             })
                         }}
