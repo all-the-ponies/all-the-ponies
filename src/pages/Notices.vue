@@ -36,7 +36,7 @@ import links from '@/globals/links';
     </Notice>
     <DialogNotice
         notice-id="v5_arks"
-        start-date="2026-07-04T11:00Z"
+        start-date="2026-08-04T11:00Z"
         :title="$t('notices.v5_arks.title')"
     >
         {{ $t('notices.v5_arks.body') }}
