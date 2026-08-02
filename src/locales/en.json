@@ -563,5 +563,12 @@
     "important": "Important",
     "warning": "Warning",
     "error": "Error"
+  },
+  "sidebar": {
+    "game_info": "Game Info",
+    "browse": "Browse",
+    "profile_decorations": "Profile Decorations",
+    "player": "Player",
+    "activities": "Activities"
   }
 }

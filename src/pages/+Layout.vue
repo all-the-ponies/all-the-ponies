@@ -7,8 +7,9 @@ import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
 import Notices from './Notices.vue'
 import SidebarView from './SidebarView.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, useTemplateRef } from 'vue'
 import { getGameVersions, type GameVersion } from '@/scripts/gameData.ts'
+import { useElementSize } from '@vueuse/core'
 
 const pageContext = usePageContext()
 
@@ -31,6 +32,9 @@ onMounted(() => {
 
     localStorage.setItem('game_version', JSON.stringify(currentVersion))
 })
+
+const sidebarRef = useTemplateRef('sidebar')
+const { height: sidebarHeight } = useElementSize(sidebarRef)
 
 </script>
 
@@ -95,7 +99,7 @@ onMounted(() => {
     </Head>
 
     <div id="main" class="page" ref="main">
-        <SidebarView />
+        <SidebarView ref="sidebar" />
         <main class="router">
             <Notices></Notices>
             <slot></slot>
@@ -145,7 +149,7 @@ onMounted(() => {
 @media screen and (max-width: 50rem) {
     .page {
         flex-direction: column;
-        height: 100dvh;
+        height: calc(100dvh - (v-bind('sidebarHeight') * 1px));
     }
 
     .router {
