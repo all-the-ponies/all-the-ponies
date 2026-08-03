@@ -52,8 +52,8 @@ function getStat(stat: PlayerStatName) {
         case 'pony_alt': return saveStats.value?.ponies.changelings
         case 'shop': return saveStats.value?.shops.bits + saveStats.value.shops.others
         case 'gem_shop': return saveStats.value?.shops.gems
-        case 'costume': return saveStore?.costumes.size
-        case 'collection': return saveStore?.collections.size
+        case 'costume': return saveStats.value.costumes.total
+        case 'collection': return saveStats.value.collections.total
         case 'hots': return saveStore?.playerInfo.stats.whCollections
         default: return 0
     }
@@ -220,7 +220,7 @@ const rightStat = computed(() => {
                         {{
                             $t('inventory.stats.collections', 2, {
                                 named: {
-                                    count: $n(saveStore?.collections.size)
+                                    count: $n(saveStats.collections.total)
                                 }
                             })
                         }}

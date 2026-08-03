@@ -71,16 +71,29 @@ const sortFunctions: Record<string, SortFunctionType<CollectionType>> = {
 }
 
 const filterFunctions: Record<string, FilterFunctionType<CollectionType>> = {
+    available: {
+        name: 'filter.common.available',
+        exclude: ['unused'],
+        default: true,
+    },
     completed: {
         name: 'filter.collection.completed',
         check(collection) {
             return saveStore.hasCollection(collection)
         },
+        exclude: ['unused'],
     },
     incomplete: {
         name: 'filter.collection.incomplete',
         check(collection) {
             return !saveStore.hasCollection(collection)
+        },
+        exclude: ['unused'],
+    },
+    unused: {
+        name: 'filter.pony.unused',
+        check(collection) {
+            return collection.tags?.includes('unused') || collection.tags?.includes('vip')
         },
     },
 }
