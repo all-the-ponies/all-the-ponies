@@ -92,7 +92,9 @@ function getApp() {
             status = 412
         }
 
-        headers.set('cache-control', 'max-age=2592000')
+        if (!headers.has('cache-control')) {
+            headers.set('cache-control', 'max-age=2592000')
+        }
 
         let body = 'body' in object ? object.body : undefined
 
