@@ -2,7 +2,7 @@
 import InventoryAddButton from "./buttons/InventoryAddButton.vue"
 
 import { createAssetUrl } from "@/scripts/assets.ts"
-import { getObject, useGroupQuests, translateName } from '@/scripts/gameData'
+import { getObject, useGroupQuests, translateName, getCollection } from '@/scripts/gameData'
 import { shopStore } from "@/stores/shopManager"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
 import { computedAsync } from "@vueuse/core"
@@ -65,10 +65,19 @@ const showProIcon = computed(() => {
 })
 
 const collectionLink = computed(() => {
-    if (gameObject.value.category !== 'pony' || !gameObject.value.collections.length) {
+    if (gameObject.value.category !== 'pony' || !Array.isArray(gameObject.value.collections)) {
         return null
-    } else if (gameObject.value.collections.length === 1) {
-        return `/collection/${gameObject.value.collections[0]}`
+    }
+    
+    const collections = gameObject.value.collections.filter(collectionId => {
+        const collection = getCollection(collectionId)
+        return !(collection.tags?.includes('unused') || collection.tags?.includes('vip'))
+    })
+
+    if (collections.length === 0) {
+        return null
+    } else if (collections.length === 1) {
+        return `/collection/${collections[0]}`
     }
     return `/search/collections/?q=${gameObject.value.id}`
 })
@@ -115,8 +124,8 @@ const shopInfo = computedAsync(
         :hover="props.hover"
     >
         <template #left>
-            <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
             <CollectionButton v-if="collectionLink" :href="collectionLink"></CollectionButton>
+            <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
         </template>
         <template #right>
             <inventory-add-button v-if="gameObject && props.hasButtons && canAdd" :gameObject="gameObject?.id" />

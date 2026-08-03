@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { getFortuneShopData, getObject, getTaskInfo, translateName, useGroupQuests } from '@/scripts/gameData'
+import { getCollection, getFortuneShopData, getObject, getTaskInfo, translateName, useGroupQuests } from '@/scripts/gameData'
 import { language } from '@/globals';
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import { staticImage } from '@/scripts/common'
@@ -175,10 +175,21 @@ const tasks = computed(() => {
 })
 
 const collectionLink = computed(() => {
-    if (!pony.value.collections.length) {
+    if (pony.value.category !== 'pony' || !Array.isArray(pony.value.collections)) {
         return null
-    } else if (pony.value.collections.length === 1) {
-        return `/collection/${pony.value.collections[0]}`
+    }
+    
+    const collections = pony.value.collections.filter(collectionId => {
+        const collection = getCollection(collectionId)
+        return !(collection.tags?.includes('unused') || collection.tags?.includes('vip'))
+    })
+
+    console.log('collections', collections)
+
+    if (collections.length === 0) {
+        return null
+    } else if (collections.length === 1) {
+        return `/collection/${collections[0]}`
     }
     return `/search/collections/?q=${pony.value.id}`
 })
@@ -205,8 +216,8 @@ const collectionLink = computed(() => {
                     {{ name }}
                 </template>
                 <template #image-left>
-                    <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
                     <CollectionButton v-if="collectionLink" :href="collectionLink"></CollectionButton>
+                    <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
                 </template>
                 <template #image-right>
                     <inventory-add-button :gameObject="pony?.id"></inventory-add-button>
