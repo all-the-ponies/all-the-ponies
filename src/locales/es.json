@@ -104,6 +104,9 @@
       "completed": "Completada",
       "incomplete": "Incompleta"
     },
+    "common": {
+      "available": "Disponible"
+    },
     "costume": {
       "used": "Usados"
     },
@@ -334,6 +337,12 @@
     "help_wanted": {
       "body": "Yo solo hablo inglés, así que no puedo traducir Todos los Ponis a otros idiomas. Si tu idioma ya se encuentra en la página pero no está completamente traducido, me encantaría tu ayuda. No se necesita conocimiento en programación porque Weblate hace que traducir sea fácil para todos.",
       "title": "¡Se necesita ayuda!"
+    },
+    "v5_arks": {
+      "title": "Importante"
+    },
+    "v5_arks_cracked": {
+      "title": "Actualización"
     }
   },
   "player_card": {
