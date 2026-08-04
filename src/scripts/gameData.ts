@@ -127,9 +127,15 @@ export async function fetchGameData() {
     //     return
     // }
 
+    const isSitemap = typeof process !== 'undefined' && process.env.GENERATING_SITEMAP === 'true'
+
+    let manifest: Record<string, string> = {}
+    if (isSitemap || isClient) {
+        manifest = await ky<Record<string, string>>(createAssetUrl('manifest.json', {direct: true})).json()
+    }
+
 
     async function fetchData<T>(key: string): Promise<T> {
-        const isSitemap = typeof process !== 'undefined' && process.env.GENERATING_SITEMAP === 'true'
         if (!isSitemap && !isClient) {
             const cloudflareModule = 'cloudflare:workers'
             const { env } = await import(/* @vite-ignore */ cloudflareModule)
@@ -139,10 +145,15 @@ export async function fetchGameData() {
             }
             return await object.json() as T
         } else {
-            return await ky<T>(createAssetUrl(key)).json()
+            const url = new URL(createAssetUrl(key))
+            if (manifest[key]) {
+                url.searchParams.set('v', manifest[key])
+            }
+
+            return await ky<T>(url).json()
         }
     }
-    
+
     loading = true
     error = null
     try {

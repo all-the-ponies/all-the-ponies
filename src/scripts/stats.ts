@@ -1,7 +1,7 @@
 import { useSaveStore } from "@/stores/saveManager"
 import type { GameObjectId } from "@/types/gameDataTypes"
 import { computed, onMounted, reactive, shallowRef, type Ref } from "vue"
-import { getObject } from "./gameData"
+import { getCollection, getObject } from "./gameData"
 
 
 interface SaveStats {
@@ -25,7 +25,10 @@ interface SaveStats {
     },
     readonly costumes: {
         readonly total: number,
-    }
+    },
+    readonly collections: {
+        readonly total: number,
+    },
 }
 
 type ToReactive<T> = T extends object
@@ -137,6 +140,19 @@ export function useSaveStats() {
                     }
         
                     return costumes.size
+                })
+            },
+            collections: {
+                total: computed(() => {
+                    const save = useSaveStore()
+                    const collections = [...save.collections]
+
+                    collections.filter(collectionId => {
+                        const collection = getCollection(collectionId)
+                        return !(collection.tags?.includes('unused') || collection.tags?.includes('vip'))
+                    })
+
+                    return collections.length
                 })
             }
         }) as SaveStats

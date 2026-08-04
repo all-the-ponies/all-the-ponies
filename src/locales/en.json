@@ -95,6 +95,9 @@
     "sort_by": "Sort By"
   },
   "filter": {
+    "common": {
+      "available": "Available"
+    },
     "costume": {
       "used": "Used"
     },

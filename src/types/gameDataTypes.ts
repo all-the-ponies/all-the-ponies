@@ -471,6 +471,7 @@ export interface CollectionType {
     index: number,
     id: string,
     name: TranslatableString,
+    tags: string[],
     ponies: CollectionItem[],
     reward: CollectionReward,
     image: Record<Language, string>,
