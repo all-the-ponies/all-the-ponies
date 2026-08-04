@@ -4,6 +4,9 @@ import Link from '@/components/Link.vue';
 import DialogNotice from '@/components/notice/DialogNotice.vue';
 import Notice from '@/components/notice/Notice.vue';
 import links from '@/globals/links';
+import { getGameVersions } from '@/scripts/gameData';
+
+const gameVersions = getGameVersions()
 
 </script>
 
@@ -35,11 +38,10 @@ import links from '@/globals/links';
         </div>
     </Notice>
     <DialogNotice
-        notice-id="v5_arks"
-        start-date="2026-08-04T11:00Z"
-        :title="$t('notices.v5_arks.title')"
+        notice-id="v5_arks_fixed"
+        :title="$t('notices.v5_arks_cracked.title')"
     >
-        {{ $t('notices.v5_arks.body') }}
+        {{ $t('notices.v5_arks_cracked.body', {version: gameVersions.game_version}) }}
     </DialogNotice>
 </template>
 
