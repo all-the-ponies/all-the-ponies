@@ -102,6 +102,10 @@
     "sort_by": "Ordenar por"
   },
   "filter": {
+    "collection": {
+      "completed": "Completada",
+      "incomplete": "Incompleta"
+    },
     "costume": {
       "used": "Usados"
     },
