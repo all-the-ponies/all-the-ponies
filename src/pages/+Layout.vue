@@ -7,11 +7,14 @@ import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
 import Notices from './Notices.vue'
 import SidebarView from './SidebarView.vue'
-import { onMounted, ref, useTemplateRef } from 'vue'
+import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import { getGameVersions, type GameVersion } from '@/scripts/gameData.ts'
 import { useElementSize } from '@vueuse/core'
 
 const pageContext = usePageContext()
+
+const mainContent = useTemplateRef('main')
+const skipToContentButton = useTemplateRef('skip-to-content')
 
 // const showGameUpdate = ref<boolean>(false)
 
@@ -35,6 +38,17 @@ onMounted(() => {
 
 const sidebarRef = useTemplateRef('sidebar')
 const { height: sidebarHeight } = useElementSize(sidebarRef)
+
+function skipToContent(e: Event) {
+    e.preventDefault()
+    skipToContentButton.value.focus()
+    nextTick(() => {
+        setTimeout(() => {
+            mainContent.value.focus()
+            mainContent.value.scrollIntoView()
+        }, 20)
+    })
+}
 
 </script>
 
@@ -98,11 +112,13 @@ const { height: sidebarHeight } = useElementSize(sidebarRef)
             )" />
     </Head>
 
-    <a href="#content" class="skip-to-content button button-blue">{{ $t('site.skip_to_content') }}</a>
+    <a href="#content" class="skip-to-content button button-blue" @click="skipToContent" ref="skip-to-content">
+        {{ $t('site.skip_to_content') }}
+    </a>
 
-    <div id="main" class="page" ref="main">
+    <div class="page">
         <SidebarView ref="sidebar" />
-        <main class="router" id="content">
+        <main class="router" id="content" ref="main" tabindex="-1">
             <Notices></Notices>
             <slot></slot>
         </main>
@@ -136,8 +152,6 @@ const { height: sidebarHeight } = useElementSize(sidebarRef)
     transition: transform 200ms ease;
 }
 
-.skip-to-content:hover,
-.skip-to-content:focus,
 .skip-to-content:focus-visible {
     transform: translateY(0%);
 }
