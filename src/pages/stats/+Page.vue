@@ -220,7 +220,7 @@ const rightStat = computed(() => {
                         {{
                             $t('inventory.stats.collections', 2, {
                                 named: {
-                                    count: $n(saveStats.collections.total)
+                                    count: $n(saveStats?.collections.total)
                                 }
                             })
                         }}
