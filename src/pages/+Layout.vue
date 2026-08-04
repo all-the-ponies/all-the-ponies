@@ -98,9 +98,11 @@ const { height: sidebarHeight } = useElementSize(sidebarRef)
             )" />
     </Head>
 
+    <a href="#content" class="skip-to-content button button-blue">{{ $t('site.skip_to_content') }}</a>
+
     <div id="main" class="page" ref="main">
         <SidebarView ref="sidebar" />
-        <main class="router">
+        <main class="router" id="content">
             <Notices></Notices>
             <slot></slot>
         </main>
@@ -124,6 +126,21 @@ const { height: sidebarHeight } = useElementSize(sidebarRef)
 </style>
 
 <style scoped>
+
+.skip-to-content {
+    position: fixed;
+    top: 0;
+    z-index: 9999999;
+    transform: translateY(calc(-100% - 1rem));
+
+    transition: transform 200ms ease;
+}
+
+.skip-to-content:hover,
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+    transform: translateY(0%);
+}
 
 .page {
     min-height: 100dvh;

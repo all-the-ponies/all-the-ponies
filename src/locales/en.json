@@ -432,7 +432,8 @@
   "site": {
     "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game",
     "title": "All The Ponies",
-    "language": "Language"
+    "language": "Language",
+    "skip_to_content": "Skip to content"
   },
   "socials": {
     "discord": "Discord",
