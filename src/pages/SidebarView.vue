@@ -45,6 +45,7 @@ function toggleSidebar(e: Event) {
                 </div>
             </div>
             <div class="sidebar-container">
+                <label for="sidebar-toggle" class="sidebar-background"></label>
                 <CustomScrollbar class="sidebar-scroller">
                     <SidebarRoot>
                         <SidebarLabel>{{ $t('sidebar.game_info') }}</SidebarLabel>
@@ -91,7 +92,6 @@ function toggleSidebar(e: Event) {
                         </template>
                     </SidebarRoot>
                 </CustomScrollbar>
-                <label for="sidebar-toggle" class="sidebar-background"></label>
             </div>
         </aside>
     </header>
@@ -223,9 +223,10 @@ header a:hover, header a:focus-visible {
     }
 
     .sidebar-container {
-        display: none;
+        /* display: none; */
+        display: grid;
         grid-template-columns: clamp(15rem, 65vw, 25rem) 1fr;
-        opacity: 0;
+        /* opacity: 0; */
 
         position: absolute;
         top: 100%;
@@ -243,16 +244,40 @@ header a:hover, header a:focus-visible {
     }
 
     .sidebar-container .sidebar-background {
-        background-color: black;
-        opacity: 0;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
 
-        /* transition: opacity 0.3s; */
+        background-color: black;
+        opacity: 0;
+
+        transition: 0.3s opacity, 0.3s display allow-discrete;
     }
 
     .header:has(.sidebar-toggle > input:checked) .sidebar-background {
+        display: block;
         opacity: 0.5;
+        @starting-style {
+            opacity: 0;
+        }
     }
+
+    .sidebar-scroller {
+        transform: translate(-100%, 0);
+        transition: transform 0.3s ease;
+    }
+
+    .header:has(.sidebar-toggle > input:checked) .sidebar-scroller {
+        transform: translate(0, 0);
+    }
+
+    /* @starting-style {
+        .sidebar-container .sidebar-background {
+            opacity: 0;
+        }
+    } */
 }
 </style>
