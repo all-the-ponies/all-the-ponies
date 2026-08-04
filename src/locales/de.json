@@ -27,12 +27,12 @@
     "hint": "Hinweis",
     "no": "Nein",
     "ok": "Ok",
+    "resume": "Fortfahren",
     "share": "Teilen",
     "skip": "Übsp.",
     "start": "Start",
     "stop": "Stopp",
-    "yes": "Ja",
-    "resume": "Fortfahren"
+    "yes": "Ja"
   },
   "check_save": {
     "messages": {
@@ -159,6 +159,9 @@
       "resident": "",
       "visitor": ""
     },
+    "pet": {
+      "pet": "Haustier | Pets"
+    },
     "pony": {
       "arrival_bonus": "",
       "character": "Charaktere",
@@ -183,10 +186,10 @@
       "background_frame": {
         "background_frame": "Hintergrundrahmen"
       },
-      "is_default": "",
       "cutie_mark": {
         "cutie_mark": "Schönheitsfleck | Schönheitsflecken"
-      }
+      },
+      "is_default": ""
     },
     "road": {
       "road": "Straßen"
@@ -200,9 +203,6 @@
     },
     "token": {
       "token": "Marken"
-    },
-    "pet": {
-      "pet": "Haustier | Pets"
     }
   },
   "group_quests": {
@@ -285,7 +285,7 @@
     "messages": {
       "empty_list": "",
       "no_lists": "",
-      "wishlist": ""
+      "wishlist": "Wunschliste"
     },
     "title": ""
   },
@@ -297,18 +297,22 @@
     "klugetown": "Klugetown",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
-    "town": "",
-    "unknown": ""
+    "town": "Dorf",
+    "unknown": "Unbekannt"
   },
   "notices": {
     "corrupt_save": {
       "body": "",
       "button": "",
-      "title": ""
+      "title": "Wichtig"
     },
     "help_wanted": {
       "body": "",
-      "title": ""
+      "title": "Hilfe gebraucht!"
+    },
+    "v5_arks": {
+      "body": "Leider wird „All The Ponies“ das neueste Update nicht erhalten, da Gameloft die Speicherung der Spieldateien geändert hat; dadurch funktionieren die Tools, mit denen diese Dateien ausgelesen wurden, nicht mehr. Ich und andere Dataminer arbeiten fieberhaft daran herauszufinden, wie sich die neuen Dateien extrahieren lassen, aber man sollte in nächster Zeit nicht mit Ergebnissen rechnen.",
+      "title": "Wichtig"
     }
   },
   "player_info": {
