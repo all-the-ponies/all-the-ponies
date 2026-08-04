@@ -2,9 +2,11 @@
 import { computed } from 'vue';
 
 
-const props = defineProps<{
-    type: 'info' | 'note' | 'tip' | 'important' | 'warning' | 'error'
-}>()
+const props = withDefaults(defineProps<{
+    type?: 'info' | 'note' | 'tip' | 'important' | 'warning' | 'error'
+}>(), {
+    type: 'note'
+})
 
 const types = {
     info: {

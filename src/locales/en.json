@@ -526,6 +526,10 @@
       "legend": "Legend",
       "not_active": "Maze not active",
       "maze_energy": "Maze Energy",
+      "update_note": {
+        "outdated": "This is currently using the data from last year, so things may not be accurate to this year.",
+        "updated": "Everything has now been updated, and is using data from this year!"
+      },
       "coin_shop": {
         "produces": "Produces:",
         "time": "Every {duration}",

@@ -21,6 +21,8 @@ import { useMounted, useTimestamp } from '@vueuse/core';
 import { ClientOnly } from 'vike-vue/ClientOnly';
 import DialogComponent from '@/components/DialogComponent.vue';
 import { useI18n } from 'vue-i18n';
+import InfoCard from '@/components/InfoCard.vue';
+import Notice from '@/components/notice/Notice.vue';
 
 const mazeData = getMazeData()
 const saveStore = useSaveStore()
@@ -181,6 +183,13 @@ onMounted(() => {
     <div>
         <section>
             <h1>{{ mazeTitle }}</h1>
+            <InfoCard type="note">
+                {{ $t('maze.message.update_note.outdated') }}
+            </InfoCard>
+
+            <!-- <InfoCard type="note">
+                {{ $t('maze.message.update_note.updated') }}
+            </InfoCard> -->
         </section>
         <section class="section" v-if="mazeActive">
             <div class="import-bar">
