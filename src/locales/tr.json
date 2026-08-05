@@ -24,6 +24,8 @@
   },
   "button": {
     "cancel": "İptal",
+    "close": "Kapat",
+    "edit": "Düzenle",
     "hint": "İpucu",
     "no": "Hayır",
     "ok": "Tamam",
@@ -32,9 +34,7 @@
     "skip": "Geç",
     "start": "Başla",
     "stop": "Dur",
-    "yes": "Evet",
-    "edit": "Düzenle",
-    "close": "Kapat"
+    "yes": "Evet"
   },
   "check_save": {
     "messages": {
@@ -302,6 +302,11 @@
     "town": "Kasaba",
     "unknown": "Bilinmeyen"
   },
+  "maze": {
+    "title": {
+      "long": "Kayıp Kanatlar, Alengirli Olaylar"
+    }
+  },
   "notices": {
     "corrupt_save": {
       "body": "Bulut kaydının bozulmasına sebep olan bir hata bulundu. Etkilenip etkilendmediğini kontrol etmek için burayı tıklayınız: \"@:{'notices.corrupt_save.button'}\"",
@@ -439,10 +444,5 @@
       "seasonal_shop": "Sezonluk Dükkan"
     },
     "title": "Mağaza"
-  },
-  "maze": {
-    "title": {
-      "long": "Kayıp Kanatlar, Alengirli Olaylar"
-    }
   }
 }
