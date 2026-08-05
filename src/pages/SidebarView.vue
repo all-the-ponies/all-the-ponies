@@ -246,7 +246,8 @@ header a:hover, header a:focus-visible {
     }
 
     .sidebar-container .sidebar-background {
-        display: none;
+        display: block;
+        visibility: hidden;
         position: absolute;
         top: 0;
         left: 0;
@@ -256,11 +257,12 @@ header a:hover, header a:focus-visible {
         background-color: black;
         opacity: 0;
 
-        transition: 0.3s opacity, 0.3s display allow-discrete;
+        transition: 0.3s opacity, 0.3s visibility ;
     }
 
     .header:has(.sidebar-toggle > input:checked) .sidebar-background {
-        display: block;
+        /* display: block; */
+        visibility: visible;
         opacity: 0.5;
         @starting-style {
             opacity: 0;
