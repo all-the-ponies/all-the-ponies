@@ -337,12 +337,16 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
       },
     },
     decor: {
+      base: {
+        hidden: true,
+        default: true,
+        exclude: ['unused'],
+      },
       regular: {
         name: 'filter.decor.regular',
         check(gameObject: DecorType) {
           return !gameObject.pro.is_pro
         },
-        default: true,
         exclude: ['unused'],
       },
       pro: {
