@@ -340,7 +340,8 @@
   "maze": {
     "message": {
       "import_progress": "Импортировать прогресс:",
-      "legend": "Легенда"
+      "legend": "Легенда",
+      "not_active": "Лабиринт не активен"
     },
     "tile": {
       "boss": "Босс",
