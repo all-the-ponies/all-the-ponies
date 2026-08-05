@@ -223,10 +223,9 @@ header a:hover, header a:focus-visible {
     }
 
     .sidebar-container {
-        /* display: none; */
-        display: grid;
-        grid-template-columns: clamp(15rem, 65vw, 25rem) 1fr;
+        /* display: contents; */
         /* opacity: 0; */
+        visibility: hidden;
 
         position: absolute;
         top: 100%;
@@ -236,10 +235,13 @@ header a:hover, header a:focus-visible {
         z-index: 999999;
 
         height: calc(100dvh - 100%);
+
+        transition: visibility 0.3s;
     }
 
     .header:has(.sidebar-toggle > input:checked) .sidebar-container {
-        display: grid;
+        visibility: visible;
+        /* display: grid; */
         opacity: 1;
     }
 
@@ -266,6 +268,7 @@ header a:hover, header a:focus-visible {
     }
 
     .sidebar-scroller {
+        width: clamp(15rem, 65vw, 25rem);
         transform: translate(-100%, 0);
         transition: transform 0.3s ease;
     }
