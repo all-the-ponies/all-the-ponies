@@ -33,7 +33,9 @@
     "skip": "Omitir",
     "start": "Empezar",
     "stop": "Parar",
-    "yes": "Sí"
+    "yes": "Sí",
+    "edit": "Editar",
+    "close": "Cerrar"
   },
   "check_save": {
     "messages": {
@@ -496,5 +498,10 @@
       "task_icon": "Icono de tarea"
     },
     "task": "Tarea | Tareas"
+  },
+  "maze": {
+    "title": {
+      "long": "Alas perdidas y cosas de laberintos"
+    }
   }
 }

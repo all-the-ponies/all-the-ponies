@@ -1,7 +1,12 @@
 import { language } from "@/globals";
 
 
-export function formatTime(time: number): string {
+export function formatTime(
+  time: number,
+  {
+    style = 'narrow' as 'short' | 'narrow' | 'long',
+  } = {},
+): string {
   // if (Math.trunc(time) == 0) return "0s";
   let out = "";
   let d_h_m_s = [0, 0, 0, 0, 0];
@@ -15,7 +20,7 @@ export function formatTime(time: number): string {
   if (Intl && 'DurationFormat' in Intl) {
     /** @ts-ignore */
     return new Intl.DurationFormat(language.value.code, {
-      style: 'narrow',
+      style: style,
       secondsDisplay: d_h_m_s.reduce((partialSum: number, a: number) => partialSum + a, 0) == 0 ? 'always' : 'auto', // make sure 0s is returned
     }).format({
       years: d_h_m_s[0],

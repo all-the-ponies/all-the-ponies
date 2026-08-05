@@ -10,15 +10,26 @@ import Link from '@/components/Link.vue';
 import links from '@/globals/links';
 import { createAssetUrl } from '@/scripts/assets.ts';
 import { pickRandom } from '@/scripts/common';
-import { useGameObjects, translateName } from '@/scripts/gameData';
+import { useGameObjects, translateName, getMazeData } from '@/scripts/gameData';
 import type { AvatarType, DecorType, HouseType, PonyType, ShopType } from '@/types/gameDataTypes';
-import { whenever } from '@vueuse/core';
+import { timestamp, useTimestamp } from '@vueuse/core';
 import { Config } from 'vike-vue/Config';
-import { h, onMounted, ref, watch } from 'vue';
+import { useData } from 'vike-vue/useData';
+import { computed, h, onMounted, ref, watch } from 'vue';
+import type { Data } from './+data';
+import type { LTSEvent } from '@/scripts/api.types';
+import { language } from '@/globals';
+import { formatTime, formatTimestamp } from '@/scripts/timeFunctions';
+import LazyImage from '@/components/LazyImage.vue';
 
 
 const BASE_URL = __BASE_URL__ // __BASE_URL__ cannot be used in the template
 
+const data = useData<Data>()
+const eventInfo = computed(() => data.eventInfo)
+const currentTime = useTimestamp()
+
+const mazeData = getMazeData()
 const gameObjects = useGameObjects()
 
 
@@ -34,6 +45,44 @@ onMounted(() => {
     shop.value = pickRandom(Object.values(gameObjects.value.shop.objects))
     decor.value = pickRandom(Object.values(gameObjects.value.decor.objects))
     avatar.value = pickRandom(Object.values(gameObjects.value.avatar.objects))
+
+    console.log('eventInfo', eventInfo.value)
+})
+
+const eventType = computed(() => eventInfo.value?.current ? 'current' : 'next')
+
+const shownEvent = computed(() => {
+    const id = eventInfo.value?.current?.id || eventInfo.value?.next?.id
+    if (!id) {
+        return
+    }
+    return id.toLowerCase()
+})
+
+const eventName = computed(() => {
+    if (shownEvent.value == mazeData.id.toLowerCase()) {
+        return mazeData.name[language.value.key]
+    }
+})
+const eventImage = computed(() => {
+    if (shownEvent.value == mazeData.id.toLowerCase()) {
+        return mazeData.image.outro.path || mazeData.image.main.path
+    }
+})
+
+const eventCountdown = computed(() => {
+    const targetTimeString = eventInfo.value?.current?.end_date || eventInfo.value?.next?.start_date
+    if (!targetTimeString) {
+        return
+    }
+    const targetTime = new Date(targetTimeString)
+    return (targetTime.getTime() - currentTime.value) / 1000
+})
+
+const eventUrl = computed(() => {
+    if (shownEvent.value == mazeData.id.toLowerCase()) {
+        return '/events/maze/'
+    }
 })
 
 </script>
@@ -114,6 +163,27 @@ onMounted(() => {
                 </GameCard>
             </div>
         </section>
+        <section class="section" v-if="eventInfo && (eventInfo.current || eventInfo.next) && eventUrl">
+            <div class="lts-event">
+                <h2>
+                    {{ $t(eventType == 'current' ? 'home.events.current_event' : 'home.events.next_event') }}
+                </h2>
+                <Link :href="eventUrl" class="link lts-event-link">
+                    <span class="lts-event-name">{{ eventName }}</span>
+                    <div>
+                        <LazyImage :src="createAssetUrl(eventImage)" class="lts-event-image"></LazyImage>
+                    </div>
+                </Link>
+                <div>
+                {{ $t(
+                    eventType == 'current' ? 'home.events.ends_in' : 'home.events.starts_in',
+                    {
+                        timestamp: formatTime(eventCountdown, {style: 'long'})
+                    }
+                   ) }}
+                </div>
+            </div>
+        </section>
         <section class="section">
             <h2>{{ $t('home.message.links') }}</h2>
             <div>
@@ -135,6 +205,7 @@ onMounted(() => {
 </template>
 
 <style lang="css" scoped>
+
 .home-page {
     text-align: center;
 }
@@ -148,7 +219,30 @@ onMounted(() => {
     justify-content: center;
 }
 
+.lts-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lts-event-name {
+    font-size: 1.5rem;
+}
+
+.lts-event-image {
+    max-width: 100%;
+    width: 13rem;
+    height: 13rem;
+    object-fit: contain;
+    object-position: center;
+}
+
+.lts-event-link {
+
+}
+
 .social-button {
     margin: 0.5rem;
 }
+
 </style>

@@ -32,7 +32,9 @@
     "start": "시작",
     "stop": "",
     "yes": "예",
-    "resume": "계속하기"
+    "resume": "계속하기",
+    "edit": "편집",
+    "close": "닫음"
   },
   "check_save": {
     "messages": {
@@ -437,5 +439,10 @@
       "seasonal_shop": "시즌 상점"
     },
     "title": "상점"
+  },
+  "maze": {
+    "title": {
+      "long": "사라진 날개와 어지러운 것들"
+    }
   }
 }

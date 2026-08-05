@@ -33,7 +33,9 @@
     "skip": "Pular",
     "start": "Iniciar",
     "stop": "Pare",
-    "yes": "Sim"
+    "yes": "Sim",
+    "edit": "Editar",
+    "close": "Fechado"
   },
   "check_save": {
     "messages": {
@@ -438,5 +440,10 @@
       "seasonal_shop": "Loja Da Temporada"
     },
     "title": "Loja"
+  },
+  "maze": {
+    "title": {
+      "long": "Asas Perdidas e Coisas de Labirinto"
+    }
   }
 }

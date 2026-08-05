@@ -33,7 +33,9 @@
     "skip": "Passer",
     "start": "Commencer",
     "stop": "Arrêt",
-    "yes": "Oui"
+    "yes": "Oui",
+    "edit": "Modifier",
+    "close": "Fermer"
   },
   "check_save": {
     "messages": {
@@ -444,5 +446,10 @@
       "seasonal_shop": "Boutique Saisonnière"
     },
     "title": "Boutique"
+  },
+  "maze": {
+    "title": {
+      "long": "Ailes perdues et labyrinthe"
+    }
   }
 }

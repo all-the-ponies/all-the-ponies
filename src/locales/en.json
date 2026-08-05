@@ -33,7 +33,10 @@
     "skip": "Skip",
     "start": "Start",
     "stop": "Stop",
-    "yes": "Yes"
+    "yes": "Yes",
+    "edit": "Edit",
+    "done": "Done",
+    "close": "Close"
   },
   "check_save": {
     "messages": {
@@ -250,6 +253,12 @@
     "things_to_do": {
       "browse": "Browse",
       "title": "Things To Do"
+    },
+    "events": {
+      "current_event": "Current Event",
+      "next_event": "Next Event",
+      "starts_in": "Starts in {timestamp}",
+      "ends_in": "Ends in {timestamp}"
     }
   },
   "inventory": {
@@ -426,7 +435,8 @@
   "site": {
     "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game",
     "title": "All The Ponies",
-    "language": "Language"
+    "language": "Language",
+    "skip_to_content": "Skip to content"
   },
   "socials": {
     "discord": "Discord",
@@ -498,5 +508,75 @@
       "alt_reward": "Alt Reward",
       "progress": "PROGRESS:"
     }
+  },
+  "maze": {
+    "title": {
+      "short": "Maze",
+      "long": "Missing Wings and Maze-y Things"
+    },
+    "tile": {
+      "start": "Start",
+      "end": "End",
+      "miniboss": "Minotaurocellus",
+      "boss": "Boss",
+      "chest": "Chest",
+      "helper_shop": "Secret Shop",
+      "coin_shop": "Magic Coin Shop",
+      "locked": "Locked",
+      "selected": "Selected"
+    },
+    "message": {
+      "import_progress": "Import progress:",
+      "legend": "Legend",
+      "not_active": "Maze not active",
+      "maze_energy": "Maze Energy",
+      "update_note": {
+        "outdated": "This is currently using the data from last year, so things may not be accurate to this year.",
+        "updated": "Everything has now been updated, and is using data from this year!"
+      },
+      "coin_shop": {
+        "produces": "Produces:",
+        "time": "Every {duration}",
+        "skip_cost": "Skip: {cost}"
+      },
+      "boss": {
+        "required_energy": "Required Energy: {energy}",
+        "required_power": "Required Power: {power}",
+        "rewards": "Rewards"
+      },
+      "helpers": {
+        "title": "Helpers",
+        "no_helpers": "You have no helpers. You can import them with your friend code"
+      }
+    },
+    "tips": {
+      "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops, otherwise you will run out of coins and get softlocked!"
+    },
+    "pony_card": {
+      "upgraded": "Upgraded",
+      "fights": "Fights",
+      "power": "Power"
+    },
+    "dialog": {
+      "reset": {
+        "title": "Reset?",
+        "body": "Are you sure you want to reset your progress?"
+      }
+    }
+  },
+  "info_card": {
+    "info": "Info",
+    "note": "Note",
+    "tip": "Tip",
+    "important": "Important",
+    "warning": "Warning",
+    "error": "Error"
+  },
+  "sidebar": {
+    "game_info": "Game Info",
+    "browse": "Browse",
+    "profile_decorations": "Profile Decorations",
+    "player": "Player",
+    "activities": "Activities"
   }
 }

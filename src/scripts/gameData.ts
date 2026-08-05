@@ -1,7 +1,7 @@
 import ky, { HTTPError } from 'ky'
 import { computed, ref, toValue, unref, watch, watchEffect, type MaybeRef } from 'vue'
 import { language } from '../globals'
-import type { CategoryName, CategoryType, CollectionData, CollectionType, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, TaskEntry, TasksData, TranslatableString } from '../types/gameDataTypes'
+import type { CategoryName, CategoryType, CollectionData, CollectionType, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, MazeBossType, MazeChestType, MazeData, MazePonyType, TaskEntry, TasksData, TranslatableString } from '../types/gameDataTypes'
 import { createAssetUrl } from './assets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
@@ -22,6 +22,7 @@ export interface GameData {
     fortuneShop: FortuneShop,
     tasksData: TasksData,
     collectionData: CollectionData,
+    mazeData: MazeData,
 }
 
 let gameDataCache: GameData = null
@@ -62,6 +63,18 @@ export function getCollectionData(): CollectionData {
         console.log('Game data not loaded')
     }
     return gameDataCache?.collectionData
+}
+export function getMazeData(): MazeData {
+    if (!gameDataCache) {
+        console.log('Game data not loaded')
+    }
+    return gameDataCache?.mazeData
+}
+
+export const mazeGridSize = 18
+export const mazeGridOffset = {
+    x: 6,
+    y: 4,
 }
 
 
@@ -144,13 +157,22 @@ export async function fetchGameData() {
     loading = true
     error = null
     try {
-        const [versions, objects, quests, fortune, tasks, collections] = await Promise.all([
+        const [
+            versions,
+            objects,
+            quests,
+            fortune,
+            tasks,
+            collections,
+            mazeData,
+        ] = await Promise.all([
             fetchData<GameVersion>('game_version.json'),
             fetchData<GameObjects>('game_objects.json'),
             fetchData<GroupQuests>('group_quests.json'),
             fetchData<FortuneShop>('fortune_shop.json'),
             fetchData<TasksData>('tasks_data.json'),
             fetchData<CollectionData>('collection_data.json'),
+            fetchData<MazeData>('maze_data.json'),
         ])
         resolveReady()
         loaded = true
@@ -162,6 +184,7 @@ export async function fetchGameData() {
             fortuneShop: fortune,
             tasksData: tasks,
             collectionData: collections,
+            mazeData: mazeData,
         } as GameData
         
     } catch (e) {
@@ -243,6 +266,27 @@ export function getFashionShowCollection(collectionId: string | FashionShowEntry
     }
     return getCollectionData().fashion_show[collectionId] ?? null
 }
+
+
+export function getMazeBoss(bossId: string | MazeBossType): MazeBossType | null {
+    if (typeof bossId !== 'string') {
+        return bossId
+    }
+    return getMazeData().bosses[bossId] ?? null
+}
+export function getMazeChest(chestId: string | MazeChestType): MazeChestType | null {
+    if (typeof chestId !== 'string') {
+        return chestId
+    }
+    return getMazeData().chests[chestId] ?? null
+}
+export function getMazePony(mazePonyId: string | MazePonyType): MazePonyType | null {
+    if (typeof mazePonyId !== 'string') {
+        return mazePonyId
+    }
+    return getMazeData().ponies[mazePonyId] ?? null
+}
+
 
 export function translateName(gameObject: MaybeRef<{
     name?: TranslatableString,

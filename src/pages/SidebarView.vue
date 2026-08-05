@@ -1,6 +1,12 @@
 <script setup lang="ts">
+import CustomScrollbar from '@/components/CustomScrollbar.vue'
 import LanguageSelector from '@/components/LanguageSelector.vue'
 import Link from '@/components/Link.vue'
+import SidebarLabel from '@/components/sidebar/SidebarLabel.vue'
+import SidebarLink from '@/components/sidebar/SidebarLink.vue'
+import SidebarRoot from '@/components/sidebar/SidebarRoot.vue'
+import SidebarSeparator from '@/components/sidebar/SidebarSeparator.vue'
+import SidebarSubmenu from '@/components/sidebar/SidebarSubmenu.vue'
 import { useGameVersions } from '@/scripts/gameData'
 import { ref } from 'vue'
 
@@ -38,43 +44,54 @@ function toggleSidebar(e: Event) {
                     <LanguageSelector />
                 </div>
             </div>
-            <div class="sidebar">
-                <nav>
-                    <ul id="sidebar-links">
-                        <Link href="/search/ponies/">{{ $t('game_object.pony.pony', 2) }}</Link>
-                        <Link href="/search/houses/">{{ $t('game_object.house.house', 2) }}</Link>
-                        <Link href="/search/shops/">{{ $t('game_object.shop.shop', 2) }}</Link>
-                        <Link href="/search/decor/">{{ $t('game_object.decor.decor', 2) }}</Link>
-                        <Link href="/search/pets/">{{ $t('game_object.pet.pet', 2) }}</Link>
-                        <Link href="/search/costumes/">{{ $t('game_object.costume.costume', 2) }}</Link>
-                        <Link href="/search/avatars/">{{ $t('game_object.profile_decorations.avatar.avatar', 2) }}</Link>
-                        <Link href="/search/avatar_frames/">{{ $t('game_object.profile_decorations.avatar_frame.avatar_frame', 2) }}</Link>
-                        <Link href="/search/backgrounds/">{{ $t('game_object.profile_decorations.background.background', 2) }}</Link>
-                        <Link href="/search/background_frames/">{{ $t('game_object.profile_decorations.background_frame.background_frame', 2) }}</Link>
-                        <Link href="/search/cutie_marks/">{{ $t('game_object.profile_decorations.cutie_mark.cutie_mark', 2) }}</Link>
-                        <Link href="/search/tokens/">{{ $t('game_object.token.token', 2) }}</Link>
-                        <hr class="sidebar-separator">
-                        <Link href="/search/collections/">{{ $t('collection.collection', 2) }}</Link>
-                        <hr class="sidebar-separator">
-                        <Link href="/store/">{{ $t('store.title') }}</Link>
-                        <Link href="/inventory/">{{ $t('inventory.title') }}</Link>
-                        <Link href="/stats/">{{ $t('stats.title') }}</Link>
-                        <Link href="/lists/">{{ $t('lists.title') }}</Link>
-                        <hr class="sidebar-separator">
-                        <Link href="/quiz/">{{ $t('pony_quiz.title') }}</Link>
-                        <Link href="/guesser/">{{ $t('guesser.title') }}</Link>
-                        <hr class="sidebar-separator">
-                        <Link href="/about/">{{ $t('about.title') }}</Link>
-                        <Link href="/contact/">{{ $t('contact.title') }}</Link>
-
-                    </ul>
-                    <div class="version-numbers">
-                        <span id="app-version">{{ $t('game.game_version', {version: gameVersions?.game_version}) }}</span>
-                        <br>
-                        <span id="content-version">{{ $t('game.content_version', {version: gameVersions?.content_version}) }}</span>
-                    </div>
-                </nav>
+            <div class="sidebar-container">
                 <label for="sidebar-toggle" class="sidebar-background"></label>
+                <CustomScrollbar class="sidebar-scroller">
+                    <SidebarRoot>
+                        <SidebarLabel>{{ $t('sidebar.game_info') }}</SidebarLabel>
+                        <SidebarSubmenu>
+                            <template #title>{{ $t('sidebar.browse') }}</template>
+                            <SidebarLink href="/search/ponies/">{{ $t('game_object.pony.pony', 2) }}</SidebarLink>
+                            <SidebarLink href="/search/houses/">{{ $t('game_object.house.house', 2) }}</SidebarLink>
+                            <SidebarLink href="/search/shops/">{{ $t('game_object.shop.shop', 2) }}</SidebarLink>
+                            <SidebarLink href="/search/decor/">{{ $t('game_object.decor.decor', 2) }}</SidebarLink>
+                            <SidebarLink href="/search/pets/">{{ $t('game_object.pet.pet', 2) }}</SidebarLink>
+                            <SidebarLink href="/search/costumes/">{{ $t('game_object.costume.costume', 2) }}</SidebarLink>
+                            <SidebarSubmenu>
+                                <template #title>{{ $t('sidebar.profile_decorations') }}</template>
+                                <SidebarLink href="/search/avatars/">{{ $t('game_object.profile_decorations.avatar.avatar', 2) }}</SidebarLink>
+                                <SidebarLink href="/search/avatar_frames/">{{ $t('game_object.profile_decorations.avatar_frame.avatar_frame', 2) }}</SidebarLink>
+                                <SidebarLink href="/search/backgrounds/">{{ $t('game_object.profile_decorations.background.background', 2) }}</SidebarLink>
+                                <SidebarLink href="/search/background_frames/">{{ $t('game_object.profile_decorations.background_frame.background_frame', 2) }}</SidebarLink>
+                                <SidebarLink href="/search/cutie_marks/">{{ $t('game_object.profile_decorations.cutie_mark.cutie_mark', 2) }}</SidebarLink>
+                            </SidebarSubmenu>
+                            <SidebarLink href="/search/tokens/">{{ $t('game_object.token.token', 2) }}</SidebarLink>
+                            <SidebarLink href="/search/collections/">{{ $t('collection.collection', 2) }}</SidebarLink>
+                        </SidebarSubmenu>
+                        <SidebarLink href="/events/maze/">{{ $t('maze.title.short') }}</SidebarLink>
+                        <SidebarLink href="/store/">{{ $t('store.title') }}</SidebarLink>
+                        <SidebarSeparator />
+                        <SidebarLabel>{{ $t('sidebar.player') }}</SidebarLabel>
+                        <SidebarLink href="/stats/">{{ $t('stats.title') }}</SidebarLink>
+                        <SidebarLink href="/inventory/">{{ $t('inventory.title') }}</SidebarLink>
+                        <SidebarLink href="/lists/">{{ $t('lists.title') }}</SidebarLink>
+                        <SidebarSeparator />
+                        <SidebarLabel>{{ $t('sidebar.activities') }}</SidebarLabel>
+                        <SidebarLink href="/quiz/">{{ $t('pony_quiz.title') }}</SidebarLink>
+                        <SidebarLink href="/guesser/">{{ $t('guesser.title') }}</SidebarLink>
+                        <SidebarSeparator />
+                        <SidebarLink href="/about/">{{ $t('about.title') }}</SidebarLink>
+                        <SidebarLink href="/contact/">{{ $t('contact.title') }}</SidebarLink>
+        
+                        <template #footer>
+                            <div class="version-numbers">
+                                <span id="app-version">{{ $t('game.game_version', {version: gameVersions?.game_version}) }}</span>
+                                <br>
+                                <span id="content-version">{{ $t('game.content_version', {version: gameVersions?.content_version}) }}</span>
+                            </div>
+                        </template>
+                    </SidebarRoot>
+                </CustomScrollbar>
             </div>
         </aside>
     </header>
@@ -132,60 +149,19 @@ header a:hover, header a:focus-visible {
     display: none;
 }
 
-.sidebar {
+.sidebar-container {
     display: block;
-    overflow-y: auto;
     height: 100%;
+    overflow: hidden;
 }
 
-.sidebar nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    gap: 0.2rem;
+.sidebar-scroller {
+    background-color: var(--pink);
 }
 
-.sidebar .version-numbers {
+.sidebar-container .version-numbers {
     font-size: 1rem;
     padding-inline: var(--padding-inline);
-}
-
-.sidebar ul {
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar li {
-    list-style: none;
-    /* margin-block: 0.1rem; */
-    width: 100%;
-}
-
-.sidebar-separator {
-    border: 1px solid white;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: white;
-    /* width: 100%; */
-    display: inline-block;
-    padding-inline: var(--padding-inline);
-    padding-block: 0.3rem;
-    text-shadow: var(--text-shadow);
-}
-
-.sidebar a.a-active {
-    /* color: var(--blue); */
-}
-
-.sidebar a:hover,
-.sidebar a:focus-visible,
-.sidebar a.a-active {
-    text-decoration: none;
-    /* color: var(--orange); */
-    background-color: rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 50rem) {
@@ -246,11 +222,11 @@ header a:hover, header a:focus-visible {
         width: 100%;
     }
 
-    .sidebar {
+    .sidebar-container {
         /* display: none; */
-        display: none;
+        display: grid;
         grid-template-columns: clamp(15rem, 65vw, 25rem) 1fr;
-        opacity: 0;
+        /* opacity: 0; */
 
         position: absolute;
         top: 100%;
@@ -262,26 +238,46 @@ header a:hover, header a:focus-visible {
         height: calc(100dvh - 100%);
     }
 
-    .header:has(.sidebar-toggle > input:checked) .sidebar {
+    .header:has(.sidebar-toggle > input:checked) .sidebar-container {
         display: grid;
         opacity: 1;
     }
 
-    .sidebar nav {
-        background-color: var(--pink);
-    }
-
-    .sidebar .sidebar-background {
-        background-color: black;
-        opacity: 0;
+    .sidebar-container .sidebar-background {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
 
-        /* transition: opacity 0.3s; */
+        background-color: black;
+        opacity: 0;
+
+        transition: 0.3s opacity, 0.3s display allow-discrete;
     }
 
     .header:has(.sidebar-toggle > input:checked) .sidebar-background {
+        display: block;
         opacity: 0.5;
+        @starting-style {
+            opacity: 0;
+        }
     }
+
+    .sidebar-scroller {
+        transform: translate(-100%, 0);
+        transition: transform 0.3s ease;
+    }
+
+    .header:has(.sidebar-toggle > input:checked) .sidebar-scroller {
+        transform: translate(0, 0);
+    }
+
+    /* @starting-style {
+        .sidebar-container .sidebar-background {
+            opacity: 0;
+        }
+    } */
 }
 </style>

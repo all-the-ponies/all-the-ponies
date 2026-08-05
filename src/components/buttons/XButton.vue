@@ -1,5 +1,5 @@
 <template>
-    <button class="x-button button-pink button-circle">
+    <button class="x-button button-pink button-circle" :aria-label="$t('button.close')">
         <div class="x-icon"></div>
         <!-- <img class="x-icon" src="@/assets/images/ui/icons/x-icon.svg"> -->
     </button>

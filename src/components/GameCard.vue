@@ -126,6 +126,8 @@ const replacedPrice = computed(() => {
 
 <style lang="css" scoped>
 .object-card {
+    display: inline-block;
+    
     margin-top: 0.8rem;
     
     left: 0px;

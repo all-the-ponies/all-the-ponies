@@ -7,10 +7,14 @@ import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
 import Notices from './Notices.vue'
 import SidebarView from './SidebarView.vue'
-import { onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import { getGameVersions, type GameVersion } from '@/scripts/gameData.ts'
+import { useElementSize } from '@vueuse/core'
 
 const pageContext = usePageContext()
+
+const mainContent = useTemplateRef('main')
+const skipToContentButton = useTemplateRef('skip-to-content')
 
 // const showGameUpdate = ref<boolean>(false)
 
@@ -31,6 +35,20 @@ onMounted(() => {
 
     localStorage.setItem('game_version', JSON.stringify(currentVersion))
 })
+
+const sidebarRef = useTemplateRef('sidebar')
+const { height: sidebarHeight } = useElementSize(sidebarRef)
+
+function skipToContent(e: Event) {
+    e.preventDefault()
+    skipToContentButton.value.focus()
+    nextTick(() => {
+        setTimeout(() => {
+            mainContent.value.focus()
+            mainContent.value.scrollIntoView()
+        }, 20)
+    })
+}
 
 </script>
 
@@ -94,9 +112,13 @@ onMounted(() => {
             )" />
     </Head>
 
-    <div id="main" class="page" ref="main">
-        <SidebarView />
-        <main class="router">
+    <a href="#content" class="skip-to-content button button-blue" @click="skipToContent" ref="skip-to-content">
+        {{ $t('site.skip_to_content') }}
+    </a>
+
+    <div class="page">
+        <SidebarView ref="sidebar" />
+        <main class="router" id="content" ref="main" tabindex="-1">
             <Notices></Notices>
             <slot></slot>
         </main>
@@ -120,6 +142,19 @@ onMounted(() => {
 </style>
 
 <style scoped>
+
+.skip-to-content {
+    position: fixed;
+    top: 0;
+    z-index: 9999999;
+    transform: translateY(calc(-100% - 1rem));
+
+    transition: transform 200ms ease;
+}
+
+.skip-to-content:focus-visible {
+    transform: translateY(0%);
+}
 
 .page {
     min-height: 100dvh;
@@ -145,7 +180,7 @@ onMounted(() => {
 @media screen and (max-width: 50rem) {
     .page {
         flex-direction: column;
-        height: 100dvh;
+        height: calc(100dvh - (v-bind('sidebarHeight') * 1px));
     }
 
     .router {

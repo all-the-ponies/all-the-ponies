@@ -33,7 +33,9 @@
     "skip": "跳过",
     "start": "开始",
     "stop": "暂停",
-    "yes": "是"
+    "yes": "是",
+    "edit": "编辑",
+    "close": "关闭"
   },
   "check_save": {
     "messages": {
@@ -446,6 +448,11 @@
   "tasks": {
     "message": {
       "duration": "持续时间"
+    }
+  },
+  "maze": {
+    "title": {
+      "long": "消失的翅膀和迷宫"
     }
   }
 }

@@ -32,7 +32,9 @@
     "start": "スタート",
     "stop": "",
     "yes": "はい",
-    "resume": "さいかい"
+    "resume": "さいかい",
+    "edit": "エディット",
+    "close": "とじる"
   },
   "check_save": {
     "messages": {
@@ -437,5 +439,10 @@
       "seasonal_shop": "シーズン|ショップ"
     },
     "title": "ストア"
+  },
+  "maze": {
+    "title": {
+      "long": "消えた|つばさと|おかしな|めいろ"
+    }
   }
 }
