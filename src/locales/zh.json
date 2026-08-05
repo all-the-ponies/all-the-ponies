@@ -25,6 +25,8 @@
   },
   "button": {
     "cancel": "取消",
+    "close": "关闭",
+    "edit": "编辑",
     "hint": "提示",
     "no": "否",
     "ok": "确认",
@@ -33,9 +35,7 @@
     "skip": "跳过",
     "start": "开始",
     "stop": "暂停",
-    "yes": "是",
-    "edit": "编辑",
-    "close": "关闭"
+    "yes": "是"
   },
   "check_save": {
     "messages": {
@@ -307,6 +307,11 @@
     "town": "小镇",
     "unknown": "未知"
   },
+  "maze": {
+    "title": {
+      "long": "消失的翅膀和迷宫"
+    }
+  },
   "notices": {
     "corrupt_save": {
       "body": "最近本站技术人员发现了一个官游中的bug，可能导致您的云存档丢失或损坏，您可以在这里自测自己是否受到影响 \"@:{'notices.corrupt_save.button'}\"",
@@ -448,11 +453,6 @@
   "tasks": {
     "message": {
       "duration": "持续时间"
-    }
-  },
-  "maze": {
-    "title": {
-      "long": "消失的翅膀和迷宫"
     }
   }
 }
