@@ -25,6 +25,8 @@
   },
   "button": {
     "cancel": "Annulla",
+    "close": "Chiudi",
+    "edit": "Modifica",
     "hint": "Indizio",
     "no": "No",
     "ok": "Ok",
@@ -33,9 +35,7 @@
     "skip": "Salta",
     "start": "Inizia",
     "stop": "Metti in Pausa",
-    "yes": "Sì",
-    "edit": "Modifica",
-    "close": "Chiudi"
+    "yes": "Sì"
   },
   "check_save": {
     "messages": {
@@ -311,6 +311,11 @@
     "town": "Città",
     "unknown": "Sconosciuto"
   },
+  "maze": {
+    "title": {
+      "long": "Ali perdute e labirinti"
+    }
+  },
   "notices": {
     "corrupt_save": {
       "body": "È stato segnalato un bug recente che può causare la corruzione del tuo salvataggio Cloud. Puoi controllare se tale bug può nuocerti premendo \"@:{'notices.corrupt_save.button'}\".",
@@ -448,10 +453,5 @@
       "seasonal_shop": "Negozio Stagionale"
     },
     "title": "Negozio"
-  },
-  "maze": {
-    "title": {
-      "long": "Ali perdute e labirinti"
-    }
   }
 }
