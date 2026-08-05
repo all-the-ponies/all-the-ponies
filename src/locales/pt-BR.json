@@ -25,6 +25,8 @@
   },
   "button": {
     "cancel": "Cancelar",
+    "close": "Fechado",
+    "edit": "Editar",
     "hint": "Dica",
     "no": "Não",
     "ok": "Ok",
@@ -33,9 +35,7 @@
     "skip": "Pular",
     "start": "Iniciar",
     "stop": "Pare",
-    "yes": "Sim",
-    "edit": "Editar",
-    "close": "Fechado"
+    "yes": "Sim"
   },
   "check_save": {
     "messages": {
@@ -303,6 +303,11 @@
     "town": "Cidade",
     "unknown": "Desconhecido"
   },
+  "maze": {
+    "title": {
+      "long": "Asas Perdidas e Coisas de Labirinto"
+    }
+  },
   "notices": {
     "corrupt_save": {
       "body": "Um bug foi encontrado que pode causar a corrupção dos seus dados na nuvem. Você pode checar se foi afetado clicando \"@:{'notices.corrupt_save.button'}\"",
@@ -440,10 +445,5 @@
       "seasonal_shop": "Loja Da Temporada"
     },
     "title": "Loja"
-  },
-  "maze": {
-    "title": {
-      "long": "Asas Perdidas e Coisas de Labirinto"
-    }
   }
 }
