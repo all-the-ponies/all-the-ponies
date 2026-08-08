@@ -1,7 +1,7 @@
 {
   "about": {
     "description": {
-      "body": "All The Ponies was initially created by {me} as a website to {quiz_link}, because one quiz I found online barely scratched the surface of ponies. It later expanded it to a resource for accurate information about stuff in the game, tracking what you have, and of course small activities you can play.",
+      "body": "All The Ponies was initially created by {me} as a website to {quiz_link}, because one quiz I found online barely scratched the surface of ponies. It later expanded to a resource for accurate information about stuff in the game, tracking what you have, and of course small activities you can play.",
       "quiz_link": "name as many ponies you can"
     },
     "sections": {
@@ -25,6 +25,9 @@
   },
   "button": {
     "cancel": "Cancel",
+    "close": "Close",
+    "done": "Done",
+    "edit": "Edit",
     "hint": "Hint",
     "no": "No",
     "ok": "Ok",
@@ -33,14 +36,19 @@
     "skip": "Skip",
     "start": "Start",
     "stop": "Stop",
-    "yes": "Yes",
-    "edit": "Edit",
-    "done": "Done",
-    "close": "Close"
+    "yes": "Yes"
   },
   "check_save": {
     "messages": {
       "check": "Check"
+    }
+  },
+  "collection": {
+    "collection": "Collection | Collections",
+    "message": {
+      "alt_reward": "Alt Reward",
+      "progress": "PROGRESS:",
+      "reward": "Reward"
     }
   },
   "common": {
@@ -54,10 +62,10 @@
     "info": "Info",
     "name": "Name",
     "new": "New",
-    "sale": "Sale",
     "or": "or",
     "price": "Price",
     "royal": "Royal",
+    "sale": "Sale",
     "wiki": "Wiki"
   },
   "contact": {
@@ -95,6 +103,10 @@
     "sort_by": "Sort By"
   },
   "filter": {
+    "collection": {
+      "completed": "Completed",
+      "incomplete": "Incomplete"
+    },
     "common": {
       "available": "Available"
     },
@@ -119,10 +131,6 @@
       "maze": "Maze",
       "not_owned": "Not owned",
       "others": "Others"
-    },
-    "collection": {
-      "completed": "Completed",
-      "incomplete": "Incomplete"
     }
   },
   "fortune_shop": {
@@ -245,6 +253,12 @@
   },
   "home": {
     "description": "Get info about {game_link} and track what you have!",
+    "events": {
+      "current_event": "Current Event",
+      "ends_in": "Ends in {timestamp}",
+      "next_event": "Next Event",
+      "starts_in": "Starts in {timestamp}"
+    },
     "message": {
       "affiliates": "Affiliates",
       "game_name": "My Little Pony: Magic Princess",
@@ -253,13 +267,15 @@
     "things_to_do": {
       "browse": "Browse",
       "title": "Things To Do"
-    },
-    "events": {
-      "current_event": "Current Event",
-      "next_event": "Next Event",
-      "starts_in": "Starts in {timestamp}",
-      "ends_in": "Ends in {timestamp}"
     }
+  },
+  "info_card": {
+    "error": "Error",
+    "important": "Important",
+    "info": "Info",
+    "note": "Note",
+    "tip": "Tip",
+    "warning": "Warning"
   },
   "inventory": {
     "message": {
@@ -272,14 +288,14 @@
       }
     },
     "stats": {
+      "collections": "Collections: {count}",
+      "costumes": "Costumes: {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Stars: {count}",
       "transformable": "@:game_object.pony.transformable{':'} {count}",
-      "costumes": "Costumes: {count}",
-      "collections": "Collections: {count}",
       "wh_collections": "What's Hot Collections: {count}"
     },
     "title": "Inventory"
@@ -329,6 +345,61 @@
     "town": "Town",
     "unknown": "Unknown"
   },
+  "maze": {
+    "dialog": {
+      "reset": {
+        "body": "Are you sure you want to reset your progress?",
+        "title": "Reset?"
+      }
+    },
+    "message": {
+      "boss": {
+        "required_energy": "Required Energy: {energy}",
+        "required_power": "Required Power: {power}",
+        "rewards": "Rewards"
+      },
+      "coin_shop": {
+        "produces": "Produces:",
+        "skip_cost": "Skip: {cost}",
+        "time": "Every {duration}"
+      },
+      "helpers": {
+        "no_helpers": "You have no helpers. You can import them with your friend code",
+        "title": "Helpers"
+      },
+      "import_progress": "Import progress:",
+      "legend": "Legend",
+      "maze_energy": "Maze Energy",
+      "not_active": "Maze not active",
+      "update_note": {
+        "outdated": "This is currently using the data from last year, so things may not be accurate to this year.",
+        "updated": "Everything has now been updated, and is using data from this year!"
+      }
+    },
+    "pony_card": {
+      "fights": "Fights",
+      "power": "Power",
+      "upgraded": "Upgraded"
+    },
+    "tile": {
+      "boss": "Boss",
+      "chest": "Chest",
+      "coin_shop": "Magic Coin Shop",
+      "end": "End",
+      "helper_shop": "Secret Shop",
+      "locked": "Locked",
+      "miniboss": "Minotaurocellus",
+      "selected": "Selected",
+      "start": "Start"
+    },
+    "tips": {
+      "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops, otherwise you will run out of coins and get softlocked!"
+    },
+    "title": {
+      "long": "Missing Wings and Maze-y Things",
+      "short": "Maze"
+    }
+  },
   "notices": {
     "corrupt_save": {
       "body": "A recent bug has been found that can cause your cloud save to be corrupt. You can check if you're affected by clicking \"@:{'notices.corrupt_save.button'}\"",
@@ -340,12 +411,26 @@
       "title": "Help Wanted!"
     },
     "v5_arks": {
-      "title": "Important",
-      "body": "Unfortunately All The Ponies won't get the latest update because Gameloft has changed how the game files are stored, breaking the tools that were used to read them. I and other dataminers are working hard to figure out how to extract the new files, but don't expect anything anytime soon."
+      "body": "Unfortunately All The Ponies won't get the latest update because Gameloft has changed how the game files are stored, breaking the tools that were used to read them. I and other dataminers are working hard to figure out how to extract the new files, but don't expect anything anytime soon.",
+      "title": "Important"
     },
     "v5_arks_cracked": {
-      "title": "Update",
-      "body": "I am pleased to say that All The Ponies has been updated to {version} because dataminers have figured out how to read the new files! Thank you to everyone who helped, and thanks everyone else for being patient with us."
+      "body": "I am pleased to say that All The Ponies has been updated to {version} because dataminers have figured out how to read the new files! Thank you to everyone who helped, and thanks everyone else for being patient with us.",
+      "title": "Update"
+    }
+  },
+  "player_card": {
+    "current_xp": "Current XP: {current_value} of {max_value}",
+    "level": "Level: {level}",
+    "name": "Name: {name}",
+    "player_stat": {
+      "collections": "{count} Collections",
+      "costumes": "{count} Costumes",
+      "gem_shops": "{count} Gem Shops",
+      "ponies": "{count} Ponies",
+      "shops": "{count} Shops",
+      "transformables": "{count} Transformables",
+      "wh_collections": "{count} What's Hot Collections"
     }
   },
   "player_info": {
@@ -426,17 +511,24 @@
   "search": {
     "message": {
       "search": "Search",
-      "showing_results": "Showing {total_results} results",
-      "showing_of_results": "Showing {shown_results} of {total_results} results"
+      "showing_of_results": "Showing {shown_results} of {total_results} results",
+      "showing_results": "Showing {total_results} results"
     },
     "no_results": "No results",
     "title": "Search"
   },
+  "sidebar": {
+    "activities": "Activities",
+    "browse": "Browse",
+    "game_info": "Game Info",
+    "player": "Player",
+    "profile_decorations": "Profile Decorations"
+  },
   "site": {
     "description": "Get all the accurate info you want about anything in the My Little Pony Magic Princess Game",
-    "title": "All The Ponies",
     "language": "Language",
-    "skip_to_content": "Skip to content"
+    "skip_to_content": "Skip to content",
+    "title": "All The Ponies"
   },
   "socials": {
     "discord": "Discord",
@@ -469,20 +561,6 @@
     },
     "title": "Stats"
   },
-  "player_card": {
-    "name": "Name: {name}",
-    "level": "Level: {level}",
-    "current_xp": "Current XP: {current_value} of {max_value}",
-    "player_stat": {
-      "ponies": "{count} Ponies",
-      "transformables": "{count} Transformables",
-      "shops": "{count} Shops",
-      "gem_shops": "{count} Gem Shops",
-      "costumes": "{count} Costumes",
-      "collections": "{count} Collections",
-      "wh_collections": "{count} What's Hot Collections"
-    }
-  },
   "store": {
     "description": "See everything currently in the store in real time",
     "message": {
@@ -500,83 +578,5 @@
       "task_icon": "Task Icon"
     },
     "task": "Task | Tasks"
-  },
-  "collection": {
-    "collection": "Collection | Collections",
-    "message": {
-      "reward": "Reward",
-      "alt_reward": "Alt Reward",
-      "progress": "PROGRESS:"
-    }
-  },
-  "maze": {
-    "title": {
-      "short": "Maze",
-      "long": "Missing Wings and Maze-y Things"
-    },
-    "tile": {
-      "start": "Start",
-      "end": "End",
-      "miniboss": "Minotaurocellus",
-      "boss": "Boss",
-      "chest": "Chest",
-      "helper_shop": "Secret Shop",
-      "coin_shop": "Magic Coin Shop",
-      "locked": "Locked",
-      "selected": "Selected"
-    },
-    "message": {
-      "import_progress": "Import progress:",
-      "legend": "Legend",
-      "not_active": "Maze not active",
-      "maze_energy": "Maze Energy",
-      "update_note": {
-        "outdated": "This is currently using the data from last year, so things may not be accurate to this year.",
-        "updated": "Everything has now been updated, and is using data from this year!"
-      },
-      "coin_shop": {
-        "produces": "Produces:",
-        "time": "Every {duration}",
-        "skip_cost": "Skip: {cost}"
-      },
-      "boss": {
-        "required_energy": "Required Energy: {energy}",
-        "required_power": "Required Power: {power}",
-        "rewards": "Rewards"
-      },
-      "helpers": {
-        "title": "Helpers",
-        "no_helpers": "You have no helpers. You can import them with your friend code"
-      }
-    },
-    "tips": {
-      "buying_helpers": "Only buy the cheapest pony, and do not go back to previous shops, otherwise you will run out of coins and get softlocked!"
-    },
-    "pony_card": {
-      "upgraded": "Upgraded",
-      "fights": "Fights",
-      "power": "Power"
-    },
-    "dialog": {
-      "reset": {
-        "title": "Reset?",
-        "body": "Are you sure you want to reset your progress?"
-      }
-    }
-  },
-  "info_card": {
-    "info": "Info",
-    "note": "Note",
-    "tip": "Tip",
-    "important": "Important",
-    "warning": "Warning",
-    "error": "Error"
-  },
-  "sidebar": {
-    "game_info": "Game Info",
-    "browse": "Browse",
-    "profile_decorations": "Profile Decorations",
-    "player": "Player",
-    "activities": "Activities"
   }
 }

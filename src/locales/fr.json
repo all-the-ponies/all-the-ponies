@@ -25,6 +25,8 @@
   },
   "button": {
     "cancel": "Annuler",
+    "close": "Fermer",
+    "edit": "Modifier",
     "hint": "Indice",
     "no": "Non",
     "ok": "Ok",
@@ -33,9 +35,7 @@
     "skip": "Passer",
     "start": "Commencer",
     "stop": "Arrêt",
-    "yes": "Oui",
-    "edit": "Modifier",
-    "close": "Fermer"
+    "yes": "Oui"
   },
   "check_save": {
     "messages": {
@@ -309,6 +309,11 @@
     "town": "Ville",
     "unknown": "Inconnu"
   },
+  "maze": {
+    "title": {
+      "long": "Ailes perdues et labyrinthe"
+    }
+  },
   "notices": {
     "corrupt_save": {
       "body": "Un bug récemment trouvé peut causer la corruption de votre sauvegarde dans le cloud. Vous pouvez vérifier si vous êtes concerné en cliquant \"@:{'notices.corrupt_save.button'}\"",
@@ -446,10 +451,5 @@
       "seasonal_shop": "Boutique Saisonnière"
     },
     "title": "Boutique"
-  },
-  "maze": {
-    "title": {
-      "long": "Ailes perdues et labyrinthe"
-    }
   }
 }

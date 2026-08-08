@@ -25,6 +25,9 @@
   },
   "button": {
     "cancel": "Cancelar",
+    "close": "Cerrar",
+    "done": "Listo",
+    "edit": "Editar",
     "hint": "Pista",
     "no": "No",
     "ok": "Ok",
@@ -33,9 +36,7 @@
     "skip": "Omitir",
     "start": "Empezar",
     "stop": "Parar",
-    "yes": "Sí",
-    "edit": "Editar",
-    "close": "Cerrar"
+    "yes": "Sí"
   },
   "check_save": {
     "messages": {
@@ -252,6 +253,12 @@
   },
   "home": {
     "description": "¡Obten información sobre {game_link} y mantente al tanto de lo que tienes!",
+    "events": {
+      "current_event": "Evento Actual",
+      "ends_in": "Termina en {timestamp}",
+      "next_event": "Siguiente Evento",
+      "starts_in": "Inicia en {timestamp}"
+    },
     "message": {
       "affiliates": "Afiliados",
       "game_name": "My Little Pony: Magia",
@@ -261,6 +268,14 @@
       "browse": "Navegar",
       "title": "Cosas por Hacer"
     }
+  },
+  "info_card": {
+    "error": "Error",
+    "important": "Importante",
+    "info": "Información",
+    "note": "Nota",
+    "tip": "Consejo",
+    "warning": "Advertencia"
   },
   "inventory": {
     "message": {
@@ -330,6 +345,61 @@
     "town": "Ciudad",
     "unknown": "Desconocido"
   },
+  "maze": {
+    "dialog": {
+      "reset": {
+        "body": "¿Estás seguro de que quieres resetear tu progreso?",
+        "title": "¿Resetear?"
+      }
+    },
+    "message": {
+      "boss": {
+        "required_energy": "Energía Requerida: {energy}",
+        "required_power": "Poder Requerido: {power}",
+        "rewards": "Recompensas"
+      },
+      "coin_shop": {
+        "produces": "Produce:",
+        "skip_cost": "Saltar: {cost}",
+        "time": "Cada {duration}"
+      },
+      "helpers": {
+        "no_helpers": "No tienes ayudantes. Puedes importarlos con tu código de amigo",
+        "title": "Ayudantes"
+      },
+      "import_progress": "Importar progreso:",
+      "legend": "Leyenda",
+      "maze_energy": "Energía del laberinto",
+      "not_active": "Laberinto no activo",
+      "update_note": {
+        "outdated": "Actualmente esto utiliza información del año pasado, muchas cosas pueden no ser precisas este año.",
+        "updated": "Todo se encuentra actualizado, y está usando la información de este año!"
+      }
+    },
+    "pony_card": {
+      "fights": "Peleas",
+      "power": "Poder",
+      "upgraded": "Mejorar"
+    },
+    "tile": {
+      "boss": "Jefe",
+      "chest": "Cofre",
+      "coin_shop": "Tienda de Monedas Mágicas",
+      "end": "Final",
+      "helper_shop": "Tienda Secreta",
+      "locked": "Bloqueado",
+      "miniboss": "Minotaurocellus",
+      "selected": "Seleccionado",
+      "start": "Inicio"
+    },
+    "tips": {
+      "buying_helpers": "Compra solo el poni más barato y no vuelvas a las tiendas anteriores, de lo contrario te quedarás sin monedas y no podrás seguir avanzando!"
+    },
+    "title": {
+      "long": "Alas perdidas y cosas de laberintos",
+      "short": "Laberinto"
+    }
+  },
   "notices": {
     "corrupt_save": {
       "body": "Se ha encontrado un error que puede causar corrupción en el guardado en la nube. Puedes chequear si te esta afectando haciendo click en \"@:{'notices.corrupt_save.button'}\"",
@@ -341,9 +411,11 @@
       "title": "¡Se necesita ayuda!"
     },
     "v5_arks": {
+      "body": "Desafortunadamente, Todos los Ponis no recibirá la última actualización debido a que Gameloft cambió cómo se almacenan los archivos, esto rompió las herramientas que usamos para leerlos. Yo y otros data miners estamos trabajando en encontrar cómo extraer los nuevos archivos, pero no esperes que eso pase pronto.",
       "title": "Importante"
     },
     "v5_arks_cracked": {
+      "body": "Me complace decir que Todos los ponis ha sido actualizado a la versión {version} debido a que los data miners hemos encontrado cómo leer los nuevos archivos! Gracias a todos los que ayudaron, gracias a todos los demás por su paciencia.",
       "title": "Actualización"
     }
   },
@@ -445,9 +517,17 @@
     "no_results": "Sin resultados",
     "title": "Buscar"
   },
+  "sidebar": {
+    "activities": "Actividades",
+    "browse": "Navegar",
+    "game_info": "Información del Juego",
+    "player": "Jugador",
+    "profile_decorations": "Decoraciones de perfil"
+  },
   "site": {
     "description": "Obten toda la información precisa que desees sobre cualquier tema del juego My Little Pony: Magia",
     "language": "Idioma",
+    "skip_to_content": "Saltar al contenido",
     "title": "Todos los Ponis"
   },
   "socials": {
@@ -498,10 +578,5 @@
       "task_icon": "Icono de tarea"
     },
     "task": "Tarea | Tareas"
-  },
-  "maze": {
-    "title": {
-      "long": "Alas perdidas y cosas de laberintos"
-    }
   }
 }
