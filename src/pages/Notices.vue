@@ -37,12 +37,6 @@ const gameVersions = getGameVersions()
             </div>
         </div>
     </Notice>
-    <DialogNotice
-        notice-id="v5_arks_fixed"
-        :title="$t('notices.v5_arks_cracked.title')"
-    >
-        {{ $t('notices.v5_arks_cracked.body', {version: gameVersions.game_version}) }}
-    </DialogNotice>
 </template>
 
 <style lang="scss" scoped>
