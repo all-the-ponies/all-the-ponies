@@ -1,7 +1,7 @@
 {
   "about": {
     "description": {
-      "body": "Tous les Poneys a initialement été créé par {me} comme un site pour {quiz_link}, parce que les quiz que je trouvais en ligne grattaient à peine la surface des poneys qui existent. Il s'est étendu plus tard comme une source d'informations fiables par rapport au jeu, pour suivre sa collection, et bien sûr, pour jouer à des petites activités.",
+      "body": "Tous les Poneys a initialement été créé par {me} comme un site pour {quiz_link}, parce que un quiz que j'ai trouvé en ligne s'attaquait à peine à la surface des poneys qui existent. Il s'est étendu plus tard comme une source d'informations fiables par rapport au jeu, pour suivre sa collection, et bien sûr, pour jouer à des petites activités.",
       "quiz_link": "Nomme le plus de poneys possible"
     },
     "sections": {
@@ -26,6 +26,7 @@
   "button": {
     "cancel": "Annuler",
     "close": "Fermer",
+    "done": "Complet",
     "edit": "Modifier",
     "hint": "Indice",
     "no": "Non",
@@ -42,6 +43,14 @@
       "check": "Vérifier"
     }
   },
+  "collection": {
+    "collection": "Collection / Collections",
+    "message": {
+      "alt_reward": "Récompense alternative",
+      "progress": "Progression :",
+      "reward": "Récompense"
+    }
+  },
   "common": {
     "date": {
       "current": "actuel",
@@ -56,6 +65,7 @@
     "or": "ou",
     "price": "Prix",
     "royal": "Royal",
+    "sale": "Promotion",
     "wiki": "Wiki"
   },
   "contact": {
@@ -93,6 +103,13 @@
     "sort_by": "Trier par"
   },
   "filter": {
+    "collection": {
+      "completed": "Complété",
+      "incomplete": "Incomplet"
+    },
+    "common": {
+      "available": "Disponible"
+    },
     "costume": {
       "used": "utilise"
     },
@@ -101,6 +118,7 @@
       "regular": "Normal"
     },
     "pony": {
+      "gem_pony": "Poneys à gemmes",
       "not_owned": "Non possédé",
       "npc": "PNJ",
       "playable": "Jouable",
@@ -153,6 +171,7 @@
       "unlock_level": "Niveau pour débloquer"
     },
     "costume": {
+      "collection": "Ensemble de costume",
       "costume": "déguisements"
     },
     "decor": {
@@ -234,6 +253,12 @@
   },
   "home": {
     "description": "Obtenez des informations à propos de {game_link} et suivez ce que vous avez!",
+    "events": {
+      "current_event": "Événement du moment",
+      "ends_in": "Se termine dans {timestamp}",
+      "next_event": "Prochain événement",
+      "starts_in": "Débute dans {timestamp}"
+    },
     "message": {
       "affiliates": "Affiliés",
       "game_name": "My Little Pony : Magic Princess",
@@ -243,6 +268,14 @@
       "browse": "Parcourir",
       "title": "Choses à faire"
     }
+  },
+  "info_card": {
+    "error": "Erreur",
+    "important": "Important",
+    "info": "Information",
+    "note": "Note",
+    "tip": "Astuce",
+    "warning": "Avertissement"
   },
   "inventory": {
     "message": {
@@ -255,12 +288,15 @@
       }
     },
     "stats": {
+      "collections": "Collections : {count}",
+      "costumes": "Costumes : {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Étoiles: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "wh_collections": "Collections tendances : {count}"
     },
     "title": "Inventaire"
   },
@@ -310,8 +346,58 @@
     "unknown": "Inconnu"
   },
   "maze": {
+    "dialog": {
+      "reset": {
+        "body": "Êtes-vous sûr de vouloir remettre à zéro votre progrès ?",
+        "title": "Remettre à zéro ?"
+      }
+    },
+    "message": {
+      "boss": {
+        "required_energy": "Énergie requise : {energy}",
+        "required_power": "Pouvoir requis : {power}",
+        "rewards": "Récompenses"
+      },
+      "coin_shop": {
+        "produces": "Produit :",
+        "skip_cost": "Passer : {cost}",
+        "time": "Tout les {duration}"
+      },
+      "helpers": {
+        "no_helpers": "Vous n'avez pas d'aidants. Vous pouvez les importer avec votre code d'ami",
+        "title": "Aidants"
+      },
+      "import_progress": "Importe ton progrès :",
+      "legend": "Légende",
+      "maze_energy": "Énergie du labyrinthe",
+      "not_active": "Labyrinthe non actif",
+      "update_note": {
+        "outdated": "En ce moment, ceci utilise la data de l'année dernière, il se peut donc que des éléments ne soient pas à jour.",
+        "updated": "Tout à désormais été mis-à-jour, et utilise la data de cette année !"
+      }
+    },
+    "pony_card": {
+      "fights": "Combats",
+      "power": "Pouvoir",
+      "upgraded": "Amélioré"
+    },
+    "tile": {
+      "boss": "Chef",
+      "chest": "Coffre",
+      "coin_shop": "Boutique de pièces magiques",
+      "end": "Fin",
+      "helper_shop": "Boutique secrète",
+      "locked": "Fermé à clé",
+      "miniboss": "Minotaurocellus",
+      "selected": "Sélectionné",
+      "start": "Début"
+    },
+    "tips": {
+      "buying_helpers": "N'achetez que le poney le moins cher, et ne retournez pas aux boutiques précédentes, autrement vous vous retrouverez à court de pièces et serez bloqué !"
+    },
     "title": {
-      "long": "Ailes perdues et labyrinthe"
+      "long": "Ailes perdues et labyrinthe",
+      "short": "Labyrinthe"
     }
   },
   "notices": {
@@ -323,6 +409,28 @@
     "help_wanted": {
       "body": "Je ne parle qu'anglais, alors je ne peux pas traduire Tous les Poneys en d'autres langues. Si ta langue est déjà sur le site mais n'est pas complètement ou bien traduite, j'aimerais beaucoup avoir ton aide. Aucune connaissance de code n'est requise parce que Weblate rend la traduction facile pour tous.",
       "title": "Besoin d'aide!"
+    },
+    "v5_arks": {
+      "body": "Malheureusement, tout les Poneys n'auront pas la dernière mise à jour, Gameloft ayant changé la façon de stocker les fichiers du jeu, détruisant les outils étant utilisés pour les lire. Moi et d'autres dataminers travaillons assidument pour comprendre comment extraire les nouveaux fichiers, mais ne vous attendez pas à un résultat rapidement.",
+      "title": "Important"
+    },
+    "v5_arks_cracked": {
+      "body": "Je me réjouis d'annoncer que tout les Poneys ont été mis-à-jour sur la version {version} parceque les dataminers ont compris comment lire les nouveaux fichiers ! Merci à tous ceux qui ont apporté leur aide, et merci à tout le monde pour avoir été aussi patients.",
+      "title": "Mise-à-jour"
+    }
+  },
+  "player_card": {
+    "current_xp": "XP actuelle : {current_value} sur {max_value}",
+    "level": "Niveau : {level}",
+    "name": "Nom : {name}",
+    "player_stat": {
+      "collections": "{count} Collections",
+      "costumes": "{count} Costumes",
+      "gem_shops": "{count} Boutiques à gemmes",
+      "ponies": "{count} Poneys",
+      "shops": "{count} Boutiques",
+      "transformables": "{count} Transformables",
+      "wh_collections": "{count} Collections tendances"
     }
   },
   "player_info": {
@@ -402,13 +510,24 @@
   },
   "search": {
     "message": {
-      "search": "Recherche"
+      "search": "Recherche",
+      "showing_of_results": "Montre {shown_results} des {total_results} résultats",
+      "showing_results": "Montre {total_results} résultats"
     },
     "no_results": "Pas de résultat",
     "title": "Recherche"
   },
+  "sidebar": {
+    "activities": "Activités",
+    "browse": "Feuilleter",
+    "game_info": "Informations sur le jeux",
+    "player": "Joueur",
+    "profile_decorations": "Décorations de profil"
+  },
   "site": {
     "description": "Obtiens toutes les informations précises que tu veux à propos de n'importe quoi sur le jeu My Little Pony : Magic Princess",
+    "language": "Langue",
+    "skip_to_content": "Passer jusqu'au contenu",
     "title": "Tous les Poneys"
   },
   "socials": {
@@ -451,5 +570,13 @@
       "seasonal_shop": "Boutique Saisonnière"
     },
     "title": "Boutique"
+  },
+  "tasks": {
+    "message": {
+      "duration": "Durée",
+      "skip_price": "Passer : {price}",
+      "task_icon": "Icône de la quête"
+    },
+    "task": "Quête / Quêtes"
   }
 }

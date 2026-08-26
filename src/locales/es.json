@@ -1,7 +1,7 @@
 {
   "about": {
     "description": {
-      "body": "Todos los Ponis fue creado inicialmente por {me} como una página web para el cuestionario {quiz_link}, porque los cuestionarios que encontré en línea apenas rozaban la superficie de todos los ponis. Posteriormente se expandió como un recurso de información precisa sobre el juego, para mantenerte al tanto de lo que tienes y por supuesto, pequeñas actividades que puedes jugar.",
+      "body": "\"All The Ponies\" fue creado inicialmente por {me} como una página web para el cuestionario {quiz_link}, porque los cuestionarios que encontré en línea, apenas rozaban la superficie de todos los ponis. Posteriormente se expandió como un recurso de información precisa sobre el juego, para mantenerte al tanto de lo que tienes y por supuesto, pequeñas actividades que puedes jugar.",
       "quiz_link": "Nombra todos los ponis que puedas"
     },
     "sections": {
@@ -9,10 +9,10 @@
         "check_failed": "Error: No se pudieron obtener los traductores",
         "message": {
           "credits_list": {
-            "1": "El sitio web está construido por {ego}.",
+            "1": "La página web está construido por {ego}.",
             "2": "Gracias a {bass} por ayudar a cargar ponis con el codigo de amigo.",
             "3": "La fuente usada es {font}, que también es utilizada en el juego.",
-            "4": "El sitio web se construyó usando {vue} para hacer mi vida más fácil y permitir una experiencia dinámica."
+            "4": "La página web se construyó usando {vue} para hacer mi vida más fácil y permitir una experiencia dinámica."
           }
         },
         "title": "Créditos"
@@ -33,7 +33,7 @@
     "ok": "Ok",
     "resume": "Reanudar",
     "share": "Compartir",
-    "skip": "Omitir",
+    "skip": "Salta",
     "start": "Empezar",
     "stop": "Parar",
     "yes": "Sí"
@@ -115,7 +115,7 @@
     },
     "decor": {
       "can_fuse": "Puede fusionarse",
-      "regular": "Regular"
+      "regular": "Normal"
     },
     "pony": {
       "gem_pony": "Ponis de Gemas",
@@ -135,7 +135,7 @@
   },
   "fortune_shop": {
     "messages": {
-      "regular": "Regular",
+      "regular": "Normal",
       "royal": "Real"
     },
     "price_rarities": {

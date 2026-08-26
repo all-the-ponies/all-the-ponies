@@ -2,7 +2,7 @@
   "about": {
     "description": {
       "body": "\"All The Ponies\" è stato inizialmente creato da {me} come sito per il quiz {quiz_link}, perché suddetto quiz che ho trovato online a malapena scalfiva la superficie dei pony esistenti. Successivamente è stato espanso e reso una fonte di informazioni accurate riguardanti le componenti del gioco, tenendo conto di cosa si possegga, e ovviamente delle piccole attività che si possono svolgere.",
-      "quiz_link": "Elenca Tutti i Pony che Puoi!"
+      "quiz_link": "Elenca Tutti i Pony che Puoi"
     },
     "sections": {
       "credits": {
@@ -26,6 +26,7 @@
   "button": {
     "cancel": "Annulla",
     "close": "Chiudi",
+    "done": "Fatto",
     "edit": "Modifica",
     "hint": "Indizio",
     "no": "No",
@@ -42,6 +43,14 @@
       "check": "Controlla"
     }
   },
+  "collection": {
+    "collection": "Collezione | Collezioni",
+    "message": {
+      "alt_reward": "Premio alternativo",
+      "progress": "PROGRESSI:",
+      "reward": "Premio"
+    }
+  },
   "common": {
     "date": {
       "current": "Attuali",
@@ -56,6 +65,7 @@
     "or": "o",
     "price": "Costo",
     "royal": "Reale",
+    "sale": "Saldo",
     "wiki": "Wiki"
   },
   "contact": {
@@ -93,6 +103,13 @@
     "sort_by": "Filtra a Seconda di"
   },
   "filter": {
+    "collection": {
+      "completed": "Completato",
+      "incomplete": "Incompleto"
+    },
+    "common": {
+      "available": "Disponibile"
+    },
     "costume": {
       "used": "Utilizzati"
     },
@@ -236,6 +253,12 @@
   },
   "home": {
     "description": "Ottieni informazioni riguardanti {game_link} e tieni conto di ciò che possiedi!",
+    "events": {
+      "current_event": "Evento attuale",
+      "ends_in": "Fine {timestamp}",
+      "next_event": "Prossimo evento",
+      "starts_in": "Inizio {timestamp}"
+    },
     "message": {
       "affiliates": "Affiliati",
       "game_name": "My Little Pony: L’Amicizia è Magica",
@@ -245,6 +268,14 @@
       "browse": "Ricerca",
       "title": "Cose da Fare"
     }
+  },
+  "info_card": {
+    "error": "Errore",
+    "important": "Importante",
+    "info": "Informazioni",
+    "note": "Note",
+    "tip": "Suggerimento",
+    "warning": "Attenzione"
   },
   "inventory": {
     "message": {
@@ -257,19 +288,22 @@
       }
     },
     "stats": {
+      "collections": "Collezioni: {count}",
+      "costumes": "Costumi: {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Stelle: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "wh_collections": "Collezioni alla moda: {count}"
     },
     "title": "Inventario"
   },
   "lists": {
     "button": {
       "add_to_list": "Aggiungi alla Lista dei Desideri",
-      "create_list": "Crea una Lista dei Desideri",
+      "create_list": "Crea una lista dei desideri",
       "edit": "Modifica",
       "new_wishlist": "+ Nuova Lista dei Desideri"
     },
@@ -296,7 +330,7 @@
     "messages": {
       "empty_list": "Non c'è ancora niente da vedere qui. Considera aggiungere {ponies}.",
       "no_lists": "Sembra che non ci sia ancora alcuna Lista dei Desideri.",
-      "wishlist": "Lista dei Desideri."
+      "wishlist": "Lista dei desideri"
     },
     "title": "Liste dei Desideri"
   },
@@ -312,19 +346,91 @@
     "unknown": "Sconosciuto"
   },
   "maze": {
+    "dialog": {
+      "reset": {
+        "body": "Sei sicuro di voler ripristinare i tuoi progressi?",
+        "title": "Ripristina?"
+      }
+    },
+    "message": {
+      "boss": {
+        "required_energy": "Energia richiesta: {energy}",
+        "required_power": "Potenza richiesta: {power}",
+        "rewards": "Premi"
+      },
+      "coin_shop": {
+        "produces": "Procedure:",
+        "skip_cost": "Salta: {cost}",
+        "time": "Ogni {duration}"
+      },
+      "helpers": {
+        "no_helpers": "Non hai aiutanti. Puoi importarli tramite il tuo codice amico",
+        "title": "Aiutanti"
+      },
+      "import_progress": "Importa i progressi:",
+      "legend": "Legenda",
+      "maze_energy": "Energia del labirinto",
+      "not_active": "Labirinto non attivo",
+      "update_note": {
+        "outdated": "Attualemente sta utilizzando i dati dell'anno scorso, quindi potrebbe non essere accurato per quest'anno.",
+        "updated": "L'aggiornamento è stato effettuato, ora sta usando i dati di quest'anno!"
+      }
+    },
+    "pony_card": {
+      "fights": "Lotte",
+      "power": "Potere",
+      "upgraded": "Aggiornato"
+    },
+    "tile": {
+      "boss": "Boss",
+      "chest": "Scrigno",
+      "coin_shop": "Negozio delle monete magiche",
+      "end": "Fine",
+      "helper_shop": "Negozio segreto",
+      "locked": "Bloccato",
+      "miniboss": "\"Minotaurocellus\"",
+      "selected": "Seleionato",
+      "start": "Inizio"
+    },
+    "tips": {
+      "buying_helpers": "Compra solo i pony più economici e non tornare ai negozi precedenti, altrimenti finirai tutte le monete e verrai bloccato/a!"
+    },
     "title": {
-      "long": "Ali perdute e labirinti"
+      "long": "Ali perdute e labirinti",
+      "short": "Labirinto"
     }
   },
   "notices": {
     "corrupt_save": {
-      "body": "È stato segnalato un bug recente che può causare la corruzione del tuo salvataggio Cloud. Puoi controllare se tale bug può nuocerti premendo \"@:{'notices.corrupt_save.button'}\".",
+      "body": "È stato segnalato un bug recente che può causare la corruzione del tuo salvataggio Cloud. Puoi controllare se tale bug può nuocerti premendo \"@:{'notices.corrupt_save.button'}\"",
       "button": "Scopri di più",
       "title": "Importante"
     },
     "help_wanted": {
       "body": "Io parlo solo Inglese, quindi non posso tradurre \"All The Ponies\" in altre lingue. Se la tua lingua già presente sul sito non è stata tradotta bene o a pieno, apprezzerei molto il tuo aiuto. Non è richiesta esperienza nel coding perché Weblate rende facile tradurre per chiunque.",
       "title": "Cercasi Aiuto!"
+    },
+    "v5_arks": {
+      "body": "Sfortunatamente \"All The Ponies\" non riceverà l'ultimo aggiornamento perché Gameloft ha cambiato il modo in cui vengono salvati i file, rompendo lo strumento che veniva usato per leggerli. Io e altri data miners stiamo lavorando duramente per capire come estrarre i nuovi file, ma non aspettatevi niente nel breve periodo.",
+      "title": "Importante"
+    },
+    "v5_arks_cracked": {
+      "body": "Sono lieto di annunciare che \"All The Ponies\" è stato aggiornato alla {version} grazie ai tecnici che hanno scoperto come leggere in nuovi file! Grazie a tutti coloro che ci hanno aiutato e grazie a tutti gli altri per aver portato pazienza.",
+      "title": "Aggiornamento"
+    }
+  },
+  "player_card": {
+    "current_xp": "Livello attuale di XP: {current_value} di {max_value}",
+    "level": "Livello: {level}",
+    "name": "Nome: {name}",
+    "player_stat": {
+      "collections": "{count} Collezioni",
+      "costumes": "{count} Costumi",
+      "gem_shops": "{count} Negozi di gemme",
+      "ponies": "{count} Pony",
+      "shops": "{count} Negozi",
+      "transformables": "{count} Pony trasformabili",
+      "wh_collections": "{count} Collezioni alla moda"
     }
   },
   "player_info": {
@@ -404,13 +510,24 @@
   },
   "search": {
     "message": {
-      "search": "Cerca"
+      "search": "Cerca",
+      "showing_of_results": "Mostrando {shown_results} di {total_results} risultati",
+      "showing_results": "Mostrando {total_results} risultati"
     },
     "no_results": "Nessun risultato",
     "title": "Cerca"
   },
+  "sidebar": {
+    "activities": "Attività",
+    "browse": "Esplora",
+    "game_info": "Informazioni del gioco",
+    "player": "Giocatore",
+    "profile_decorations": "Decorazioni del profilo"
+  },
   "site": {
     "description": "Ottieni informazioni accurate su qualsiasi aspetto del gioco My Little Pony: Magic Princess",
+    "language": "Lingua",
+    "skip_to_content": "Vai al contenuto",
     "title": "Tutti i Pony"
   },
   "socials": {
@@ -442,10 +559,10 @@
         "total": "Totale pony: {count}"
       }
     },
-    "title": ""
+    "title": "Statistiche"
   },
   "store": {
-    "description": "",
+    "description": "Vedi tutto quello presente attualmente nel negozio in tempo reale",
     "message": {
       "for": "per",
       "if": "se",
@@ -453,5 +570,13 @@
       "seasonal_shop": "Negozio Stagionale"
     },
     "title": "Negozio"
+  },
+  "tasks": {
+    "message": {
+      "duration": "Durata",
+      "skip_price": "Salta: {price}",
+      "task_icon": "Icona delle abilità"
+    },
+    "task": "Abilità"
   }
 }
