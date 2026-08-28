@@ -1,7 +1,7 @@
 {
   "about": {
     "description": {
-      "body": "这个小马官游信息站最初是由 {me} 创建的一个网站，最初它的用途还只有 {quiz_link}这一种，因为我在网上能搜到的MLP相关小测试游戏都不太够全面，于是我就自己做了一个。后来，这个网站扩展为一个提供官游中各类准确信息的资源平台，在这里你既可以记录自己的游戏进度，也有一些官游相关的网页小游戏可以体验游玩。",
+      "body": "这个小马官游信息站最初是由 {me} 创建的一个网站，最初它的用途还只有 {quiz_link} 这一种，因为我在网上能搜到的相关小测试游戏都不太够全面，于是我就自己做了一个。后来，这个网站扩展为一个提供官游中各类准确信息的资源平台，在这里你既可以记录自己的游戏进度，也有一些官游相关的网页小游戏可以体验游玩。",
       "quiz_link": "你能说出多少小马的名字"
     },
     "sections": {
@@ -9,10 +9,10 @@
         "check_failed": "错误：无法获取译者信息",
         "message": {
           "credits_list": {
-            "1": "本站站长为{ego}。",
-            "2": "感谢{bass}协助本站实现通过好友码调取云存档的技术支持。",
-            "3": "本网站所使用的字体是{font}，也是官游中的同款字体。",
-            "4": "本网站使用{vue}搭建，使本站工具的使用更具有交互性。"
+            "1": "本站站长为 {ego}。",
+            "2": "感谢 {bass} 协助本站实现通过好友码调取云存档的技术支持。",
+            "3": "本网站所使用的字体是 {font}，是官游中的同款字体。",
+            "4": "本网站使用 {vue} 搭建，使本站工具的使用更具有交互性。"
           }
         },
         "title": "版权归属信息"
@@ -26,6 +26,7 @@
   "button": {
     "cancel": "取消",
     "close": "关闭",
+    "done": "完成",
     "edit": "编辑",
     "hint": "提示",
     "no": "否",
@@ -56,6 +57,7 @@
     "or": "或",
     "price": "价格",
     "royal": "皇家",
+    "sale": "销售",
     "wiki": "维基"
   },
   "contact": {
@@ -63,23 +65,23 @@
     "message": {
       "discord": {
         "button": "加入服务器",
-        "description": "大家可以在这里询问问题，对本站建设提出建议，报告bug又或者和群里的官游玩家朋友们一同畅聊",
-        "title": "加入本站点的Discord群聊吧（需要科学上网）"
+        "description": "大家可以在这里询问问题，对本站建设提出建议，报告 bug 又或者和群里的官游玩家朋友们一同畅聊。",
+        "title": "加入本站点的 Discord 群聊吧（需要科学上网）"
       },
-      "discord_message": "如果您对本站有任何疑问、建议，又或者在本站中发现了bug，欢迎加入{server}！",
-      "discord_server": "Discord服务器",
+      "discord_message": "如果您对本站有任何疑问、建议，又或者在本站中发现了 bug，欢迎加入{server}！",
+      "discord_server": "Discord 服务器",
       "github": {
         "button": "打开该仓库",
         "description": "查看本站源代码、待解决问题或发起合并请求。",
-        "title": "本站的GitHub页面"
+        "title": "本站的 GitHub 页面"
       },
       "help_wanted": {
-        "description": "由于本网站的站长只会英语，所以有时候本站也会存在较多不足之处，比如说翻译不齐全的问题。我能翻译出来的内容，都是从官游的源文件里提取的官方原版翻译。如果您在本站看到您的母语模式翻译存在缺陷，希望您可以在GitHub上报告问题，或者加入本站的Discord服务器帮助我们翻译本站。我的网页美工设计布局水平也一般般，所以我也不太擅长设计本站的页面布局，如果您对网站设计比较在行，我很乐意得到您的帮助。如果您想直接帮忙撰写本站的网站代码，同样也非常欢迎。",
-        "title": "帮助征集"
+        "description": "由于本网站的站长只会英语，所以有时候本站也会存在较多不足之处，比如说翻译不齐全的问题。我能翻译出来的内容，都是从官游的源文件里提取的官方原版翻译。如果您在本站看到您的母语模式翻译存在缺陷，希望您可以在 GitHub 上报告问题，或者加入本站的 Discord 服务器帮助我们翻译本站。我的网页美工设计布局水平也一般般，所以我也不太擅长设计本站的页面布局，如果您对网站设计比较在行，我很乐意得到您的帮助。如果您想直接帮忙撰写本站的网站代码，同样也非常欢迎。",
+        "title": "帮助征集！"
       },
       "mlp_game_hangout": {
         "button": "加入服务器",
-        "description": "外网官游交流群，在此群内发言请用英语。此群为Reddit的r/MLPIOS版组分支出的群聊",
+        "description": "外网官游交流群，在此群内发言请用英语。此群为 Reddit 的 r/MLPIOS 版组分支出的群聊。",
         "title": "小马官游大群（需要科学上网）"
       }
     },
@@ -93,6 +95,9 @@
     "sort_by": "排序"
   },
   "filter": {
+    "collection": {
+      "completed": "已完成"
+    },
     "costume": {
       "used": "已使用"
     },
@@ -123,7 +128,7 @@
     },
     "price_rarities": {
       "discount": "折扣",
-      "regular": "",
+      "regular": "常规",
       "super": "超级",
       "ultra": "极高"
     },
@@ -153,6 +158,10 @@
       "size": "大小",
       "unlock_level": "解锁等级"
     },
+    "costume": {
+      "collection": "服装套装",
+      "costume": "服装 | 服装"
+    },
     "decor": {
       "cannot_fuse": "不能融合的装饰品",
       "decor": "装饰品",
@@ -167,7 +176,7 @@
       "visitor": "访客"
     },
     "pet": {
-      "pet": "宠物 | Pets"
+      "pet": "宠物 | 宠物"
     },
     "pony": {
       "arrival_bonus": "到达奖励",
@@ -181,7 +190,7 @@
     },
     "profile_decorations": {
       "avatar": {
-        "animated": "是否为动态头像",
+        "animated": "是否为动态头像？",
         "avatar": "头像 | 头像"
       },
       "avatar_frame": {
@@ -222,7 +231,7 @@
     "tutorial": "教程"
   },
   "guesser": {
-    "description": "只看角色的阴影轮廓，你能说得出这个角色的名字吗？",
+    "description": "只看角色的阴影轮廓，你能说得出这个角色的名字吗",
     "message": {
       "correct_guesses": "猜对",
       "guessed_correctly": "猜对的数量： {ponies}/{total}",
@@ -232,6 +241,12 @@
   },
   "home": {
     "description": "在这里，你可以了解更多关于{game_link} 游戏的信息，以及记录你在官游中收集到的所有物品！",
+    "events": {
+      "current_event": "当前事件",
+      "ends_in": "到 {timestamp} 结束",
+      "next_event": "下一个事件",
+      "starts_in": "从 {timestamp} 开始"
+    },
     "message": {
       "affiliates": "友情链接",
       "game_name": "小马宝莉：魔法公主",
@@ -247,18 +262,20 @@
       "add_more": "添加更多{category}",
       "dialog": {
         "export": {
-          "category": "类别",
-          "format": "格式"
+          "category": "类别：",
+          "format": "格式："
         }
       }
     },
     "stats": {
+      "costumes": "服装: {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "星星数: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "wh_collections": "热门收藏: {count}"
     },
     "title": "物品栏"
   },
