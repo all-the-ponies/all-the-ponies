@@ -1,8 +1,11 @@
 @layer globals {
     @font-face {
         font-family: "Celestia Medium Redux";
-        /* src: url("../assets/fonts/CelestiaMediumRedux_alt1.55.ttf") format("truetype"); */
         src: url("@/assets/fonts/CelestiaReduxMedium.ttf") format("truetype");
+    }
+    @font-face {
+        font-family: "Noto Naskh Arabic";
+        src: url("@/assets/fonts/NotoNaskhArabic.ttf") format("truetype");
     }
     
     :root {
@@ -48,6 +51,10 @@
       --light-grey-light: hsl(0, 0%, 80%);
       --light-grey: hsl(0, 0%, 70%);
       --light-grey-dark: hsl(0, 0%, 60%);
+    }
+
+    :root[lang="ar"] {
+        --font-family: "Noto Naskh Arabic", "Celestia Medium Redux", Arial, Helvetica, sans-serif;
     }
 
     *,
