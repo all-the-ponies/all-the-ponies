@@ -16,8 +16,7 @@
             U+003A-0040,   /* : ; < = > ? @ */
             U+005B-0060,   /* [ \ ] ^ _ ` */
             U+007B-007E,   /* { | } ~ */
-            U+2000-206F
-            ;   /* general punctuation: – — “ ” ‘ ’ … • etc. */
+            U+2000-206F;   /* general punctuation: – — “ ” ‘ ’ … • etc. */
         font-weight: 600;
     }
     
