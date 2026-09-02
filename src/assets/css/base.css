@@ -6,6 +6,19 @@
     @font-face {
         font-family: "Noto Naskh Arabic";
         src: url("@/assets/fonts/NotoNaskhArabic.ttf") format("truetype");
+        unicode-range:
+            U+0600-06FF,   /* Arabic */
+            U+0750-077F,   /* Arabic Supplement */
+            U+08A0-08FF,   /* Arabic Extended-A */
+            U+FB50-FDFF,   /* Arabic Presentation Forms-A */
+            U+FE70-FEFF,   /* Arabic Presentation Forms-B */
+            U+0021-002F,   /* space, ! " # $ % & ' ( ) * + , - . / */
+            U+003A-0040,   /* : ; < = > ? @ */
+            U+005B-0060,   /* [ \ ] ^ _ ` */
+            U+007B-007E,   /* { | } ~ */
+            U+2000-206F
+            ;   /* general punctuation: – — “ ” ‘ ’ … • etc. */
+        font-weight: 600;
     }
     
     :root {
