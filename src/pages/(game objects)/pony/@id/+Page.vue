@@ -29,6 +29,7 @@ import LazyImage from '@/components/LazyImage.vue';
 import { useBasePrice } from '@/composables/useBasePrice';
 import type { Data } from './+data';
 import CollectionButton from '@/components/buttons/CollectionButton.vue';
+import { modifyUrl } from 'vike/modifyUrl';
 
 const { t } = useI18n()
 const isMounted = useMounted()
@@ -189,9 +190,16 @@ const collectionLink = computed(() => {
     if (collections.length === 0) {
         return null
     } else if (collections.length === 1) {
-        return `/collection/${collections[0]}`
+        return `/collection/${collections[0]}/`
     }
-    return `/search/collections/?q=${pony.value.id}`
+    return modifyUrl(
+        '/search/collections/',
+        {
+            search: {
+                q: name.value,
+            }
+        }
+    )
 })
 
 </script>

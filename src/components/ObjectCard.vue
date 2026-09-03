@@ -10,6 +10,7 @@ import { computed, shallowRef } from 'vue'
 import AddToListButton from "./buttons/AddToListButton.vue"
 import GameCard from "./GameCard.vue"
 import CollectionButton from "./buttons/CollectionButton.vue"
+import { modifyUrl } from "vike/modifyUrl"
 
 const shopManager = shopStore
 const groupQuests = useGroupQuests()
@@ -77,9 +78,16 @@ const collectionLink = computed(() => {
     if (collections.length === 0) {
         return null
     } else if (collections.length === 1) {
-        return `/collection/${collections[0]}`
+        return `/collection/${collections[0]}/`
     }
-    return `/search/collections/?q=${gameObject.value.id}`
+    return modifyUrl(
+        '/search/collections/',
+        {
+            search: {
+                q: translateName(gameObject).value
+            }
+        }
+    )
 })
 
 // const stars = computed({
