@@ -76,11 +76,6 @@ const fortuneShopData = computed(() => getFortuneShopData(pet.value.id))
                                         <CurrencyImage :object="basePrice.token">
                                             {{ $n(basePrice.tokens) }}
                                         </CurrencyImage>
-                                        <template v-if="basePrice.currency && basePrice.price">
-                                            {{}}
-                                            {{ $t('common.or').toLocaleLowerCase() }} 
-                                            {{}}
-                                        </template>
                                     </template>
                                     <CurrencyImage v-if="basePrice.currency && basePrice.price" :object="basePrice.currency">
                                         {{ $n(basePrice.price) }}
