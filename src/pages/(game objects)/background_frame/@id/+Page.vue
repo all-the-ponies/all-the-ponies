@@ -66,7 +66,7 @@ const fortuneShopData = computed(() => getFortuneShopData(background_frame.value
                                 <td>{{ $t('common.price') }}</td>
                                 <td>
                                     <template v-if="basePrice.token && basePrice.tokens">
-                                        <CurrencyImage :object="basePrice.token">
+                                        <CurrencyImage :object="basePrice.token" is-link>
                                             {{ $n(basePrice.tokens) }}
                                         </CurrencyImage>
                                         <template v-if="basePrice.currency && basePrice.price">

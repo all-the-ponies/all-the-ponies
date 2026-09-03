@@ -1,21 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import gameData, { getFortuneShopData, getObject, getTaskInfo, translateName } from '@/scripts/gameData'
+import { getFortuneShopData, getTaskInfo, translateName } from '@/scripts/gameData'
 import BackButton from '@/components/buttons/BackButton.vue';
-import { staticImage } from '@/scripts/common';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { Config } from 'vike-vue/Config';
-import absoluteUrl from '@/scripts/absoluteUrl';
-import Link from '@/components/Link.vue';
 import { useData } from 'vike-vue/useData';
-import type { AvatarType, DecorType } from '@/types/gameDataTypes';
-import PriceHistory from '@/components/tables/PriceHistory.vue';
-import type { PriceHistoryType } from '@/scripts/api.types';
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import FortuneShopTable from '@/components/tables/FortuneShopTable.vue';
-import CurrencyImage from '@/components/CurrencyImage.vue';
-import { createAssetUrl } from '@/scripts/assets';
-import { computedAsync } from '@vueuse/core';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
 import type { Data } from './+data';
 import TaskInfo from '@/components/TaskInfo.vue';

@@ -156,7 +156,7 @@ function formatDateRange(start: string, end: string) {
                                         entry.tags?.includes('pvsar2') ? 'Token_Event_Common' :
                                         gameObject?.category !== 'costume_part' ? gameObject.price?.token :
                                         null
-                                    ">
+                                    " is-link>
                                         {{ entry.price.base.tokens }}
                                     </CurrencyImage>
                                 </template>

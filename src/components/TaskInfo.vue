@@ -94,7 +94,7 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
             <div class="token">
                 <template v-if="token">
                     <span class="token-image">
-                        <CurrencyImage :object="token">
+                        <CurrencyImage :object="token" is-link="token">
                             {{ taskInfo.reward.token_amount > 1 ? `+${taskInfo.reward.token_amount}` : '' }}
                             <!-- + {{ taskInfo.reward.token_amount }} -->
                         </CurrencyImage>

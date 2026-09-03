@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import BackButton from '@/components/buttons/BackButton.vue';
-import CurrencyImage from '@/components/CurrencyImage.vue';
 import Link from '@/components/Link.vue';
 import { language } from '@/globals';
 import ObjectPage from '@/layouts/ObjectPage.vue';
