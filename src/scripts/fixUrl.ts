@@ -3,7 +3,7 @@ import { LOCALES } from "@/i18n"
 
 export function fixUrl(url: string) {
 
-  if (url.includes('://')) {
+  if (!url || url.includes('://')) {
     return url
   }
 
