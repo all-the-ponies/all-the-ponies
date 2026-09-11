@@ -48,7 +48,8 @@ for (let block of mazeData.map.blocks) {
                 y: y,
             },
         },
-        label: createLabel(x,y),
+        label: createLabel(x, y),
+        visualLabel: null,
         entity: block.entity,
     }
 }
@@ -80,9 +81,10 @@ const flattenedMap = map.flat().filter(tile =>
     tile.position.normalized.x !== 0 && tile.position.normalized.x + 1 !== mapSize.width &&
     tile.position.normalized.y !== 0 && tile.position.normalized.y + 1 !== mapSize.height
 )
-flattenedMap.forEach(tile => 
+flattenedMap.forEach(tile => {
     tile.position.visual = rotateNeg90(tile.position.normalized.x, tile.position.normalized.y)
-)
+    tile.visualLabel = createLabel(tile.position.visual.y, tile.position.visual.x)
+})
 flattenedMap.sort((a, b) => 
     a.position.visual.y - b.position.visual.y || a.position.visual.x - b.position.visual.x
 )
@@ -268,7 +270,7 @@ function clickTile(tile: MapTile) {
 }
 
 function selectTile(label: string) {
-    const tile = flattenedMap.find(tile => tile.label == label)
+    const tile = flattenedMap.find(tile => tile.visualLabel == label)
     selectedTile.value = tile
     if (tile) {
         emit('clickTile', tile)

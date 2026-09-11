@@ -143,7 +143,7 @@ watch(
                 pageContext.urlOriginal,
                 {
                     search: {
-                        tile: `${selectedTile.value.label}`
+                        tile: `${selectedTile.value.visualLabel}`
                     }
                 }
             )
