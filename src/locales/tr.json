@@ -1,11 +1,12 @@
 {
   "about": {
     "description": {
-      "body": "All The Ponies, başlangıçta {me} tarafından {quiz_link} için bir web sitesi olarak oluşturuldu, çünkü internette bulduğum bir test ponyler hakkında sadece yüzeysel bilgi veriyordu. Daha sonra, oyun içindeki şeyler hakkında kesin bilgiler sunan, sahip olduklarınızı takip edebileceğiniz ve elbette oynayabileceğiniz küçük etkinlikler içeren bir kaynak haline geldi.",
+      "body": "All The Ponies, başlangıçta {me} tarafından {quiz_link} için bir web sitesi olarak oluşturuldu, çünkü internette bulduğum bir test ponyler hakkında sadece yüzeysel bilgiler veriyordu. Daha sonra, oyun içindeki şeyler hakkında kesin bilgiler sunan, sahip olduklarınızı takip edebileceğiniz ve elbette oynayabileceğiniz küçük etkinlikler içeren bir kaynak haline geldi.",
       "quiz_link": "Olabildiğince çok pony ismi tahin edin"
     },
     "sections": {
       "credits": {
+        "check_failed": "Hata: Çevirici yüklenemedi",
         "message": {
           "credits_list": {
             "1": "Bu web sitesi {ego} tarafından yapıldı.",
@@ -25,6 +26,7 @@
   "button": {
     "cancel": "İptal",
     "close": "Kapat",
+    "done": "Bitir",
     "edit": "Düzenle",
     "hint": "İpucu",
     "no": "Hayır",
@@ -55,6 +57,7 @@
     "or": "veya",
     "price": "Fiyat",
     "royal": "Asil",
+    "sale": "Kampanya",
     "wiki": "Wiki"
   },
   "contact": {
@@ -92,11 +95,22 @@
     "sort_by": "Sırala"
   },
   "filter": {
+    "collection": {
+      "completed": "Tamamlanan",
+      "incomplete": "Tamamlanmayan"
+    },
+    "common": {
+      "available": "Mevcut"
+    },
+    "costume": {
+      "used": "Kullanılan"
+    },
     "decor": {
       "can_fuse": "Kaynaştırılabilir",
       "regular": "Normal"
     },
     "pony": {
+      "gem_pony": "Cevher Ponyleri",
       "not_owned": "Sahip Olunmayan",
       "npc": "Oynanamayan",
       "playable": "Oynanabilir",
@@ -113,7 +127,7 @@
   },
   "fortune_shop": {
     "messages": {
-      "regular": "",
+      "regular": "Normal",
       "royal": "Asil"
     },
     "price_rarities": {
@@ -147,6 +161,10 @@
     "common": {
       "size": "Boyut",
       "unlock_level": "Açılma Seviyesi"
+    },
+    "costume": {
+      "collection": "Kostüm Seti",
+      "costume": "Kostüm | Kostümler"
     },
     "decor": {
       "cannot_fuse": "Kaynaştırılamayan",
@@ -214,19 +232,25 @@
     "random_pro": "Rastgele",
     "seasonal": "Sezonluk",
     "title": "Grup Görevleri",
-    "tutorial": ""
+    "tutorial": "Öğretici"
   },
   "guesser": {
     "description": "Silüete göre Pony'i tahmin et ",
     "message": {
       "correct_guesses": "Doğru Tahminler",
       "guessed_correctly": "Doğru Tahmin Edildi: {ponies}/{total}",
-      "time": "Süre"
+      "time": "Süre: {time}"
     },
     "title": "Bu Pony Kim?"
   },
   "home": {
     "description": "{game_link} hakkında bilgi al ve ilerlemeni takip et!",
+    "events": {
+      "current_event": "Güncel Etkinlik",
+      "ends_in": "{timestamp} içinde bitiyor",
+      "next_event": "Sıradaki Etkinlik",
+      "starts_in": "{timestamp} sonra başlıyor"
+    },
     "message": {
       "affiliates": "İştirakler",
       "game_name": "My Little Pony: Büyülü Prenses",
@@ -248,12 +272,15 @@
       }
     },
     "stats": {
+      "collections": "Koleksiyonlar: {count}",
+      "costumes": "Kostümler: {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Yıldızlar: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "wh_collections": "Gündemdeki koleksiyonlar: {count}"
     },
     "title": "Envanter"
   },
@@ -316,6 +343,22 @@
     "help_wanted": {
       "body": "Sadece İngilizce konuşuyorum, bu yüzden All The Ponies sitesini kendi başıma diğer dillere çeviremiyorum. Eğer web sitesinde zaten var olan dilin tamamen veya yanlış çevrildiyse yardımından memnuniyet duyarım. Yazılım bilgisi gerektirmez çğnkü Weblate çevirileri herkes için kolaylaştırıyor.",
       "title": "Yardım Aranıyor!"
+    },
+    "v5_arks": {
+      "body": "Maalesef ki All The Ponies en sonki güncellemeyi alamayacak çünkü Gameloft oyunun dosyalarının depolanma şeklini değiştirdi ve  bu dosyaları okumak için kullanılan araçların işlevini yitirmesine neden oldu. Ben ve diğer dataminer'lar yeni dosyaları nasıl çıkaracağımızı çözmek için çok sıkı çalışıyoruz fakat yakın zamanda bir şey beklemeyin.",
+      "title": "Önemli"
+    },
+    "v5_arks_cracked": {
+      "body": "Dataminer'lar yeni dosyaları okuyabilmeyi başardığı için All The Ponies'in {version}'a güncellendiğini söylemekten memnuniyet duyarım.Yardım edenlere ve süreçte sabırlı olan diğer herkese teşekkürlerimi sunarım.",
+      "title": "Güncelleme"
+    }
+  },
+  "player_card": {
+    "current_xp": "Mevcut XP: {max_value} üzerinden {current_value}",
+    "level": "Seviye: {level}",
+    "name": "İsim: {name}",
+    "player_stat": {
+      "ponies": "{count} Pony"
     }
   },
   "player_info": {
@@ -378,48 +421,55 @@
       "what_to_say": {
         "body": {
           "affected": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": ""
+            "1": "İnsanların sizi ziyaret edemediğini kısaca belirtebilir, çıkan hata mesajını ekleyebilir, hesabınızın kayıt dosyasında bir sorun olmasından endişele duyduğunuzu dile getirerek durumu teknik ekiplerine iletmelerini isteyebilirsiniz.",
+            "2": "Yalan söyleyip oyun kaydınızın sıfırlandığını söyleyebilirsiniz, böylece oyunun durumunu kontrol etmek zorunda kalacaklardır.",
+            "3": "Yalan söyleyip insanları ziyaret edemediğinizi ve cihaz değiştirmemiş olmanıza, internete bağlı oynamanıza rağmen yerel kaydınız ile bulut kaydınızın eşleşmediğini söyleyen beklenmedik uyarı pencereleri aldığınızı belirtebilirsiniz.",
+            "4": "Doğrudan kayıt dosyasının bozulduğunu belirtebilirsiniz, ama tekrar söylüyorum ; risk size ait."
           },
           "safe": {
-            "1": "",
-            "2": ""
+            "1": "Arkadaşlarınızı ziyarete gidemediğinizi söyleyin ve her zaman stabil bir internet bağlantısıyla giriş yaptığınızı belirtin.",
+            "2": "Siz kendiniz etkilenmemiş olsanız bile, doğrudan neler olup bittiğini belirtebilirsiniz."
           }
         },
-        "title": ""
+        "title": "Desteğe ne yazmalısınız?"
       }
     },
-    "title": ""
+    "title": "Kayıt dosyanızı kontrol edin"
   },
   "search": {
     "message": {
-      "search": "Ara"
+      "search": "Ara",
+      "showing_of_results": "{shown_results} sonuçtan {total_results} kadarı gösteriliyor",
+      "showing_results": "{total_results} sonuç gösteriliyor"
     },
-    "no_results": "",
+    "no_results": "Sonuç yok",
     "title": "Ara"
+  },
+  "sidebar": {
+    "player": "Oyuncu"
   },
   "site": {
     "description": "My Little Pony Büyülü Prenses Oyunu hakkında öğrenmek istediğiniz herhangi bir şey hakkında tüm doğru bilgileri alın",
+    "language": "Dil",
+    "skip_to_content": "Ana içeriğe geç",
     "title": "All The Ponies"
   },
   "socials": {
-    "discord": "",
-    "donate": "",
-    "github": "",
-    "help_translate": "",
-    "mlp_game_hangout": "",
-    "wiki": ""
+    "discord": "Discord",
+    "donate": "Bağış",
+    "github": "GitHub",
+    "help_translate": "Çeviriye katkıda bulun",
+    "mlp_game_hangout": "MLP Game Hangout",
+    "wiki": "Wiki"
   },
   "sorting": {
     "alphabetically": "Alfabetik Olarak",
-    "date_added": "",
+    "date_added": "Eklenme tarihine göre",
     "decor": {
       "pro_rate": "Pro Oranı"
     },
     "game_order": "Oyun Sırası",
-    "relevance": "",
+    "relevance": "Alaka düzeyine göre",
     "reverse": "Geri Al",
     "shop": {
       "production": "Üretim Oranı",
