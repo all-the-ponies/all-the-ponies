@@ -81,6 +81,7 @@ const itemGap = useRem(.3)
 
     </Config>
 
+    <!-- @vue-generic {GameObject} -->
     <SearchComponent
         v-if="category != null"
         :data="objects"

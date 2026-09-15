@@ -2,8 +2,7 @@
 import { computed, inject, ref, type AnchorHTMLAttributes } from 'vue'
 import LazyImage from "../LazyImage.vue"
 import Link from "../Link.vue"
-import ObjectImage from "../ObjectImage.vue"
-import type { MazePonyType } from '@/types/gameDataTypes.ts';
+import type { MazePonyType } from '@/types/mazeDataTypes';
 import { getMazePony, getObject, translateName } from '@/scripts/gameData.ts';
 import { createAssetUrl } from '@/scripts/assets.ts';
 import { useSaveStore } from '@/stores/saveManager.ts';

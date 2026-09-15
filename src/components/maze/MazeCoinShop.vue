@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getMazeChest, getMazeData, getObject } from '@/scripts/gameData';
-import type { GameObject, GameObjectId, MazeChestType } from '@/types/gameDataTypes';
+import type { GameObject, GameObjectId } from '@/types/gameDataTypes';
 import { computed } from 'vue';
 import MazeInfoContainer from './MazeInfoContainer.vue';
 import MazePonyCard from './MazePonyCard.vue';

@@ -107,6 +107,7 @@ const itemGap = useRem(.3)
         @close="$emit('close')"
         @cancel="$emit('cancel')"
     >
+        <!-- @vue-generic {GameObject} -->
         <SearchComponent
             class="search-section"
             :data="objects"

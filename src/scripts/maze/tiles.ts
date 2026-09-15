@@ -1,4 +1,4 @@
-import type { MazeBlockEntity, MazeMapBlock } from "@/types/gameDataTypes";
+import type { MazeBlockEntity, MazeMapBlock } from "@/types/mazeDataTypes";
 import { getMazeBoss, getMazeData, mazeGridOffset, mazeGridSize } from "../gameData";
 
 export type MazeTileType = 'start' | 'miniboss' | 'boss' | 'chest' | 'helperShop' | 'coinShop'

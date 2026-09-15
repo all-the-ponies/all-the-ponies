@@ -5,10 +5,11 @@ import SearchComponent from '@/components/SearchComponent.vue'
 import { useGameCardSize } from '@/composables/useGameCardSize'
 import { useRem } from '@/composables/useRem'
 import type { ShopEntry } from '@/scripts/api.types'
-import { CATEGORIES, FilterFunctions, SortFunctions, type FilterFunctionsType } from '@/scripts/categories'
+import { CATEGORIES, FilterFunctions, SortFunctions } from '@/scripts/categories'
 import { getNamesForSearch, getObject } from '@/scripts/gameData'
 import { shopStore } from '@/stores/shopManager'
 import type { CategoryName, GameObject } from '@/types/gameDataTypes'
+import type { FilterFunctionType } from '@/types/searchTypes'
 import { computedAsync } from '@vueuse/core'
 import { Config } from 'vike-vue/Config'
 import { usePageContext } from 'vike-vue/usePageContext'
@@ -157,7 +158,7 @@ const sortFunctions = computed(() => {
 })
 
 const filterFunctions = computed(() => {
-    let functions: Record<string, FilterFunctionsType> = {
+    let functions: Record<string, FilterFunctionType<GameObject>> = {
         ...FilterFunctions.common,
         sale: {
             name: 'common.sale',
@@ -217,6 +218,7 @@ const placeholder = computed(() => {
         <!-- <div v-if="loadingShop">
             <img src="@/assets/images/ui/loading.webp" alt="Loading...">
         </div> -->
+        <!-- @vue-generic {GameObject} -->
         <SearchComponent
             class="search"
             v-model:selected-filters="selectedFilters"

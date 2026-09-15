@@ -214,6 +214,7 @@ const itemGap = useRem(.3)
 
         <section>
             <ClientOnly>
+                <!-- @vue-generic {GameObject} -->
                 <SearchComponent
                     :data="items"
                     :get-search-text="getNames"
