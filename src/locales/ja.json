@@ -300,7 +300,8 @@
     "ponyville": "ポニーヴィル",
     "sweet_apple_acres": "スイート|アップル|農園",
     "town": "",
-    "unknown": ""
+    "unknown": "",
+    "maze": "めいろ|ダンジョン"
   },
   "notices": {
     "corrupt_save": {

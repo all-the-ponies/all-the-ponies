@@ -343,7 +343,8 @@
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Dorf",
-    "unknown": "Unbekannt"
+    "unknown": "Unbekannt",
+    "maze": "Labyrinth-Kerker"
   },
   "maze": {
     "dialog": {

@@ -343,7 +343,8 @@
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Città",
-    "unknown": "Sconosciuto"
+    "unknown": "Sconosciuto",
+    "maze": "Dungeon Del Labirinto"
   },
   "maze": {
     "dialog": {

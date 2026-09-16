@@ -322,7 +322,8 @@
     "ponyville": "小马谷",
     "sweet_apple_acres": "甜苹果园",
     "town": "小镇",
-    "unknown": "未知"
+    "unknown": "未知",
+    "maze": "迷宫地下城"
   },
   "maze": {
     "title": {

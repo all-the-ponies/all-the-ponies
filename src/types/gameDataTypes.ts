@@ -21,6 +21,7 @@ export type Location = 'PONYVILLE' |
                 'CRYSTAL_EMPIRE' |
                 'CHANGELING_KINGDOM' |
                 'KLUGETOWN' |
+                'MAZE' |
                 'UNKNOWN'
 
 export type Currency = 'Gems' | 'Bits' | GameObjectId

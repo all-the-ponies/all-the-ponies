@@ -343,7 +343,8 @@
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Town",
-    "unknown": "Unknown"
+    "unknown": "Unknown",
+    "maze": "Maze Dungeon"
   },
   "maze": {
     "dialog": {

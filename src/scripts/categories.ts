@@ -403,6 +403,9 @@ export const LOCATIONS: Record<Location, {string: string}> = {
   CHANGELING_KINGDOM: {
     string: 'location.changeling_kingdom',
   },
+  MAZE: {
+    string: 'location.maze',
+  },
   UNKNOWN: {
     string: 'location.unknown',
   }

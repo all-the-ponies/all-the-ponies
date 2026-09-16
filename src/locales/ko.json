@@ -300,7 +300,8 @@
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "",
-    "unknown": ""
+    "unknown": "",
+    "maze": "미로 던전"
   },
   "notices": {
     "corrupt_save": {

@@ -343,7 +343,8 @@
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Acres de Manzanas Dulces",
     "town": "Ciudad",
-    "unknown": "Desconocido"
+    "unknown": "Desconocido",
+    "maze": "Mazmorra Laberinto"
   },
   "maze": {
     "dialog": {

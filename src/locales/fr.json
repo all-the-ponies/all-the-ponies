@@ -343,7 +343,8 @@
     "ponyville": "Poneyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Ville",
-    "unknown": "Inconnu"
+    "unknown": "Inconnu",
+    "maze": "Donjon Labyrinthe"
   },
   "maze": {
     "dialog": {
