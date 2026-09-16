@@ -1,3 +1,14 @@
+# /// script
+# requires-python = ">=3.14"
+# dependencies = [
+#     "luna-kit[loc]",
+# ]
+#
+# [tool.uv.sources]
+# luna-kit = { git = "https://github.com/ego-lay-atman-bay/luna-kit/" }
+# ///
+
+
 from typing import Any, Literal
 import re
 
