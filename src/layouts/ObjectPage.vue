@@ -11,7 +11,7 @@ const props = defineProps<{
     gameObject: GameObjectId | GameObject,
 }>()
 
-const gameObject = computedAsync(async () => await getObject(props.gameObject), null)
+const gameObject = computed(() => getObject(props.gameObject), null)
 const name = computed(() => translateName(gameObject.value).value)
 const image = computed(() => gameObject.value?.image?.main.path)
 
