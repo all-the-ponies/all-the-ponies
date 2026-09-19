@@ -328,7 +328,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         check(gameObject: ShopType) {
           return !getSaveManager().hasShop(gameObject.id)
         },
-        exclude: ['maze'],
+        exclude: ['maze', 'unused'],
         client: true,
       },
       unused: {
