@@ -187,9 +187,9 @@ onMounted(() => {
                 {{ $t('maze.message.update_note.outdated') }}
             </InfoCard> -->
 
-            <InfoCard type="note">
+            <!-- <InfoCard type="note">
                 {{ $t('maze.message.update_note.updated') }}
-            </InfoCard>
+            </InfoCard> -->
         </section>
         <section class="section" v-if="mazeActive">
             <div class="import-bar">
