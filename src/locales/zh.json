@@ -43,10 +43,18 @@
       "check": "查看"
     }
   },
+  "collection": {
+    "collection": "收藏",
+    "message": {
+      "alt_reward": "替代奖励",
+      "progress": "进度:",
+      "reward": "奖励"
+    }
+  },
   "common": {
     "date": {
       "current": "当前",
-      "range": "{start} to {end}"
+      "range": "{start} 到 {end}"
     },
     "export": "导出",
     "help": "帮助",
@@ -96,7 +104,11 @@
   },
   "filter": {
     "collection": {
-      "completed": "已完成"
+      "completed": "已完成",
+      "incomplete": "未完成"
+    },
+    "common": {
+      "available": "可获取的"
     },
     "costume": {
       "used": "已使用"
@@ -257,6 +269,14 @@
       "title": "功能板块"
     }
   },
+  "info_card": {
+    "error": "错误",
+    "important": "重要",
+    "info": "信息",
+    "note": "备注",
+    "tip": "提示",
+    "warning": "警告"
+  },
   "inventory": {
     "message": {
       "add_more": "添加更多{category}",
@@ -268,6 +288,7 @@
       }
     },
     "stats": {
+      "collections": "收藏: {count}",
       "costumes": "服装: {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
@@ -295,11 +316,11 @@
       },
       "confirm_delete": {
         "body": "确认要删除 \"{list}\"吗？",
-        "title": "删除心愿单"
+        "title": "删除心愿单？"
       },
       "create_list": {
         "message": {
-          "name": "名称",
+          "name": "名称:",
           "name_required": "需要一个名字",
           "wishlist": "心愿单"
         },
@@ -307,7 +328,7 @@
       }
     },
     "messages": {
-      "empty_list": "这里什么都没有。来添加一个{ponies}吧",
+      "empty_list": "这里什么都没有。来添加一个{ponies}吧。",
       "no_lists": "暂无心愿单",
       "wishlist": "心愿单"
     },
@@ -319,15 +340,65 @@
     "crystal_empire": "水晶帝国",
     "everfree_forest": "永恒自由森林",
     "klugetown": "九流镇",
+    "maze": "迷宫地下城",
     "ponyville": "小马谷",
     "sweet_apple_acres": "甜苹果园",
     "town": "小镇",
-    "unknown": "未知",
-    "maze": "迷宫地下城"
+    "unknown": "未知"
   },
   "maze": {
+    "dialog": {
+      "reset": {
+        "body": "确认要重置进度吗？",
+        "title": "重置？"
+      }
+    },
+    "message": {
+      "boss": {
+        "required_energy": "需要的体力: {energy}",
+        "required_power": "需要的战力: {power}",
+        "rewards": "奖励"
+      },
+      "coin_shop": {
+        "produces": "产量:",
+        "skip_cost": "跳过: {cost}",
+        "time": "每 {duration}"
+      },
+      "helpers": {
+        "no_helpers": "目前没有帮手。你可以通过好友码导入",
+        "title": "帮手"
+      },
+      "import_progress": "导入的进度:",
+      "legend": "图例",
+      "maze_energy": "迷宫体力",
+      "not_active": "迷宫暂不可用",
+      "update_note": {
+        "outdated": "这里目前使用的是去年的数据，所以可能存在一些误差。",
+        "updated": "所有东西都已更新，并且使用了今年的数据！"
+      }
+    },
+    "pony_card": {
+      "fights": "战斗次数",
+      "power": "战力",
+      "upgraded": "已升级"
+    },
+    "tile": {
+      "boss": "boss",
+      "chest": "宝箱",
+      "coin_shop": "魔法硬币商店",
+      "end": "终点",
+      "helper_shop": "秘密商店",
+      "locked": "未解锁",
+      "miniboss": "牛头人",
+      "selected": "已选中",
+      "start": "开始"
+    },
+    "tips": {
+      "buying_helpers": "只买最便宜的小马，并且不要回头去之前的商店，否则你会被软锁定！"
+    },
     "title": {
-      "long": "消失的翅膀和迷宫"
+      "long": "消失的翅膀和迷宫",
+      "short": "迷宫"
     }
   },
   "notices": {
@@ -338,7 +409,29 @@
     },
     "help_wanted": {
       "body": "由于本网站的站长只会英语，所以没法把这个小马官游信息站翻译成所有的语言版本。如果你恰巧会说其他语言，我非常希望大家能够帮助我一起翻译这个站点。您可以在下面这个Discord服务器中（需要科学上网）咨询更多有关信息。",
-      "title": "帮助征集"
+      "title": "帮助征集！"
+    },
+    "v5_arks": {
+      "body": "坏消息，All The Ponies暂未获得最新的更新，因为Gameloft改变了游戏文件的存储方式，与本来用于读取它们的工具冲突了。我和其他数据挖掘者正在努力弄清楚如何提取新文件，但请不要指望很快会有结果。",
+      "title": "重要提示"
+    },
+    "v5_arks_cracked": {
+      "body": "我很高兴宣布数据挖掘者们找到了新的方法，于是all the ponies现在已经更新到了 {version} ！感谢所有提供帮助的人，以及所有保持耐心的人们。",
+      "title": "更新"
+    }
+  },
+  "player_card": {
+    "current_xp": "当前XP: {current_value} of {max_value}",
+    "level": "等级: {level}",
+    "name": "名字: {name}",
+    "player_stat": {
+      "collections": "{count} 收藏",
+      "costumes": "{count} 服装",
+      "gem_shops": "{count} 宝石商店",
+      "ponies": "{count} 小马",
+      "shops": "{count} 商店",
+      "transformables": "{count} 替代形态",
+      "wh_collections": "{count} 热门收藏"
     }
   },
   "player_info": {
@@ -371,7 +464,7 @@
     "message": {
       "whats_hot": "热门收藏"
     },
-    "title": "云存档自助检测"
+    "title": "价格历史"
   },
   "save_check": {
     "description": "您可以在这里自测自己的游戏云存档是否发生损坏",
@@ -387,7 +480,7 @@
         "safe": "您的云存档情况正常"
       },
       "what_can_you_do": {
-        "body": "请联系Gameloft游戏客服解决。但本站必须提醒您，请自行承担风险。如果您给他们发邮件，告诉他们说你自行解包游戏发现了这个bug，我们无法预知Gameloft官方会作何反应，也无法确定他们会对您的账号采取何种措施，因为调取游戏的后台数据，本质上也算是一种开挂，可能违反了他们的规则。您也可以选择将自己云存档丢失的事情告诉身边更多的人，如果大家多些人一起去写邮件反馈，或许能让官方注意到这个bug并修复。",
+        "body": "{support}请联系Gameloft游戏客服解决。但本站必须提醒您，请自行承担风险。如果您给他们发邮件，告诉他们说你自行解包游戏发现了这个bug，我们无法预知Gameloft官方会作何反应，也无法确定他们会对您的账号采取何种措施，因为调取游戏的后台数据，本质上也算是一种开挂，可能违反了他们的规则。您也可以选择将自己云存档丢失的事情告诉身边更多的人，如果大家多些人一起去写邮件反馈，或许能让官方注意到这个bug并修复。",
         "customer_support": "联系游戏官方客服",
         "title": "我的云存档丢了，怎么办？"
       },
@@ -418,13 +511,24 @@
   },
   "search": {
     "message": {
-      "search": "搜索"
+      "search": "搜索",
+      "showing_of_results": "展示从 {shown_results} 到{total_results} 的结果",
+      "showing_results": "共 {total_results} 结果"
     },
     "no_results": "无结果",
     "title": "搜索"
   },
+  "sidebar": {
+    "activities": "活动",
+    "browse": "浏览",
+    "game_info": "游戏信息",
+    "player": "玩家",
+    "profile_decorations": "主页装饰类"
+  },
   "site": {
     "description": "获得关于在小马宝莉：魔法公主的你想要的所有准确信息",
+    "language": "语言",
+    "skip_to_content": "跳至正文",
     "title": "小马官游信息站"
   },
   "socials": {
@@ -432,7 +536,7 @@
     "donate": "赞助我们",
     "github": "GitHub",
     "help_translate": "帮助我们翻译",
-    "mlp_game_hangout": "官游维基百科",
+    "mlp_game_hangout": "MLP Game Hangout服务器",
     "wiki": "官游维基百科"
   },
   "sorting": {
@@ -470,7 +574,10 @@
   },
   "tasks": {
     "message": {
-      "duration": "持续时间"
-    }
+      "duration": "持续时间",
+      "skip_price": "跳过: {price}",
+      "task_icon": "任务icon"
+    },
+    "task": "任务"
   }
 }
