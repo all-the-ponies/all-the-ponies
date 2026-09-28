@@ -207,7 +207,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
             check(gameObject: PonyType) {
               return (gameObject.group.length == 0 || gameObject.group?.length && gameObject.group_master)},
             default: true,
-            exclude: ['npc', 'unused', 'quest'],
+            exclude: ['npc', 'unused', 'quest', 'critters'],
         },
         pro: {
             name: 'filter.pony.pro',
@@ -250,6 +250,10 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         unused: {
             name: "filter.pony.unused",
             check(gameObject: PonyType) {return gameObject.tags.includes('unused')},
+        },
+        critters: {
+            name: 'filter.pony.critters',
+            check(gameObject: PonyType) {return Boolean(gameObject.critter_farm)},
         },
         quest: {
             name: "filter.pony.quest",
