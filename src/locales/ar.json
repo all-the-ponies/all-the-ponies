@@ -43,6 +43,14 @@
       "check": "تحقق"
     }
   },
+  "collection": {
+    "collection": "المجموعة | المجموعات",
+    "message": {
+      "alt_reward": "المكافأة البديلة",
+      "progress": "التقدم:",
+      "reward": "المكافأة"
+    }
+  },
   "common": {
     "date": {
       "current": "الحالي",
@@ -54,76 +62,87 @@
     "info": "معلومات",
     "name": "اسم",
     "new": "جديد",
-    "or": "",
-    "price": "",
+    "or": "أو",
+    "price": "السعر",
     "royal": "ملكي",
     "sale": "تخفيضات",
-    "wiki": ""
+    "wiki": "موسوعة"
   },
   "contact": {
-    "description": "",
+    "description": "لديك سؤال، اقتراح، تبليغ عن عطل، او تريد المشاركة؟ هذا هو المكان المناسب لذلك!",
     "message": {
       "discord": {
-        "button": "",
-        "description": "",
-        "title": ""
+        "button": "انضم للسيرفر",
+        "description": "اسأل الاسئلة، قدم الاقتراحات، بلغ عن الأعطال، أو فقط دردش مع المجتمع.",
+        "title": "انضم لسيرفر الديسكورد"
       },
-      "discord_message": "",
-      "discord_server": "",
+      "discord_message": "لديك اسئلة، اقتراحات، بلاغ عن عطل؟ انضم لل{server}!",
+      "discord_server": "سيرفر الديسكورد",
       "github": {
-        "button": "",
-        "description": "",
-        "title": ""
+        "button": "افتح المستودع",
+        "description": "اطّلع على الشيفرة المصدرية، أو افتح المشكلات، أو قدّم طلب سحب.",
+        "title": "الفتح في GitHub"
       },
       "help_wanted": {
-        "description": "",
-        "title": ""
+        "description": "انا شخص واحد يتحدث فقط اللغة الإنجليزية، لذلك هنالك الكثير من الأشياء التي لا أستطيع القيام بها، من أبرزها الترجمة. الاشياء التي استطعت ترجمتها هي التي اخذتها من اللعبة. اذا لم تُترجم لغتك جيدا، رجاءً قدم طلب سحب (PR) على GitHub، او انضم لسيرفر الديسكورد لتساعدنا في الترجمة. انا ايضا لست جيدا في تصميم تنسيقات الصفحات، لذا فإن كنتَ جيدا في تصميم المواقع، سأحب مساعدتك. اذا اردت فقط المساعدة في برمجة الموقع، هذا ايضا مرحب به.",
+        "title": "نحتاج المساعدة!"
       },
       "mlp_game_hangout": {
-        "button": "",
+        "button": "انضم للسيرفر",
         "description": "",
         "title": ""
       }
     },
-    "title": ""
+    "title": "تواصل"
   },
   "dialog": {
-    "filter": "",
+    "filter": "فلترة",
     "select_item": {
-      "title": ""
+      "title": "اختر العنصر"
     },
-    "sort_by": ""
+    "sort_by": "فرز حسب"
   },
   "filter": {
+    "collection": {
+      "completed": "مكتمل",
+      "incomplete": "غير مكتمل"
+    },
+    "common": {
+      "available": "متاح"
+    },
+    "costume": {
+      "used": "مُستخدم"
+    },
     "decor": {
-      "can_fuse": "",
-      "regular": ""
+      "can_fuse": "يمكن دمجه",
+      "regular": "عادي"
     },
     "pony": {
-      "not_owned": "",
-      "npc": "",
-      "playable": "",
-      "pro": "",
-      "quest": "",
-      "unused": ""
+      "gem_pony": "مهرات الأحجار الكريمة",
+      "not_owned": "غير مملوك",
+      "npc": "شخصية جانبية",
+      "playable": "قابل للعب",
+      "pro": "محترف",
+      "quest": "مهمة",
+      "unused": "غير مُستخدم"
     },
     "shop": {
       "gem_shop": "متاجر الأحجار الكريمة",
       "maze": "متاهة",
-      "not_owned": "",
-      "others": ""
+      "not_owned": "غير مملوك",
+      "others": "الباقي"
     }
   },
   "fortune_shop": {
     "messages": {
-      "regular": "",
+      "regular": "عادي",
       "royal": "ملكي"
     },
     "price_rarities": {
-      "discount": "خصم",
-      "regular": "",
-      "super": "",
-      "ultra": ""
+      "discount": "حسم",
+      "regular": "عادي",
+      "super": "فائق",
+      "ultra": "ألترا"
     },
     "rarities": {
       "common": "شائع",
@@ -300,11 +319,11 @@
     "crystal_empire": "إمبراطورية الكريستال",
     "everfree_forest": "غابة إفرفري",
     "klugetown": "كلوجيتاون",
+    "maze": "زنزانة المتاهة",
     "ponyville": "بونيفيل",
     "sweet_apple_acres": "فدادين التفاح اللذيذ",
     "town": "",
-    "unknown": "",
-    "maze": "زنزانة المتاهة"
+    "unknown": ""
   },
   "maze": {
     "title": {
