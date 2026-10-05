@@ -118,6 +118,7 @@
       "regular": "常规装饰品"
     },
     "pony": {
+      "critters": "小动物",
       "gem_pony": "宝石小马",
       "not_owned": "未拥有的角色",
       "npc": "NPC角色",
