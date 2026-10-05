@@ -513,7 +513,7 @@
   "search": {
     "message": {
       "search": "搜索",
-      "showing_of_results": "展示从 {shown_results} 到{total_results} 的结果",
+      "showing_of_results": "{total_results} 中有 {shown_results} 个符合条件的结果",
       "showing_results": "共 {total_results} 结果"
     },
     "no_results": "无结果",
