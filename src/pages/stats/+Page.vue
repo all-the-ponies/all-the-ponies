@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import PlayerCard from '@/components/PlayerCard/PlayerCard.vue'
-import type { PlayerStatName } from '@/scripts/api.types'
+import type { PlayerStatName } from '@/types/gameDataTypes'
+import { createAssetUrl } from '@/scripts/assets'
 import { getObject, translateName, useGameObject, useObjectName } from '@/scripts/gameData'
 import { useSaveStats } from '@/scripts/stats'
 import { formatTime } from '@/scripts/timeFunctions'
@@ -10,6 +11,7 @@ import { computedAsync, useMounted } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'
 import { computed, nextTick, onMounted, ref, useTemplateRef } from 'vue'
+import StatCard from '@/components/stats/StatCard.vue'
 
 const saveStore = useSaveStore()
 const saveStats = useSaveStats()
@@ -77,6 +79,14 @@ const rightStat = computed(() => {
     }
 })
 
+const backgroundImage = computed(() => {
+    if (isMounted.value && saveStore.playerInfo.player_card.background) {
+        console.log('background:', saveStore.playerInfo.player_card.background)
+        console.log('url', createAssetUrl(getObject(saveStore.playerInfo.player_card.background, 'background').image.main.path))
+        return createAssetUrl(getObject(saveStore.playerInfo.player_card.background, 'background').image.main.path)
+    }
+})
+
 </script>
 
 <template>
@@ -108,7 +118,9 @@ const rightStat = computed(() => {
             <p class="error-message">{{ errorMessage }}</p>
         </section>
         <ClientOnly>
-            <section class="section">
+            <section class="section player-section" :style="{
+                backgroundImage: `url('${backgroundImage}')`,
+            }">
                 <PlayerCard
                     class="player-card"
                     v-if="saveStore.playerInfo.friendCode"
@@ -126,127 +138,30 @@ const rightStat = computed(() => {
                     :left-stat="leftStat"
                     :right-stat="rightStat"
                 ></PlayerCard>
-                <ul class="stats">
-                    <li>
-                        {{
-                            $t('player_info.join_date', {
-                                join_date: saveStore?.playerInfo.joinDate ? $d(new Date(saveStore?.playerInfo.joinDate), {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                }) : ''
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{ 
-                            $t('player_info.total_playtime', {
-                                total_playtime: formatTime(saveStore?.playerInfo.totalPlaytime),
-                            })
-                        }}
-                    </li>
-                    
-                    <!-- Keep disabled -->
-                    <!-- <li>
-                        {{ 
-                            $t('stats.message.ponies.total', saveStats?.ponies.total)
-                        }}
-                    </li> -->
-                   
-                    <li>
-                        {{
-                            $t('inventory.stats.ponies', 2, {
-                                named: {
-                                    count: $n(saveStats?.ponies.unique)
-                                },
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.transformable', 2, {
-                                named: {
-                                    count: $n(saveStats?.ponies.changelings)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.stars', 2, {
-                                named: {
-                                    count: $n(saveStats?.ponies.stars)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.houses', 2, {
-                                named: {
-                                    count: $n(saveStats?.houses.total)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.shops', 2, {
-                                named: {
-                                    count: $n(saveStats?.shops.bits + saveStats?.shops.others)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.gem_shops', 2, {
-                                named: {
-                                    count: $n(saveStats?.shops.gems)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.costumes', 2, {
-                                named: {
-                                    count: $n(saveStats?.costumes.total)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.collections', 2, {
-                                named: {
-                                    count: $n(saveStats?.collections.total)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.wh_collections', 2, {
-                                named: {
-                                    count: $n(saveStore?.playerInfo.stats.whCollections)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        <CurrencyImage object="Gems">
-                            {{ gemsName }}:
-                            {{ $n(saveStore?.playerInfo.currency.gems) }}
-                        </CurrencyImage>
-                    </li>
-                    <li>
-                        <CurrencyImage object="Bits">
-                            {{ bitsName }}:
-                            {{ $n(saveStore?.playerInfo.currency.bits) }}
-                        </CurrencyImage>
-                    </li>
-                </ul>
+                <div class="stats-section">
+                    <div class="stats-grid">
+                        <StatCard
+                            stat="pony"
+                            :value="10"
+                            :total="20"
+                        ></StatCard>
+                        <StatCard
+                            stat="pony"
+                            :value="10"
+                            :total="20"
+                        ></StatCard>
+                        <StatCard
+                            stat="pony"
+                            :value="10"
+                            :total="20"
+                        ></StatCard>
+                        <StatCard
+                            stat="pony"
+                            :value="10"
+                            :total="20"
+                        ></StatCard>
+                    </div>
+                </div>
             </section>
         </ClientOnly>
     </div>
@@ -254,10 +169,36 @@ const rightStat = computed(() => {
 
 <style lang="css" scoped>
 
+.player-section {
+    padding: 1rem;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .player-card {
     max-width: 30rem;
     margin: 1rem auto;
     display: block;
+}
+
+.stats-section {
+    max-width: 30rem;
+    /* min-height: 30rem; */
+    margin: 1rem auto;
+    display: block;
+
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.stats-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 10rem);
+    justify-content: space-evenly;
+    gap: 0.5rem;
+    padding: 0.5rem;
 }
 
 .stats li {
