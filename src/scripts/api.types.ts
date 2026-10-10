@@ -1,7 +1,5 @@
 import type { TDateISO } from "@/types/date";
-import type { GameObjectId } from "@/types/gameDataTypes";
-
-export type PlayerStatName = 'pony' | 'pony_alt' | 'shop' | 'gem_shop' | 'collection' | 'costume' | 'hots'
+import type { GameObjectId, PlayerStatName } from "@/types/gameDataTypes";
 
 export interface SaveData {
     version: number,

@@ -1,6 +1,6 @@
 import { FRIEND_CODE_PATTERN } from "@/globals/constants"
 import api from "@/scripts/api"
-import type { PlayerStatName } from "@/scripts/api.types"
+import type { PlayerStatName } from "@/types/gameDataTypes"
 import { notNullIsh } from "@/scripts/common"
 import { extendedDeserialize, extendedSerialize } from "@/scripts/extendedSerialize"
 import { getCollection, getCollectionData, getGameObjects, getMazePony, getObject } from "@/scripts/gameData"

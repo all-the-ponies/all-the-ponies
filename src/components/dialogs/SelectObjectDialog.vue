@@ -58,7 +58,11 @@ const selectedCategory = ref<CategoryName>('pony')
 const objects = computed(() => gameObjects.value ? Object.values(gameObjects.value[selectedCategory.value].objects) as GameObject[] : [])
 
 
-const availableCategories = computed(() => gameObjects.value ? Object.keys(gameObjects.value) : [])
+const availableCategories = computed(() =>
+    gameObjects.value
+        ? Object.keys(gameObjects.value).filter(category => category in CATEGORIES)
+        : []
+)
 
 
 const sortFunctions = computed(() => {
@@ -124,7 +128,7 @@ const itemGap = useRem(.3)
             <template #menu-before>
                 <select v-model="selectedCategory" class="dropdown" name="category">
                     <option
-                        v-for="category in availableCategories.filter(category => category in CATEGORIES)"
+                        v-for="category in availableCategories"
                         :value="category"
                         :key="`category-${category}`"
                     >{{ $t(CATEGORIES[category].string, 2) }}</option>

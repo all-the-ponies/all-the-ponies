@@ -8,7 +8,7 @@ import { computed, useId } from 'vue';
 import LevelImage from './LevelImage.vue';
 import PlayerStat from './PlayerStat.vue';
 import XPProgress from './XPProgress.vue';
-import type { PlayerStatName } from '@/scripts/api.types.ts';
+import type { PlayerStatName } from '@/types/gameDataTypes.ts';
 
 const props = defineProps<{
     friendCode: string,

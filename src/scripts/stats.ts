@@ -1,7 +1,60 @@
 import { useSaveStore } from "@/stores/saveManager"
-import type { GameObjectId } from "@/types/gameDataTypes"
+import type { GameObjectId, PlayerStatName } from "@/types/gameDataTypes"
 import { computed, onMounted, reactive, shallowRef, type Ref } from "vue"
 import { getCollection, getObject } from "./gameData"
+import poniesImage from '@/assets/images/ui/player-card/stat/stat-ponies.png'
+import transformablesImage from '@/assets/images/ui/player-card/stat/stat-transformables.png'
+import shopsImage from '@/assets/images/ui/player-card/stat/stat-shops.png'
+import gemShopImage from '@/assets/images/ui/player-card/stat/stat-gem-shops.png'
+import costumesImage from '@/assets/images/ui/player-card/stat/stat-costumes.png'
+import collectionsImage from '@/assets/images/ui/player-card/stat/stat-collections.png'
+import whCollectionsImage from '@/assets/images/ui/player-card/stat/stat-wh-collections.png'
+
+
+export interface PlayerStatInfo {
+    image: string,
+    string: string,
+    alt: string,
+}
+
+// Importing just gets the path to the image, it doesn't load the image data
+export const statNameMap: Record<PlayerStatName, PlayerStatInfo> = {
+  pony: {
+    image: poniesImage,
+    string: "game_object.pony.pony",
+    alt: "player_card.player_stat.ponies",
+  },
+  pony_alt: {
+    image: transformablesImage,
+    string: "game_object.pony.transformable",
+    alt: "player_card.player_stat.transformables",
+  },
+  shop: {
+    image: shopsImage,
+    string: "game_object.shop.shop",
+    alt: "player_card.player_stat.shops",
+  },
+  gem_shop: {
+    image: gemShopImage,
+    string: "game_object.shop.gem_shop",
+    alt: "player_card.player_stat.gem_shops",
+  },
+  costume: {
+    image: costumesImage,
+    string: "game_object.costume.costume",
+    alt: "player_card.player_stat.costumes",
+  },
+  collection: {
+    image: collectionsImage,
+    string: "collection.collection",
+    alt: "player_card.player_stat.collections",
+  },
+  hots: {
+    image: whCollectionsImage,
+    string: "inventory.stats.wh_collections",
+    alt: "player_card.player_stat.wh_collections",
+  },
+}
 
 
 interface SaveStats {
