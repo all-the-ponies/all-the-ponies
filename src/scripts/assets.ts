@@ -12,6 +12,8 @@ export function createAssetUrl(
         return null
     }
 
+    direct = true
+
     let basePath = 'game-assets/'
 
     let baseUrl: string
