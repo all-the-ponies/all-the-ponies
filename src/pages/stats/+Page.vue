@@ -172,6 +172,21 @@ const backgroundImage = computed(() => {
                         ></StatCard>
                     </div>
                 </div>
+                <div class="stats-section">
+                    <ul>
+                        <li>
+                            {{
+                                $t('player_info.join_date', {
+                                join_date: saveStore?.playerInfo.joinDate ? $d(new Date(saveStore?.playerInfo.joinDate), {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                }) : ''
+                                })
+                            }}
+                        </li>
+                    </ul>
+                </div>
             </section>
         </ClientOnly>
     </div>
@@ -195,11 +210,13 @@ const backgroundImage = computed(() => {
 
 .stats-section {
     max-width: 30rem;
+    padding: 0.5rem;
     /* min-height: 30rem; */
     margin: 1rem auto;
     display: block;
 
     background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
 }
 
 .stats-grid {
@@ -208,7 +225,6 @@ const backgroundImage = computed(() => {
     grid-template-columns: repeat(auto-fit, 10rem);
     justify-content: space-evenly;
     gap: 0.5rem;
-    padding: 0.5rem;
 }
 
 .stats li {
