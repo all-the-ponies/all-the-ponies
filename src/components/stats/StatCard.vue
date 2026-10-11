@@ -19,7 +19,7 @@ const statName = computed(() => statNameMap[props.stat].string)
     <div class="stat-card">
         <img class="stat-image" :src="statImage" aria-hidden="true">
         <div class="stat-body">
-            <span class="stat-name">{{ $t(statName) }}</span>
+            <span class="stat-name">{{ $t(statName, 2) }}</span>
             <CollectionProgress
                 :value="props.value"
                 :total="props.total"
@@ -39,6 +39,10 @@ const statName = computed(() => statNameMap[props.stat].string)
     width: 60px;
     object-fit: contain;
     object-position: center;
+}
+
+.stat-name {
+    font-size: 1rem;
 }
 
 .stat-body {
