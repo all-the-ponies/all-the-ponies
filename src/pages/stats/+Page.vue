@@ -146,17 +146,27 @@ const backgroundImage = computed(() => {
                             :total="20"
                         ></StatCard>
                         <StatCard
-                            stat="pony"
+                            stat="pony_alt"
                             :value="10"
                             :total="20"
                         ></StatCard>
                         <StatCard
-                            stat="pony"
+                            stat="shop"
                             :value="10"
                             :total="20"
                         ></StatCard>
                         <StatCard
-                            stat="pony"
+                            stat="gem_shop"
+                            :value="10"
+                            :total="20"
+                        ></StatCard>
+                        <StatCard
+                            stat="collection"
+                            :value="10"
+                            :total="20"
+                        ></StatCard>
+                        <StatCard
+                            stat="hots"
                             :value="10"
                             :total="20"
                         ></StatCard>
