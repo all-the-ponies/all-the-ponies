@@ -43,6 +43,14 @@
       "check": "Göz At"
     }
   },
+  "collection": {
+    "collection": "Koleksiyon | Koleksiyonlar",
+    "message": {
+      "alt_reward": "Alternatif Ödül",
+      "progress": "İLERLEME:",
+      "reward": "Ödül"
+    }
+  },
   "common": {
     "date": {
       "current": "Güncel",
@@ -110,6 +118,7 @@
       "regular": "Normal"
     },
     "pony": {
+      "critters": "Yaratıklar",
       "gem_pony": "Cevher Ponyleri",
       "not_owned": "Sahip Olunmayan",
       "npc": "Oynanamayan",
@@ -261,6 +270,14 @@
       "title": "Yapılacak Şeyler"
     }
   },
+  "info_card": {
+    "error": "Hata",
+    "important": "Önemli",
+    "info": "Bilgi",
+    "note": "Not",
+    "tip": "İpucu",
+    "warning": "Uyarı"
+  },
   "inventory": {
     "message": {
       "add_more": "Daha fazla {category} ekle",
@@ -324,15 +341,65 @@
     "crystal_empire": "Crystal Empire",
     "everfree_forest": "Everfree Forest",
     "klugetown": "Klugetown",
+    "maze": "Labi̇rent Zi̇ndani",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Kasaba",
-    "unknown": "Bilinmeyen",
-    "maze": "Labi̇rent Zi̇ndani"
+    "unknown": "Bilinmeyen"
   },
   "maze": {
+    "dialog": {
+      "reset": {
+        "body": "İlerlemeni sıfırlamak istediğine emin misin?",
+        "title": "Sıfırla?"
+      }
+    },
+    "message": {
+      "boss": {
+        "required_energy": "Gereken Enerji: {energy}",
+        "required_power": "Gereken Güç: {power}",
+        "rewards": "Ödüller"
+      },
+      "coin_shop": {
+        "produces": "Üretir:",
+        "skip_cost": "Atla: {cost}",
+        "time": "Her {duration}"
+      },
+      "helpers": {
+        "no_helpers": "Hiç yardımcın yok. Onları arkadaş kodunla aktarabilirsin",
+        "title": "Yardımcılar"
+      },
+      "import_progress": "İlerlemeyi içe aktar:",
+      "legend": "Efsane",
+      "maze_energy": "Labirent Enerjisi",
+      "not_active": "Labirent aktif değil",
+      "update_note": {
+        "outdated": "Bu halen geçen senenin verisini kullanıyor bu yüzden bu sene için doğru olmayabilir.",
+        "updated": "Her şey güncellendi ve bu senenin verisini kullanılıyor!"
+      }
+    },
+    "pony_card": {
+      "fights": "Savaşlar",
+      "power": "Güç",
+      "upgraded": "Güncellendi"
+    },
+    "tile": {
+      "boss": "Patron",
+      "chest": "Sandık",
+      "coin_shop": "Sihirli Para Dükkanı",
+      "end": "Son",
+      "helper_shop": "Gizli Dükkan",
+      "locked": "Kilitli",
+      "miniboss": "Minotaurocellus",
+      "selected": "Seçili",
+      "start": "Başla/Başlangıç"
+    },
+    "tips": {
+      "buying_helpers": "Sadece en ucuz pony i al ve önceki dükkanlara geri dönme yoksa sikkelerin biter ve sıkışıp kalırsın!"
+    },
     "title": {
-      "long": "Kayıp Kanatlar, Alengirli Olaylar"
+      "long": "Kayıp Kanatlar, Alengirli Olaylar",
+      "short": "Labirent"
     }
   },
   "notices": {
@@ -359,7 +426,13 @@
     "level": "Seviye: {level}",
     "name": "İsim: {name}",
     "player_stat": {
-      "ponies": "{count} Pony"
+      "collections": "{count} Koleksiyonlar",
+      "costumes": "{count} Kostümler",
+      "gem_shops": "{count} Cevher Dükkanları",
+      "ponies": "{count} Pony",
+      "shops": "{count} Dükkanlar",
+      "transformables": "{count} Dönüştürülebilirler",
+      "wh_collections": "{count} Neler Yeni Koleksiyonları"
     }
   },
   "player_info": {
@@ -447,7 +520,11 @@
     "title": "Ara"
   },
   "sidebar": {
-    "player": "Oyuncu"
+    "activities": "Aktiviteler",
+    "browse": "Göz at",
+    "game_info": "Oyun bilgisi",
+    "player": "Oyuncu",
+    "profile_decorations": "Profil Dekorasyonları"
   },
   "site": {
     "description": "My Little Pony Büyülü Prenses Oyunu hakkında öğrenmek istediğiniz herhangi bir şey hakkında tüm doğru bilgileri alın",
@@ -495,5 +572,13 @@
       "seasonal_shop": "Sezonluk Dükkan"
     },
     "title": "Mağaza"
+  },
+  "tasks": {
+    "message": {
+      "duration": "Süre",
+      "skip_price": "Atla: {price}",
+      "task_icon": "Görev simgesi"
+    },
+    "task": "Görev | Görevler"
   }
 }
