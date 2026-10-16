@@ -1,7 +1,7 @@
 {
   "about": {
     "description": {
-      "body": "All The Ponies foi inicialmente criado por {me} como um site para {quiz_link}, porque um quiz que eu achei online mal cobria a superfície de pôneis. Mais tarde isso se expandiu para um recurso de informações precisas sobre coisas no jogo, gerenciar o que você tem, e é claro, pequenas atividades que você pode jogar.",
+      "body": "All The Ponies foi inicialmente criado por {me} como um site para {quiz_link}, porque um quiz que eu achei online mal cobria ao básico sobre os pôneis. Mais tarde isso se expandiu para um recurso de informações precisas sobre coisas no jogo, gerenciar o que você tem, e é claro, pequenas atividades que você pode jogar.",
       "quiz_link": "Nomeie quantos pôneis você conseguir"
     },
     "sections": {
@@ -26,12 +26,13 @@
   "button": {
     "cancel": "Cancelar",
     "close": "Fechado",
+    "done": "Pronto",
     "edit": "Editar",
     "hint": "Dica",
     "no": "Não",
     "ok": "Ok",
     "resume": "Continuar",
-    "share": "Publicar",
+    "share": "Compartilhar",
     "skip": "Pular",
     "start": "Iniciar",
     "stop": "Pare",
@@ -40,6 +41,14 @@
   "check_save": {
     "messages": {
       "check": "Confere"
+    }
+  },
+  "collection": {
+    "collection": "Coleções",
+    "message": {
+      "alt_reward": "Prêmio alternativo",
+      "progress": "PROGRESSO:",
+      "reward": "Prêmio"
     }
   },
   "common": {
@@ -55,7 +64,8 @@
     "new": "Novo",
     "or": "ou",
     "price": "Preço",
-    "royal": "Royal",
+    "royal": "Realeza",
+    "sale": "Oferta",
     "wiki": "Wiki"
   },
   "contact": {
@@ -70,11 +80,11 @@
       "discord_server": "server do Discord",
       "github": {
         "button": "Repositório aberto",
-        "description": "Olhe o código open source, open issues, ou faça um pull request.",
+        "description": "Olhe o código open source, crie uma issue ou faça um pull request.",
         "title": "Veja no GitHub"
       },
       "help_wanted": {
-        "description": "Eu sou apenas uma pessoa que sei inglês, então têm muitas coisas que eu não posso fazer, principalmente traduções. As coisas que eu consegui traduzir são coisas que eu tirei do jogo. Se sua língua não estiver bem traduzida, POR FAVOR crie um pull request no GitHub ou ou se junte no discord para que você me ajude a traduzir. Eu também não sou ótimo em design de layouts, então se você for bom nisso, eu iria adorar sua ajuda. Se você quiser ajudar a programar o site, isso também é bem vindo. (Esse texto foi traduzido por um terceiro, não o dev original).",
+        "description": "Eu sou uma pessoa que sabe apenas inglês, então têm muitas coisas que eu não posso fazer, principalmente traduções. As coisas que eu consegui traduzir são coisas que eu tirei do jogo. Se sua língua não estiver bem traduzida, POR FAVOR crie um pull request no GitHub ou ou se junte no discord para que você me ajude a traduzir. Eu também não sou ótimo em design de layouts, então se você for bom nisso, eu iria adorar sua ajuda. Se você quiser ajudar a programar o site, isso também é bem vindo. (Esse texto foi traduzido por um terceiro, não o dev original).",
         "title": "Ajuda necessária!"
       },
       "mlp_game_hangout": {
@@ -93,11 +103,23 @@
     "sort_by": "Filtrar"
   },
   "filter": {
+    "collection": {
+      "completed": "Completo",
+      "incomplete": "Incompleto"
+    },
+    "common": {
+      "available": "Disponível"
+    },
+    "costume": {
+      "used": "Usado"
+    },
     "decor": {
       "can_fuse": "Fusão possível",
       "regular": "Comum"
     },
     "pony": {
+      "critters": "Criaturas",
+      "gem_pony": "Pônei de gema",
       "not_owned": "Não adquirido",
       "npc": "NPC",
       "playable": "Jogável",
@@ -114,7 +136,7 @@
   },
   "fortune_shop": {
     "messages": {
-      "regular": "",
+      "regular": "Comum",
       "royal": "Royal"
     },
     "price_rarities": {
@@ -148,6 +170,10 @@
     "common": {
       "size": "Tamanho",
       "unlock_level": "Nível do desbloqueio"
+    },
+    "costume": {
+      "collection": "Conjunto de fantasias",
+      "costume": "Fantasia | Fantasias"
     },
     "decor": {
       "cannot_fuse": "Fusão impossível",
@@ -228,6 +254,12 @@
   },
   "home": {
     "description": "Tenha informações sobre {game_link} e gerencie o que você tem!",
+    "events": {
+      "current_event": "Evento atual",
+      "ends_in": "Acaba em {timestamp}",
+      "next_event": "Próximo evento",
+      "starts_in": "Começa em {timestamp}"
+    },
     "message": {
       "affiliates": "Afiliações",
       "game_name": "My Little Pony: Princesa Mágica",
@@ -237,6 +269,14 @@
       "browse": "Pesquise",
       "title": "Coisas para fazer"
     }
+  },
+  "info_card": {
+    "error": "Erro",
+    "important": "Importante",
+    "info": "Info",
+    "note": "Nota",
+    "tip": "Dica",
+    "warning": "Aviso"
   },
   "inventory": {
     "message": {
@@ -249,12 +289,15 @@
       }
     },
     "stats": {
+      "collections": "Coleções: {count}",
+      "costumes": "Fantasias: {count}",
       "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
       "houses": "@:game_object.house.house{':'} {count}",
       "ponies": "@:game_object.pony.pony{':'} {count}",
       "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Estrelas: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "transformable": "@:game_object.pony.transformable{':'} {count}",
+      "wh_collections": "Coleções populares: {count}"
     },
     "title": "Inventário"
   },
@@ -298,15 +341,65 @@
     "crystal_empire": "Crystal Empire",
     "everfree_forest": "Floresta Everfree",
     "klugetown": "Klugetown",
+    "maze": "Masmorra Labirinto",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Cidade",
-    "unknown": "Desconhecido",
-    "maze": "Masmorra Labirinto"
+    "unknown": "Desconhecido"
   },
   "maze": {
+    "dialog": {
+      "reset": {
+        "body": "Você tem certeza que quer resetar seu progresso?",
+        "title": "Reiniciar?"
+      }
+    },
+    "message": {
+      "boss": {
+        "required_energy": "Precisa de energia: {energy}",
+        "required_power": "Precisa de poder: {power}",
+        "rewards": "Prêmios"
+      },
+      "coin_shop": {
+        "produces": "Produz:",
+        "skip_cost": "Pular: {cost}",
+        "time": "Cada {duration}"
+      },
+      "helpers": {
+        "no_helpers": "Você não tem ajudantes. Você pode importar eles com seu código de amigo",
+        "title": "Ajudantes"
+      },
+      "import_progress": "Importar progresso:",
+      "legend": "Legenda",
+      "maze_energy": "Energia do labirinto",
+      "not_active": "Labirinto inativo",
+      "update_note": {
+        "outdated": "O site está atualmente usando dados do ano passado, então algumas informações podem não estar certas para esse ano.",
+        "updated": "Tudo foi atualizado, e usando dados desse ano!"
+      }
+    },
+    "pony_card": {
+      "fights": "Lutas",
+      "power": "Poder",
+      "upgraded": "Atualizar"
+    },
+    "tile": {
+      "boss": "Chefe",
+      "chest": "Baú",
+      "coin_shop": "Loja de moedas mágicas",
+      "end": "Fim",
+      "helper_shop": "Loja secreta",
+      "locked": "Fechado",
+      "miniboss": "Minotaurocellus",
+      "selected": "Selecionado",
+      "start": "Começar"
+    },
+    "tips": {
+      "buying_helpers": "Compre apenas os poneis mais barato, e não volte para as lojas anteriores, ou você ficara sem moedas e não conseguirá avançar!"
+    },
     "title": {
-      "long": "Asas Perdidas e Coisas de Labirinto"
+      "long": "Asas Perdidas e Coisas de Labirinto",
+      "short": "Labirinto"
     }
   },
   "notices": {
@@ -318,6 +411,28 @@
     "help_wanted": {
       "body": "Eu só falo inglês, então eu não posso traduzir All The Ponies pra outras línguas. Se sua língua já está no site mas não está totalmente traduzida, eu adoraria sua ajuda. Não é necessário conhecimento de programação porque o Weblate faz a tradução fácil pra todo mundo.",
       "title": "Ajuda necessária!"
+    },
+    "v5_arks": {
+      "body": "Infelizmente All The Ponies não vai receber a próxima atualização porque a Gameloft mudou como os arquivos do jogo são armazenados, quebrando as ferramentas que nós usávamos para ler eles. Eu e outros dataminers estamos trabalhando duro para encontrar uma maneira de extrair os novos arquivos, mas não espere nada tão cedo.",
+      "title": "Importante"
+    },
+    "v5_arks_cracked": {
+      "body": "Estou feliz em avisar que All The Ponies foi atualizado para a {version} porque os dataminers encontraram uma maneira de ler os novos arquivos! Obrigada a todos que ajudaram, e obrigado a todos por terem sido pacientes com a gente.",
+      "title": "Atualização"
+    }
+  },
+  "player_card": {
+    "current_xp": "XP atual: {current_value} de {max_value}",
+    "level": "Nível: {level}",
+    "name": "Nome: {name}",
+    "player_stat": {
+      "collections": "{count} Coleções",
+      "costumes": "{count} Fantasias",
+      "gem_shops": "{count} Lojas de gemas",
+      "ponies": "{count} Pôneis",
+      "shops": "{count} Lojas",
+      "transformables": "{count} Transformáveis",
+      "wh_collections": "{count} Coleções populares"
     }
   },
   "player_info": {
