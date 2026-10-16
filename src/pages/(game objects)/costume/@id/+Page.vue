@@ -10,6 +10,7 @@ import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { computed } from 'vue';
 import type { Data } from './+data';
+import ModelViewerLauncher from '@/components/model-viewer/ModelViewerLauncher.vue';
 import ObjectImage from '@/components/ObjectImage.vue';
 import CostumePartEntry from './CostumePartEntry.vue';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
@@ -48,6 +49,7 @@ const pony = computed(() => getObject(costume.value?.pony, 'pony'))
                     </div>
                 </template>
                 <template #image-right>
+                    <ModelViewerLauncher :identity="costume.id" :name="name" />
                     <InventoryAddButton :game-object="costume.id"></InventoryAddButton>
                 </template>
                 <template #info>

@@ -23,6 +23,15 @@
     },
     "title": "About"
   },
+  "model_viewer": {
+    "open": "View 3D model",
+    "canvas": "3D model. Drag or use left and right arrow keys to rotate.",
+    "reset": "Reset view",
+    "unlock_rotation": "Unlock rotation",
+    "lock_rotation": "Lock rotation",
+    "animations": "Animations",
+    "failed": "Could not load 3D model."
+  },
   "button": {
     "cancel": "Cancel",
     "close": "Close",
