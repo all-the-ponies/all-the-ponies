@@ -140,7 +140,7 @@ export const useSaveStore = defineStore('save', {
             return (id: GameObjectId) => id in state.shops
         },
         hasHouse() {
-            return (id: GameObjectId) => id in this.houses
+            return (id: GameObjectId) => this.houses.has(id)
         },
 
         collections() {

@@ -160,7 +160,7 @@ const tasks = computed(() => {
     }
 
     let result = tasks.map(taskId => getTaskInfo(taskId))
-                    .filter(task => !task.id.includes('TLS'))
+                    .filter(task => task)
     
     result.sort((a, b) => {
         if (Boolean(a.reward.token) !== Boolean(b.reward.token)) {

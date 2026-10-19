@@ -30,13 +30,14 @@ const tasks = computed(() => {
      */
     
     let tasks = token.value.tasks
+    console.log('tasks', tasks)
 
     if (!tasks) {
         return []
     }
 
     let result = tasks.map(taskId => getTaskInfo(taskId))
-                    .filter(task => task && !task.id.includes('TLS'))
+                    .filter(task => task)
     
     result.sort((a, b) => {
         if (Boolean(a.reward.token) !== Boolean(b.reward.token)) {
@@ -50,6 +51,7 @@ const tasks = computed(() => {
 
     return result
 })
+
 
 const fortuneShopData = computed(() => getFortuneShopData(token.value?.id))
 

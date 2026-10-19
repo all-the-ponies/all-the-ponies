@@ -10,6 +10,11 @@ import { formatTime } from '@/scripts/timeFunctions.ts';
 import CurrencyImage from './CurrencyImage.vue';
 import LazyImage from './LazyImage.vue';
 import ChanceBar from './ChanceBar.vue';
+import { useSaveStore } from '@/stores/saveManager.js';
+import { useMounted } from '@vueuse/core';
+
+const saveManager = useSaveStore()
+const isMounted = useMounted()
 
 const props = defineProps<{
     taskId: string | TaskEntry,
@@ -31,6 +36,24 @@ const requiredHouse = computed(() => {
 4
 const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
 
+const hasMainPony = computed(() => {
+    return saveManager.hasPony(pony.value.id)
+})
+const hasRequiredPony = computed(() => {
+    if (requiredPony.value) {
+        return saveManager.hasPony(requiredPony.value.id)
+    }
+})
+const hasRequiredHouse = computed(() => {
+    if (requiredHouse.value) {
+        if (requiredHouse.value.category == 'shop') {
+            return saveManager.hasShop(requiredHouse.value.id)
+        } else {
+            return saveManager.hasHouse(requiredHouse.value.id)
+        }
+    }
+})
+
 </script>
 
 <template>
@@ -49,8 +72,23 @@ const token = computed(() => getObject(taskInfo.value.reward.token, 'token'))
         <div class="body">
             <div class="portrait-section">
                 <div class="portrait-container">
-                    <ObjectImage class="main-portrait" :object="taskInfo.pony" type="portrait"></ObjectImage>
-                    <ObjectImage v-if="requiredPony || requiredHouse" class="additional-portrait" :object="requiredPony || requiredHouse" type="portrait"></ObjectImage>
+                    <ObjectImage
+                        class="main-portrait"
+                        :class="{
+                            'not-owned': isMounted && !hasMainPony
+                        }"
+                        :object="taskInfo.pony"
+                        type="portrait"
+                    ></ObjectImage>
+                    <ObjectImage
+                        v-if="requiredPony || requiredHouse"
+                        class="additional-portrait"
+                        :class="{
+                            'not-owned': isMounted && !(requiredPony ? hasRequiredPony : hasRequiredHouse)
+                        }"
+                        :object="requiredPony || requiredHouse"
+                        type="portrait"
+                    ></ObjectImage>
                 </div>
             </div>
             <div class="pony-names">
@@ -177,7 +215,7 @@ a.title:hover {
     padding: 0.7rem;
 
     /* text-shadow: 0rem 0.1rem white; */
-    -webkit-text-stroke: 0.15rem white;
+    -webkit-text-stroke: 0.15rem white !important;
     paint-order: stroke fill;
 }
 
@@ -201,6 +239,14 @@ a.title:hover {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.main-portrait.not-owned,
+.additional-portrait.not-owned {
+    --drop-shadow: drop-shadow(0 0 0.1px hsl(0, 0%, 50%));
+    --factor: 0.5; /* Should range only between 0 and 1 */
+    filter: invert(calc(var(--factor) / 1.7)) brightness(calc(1 + var(--factor)))
+            var(--drop-shadow);
 }
 
 .pony-names {

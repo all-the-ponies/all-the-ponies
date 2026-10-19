@@ -156,7 +156,7 @@
     "content_version": "Version du contenu:{version}",
     "game_version": "Version du jeu: {version}",
     "message": {
-      "you_won": "Tu As Gagné !"
+      "you_won": "Tu As Gagné !"
     }
   },
   "game_object": {
@@ -340,11 +340,11 @@
     "crystal_empire": "Empire de Cristal",
     "everfree_forest": "Forêt Everfree",
     "klugetown": "Klugetown",
+    "maze": "Donjon Labyrinthe",
     "ponyville": "Poneyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Ville",
-    "unknown": "Inconnu",
-    "maze": "Donjon Labyrinthe"
+    "unknown": "Inconnu"
   },
   "maze": {
     "dialog": {
