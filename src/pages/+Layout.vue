@@ -175,6 +175,8 @@ function skipToContent(e: Event) {
     position: relative;
     /* height: 100%; */
     margin: 1rem;
+
+    outline: none;
 }
 
 @media screen and (max-width: 50rem) {
