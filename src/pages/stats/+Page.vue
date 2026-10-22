@@ -173,15 +173,23 @@ const backgroundImage = computed(() => {
                     </div>
                 </div>
                 <div class="stats-section">
-                    <ul>
+                    <ul class="stats-list">
                         <li>
                             {{
                                 $t('player_info.join_date', {
-                                join_date: saveStore?.playerInfo.joinDate ? $d(new Date(saveStore?.playerInfo.joinDate), {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                }) : ''
+                                    join_date: saveStore?.playerInfo.joinDate ? $d(new Date(saveStore?.playerInfo.joinDate), {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    }) : ''
+                                })
+                            }}
+                        </li>
+                        <li>
+                            {{
+                                $t('player_info.total_playtime', {
+                                    total_playtime: formatTime(saveStore.playerInfo.totalPlaytime),
+                                    hours: formatTime(saveStore.playerInfo.totalPlaytime, {units: ['hours']}),
                                 })
                             }}
                         </li>
@@ -227,7 +235,7 @@ const backgroundImage = computed(() => {
     gap: 0.5rem;
 }
 
-.stats li {
+.stats-list li {
     list-style: none;
 }
 

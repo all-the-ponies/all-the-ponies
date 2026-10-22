@@ -431,7 +431,7 @@
   "player_info": {
     "friend_code": "Friend Code",
     "join_date": "Join date: {join_date}",
-    "total_playtime": "Total playtime: {total_playtime}"
+    "total_playtime": "Total playtime: {total_playtime} ({hours})"
   },
   "pony_quiz": {
     "description": "Test your knowledge of the My Little Pony: Magic Princess mobile game, and see how many ponies you can name. It can still be fun even if you don't play the game, because most ponies in G4 are in the game (there's some G1 ponies as well).",
