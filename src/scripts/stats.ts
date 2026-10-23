@@ -1,7 +1,7 @@
 import { useSaveStore } from "@/stores/saveManager"
-import type { GameObjectId, PlayerStatName } from "@/types/gameDataTypes"
+import type { CategoryName, GameObjectId, PlayerStatName } from "@/types/gameDataTypes"
 import { computed, onMounted, reactive, shallowRef, type Ref } from "vue"
-import { getCollection, getObject } from "./gameData"
+import { getCollection, getObject, getTaskInfo } from "./gameData"
 import poniesImage from '@/assets/images/ui/player-card/stat/stat-ponies.png'
 import transformablesImage from '@/assets/images/ui/player-card/stat/stat-transformables.png'
 import shopsImage from '@/assets/images/ui/player-card/stat/stat-shops.png'
@@ -9,6 +9,7 @@ import gemShopImage from '@/assets/images/ui/player-card/stat/stat-gem-shops.png
 import costumesImage from '@/assets/images/ui/player-card/stat/stat-costumes.png'
 import collectionsImage from '@/assets/images/ui/player-card/stat/stat-collections.png'
 import whCollectionsImage from '@/assets/images/ui/player-card/stat/stat-wh-collections.png'
+import type { CollectionStats, CostumeStats, HouseStats, PonyStats, ShopStats, Stats } from "@/types/statsTypes"
 
 
 export interface PlayerStatInfo {
@@ -57,33 +58,6 @@ export const statNameMap: Record<PlayerStatName, PlayerStatInfo> = {
 }
 
 
-interface SaveStats {
-    readonly ponies: {
-        readonly total: number,
-        readonly unique: number,
-        readonly regular: number,
-        readonly changelings: number,
-        readonly gems: number,
-        readonly groups: number,
-        readonly stars: number,
-    },
-    readonly houses: {
-        readonly total: number,
-    },
-    readonly shops: {
-        readonly total: number,
-        readonly bits: number,
-        readonly gems: number,
-        readonly others: number,
-    },
-    readonly costumes: {
-        readonly total: number,
-    },
-    readonly collections: {
-        readonly total: number,
-    },
-}
-
 type ToReactive<T> = T extends object
                     ? Ref<ReactiveObject<T>> | ReactiveObject<T>
                     : Ref<T> | T
@@ -92,16 +66,144 @@ type ReactiveObject<T> = { [K in keyof T]: ToReactive<T[K]> }
 
 type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
 
-const ponies = computed(() => {
-    const save = useSaveStore()
-    const changelingTransformations: GameObjectId[] = []
-    
-    const ponies: DeepWriteable<SaveStats['ponies']> = {
+/**
+ * Calculate stats for input objects. This filters out things that aren't obtainable
+ * so the total count would be the most realistic total. This tries to be accurate to the game,
+ * but it may still filter out more or less than what the game does (the game doesn't have
+ * the concept of unused ponies).
+ * @param objects Lists of object ids to stat
+ * @returns {Stats}
+ */
+export function calculateStats(objects: {
+    ponies: GameObjectId[],
+    houses: GameObjectId[],
+    shops: GameObjectId[],
+    costumes: GameObjectId[],
+    collections: string[],
+}): Stats {
+    return {
+        ponies: countPonies(objects.ponies || []),
+        houses: countHouses(objects.houses || []),
+        shops: countShops(objects.shops || []),
+        costumes: countCostumes(objects.costumes || []),
+        collections: countCollections(objects.collections || []),
+    }
+}
+
+function countPonies(ponies: GameObjectId[]): PonyStats {
+    const stats: PonyStats = {
         total: 0,
         unique: 0,
         regular: 0,
         changelings: 0,
+        gemCollectors: 0,
+        bitCollectors: 0,
+        tokenCollectors: 0,
+        groups: 0,
+        stars: 0,
+    }
+    const changelingTransformations: GameObjectId[] = []
+
+    for (let ponyId of ponies) {
+        const pony = getObject(ponyId, 'pony')
+        if (!pony) {
+            continue
+        }
+        if (pony.tags.includes('npc') || pony.tags.includes('unused') || pony.tags.includes('quest')) {
+            continue
+        }
+
+        stats.total++
+        if (pony.group.length > 0 && !pony.group_master) {
+            continue
+        } else if (pony.group.length > 0) {
+            stats.groups++
+        } else if (pony.changeling.id) {
+            if (changelingTransformations.includes(ponyId)) {
+                stats.changelings++
+                continue
+            } else {
+                changelingTransformations.push(pony.changeling.id)
+            }
+        } else {
+            stats.regular++
+        }
+
+        if (pony.tasks) {
+            for (let taskId of pony.tasks) {
+                const task = getTaskInfo(taskId)
+                if (!task) {
+                    continue
+                }
+                if (task.reward.gems) {
+                    stats.gemCollectors++
+                }
+                if (task.reward.bits) {
+                    stats.bitCollectors++
+                }
+                if (task.reward.token) {
+                    stats.tokenCollectors++
+                }
+            }
+        }
+
+        // stats.stars += ponyInfo.level
+        stats.unique++
+    }
+
+    return stats
+}
+
+function countHouses(houses: GameObjectId[]): HouseStats {
+
+}
+
+function countShops(shops: GameObjectId[]): ShopStats {
+    const save = useSaveStore()
+    const stats: ShopStats = {
+        total: 0,
+        bits: 0,
         gems: 0,
+        critters: 0,
+        feeds: 0,
+        others: 0,
+    }
+
+    for (let shopId of shops) {
+        const shop = getObject(shopId, 'shop')
+        const product = getObject(shop.product, 'consumable')
+
+        stats.total++
+        if (product?.consume.bits > 0) {
+            stats.bits++
+        } else if (product?.consume.gems > 0) {
+            stats.gems++
+        } else {
+            stats.others++
+        }
+    }
+
+    return stats
+}
+
+function countCostumes(costumes: GameObjectId[]): CostumeStats {
+    
+}
+
+function countCollections(collections: string[]): CollectionStats {
+
+}
+
+const ponies = computed(() => {
+    const save = useSaveStore()
+    const changelingTransformations: GameObjectId[] = []
+    
+    const ponies: DeepWriteable<Stats['ponies']> = {
+        total: 0,
+        unique: 0,
+        regular: 0,
+        changelings: 0,
+        gemCollectors: 0,
         groups: 0,
         stars: 0,
     }
@@ -136,7 +238,7 @@ const ponies = computed(() => {
 
 const shops = computed(() => {
     const save = useSaveStore()
-    const shops: DeepWriteable<SaveStats['shops']> = {
+    const shops: DeepWriteable<Stats['shops']> = {
         total: 0,
         bits: 0,
         gems: 0,
@@ -161,10 +263,10 @@ const shops = computed(() => {
 })
 
 export function useSaveStats() {
-    const saveStats = shallowRef<SaveStats>(null)
+    const saveStats = shallowRef<Stats>(null)
 
     onMounted(() => {
-        saveStats.value = reactive<ReactiveObject<SaveStats>>({
+        saveStats.value = reactive<ReactiveObject<Stats>>({
             ponies,
             houses: {
                 total: computed(() => {
@@ -208,7 +310,7 @@ export function useSaveStats() {
                     return collections.length
                 })
             }
-        }) as SaveStats
+        }) as Stats
     })
     
     return saveStats
