@@ -92,35 +92,43 @@ const backgroundImage = computed(() => {
 <template>
     <Config :title="$t('stats.title')" :description="$t('stats.description')"></Config>
 
-    <div>
-        <section class="import-section">
-            <h1>{{ $t('stats.title') }}</h1>
-            <label>
-                {{ $t('player_info.friend_code') }}
-                <input
-                    v-model="friendCode"
-                    ref="friend-code"
-                    type="text"
-                    name="friend-code"
-                    class="text-box"
-                    :placeholder="$t('player_info.friend_code')"
-                    spellcheck="false"
-                    :disabled="importDisabled"
-                    @keydown="(e) => {if (e.key === 'Enter') importFriendCode()}"
-                    @input="errorMessage = ''"
-                >
-                <button
-                    class="button button-blue"
-                    :disabled="importDisabled"
-                    @click="importFriendCode()"
-                >{{ $t('common.import') }}</button>
-            </label>
-            <p class="error-message">{{ errorMessage }}</p>
-        </section>
+    <div
+        class="stats-page"
+        :style="{
+            backgroundImage: `url('${backgroundImage}')`,
+        }"
+    >
         <ClientOnly>
-            <section class="section player-section" :style="{
-                backgroundImage: `url('${backgroundImage}')`,
-            }">
+            <section class="section player-section">
+                <div class="header-section stats-section">
+                    <div>
+                        <h1>{{ $t('stats.title') }}</h1>
+                    </div>
+                    <div class="import-section">
+                        <label>
+                            <p>{{ $t('player_info.friend_code') }}</p>
+                            <input
+                                v-model="friendCode"
+                                ref="friend-code"
+                                type="text"
+                                name="friend-code"
+                                class="text-box"
+                                :placeholder="$t('player_info.friend_code')"
+                                spellcheck="false"
+                                :disabled="importDisabled"
+                                @keydown="(e) => {if (e.key === 'Enter') importFriendCode()}"
+                                @input="errorMessage = ''"
+                                size="10"
+                            >
+                            <button
+                                class="button button-blue"
+                                :disabled="importDisabled"
+                                @click="importFriendCode()"
+                            >{{ $t('common.import') }}</button>
+                        </label>
+                        <p class="error-message">{{ errorMessage }}</p>
+                    </div>
+                </div>
                 <PlayerCard
                     class="player-card"
                     v-if="saveStore.playerInfo.friendCode"
@@ -202,6 +210,14 @@ const backgroundImage = computed(() => {
 
 <style lang="css" scoped>
 
+.stats-page {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    --max-width: 35rem;
+}
+
 .player-section {
     padding: 1rem;
     
@@ -211,13 +227,13 @@ const backgroundImage = computed(() => {
 }
 
 .player-card {
-    max-width: 30rem;
+    max-width: var(--max-width);
     margin: 1rem auto;
     display: block;
 }
 
 .stats-section {
-    max-width: 30rem;
+    max-width: var(--max-width);
     padding: 0.5rem;
     /* min-height: 30rem; */
     margin: 1rem auto;
@@ -225,6 +241,16 @@ const backgroundImage = computed(() => {
 
     background: rgba(255, 255, 255, 0.3);
     border-radius: 15px;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.import-section {
+    text-align: center;
 }
 
 .stats-grid {
