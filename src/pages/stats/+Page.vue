@@ -154,6 +154,18 @@ console.log('total stats', totalStats)
                     :right-stat="rightStat"
                 ></PlayerCard>
                 <div class="stats-section">
+                    <span>
+                        <CurrencyImage object="Gems" position="left">
+                            {{ $n(saveStore.playerInfo.currency.gems) }}
+                        </CurrencyImage>
+                    </span>
+                    <span>
+                        <CurrencyImage object="Bits" position="left">
+                            {{ $n(saveStore.playerInfo.currency.bits) }}
+                        </CurrencyImage>
+                    </span>
+                </div>
+                <div class="stats-section">
                     <div class="stats-grid">
                         <StatCard
                             stat="pony"
