@@ -12,7 +12,8 @@
             "1": "The website is built by {ego}.",
             "2": "Thanks to {bass} for help with loading ponies with a friend code.",
             "3": "The font used is {font}, which is also used in the game.",
-            "4": "The website was built using {vue} to make my life easier and allow for a more dynamic experience."
+            "4": "The website was built using {vue} to make my life easier and allow for a more dynamic experience.",
+            "5": "Thanks to {melty} for some assets"
           }
         },
         "title": "Credits"
