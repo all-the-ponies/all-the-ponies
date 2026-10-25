@@ -4,7 +4,7 @@ import PlayerCard from '@/components/PlayerCard/PlayerCard.vue'
 import type { PlayerStatName } from '@/types/gameDataTypes'
 import { createAssetUrl } from '@/scripts/assets'
 import { getObject, translateName, useGameObject, useObjectName } from '@/scripts/gameData'
-import { saveStats } from '@/scripts/stats'
+import { useSaveStats } from '@/scripts/stats'
 import { formatTime } from '@/scripts/timeFunctions'
 import { useSaveStore } from '@/stores/saveManager'
 import { computedAsync, useMounted } from '@vueuse/core'
@@ -12,8 +12,10 @@ import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'
 import { computed, nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import StatCard from '@/components/stats/StatCard.vue'
+import { watchEffect } from 'vue'
 
 const saveStore = useSaveStore()
+const saveStats = useSaveStats()
 
 const friendCodeInput = useTemplateRef('friend-code')
 const importDisabled = ref<boolean>(false)
@@ -59,6 +61,10 @@ function getStat(stat: PlayerStatName) {
         default: return 0
     }
 }
+
+watchEffect(() => {
+    console.log('stats', saveStats.value)
+})
 
 const leftStat = computed(() => {
     if (isMounted.value) {
@@ -149,33 +155,33 @@ const backgroundImage = computed(() => {
                     <div class="stats-grid">
                         <StatCard
                             stat="pony"
-                            :value="10"
+                            :value="saveStats?.ponies.unique"
                             :total="20"
                         ></StatCard>
                         <StatCard
                             stat="pony_alt"
-                            :value="10"
+                            :value="saveStats?.ponies.changelings"
                             :total="20"
                         ></StatCard>
                         <StatCard
                             stat="shop"
-                            :value="10"
+                            :value="saveStats?.shops.bits + saveStats?.shops.others"
                             :total="20"
                         ></StatCard>
                         <StatCard
                             stat="gem_shop"
-                            :value="10"
+                            :value="saveStats?.shops.gems"
                             :total="20"
                         ></StatCard>
                         <StatCard
                             stat="collection"
-                            :value="10"
+                            :value="saveStats?.collections.total"
                             :total="20"
                         ></StatCard>
                         <StatCard
                             stat="hots"
-                            :value="10"
-                            :total="20"
+                            :value="saveStore?.playerInfo.stats.whCollections"
+                            :total="115"
                         ></StatCard>
                     </div>
                 </div>

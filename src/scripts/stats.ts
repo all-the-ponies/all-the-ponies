@@ -11,6 +11,7 @@ import collectionsImage from '@/assets/images/ui/player-card/stat/stat-collectio
 import whCollectionsImage from '@/assets/images/ui/player-card/stat/stat-wh-collections.png'
 import type { CollectionStats, CostumeStats, HouseStats, PonyStats, ShopStats, Stats } from "@/types/statsTypes"
 import { useMounted } from "@vueuse/core"
+import { watchEffect } from "vue"
 
 
 export interface PlayerStatInfo {
@@ -238,19 +239,23 @@ function countCollections(collections: string[]): CollectionStats {
 }
 
 
-const isMounted = useMounted()
+export function useSaveStats() {
+    const saveStats = shallowRef<Stats>(null)
+    
+    onMounted(() => {
+        const save = useSaveStore()
 
-export const saveStats = computed(() => {
-    if (!isMounted.value) {
-        return
-    }
-    const save = useSaveStore()
-
-    return calculateStats({
-        ponies: Object.entries(save.ponies).map(([id, info]) => ({id, level: info.level})),
-        houses: [...save.houses],
-        shops: Object.keys(save.shops),
-        costumes: [...save.costumes],
-        collections: [...save.collections],
+        watchEffect(() => {
+            saveStats.value = calculateStats({
+                ponies: Object.entries(save.ponies).map(([id, info]) => ({id, level: info.level})),
+                houses: [...save.houses],
+                shops: Object.keys(save.shops),
+                costumes: [...save.costumes],
+                collections: [...save.collections],
+            })
+        })
     })
-})
+
+    return saveStats
+}
+
