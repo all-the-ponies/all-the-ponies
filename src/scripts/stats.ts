@@ -66,6 +66,12 @@ type ReactiveObject<T> = { [K in keyof T]: ToReactive<T[K]> }
 
 type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
 
+interface PonyStatInput {
+    id: GameObjectId,
+    level?: number,
+}
+const MAX_PONY_LEVEL = 5
+
 /**
  * Calculate stats for input objects. This filters out things that aren't obtainable
  * so the total count would be the most realistic total. This tries to be accurate to the game,
@@ -75,7 +81,7 @@ type DeepWriteable<T> = { -readonly [P in keyof T]: DeepWriteable<T[P]> }
  * @returns {Stats}
  */
 export function calculateStats(objects: {
-    ponies: GameObjectId[],
+    ponies: PonyStatInput[],
     houses: GameObjectId[],
     shops: GameObjectId[],
     costumes: GameObjectId[],
@@ -90,7 +96,7 @@ export function calculateStats(objects: {
     }
 }
 
-function countPonies(ponies: GameObjectId[]): PonyStats {
+function countPonies(ponies: PonyStatInput[]): PonyStats {
     const stats: PonyStats = {
         total: 0,
         unique: 0,
@@ -104,7 +110,7 @@ function countPonies(ponies: GameObjectId[]): PonyStats {
     }
     const changelingTransformations: GameObjectId[] = []
 
-    for (let ponyId of ponies) {
+    for (let {id: ponyId, level} of ponies) {
         const pony = getObject(ponyId, 'pony')
         if (!pony) {
             continue
@@ -147,7 +153,7 @@ function countPonies(ponies: GameObjectId[]): PonyStats {
             }
         }
 
-        // stats.stars += ponyInfo.level
+        stats.stars += level ?? MAX_PONY_LEVEL
         stats.unique++
     }
 
@@ -155,22 +161,27 @@ function countPonies(ponies: GameObjectId[]): PonyStats {
 }
 
 function countHouses(houses: GameObjectId[]): HouseStats {
-
+    return {
+        total: houses.length
+    }
 }
 
 function countShops(shops: GameObjectId[]): ShopStats {
-    const save = useSaveStore()
     const stats: ShopStats = {
         total: 0,
         bits: 0,
         gems: 0,
         critters: 0,
         feeds: 0,
+        maze: 0,
         others: 0,
     }
 
     for (let shopId of shops) {
         const shop = getObject(shopId, 'shop')
+        if (!shop) {
+            continue
+        }
         const product = getObject(shop.product, 'consumable')
 
         stats.total++
@@ -178,6 +189,8 @@ function countShops(shops: GameObjectId[]): ShopStats {
             stats.bits++
         } else if (product?.consume.gems > 0) {
             stats.gems++
+        } else if (product?.consume.tls > 0) {
+            stats.maze++
         } else {
             stats.others++
         }
