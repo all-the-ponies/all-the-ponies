@@ -1,7 +1,7 @@
 import { useSaveStore } from "@/stores/saveManager"
 import type { CategoryName, GameObjectId, PlayerStatName } from "@/types/gameDataTypes"
 import { computed, onMounted, reactive, ref, shallowRef, type Ref } from "vue"
-import { getCollection, getObject, getTaskInfo } from "./gameData"
+import { getCollection, getCollectionData, getGameObjects, getObject, getTaskInfo } from "./gameData"
 import poniesImage from '@/assets/images/ui/player-card/stat/stat-ponies.png'
 import transformablesImage from '@/assets/images/ui/player-card/stat/stat-transformables.png'
 import shopsImage from '@/assets/images/ui/player-card/stat/stat-shops.png'
@@ -171,6 +171,7 @@ function countHouses(houses: GameObjectId[]): HouseStats {
 function countShops(shops: GameObjectId[]): ShopStats {
     const stats: ShopStats = {
         total: 0,
+        mainTotal: 0,
         bits: 0,
         gems: 0,
         critters: 0,
@@ -186,15 +187,27 @@ function countShops(shops: GameObjectId[]): ShopStats {
         }
         const product = getObject(shop.product, 'consumable')
 
+        
+
         stats.total++
         if (product?.consume.bits > 0) {
             stats.bits++
+            stats.mainTotal++
         } else if (product?.consume.gems > 0) {
             stats.gems++
         } else if (product?.consume.tls > 0) {
             stats.maze++
+        } else if (product?.critter) {
+            stats.critters++
+            stats.mainTotal++
+        } else if (product?.farm) {
+            stats.feeds++
+            stats.mainTotal++
         } else {
             stats.others++
+            if (shop.special == 'ferris_wheel') {
+                stats.mainTotal++
+            }
         }
     }
 
@@ -259,3 +272,13 @@ export function useSaveStats() {
     return saveStats
 }
 
+const gameObjects = getGameObjects()
+const collectionData = getCollectionData()
+
+export const totalStats = calculateStats({
+    ponies: Object.keys(gameObjects.pony.objects).map((id) => ({id})),
+    houses: Object.keys(gameObjects.house.objects),
+    shops: Object.keys(gameObjects.shop.objects),
+    costumes: Object.keys(gameObjects.costume.objects),
+    collections: Object.keys(collectionData.collections),
+})

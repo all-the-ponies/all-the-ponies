@@ -16,6 +16,7 @@ export interface HouseStats {
 
 export interface ShopStats {
     total: number,
+    mainTotal: number,
     bits: number,
     gems: number,
     critters: number,

@@ -4,7 +4,7 @@ import PlayerCard from '@/components/PlayerCard/PlayerCard.vue'
 import type { PlayerStatName } from '@/types/gameDataTypes'
 import { createAssetUrl } from '@/scripts/assets'
 import { getObject, translateName, useGameObject, useObjectName } from '@/scripts/gameData'
-import { useSaveStats } from '@/scripts/stats'
+import { useSaveStats, totalStats } from '@/scripts/stats'
 import { formatTime } from '@/scripts/timeFunctions'
 import { useSaveStore } from '@/stores/saveManager'
 import { computedAsync, useMounted } from '@vueuse/core'
@@ -92,6 +92,8 @@ const backgroundImage = computed(() => {
     }
 })
 
+console.log('total stats', totalStats)
+
 </script>
 
 <template>
@@ -156,27 +158,27 @@ const backgroundImage = computed(() => {
                         <StatCard
                             stat="pony"
                             :value="saveStats?.ponies.unique"
-                            :total="20"
+                            :total="totalStats.ponies.unique"
                         ></StatCard>
                         <StatCard
                             stat="pony_alt"
                             :value="saveStats?.ponies.changelings"
-                            :total="20"
+                            :total="totalStats.ponies.changelings"
                         ></StatCard>
                         <StatCard
                             stat="shop"
-                            :value="saveStats?.shops.bits + saveStats?.shops.others"
-                            :total="20"
-                        ></StatCard>
+                            :value="saveStats?.shops.mainTotal"
+                            :total="totalStats.shops.mainTotal"
+                            ></StatCard>
                         <StatCard
                             stat="gem_shop"
                             :value="saveStats?.shops.gems"
-                            :total="20"
+                            :total="totalStats.shops.gems"
                         ></StatCard>
                         <StatCard
                             stat="collection"
                             :value="saveStats?.collections.total"
-                            :total="20"
+                            :total="totalStats.collections.total"
                         ></StatCard>
                         <StatCard
                             stat="hots"
