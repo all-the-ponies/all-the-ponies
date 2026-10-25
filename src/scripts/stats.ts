@@ -226,6 +226,14 @@ function countCostumes(costumes: GameObjectId[]): CostumeStats {
 
 function countCollections(collections: string[]): CollectionStats {
 
+    const filtered = collections.filter(collectionId => {
+        const collection = getCollection(collectionId)
+        return !(collection?.tags?.includes('unused') || collection?.tags?.includes('vip'))
+    })
+
+    return {
+        total: filtered.length
+    }
 }
 
 const ponies = computed(() => {
