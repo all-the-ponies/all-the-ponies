@@ -107,10 +107,12 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
         gemCollectors: 0,
         bitCollectors: 0,
         tokenCollectors: 0,
+        critters: 0,
         groups: 0,
         stars: 0,
     }
     const changelingTransformations: GameObjectId[] = []
+    const critters: GameObjectId[] = []
 
     for (let {id: ponyId, level} of ponies) {
         const pony = getObject(ponyId, 'pony')
@@ -126,6 +128,13 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
             continue
         } else if (pony.group.length > 0) {
             stats.groups++
+        } else if (pony.critter_farm) {
+            if (critters.includes(ponyId)) {
+                continue
+            } else if (pony.changeling.id) {
+                stats.critters++
+                critters.push(pony.changeling.id)
+            }
         } else if (pony.changeling.id) {
             if (changelingTransformations.includes(ponyId)) {
                 stats.changelings++
@@ -158,6 +167,8 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
         stats.stars += level ?? MAX_PONY_LEVEL
         stats.unique++
     }
+
+    console.log('transformables', changelingTransformations)
 
     return stats
 }

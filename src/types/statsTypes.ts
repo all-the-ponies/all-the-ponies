@@ -6,6 +6,7 @@ export interface PonyStats {
     gemCollectors: number,
     bitCollectors: number,
     tokenCollectors: number,
+    critters: number,
     groups: number,
     stars: number,
 }
