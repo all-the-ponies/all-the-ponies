@@ -200,7 +200,28 @@ function countShops(shops: GameObjectId[]): ShopStats {
 }
 
 function countCostumes(costumes: GameObjectId[]): CostumeStats {
-    
+    const stats: CostumeStats = {
+        total: 0,
+    }
+    const costumeSets = new Set<string>()
+
+    for (let costumeId of costumes) {
+        if (costumeSets.has(costumeId)) {
+            continue
+        }
+
+        const costume = getObject(costumeId, 'costume')
+        if (!costume) {
+            continue
+        }
+        if (costume.subsets?.length) {
+            costume.subsets.forEach(set => costumeSets.add(set))
+        }
+
+        stats.total++
+    }
+
+    return stats
 }
 
 function countCollections(collections: string[]): CollectionStats {
