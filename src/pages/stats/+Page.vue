@@ -166,6 +166,11 @@ console.log('total stats', totalStats)
                             :total="totalStats.ponies.changelings"
                         ></StatCard>
                         <StatCard
+                            stat="costume"
+                            :value="saveStats?.costumes.total"
+                            :total="totalStats.costumes.total"
+                        ></StatCard>
+                        <StatCard
                             stat="shop"
                             :value="saveStats?.shops.mainTotal"
                             :total="totalStats.shops.mainTotal"
@@ -183,7 +188,7 @@ console.log('total stats', totalStats)
                         <StatCard
                             stat="hots"
                             :value="saveStore?.playerInfo.stats.whCollections"
-                            :total="115"
+                            :total="155"
                         ></StatCard>
                     </div>
                 </div>
