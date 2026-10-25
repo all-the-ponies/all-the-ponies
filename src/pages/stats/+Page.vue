@@ -178,19 +178,49 @@ console.log('total stats', totalStats)
                             :total="totalStats.ponies.changelings"
                         ></StatCard>
                         <StatCard
-                            stat="costume"
-                            :value="saveStats?.costumes.total"
-                            :total="totalStats.costumes.total"
+                            stat="pro_ponies"
+                            :value="saveStats?.ponies.pros"
+                            :total="totalStats.ponies.pros"
+                        ></StatCard>
+                        <StatCard
+                            stat="gem_ponies"
+                            :value="saveStats?.ponies.gemCollectors"
+                            :total="totalStats.ponies.gemCollectors"
+                        ></StatCard>
+                        <StatCard
+                            stat="bit_ponies"
+                            :value="saveStats?.ponies.bitCollectors"
+                            :total="totalStats.ponies.bitCollectors"
+                        ></StatCard>
+                        <StatCard
+                            stat="stars"
+                            :value="saveStats?.ponies.stars"
+                            :total="totalStats.ponies.stars"
                         ></StatCard>
                         <StatCard
                             stat="shop"
                             :value="saveStats?.shops.mainTotal"
                             :total="totalStats.shops.mainTotal"
-                            ></StatCard>
+                        ></StatCard>
+                        <StatCard
+                            stat="bit_shops"
+                            :value="saveStats?.shops.bits"
+                            :total="totalStats.shops.bits"
+                        ></StatCard>
                         <StatCard
                             stat="gem_shop"
                             :value="saveStats?.shops.gems"
                             :total="totalStats.shops.gems"
+                        ></StatCard>
+                        <StatCard
+                            stat="critters"
+                            :value="saveStats?.shops.critters"
+                            :total="totalStats.shops.critters"
+                        ></StatCard>
+                        <StatCard
+                            stat="costume"
+                            :value="saveStats?.costumes.total"
+                            :total="totalStats.costumes.total"
                         ></StatCard>
                         <StatCard
                             stat="collection"
