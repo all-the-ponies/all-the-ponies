@@ -202,8 +202,8 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
             }
         }
 
-        if (pony.pro) {
-            for (let questId in pony.pro) {
+        if (pony.pro.length) {
+            for (let questId of pony.pro) {
                 if (questId == 'random') {
                     stats.pros++
                     break
