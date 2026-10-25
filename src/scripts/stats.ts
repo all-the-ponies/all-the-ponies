@@ -1,7 +1,7 @@
 import { useSaveStore } from "@/stores/saveManager"
 import type { CategoryName, GameObjectId, PlayerStatName } from "@/types/gameDataTypes"
 import { computed, onMounted, reactive, ref, shallowRef, type Ref } from "vue"
-import { getCollection, getCollectionData, getGameObjects, getObject, getTaskInfo } from "./gameData"
+import { getCollection, getCollectionData, getGameObjects, getGroupQuestInfo, getObject, getTaskInfo } from "./gameData"
 import poniesImage from '@/assets/images/ui/player-card/stat/stat-ponies.png'
 import transformablesImage from '@/assets/images/ui/player-card/stat/stat-transformables.png'
 import shopsImage from '@/assets/images/ui/player-card/stat/stat-shops.png'
@@ -146,6 +146,7 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
         tokenCollectors: 0,
         critters: 0,
         groups: 0,
+        pros: 0,
         stars: 0,
     }
     const changelingTransformations: GameObjectId[] = []
@@ -197,6 +198,23 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
                 }
                 if (task.reward.token) {
                     stats.tokenCollectors++
+                }
+            }
+        }
+
+        if (pony.pro) {
+            for (let questId in pony.pro) {
+                if (questId == 'random') {
+                    stats.pros++
+                    break
+                }
+                const questInfo = getGroupQuestInfo(questId)
+                if (!questInfo) {
+                    continue
+                }
+                if (!questInfo.special) {
+                    stats.pros++
+                    break
                 }
             }
         }

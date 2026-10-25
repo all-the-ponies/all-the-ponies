@@ -8,6 +8,7 @@ export interface PonyStats {
     tokenCollectors: number,
     critters: number,
     groups: number,
+    pros: number,
     stars: number,
 }
 
