@@ -17,7 +17,7 @@ interface GenericInventoryEntry {
 }
 
 interface PonyInventoryEntry extends GenericInventoryEntry {
-    level: 0 | 1 | 2 | 3 | 4 | 5 | null,
+    level: number | null,
     minigame: string,
 }
 

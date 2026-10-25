@@ -4,7 +4,7 @@ import PlayerCard from '@/components/PlayerCard/PlayerCard.vue'
 import type { PlayerStatName } from '@/types/gameDataTypes'
 import { createAssetUrl } from '@/scripts/assets'
 import { getObject, translateName, useGameObject, useObjectName } from '@/scripts/gameData'
-import { useSaveStats } from '@/scripts/stats'
+import { saveStats } from '@/scripts/stats'
 import { formatTime } from '@/scripts/timeFunctions'
 import { useSaveStore } from '@/stores/saveManager'
 import { computedAsync, useMounted } from '@vueuse/core'
@@ -14,7 +14,6 @@ import { computed, nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import StatCard from '@/components/stats/StatCard.vue'
 
 const saveStore = useSaveStore()
-const saveStats = useSaveStats()
 
 const friendCodeInput = useTemplateRef('friend-code')
 const importDisabled = ref<boolean>(false)
