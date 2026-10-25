@@ -296,7 +296,7 @@
       "bit_shops": "Bit Shops",
       "critters": "Critters",
       "gem_ponies": "Gem Ponies",
-      "pro_ponies": "Pro Ponies",
+      "pro_ponies": "Pro Ponies"
     },
     "stats_alt": {
       "stars": "{count} Stars",
@@ -304,7 +304,7 @@
       "bit_shops": "{count} Bit Shops",
       "critters": "{count} Critters",
       "gem_ponies": "{count} Gem Ponies",
-      "pro_ponies": "{count} Pro Ponies",
+      "pro_ponies": "{count} Pro Ponies"
     },
     "title": "Inventory"
   },
