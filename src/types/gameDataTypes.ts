@@ -87,7 +87,19 @@ export type GameObject = PonyType |
                         CostumePartType |
                         GenericObjectType
 
-export type PlayerStatName = 'pony' | 'pony_alt' | 'shop' | 'gem_shop' | 'collection' | 'costume' | 'hots'
+export type PlayerStatName = 'pony' |
+                             'pony_alt' |
+                             'shop' |
+                             'gem_shop' |
+                             'collection' |
+                             'costume' |
+                             'hots' |
+                             'bit_ponies' |
+                             'bit_shops' |
+                             'critters' |
+                             'gem_ponies' |
+                             'stars' |
+                             'pro_ponies'
 
 
 export interface GameObjects {

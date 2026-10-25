@@ -9,6 +9,13 @@ import gemShopImage from '@/assets/images/ui/player-card/stat/stat-gem-shops.png
 import costumesImage from '@/assets/images/ui/player-card/stat/stat-costumes.png'
 import collectionsImage from '@/assets/images/ui/player-card/stat/stat-collections.png'
 import whCollectionsImage from '@/assets/images/ui/player-card/stat/stat-wh-collections.png'
+import bitPoniesImage from '@/assets/images/ui/player-card/stat/stat-bit-ponies.png'
+import bitShopsImage from '@/assets/images/ui/player-card/stat/stat-bit-shops.png'
+import crittersImage from '@/assets/images/ui/player-card/stat/stat-critters.png'
+import gemPoniesImage from '@/assets/images/ui/player-card/stat/stat-gem-ponies.png'
+import starsImage from '@/assets/images/ui/player-card/stat/stat-pony-stars.png'
+import proPoniesImage from '@/assets/images/ui/player-card/stat/stat-pro-ponies.png'
+
 import type { CollectionStats, CostumeStats, HouseStats, PonyStats, ShopStats, Stats } from "@/types/statsTypes"
 import { useMounted } from "@vueuse/core"
 import { watchEffect } from "vue"
@@ -57,6 +64,36 @@ export const statNameMap: Record<PlayerStatName, PlayerStatInfo> = {
     string: "inventory.stats.wh_collections",
     alt: "player_card.player_stat.wh_collections",
   },
+  bit_ponies: {
+    image: bitPoniesImage,
+    string: "inventory.stats.bit_ponies",
+    alt: "inventory.stats_alt.bit_ponies",
+  },
+  bit_shops: {
+    image: bitShopsImage,
+    string: "inventory.stats.bit_shops",
+    alt: "inventory.stats_alt.bit_shops",
+  },
+  critters: {
+    image: crittersImage,
+    string: "inventory.stats.critters",
+    alt: "inventory.stats_alt.critters",
+  },
+  gem_ponies: {
+    image: gemPoniesImage,
+    string: "inventory.stats.gem_ponies",
+    alt: "inventory.stats_alt.gem_ponies",
+  },
+  stars: {
+    image: starsImage,
+    string: "inventory.stats.stars",
+    alt: "inventory.stats_alt.stars",
+  },
+  pro_ponies: {
+    image: proPoniesImage,
+    string: "inventory.stats.pro_ponies",
+    alt: "inventory.stats_alt.pro_ponies",
+  }
 }
 
 
