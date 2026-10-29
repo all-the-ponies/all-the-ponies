@@ -364,12 +364,15 @@ const replacedPrice = computed(() => {
 .replaced-price::after {
     content: "";
     width: 3rem;
-    height: 2px;
-    background-color: red;
+    aspect-ratio: 118 / 27;
+    background-image: url('@/assets/images/ui/store/replaced-price-line.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-16deg);
+    transform: translate(-50%, -50%);
 }
 
 .royal-price {
