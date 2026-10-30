@@ -13,6 +13,7 @@ import { Config } from 'vike-vue/Config'
 import { computed, nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import StatCard from '@/components/stats/StatCard.vue'
 import { watchEffect } from 'vue'
+import ItemCounter from '@/components/stats/ItemCounter.vue'
 
 const saveStore = useSaveStore()
 const saveStats = useSaveStats()
@@ -153,17 +154,11 @@ console.log('total stats', totalStats)
                     :left-stat="leftStat"
                     :right-stat="rightStat"
                 ></PlayerCard>
-                <div class="stats-section">
-                    <span>
-                        <CurrencyImage object="Gems" position="left">
-                            {{ $n(saveStore.playerInfo.currency.gems) }}
-                        </CurrencyImage>
-                    </span>
-                    <span>
-                        <CurrencyImage object="Bits" position="left">
-                            {{ $n(saveStore.playerInfo.currency.bits) }}
-                        </CurrencyImage>
-                    </span>
+                <div class="currency-stats stats-section">
+                    <ItemCounter item="Gems" :value="saveStore.playerInfo.currency.gems" :scale="0.7"></ItemCounter>
+                    <ItemCounter item="Bits" :value="saveStore.playerInfo.currency.bits" :scale="0.7"></ItemCounter>
+                    <ItemCounter item="Hearts" :value="saveStore.playerInfo.currency.bits" :scale="0.7"></ItemCounter>
+                    <ItemCounter item="Token_Social_Chest" :value="saveStore.playerInfo.currency.bits" :scale="0.7"></ItemCounter>
                 </div>
                 <div class="stats-section">
                     <div class="stats-grid">
@@ -305,6 +300,12 @@ console.log('total stats', totalStats)
 
 .import-section {
     text-align: center;
+}
+
+.currency-stats {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.5rem;
 }
 
 .stats-grid {
