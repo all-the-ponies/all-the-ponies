@@ -26,6 +26,7 @@ const statInfo = computed(() => statNameMap[props.stat].info)
             <CollectionProgress
                 :value="props.value"
                 :total="props.total"
+                :width="40"
             ></CollectionProgress>
         </div>
     </div>
@@ -44,18 +45,20 @@ const statInfo = computed(() => statNameMap[props.stat].info)
     object-position: center;
 }
 
-.stat-name {
-    font-size: 1rem;
-}
-
 .stat-body {
     position: relative;
-    flex-grow: 1;
+    flex: 1 1 0;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+}
+
+.stat-name {
+    font-size: 1rem;
+    text-align: center;
 }
 
 .info-button {
