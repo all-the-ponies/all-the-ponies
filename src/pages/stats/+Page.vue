@@ -14,6 +14,7 @@ import { computed, nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import StatCard from '@/components/stats/StatCard.vue'
 import { watchEffect } from 'vue'
 import ItemCounter from '@/components/stats/ItemCounter.vue'
+import InfoButton from '@/components/buttons/infoButton.vue'
 
 const saveStore = useSaveStore()
 const saveStats = useSaveStats()

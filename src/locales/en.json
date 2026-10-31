@@ -306,6 +306,9 @@
       "gem_ponies": "{count} Gem Ponies",
       "pro_ponies": "{count} Pro Ponies"
     },
+    "stats_info": {
+      "shop": "Counts bits shops, critters, food farms, and the Ferris Wheel."
+    },
     "title": "Inventory"
   },
   "lists": {

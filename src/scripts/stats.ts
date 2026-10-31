@@ -25,6 +25,7 @@ export interface PlayerStatInfo {
     image: string,
     string: string,
     alt: string,
+    info?: string,
 }
 
 // Importing just gets the path to the image, it doesn't load the image data
@@ -43,6 +44,7 @@ export const statNameMap: Record<PlayerStatName, PlayerStatInfo> = {
     image: shopsImage,
     string: "game_object.shop.shop",
     alt: "player_card.player_stat.shops",
+    info: 'inventory.stats_info.shop',
   },
   gem_shop: {
     image: gemShopImage,

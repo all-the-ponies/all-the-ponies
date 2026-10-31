@@ -3,6 +3,7 @@ import { statNameMap } from "@/scripts/stats";
 import type { PlayerStatName } from "@/types/gameDataTypes";
 import { computed } from "vue";
 import CollectionProgress from "../collections/CollectionProgress.vue";
+import InfoButton from "../buttons/infoButton.vue";
 
 const props = defineProps<{
     stat: PlayerStatName,
@@ -12,6 +13,7 @@ const props = defineProps<{
 
 const statImage = computed(() => statNameMap[props.stat].image)
 const statName = computed(() => statNameMap[props.stat].string)
+const statInfo = computed(() => statNameMap[props.stat].info)
 
 </script>
 
@@ -20,6 +22,7 @@ const statName = computed(() => statNameMap[props.stat].string)
         <img class="stat-image" :src="statImage" aria-hidden="true">
         <div class="stat-body">
             <span class="stat-name">{{ $t(statName, 2) }}</span>
+            <InfoButton v-if="statInfo" class="info-button">{{ $t(statInfo) }}</InfoButton>
             <CollectionProgress
                 :value="props.value"
                 :total="props.total"
@@ -46,12 +49,19 @@ const statName = computed(() => statNameMap[props.stat].string)
 }
 
 .stat-body {
+    position: relative;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+}
+
+.info-button {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 
