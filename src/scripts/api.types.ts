@@ -12,6 +12,7 @@ export interface SaveData {
         currency: {
             gems: number,
             bits: number,
+            hearts: number,
         },
         player_card: {
             name: {
@@ -47,6 +48,7 @@ export interface SaveData {
         background_frames: string[],
         cutie_marks: string[],
         critters: Record<GameObjectId, number>,
+        tokens: Record<GameObjectId, number>,
     },
 }
 
