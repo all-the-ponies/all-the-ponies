@@ -19,10 +19,12 @@ const statInfo = computed(() => statNameMap[props.stat].info)
 
 <template>
     <div class="stat-card">
-        <img class="stat-image" :src="statImage" aria-hidden="true">
+        <div class="stat-image-container">
+            <img class="stat-image" :src="statImage" aria-hidden="true">
+            <InfoButton v-if="statInfo" class="info-button" placement="top-start">{{ $t(statInfo) }}</InfoButton>
+        </div>
         <div class="stat-body">
             <span class="stat-name">{{ $t(statName, 2) }}</span>
-            <InfoButton v-if="statInfo" class="info-button">{{ $t(statInfo) }}</InfoButton>
             <CollectionProgress
                 :value="props.value"
                 :total="props.total"
@@ -37,6 +39,10 @@ const statInfo = computed(() => statNameMap[props.stat].info)
 .stat-card {
     display: flex;
     gap: 0.5rem;
+}
+
+.stat-image-container {
+    position: relative;
 }
 
 .stat-image {

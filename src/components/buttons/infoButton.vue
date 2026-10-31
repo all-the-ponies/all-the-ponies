@@ -1,30 +1,34 @@
 <script lang="ts" setup>
 import { ref, useId, onBeforeUnmount, useTemplateRef, computed } from 'vue'
-import {arrow, autoUpdate, flip, offset, shift, useFloating} from '@floating-ui/vue';
+import {arrow, autoUpdate, flip, offset, shift, useFloating, type Placement} from '@floating-ui/vue';
 
-const props = defineProps<{
-    label?: string,
-}>()
+const props = withDefaults(defineProps<{
+  placement?: Placement,
+  label?: string,
+}>(), {
+  placement: 'top'
+})
 
 const id = useId()
 const infoButton = useTemplateRef('info-button')
 const popover = useTemplateRef('popover')
 const arrowEl = useTemplateRef('arrow')
+const placement = computed(() => props.placement)
 
-const { floatingStyles, placement, middlewareData } = useFloating(infoButton, popover, {
-  placement: 'top',
+const { floatingStyles, placement: computedPlacement, middlewareData } = useFloating(infoButton, popover, {
+  placement: placement,
   middleware: [
     flip(),
     offset(12),
     shift({ padding: 8 }),
-    arrow({  element: arrowEl, padding: 8 }),
+    arrow({  element: arrowEl, padding: 14 }),
   ],
   whileElementsMounted: autoUpdate,
 })
 
 const arrowStyles = computed(() => {
   const { x, y } = middlewareData.value.arrow ?? {}
-  const side = placement.value.split('-')[0] as 'top' | 'right' | 'bottom' | 'left'
+  const side = computedPlacement.value.split('-')[0] as 'top' | 'right' | 'bottom' | 'left'
   const opposite = { top: 'bottom', right: 'left', bottom: 'top', left: 'right' }[side]
   return {
     left: x != null ? `${x}px` : '',
@@ -52,7 +56,7 @@ const arrowStyles = computed(() => {
       ref="popover"
       popover="auto"
       class="info-popover"
-      :data-placement="placement.split('-')[0]"
+      :data-placement="computedPlacement.split('-')[0]"
       :style="floatingStyles"
     >
       <slot></slot>
