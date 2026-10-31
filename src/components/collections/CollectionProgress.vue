@@ -2,14 +2,18 @@
 import { computed, useId } from 'vue';
 
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
     value: number,
     total: number,
-}>()
+    width?: number,
+}>(), {
+    width: 50
+})
 
 const value = computed(() => props.value)
 const total = computed(() => props.total)
 const percentage = computed(() => value.value / total.value)
+const width = computed(() => props.width)
 
 const progressFillId = useId()
 
@@ -17,7 +21,7 @@ const progressFillId = useId()
 
 <template>
     <svg
-        viewBox="0 0 53 8"
+        :viewBox="`0 0 ${width + 3} 8`"
         role="progressbar"
         aria-valuemin="0"
         :aria-valuemax="total"
@@ -59,19 +63,19 @@ const progressFillId = useId()
             </pattern>
         </defs>
         <path
-            d="M 1.75 0.25 L 52.75 0.25 L 51.25 7.75 L 0.25 7.75 Z"
+            :d="`M 1.75 0.25 l ${width + 1} 0 l -1.5 7.5 l ${-width - 1} 0 z`"
             stroke-width="0.5"
             stroke="#b4c7dafe"
             fill="#e8edf3ff"
         />
         <path
-            :d="`M 2 0.5 l ${50.5 * percentage} 0 l -1.5 7 l -${50.5 * percentage} 0 z`"
+            :d="`M 2 0.5 l ${(width + 0.5) * percentage} 0 l -1.5 7 l -${(width + 0.5) * percentage} 0 z`"
             stroke-width="0.5"
             :fill="`url(#${progressFillId})`"
             data-allow-mismatch
         />
         <text
-            x="26.5"
+            :x="(width + 3) / 2"
             y="7"
             font-family="Celestia Medium Redux, Arial, Helvetica, sans-serif"
             font-size="8"
