@@ -155,10 +155,10 @@ console.log('total stats', totalStats)
                     :right-stat="rightStat"
                 ></PlayerCard>
                 <div class="currency-stats stats-section">
-                    <ItemCounter item="Token_Social_Chest" :value="saveStore.getTokenCount('Token_Social_Chest') ?? 0" :scale="0.7"></ItemCounter>
-                    <ItemCounter item="Hearts" :value="saveStore.playerInfo.currency.hearts" :scale="0.7"></ItemCounter>
-                    <ItemCounter item="Bits" :value="saveStore.playerInfo.currency.bits" :scale="0.7"></ItemCounter>
                     <ItemCounter item="Gems" :value="saveStore.playerInfo.currency.gems" :scale="0.7"></ItemCounter>
+                    <ItemCounter item="Bits" :value="saveStore.playerInfo.currency.bits" :scale="0.7"></ItemCounter>
+                    <ItemCounter item="Hearts" :value="saveStore.playerInfo.currency.hearts" :scale="0.7"></ItemCounter>
+                    <ItemCounter item="Token_Social_Chest" :value="saveStore.getTokenCount('Token_Social_Chest') ?? 0" :scale="0.7"></ItemCounter>
                 </div>
                 <div class="stats-section">
                     <div class="stats-grid">
