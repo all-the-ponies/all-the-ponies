@@ -3,7 +3,7 @@ import { ref, useId, onBeforeUnmount, useTemplateRef, computed } from 'vue'
 import {arrow, autoUpdate, flip, offset, shift, useFloating} from '@floating-ui/vue';
 
 const props = defineProps<{
-    label: string,
+    label?: string,
 }>()
 
 const id = useId()
@@ -40,7 +40,7 @@ const arrowStyles = computed(() => {
     <button
       ref="info-button"
       class="info-button button-circle button-blue"
-      :aria-label="label"
+      :aria-label="label || $t('common.info')"
       :popovertarget="id"
       popovertargetaction="toggle"
     >
