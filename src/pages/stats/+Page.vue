@@ -306,15 +306,16 @@ console.log('total stats', totalStats)
 .currency-stats {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
 .stats-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 10rem);
+    grid-template-columns: repeat(auto-fit, 9rem);
     justify-content: space-evenly;
-    gap: 0.5rem;
+    gap: 0.3rem;
 }
 
 .stats-list li {
