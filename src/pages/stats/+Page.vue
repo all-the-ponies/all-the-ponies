@@ -87,10 +87,8 @@ const rightStat = computed(() => {
 })
 
 const backgroundImage = computed(() => {
-    if (isMounted.value && saveStore.playerInfo.player_card.background) {
-        console.log('background:', saveStore.playerInfo.player_card.background)
-        console.log('url', createAssetUrl(getObject(saveStore.playerInfo.player_card.background, 'background').image.main.path))
-        return createAssetUrl(getObject(saveStore.playerInfo.player_card.background, 'background').image.main.path)
+    if (isMounted.value) {
+        return createAssetUrl(getObject(saveStore.playerInfo.player_card.background || 'PlayerCardBackground_default', 'background').image.main.path)
     }
 })
 
@@ -140,7 +138,6 @@ console.log('total stats', totalStats)
                 </div>
                 <PlayerCard
                     class="player-card"
-                    v-if="saveStore.playerInfo.friendCode"
                     :friend-code="saveStore.playerInfo.friendCode"
                     :left-name="saveStore.playerInfo.player_card.name.left"
                     :right-name="saveStore.playerInfo.player_card.name.right"

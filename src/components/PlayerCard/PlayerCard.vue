@@ -11,17 +11,17 @@ import XPProgress from './XPProgress.vue';
 import type { PlayerStatName } from '@/types/gameDataTypes.ts';
 
 const props = defineProps<{
-    friendCode: string,
+    friendCode?: string,
     level: number,
     xp: number,
     requiredXp: number,
-    leftName: string,
-    rightName: string,
-    avatar: AvatarType | GameObjectId,
-    avatarFrame: AvatarFrameType | GameObjectId,
-    background: BackgroundType | GameObjectId,
-    backgroundFrame: BackgroundFrameType | GameObjectId,
-    cutieMark: CutieMarkType | GameObjectId,
+    leftName?: string,
+    rightName?: string,
+    avatar?: AvatarType | GameObjectId,
+    avatarFrame?: AvatarFrameType | GameObjectId,
+    background?: BackgroundType | GameObjectId,
+    backgroundFrame?: BackgroundFrameType | GameObjectId,
+    cutieMark?: CutieMarkType | GameObjectId,
     leftStat?: {
         type: PlayerStatName,
         value: number,
@@ -34,21 +34,21 @@ const props = defineProps<{
 
 const friendCode = computed(() => props.friendCode)
 const name = computed(() => {
-    const left = playerNames[props.leftName][language.value.key]
-    const right = playerNames[props.rightName][language.value.key]
+    const left = props.leftName ? playerNames[props.leftName][language.value.key] : ''
+    const right = props.rightName ? playerNames[props.rightName][language.value.key] : ''
 
-    return `${left} ${right}`
+    return `${left || ''} ${right || ''}`
 })
 
-const level = computed(() => props.level)
-const xp = computed(() => props.xp)
-const requiredXp = computed(() => props.requiredXp)
+const level = computed(() => props.level || 0)
+const xp = computed(() => props.xp || 0)
+const requiredXp = computed(() => props.requiredXp || 1)
 
-const avatar = computed(() => getObject(props.avatar, 'avatar'))
-const avatarFrame = computed(() => getObject(props.avatarFrame, 'avatar_frame'))
-const background = computed(() => getObject(props.background, 'background'))
-const backgroundFrame = computed(() => getObject(props.backgroundFrame, 'background_frame'))
-const cutieMark = computed(() => getObject(props.cutieMark, 'cutie_mark'))
+const avatar = computed(() => getObject(props.avatar || 'ProfileAvatar_Default_RainbowD', 'avatar'))
+const avatarFrame = computed(() => getObject(props.avatarFrame || 'ProfileAvatarFrame_default', 'avatar_frame'))
+const background = computed(() => getObject(props.background || 'PlayerCardBackground_default', 'background'))
+const backgroundFrame = computed(() => getObject(props.backgroundFrame || 'PlayerCardBackgroundFrame_default', 'background_frame'))
+const cutieMark = computed(() => getObject(props.cutieMark || 'PlayerCardCutieMark_default', 'cutie_mark'))
 
 const leftStat = computed(() => props.leftStat)
 const rightStat = computed(() => props.rightStat)
