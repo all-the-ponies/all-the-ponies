@@ -30,6 +30,7 @@ import { useBasePrice } from '@/composables/useBasePrice';
 import type { Data } from './+data';
 import CollectionButton from '@/components/buttons/CollectionButton.vue';
 import { modifyUrl } from 'vike/modifyUrl';
+import ModelViewerLauncher from '@/components/model-viewer/ModelViewerLauncher.vue';
 
 const { t } = useI18n()
 const isMounted = useMounted()
@@ -228,6 +229,7 @@ const collectionLink = computed(() => {
                     <img v-if="showProIcon" loading="lazy" src="@/assets/images/ui/pro-pony.png" />
                 </template>
                 <template #image-right>
+                    <ModelViewerLauncher :identity="pony.id" :name="name" />
                     <inventory-add-button :gameObject="pony?.id"></inventory-add-button>
                 </template>
                 <template #image>

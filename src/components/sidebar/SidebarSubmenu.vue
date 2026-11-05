@@ -59,6 +59,7 @@ function toggleExpand() {
 
 <template>
     <SidebarItem>
+        <slot name="prefix"></slot>
         <button
             class="menu-title"
             :class="{
