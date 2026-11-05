@@ -205,11 +205,11 @@ console.log('total stats', totalStats)
                             :value="saveStats?.shops.gems"
                             :total="totalStats.shops.gems"
                         ></StatCard>
-                        <StatCard
+                        <!-- <StatCard
                             stat="critters"
                             :value="saveStats?.shops.critters"
                             :total="totalStats.shops.critters"
-                        ></StatCard>
+                        ></StatCard> -->
                         <StatCard
                             stat="costume"
                             :value="saveStats?.costumes.total"
