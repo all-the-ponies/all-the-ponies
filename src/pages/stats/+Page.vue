@@ -227,28 +227,30 @@ console.log('total stats', totalStats)
                         ></StatCard>
                     </div>
                 </div>
-                <div class="stats-section">
-                    <ul class="stats-list">
-                        <li>
+                <div class="account-info stats-section">
+                    <div>
+                        <p>
                             {{
-                                $t('player_info.join_date', {
-                                    join_date: saveStore?.playerInfo.joinDate ? $d(new Date(saveStore?.playerInfo.joinDate), {
+                                $t('player_info.join_date')
+                            }}
+                            <br>
+                            {{ saveStore?.playerInfo.joinDate ? $d(new Date(saveStore?.playerInfo.joinDate), {
                                         year: "numeric",
                                         month: "long",
                                         day: "numeric",
-                                    }) : ''
-                                })
-                            }}
-                        </li>
-                        <li>
+                                    }) : '' }}
+                        </p>
+                    </div>
+                    <hr class="account-info-separator">
+                    <div>
+                        <p>
                             {{
-                                $t('player_info.total_playtime', {
-                                    total_playtime: formatTime(saveStore.playerInfo.totalPlaytime),
-                                    hours: formatTime(saveStore.playerInfo.totalPlaytime, {units: ['hours']}),
-                                })
+                                $t('player_info.total_playtime')
                             }}
-                        </li>
-                    </ul>
+                            <br>
+                            {{ formatTime(saveStore.playerInfo.totalPlaytime) }} ({{ formatTime(saveStore.playerInfo.totalPlaytime, {units: ['hours']}) }})
+                        </p>
+                    </div>
                 </div>
             </section>
         </ClientOnly>
@@ -263,6 +265,8 @@ console.log('total stats', totalStats)
     background-size: cover;
 
     --max-width: 35rem;
+
+    container-type: inline-size;
 }
 
 .player-section {
@@ -317,6 +321,32 @@ console.log('total stats', totalStats)
 
 .stats-list li {
     list-style: none;
+}
+
+.account-info {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    text-align: center;
+    gap: 0.2rem;
+}
+
+.account-info-separator {
+    /* border: 2px solid var(--blue); */
+    width: 2px;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 2px;
+}
+
+@container (width < 450px) {
+    .account-info {
+        grid-template-columns: 1fr;
+    }
+
+    .account-info-separator {
+        width: auto;
+        height: 2px;
+    }
 }
 
 .error-message {
