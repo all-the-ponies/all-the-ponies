@@ -102,7 +102,7 @@ console.log('total stats', totalStats)
     <div
         class="stats-page"
         :style="{
-            backgroundImage: `url('${backgroundImage}')`,
+            backgroundImage: backgroundImage ? `url('${backgroundImage}')` : '',
         }"
     >
         <ClientOnly>
