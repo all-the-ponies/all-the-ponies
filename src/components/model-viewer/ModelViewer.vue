@@ -313,7 +313,7 @@ onBeforeUnmount(() => {
     width: 100%;
     height: 100%;
     min-height: 0;
-    background: linear-gradient(#eef4fa, #f5edf5);
+    background: white url('../../assets/images/ui/native-ponybook-paper.png') center / 100% 100% no-repeat;
     border-radius: .3rem;
 }
 .model-host :deep(canvas) {
