@@ -43,10 +43,12 @@ const statInfo = computed(() => statNameMap[props.stat].info)
 
 .stat-image-container {
     position: relative;
+    display: grid;
+    align-items: center;
 }
 
 .stat-image {
-    width: 60px;
+    width: 4rem;
     object-fit: contain;
     object-position: center;
 }

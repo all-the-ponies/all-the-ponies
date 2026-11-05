@@ -290,7 +290,7 @@ console.log('total stats', totalStats)
     margin: 1rem auto;
     display: block;
 
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.4);
     border-radius: 15px;
 }
 
@@ -314,7 +314,7 @@ console.log('total stats', totalStats)
 .stats-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 9rem);
+    grid-template-columns: repeat(auto-fit, max(100px, 10rem));
     justify-content: space-evenly;
     gap: 0.3rem;
 }
@@ -338,7 +338,7 @@ console.log('total stats', totalStats)
     border-radius: 2px;
 }
 
-@container (width < 450px) {
+@container (width < 30rem) {
     .account-info {
         grid-template-columns: 1fr;
     }
