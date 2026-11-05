@@ -52,9 +52,11 @@ const itemName = translateName(item)
 
 .item-counter__box {
     position: relative;
+    min-width: 4rem;
     isolation: isolate;
     display: flex;
     align-items: center;
+    justify-content: center;
     height: calc(36 * var(--u));
     margin-left: calc(var(--overlap) * -1);
     padding-left: calc(var(--overlap) + var(--slant) + 2 * var(--u));
