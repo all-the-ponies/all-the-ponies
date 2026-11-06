@@ -12,7 +12,8 @@
             "1": "The website is built by {ego}.",
             "2": "Thanks to {bass} for help with loading ponies with a friend code.",
             "3": "The font used is {font}, which is also used in the game.",
-            "4": "The website was built using {vue} to make my life easier and allow for a more dynamic experience."
+            "4": "The website was built using {vue} to make my life easier and allow for a more dynamic experience.",
+            "5": "Thanks to {melty} for some assets"
           }
         },
         "title": "Credits"
@@ -289,15 +290,24 @@
       }
     },
     "stats": {
-      "collections": "Collections: {count}",
-      "costumes": "Costumes: {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "Stars: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
-      "wh_collections": "What's Hot Collections: {count}"
+      "stars": "Stars",
+      "wh_collections": "What's Hot Collections",
+      "bit_ponies": "Bit Ponies",
+      "bit_shops": "Bit Shops",
+      "critters": "Critters",
+      "gem_ponies": "Gem Ponies",
+      "pro_ponies": "Pro Ponies"
+    },
+    "stats_alt": {
+      "stars": "{count} Stars",
+      "bit_ponies": "{count} Bit Ponies",
+      "bit_shops": "{count} Bit Shops",
+      "critters": "{count} Critters",
+      "gem_ponies": "{count} Gem Ponies",
+      "pro_ponies": "{count} Pro Ponies"
+    },
+    "stats_info": {
+      "shop": "Counts bits shops, critters, food farms, and the Ferris Wheel."
     },
     "title": "Inventory"
   },
@@ -437,8 +447,8 @@
   },
   "player_info": {
     "friend_code": "Friend Code",
-    "join_date": "Join date: {join_date}",
-    "total_playtime": "Total playtime: {total_playtime}"
+    "join_date": "Join date:",
+    "total_playtime": "Total playtime:"
   },
   "pony_quiz": {
     "description": "Test your knowledge of the My Little Pony: Magic Princess mobile game, and see how many ponies you can name. It can still be fun even if you don't play the game, because most ponies in G4 are in the game (there's some G1 ponies as well).",
