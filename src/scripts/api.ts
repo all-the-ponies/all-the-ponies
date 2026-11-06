@@ -13,7 +13,8 @@ const LOCALHOST_API_DOMAIN = (() => {
 })()
 
 const api = ky.create({
-    prefixUrl: isDev() ? LOCALHOST_API_DOMAIN : API_DOMAIN,
+    
+    baseUrl: isDev() ? LOCALHOST_API_DOMAIN : API_DOMAIN,
     retry: isDev() ? 1 : 0,
     hooks: {
         beforeRetry: [
