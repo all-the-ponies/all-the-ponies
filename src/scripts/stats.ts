@@ -87,6 +87,7 @@ export const statNameMap: Record<PlayerStatName, PlayerStatInfo> = {
     image: gemPoniesImage,
     string: "inventory.stats.gem_ponies",
     alt: "inventory.stats_alt.gem_ponies",
+    info: 'inventory.stats_info.gem_ponies',
   },
   stars: {
     image: starsImage,
