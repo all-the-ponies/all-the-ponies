@@ -15,7 +15,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+
+    /* Fill the scroll content (which has min-height: 100%) without shrinking
+       below its own content height. A percentage height can't be used here
+       because the scroll content's height is auto by design. */
+    flex: 1 0 auto;
+
     gap: 0.2rem;
     background-color: var(--pink);
 }
