@@ -288,14 +288,7 @@
       }
     },
     "stats": {
-      "collections": "Collezioni: {count}",
-      "costumes": "Costumi: {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Stelle: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
       "wh_collections": "Collezioni alla moda: {count}"
     },
     "title": "Inventario"
@@ -340,11 +333,11 @@
     "crystal_empire": "Crystal Empire",
     "everfree_forest": "Everfree Forest",
     "klugetown": "Klugetown",
+    "maze": "Dungeon Del Labirinto",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Città",
-    "unknown": "Sconosciuto",
-    "maze": "Dungeon Del Labirinto"
+    "unknown": "Sconosciuto"
   },
   "maze": {
     "dialog": {

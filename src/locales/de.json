@@ -288,14 +288,7 @@
       }
     },
     "stats": {
-      "collections": "Sammlungen: {count}",
-      "costumes": "Kostüme: {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Sterne: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
       "wh_collections": "„Was angesagt ist“-Sammlungen: {count}"
     },
     "title": "Inventar"
@@ -340,11 +333,11 @@
     "crystal_empire": "Kristall|-|Königreich",
     "everfree_forest": "Everfree Forest",
     "klugetown": "Klugetown",
+    "maze": "Labyrinth-Kerker",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Dorf",
-    "unknown": "Unbekannt",
-    "maze": "Labyrinth-Kerker"
+    "unknown": "Unbekannt"
   },
   "maze": {
     "dialog": {

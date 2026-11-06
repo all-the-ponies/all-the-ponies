@@ -24,17 +24,17 @@
   },
   "button": {
     "cancel": "ยกเลิก",
+    "close": "ปิด",
+    "edit": "แก้ไข",
     "hint": "",
     "no": "ไม่",
     "ok": "ตกลง",
+    "resume": "เล่นต่อ",
     "share": "แชร์",
     "skip": "ข้าม",
     "start": "เริ่ม",
     "stop": "",
-    "yes": "ใช่",
-    "resume": "เล่นต่อ",
-    "edit": "แก้ไข",
-    "close": "ปิด"
+    "yes": "ใช่"
   },
   "check_save": {
     "messages": {
@@ -161,6 +161,9 @@
       "resident": "",
       "visitor": ""
     },
+    "pet": {
+      "pet": "สัตว์เลี้ยง | Pets"
+    },
     "pony": {
       "arrival_bonus": "",
       "character": "ตัวละคร",
@@ -185,10 +188,10 @@
       "background_frame": {
         "background_frame": "กรอบ|ฉากหลัง"
       },
-      "is_default": "",
       "cutie_mark": {
         "cutie_mark": "คิวตี้มาร์ก | คิวตี้มาร์ก"
-      }
+      },
+      "is_default": ""
     },
     "road": {
       "road": "ถนน"
@@ -202,9 +205,6 @@
     },
     "token": {
       "token": "โทเค็น"
-    },
-    "pet": {
-      "pet": "สัตว์เลี้ยง | Pets"
     }
   },
   "group_quests": {
@@ -248,12 +248,7 @@
       }
     },
     "stats": {
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "stars": ""
     },
     "title": "ที่เก็บของ"
   },
@@ -297,11 +292,16 @@
     "crystal_empire": "คริสตัลเอ็มไพร์",
     "everfree_forest": "ป่าเอเวอร์ฟรี",
     "klugetown": "คลูจทาวน์",
+    "maze": "ดันเจี้ยน|เขาวงกต",
     "ponyville": "โพนี่วิลล์",
     "sweet_apple_acres": "ไร่แอปเปิ้ลหวาน",
     "town": "",
-    "unknown": "",
-    "maze": "ดันเจี้ยน|เขาวงกต"
+    "unknown": ""
+  },
+  "maze": {
+    "title": {
+      "long": "ปีกหายหมด|กับ|เขาวงกต|คดเคี้ยว"
+    }
   },
   "notices": {
     "corrupt_save": {
@@ -440,10 +440,5 @@
       "seasonal_shop": "ร้านค้า|ประจำ|ฤดูกาล"
     },
     "title": "สโตร์"
-  },
-  "maze": {
-    "title": {
-      "long": "ปีกหายหมด|กับ|เขาวงกต|คดเคี้ยว"
-    }
   }
 }

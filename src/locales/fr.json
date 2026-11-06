@@ -288,14 +288,7 @@
       }
     },
     "stats": {
-      "collections": "Collections : {count}",
-      "costumes": "Costumes : {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
       "stars": "Étoiles: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
       "wh_collections": "Collections tendances : {count}"
     },
     "title": "Inventaire"
