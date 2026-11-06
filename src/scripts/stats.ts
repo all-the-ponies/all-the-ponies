@@ -187,21 +187,28 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
         }
 
         if (pony.tasks) {
+            let bitsTask = false
+            let gemsTask = false
+            let tokensTask = false
             for (let taskId of pony.tasks) {
                 const task = getTaskInfo(taskId)
                 if (!task) {
                     continue
                 }
                 if (task.reward.gems) {
-                    stats.gemCollectors++
+                    gemsTask = true
                 }
                 if (task.reward.bits) {
-                    stats.bitCollectors++
+                    bitsTask = true
                 }
                 if (task.reward.token) {
-                    stats.tokenCollectors++
+                    tokensTask = true
                 }
             }
+
+            stats.bitCollectors += Number(bitsTask)
+            stats.gemCollectors += Number(gemsTask)
+            stats.tokenCollectors += Number(tokensTask)
         }
 
         if (pony.pro.length) {
