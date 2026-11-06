@@ -6,10 +6,13 @@ import { getObject } from '@/scripts/gameData.ts';
 import Link from './Link.vue';
 import ConditionalWrap from './ConditionalWrap.vue';
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
     object: string | GameObject,
+    position?: 'left' | 'right',
     isLink?: boolean | CategoryName | CategoryName[],
-}>()
+}>(), {
+    position: 'right',
+})
 
 const gameObject = computed(() => getObject(props.object))
 const link = computed(() => {
@@ -29,12 +32,21 @@ const link = computed(() => {
     }
 })
 
+const position = computed(() => props.position || 'right')
+
 </script>
 
 <template>
-    <slot></slot>&nbsp;<ConditionalWrap :condition="Boolean(link)" :wrapper="Link" :wrapper-props="{
-        href: link,
-    }"><object-image class="object-image" :object="props.object"></object-image></ConditionalWrap>
+    <template v-if="position == 'right'"><slot></slot>&nbsp;</template><ConditionalWrap
+        :condition="Boolean(link)"
+        :wrapper="Link"
+        :wrapper-props="{
+            href: link,
+        }"><object-image
+            class="object-image"
+            :object="props.object"
+        ></object-image>
+    </ConditionalWrap><template v-if="position == 'left'">&nbsp;<slot></slot></template>
 </template>
 
 <style lang="css" scoped>

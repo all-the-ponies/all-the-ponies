@@ -22,6 +22,7 @@ const levels = [
     120,
     140,
     160,
+    200,
 ]
 
 const levelGroup = computed(() => {

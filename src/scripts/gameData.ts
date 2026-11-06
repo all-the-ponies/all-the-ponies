@@ -254,6 +254,10 @@ export function getTaskInfo(taskId: string | TaskEntry) {
     return (getTasksData()).tasks[taskId] ?? null
 }
 
+export function getGroupQuestInfo(questId: string) {
+    return (getGroupQuests()).quests[questId] ?? null
+}
+
 export function getCollection(collectionId: string | CollectionType) {
     if (typeof collectionId !== 'string') {
         return collectionId

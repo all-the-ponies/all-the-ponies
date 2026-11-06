@@ -57,6 +57,13 @@ console.log('credits', credits)
                         </template>
                     </i18n-t>
                 </li>
+                <li>
+                    <i18n-t keypath="about.sections.credits.message.credits_list.5">
+                        <template #melty>
+                            <Link href="https://github.com/MeltyRio" class="link">Melty</Link>
+                        </template>
+                    </i18n-t>
+                </li>
             </ul>
             <h2>{{ $t('about.sections.translations.title') }}</h2>
             <ul class="list" v-if="!creditsError">

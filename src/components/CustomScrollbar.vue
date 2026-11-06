@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useElementBounding, useElementSize, useResizeObserver } from '@vueuse/core';
+import { useResizeObserver } from '@vueuse/core';
 import { ref, useTemplateRef } from 'vue';
 
 const props = withDefaults(defineProps<{
@@ -164,7 +164,9 @@ defineExpose({ updateThumb })
 }
 
 .scrollbar-content {
-    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .scrollbar-track {

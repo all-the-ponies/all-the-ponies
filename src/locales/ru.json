@@ -289,15 +289,8 @@
       }
     },
     "stats": {
-      "collections": "Коллекции: {count}",
-      "costumes": "Костюмы: {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "Количество звезд: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
-      "wh_collections": "Актуальные коллекции: {count}"
+      "stars": "Количество звезд",
+      "wh_collections": "Актуальные коллекции"
     },
     "title": "Инвентарь"
   },
@@ -437,8 +430,8 @@
   },
   "player_info": {
     "friend_code": "Код дружбы",
-    "join_date": "Дата регистрации: {join_date}",
-    "total_playtime": "Общее время игры: {total_playtime}"
+    "join_date": "Дата регистрации:",
+    "total_playtime": "Общее время игры:"
   },
   "pony_quiz": {
     "description": "Проверьте свои знания о мобильной игры My Little Pony: Магия Принцесс и посмотрите, сколько пони вы сможете назвать. Даже если вы не играете в эту игру, все равно будет весело, потому что большинство пони из 4-го поколения присутствуют в игре (есть также несколько пони из 1-го поколения).",
@@ -533,9 +526,7 @@
     "title": "Все Пони"
   },
   "socials": {
-    "discord": "Дискорд",
     "donate": "Пожертвование",
-    "github": "GitHub",
     "help_translate": "Помощь в переводе",
     "mlp_game_hangout": "MLP Game Hangout",
     "wiki": "Вики"

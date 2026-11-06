@@ -288,15 +288,8 @@
       }
     },
     "stats": {
-      "collections": "Sammlungen: {count}",
-      "costumes": "Kostüme: {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "Sterne: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
-      "wh_collections": "„Was angesagt ist“-Sammlungen: {count}"
+      "stars": "Sterne",
+      "wh_collections": "„Was angesagt ist“-Sammlungen"
     },
     "title": "Inventar"
   },
@@ -340,11 +333,11 @@
     "crystal_empire": "Kristall|-|Königreich",
     "everfree_forest": "Everfree Forest",
     "klugetown": "Klugetown",
+    "maze": "Labyrinth-Kerker",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Dorf",
-    "unknown": "Unbekannt",
-    "maze": "Labyrinth-Kerker"
+    "unknown": "Unbekannt"
   },
   "maze": {
     "dialog": {
@@ -436,8 +429,8 @@
   },
   "player_info": {
     "friend_code": "Freundcode",
-    "join_date": "Beitrittsdatum: {join_date}",
-    "total_playtime": "Gesamte Spielzeit: {total_playtime}"
+    "join_date": "Beitrittsdatum:",
+    "total_playtime": "Gesamte Spielzeit:"
   },
   "pony_quiz": {
     "description": "Überprüfe dein Wissen vom My Little Pony: Magic Princess Spiel und schaue, wie viele Ponys du aufzählen kannst. Auch wenn du nicht das Spiel spielst kann es Spaß machen, da die meisten G4 Ponys im Spiel sind. (Dazu auch noch einige G1 Ponys).",
@@ -532,9 +525,7 @@
     "title": "Alle Ponys"
   },
   "socials": {
-    "discord": "Discord",
     "donate": "Spenden",
-    "github": "GitHub",
     "help_translate": "Hilf bei der Übersetzung",
     "mlp_game_hangout": "MLP-Spiel Treffen",
     "wiki": "Wiki"

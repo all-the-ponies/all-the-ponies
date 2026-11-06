@@ -288,15 +288,8 @@
       }
     },
     "stats": {
-      "collections": "Collezioni: {count}",
-      "costumes": "Costumi: {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "Stelle: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
-      "wh_collections": "Collezioni alla moda: {count}"
+      "stars": "Stelle",
+      "wh_collections": "Collezioni alla moda"
     },
     "title": "Inventario"
   },
@@ -340,11 +333,11 @@
     "crystal_empire": "Crystal Empire",
     "everfree_forest": "Everfree Forest",
     "klugetown": "Klugetown",
+    "maze": "Dungeon Del Labirinto",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Città",
-    "unknown": "Sconosciuto",
-    "maze": "Dungeon Del Labirinto"
+    "unknown": "Sconosciuto"
   },
   "maze": {
     "dialog": {
@@ -436,8 +429,8 @@
   },
   "player_info": {
     "friend_code": "Codice Amico",
-    "join_date": "Data di Unione: {join_date}",
-    "total_playtime": "Tempo di Gioco totale: {total_playtime}"
+    "join_date": "Data di Unione:",
+    "total_playtime": "Tempo di Gioco totale:"
   },
   "pony_quiz": {
     "description": "Testa la tua conoscenza del gioco mobile di My Little Pony, e scopri quanti Pony riesci ad elencare. Può essere divertente pure se non ci giochi, dato che la maggior parte dei Pony nella G4 si trovano nel gioco (ci sono anche alcuni Pony della G1).",
@@ -532,9 +525,7 @@
     "title": "Tutti i Pony"
   },
   "socials": {
-    "discord": "Discord",
     "donate": "Dona",
-    "github": "GitHub",
     "help_translate": "Aiuta con la traduzione",
     "mlp_game_hangout": "MLP Game Hangout",
     "wiki": "Wiki"
