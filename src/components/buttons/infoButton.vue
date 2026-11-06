@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{
 const id = useId()
 const infoButton = useTemplateRef('info-button')
 const popover = useTemplateRef('popover')
-const arrowEl = useTemplateRef('arrow')
+const arrowEl = useTemplateRef('arrowEl')
 const placement = computed(() => props.placement)
 
 const { floatingStyles, placement: computedPlacement, middlewareData } = useFloating(infoButton, popover, {
@@ -21,7 +21,7 @@ const { floatingStyles, placement: computedPlacement, middlewareData } = useFloa
     flip(),
     offset(12),
     shift({ padding: 8 }),
-    arrow({  element: arrowEl, padding: 14 }),
+    arrow({ element: arrowEl, padding: 14 }),
   ],
   whileElementsMounted: autoUpdate,
 })
@@ -60,7 +60,7 @@ const arrowStyles = computed(() => {
       :style="floatingStyles"
     >
       <slot></slot>
-      <span ref="arrow" class="arrow" :style="arrowStyles" aria-hidden="true" />
+      <span ref="arrowEl" class="arrow" :style="arrowStyles" aria-hidden="true" />
     </div>
   </span>
 </template>
