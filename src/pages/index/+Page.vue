@@ -197,8 +197,8 @@ const eventUrl = computed(() => {
         <section class="section">
             <h2>{{ $t('home.message.links') }}</h2>
             <div>
-                <DiscordButton :href="links.discordServer">{{ $t('socials.discord') }}</DiscordButton>
-                <GitHubButton :href="links.githubRepo">{{ $t('socials.github') }}</GitHubButton>
+                <DiscordButton :href="links.discordServer">Discord</DiscordButton>
+                <GitHubButton :href="links.githubRepo">GitHub</GitHubButton>
                 <KofiButton :href="links.kofi">{{ $t('socials.donate') }}</KofiButton>
                 <WeblateButton :href="links.weblate">{{ $t('socials.help_translate') }}</WeblateButton>
             </div>
