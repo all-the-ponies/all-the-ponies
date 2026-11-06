@@ -225,8 +225,6 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
         stats.unique++
     }
 
-    console.log('transformables', changelingTransformations)
-
     return stats
 }
 

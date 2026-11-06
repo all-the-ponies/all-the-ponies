@@ -64,10 +64,6 @@ function getStat(stat: PlayerStatName) {
     }
 }
 
-watchEffect(() => {
-    console.log('stats', saveStats.value)
-})
-
 const leftStat = computed(() => {
     if (isMounted.value) {
         return {
@@ -91,8 +87,6 @@ const backgroundImage = computed(() => {
         return createAssetUrl(getObject(saveStore.playerInfo.player_card.background || 'PlayerCardBackground_default', 'background').image.main.path)
     }
 })
-
-console.log('total stats', totalStats)
 
 </script>
 
