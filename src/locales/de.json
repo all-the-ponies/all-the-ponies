@@ -288,8 +288,8 @@
       }
     },
     "stats": {
-      "stars": "Sterne: {count}",
-      "wh_collections": "„Was angesagt ist“-Sammlungen: {count}"
+      "stars": "Sterne",
+      "wh_collections": "„Was angesagt ist“-Sammlungen"
     },
     "title": "Inventar"
   },
@@ -429,8 +429,8 @@
   },
   "player_info": {
     "friend_code": "Freundcode",
-    "join_date": "Beitrittsdatum: {join_date}",
-    "total_playtime": "Gesamte Spielzeit: {total_playtime}"
+    "join_date": "Beitrittsdatum:",
+    "total_playtime": "Gesamte Spielzeit:"
   },
   "pony_quiz": {
     "description": "Überprüfe dein Wissen vom My Little Pony: Magic Princess Spiel und schaue, wie viele Ponys du aufzählen kannst. Auch wenn du nicht das Spiel spielst kann es Spaß machen, da die meisten G4 Ponys im Spiel sind. (Dazu auch noch einige G1 Ponys).",
