@@ -270,12 +270,7 @@
       }
     },
     "stats": {
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "stars": ""
     },
     "title": "المخزون"
   },
@@ -428,9 +423,7 @@
     "title": ""
   },
   "socials": {
-    "discord": "",
     "donate": "",
-    "github": "",
     "help_translate": "",
     "mlp_game_hangout": "",
     "wiki": ""

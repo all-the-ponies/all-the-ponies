@@ -290,21 +290,21 @@
       }
     },
     "stats": {
-      "stars": "Stars",
-      "wh_collections": "What's Hot Collections",
       "bit_ponies": "Bit Ponies",
       "bit_shops": "Bit Shops",
       "critters": "Critters",
       "gem_ponies": "Gem Ponies",
-      "pro_ponies": "Pro Ponies"
+      "pro_ponies": "Pro Ponies",
+      "stars": "Stars",
+      "wh_collections": "What's Hot Collections"
     },
     "stats_alt": {
-      "stars": "{count} Stars",
       "bit_ponies": "{count} Bit Ponies",
       "bit_shops": "{count} Bit Shops",
       "critters": "{count} Critters",
       "gem_ponies": "{count} Gem Ponies",
-      "pro_ponies": "{count} Pro Ponies"
+      "pro_ponies": "{count} Pro Ponies",
+      "stars": "{count} Stars"
     },
     "stats_info": {
       "shop": "Counts bits shops, critters, food farms, and the Ferris Wheel."
@@ -543,9 +543,7 @@
     "title": "All The Ponies"
   },
   "socials": {
-    "discord": "Discord",
     "donate": "Donate",
-    "github": "GitHub",
     "help_translate": "Help Translate",
     "mlp_game_hangout": "MLP Game Hangout",
     "wiki": "Wiki"

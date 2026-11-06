@@ -289,15 +289,8 @@
       }
     },
     "stats": {
-      "collections": "Coleções: {count}",
-      "costumes": "Fantasias: {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "Estrelas: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
-      "wh_collections": "Coleções populares: {count}"
+      "stars": "Estrelas",
+      "wh_collections": "Coleções populares"
     },
     "title": "Inventário"
   },
@@ -437,8 +430,8 @@
   },
   "player_info": {
     "friend_code": "Código De Amigo",
-    "join_date": "Data de criação: {join_date}",
-    "total_playtime": "Tempo jogado: {total_playtime}"
+    "join_date": "Data de criação:",
+    "total_playtime": "Tempo jogado:"
   },
   "pony_quiz": {
     "description": "Teste seu conhecimento sobre o jogo My Little Pony: Princesa Mágica e veja quantos pôneis você consegue nomear. Você ainda pode se divertir se não jogar o jogo, a maioria dos pôneis da G4 estão no jogo (também tem alguns pôneis da G1).",
@@ -533,9 +526,7 @@
     "title": "All The Ponies"
   },
   "socials": {
-    "discord": "Discord",
     "donate": "Ajude-me",
-    "github": "GitHub",
     "help_translate": "Ajude a traduzir",
     "mlp_game_hangout": "MLP Game Hangout",
     "wiki": "Wiki"

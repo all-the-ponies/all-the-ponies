@@ -288,15 +288,8 @@
       }
     },
     "stats": {
-      "collections": "Collections : {count}",
-      "costumes": "Costumes : {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "Étoiles: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
-      "wh_collections": "Collections tendances : {count}"
+      "stars": "Étoiles",
+      "wh_collections": "Collections tendances"
     },
     "title": "Inventaire"
   },
@@ -436,8 +429,8 @@
   },
   "player_info": {
     "friend_code": "Code D'Ami",
-    "join_date": "Date d'inscription:{join_date}",
-    "total_playtime": "Temps de jeu total: {total_playtime}"
+    "join_date": "Date d'inscription:",
+    "total_playtime": "Temps de jeu total:"
   },
   "pony_quiz": {
     "description": "Teste tes connaissances sur le jeu mobile My Little Pony : Magic Princess, and vois le nombre de poneys que tu peux nommer. Ça peut-être amusant même si tu ne joues pas au jeu, car la majorité des poneys de la G4 sont dans le jeu (il y a aussi quelques poneys de la G1).",
@@ -532,9 +525,7 @@
     "title": "Tous les Poneys"
   },
   "socials": {
-    "discord": "Discord",
     "donate": "Fais un don",
-    "github": "GitHub",
     "help_translate": "Aide à traduire",
     "mlp_game_hangout": "Espace de discussion à propos du jeu MLP",
     "wiki": "Wiki"

@@ -289,15 +289,8 @@
       }
     },
     "stats": {
-      "collections": "Koleksiyonlar: {count}",
-      "costumes": "Kostümler: {count}",
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "Yıldızlar: {count}",
-      "transformable": "@:game_object.pony.transformable{':'} {count}",
-      "wh_collections": "Gündemdeki koleksiyonlar: {count}"
+      "stars": "Yıldızlar",
+      "wh_collections": "Gündemdeki koleksiyonlar"
     },
     "title": "Envanter"
   },
@@ -437,8 +430,8 @@
   },
   "player_info": {
     "friend_code": "Arkadaş Kodu",
-    "join_date": "Katılım Tarihi: {join_date}",
-    "total_playtime": "Toplam Oynama Süresi: {total_playtime}"
+    "join_date": "Katılım Tarihi:",
+    "total_playtime": "Toplam Oynama Süresi:"
   },
   "pony_quiz": {
     "description": "My Little Pony: Büyülü Prenses mobil oyunu hakkında bilginizi test edin ve kaç tane Pony'i adlandırabileceğinizi görün. Oyunu oynamasanız bile eğlenceli olabilir çünkü G4'deki çoğu Pony oyunda da var (bazı G1 Pony'leri de var).",
@@ -533,9 +526,7 @@
     "title": "All The Ponies"
   },
   "socials": {
-    "discord": "Discord",
     "donate": "Bağış",
-    "github": "GitHub",
     "help_translate": "Çeviriye katkıda bulun",
     "mlp_game_hangout": "MLP Game Hangout",
     "wiki": "Wiki"
