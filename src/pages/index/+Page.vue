@@ -11,7 +11,7 @@ import links from '@/globals/links';
 import { createAssetUrl } from '@/scripts/assets.ts';
 import { pickRandom } from '@/scripts/common';
 import { useGameObjects, translateName, getMazeData } from '@/scripts/gameData';
-import type { AvatarType, DecorType, HouseType, PonyType, ShopType } from '@/types/gameDataTypes';
+import type { AvatarType, CostumeType, DecorType, HouseType, PonyType, ShopType } from '@/types/gameDataTypes';
 import { timestamp, useTimestamp } from '@vueuse/core';
 import { Config } from 'vike-vue/Config';
 import { useData } from 'vike-vue/useData';
@@ -38,6 +38,7 @@ const house = ref<HouseType>(null)
 const shop = ref<ShopType>(null)
 const decor = ref<DecorType>(null)
 const avatar = ref<AvatarType>(null)
+const costume = ref<CostumeType>(null)
 
 onMounted(() => {
     pony.value = pickRandom(Object.values(gameObjects.value.pony.objects))
@@ -45,6 +46,7 @@ onMounted(() => {
     shop.value = pickRandom(Object.values(gameObjects.value.shop.objects))
     decor.value = pickRandom(Object.values(gameObjects.value.decor.objects))
     avatar.value = pickRandom(Object.values(gameObjects.value.avatar.objects))
+    costume.value = pickRandom(Object.values(gameObjects.value.costume.objects))
 
     console.log('eventInfo', eventInfo.value)
 })
@@ -161,6 +163,14 @@ const eventUrl = computed(() => {
                     class="thing-card"
                 >
                 </GameCard>
+                <GameCard
+                    :title="$t('game_object.costume.costume', 2)"
+                    :image="costume ? createAssetUrl(costume.image.main.path) : null"
+                    :alt="translateName(costume).value"
+                    href="/search/costumes/"
+                    class="thing-card"
+                >
+                </GameCard>
             </div>
         </section>
         <section class="section" v-if="eventInfo && (eventInfo.current || eventInfo.next) && eventUrl">
@@ -212,8 +222,10 @@ const eventUrl = computed(() => {
 
 .things-container {
     --card-size: 8rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, var(--card-size));
+    /* display: grid; */
+    /* grid-template-columns: repeat(auto-fill, var(--card-size)); */
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.3rem;
     justify-items: center;
     justify-content: center;
