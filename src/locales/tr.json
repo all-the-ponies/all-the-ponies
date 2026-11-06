@@ -289,8 +289,8 @@
       }
     },
     "stats": {
-      "stars": "Yıldızlar: {count}",
-      "wh_collections": "Gündemdeki koleksiyonlar: {count}"
+      "stars": "Yıldızlar",
+      "wh_collections": "Gündemdeki koleksiyonlar"
     },
     "title": "Envanter"
   },
@@ -430,8 +430,8 @@
   },
   "player_info": {
     "friend_code": "Arkadaş Kodu",
-    "join_date": "Katılım Tarihi: {join_date}",
-    "total_playtime": "Toplam Oynama Süresi: {total_playtime}"
+    "join_date": "Katılım Tarihi:",
+    "total_playtime": "Toplam Oynama Süresi:"
   },
   "pony_quiz": {
     "description": "My Little Pony: Büyülü Prenses mobil oyunu hakkında bilginizi test edin ve kaç tane Pony'i adlandırabileceğinizi görün. Oyunu oynamasanız bile eğlenceli olabilir çünkü G4'deki çoğu Pony oyunda da var (bazı G1 Pony'leri de var).",
