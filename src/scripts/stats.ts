@@ -39,6 +39,7 @@ export const statNameMap: Record<PlayerStatName, PlayerStatInfo> = {
     image: transformablesImage,
     string: "game_object.pony.transformable",
     alt: "player_card.player_stat.transformables",
+    info: 'inventory.stats_info.transformable',
   },
   shop: {
     image: shopsImage,
