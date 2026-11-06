@@ -115,17 +115,17 @@
     },
     "decor": {
       "can_fuse": "Can fuse",
-      "regular": "Regular"
+      "regular": "Regular decor"
     },
     "pony": {
+      "critters": "Critters",
       "gem_pony": "Gem Ponies",
       "not_owned": "Not owned",
       "npc": "NPC",
       "playable": "Playable",
       "pro": "Pro",
       "quest": "Quest",
-      "unused": "Unused",
-      "critters": "Critters"
+      "unused": "Unused"
     },
     "shop": {
       "gem_shop": "Gem Shops",
@@ -341,11 +341,11 @@
     "crystal_empire": "Crystal Empire",
     "everfree_forest": "Everfree Forest",
     "klugetown": "Klugetown",
+    "maze": "Maze Dungeon",
     "ponyville": "Ponyville",
     "sweet_apple_acres": "Sweet Apple Acres",
     "town": "Town",
-    "unknown": "Unknown",
-    "maze": "Maze Dungeon"
+    "unknown": "Unknown"
   },
   "maze": {
     "dialog": {

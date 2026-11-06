@@ -488,37 +488,48 @@
       "what_this_means": {
         "body": {
           "affected": "Seu server local está bem, mas se você desinstalar o jogo, ou precisar transferir, seu servidor na nuvem não está.",
-          "safe": ""
+          "safe": "Seu salvamento na nuvem está funcionando corretamente no momento, mas observe que isso não significa que sempre funcionará, pois muitas contas de jogadores que estavam funcionando normalmente antes, agora não estão mais."
         },
-        "title": ""
+        "title": "O que isso significa?"
       },
       "what_to_say": {
         "body": {
           "affected": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": ""
+            "1": "Você poderia simplesmente mencionar que as pessoas não conseguem visitar seu perfil, adicionando a mensagem que aparece, e sugerindo que você está preocupado com um possível problema no arquivo de salvamento da sua conta e gostaria que elas encaminhassem isso para a equipe técnica.",
+            "2": "Você poderia mentir e dizer que seu jogo salvo foi reiniciado, o que os obrigaria a verificar o status dele.",
+            "3": "Você poderia mentir e dizer que não consegue visitar outras pessoas e que está recebendo pop-ups inesperados informando que seu progresso local e o salvo na nuvem não correspondem, mesmo que você não tenha trocado de dispositivo e esteja jogando conectado à internet.",
+            "4": "Você poderia mencionar diretamente que seu arquivo de salvamento está corrompido, mas, novamente, faça isso por sua conta e risco."
           },
           "safe": {
-            "1": "",
-            "2": ""
+            "1": "Você pode falar sobre como não consegue visitar as cidades de outros jogadores e mencionar que tem uma conexão de internet estável.",
+            "2": "Você poderia mencionar abertamente o que está acontecendo, mesmo que não seja afetado(a)."
           }
         },
         "title": "O que dizer ao suporte?"
       }
     },
-    "title": ""
+    "title": "Verifique o arquivo do seu save"
   },
   "search": {
     "message": {
-      "search": "Buscar"
+      "search": "Buscar",
+      "showing_of_results": "Mostrando {shown_results} de {total_results} resultados",
+      "showing_results": "Mostrando {total_results} resultados"
     },
     "no_results": "Sem resultados",
     "title": "Buscar"
   },
+  "sidebar": {
+    "activities": "Atividades",
+    "browse": "Pesquisar",
+    "game_info": "Informações do jogo",
+    "player": "Jogador",
+    "profile_decorations": "Decorações do perfil"
+  },
   "site": {
     "description": "Tenha informações precisas sobre qualquer coisa no My Little Pony: Princesa Mágica",
+    "language": "Linguagem/idioma",
+    "skip_to_content": "Pular para o conteudo",
     "title": "All The Ponies"
   },
   "socials": {
@@ -561,5 +572,13 @@
       "seasonal_shop": "Loja Da Temporada"
     },
     "title": "Loja"
+  },
+  "tasks": {
+    "message": {
+      "duration": "Duração",
+      "skip_price": "Pular: {price}",
+      "task_icon": "Ícone da tarefa"
+    },
+    "task": "Tarefa | Tarefa"
   }
 }
