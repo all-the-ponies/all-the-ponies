@@ -70,6 +70,7 @@ export const statNameMap: Record<PlayerStatName, PlayerStatInfo> = {
     image: bitPoniesImage,
     string: "inventory.stats.bit_ponies",
     alt: "inventory.stats_alt.bit_ponies",
+    info: 'inventory.stats_info.bit_ponies',
   },
   bit_shops: {
     image: bitShopsImage,

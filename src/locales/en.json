@@ -307,7 +307,8 @@
       "stars": "{count} Stars"
     },
     "stats_info": {
-      "shop": "Counts bits shops, critters, food farms, and the Ferris Wheel."
+      "shop": "Counts bits shops, critters, food farms, and the Ferris Wheel.",
+      "bit_ponies": "Ponies that have tasks to collect bits"
     },
     "title": "Inventory"
   },
