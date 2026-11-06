@@ -289,8 +289,8 @@
       }
     },
     "stats": {
-      "stars": "Estrelas: {count}",
-      "wh_collections": "Coleções populares: {count}"
+      "stars": "Estrelas",
+      "wh_collections": "Coleções populares"
     },
     "title": "Inventário"
   },
@@ -430,8 +430,8 @@
   },
   "player_info": {
     "friend_code": "Código De Amigo",
-    "join_date": "Data de criação: {join_date}",
-    "total_playtime": "Tempo jogado: {total_playtime}"
+    "join_date": "Data de criação:",
+    "total_playtime": "Tempo jogado:"
   },
   "pony_quiz": {
     "description": "Teste seu conhecimento sobre o jogo My Little Pony: Princesa Mágica e veja quantos pôneis você consegue nomear. Você ainda pode se divertir se não jogar o jogo, a maioria dos pôneis da G4 estão no jogo (também tem alguns pôneis da G1).",
