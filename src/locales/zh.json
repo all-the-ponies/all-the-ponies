@@ -289,8 +289,8 @@
       }
     },
     "stats": {
-      "stars": "星星数: {count}",
-      "wh_collections": "热门收藏: {count}"
+      "stars": "星星数",
+      "wh_collections": "热门收藏"
     },
     "title": "物品栏"
   },
@@ -430,8 +430,8 @@
   },
   "player_info": {
     "friend_code": "好友代码",
-    "join_date": "注册时间: {join_date}",
-    "total_playtime": "总游戏时长: {total_playtime}"
+    "join_date": "注册时间:",
+    "total_playtime": "总游戏时长:"
   },
   "pony_quiz": {
     "description": "来看看你对《小马宝莉：魔法公主》官游都了解多少吧，测试一下你记得多少匹小马的名字。其实即使你没玩过官游，也能玩这个小游戏，因为这个官游里大部分角色都是G4里面的（当然这个游戏里也有一些G1角色）。",
