@@ -289,8 +289,8 @@
       }
     },
     "stats": {
-      "stars": "Estrellas: {count}",
-      "wh_collections": "Colecciones Novedosas: {count}"
+      "stars": "Estrellas",
+      "wh_collections": "Colecciones Novedosas"
     },
     "title": "Inventario"
   },
@@ -430,8 +430,8 @@
   },
   "player_info": {
     "friend_code": "Código De Amigo",
-    "join_date": "Fecha en que se unio: {join_date}",
-    "total_playtime": "Tiempo total de juego: {total_playtime}"
+    "join_date": "Fecha en que se unio:",
+    "total_playtime": "Tiempo total de juego:"
   },
   "pony_quiz": {
     "description": "Pon a prueba tus conocimientos sobre el juego My Little Pony: Magia, y ve cuantos ponis puedes nombrar. Puede ser divertido incluso si no juegas el juego ya que muchos ponis de la generación 4 están en el juego (incluso algunos de la generación 1).",
