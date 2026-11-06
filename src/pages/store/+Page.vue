@@ -13,6 +13,7 @@ import type { FilterFunctionType } from '@/types/searchTypes'
 import { computedAsync } from '@vueuse/core'
 import { Config } from 'vike-vue/Config'
 import { usePageContext } from 'vike-vue/usePageContext'
+import { watch } from 'vue'
 import { computed, ref, shallowRef } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -22,7 +23,7 @@ const pageContext = usePageContext()
 
 const loadingShop = shallowRef<boolean>(true)
 const errorMessage = ref<string>('')
-const selectedCategory = ref<CategoryName | 'seasonal-shop'>((pageContext.urlParsed.search.category as CategoryName) || 'pony')
+const selectedCategory = ref<CategoryName | 'seasonal-shop'>((pageContext.urlParsed.search.category as CategoryName) || null)
 const selectedFilters = ref<Record<string, boolean>>({})
 
 const shop = computedAsync(
@@ -46,9 +47,23 @@ const shop = computedAsync(
                 )
             )
             if (!pageContext.isHistoryNavigation) {
-                selectedFilters.value.sale = Object.values(result).some(
-                    entry => getObject(entry.id)?.category == selectedCategory.value && (entry.price.sale.price || entry.price.sale.tokens)
-                )
+                if (!selectedCategory.value) {
+                    if (Object.values(result).some(
+                        entry => entry.tags.includes('pvsar1') || entry.tags.includes('pvsar2')
+                    )) {
+                        selectedCategory.value = 'seasonal-shop'
+                    } else {
+                        selectedCategory.value = 'pony'
+                    }
+                }
+                
+                if (selectedCategory.value != 'seasonal-shop') {
+                    selectedFilters.value.sale = Object.values(result).some(
+                        entry => getObject(entry.id)?.category == selectedCategory.value && (entry.price.sale.price || entry.price.sale.tokens)
+                    )
+                }
+            } else {
+                selectedCategory.value = selectedCategory.value || 'pony'
             }
             return result
         }
@@ -200,6 +215,9 @@ const { width: itemWidth, height: itemHeight } = useGameCardSize(cardSize)
 const itemGap = useRem(.3)
 
 const placeholder = computed(() => {
+    if (!selectedCategory.value) {
+        return null
+    }
     switch (selectedCategory.value) {
         case 'seasonal-shop':
             return t(CATEGORIES.pony.string)
