@@ -123,10 +123,67 @@ const shownObjects = computed(() => {
 })
 
 
+const SORT_PRICE_CURRENCIES = [
+    'Tokens',
+    'Hearts',
+    'Bits',
+    'Gems'
+]
+
+function getSortPriceCurrency(entry: ShopEntry) {
+    if (entry.price.base.tokens > 0) {
+        return 'Tokens'
+    } else {
+        return entry.price.base.currency
+    }
+}
+
+function getSortPrice(entry: ShopEntry) {
+    if (entry.price.base.tokens) {
+        return entry.price.sale.tokens || entry.price.base.tokens
+    }
+    return entry.price.sale.price || entry.price.base.price
+}
+
 
 const sortFunctions = computed(() => {
     let functions = {
         ...SortFunctions.common
+    }
+
+    functions.price = {
+        name: 'sorting.price',
+        check(a: GameObject, b: GameObject) {
+            const priceA = shop.value[a.id]
+            const priceB = shop.value[b.id]
+
+            let currencyA = getSortPriceCurrency(priceA)
+            let currencyB = getSortPriceCurrency(priceB)
+
+            if (currencyA != currencyB) {
+                let indexA = SORT_PRICE_CURRENCIES.indexOf(currencyA)
+                let indexB = SORT_PRICE_CURRENCIES.indexOf(currencyB)
+
+                if (indexA > indexB) {
+                    return 1
+                } else if (indexA < indexB) {
+                    return -1
+                } else {
+                    return 0
+                }
+            }
+
+            let sortPriceA = getSortPrice(priceA)
+            let sortPriceB = getSortPrice(priceB)
+
+            if (sortPriceA > sortPriceB) {
+                return 1
+            } else if (sortPriceA < sortPriceB) {
+                return -1
+            } else {
+                return 0
+            }
+        }
     }
 
 

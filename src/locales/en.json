@@ -563,7 +563,8 @@
     "shop": {
       "production": "Production rate",
       "xp_rate": "XP rate"
-    }
+    },
+    "price": "Price"
   },
   "stats": {
     "description": "See your stats in the My Little Pony: Magic Princess game",
