@@ -263,7 +263,7 @@ const filterFunctions = computed(() => {
 
 const query = computed(() => {
     return {
-        category: selectedCategory.value === 'pony' ? null : selectedCategory.value
+        category: selectedCategory.value
     }
 })
 
