@@ -157,14 +157,22 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
     const changelingTransformations: GameObjectId[] = []
     const critters: GameObjectId[] = []
 
+    const noPrice: GameObjectId[] = []
+
     for (let {id: ponyId, level} of ponies) {
         const pony = getObject(ponyId, 'pony')
         if (!pony) {
             continue
         }
-        if (pony.tags.includes('npc') || pony.tags.includes('unused') || pony.tags.includes('quest')) {
+        if (pony.tags.includes('hidden') || pony.tags.includes('quest')) {
             continue
         }
+
+        // Remove when game data is updated to separate hidden and npc
+        if (pony.tags.includes('npc') || pony.tags.includes('unused')) {
+            continue
+        }
+        
 
         stats.total++
         if (pony.group.length > 0 && !pony.group_master) {
@@ -231,9 +239,16 @@ function countPonies(ponies: PonyStatInput[]): PonyStats {
             }
         }
 
+        if (!pony.price) {
+            noPrice.push(pony.id)
+            continue
+        }
+
         stats.stars += level ?? MAX_PONY_LEVEL
         stats.unique++
     }
+
+    console.log('no price', noPrice)
 
     return stats
 }
