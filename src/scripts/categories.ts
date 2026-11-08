@@ -245,7 +245,7 @@ export const FilterFunctions: Partial<Record<'common' | CategoryName, {[keys: st
         },
         npc: {
             name: "filter.pony.npc",
-            check(gameObject: PonyType) {return gameObject.tags.includes('npc')},
+            check(gameObject: PonyType) {return gameObject.tags.includes('npc') || gameObject.tags.includes('hidden')},
         },
         unused: {
             name: "filter.pony.unused",
