@@ -308,7 +308,7 @@ const backgroundImage = computed(() => {
 .stats-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, max(100px, 10rem));
+    grid-template-columns: repeat(auto-fit, max(100px, 9rem));
     justify-content: space-evenly;
     gap: 0.3rem;
 }
