@@ -46,6 +46,22 @@ test('burst emits once on positive update and retains native disk/ring targets a
     assert.equal(sim.snapshot().particles.length, 0)
 })
 
+for (const scale of [[-1, -1, -1], [1, 2, 1]]) {
+    test(`model scale [${scale}] is checked only for declared emitters`, async () => {
+        const {gltf} = fakeGLTF()
+        const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera()
+        gltf.parser.json.nodes[0].scale = scale
+        await assert.rejects(createNativeEmitters(gltf, scene, camera), /Invalid native emitter model scale/)
+
+        for (const effects of [undefined, {}]) {
+            gltf.parser.json.extras.atpInteractions.effects = effects
+            const emitter = await createNativeEmitters(gltf, scene, camera)
+            assert.equal(emitter.active, false)
+            emitter.dispose()
+        }
+    })
+}
+
 test('billboard uses model origin, original particle coordinates, additive depth-free quads and releases owned dependencies', async () => {
     const {gltf, calls} = fakeGLTF(), scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera()
     scene.add(gltf.scene); gltf.scene.position.set(2, 3, 4); camera.rotation.y = .4

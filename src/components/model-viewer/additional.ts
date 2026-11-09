@@ -34,7 +34,7 @@ export async function loadAdditionalActor(ref: AdditionalActorRef, parent: GLTF,
     function place() {
         parentPosition(point)
         group.matrix.copy(restMatrix)
-        // Both points are already in the GLB scene's Rx(pi) coordinates.
+        // Both points are in the parent GLB's coordinate system.
         // Native attachment placement follows current root X/Z, not Y.
         group.matrix.elements[12] += point.x - restRoot.x
         group.matrix.elements[14] += point.z - restRoot.z

@@ -426,7 +426,7 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
             const halfFov = Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * Math.min(1, camera.aspect))
             const distance = radius / Math.sin(halfFov) * 1.12
             controls.target.copy(center)
-            camera.position.copy(center).add(new THREE.Vector3(.75, .35, 1.2).normalize().multiplyScalar(distance))
+            camera.position.setFromSphericalCoords(distance, THREE.MathUtils.degToRad(76), THREE.MathUtils.degToRad(-60)).add(center)
             camera.near = radius / 1000
             camera.far = radius * 1000
             camera.updateProjectionMatrix()

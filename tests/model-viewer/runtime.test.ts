@@ -57,7 +57,7 @@ function fixture(mode: 'normal' | 'pending-child' | 'eventful' | 'pending-effect
     let nativeSource: any
     if (mode === 'overlap') {
         const body = parent.scene.children.find(object => object instanceof THREE.Mesh)!
-        const rig = {version: 1, key: 'a'.repeat(64), parents: [-1], jointNodes: [1], coordinateSystem: 'native-Y-down-to-glTF-Y-up-RxPi'}
+        const rig = {version: 1, key: 'a'.repeat(64), parents: [-1], jointNodes: [1], coordinateSystem: 'glTF'}
         const json = {nodes: [{children: [1, 2]}, {}, {name: 'NativeMesh_0', mesh: 0, extras: {atpNativeMeshIndex: 0, atpDefaultVisible: true}},
             {name: 'NativeMesh_1', mesh: 1, extras: {atpNativeMeshIndex: 1, atpDefaultVisible: false}}], meshes: [{name: 'eye_open'}, {name: 'eye_closed'}], scenes: [{nodes: [0]}],
             extras: {atpRig: rig, atpInteractions: {version: 1, hiddenNodes: [3], subObjects: [0, 1], blink: true, eyes: {Open: [0], Closed: [1]}, effects: {stars: {}}}}}
@@ -238,6 +238,16 @@ function fixture(mode: 'normal' | 'pending-child' | 'eventful' | 'pending-effect
         },
     }
 }
+
+test('opening view sees the right flank of a forward-facing glTF model', async () => {
+    const f = fixture()
+    try {
+        await f.viewer.ready
+        const {position, target} = f.viewer.snapshot()
+        const azimuth = Math.atan2(position[0] - target[0], position[2] - target[2])
+        assert.ok(Math.abs(azimuth + Math.PI / 3) < 1e-6)
+    } finally { f.close() }
+})
 
 test('parent frame zero moves the additional actor before the first render, following only root X/Z', async () => {
     const f = fixture()

@@ -258,7 +258,7 @@ structures plus small extras:
 - `atpRig`: version, coordinate convention, indexed hierarchy and compatibility
   key derived from the explicitly selected native animation library content.
 - `atpClip`: native FPS, frame count and duration; optional `nativeSampling`
-  version 1 references FLOAT VEC3 positions and VEC4 raw XYZW quaternion
+  version 2 references glTF-space FLOAT VEC3 positions and VEC4 raw XYZW quaternion
   accessors in frame-major, joint-major order. Model-specific callbacks and
   visibility curves live in catalogue animation `eventBinding` entries.
 - `atpInteractions`: model-side native eye and SubObject mesh indices, hidden
@@ -280,7 +280,7 @@ changed. The caller still must establish the RK/library association from native
 metadata; these formats alone do not prove that any arbitrary pair belongs
 together.
 
-For `nativeSampling` version 1, the viewer interpolates the original model-space
+For `nativeSampling` version 2, the viewer interpolates the glTF model-space
 positions linearly and raw quaternions with shortest-path normalized linear
 interpolation, then derives parent-local transforms for the existing Three
 mixer. Quaternion endpoint lengths are retained; normalizing before mixing or
@@ -526,7 +526,8 @@ Independently controlled skinned meshes use private joint branches so hiding a
 prop or eye never scales the shared body skeleton. Visibility scales target
 ordinary parent nodes. Branches reuse the same skeletal animation samplers.
 Every clip writes each included branch's initial visibility to avoid state
-leaking from another clip. The source coordinate-root rotation is retained.
+leaking from another clip. Downloads retain the generated mesh and rig coordinates, so models face the
+same way as in the viewer. The rig and animation files share the glTF coordinate profile.
 A shared nonzero skeleton root supports Blender import even when a part starts
 hidden. No converter-specific hold keys or coordinate-root baking are applied.
 

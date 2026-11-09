@@ -8,7 +8,7 @@ import type { AnimationRef } from '../../src/components/model-viewer/assets';
 
 /** Synthetic GLTFLoader output with real Three.js tracks and mixers. */
 function fixture() {
-    const rig = {version: 1, key: 'a'.repeat(64), parents: [-1, 0], jointNodes: [1, 2], coordinateSystem: 'native-Y-down-to-glTF-Y-up-RxPi'}
+    const rig = {version: 1, key: 'a'.repeat(64), parents: [-1, 0], jointNodes: [1, 2], coordinateSystem: 'glTF'}
     function make() {
         const scene = new Scene()
         const root = new Object3D()
@@ -50,7 +50,7 @@ function nativeFixture() {
     // second root sample: tests normalization order and shortest-path choice.
     const rotations = new Float32Array([0, 0, 0, .8, 0, 0, 0, .9,
         0, 0, -half * .95, -half * .95, 0, 0, 0, .9])
-    f.source.json.extras.atpClip.nativeSampling = {version: 1, translations: 2, rotations: 3}
+    f.source.json.extras.atpClip.nativeSampling = {version: 2, translations: 2, rotations: 3}
     f.source.json.accessors.push({componentType: 5126, type: 'VEC3', count: 4}, {componentType: 5126, type: 'VEC4', count: 4})
     const attributes = [new BufferAttribute(translations, 3), new BufferAttribute(rotations, 4)]
     const dependency = f.source.gltf.parser.getDependency.bind(f.source.gltf.parser)
@@ -84,6 +84,18 @@ test('rejects a different rig even when the bone count is equal', async () => {
     const {model, source, ref} = fixture()
     source.json.extras.atpRig.key = 'c'.repeat(64)
     await assert.rejects(bindAnimation(model.gltf, source.gltf, ref), /rig is incompatible/)
+})
+
+test('rejects a clip generated with the old coordinate system', async () => {
+    const {model, source, ref} = fixture()
+    source.json.extras.atpRig.coordinateSystem = 'native-Y-down-to-glTF-Y-up-RxPi'
+    await assert.rejects(bindAnimation(model.gltf, source.gltf, ref), /Unsupported rig metadata/)
+})
+
+test('rejects untranslated native samples on a glTF-space rig', async () => {
+    const {model, source, ref} = nativeFixture()
+    source.json.extras.atpClip.nativeSampling.version = 1
+    await assert.rejects(bindAnimation(model.gltf, source.gltf, ref), /Unsupported native sampling profile/)
 })
 
 test('supported events require an explicit controller and preserve STEP/native sampling contracts', async () => {

@@ -6,12 +6,14 @@ import { nativeEvents, type NativeEvent, type NativeVisibility } from './interac
 
 export type BoundAnimation = AnimationClip & {nativeEvents: NativeEvent[], nativeFPS: number, nativeVisibility: NativeVisibility, visibility: VisibilityCurve[]}
 
+const coordinateSystem = 'glTF'
+
 type Rig = {
     version: 1,
     key: string,
     parents: number[],
     jointNodes: number[],
-    coordinateSystem: 'native-Y-down-to-glTF-Y-up-RxPi',
+    coordinateSystem: typeof coordinateSystem,
 }
 
 function check(value: unknown, message: string): asserts value {
@@ -22,7 +24,7 @@ export function rigMetadata(gltf: GLTF): Rig {
     const json = gltf.parser.json
     const rig = json.extras?.atpRig as Rig
     check(rig?.version === 1 && /^[a-f0-9]{64}$/.test(rig.key)
-        && rig.coordinateSystem === 'native-Y-down-to-glTF-Y-up-RxPi', 'Unsupported rig metadata')
+        && rig.coordinateSystem === coordinateSystem, 'Unsupported rig metadata')
     check(Array.isArray(rig.parents) && rig.parents.length > 0
         && rig.parents.length === rig.jointNodes?.length, 'Invalid rig layout')
     check(new Set(rig.jointNodes).size === rig.parents.length, 'Duplicate joint nodes')
@@ -57,7 +59,7 @@ async function nativeSampler(animation: GLTF, parents: number[], frameCount: num
     const json = animation.parser.json
     const metadata = json.extras.atpClip.nativeSampling
     if (metadata === undefined) return undefined
-    check(metadata && metadata.version === 1
+    check(metadata && metadata.version === 2
         && Object.keys(metadata).sort().join(',') === 'rotations,translations,version', 'Unsupported native sampling profile')
     const count = frameCount * parents.length
     async function values(index: unknown, width: number, type: string) {

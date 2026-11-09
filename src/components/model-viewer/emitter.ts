@@ -164,7 +164,10 @@ export async function createNativeEmitters(gltf: GLTF, scene: THREE.Scene, camer
     }
     } catch (error) { disposeTextures(); throw error }
     const scale = gltf.parser.json.nodes?.[0]?.scale ?? [1, 1, 1]
-    if (!vector(scale, 3) || scale[0] <= 0 || scale.some(n => n !== scale[0])) { disposeTextures(); throw new Error('Invalid native emitter model scale') }
+    if (profiles.length > 0 && (!vector(scale, 3) || scale[0] <= 0 || scale.some(n => n !== scale[0]))) {
+        disposeTextures()
+        throw new Error('Invalid native emitter model scale')
+    }
     type Instance = {name: string, simulation: ReturnType<typeof createEmitterSimulation>, group: THREE.Group, meshes: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>[]}
     const instances: Instance[] = []
     let disposed = false

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import { Object3D, Scene, SkinnedMesh, Vector3, Vector4 } from 'three'
 import { loadGLB, disposeGLTF, type AnimationRef } from '../../src/components/model-viewer/assets'
 import { prepareNativeEyes } from '../../src/components/model-viewer/interactions'
-import type { GLTF } from 'three/addons/loaders/GLTFLoader.js'
+import { GLTFLoader, type GLTF } from 'three/addons/loaders/GLTFLoader.js'
 import { downloadModel } from '../../src/components/model-viewer/download'
 
 for (const [vertices, componentType] of [[65535, 5123], [65536, 5125], [65537, 5125]]) {
@@ -24,7 +24,7 @@ for (const [vertices, componentType] of [[65535, 5123], [65536, 5125], [65537, 5
                 {bufferView: 1, componentType: 5125, count: indexCount, type: 'SCALAR'},
             ],
             extras: {atpRig: {version: 1, key: 'a'.repeat(64), parents: [-1], jointNodes: [1],
-                coordinateSystem: 'native-Y-down-to-glTF-Y-up-RxPi'}},
+                coordinateSystem: 'glTF'}},
         }
         const model = {scene, parser: {json,
             associations: new Map([[root, {nodes: 0}], [joint, {nodes: 1}]]),
@@ -53,7 +53,7 @@ test('viewer uses standard weights while client download preserves native attrib
         nodes: [{children: [1]}, {}, {mesh: 0, skin: 0}], skins: [{joints: [1]}],
         meshes: [], accessors: [], bufferViews: [], buffers: [],
         extras: {atpRig: {version: 1, key: 'a'.repeat(64), parents: [-1], jointNodes: [1],
-            coordinateSystem: 'native-Y-down-to-glTF-Y-up-RxPi'}}}
+            coordinateSystem: 'glTF'}}}
     const chunks: Uint8Array[] = []
     let length = 0
     function attribute(values: Float32Array | Uint16Array, type: string, width: number) {
@@ -66,15 +66,15 @@ test('viewer uses standard weights while client download preserves native attrib
     }
     const weights = new Float32Array([16048 / 65535, 8845 / 65535, 13012 / 65535, 4287 / 65535,
         1, 0, 0, 0, 1, 0, 0, 0])
-    const attributes = {POSITION: attribute(new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1]), 'VEC3', 3),
+    const attributes = {POSITION: attribute(new Float32Array([-1, 0, 0, 0, -1, 0, 0, 0, -1]), 'VEC3', 3),
         JOINTS_0: attribute(new Uint16Array(12), 'VEC4', 4),
         WEIGHTS_0: attribute(new Float32Array([1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]), 'VEC4', 4),
         _NATIVE_JOINTS: attribute(new Uint16Array(12), 'VEC4', 4),
         _NATIVE_WEIGHTS: attribute(weights, 'VEC4', 4)}
     const indices = attribute(new Uint16Array([0, 1, 2, 0]), 'SCALAR', 1)
     json.accessors[indices].count = 3
-    json.accessors[attributes.POSITION].min = [0, 0, 0]
-    json.accessors[attributes.POSITION].max = [1, 1, 1]
+    json.accessors[attributes.POSITION].min = [-1, -1, -1]
+    json.accessors[attributes.POSITION].max = [0, 0, 0]
     json.meshes.push({name: 'native', primitives: [{attributes, indices}]})
     json.skins[0].inverseBindMatrices = attribute(new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]), 'MAT4', 16)
     json.buffers.push({byteLength: length})
@@ -92,20 +92,29 @@ test('viewer uses standard weights while client download preserves native attrib
     try {
         model = await loadGLB({path: 'models/3d/native.glb', bytes: data.byteLength, sha256: 'a'.repeat(64), rigKey: 'a'.repeat(64)}, new AbortController().signal)
         const mesh = model.scene.children.find(object => object instanceof SkinnedMesh) as SkinnedMesh
-        assert.deepEqual(Array.from(mesh.geometry.attributes.skinWeight.array), [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0])
-        mesh.skeleton.bones[0].position.x = 2
         model.scene.updateMatrixWorld(true)
-        const point = mesh.applyBoneTransform(0, new Vector3(1, 0, 0))
-        assert.equal(point.x, 3)
+        const rest = mesh.getVertexPosition(0, new Vector3()).applyMatrix4(mesh.matrixWorld)
+        assert.deepEqual(rest.toArray(), [-1, 0, 0])
+        assert.deepEqual(Array.from(mesh.geometry.attributes.skinWeight.array), [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0])
+        mesh.skeleton.bones[0].position.x = -2
+        model.scene.updateMatrixWorld(true)
+        const point = mesh.applyBoneTransform(0, new Vector3(-1, 0, 0))
+        assert.equal(point.x, -3)
         // Additional-actor placement moves both the rig and mesh. CPU bounds
         // must agree with GPU skinning using the normalized standard weights.
         model.scene.position.set(4, 5, 6)
         model.scene.updateMatrixWorld(true)
-        const placed = mesh.applyBoneTransform(0, new Vector3(1, 0, 0)).applyMatrix4(mesh.matrixWorld)
+        const placed = mesh.applyBoneTransform(0, new Vector3(-1, 0, 0)).applyMatrix4(mesh.matrixWorld)
         assert.ok(placed.distanceTo(new Vector3(point.x + 4, 5, 6)) < 1e-6)
-        const homogeneous = mesh.applyBoneTransform(0, new Vector4(1, 0, 0, 1)).applyMatrix4(mesh.matrixWorld)
+        const homogeneous = mesh.applyBoneTransform(0, new Vector4(-1, 0, 0, 1)).applyMatrix4(mesh.matrixWorld)
         assert.ok(new Vector3(homogeneous.x, homogeneous.y, homogeneous.z).distanceTo(placed) < 1e-6)
         const downloaded = await downloadModel(model, new Set([2]), [], new AbortController().signal, () => {})
+        const reopened = await new GLTFLoader().parseAsync(downloaded, '')
+        try {
+            reopened.scene.updateMatrixWorld(true)
+            const exported = reopened.scene.getObjectByProperty('isSkinnedMesh', true) as SkinnedMesh
+            assert.deepEqual(exported.getVertexPosition(0, new Vector3()).applyMatrix4(exported.matrixWorld).toArray(), rest.toArray())
+        } finally {disposeGLTF(reopened)}
         const size = new DataView(downloaded).getUint32(12, true)
         const output = JSON.parse(new TextDecoder().decode(new Uint8Array(downloaded, 20, size)))
         const attrs = output.meshes[0].primitives[0].attributes
@@ -121,7 +130,7 @@ function exportFixture() {
         nodes: [{name: 'Root', children: [1]}, {name: 'Joint'}, {mesh: 0, skin: 0}],
         meshes: [], skins: [{joints: [1], skeleton: 0}], accessors: [], bufferViews: [], buffers: [],
         extras: {atpRig: {version: 1, key: 'a'.repeat(64), parents: [-1], jointNodes: [1],
-            coordinateSystem: 'native-Y-down-to-glTF-Y-up-RxPi'}}}
+            coordinateSystem: 'glTF'}}}
     const chunks: Uint8Array[] = []
     let length = 0
     function bytes(value: Uint8Array) {
