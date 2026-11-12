@@ -12,7 +12,8 @@
             "1": "本站站长为 {ego}。",
             "2": "感谢 {bass} 协助本站实现通过好友码调取云存档的技术支持。",
             "3": "本网站所使用的字体是 {font}，是官游中的同款字体。",
-            "4": "本网站使用 {vue} 搭建，使本站工具的使用更具有交互性。"
+            "4": "本网站使用 {vue} 搭建，使本站工具的使用更具有交互性。",
+            "5": "感谢{melty}提供了部分素材"
           }
         },
         "title": "版权归属信息"
@@ -289,8 +290,24 @@
       }
     },
     "stats": {
+      "bit_ponies": "金币小马",
+      "bit_shops": "金币商店",
+      "critters": "小动物",
+      "gem_ponies": "宝石小马",
+      "pro_ponies": "专家小马",
       "stars": "星星数",
       "wh_collections": "热门收藏"
+    },
+    "stats_alt": {
+      "bit_ponies": "{count}金币小马",
+      "bit_shops": "{count}金币商店",
+      "critters": "{count}小动物",
+      "gem_ponies": "{count}宝石小马",
+      "pro_ponies": "{count}专家小马",
+      "stars": "{count}星星"
+    },
+    "stats_info": {
+      "shop": "包含金币商店，小动物，饲料农场和摩天轮。"
     },
     "title": "物品栏"
   },
