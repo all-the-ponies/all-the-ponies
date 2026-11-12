@@ -13,26 +13,26 @@
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
-    "@cloudflare/vite-plugin": "^1.67.0",
+    "@cloudflare/vite-plugin": "^1.68.0",
     "@floating-ui/vue": "^2.0.1",
     "@nozbe/microfuzz": "^1.0.0",
     "@vikejs/hono": "^0.4.1",
     "@vueuse/core": "^15.0.0",
     "accept-language": "^3.0.20",
-    "hono": "^4.13.16",
+    "hono": "^4.13.17",
     "ky": "^2.2.0",
     "papaparse": "^5.7.0",
     "pinia": "^4.1.0",
     "pinia-plugin-persistedstate": "^4.7.1",
     "sitemap": "^10.0.0",
     "v-lazy-image": "^2.1.2",
-    "vike": "^0.4.269",
+    "vike": "^0.4.270",
     "vike-vue": "^0.9.16",
     "vike-vue-pinia": "^0.2.6",
-    "vue": "^3.5.44",
+    "vue": "^3.5.45",
     "vue-i18n": "^11.4.18",
     "vue-virtual-scroller": "^3.0.5",
-    "wrangler": "^4.157.0"
+    "wrangler": "^4.160.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.6",
@@ -43,13 +43,13 @@
     "@vue/tsconfig": "^0.9.1",
     "navigation-api-types": "^0.6.1",
     "npm-run-all2": "^9.0.4",
-    "sass-embedded": "^1.107.1",
+    "sass-embedded": "^1.108.2",
     "tsx": "^4.23.15",
-    "typescript": "~7.0.2",
-    "vite": "^8.3.5",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.8",
     "vite-plugin-pwa": "^2.0.0",
     "vite-plugin-vue-devtools": "^8.2.1",
-    "vue-tsc": "^3.3.14",
+    "vue-tsc": "3.3.11",
     "workbox-window": "^7.4.1"
   }
 }
