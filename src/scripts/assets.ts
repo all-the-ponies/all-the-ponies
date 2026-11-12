@@ -12,6 +12,7 @@ export function createAssetUrl(
         return null
     }
 
+    // Resolve all to direct to reduce the amount of requests hitting the worker
     direct = true
 
     let basePath = 'game-assets/'
