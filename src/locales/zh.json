@@ -307,7 +307,10 @@
       "stars": "{count}星星"
     },
     "stats_info": {
-      "shop": "包含金币商店，小动物，饲料农场和摩天轮。"
+      "bit_ponies": "能通过任务收集金币的小马",
+      "gem_ponies": "能通过任务收集宝石的小马",
+      "shop": "包含金币商店，小动物，饲料农场和摩天轮。",
+      "transformable": "有替代形态的小马"
     },
     "title": "物品栏"
   },
@@ -555,6 +558,7 @@
       "pro_rate": "加成增益速率"
     },
     "game_order": "推出顺序",
+    "price": "价格",
     "relevance": "相关性",
     "reverse": "倒序",
     "shop": {
