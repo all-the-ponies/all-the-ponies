@@ -1,12 +1,12 @@
-import ky, { HTTPError } from 'ky'
+import { HTTPError } from 'ky'
 import { computed, ref, toValue, unref, watch, watchEffect, type MaybeRef } from 'vue'
 import { language } from '../globals'
 import type { CategoryName, CategoryType, CollectionData, CollectionType, FashionShowEntry, FortuneShop, FortuneShopItem, GameObject, GameObjectId, GameObjects, GroupQuests, TaskEntry, TasksData, TranslatableString } from '../types/gameDataTypes'
 import type { MazeBossType, MazeChestType, MazeData, MazePonyType } from '../types/mazeDataTypes'
-import { createAssetUrl } from './assets'
+import { fetchAssetJson } from './fetchAssets'
 import { removeSymbols } from './common'
 import { getPageContext } from 'vike/getPageContext'
-import { computedAsync, isClient } from '@vueuse/core'
+import { computedAsync } from '@vueuse/core'
 import { getGlobalContext } from 'vike'
 import type { GlobalContext } from 'vike/types'
 
@@ -128,33 +128,6 @@ export async function fetchGameData() {
     //     return
     // }
 
-    const isSitemap = typeof process !== 'undefined' && process.env.GENERATING_SITEMAP === 'true'
-
-    let manifest: Record<string, string> = {}
-    if (isSitemap || isClient) {
-        manifest = await ky<Record<string, string>>(createAssetUrl('manifest.json', {direct: true})).json()
-    }
-
-
-    async function fetchData<T>(key: string): Promise<T> {
-        if (!isSitemap && !isClient) {
-            const cloudflareModule = 'cloudflare:workers'
-            const { env } = await import(/* @vite-ignore */ cloudflareModule)
-            const object = await env.GAME_ASSETS_BUCKET.get(key)
-            if (!object) {
-                throw new Error(`Could not find asset ${key}`)
-            }
-            return await object.json() as T
-        } else {
-            const url = new URL(createAssetUrl(key))
-            if (manifest[key]) {
-                url.searchParams.set('v', manifest[key])
-            }
-
-            return await ky<T>(url).json()
-        }
-    }
-
     loading = true
     error = null
     try {
@@ -167,13 +140,13 @@ export async function fetchGameData() {
             collections,
             mazeData,
         ] = await Promise.all([
-            fetchData<GameVersion>('game_version.json'),
-            fetchData<GameObjects>('game_objects.json'),
-            fetchData<GroupQuests>('group_quests.json'),
-            fetchData<FortuneShop>('fortune_shop.json'),
-            fetchData<TasksData>('tasks_data.json'),
-            fetchData<CollectionData>('collection_data.json'),
-            fetchData<MazeData>('maze_data.json'),
+            fetchAssetJson<GameVersion>('game_version.json'),
+            fetchAssetJson<GameObjects>('game_objects.json'),
+            fetchAssetJson<GroupQuests>('group_quests.json'),
+            fetchAssetJson<FortuneShop>('fortune_shop.json'),
+            fetchAssetJson<TasksData>('tasks_data.json'),
+            fetchAssetJson<CollectionData>('collection_data.json'),
+            fetchAssetJson<MazeData>('maze_data.json'),
         ])
         resolveReady()
         loaded = true

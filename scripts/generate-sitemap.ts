@@ -6,6 +6,13 @@ import { resolve } from 'path'
 import { Readable } from 'stream'
 import { SitemapAndIndexStream, SitemapStream } from 'sitemap'
 
+try {
+    // Load DEV_ASSETS_URL (and anything else) from .env when present.
+    process.loadEnvFile?.()
+} catch {
+    // .env is optional, e.g. in CI.
+}
+
 process.env.GENERATING_SITEMAP = 'true'
 
 const gameData = await fetchGameData()
