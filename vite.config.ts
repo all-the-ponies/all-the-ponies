@@ -10,9 +10,16 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 
 // https://vite.dev/config/
+function isEnabled(value: string | undefined) {
+  return value === '1' || value?.toLowerCase() === 'true'
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const devAssetsUrl = process.env.DEV_ASSETS_URL ?? env.DEV_ASSETS_URL ?? ''
+  // Remote bindings need Cloudflare auth, so only use them when explicitly
+  // enabled (e.g. CF_REMOTE_BINDINGS=true in .env).
+  const remoteBindings = isEnabled(process.env.CF_REMOTE_BINDINGS ?? env.CF_REMOTE_BINDINGS)
 
   return {
     base: '/',
@@ -25,6 +32,7 @@ export default defineConfig(({ mode }) => {
     
     cloudflare({
       viteEnvironment: {name: 'ssr'},
+      remoteBindings,
     }),
     vike(),
     VitePWA({

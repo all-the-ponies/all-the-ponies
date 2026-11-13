@@ -106,7 +106,19 @@ async function resolveAssetSource(): Promise<AssetSource> {
         if (!isBrowser && !isSitemap()) {
             const bucket = await getBucket()
             if (bucket) {
-                return { kind: 'r2', bucket }
+                // The local R2 binding is simulated and starts empty, so only
+                // use it once it has actually been populated. This also means
+                // local development falls back to the public assets URL when
+                // remote bindings are disabled.
+                const manifest = await bucket.head(MANIFEST_KEY)
+                if (manifest) {
+                    return { kind: 'r2', bucket }
+                }
+
+                console.warn(
+                    `GAME_ASSETS_BUCKET has no ${MANIFEST_KEY}; `
+                    + `falling back to ${PUBLIC_ASSETS_URL}`,
+                )
             }
         }
 

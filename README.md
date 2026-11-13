@@ -28,6 +28,20 @@ And then simply run the dev server
 npm run dev
 ```
 
+By default the dev server runs all Cloudflare bindings locally, so you don't need to be logged into Cloudflare. The local R2 bucket starts empty, so game data is read from `https://assets.all-the-ponies.com/` unless you configure a different source.
+
+To use a local asset server (see the [game-data](https://github.com/all-the-ponies/game-data/) repository), set `DEV_ASSETS_URL` in `.env`:
+
+```shell
+DEV_ASSETS_URL="http://localhost:3000/all-the-ponies-assets"
+```
+
+To use the real remote bindings instead, set this in `.env` and keep using the same `npm run dev` command. This requires `wrangler login` or a `CLOUDFLARE_API_TOKEN` (this is really only if you actually have access or set up your own r2 instance, normally you won't use this).
+
+```sh
+CF_REMOTE_BINDINGS="true"
+```
+
 To build, run this
 
 ```sh

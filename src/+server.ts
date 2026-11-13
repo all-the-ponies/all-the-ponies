@@ -1,8 +1,9 @@
 import vike from '@vikejs/hono'
 import { Hono } from 'hono'
+import type { Context } from 'hono'
 import type { ContentfulStatusCode } from 'hono/utils/http-status';
 import type { Server } from 'vike/types'
-import { ensureTrailingSlash, getDevAssetsUrl } from './scripts/assetConfig'
+import { ensureTrailingSlash, getDevAssetsUrl, PUBLIC_ASSETS_URL } from './scripts/assetConfig'
 
 async function getHash(text: string, algorithm: string = 'SHA-256'): Promise<string> {
   const encoded = new TextEncoder().encode(text)
@@ -11,6 +12,47 @@ async function getHash(text: string, algorithm: string = 'SHA-256'): Promise<str
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
 
   return hashHex
+}
+
+
+async function proxyAsset(
+    c: Context<{ Bindings: Cloudflare.Env }>,
+    base: string,
+    key: string,
+    url: URL,
+    { noStore = false }: { noStore?: boolean } = {},
+) {
+    const upstream = new URL(
+        key + url.search,
+        ensureTrailingSlash(base),
+    )
+
+    const headers = new Headers(c.req.raw.headers)
+    headers.delete('host')
+
+    try {
+        const response = await fetch(upstream, {
+            method: c.req.method,
+            headers,
+            redirect: 'follow',
+        })
+
+        const responseHeaders = new Headers(response.headers)
+        if (noStore) {
+            // Local files change often; don't let the browser hold onto
+            // an old version while testing.
+            responseHeaders.set('cache-control', 'no-store')
+        }
+
+        return new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: responseHeaders,
+        })
+    } catch (e) {
+        console.error('Failed to proxy asset', key, e)
+        return c.text('Asset proxy unavailable', 502)
+    }
 }
 
 
@@ -25,35 +67,15 @@ function getApp() {
 
         const devAssetsUrl = getDevAssetsUrl()
         if (devAssetsUrl) {
-            const upstream = new URL(
-                key + url.search,
-                ensureTrailingSlash(devAssetsUrl),
-            )
+            return proxyAsset(c, devAssetsUrl, key, url, { noStore: true })
+        }
 
-            const headers = new Headers(c.req.raw.headers)
-            headers.delete('host')
+        const bucket = c.env.GAME_ASSETS_BUCKET
 
-            try {
-                const response = await fetch(upstream, {
-                    method: c.req.method,
-                    headers,
-                    redirect: 'follow',
-                })
-
-                const responseHeaders = new Headers(response.headers)
-                // Local files change often; don't let the browser hold onto
-                // an old version while testing.
-                responseHeaders.set('cache-control', 'no-store')
-
-                return new Response(response.body, {
-                    status: response.status,
-                    statusText: response.statusText,
-                    headers: responseHeaders,
-                })
-            } catch (e) {
-                console.error('Failed to proxy asset', key, e)
-                return c.text('Asset proxy unavailable', 502)
-            }
+        if (!bucket) {
+            // e.g. running locally without remote bindings. Serve the same
+            // assets the app uses as its fallback.
+            return proxyAsset(c, PUBLIC_ASSETS_URL, key, url)
         }
 
         console.log('Fetching asset', key)
@@ -64,13 +86,13 @@ function getApp() {
 
         switch (c.req.method) {
             case 'GET':
-                object = await c.env.GAME_ASSETS_BUCKET.get(key, {
+                object = await bucket.get(key, {
                   onlyIf: requestHeaders,
                   range: requestHeaders,
                 })
                 break
             case 'HEAD':
-                object = await c.env.GAME_ASSETS_BUCKET.head(key)
+                object = await bucket.head(key)
                 break
             default:
                 return c.text('Method not allowed', 405, {
