@@ -1,4 +1,4 @@
-import { createAssetUrl } from '../../scripts/assets'
+import { fetchAsset } from '../../scripts/fetchAssets'
 import type { NativeEvent } from './interactions'
 import type { GLTF } from 'three/addons/loaders/GLTFLoader.js'
 
@@ -120,10 +120,9 @@ function checkAdditionalActor(actor: AdditionalActorRef) {
 
 async function fetchJson(path: string, signal: AbortSignal, version?: string) {
     signal.throwIfAborted()
-    const url = new URL(createAssetUrl(path))
-    if (version) url.searchParams.set('v', version)
-    const response = await fetch(url, { signal, credentials: 'omit', redirect: 'error', cache: 'no-cache' })
-    check(response.ok, `3D catalogue request failed (${response.status})`)
+    const response = await fetchAsset(path, {
+        signal, version, credentials: 'omit', redirect: 'error', cache: 'no-cache', timeout: false,
+    })
     const value: unknown = await response.json()
     signal.throwIfAborted()
     return value
@@ -270,10 +269,10 @@ export async function fetchBytes(ref: AssetRef, signal: AbortSignal): Promise<Ar
         || ref.path.startsWith(`models/3d/${ref.sha256}/`)
         || ref.path.startsWith(`models/3d/anim/${ref.sha256}/`)
         || ref.path.endsWith(`_wardrobe_${ref.sha256}.glb`)
-    const response = await fetch(createAssetUrl(ref.path), {
-        signal, credentials: 'omit', redirect: 'error', cache: immutable ? 'default' : 'no-cache',
+    const response = await fetchAsset(ref.path, {
+        signal, version: ref.sha256, credentials: 'omit', redirect: 'error',
+        cache: immutable ? 'default' : 'no-cache', timeout: false,
     })
-    check(response.ok, `3D resource request failed (${response.status})`)
     const bytes = await response.arrayBuffer()
     signal.throwIfAborted()
     check(bytes.byteLength === ref.bytes, '3D resource size mismatch')

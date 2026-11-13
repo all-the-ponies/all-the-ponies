@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "compatibility_date": "2026-07-16",
   "name": "all-the-ponies",
-  "main": "vike:server-entry",
+  "main": "vike:server",
   // Only required if your app (or one of your libraries) uses a Node.js API
   "compatibility_flags": ["nodejs_compat"],
   "observability": {

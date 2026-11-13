@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { PlayerStatName } from "@/scripts/api.types";
-import { computedAsync } from "@vueuse/core";
+import { statNameMap } from "@/scripts/stats";
+import type { PlayerStatName } from "@/types/gameDataTypes";
 import { computed } from "vue";
 
 const props = defineProps<{
@@ -11,49 +11,13 @@ const props = defineProps<{
 const stat = computed(() => props.stat);
 const count = computed(() => props.count);
 
-const statNameMap: Record<PlayerStatName, {image: string, string: string}> = {
-  pony: {
-    image: "ponies",
-    string: "player_card.player_stat.ponies",
-  },
-  pony_alt: {
-    image: "transformables",
-    string: "player_card.player_stat.transformables",
-  },
-  shop: {
-    image: "shops",
-    string: "player_card.player_stat.shops",
-  },
-  gem_shop: {
-    image: "gem-shops",
-    string: "player_card.player_stat.gem_shops",
-  },
-  costume: {
-    image: "costumes",
-    string: "player_card.player_stat.costumes",
-  },
-  collection: {
-    image: "collections",
-    string: "player_card.player_stat.collections",
-  },
-  hots: {
-    image: "wh-collections",
-    string: "player_card.player_stat.wh_collections",
-  },
-}
+const statImage = computed(() => statNameMap[stat.value].image)
 
-const statImage = computedAsync(async () => {
-  return (
-    await import(
-      `@/assets/images/ui/player-card/stat/stat-${statNameMap[stat.value].image}.png`
-    )
-  ).default;
-})
 </script>
 
 <template>
   <svg viewBox="0 0 25 12.619566" width="25" height="12.619566" role="img">
-    <title>{{ $t(statNameMap[stat].string, count) }}</title>
+    <title>{{ $t(statNameMap[stat].alt, count) }}</title>
     <g transform="matrix(1.0000094,0,0,1.0000094,-40.424552,-15.045318)" aria-hidden="true">
       <g transform="matrix(0.05587313,0,0,0.15736487,45.451381,21.659925)">
         <path

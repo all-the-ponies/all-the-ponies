@@ -1,6 +1,6 @@
 import { FRIEND_CODE_PATTERN } from "@/globals/constants"
 import api from "@/scripts/api"
-import type { PlayerStatName } from "@/scripts/api.types"
+import type { PlayerStatName } from "@/types/gameDataTypes"
 import { notNullIsh } from "@/scripts/common"
 import { extendedDeserialize, extendedSerialize } from "@/scripts/extendedSerialize"
 import { getCollection, getCollectionData, getGameObjects, getMazePony, getObject } from "@/scripts/gameData"
@@ -17,7 +17,7 @@ interface GenericInventoryEntry {
 }
 
 interface PonyInventoryEntry extends GenericInventoryEntry {
-    level: 0 | 1 | 2 | 3 | 4 | 5 | null,
+    level: number | null,
     minigame: string,
 }
 
@@ -43,6 +43,7 @@ function createBaseSave() {
             currency: {
                 gems: 0,
                 bits: 0,
+                hearts: 0,
             },
             player_card: {
                 name: {
@@ -74,6 +75,7 @@ function createBaseSave() {
         cutieMarks: new Set<GameObjectId>(),
         notes: {} as Record<GameObjectId, string>,
         critters: {} as Record<GameObjectId, number>,
+        tokens: {} as Record<GameObjectId, number>,
 
         mazeProgress: createBaseMazeProgress()
     }
@@ -279,6 +281,10 @@ export const useSaveStore = defineStore('save', {
             })
         },
 
+        getTokenCount(id: GameObjectId) {
+            return this.tokens[id] ?? null
+        },
+
 
         addMazeBlock(x: number, y: number) {
             let block = this.mazeProgress.map.blocks.find(tile => tile.x === x && tile.y === y)
@@ -358,6 +364,7 @@ export const useSaveStore = defineStore('save', {
             newSave.playerInfo.totalPlaytime = saveData.player_info.total_playtime
             newSave.playerInfo.currency.gems = saveData.player_info.currency.gems
             newSave.playerInfo.currency.bits = saveData.player_info.currency.bits
+            newSave.playerInfo.currency.hearts = saveData.player_info.currency.hearts
             newSave.playerInfo.level = saveData.player_info.level
             newSave.playerInfo.xp = saveData.player_info.xp
             newSave.playerInfo.required_xp = saveData.player_info.required_xp
@@ -402,6 +409,7 @@ export const useSaveStore = defineStore('save', {
                 Object.entries(saveData.inventory.critters)
                 .map(([critter, count]) => [getObject(critter, 'pony').critter_farm, count])
             )
+            newSave.tokens = Object.fromEntries(Object.entries(saveData.inventory.tokens))
             newSave.costumeParts = new Set(saveData.inventory.costume_parts)
             newSave.avatars = new Set(saveData.inventory.avatars)
             newSave.avatarFrames = new Set(saveData.inventory.avatar_frames)
@@ -494,6 +502,10 @@ export const useSaveStore = defineStore('save', {
         {
             pick: ['critters'],
             key: 'critters'
+        },
+        {
+            pick: ['tokens'],
+            key: 'tokens'
         },
         {
             pick: ['notes'],

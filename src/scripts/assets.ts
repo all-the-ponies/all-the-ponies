@@ -1,6 +1,10 @@
-import { isDev } from "./common"
+import { ASSETS_PROXY_PATH, getDevAssetsUrl, PUBLIC_ASSETS_URL } from './assetConfig'
 
 interface Options {
+    /**
+     * Force the canonical public asset URL, bypassing the dev proxy.
+     * Used where an absolute public URL is required, such as OG images.
+     */
     direct?: boolean
 }
 
@@ -12,32 +16,13 @@ export function createAssetUrl(
         return null
     }
 
-    direct = true
+    const key = asset.replace(/^\//, '')
 
-    let basePath = 'game-assets/'
-
-    let baseUrl: string
-    if (direct || (typeof process !== 'undefined' && process.env.GENERATING_SITEMAP)) {
-        baseUrl = 'https://assets.all-the-ponies.com/'
-        basePath = ''
-    } else if (typeof location !== 'undefined') {
-        baseUrl = location.origin
-    } else if (isDev()) {
-        baseUrl = 'http://localhost:5000'
-    } else if (typeof __BASE_URL__ !== 'undefined') {
-        baseUrl = __BASE_URL__
-    } else {
-        baseUrl = 'https://assets.all-the-ponies.com/'
-        basePath = ''
+    if (!direct && getDevAssetsUrl()) {
+        // Use the same-origin dev proxy so asset URLs also work when the
+        // site is opened from another device on the local network.
+        return ASSETS_PROXY_PATH + key
     }
 
-    if (!baseUrl.endsWith('/')) {
-        baseUrl += '/'
-    }
-    
-    baseUrl = baseUrl + basePath
-
-    const url = new URL(asset, baseUrl)
-    // console.log('Getting asset', String(url))
-    return String(url)
+    return String(new URL(key, PUBLIC_ASSETS_URL))
 }

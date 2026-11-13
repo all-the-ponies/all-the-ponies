@@ -1,6 +1,6 @@
 <script lang="ts" setup generic="ITEM extends {id: string | number, [key: string]: any}">
 import { all, removeSymbols } from '@/scripts/common'
-import createFuzzySearch from '@nozbe/microfuzz'
+import createFuzzySearchModule from '@nozbe/microfuzz'
 import { computedAsync, isClient, useElementSize, useMounted } from '@vueuse/core'
 import { usePageContext } from 'vike-vue/usePageContext'
 import { modifyUrl } from 'vike/modifyUrl'
@@ -9,6 +9,12 @@ import { WindowScroller } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
 import DialogComponent from './DialogComponent.vue'
 import type { FilterFunctionType, SortFunctionType } from '@/types/searchTypes.ts'
+
+// @nozbe/microfuzz is published as CommonJS. Depending on whether Vite/Node
+// loads it directly or bundles it, the default import can resolve either to the
+// function itself or to the CommonJS module object that contains it.
+const createFuzzySearch: typeof createFuzzySearchModule =
+    (createFuzzySearchModule as any).default ?? createFuzzySearchModule
 
 const pageContext = usePageContext()
 const isMounted = useMounted()

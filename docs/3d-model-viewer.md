@@ -9,7 +9,54 @@ Existing inventory/variant controls are unchanged. Costume entries use verified
 native outfit models or standalone native part previews without inventing an owner.
 Pony entries may also provide an optional, owner-specific wardrobe bundle.
 
-## Run the demo with game models
+## Review full ATP pages with local S3
+
+Use this branch with [game-data PR #1](https://github.com/all-the-ponies/game-data/pull/1).
+Start its Silo service with `docker compose up -d` from the game-data checkout.
+The included Compose file creates the `all-the-ponies-assets` bucket and grants
+anonymous read access. Configure game-data's upload environment (`.env.dev`
+for `--env dev`) with the local endpoint:
+
+```dotenv
+S3_ENDPOINT=http://localhost:3000
+S3_ACCESS_KEY=testing
+S3_SECRET_KEY=testing123
+S3_REGION=us-east-1
+S3_BUCKET=all-the-ponies-assets
+```
+
+Run the producer's normal build with `--upload` and the actual input version,
+following its [setup and source-input instructions](https://github.com/MeltyRio/game-data/blob/codex/3d-resource-association/README.md).
+Use a complete output containing the normal page data, locales, images,
+`models_3d.json` and its referenced `models/3d/` files. The existing uploader
+publishes those binaries, the catalogue and the root manifest into this bucket.
+A bucket containing only GLBs cannot provide ATP's detail pages.
+
+In the ATP checkout, set the resource source in `.env`:
+
+```dotenv
+DEV_ASSETS_URL=http://localhost:3000/all-the-ponies-assets
+```
+
+Then use the regular application entry point:
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Open `http://localhost:5000` and navigate to Pony, Pet or Costume detail pages.
+For a generated entry such as `/en/pony/Pony_Breezie_Fleur_Dis_Lee`, click its
+3D button and exercise animations, available wardrobe parts and GLB downloads.
+Use IDs actually present in the same build's page data and model catalogue.
+ATP's shared asset loader selects the local source, and browser requests pass
+through the application's same-origin `/game-assets/` route. Local development
+uses simulated Cloudflare bindings by default and needs no Cloudflare login.
+The [main development instructions](../README.md#development) cover source
+selection and optional remote bindings.
+
+## Focused viewer demo
+
 
 Use this ATP PR together with [game-data PR #1](https://github.com/all-the-ponies/game-data/pull/1)
 (`MeltyRio/game-data`, branch `codex/3d-resource-association`). Conversion and
@@ -87,10 +134,10 @@ overrides the page port. Missing `MODEL_VIEWER_ASSETS` or an unreadable catalogu
 stops startup with instructions. There is no built-in model or generated fallback.
 Restart the demo after regenerating the catalogue.
 
-The page uses the actual ATP viewer/dialog components, without booting the whole
-ATP site. A test-only asset resolver serves the selected output from a second
-local HTTP origin to exercise CORS and manifest serialization. Production keeps
-ATP's existing `createAssetUrl`; this demo does not upload or contact its CDN.
+The focused page loads ATP's viewer/dialog components and a model picker. Its
+local Vite proxy serves the selected output through `/game-assets/` using the
+same shared asset loader. It exercises catalogue serialization and component
+behavior. Full-page and upload integration use the local S3 workflow above.
 
 ### Generate a local output when needed
 
@@ -205,8 +252,11 @@ has a checked byte count and rig compatibility metadata; its SHA-256 identifies
 the generated asset without being recomputed in the browser.
 Embedded textures and buffers prevent hidden external GLB dependencies.
 
-Fixed model keys use `Cache-Control: no-cache` and the viewer requests cache
-revalidation. Hash-versioned wardrobe, animation and anonymous model keys retain normal caching.
+GLB requests carry their own catalogue SHA-256 in a `v` query parameter. This
+changes the browser and Service Worker cache key when a fixed Object ID model
+changes. Fixed model keys also use `Cache-Control: no-cache` and request cache
+revalidation. Content-addressed wardrobe, animation and anonymous model keys
+retain normal caching.
 Publishing is not atomic: a failed upload can replace some model files while
 leaving the previous catalogue. An old catalogue may then fail its size or
 rig check. After publication finishes, reloading the page reads the latest
@@ -222,8 +272,9 @@ first release of this viewer with the matching game-data producer: make the
 viewer available before publishing its first v2 catalogue and referenced assets.
 
 The catalogue is fetched when opening the viewer with `credentials: omit`;
-Three.js and WebGL initialize at that point. Relative keys are resolved with
-ATP's CDN-aware helper. External URLs/path traversal in catalogue entries and
+Three.js and WebGL initialize at that point. Requests use ATP's shared
+`fetchAsset` source selection, including the development proxy. Catalogue resolution
+reads the root manifest afresh and uses its published version for the catalogue. External URLs/path traversal in catalogue entries and
 external buffer/image URIs inside GLBs are rejected. Hosting must allow browser
 GET/CORS and deliver GLB bytes unchanged. CSP/cache/deployment policies remain
 owned by ATP.

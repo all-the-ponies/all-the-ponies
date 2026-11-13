@@ -17,7 +17,7 @@ async function resolve(schemaVersion: number, child: unknown) {
     const model = { ...actor('a', 'a'), additionalActor: child }
     const catalogue = {schemaVersion, models: {Pony_Test: model}}
     const version = createHash('sha256').update(JSON.stringify(catalogue)).digest('hex')
-    globalThis.fetch = async input => Response.json(String(input).includes('manifest.json')
+    globalThis.fetch = async input => Response.json(new Request(input).url.includes('manifest.json')
         ? { 'models_3d.json': version } : catalogue)
     return resolveModel('Pony_Test', new AbortController().signal)
 }

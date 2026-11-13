@@ -165,6 +165,7 @@ onBeforeUnmount(() => {
 <template>
     <div class="model-viewer" :class="{'export-selecting': exportMode}" :aria-busy="state.loading">
         <div class="model-host" ref="model-host">
+            <Loading v-if="!state.ready" role="status" :aria-label="t('model_viewer.loading')" />
             <button
                 class="preview-control rotation button-circle button-blue"
                 :disabled="!state.ready"
@@ -292,20 +293,18 @@ onBeforeUnmount(() => {
                 </template>
             </div>
         </details>
-        <p v-if="state.loading" class="model-status" role="status">{{ t('model_viewer.loading') }}</p>
     </div>
 </template>
 
 <style scoped>
 .model-viewer {
-    --model-height: min(36dvh, 19rem);
     --wardrobe-height: clamp(12rem, 38dvh, 20rem);
     --wardrobe-header-height: 2.35rem;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(8rem, 11rem);
     grid-template-rows: var(--model-height) auto;
-    gap: .5rem;
-    width: min(40rem, calc(95dvw - 1.3rem));
+    gap: var(--model-gap);
+    width: 100%;
     max-width: 100%;
 }
 .model-host {
@@ -648,75 +647,14 @@ onBeforeUnmount(() => {
     outline: 2px solid currentColor;
     outline-offset: -2px;
 }
-.model-status {
-    grid-column: 1 / -1;
-    margin: .2rem 0;
-    max-height: min(8dvh, 2.5rem);
-    overflow-y: auto;
-    overflow-wrap: anywhere;
-}
-/* Reserve room inside the dialog for ATP's title and close control. */
-:global(.dialog:has(.model-viewer)) {
-    position: fixed;
-    top: 50dvh;
-    left: 50dvw;
-    right: auto;
-    bottom: auto;
-    margin: 0;
-    translate: -50% -50%;
-    padding: 2rem .65rem .65rem;
-    min-height: 0;
-    max-height: calc(100dvh - 1rem);
-}
-:global(.dialog:has(.model-viewer) .dialog-content) {
-    margin: 0;
-}
-:global(.dialog:has(.model-viewer) .dialog-menu:empty) {
-    display: none;
-}
-:global(.dialog:has(.model-viewer) .dialog-header) {
-    top: .25rem;
-    translate: none;
-    max-width: calc(100% - 5rem);
-    padding: 0;
-    color: var(--blue);
-    text-shadow: none;
-    font-size: 1.3rem;
-    line-height: 1.2;
-    z-index: 1;
-}
-:global(.dialog:has(.model-viewer) .dialog-header::before) {
-    display: none;
-}
-:global(.dialog:has(.model-viewer) .dialog-close) {
-    /* Keep XButton's native 1.2em size and 0.2em icon padding at a 2rem diameter. */
-    font-size: calc(2rem / 1.2);
-    top: .1rem;
-    right: .3rem;
-    margin: 0;
-    translate: none;
-    z-index: 2;
-}
-:global(.dialog:has(.model-viewer):focus) {
-    outline: none;
-}
 @media (max-width: 480px) {
-    :global(.dialog:has(.model-viewer)) {
-        padding: 2rem .4rem .4rem;
-    }
     .preview-control {
         right: .25rem;
     }
     .rotation { top: .25rem; }
     .download-entry { bottom: .25rem; }
-    :global(.dialog:has(.model-viewer) .dialog-header) {
-        font-size: 1.1rem;
-    }
     .model-viewer {
-        --model-height: min(30dvh, 14rem);
-        width: calc(95dvw - .8rem);
         grid-template-columns: minmax(0, 1fr) minmax(6rem, .6fr);
-        gap: .35rem;
     }
     .model-actions {
         font-size: .85rem;
@@ -746,17 +684,6 @@ onBeforeUnmount(() => {
     .outfit-slots img {
         width: 1.2rem;
         height: 1.2rem;
-    }
-}
-@media (max-height: 500px) {
-    .model-viewer {
-        --model-height: 40dvh;
-    }
-    :global(.dialog:has(.model-viewer)) {
-        padding-top: 2rem;
-    }
-    :global(.dialog:has(.model-viewer) .dialog-header) {
-        font-size: 1.1rem;
     }
 }
 </style>

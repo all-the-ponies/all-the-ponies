@@ -61,6 +61,7 @@ export async function startDemo(port = 5195) {
         vite = await createServer({
             root, configFile: false, publicDir: path.join(root, 'public'),
             resolve: { alias: { '@': path.join(root, 'src') } },
+            define: { __DEV_ASSETS_URL__: JSON.stringify(assetOrigin) },
             optimizeDeps: { include: ['vue', 'vue-i18n', 'vike-vue/usePageContext', 'vike-vue/ClientOnly', 'three', 'three/addons/loaders/GLTFLoader.js', 'three/addons/controls/OrbitControls.js'] },
             plugins: [vue(), {
                 name: 'model-viewer-test-cdn',
@@ -79,18 +80,11 @@ export async function startDemo(port = 5195) {
                         response.end(await server.transformIndexHtml(request.url, source))
                     })
                 },
-                resolveId(source, importer) {
-                    if (source === '../../scripts/assets' && importer?.split('?')[0].endsWith('/model-viewer/assets.ts')) {
-                        return '\0model-viewer-test-assets'
-                    }
-                },
-                load(id) {
-                    if (id === '\0model-viewer-test-assets') {
-                        return `export const createAssetUrl = key => new URL(key, ${JSON.stringify(assetOrigin + '/')}).href`
-                    }
-                },
             }],
-            server: { host: '127.0.0.1', port, strictPort: true },
+            server: {
+                host: '127.0.0.1', port, strictPort: true,
+                proxy: {'/game-assets/': {target: assetOrigin, rewrite: key => key.replace(/^\/game-assets/, '')}},
+            },
         })
         await vite.listen()
     } catch (error) {
@@ -112,6 +106,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const server = await startDemo(Number(process.env.MODEL_VIEWER_PORT || 5195))
     console.log(`ATP 3D model viewer: ${server.url}`)
     console.log(`Using game-data output: ${path.resolve(process.env.MODEL_VIEWER_ASSETS)}`)
-    console.log('Model/animation assets are served by a separate local CORS-enabled origin.')
+    console.log('Model/animation assets use the shared loader through the local /game-assets/ proxy.')
     for (const name of ['SIGINT', 'SIGTERM']) process.once(name, async () => { await server.close(); process.exit(0) })
 }

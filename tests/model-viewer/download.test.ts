@@ -221,7 +221,7 @@ for (const duplicateNames of [false, true]) for (const initiallyVisible of [fals
                 visibility: names.map(meshName => ({meshName, times: [0, .5], values: [initiallyVisible, !initiallyVisible]}))}}
         const fetch = globalThis.fetch
         globalThis.fetch = async input => {
-            const path = new URL(String(input)).pathname.replace(/^\//, '')
+            const path = new URL(new Request(input).url).pathname.replace(/^\//, '')
             assert.ok(resources.has(path), `unexpected resource ${path}`)
             return new Response(resources.get(path))
         }
@@ -329,7 +329,7 @@ test('companion export keeps all native clips separate from pony clips and prese
         controller: 'native-first-then-random-v1' as const}
     const fetch = globalThis.fetch
     globalThis.fetch = async input => {
-        const path = new URL(String(input)).pathname.replace(/^\//, '')
+        const path = new URL(new Request(input).url).pathname.replace(/^\//, '')
         assert.ok(resources.has(path), `unexpected resource ${path}`)
         return new Response(resources.get(path))
     }

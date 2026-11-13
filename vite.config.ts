@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -8,11 +8,23 @@ import vike from 'vike/plugin'
 import { cloudflare } from '@cloudflare/vite-plugin'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const viewerDependencies = ['three', 'three/addons/loaders/GLTFLoader.js', 'three/addons/controls/OrbitControls.js']
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: '/',
-  plugins: [
+function isEnabled(value: string | undefined) {
+  return value === '1' || value?.toLowerCase() === 'true'
+}
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  const devAssetsUrl = process.env.DEV_ASSETS_URL ?? env.DEV_ASSETS_URL ?? ''
+  // Remote bindings need Cloudflare auth, so only use them when explicitly
+  // enabled (e.g. CF_REMOTE_BINDINGS=true in .env).
+  const remoteBindings = isEnabled(process.env.CF_REMOTE_BINDINGS ?? env.CF_REMOTE_BINDINGS)
+
+  return {
+    base: '/',
+    plugins: [
     vue(),
     vueJsx(),
     // vueDevTools({
@@ -21,6 +33,7 @@ export default defineConfig({
     
     cloudflare({
       viteEnvironment: {name: 'ssr'},
+      remoteBindings,
     }),
     vike(),
     VitePWA({
@@ -28,13 +41,17 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2,ttf}'],
         cleanupOutdatedCaches: true,
-        runtimeCaching: [
+        runtimeCaching: devAssetsUrl ? [] : [
           {
-            urlPattern: (options) => [
-              '/game-assets/game_version.json',
-              '/game-assets/game_objects.json',
-              '/game-assets/group_quests.json',
-              '/game-assets/fortune_shop.json',
+            urlPattern: (options) => options.url.origin === 'https://assets.all-the-ponies.com' && [
+              '/manifest.json',
+              '/game_version.json',
+              '/game_objects.json',
+              '/group_quests.json',
+              '/fortune_shop.json',
+              '/tasks_data.json',
+              '/collection_data.json',
+              '/maze_data.json',
             ].includes(options.url.pathname),
             handler: 'NetworkFirst',
             options: {
@@ -46,7 +63,7 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: (options) => options.url.pathname.startsWith('/game-assets/'),
+            urlPattern: (options) => options.url.origin === 'https://assets.all-the-ponies.com',
             handler: 'CacheFirst',
             options: {
               cacheName: 'game-assets-cache',
@@ -166,6 +183,16 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  optimizeDeps: {
+    // The lazy viewer must not trigger a full-page reload on first open.
+    include: viewerDependencies,
+  },
+  environments: {
+    ssr: {
+      // Late SSR optimization also resets the already loaded game-data module.
+      optimizeDeps: {include: ['vue/server-renderer', ...viewerDependencies]},
+    },
+  },
   server: {
     host: true,
     port: 5000,
@@ -173,5 +200,7 @@ export default defineConfig({
   define: {
     __BUILD_DATE__: JSON.stringify(new Date().valueOf()),
     __BASE_URL__: JSON.stringify("https://all-the-ponies.com/"),
+    __DEV_ASSETS_URL__: JSON.stringify(devAssetsUrl),
+  },
   }
 })

@@ -150,7 +150,7 @@ const itemGap = useRem(.3)
         <h1>{{ $t('inventory.title') }}</h1>
 
         <section>
-            <ul class="stats">
+            <!-- <ul class="stats">
                 <ClientOnly>
                     <li>
                         {{
@@ -207,7 +207,7 @@ const itemGap = useRem(.3)
                         }}
                     </li>
                 </ClientOnly>
-            </ul>
+            </ul> -->
             <button @click="importDialog.open()" class="button button-blue">{{ $t('common.import') }}</button>
             <button @click="exportDialog.open()" class="button button-blue">{{ $t('common.export') }}</button>
         </section>

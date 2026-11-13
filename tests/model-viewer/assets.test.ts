@@ -22,7 +22,7 @@ test('semantic catalogue survives uploader JSON formatting and uses uploaded man
     const uploaded = source.replace('1e-9', '1e-09').trim()
     const requests: URL[] = []
     globalThis.fetch = async input => {
-        const url = new URL(String(input)); requests.push(url)
+        const url = new URL(new Request(input).url); requests.push(url)
         return new Response(url.pathname === '/manifest.json'
             ? JSON.stringify({ 'models_3d.json': digest }) : uploaded)
     }
@@ -33,7 +33,7 @@ test('semantic catalogue survives uploader JSON formatting and uses uploaded man
 })
 
 test('unknown identities do not substitute a model', async () => {
-    globalThis.fetch = async input => new Response(String(input).includes('manifest.json')
+    globalThis.fetch = async input => new Response(new Request(input).url.includes('manifest.json')
         ? JSON.stringify({ 'models_3d.json': 'b'.repeat(64) })
         : JSON.stringify({ schemaVersion: 1, models: { Pony_Test: model } }))
     assert.equal(await resolveModel('Pony_Missing', signal()), null)
@@ -42,7 +42,7 @@ test('unknown identities do not substitute a model', async () => {
 test('same catalogue version is fetched and parsed once across sequential and concurrent callers', async () => {
     let catalogueRequests = 0, catalogueParses = 0
     globalThis.fetch = async input => {
-        if (String(input).includes('manifest.json')) return Response.json({'models_3d.json': '8'.repeat(64)})
+        if (new Request(input).url.includes('manifest.json')) return Response.json({'models_3d.json': '8'.repeat(64)})
         catalogueRequests++
         const response = Response.json({schemaVersion: 1, models: {Pony_Test: model}})
         const json = response.json.bind(response)
@@ -63,7 +63,7 @@ test('same catalogue version is fetched and parsed once across sequential and co
 test('a failed catalogue request can be retried with the same manifest version', async () => {
     let catalogues = 0
     globalThis.fetch = async input => {
-        if (String(input).includes('manifest.json')) return Response.json({'models_3d.json': digest})
+        if (new Request(input).url.includes('manifest.json')) return Response.json({'models_3d.json': digest})
         return ++catalogues === 1 ? new Response(null, {status: 503})
             : Response.json({schemaVersion: 1, models: {Pony_Test: model}})
     }
@@ -76,8 +76,8 @@ test('canceling one waiting caller leaves the shared catalogue available to anot
     const started = Promise.withResolvers<void>(), response = Promise.withResolvers<Response>()
     let sharedSignal: AbortSignal, catalogues = 0
     globalThis.fetch = async (input, options) => {
-        if (String(input).includes('manifest.json')) return Response.json({'models_3d.json': digest})
-        catalogues++; sharedSignal = options!.signal!
+        if (new Request(input).url.includes('manifest.json')) return Response.json({'models_3d.json': digest})
+        catalogues++; sharedSignal = new Request(input, options).signal
         started.resolve()
         return response.promise
     }
@@ -99,9 +99,9 @@ test('canceling every waiting caller aborts the transfer and allows a fresh requ
     const started = Promise.withResolvers<void>()
     let sharedSignal: AbortSignal, catalogues = 0
     globalThis.fetch = async (input, options) => {
-        if (String(input).includes('manifest.json')) return Response.json({'models_3d.json': digest})
+        if (new Request(input).url.includes('manifest.json')) return Response.json({'models_3d.json': digest})
         if (++catalogues > 1) return Response.json({schemaVersion: 1, models: {Pony_Test: model}})
-        sharedSignal = options!.signal!
+        sharedSignal = new Request(input, options).signal
         started.resolve()
         return new Promise((_, reject) => sharedSignal.addEventListener('abort', () => reject(sharedSignal.reason), {once: true}))
     }
@@ -122,7 +122,7 @@ test('manifest changes replace the cache without a late older request replacing 
     let version = oldVersion, catalogues = 0
     const changed = {...model, animations: [{...model.animations[0], name: 'New'}]}
     globalThis.fetch = async input => {
-        const url = new URL(String(input))
+        const url = new URL(new Request(input).url)
         if (url.pathname === '/manifest.json') return Response.json({'models_3d.json': version})
         catalogues++
         if (url.searchParams.get('v') === oldVersion) { started.resolve(); return oldResponse.promise }
@@ -142,7 +142,7 @@ test('an idle catalogue expires while returned model data remains usable', async
     t.mock.timers.enable({apis: ['setTimeout']})
     let catalogues = 0
     globalThis.fetch = async input => {
-        if (String(input).includes('manifest.json')) return Response.json({'models_3d.json': digest})
+        if (new Request(input).url.includes('manifest.json')) return Response.json({'models_3d.json': digest})
         catalogues++
         return Response.json({schemaVersion: 1, models: {Pony_Test: model}})
     }
@@ -170,11 +170,11 @@ test('fixed Object ID models revalidate while native named animations remain sha
     const catalogue = { schemaVersion: 1, models: { Pony_Test: named('Pony_Test'), Pet_Test: named('Pet_Test') } }
     const fetched: string[] = []
     globalThis.fetch = async (input, options) => {
-        const path = new URL(String(input)).pathname.slice(1); fetched.push(path)
+        const path = new URL(new Request(input).url).pathname.slice(1); fetched.push(path)
         if (path === 'manifest.json') return Response.json({ 'models_3d.json': 'b'.repeat(64) })
         if (path === 'models_3d.json') return Response.json(catalogue)
         assert.ok([catalogue.models.Pony_Test.path, catalogue.models.Pet_Test.path, animation.path].includes(path))
-        assert.equal(options.cache, path === animation.path ? 'default' : 'no-cache')
+        assert.equal(new Request(input, options).cache, path === animation.path ? 'default' : 'no-cache')
         return new Response(bytes)
     }
     const pony = await resolveModel('Pony_Test', signal())
@@ -188,11 +188,32 @@ test('fixed Object ID models revalidate while native named animations remain sha
     assert.equal(fetched.filter(path => path.endsWith('.glb')).length, 3)
 })
 
+test('a new catalogue selects fresh fixed-model bytes through a URL-keyed browser cache', async () => {
+    const oldData = Buffer.from('old model')
+    const newData = Buffer.from('updated native model')
+    let selected = {...ref, path: 'models/3d/Pony_Test.glb', bytes: oldData.length,
+        sha256: 'a'.repeat(64), animations: []}
+    const browserCache = new Map<string, Buffer>()
+    globalThis.fetch = async input => {
+        const url = new URL(new Request(input).url)
+        const catalogue = {schemaVersion: 1, models: {Pony_Test: selected}}
+        if (url.pathname === '/manifest.json') return Response.json(manifestFor(catalogue))
+        if (url.pathname === '/models_3d.json') return Response.json(catalogue)
+        if (!browserCache.has(url.href)) browserCache.set(url.href, selected.bytes === oldData.length ? oldData : newData)
+        return new Response(browserCache.get(url.href))
+    }
+    const older = await resolveModel('Pony_Test', signal())
+    assert.deepEqual(Buffer.from(await fetchBytes(older!, signal())), oldData)
+    selected = {...selected, bytes: newData.length, sha256: 'c'.repeat(64)}
+    const newer = await resolveModel('Pony_Test', signal())
+    assert.deepEqual(Buffer.from(await fetchBytes(newer!, signal())), newData)
+})
+
 test('animation directory validates digest and native name without changing model or wardrobe paths', async () => {
     const animation = {...model.animations[0], path: `models/3d/anim/${digest}/move.glb`}
     const selected = {...model, wardrobe: {...ref}, animations: [animation]}
     const catalogue = {schemaVersion: 4, models: {Pony_Test: selected}}
-    globalThis.fetch = async input => Response.json(String(input).includes('manifest.json')
+    globalThis.fetch = async input => Response.json(new Request(input).url.includes('manifest.json')
         ? manifestFor(catalogue) : catalogue)
     assert.deepEqual(await resolveModel('Pony_Test', signal()), selected)
     for (const path of [`models/3d/anim/${'c'.repeat(64)}/move.glb`,
@@ -214,11 +235,11 @@ test('owner-specific wardrobe filenames validate identity and digest and retain 
     const selected = {...model, wardrobe}
     const catalogue = {schemaVersion: 4, models: {Pony_Test: selected}}
     globalThis.fetch = async (input, options) => {
-        const path = new URL(String(input)).pathname.slice(1)
+        const path = new URL(new Request(input).url).pathname.slice(1)
         if (path === 'manifest.json') return Response.json(manifestFor(catalogue))
         if (path === 'models_3d.json') return Response.json(catalogue)
         assert.equal(path, wardrobe.path)
-        assert.equal(options.cache, 'default')
+        assert.equal(new Request(input, options).cache, 'default')
         return new Response(bytes)
     }
     const resolved = await resolveModel('Pony_Test', signal())
@@ -237,7 +258,7 @@ test('wardrobe filenames cannot substitute for ordinary models, animations or ad
     const wardrobe = {...ref, path: `models/3d/Pony_Test_wardrobe_${digest}.glb`}
     const selected = {...model, animations: [{...model.animations[0]}]}
     const catalogue = {schemaVersion: 4, models: {Pony_Test: selected}}
-    globalThis.fetch = async input => Response.json(String(input).includes('manifest.json')
+    globalThis.fetch = async input => Response.json(new Request(input).url.includes('manifest.json')
         ? manifestFor(catalogue) : catalogue)
     selected.path = wardrobe.path
     await assert.rejects(resolveModel('Pony_Test', signal()), /resource path/)
@@ -253,7 +274,7 @@ test('wardrobe filenames cannot substitute for ordinary models, animations or ad
 test('catalogue v3 explicitly enables only exported native click and dizzy identities', async () => {
     const interactions = {version: 1, clickAnimations: ['move'], dizzyAnimation: 'move'}
     let catalogue: any = {schemaVersion: 3, models: {Pony_Test: {...model, interactions}}}
-    globalThis.fetch = async input => Response.json(String(input).includes('manifest.json')
+    globalThis.fetch = async input => Response.json(new Request(input).url.includes('manifest.json')
         ? manifestFor(catalogue) : catalogue)
     assert.deepEqual((await resolveModel('Pony_Test', signal()))!.interactions, interactions)
     catalogue.models.Pony_Test.interactions = {...interactions, clickAnimations: ['missing']}
@@ -273,7 +294,7 @@ test('catalogue event bindings and preferred clips require valid explicit refere
     ]}}
     const selected = {...model, animations: [animation], interactions, preferredAnimations: ['move']}
     const catalogue: any = {schemaVersion: 4, models: {Pony_Test: selected}}
-    globalThis.fetch = async input => Response.json(String(input).includes('manifest.json')
+    globalThis.fetch = async input => Response.json(new Request(input).url.includes('manifest.json')
         ? manifestFor(catalogue) : catalogue)
     assert.deepEqual(await resolveModel('Pony_Test', signal()), selected)
     catalogue.schemaVersion = 3
@@ -301,7 +322,7 @@ test('schema 4 expands compact refs with bindings and shares table objects with 
         additionalActor: {model: {...ref, animations: [0]}, parentRoot: 0,
             controller: 'native-first-then-random-v1', transform: [1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]},
     }}}
-    globalThis.fetch = async input => Response.json(String(input).includes('manifest.json')
+    globalThis.fetch = async input => Response.json(new Request(input).url.includes('manifest.json')
         ? manifestFor(catalogue) : catalogue)
     const result = (await resolveModel('Pony_Test', signal()))!
     assert.deepEqual(result.animations, [base, {...other, eventBinding: binding}])
@@ -313,7 +334,7 @@ test('schema 4 expands compact refs with bindings and shares table objects with 
 
 test('compact animation references reject old schemas, invalid indices and ambiguous binding wrappers', async () => {
     let catalogue: any
-    globalThis.fetch = async input => Response.json(String(input).includes('manifest.json')
+    globalThis.fetch = async input => Response.json(new Request(input).url.includes('manifest.json')
         ? manifestFor(catalogue) : catalogue)
     for (const schemaVersion of [1, 2, 3]) {
         catalogue = {schemaVersion, animationAssets: [model.animations[0]], models: {Pony_Test: {...model, animations: [0]}}}

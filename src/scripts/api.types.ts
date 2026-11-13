@@ -1,7 +1,5 @@
 import type { TDateISO } from "@/types/date";
-import type { GameObjectId } from "@/types/gameDataTypes";
-
-export type PlayerStatName = 'pony' | 'pony_alt' | 'shop' | 'gem_shop' | 'collection' | 'costume' | 'hots'
+import type { GameObjectId, PlayerStatName } from "@/types/gameDataTypes";
 
 export interface SaveData {
     version: number,
@@ -14,6 +12,7 @@ export interface SaveData {
         currency: {
             gems: number,
             bits: number,
+            hearts: number,
         },
         player_card: {
             name: {
@@ -49,6 +48,7 @@ export interface SaveData {
         background_frames: string[],
         cutie_marks: string[],
         critters: Record<GameObjectId, number>,
+        tokens: Record<GameObjectId, number>,
     },
 }
 

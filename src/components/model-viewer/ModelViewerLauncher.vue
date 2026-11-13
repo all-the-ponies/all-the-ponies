@@ -63,8 +63,10 @@ async function loadModel() {
             @click="open"
         >3D</button>
         <DialogComponent ref="model-dialog" :title="props.name" has-close-button @close="close">
-            <ModelViewer v-if="visible && model" :model="model" :identity="props.identity" @close="dialog?.close()" />
-            <p v-else-if="visible" role="status" aria-busy="true">{{ t('model_viewer.loading') }}</p>
+            <div class="model-viewer-frame">
+                <ModelViewer v-if="visible && model" :model="model" :identity="props.identity" @close="dialog?.close()" />
+                <Loading v-else-if="visible" role="status" :aria-label="t('model_viewer.loading')" />
+            </div>
         </DialogComponent>
     </div>
 </template>
@@ -78,5 +80,89 @@ async function loadModel() {
     font-size: 1rem;
     padding: 0;
     outline: none;
+}
+.model-viewer-frame {
+    --model-height: min(36dvh, 19rem);
+    --model-gap: .5rem;
+    position: relative;
+    width: min(40rem, calc(95dvw - 1.3rem));
+    max-width: 100%;
+    min-height: calc(var(--model-height) + var(--model-gap));
+}
+.model-viewer-frame :deep(.loading) {
+    inset: 0;
+    z-index: 1;
+    background: transparent;
+    opacity: 1;
+    pointer-events: none;
+}
+/* Reserve the same dialog frame before the catalogue and viewer are loaded. */
+:global(.dialog:has(.model-viewer-frame)) {
+    position: fixed;
+    top: 50dvh;
+    left: 50dvw;
+    right: auto;
+    bottom: auto;
+    margin: 0;
+    translate: -50% -50%;
+    padding: 2rem .65rem .65rem;
+    min-height: 0;
+    max-height: calc(100dvh - 1rem);
+}
+:global(.dialog:has(.model-viewer-frame) .dialog-content) {
+    margin: 0;
+}
+:global(.dialog:has(.model-viewer-frame) .dialog-menu:empty) {
+    display: none;
+}
+:global(.dialog:has(.model-viewer-frame) .dialog-header) {
+    top: .25rem;
+    translate: none;
+    max-width: calc(100% - 5rem);
+    padding: 0;
+    color: var(--blue);
+    text-shadow: none;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    z-index: 1;
+}
+:global(.dialog:has(.model-viewer-frame) .dialog-header::before) {
+    display: none;
+}
+:global(.dialog:has(.model-viewer-frame) .dialog-close) {
+    /* Keep XButton's native 1.2em size and 0.2em icon padding at a 2rem diameter. */
+    font-size: calc(2rem / 1.2);
+    top: .1rem;
+    right: .3rem;
+    margin: 0;
+    translate: none;
+    z-index: 2;
+}
+:global(.dialog:has(.model-viewer-frame):focus) {
+    outline: none;
+}
+@media (max-width: 480px) {
+    .model-viewer-frame {
+        --model-height: min(30dvh, 14rem);
+        --model-gap: .35rem;
+        width: calc(95dvw - .8rem);
+    }
+    :global(.dialog:has(.model-viewer-frame)) {
+        padding: 2rem .4rem .4rem;
+    }
+    :global(.dialog:has(.model-viewer-frame) .dialog-header) {
+        font-size: 1.1rem;
+    }
+}
+@media (max-height: 500px) {
+    .model-viewer-frame {
+        --model-height: 40dvh;
+    }
+    :global(.dialog:has(.model-viewer-frame)) {
+        padding-top: 2rem;
+    }
+    :global(.dialog:has(.model-viewer-frame) .dialog-header) {
+        font-size: 1.1rem;
+    }
 }
 </style>

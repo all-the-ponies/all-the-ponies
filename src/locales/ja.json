@@ -24,17 +24,17 @@
   },
   "button": {
     "cancel": "キャンセル",
+    "close": "とじる",
+    "edit": "エディット",
     "hint": "",
     "no": "いいえ",
     "ok": "Ok",
+    "resume": "さいかい",
     "share": "シェア",
     "skip": "スキップ",
     "start": "スタート",
     "stop": "",
-    "yes": "はい",
-    "resume": "さいかい",
-    "edit": "エディット",
-    "close": "とじる"
+    "yes": "はい"
   },
   "check_save": {
     "messages": {
@@ -161,6 +161,9 @@
       "resident": "",
       "visitor": ""
     },
+    "pet": {
+      "pet": "ペット | Pets"
+    },
     "pony": {
       "arrival_bonus": "",
       "character": "キャラクター",
@@ -185,10 +188,10 @@
       "background_frame": {
         "background_frame": "はいけい|フレーム"
       },
-      "is_default": "",
       "cutie_mark": {
         "cutie_mark": "キューティー|マーク | キューティー|マーク"
-      }
+      },
+      "is_default": ""
     },
     "road": {
       "road": "道"
@@ -202,9 +205,6 @@
     },
     "token": {
       "token": "トークン"
-    },
-    "pet": {
-      "pet": "ペット | Pets"
     }
   },
   "group_quests": {
@@ -248,12 +248,7 @@
       }
     },
     "stats": {
-      "gem_shops": "@:game_object.shop.gem_shop{':'} {count}",
-      "houses": "@:game_object.house.house{':'} {count}",
-      "ponies": "@:game_object.pony.pony{':'} {count}",
-      "shops": "@:game_object.shop.shop{':'} {count}",
-      "stars": "",
-      "transformable": "@:game_object.pony.transformable{':'} {count}"
+      "stars": ""
     },
     "title": "持ち物"
   },
@@ -297,11 +292,16 @@
     "crystal_empire": "クリスタル・|エンパイア",
     "everfree_forest": "エバーフリー|フォレスト",
     "klugetown": "クラッジ|タウン",
+    "maze": "めいろ|ダンジョン",
     "ponyville": "ポニーヴィル",
     "sweet_apple_acres": "スイート|アップル|農園",
     "town": "",
-    "unknown": "",
-    "maze": "めいろ|ダンジョン"
+    "unknown": ""
+  },
+  "maze": {
+    "title": {
+      "long": "消えた|つばさと|おかしな|めいろ"
+    }
   },
   "notices": {
     "corrupt_save": {
@@ -401,9 +401,7 @@
     "title": ""
   },
   "socials": {
-    "discord": "",
     "donate": "",
-    "github": "",
     "help_translate": "",
     "mlp_game_hangout": "",
     "wiki": ""
@@ -440,10 +438,5 @@
       "seasonal_shop": "シーズン|ショップ"
     },
     "title": "ストア"
-  },
-  "maze": {
-    "title": {
-      "long": "消えた|つばさと|おかしな|めいろ"
-    }
   }
 }

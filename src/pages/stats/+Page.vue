@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import CurrencyImage from '@/components/CurrencyImage.vue'
 import PlayerCard from '@/components/PlayerCard/PlayerCard.vue'
-import type { PlayerStatName } from '@/scripts/api.types'
+import type { PlayerStatName } from '@/types/gameDataTypes'
+import { createAssetUrl } from '@/scripts/assets'
 import { getObject, translateName, useGameObject, useObjectName } from '@/scripts/gameData'
-import { useSaveStats } from '@/scripts/stats'
+import { useSaveStats, totalStats } from '@/scripts/stats'
 import { formatTime } from '@/scripts/timeFunctions'
 import { useSaveStore } from '@/stores/saveManager'
 import { computedAsync, useMounted } from '@vueuse/core'
 import { ClientOnly } from 'vike-vue/ClientOnly'
 import { Config } from 'vike-vue/Config'
 import { computed, nextTick, onMounted, ref, useTemplateRef } from 'vue'
+import StatCard from '@/components/stats/StatCard.vue'
+import { watchEffect } from 'vue'
+import ItemCounter from '@/components/stats/ItemCounter.vue'
+import InfoButton from '@/components/buttons/infoButton.vue'
 
 const saveStore = useSaveStore()
 const saveStats = useSaveStats()
@@ -77,41 +82,56 @@ const rightStat = computed(() => {
     }
 })
 
+const backgroundImage = computed(() => {
+    if (isMounted.value) {
+        return createAssetUrl(getObject(saveStore.playerInfo.player_card.background || 'PlayerCardBackground_default', 'background').image.main.path)
+    }
+})
+
 </script>
 
 <template>
     <Config :title="$t('stats.title')" :description="$t('stats.description')"></Config>
 
-    <div>
-        <section class="import-section">
-            <h1>{{ $t('stats.title') }}</h1>
-            <label>
-                {{ $t('player_info.friend_code') }}
-                <input
-                    v-model="friendCode"
-                    ref="friend-code"
-                    type="text"
-                    name="friend-code"
-                    class="text-box"
-                    :placeholder="$t('player_info.friend_code')"
-                    spellcheck="false"
-                    :disabled="importDisabled"
-                    @keydown="(e) => {if (e.key === 'Enter') importFriendCode()}"
-                    @input="errorMessage = ''"
-                >
-                <button
-                    class="button button-blue"
-                    :disabled="importDisabled"
-                    @click="importFriendCode()"
-                >{{ $t('common.import') }}</button>
-            </label>
-            <p class="error-message">{{ errorMessage }}</p>
-        </section>
+    <div
+        class="stats-page"
+        :style="{
+            backgroundImage: backgroundImage ? `url('${backgroundImage}')` : '',
+        }"
+    >
         <ClientOnly>
-            <section class="section">
+            <section class="section player-section">
+                <div class="header-section stats-section">
+                    <div>
+                        <h1>{{ $t('stats.title') }}</h1>
+                    </div>
+                    <div class="import-section">
+                        <label>
+                            <p>{{ $t('player_info.friend_code') }}</p>
+                            <input
+                                v-model="friendCode"
+                                ref="friend-code"
+                                type="text"
+                                name="friend-code"
+                                class="text-box"
+                                :placeholder="$t('player_info.friend_code')"
+                                spellcheck="false"
+                                :disabled="importDisabled"
+                                @keydown="(e) => {if (e.key === 'Enter') importFriendCode()}"
+                                @input="errorMessage = ''"
+                                size="10"
+                            >
+                            <button
+                                class="button button-blue"
+                                :disabled="importDisabled"
+                                @click="importFriendCode()"
+                            >{{ $t('common.import') }}</button>
+                        </label>
+                        <p class="error-message">{{ errorMessage }}</p>
+                    </div>
+                </div>
                 <PlayerCard
                     class="player-card"
-                    v-if="saveStore.playerInfo.friendCode"
                     :friend-code="saveStore.playerInfo.friendCode"
                     :left-name="saveStore.playerInfo.player_card.name.left"
                     :right-name="saveStore.playerInfo.player_card.name.right"
@@ -126,127 +146,106 @@ const rightStat = computed(() => {
                     :left-stat="leftStat"
                     :right-stat="rightStat"
                 ></PlayerCard>
-                <ul class="stats">
-                    <li>
-                        {{
-                            $t('player_info.join_date', {
-                                join_date: saveStore?.playerInfo.joinDate ? $d(new Date(saveStore?.playerInfo.joinDate), {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                }) : ''
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{ 
-                            $t('player_info.total_playtime', {
-                                total_playtime: formatTime(saveStore?.playerInfo.totalPlaytime),
-                            })
-                        }}
-                    </li>
-                    
-                    <!-- Keep disabled -->
-                    <!-- <li>
-                        {{ 
-                            $t('stats.message.ponies.total', saveStats?.ponies.total)
-                        }}
-                    </li> -->
-                   
-                    <li>
-                        {{
-                            $t('inventory.stats.ponies', 2, {
-                                named: {
-                                    count: $n(saveStats?.ponies.unique)
-                                },
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.transformable', 2, {
-                                named: {
-                                    count: $n(saveStats?.ponies.changelings)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.stars', 2, {
-                                named: {
-                                    count: $n(saveStats?.ponies.stars)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.houses', 2, {
-                                named: {
-                                    count: $n(saveStats?.houses.total)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.shops', 2, {
-                                named: {
-                                    count: $n(saveStats?.shops.bits + saveStats?.shops.others)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.gem_shops', 2, {
-                                named: {
-                                    count: $n(saveStats?.shops.gems)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.costumes', 2, {
-                                named: {
-                                    count: $n(saveStats?.costumes.total)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.collections', 2, {
-                                named: {
-                                    count: $n(saveStats?.collections.total)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        {{
-                            $t('inventory.stats.wh_collections', 2, {
-                                named: {
-                                    count: $n(saveStore?.playerInfo.stats.whCollections)
-                                }
-                            })
-                        }}
-                    </li>
-                    <li>
-                        <CurrencyImage object="Gems">
-                            {{ gemsName }}:
-                            {{ $n(saveStore?.playerInfo.currency.gems) }}
-                        </CurrencyImage>
-                    </li>
-                    <li>
-                        <CurrencyImage object="Bits">
-                            {{ bitsName }}:
-                            {{ $n(saveStore?.playerInfo.currency.bits) }}
-                        </CurrencyImage>
-                    </li>
-                </ul>
+                <div class="currency-stats stats-section">
+                    <ItemCounter item="Gems" :value="saveStore.playerInfo.currency.gems" :scale="0.7"></ItemCounter>
+                    <ItemCounter item="Bits" :value="saveStore.playerInfo.currency.bits" :scale="0.7"></ItemCounter>
+                    <ItemCounter item="Hearts" :value="saveStore.playerInfo.currency.hearts" :scale="0.7"></ItemCounter>
+                    <ItemCounter item="Token_Social_Chest" :value="saveStore.getTokenCount('Token_Social_Chest') ?? 0" :scale="0.7"></ItemCounter>
+                </div>
+                <div class="stats-section">
+                    <div class="stats-grid">
+                        <StatCard
+                            stat="pony"
+                            :value="saveStats?.ponies.unique"
+                            :total="totalStats.ponies.unique"
+                        ></StatCard>
+                        <StatCard
+                            stat="pony_alt"
+                            :value="saveStats?.ponies.changelings"
+                            :total="totalStats.ponies.changelings"
+                        ></StatCard>
+                        <StatCard
+                            stat="pro_ponies"
+                            :value="saveStats?.ponies.pros"
+                            :total="totalStats.ponies.pros"
+                        ></StatCard>
+                        <StatCard
+                            stat="gem_ponies"
+                            :value="saveStats?.ponies.gemCollectors"
+                            :total="totalStats.ponies.gemCollectors"
+                        ></StatCard>
+                        <StatCard
+                            stat="bit_ponies"
+                            :value="saveStats?.ponies.bitCollectors"
+                            :total="totalStats.ponies.bitCollectors"
+                        ></StatCard>
+                        <StatCard
+                            stat="stars"
+                            :value="saveStats?.ponies.stars"
+                            :total="totalStats.ponies.stars"
+                        ></StatCard>
+                        <StatCard
+                            stat="shop"
+                            :value="saveStats?.shops.mainTotal"
+                            :total="totalStats.shops.mainTotal"
+                        ></StatCard>
+                        <StatCard
+                            stat="bit_shops"
+                            :value="saveStats?.shops.bits"
+                            :total="totalStats.shops.bits"
+                        ></StatCard>
+                        <StatCard
+                            stat="gem_shop"
+                            :value="saveStats?.shops.gems"
+                            :total="totalStats.shops.gems"
+                        ></StatCard>
+                        <!-- <StatCard
+                            stat="critters"
+                            :value="saveStats?.shops.critters"
+                            :total="totalStats.shops.critters"
+                        ></StatCard> -->
+                        <StatCard
+                            stat="costume"
+                            :value="saveStats?.costumes.total"
+                            :total="totalStats.costumes.total"
+                        ></StatCard>
+                        <StatCard
+                            stat="collection"
+                            :value="saveStats?.collections.total"
+                            :total="totalStats.collections.total"
+                        ></StatCard>
+                        <StatCard
+                            stat="hots"
+                            :value="saveStore?.playerInfo.stats.whCollections"
+                            :total="155"
+                        ></StatCard>
+                    </div>
+                </div>
+                <div class="account-info stats-section">
+                    <div>
+                        <p>
+                            {{
+                                $t('player_info.join_date')
+                            }}
+                            <br>
+                            {{ saveStore?.playerInfo.joinDate ? $d(new Date(saveStore?.playerInfo.joinDate), {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    }) : '' }}
+                        </p>
+                    </div>
+                    <hr class="account-info-separator">
+                    <div>
+                        <p>
+                            {{
+                                $t('player_info.total_playtime')
+                            }}
+                            <br>
+                            {{ formatTime(saveStore.playerInfo.totalPlaytime) }} ({{ formatTime(saveStore.playerInfo.totalPlaytime, {units: ['hours']}) }})
+                        </p>
+                    </div>
+                </div>
             </section>
         </ClientOnly>
     </div>
@@ -254,14 +253,94 @@ const rightStat = computed(() => {
 
 <style lang="css" scoped>
 
+.stats-page {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    --max-width: 35rem;
+
+    container-type: inline-size;
+}
+
+.player-section {
+    padding: 1rem;
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .player-card {
-    max-width: 30rem;
+    max-width: var(--max-width);
     margin: 1rem auto;
     display: block;
 }
 
-.stats li {
+.stats-section {
+    max-width: var(--max-width);
+    padding: 0.5rem;
+    /* min-height: 30rem; */
+    margin: 1rem auto;
+    display: block;
+
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.import-section {
+    text-align: center;
+}
+
+.currency-stats {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.stats-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, max(100px, 9rem));
+    justify-content: space-evenly;
+    gap: 0.3rem;
+}
+
+.stats-list li {
     list-style: none;
+}
+
+.account-info {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    text-align: center;
+    gap: 0.2rem;
+}
+
+.account-info-separator {
+    /* border: 2px solid var(--blue); */
+    width: 2px;
+    background-color: var(--blue);
+    border: none;
+    border-radius: 2px;
+}
+
+@container (width < 30rem) {
+    .account-info {
+        grid-template-columns: 1fr;
+    }
+
+    .account-info-separator {
+        width: auto;
+        height: 2px;
+    }
 }
 
 .error-message {
