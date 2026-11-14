@@ -7,7 +7,15 @@ selected animations on the client.
 Valid detail pages show the 3D button and load the catalogue when it is clicked.
 Existing inventory/variant controls are unchanged. Costume entries use verified
 native outfit models or standalone native part previews without inventing an owner.
-Pony entries may also provide an optional, owner-specific wardrobe bundle.
+Pony entries may also provide an optional wardrobe bundle with the owner's native defaults.
+
+On narrow screens, Close, rotation lock and Reset share one vertical toolbar,
+keeping their alignment and spacing while resizing or scrolling the dialog.
+Download stays in the preview's lower-right corner. On short narrow screens,
+the animation and wardrobe panels scroll below the preview, keeping the model
+controls clear. The narrow dialog uses the available viewport height. On wider
+screens, animations sit beside the fixed-height preview and the wardrobe opens
+below it. The round Reset button sits beneath the rotation lock.
 
 ## Review full ATP pages with local S3
 
@@ -54,6 +62,14 @@ through the application's same-origin `/game-assets/` route. Local development
 uses simulated Cloudflare bindings by default and needs no Cloudflare login.
 The [main development instructions](../README.md#development) cover source
 selection and optional remote bindings.
+
+For phone testing, connect the phone and development computer to the same local
+network and run `pnpm dev --host 0.0.0.0`. Open the computer's Network URL printed
+by Vite on the phone, using the same port and detail-page path. `localhost` on the
+phone refers to the phone itself. Keep `DEV_ASSETS_URL` pointed at the computer's
+local S3 service; the phone reads assets through ATP's same-origin proxy.
+Narrowing a desktop browser checks the responsive layout, while a real phone
+also checks touch rotation, two-finger zoom, panel scrolling and downloads.
 
 ## Focused viewer demo
 
@@ -116,8 +132,9 @@ an outfit replaces that grid with its head, body and available tail parts on a
 single scroll background in the same bounded area. Select individual parts;
 the round back control restores the grid, its scroll position and the focused card.
 Cards use the native set-card background and ATP's outfit names, bonuses and
-part thumbnails. Only declared parts are shown. Pony pages preserve the owner's
-native costume-array order; model-only demos use the bundle's set order.
+part thumbnails. Pony pages keep the page's costume order for sets present in the
+bundle, then append additional sets from the same native model in bundle order.
+The standalone model demo uses the bundle's order.
 Browsing an outfit keeps the current mix. The demo uses native IDs when the
 full ATP game-data labels and thumbnails are unavailable.
 
@@ -182,7 +199,8 @@ its owning model's Object ID and the bundle's digest. It uses the same rig and
 shared animation references as the normal model. Old catalogues without it keep
 working; costume pages retain their pre-generated complete previews.
 
-The bundle's `atpWardrobe` extras contain owner-local sets, three default part IDs,
+The bundle's `atpWardrobe` extras contain verified sets registered for the same
+native model, three owner-specific default part IDs,
 and each part's slot, native mesh indices and optional linked part. Selection
 uses the native Body/Mane/Tail order and LinkedPart cleanup. An undeclared set
 slot stays unchanged; an explicit part with no mesh is a valid empty appearance.
@@ -380,14 +398,13 @@ hair UV clock also runs while the parent rests and pauses when the page hides.
 
 ## Interaction and lifetime
 
-Default mode keeps the initial camera elevation, target and size: horizontal
-mouse/single-finger dragging or left/right keys rotates around the model. The
-small lock button uses ATP's native blue button style; the closed/open SVG shows
-the current locked/free mode. Free
-rotation enables vertical orbit and zoom without interrupting a playing action
-or resetting the current view. Switching back, or pressing Reset view, cancels
-pending/running animation, restores the rest pose, and resets camera position,
-target and scale. There is no per-frame auto-follow or zoom.
+Locked rotation keeps the initial elevation. Drag horizontally with the mouse
+or one finger, or use the left/right keys, to orbit the model. The scroll wheel
+and two-finger pinch zoom in both modes. Unlocking also allows vertical orbit
+and keeps the current view and animation. Resizing the preview preserves the
+orbit and relative zoom within the zoom limits. Switching back to locked
+rotation or pressing Reset view stops the current animation, restores the rest
+pose and fits the default angle to the current preview. Equipped clothing stays selected.
 
 Selecting a clip plays once; selecting it again replays it. Completion restores
 the exact rest transforms after the mixer's update. Abort signals and a request
@@ -475,6 +492,9 @@ is the white foreground layer from PonyBook's `MoveToInventiryBtn` (shape 297),
 with transparent margins trimmed; the native blue background is excluded. It
 uses the same static image reference pattern as ATP's other button icons.
 
+The contributor adapted the Reset icon from the "Retrieve Information" icon in
+the game assets. The bundled `ui/icons/reset-view-icon.png` has SHA-256
+`59cdb8cfef0d4cc5a39e43f526cb15570457a7086b4f8c5fadd9b1edb10a9982`.
 
 ### Native SubObject visibility and shared clips
 

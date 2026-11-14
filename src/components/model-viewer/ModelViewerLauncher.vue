@@ -2,6 +2,7 @@
 import { defineAsyncComponent, onBeforeUnmount, onErrorCaptured, ref, shallowRef, useTemplateRef, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import DialogComponent from '../DialogComponent.vue';
+import XButton from '../buttons/XButton.vue';
 import Loading from '../Loading.vue';
 import { resolveModel, type ModelRef } from './assets';
 
@@ -15,6 +16,7 @@ const ModelViewer = defineAsyncComponent({
 const model = shallowRef<ModelRef | null>(null)
 const visible = ref(false)
 const dialog = useTemplateRef('model-dialog')
+const tools = useTemplateRef('model-tools')
 let abort: AbortController | undefined
 
 watch(() => props.identity, () => {
@@ -62,9 +64,13 @@ async function loadModel() {
             :title="t('model_viewer.open')"
             @click="open"
         >3D</button>
-        <DialogComponent ref="model-dialog" :title="props.name" has-close-button @close="close">
+        <DialogComponent ref="model-dialog" :title="props.name" @close="close">
+            <div ref="model-tools" class="model-dialog-tools">
+                <XButton class="dialog-close" @click="dialog?.cancel()" />
+            </div>
             <div class="model-viewer-frame">
-                <ModelViewer v-if="visible && model" :model="model" :identity="props.identity" @close="dialog?.close()" />
+                <ModelViewer v-if="visible && model" :model="model" :identity="props.identity"
+                    :controls-target="tools" @close="dialog?.close()" />
                 <Loading v-else-if="visible" role="status" :aria-label="t('model_viewer.loading')" />
             </div>
         </DialogComponent>
@@ -129,29 +135,45 @@ async function loadModel() {
 :global(.dialog:has(.model-viewer-frame) .dialog-header::before) {
     display: none;
 }
-:global(.dialog:has(.model-viewer-frame) .dialog-close) {
-    /* Keep XButton's native 1.2em size and 0.2em icon padding at a 2rem diameter. */
-    font-size: calc(2rem / 1.2);
+.model-dialog-tools {
+    position: absolute;
     top: .1rem;
     right: .3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    z-index: 2;
+}
+.model-dialog-tools .dialog-close {
+    /* XButton's native diameter is 1.2em. */
+    font-size: calc(2rem / 1.2);
+    width: 1.2em;
+    height: 1.2em;
     margin: 0;
     translate: none;
-    z-index: 2;
+}
+.model-dialog-tools :deep(.preview-tools) {
+    display: contents;
 }
 :global(.dialog:has(.model-viewer-frame):focus) {
     outline: none;
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
     .model-viewer-frame {
-        --model-height: min(30dvh, 14rem);
         --model-gap: .35rem;
         width: calc(95dvw - .8rem);
+        height: calc(100dvh - 4rem);
+        min-height: 0;
     }
     :global(.dialog:has(.model-viewer-frame)) {
         padding: 2rem .4rem .4rem;
     }
     :global(.dialog:has(.model-viewer-frame) .dialog-header) {
         font-size: 1.1rem;
+    }
+    .model-dialog-tools {
+        right: calc(.4rem + .25rem);
     }
 }
 @media (max-height: 500px) {

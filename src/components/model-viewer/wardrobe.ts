@@ -18,6 +18,12 @@ const record = (value: unknown): value is Record<string, unknown> =>
     value !== null && typeof value === 'object' && !Array.isArray(value)
 const owns = (object: object, key: string) => Object.prototype.hasOwnProperty.call(object, key)
 
+export function wardrobeSetOrder(sets: WardrobeProfile['sets'], pageSets: readonly string[] = []) {
+    const order = new Set(pageSets.filter(id => owns(sets, id)))
+    for (const id of Object.keys(sets)) order.add(id)
+    return [...order]
+}
+
 /** Called after hidden native nodes have joined the scene. Each wardrobe mesh
  * has one writer; eyes and animation SubObjects retain their own controllers. */
 export function prepareWardrobe(model: GLTF) {

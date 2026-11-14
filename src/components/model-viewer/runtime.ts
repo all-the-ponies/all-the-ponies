@@ -55,9 +55,9 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
     host.appendChild(canvas)
     const controls = new OrbitControls(camera, canvas)
     controls.enablePan = false
-    controls.enableZoom = false
+    controls.enableZoom = true
     controls.enableDamping = false
-    controls.touches.TWO = undefined
+    controls.touches.TWO = THREE.TOUCH.DOLLY_PAN
     let disposed = false
     let model: GLTF | undefined
     let additional: AdditionalActor | undefined
@@ -68,7 +68,7 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
     let effects: Awaited<ReturnType<typeof createNativeEmitters>> | undefined
     let mixer: THREE.AnimationMixer | undefined
     let rest: {object: THREE.Object3D, position: THREE.Vector3, quaternion: THREE.Quaternion, scale: THREE.Vector3}[] = []
-    let initial: {position: THREE.Vector3, target: THREE.Vector3, polar: number} | undefined
+    let initial: {target: THREE.Vector3, radius: number} | undefined
     let frameId = 0
     let lastTime: number | undefined
     let generation = 0
@@ -150,24 +150,33 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
         if (document.hidden) { cancelFrame(); gestures.clear() }
         else { resume(); render() }
     }
+    function fitDistance(radius: number, aspect: number) {
+        const halfFov = Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * Math.min(1, aspect))
+        return radius / Math.sin(halfFov) * 1.12
+    }
     function resize() {
         const width = Math.max(1, host.clientWidth)
         const height = Math.max(1, host.clientHeight)
         renderer.setSize(width, height, false)
+        const previousAspect = camera.aspect
         camera.aspect = width / height
         camera.updateProjectionMatrix()
+        if (initial && camera.aspect !== previousAspect) {
+            const scale = fitDistance(initial.radius, camera.aspect) / fitDistance(initial.radius, previousAspect)
+            camera.position.sub(controls.target).multiplyScalar(scale).add(controls.target)
+            controls.update()
+        }
         render()
     }
     function resetCamera() {
         if (!initial) return
-        controls.minPolarAngle = 0
-        controls.maxPolarAngle = Math.PI
-        camera.position.copy(initial.position)
+        const polar = THREE.MathUtils.degToRad(76)
+        controls.minPolarAngle = state.free ? 0 : polar
+        controls.maxPolarAngle = state.free ? Math.PI : polar
         controls.target.copy(initial.target)
+        camera.position.setFromSphericalCoords(fitDistance(initial.radius, camera.aspect), polar,
+            THREE.MathUtils.degToRad(-60)).add(controls.target)
         controls.update()
-        if (!state.free) controls.minPolarAngle = controls.maxPolarAngle = initial.polar
-        controls.update()
-        render()
     }
     function reset() {
         stop()
@@ -175,22 +184,21 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
         state.error = ''
         additional?.restart()
         resetCamera()
+        render()
         notify()
     }
     function setFree(free: boolean) {
         gestures.clear(true)
         state.free = free
-        controls.enableZoom = free
-        controls.touches.TWO = free ? THREE.TOUCH.DOLLY_PAN : undefined
         if (free) {
             controls.minPolarAngle = 0
             controls.maxPolarAngle = Math.PI
             controls.update()
-            render()
         } else {
             stop()
             resetCamera()
         }
+        render()
         notify()
     }
     function keydown(event: KeyboardEvent) {
@@ -419,22 +427,16 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
                 scene.add(additional.group)
             }
             if (!wardrobeBundle) {
-            const box = visibleBounds(model.scene)
-            if (additional) box.union(visibleBounds(additional.group))
-            const center = box.getCenter(new THREE.Vector3())
-            const radius = Math.max(box.getSize(new THREE.Vector3()).length() / 2, .001)
-            const halfFov = Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2) * Math.min(1, camera.aspect))
-            const distance = radius / Math.sin(halfFov) * 1.12
-            controls.target.copy(center)
-            camera.position.setFromSphericalCoords(distance, THREE.MathUtils.degToRad(76), THREE.MathUtils.degToRad(-60)).add(center)
-            camera.near = radius / 1000
-            camera.far = radius * 1000
-            camera.updateProjectionMatrix()
-            controls.minDistance = radius * .5
-            controls.maxDistance = radius * 12
-            controls.update()
-            initial = {position: camera.position.clone(), target: center.clone(), polar: controls.getPolarAngle()}
-            controls.minPolarAngle = controls.maxPolarAngle = initial.polar
+                const box = visibleBounds(model.scene)
+                if (additional) box.union(visibleBounds(additional.group))
+                const radius = Math.max(box.getSize(new THREE.Vector3()).length() / 2, .001)
+                initial = {target: box.getCenter(new THREE.Vector3()), radius}
+                camera.near = radius / 1000
+                camera.far = radius * 1000
+                camera.updateProjectionMatrix()
+                controls.minDistance = radius * .5
+                controls.maxDistance = radius * 12
+                resetCamera()
             }
             state.ready = true
             state.loading = false

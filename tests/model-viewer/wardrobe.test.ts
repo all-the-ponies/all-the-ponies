@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { BoxGeometry, Group, Mesh, MeshBasicMaterial } from 'three'
 import type { GLTF } from 'three/addons/loaders/GLTFLoader.js'
-import { prepareWardrobe, type WardrobeProfile } from '../../src/components/model-viewer/wardrobe'
+import { prepareWardrobe, wardrobeSetOrder, type WardrobeProfile } from '../../src/components/model-viewer/wardrobe'
 
 function fixture() {
     const profile: WardrobeProfile = {
@@ -37,6 +37,13 @@ function fixture() {
     const visible = () => meshes.flatMap((mesh, index) => mesh.visible ? [index] : [])
     return {model, profile, json, meshes, visible}
 }
+
+test('wardrobe keeps supported page sets in order and appends shared model sets once', () => {
+    const {profile} = fixture()
+    assert.deepEqual(wardrobeSetOrder(profile.sets, ['normal', 'full', 'other-model', 'linked', 'full']),
+        ['normal', 'full', 'linked', 'plain', 'alias', 'absent'])
+    assert.deepEqual(wardrobeSetOrder(profile.sets), Object.keys(profile.sets))
+})
 
 test('native part changes preserve skipped slots, clean old links and restore the entry snapshot', () => {
     const f = fixture(), wardrobe = prepareWardrobe(f.model)!

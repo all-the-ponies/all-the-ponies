@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, reactive, shallowRef, useTemplateRef } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, reactive, shallowRef, useId, useTemplateRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { ModelRef } from './assets';
 import { buildAnimationMenu } from './animation-menu';
@@ -10,16 +10,19 @@ import Loading from '../Loading.vue';
 import SidebarSubmenu from '../sidebar/SidebarSubmenu.vue';
 import SidebarItem from '../sidebar/SidebarItem.vue';
 import type { mountViewer, ViewerState } from './runtime';
-import type { WardrobeProfile, WardrobeSlot } from './wardrobe';
+import { wardrobeSetOrder, type WardrobeProfile, type WardrobeSlot } from './wardrobe';
 import { createAssetUrl } from '../../scripts/assets';
 import { getObject, loaded as gameDataLoaded, translateName } from '../../scripts/gameData';
-import { useLocalStorage } from '@vueuse/core';
+import { useLocalStorage, useMediaQuery } from '@vueuse/core';
 
-const props = defineProps<{model: ModelRef, identity?: string}>()
+const props = defineProps<{model: ModelRef, identity?: string, controlsTarget?: HTMLElement | null}>()
 const emit = defineEmits<{close: []}>()
 const { t } = useI18n()
 const wardrobeOpen = useLocalStorage('model-viewer-wardrobe-open', false)
 const animationMenu = computed(() => buildAnimationMenu(props.model.animations, props.model.preferredAnimations))
+const animationsOpen = shallowRef(false)
+const animationPanelId = useId()
+const narrowScreen = useMediaQuery('(max-width: 640px)')
 const selectedAnimations = shallowRef(new Set<string>())
 const allAnimationIds = computed(() => props.model.animations.map(animation => animation.id))
 const exportMode = shallowRef(false)
@@ -83,14 +86,13 @@ const wardrobeBack = useTemplateRef('wardrobe-back')
 let outfitScroll = 0
 let focusedCard: HTMLButtonElement | undefined
 
-// Rebuild only when a new owner profile is installed. Names remain reactive to
+// Rebuild only when a new model profile is installed. Names remain reactive to
 // language changes; selection never scans the full game catalogue.
 const wardrobeOptions = computed(() => {
     const profile = wardrobe.value
     if (!profile) return undefined
-    const ownerSets = props.identity && gameDataLoaded ? getObject(props.identity, 'pony')?.costumes : undefined
-    const setIds = ownerSets ? ownerSets.filter(id => Object.prototype.hasOwnProperty.call(profile.sets, id)) : Object.keys(profile.sets)
-    const sets = setIds.map(id => {
+    const pageSets = props.identity && gameDataLoaded ? getObject(props.identity, 'pony')?.costumes : undefined
+    const sets = wardrobeSetOrder(profile.sets, pageSets).map(id => {
         const object = gameDataLoaded ? getObject(id, 'costume') : null
         const name = translateName(object)
         return {
@@ -166,6 +168,8 @@ onBeforeUnmount(() => {
     <div class="model-viewer" :class="{'export-selecting': exportMode}" :aria-busy="state.loading">
         <div class="model-host" ref="model-host">
             <Loading v-if="!state.ready" role="status" :aria-label="t('model_viewer.loading')" />
+            <Teleport :to="props.controlsTarget ?? 'body'" :disabled="!props.controlsTarget || !narrowScreen">
+            <div class="preview-tools">
             <button
                 class="preview-control rotation button-circle button-blue"
                 :disabled="!state.ready"
@@ -181,18 +185,28 @@ onBeforeUnmount(() => {
                     <path d="M12 15v3" />
                 </svg>
             </button>
+            <button class="preview-control reset-view button-circle button-blue"
+                :disabled="!state.ready" :aria-label="t('model_viewer.reset')" :title="t('model_viewer.reset')"
+                @click="controller?.reset()">
+                <img src="@/assets/images/ui/icons/reset-view-icon.png" alt="">
+            </button>
+            </div>
+            </Teleport>
             <button ref="download-entry" class="preview-control download-entry button-circle button-blue"
                 :disabled="!state.ready || exporting" :aria-pressed="exportMode"
                 :aria-label="t('model_viewer.choose_export')" :title="t('model_viewer.choose_export')"
-                @click="exportMode = true">
+                @click="exportMode = true; animationsOpen = true">
                 <img class="download-icon" src="@/assets/images/ui/icons/download-icon.png" alt="">
                 <span v-if="selectedAnimations.size" class="export-count button-circle button-red" aria-hidden="true">{{ selectedAnimations.size }}</span>
             </button>
         </div>
-        <div class="model-actions">
-            <button class="button button-blue" :disabled="!state.ready" @click="controller?.reset()">
-                {{ t('model_viewer.reset') }}
+        <div class="model-panels">
+        <div class="model-actions" :class="{expanded: animationsOpen}">
+            <button class="animation-header" :aria-expanded="animationsOpen" :aria-controls="animationPanelId"
+                @click="animationsOpen = !animationsOpen">
+                {{ t('model_viewer.animations') }}
             </button>
+            <div class="animation-content" :id="animationPanelId">
             <div v-if="exportMode" class="animation-select-all">
                 <AnimationSelectionButton :selected="selected(allAnimationIds)" :label="selectionLabel(allAnimationIds, t('model_viewer.select_all'))"
                     :disabled="!allAnimationIds.length" @toggle="toggle(allAnimationIds)" />
@@ -231,6 +245,7 @@ onBeforeUnmount(() => {
             </div>
             <small v-if="exportMode && exporting" role="status">{{ exportProgress }}</small>
             <small v-if="exportMode && exportError" role="alert">{{ exportError }}</small>
+            </div>
         </div>
         <details v-if="props.model.wardrobe" class="model-wardrobe" :open="wardrobeOpen" @toggle="toggleWardrobe">
             <summary class="wardrobe-header" :aria-disabled="!state.ready" @click="!state.ready && $event.preventDefault()">
@@ -293,6 +308,7 @@ onBeforeUnmount(() => {
                 </template>
             </div>
         </details>
+        </div>
     </div>
 </template>
 
@@ -321,18 +337,31 @@ onBeforeUnmount(() => {
     height: 100%;
     outline: none;
 }
-.preview-control {
+.preview-tools {
     position: absolute;
     z-index: 1;
+    top: .45rem;
     right: .45rem;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+}
+.preview-control {
     display: grid;
     place-items: center;
     margin: 0;
     padding: .2em;
     font-size: 2rem;
 }
-.rotation { top: .45rem; }
-.download-entry { bottom: .45rem; }
+.reset-view { padding: 0; }
+/* The native crop has more transparent space below the arrows. */
+.reset-view img { translate: 0 2px; }
+.download-entry {
+    position: absolute;
+    z-index: 1;
+    right: .45rem;
+    bottom: .45rem;
+}
 .export-count {
     position: absolute;
     top: -.2rem;
@@ -367,6 +396,7 @@ onBeforeUnmount(() => {
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+.model-panels { display: contents; }
 .model-actions {
     display: flex;
     flex-direction: column;
@@ -376,10 +406,12 @@ onBeforeUnmount(() => {
     /* Both upper panels share a bounded row; only the animation list scrolls. */
     contain: size;
 }
-.model-actions > .button {
-    flex-shrink: 0;
-    font-size: 1rem;
-    margin: 0;
+.animation-content {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    flex: 1;
+    min-height: 0;
 }
 .model-animations {
     --padding-inline: .5rem;
@@ -441,6 +473,7 @@ onBeforeUnmount(() => {
     grid-column: 1 / -1;
     min-width: 0;
 }
+.animation-header,
 .wardrobe-header {
     display: flex;
     align-items: center;
@@ -450,12 +483,15 @@ onBeforeUnmount(() => {
     font-weight: bold;
     list-style: none;
 }
+.animation-header { display: none; }
 .wardrobe-header::-webkit-details-marker {
     display: none;
 }
+.animation-header::before,
 .wardrobe-header::before {
     content: '▸';
 }
+.model-actions.expanded > .animation-header::before,
 .model-wardrobe[open] > .wardrobe-header::before {
     content: '▾';
 }
@@ -642,33 +678,96 @@ onBeforeUnmount(() => {
     text-overflow: ellipsis;
 }
 .model-viewer .model-wardrobe button:focus-visible,
+.animation-header:focus-visible,
 .model-wardrobe summary:focus-visible,
 .wardrobe-outfits:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: -2px;
 }
-@media (max-width: 480px) {
-    .preview-control {
+@media (max-width: 640px) {
+    .preview-tools {
+        top: .25rem;
         right: .25rem;
     }
-    .rotation { top: .25rem; }
-    .download-entry { bottom: .25rem; }
+    .download-entry { right: .25rem; bottom: .25rem; }
     .model-viewer {
-        grid-template-columns: minmax(0, 1fr) minmax(6rem, .6fr);
+        --wardrobe-height: min(30dvh, 18rem);
+        --animations-height: min(25dvh, 14rem);
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: minmax(8rem, 1fr) minmax(0, max-content);
+        grid-auto-rows: max-content;
+        height: 100%;
+    }
+    .model-viewer:has(.model-actions.expanded):has(.model-wardrobe[open]) {
+        --wardrobe-height: 25dvh;
+        --animations-height: 20dvh;
     }
     .model-actions {
+        contain: none;
         font-size: .85rem;
     }
-    .model-actions > .button {
-        font-size: .85rem;
+    .model-panels {
+        display: flex;
+        flex-direction: column;
+        gap: var(--model-gap);
+        min-height: 0;
+        overflow-y: auto;
     }
-    .wardrobe-header {
+    .model-actions,
+    .model-wardrobe {
+        flex-shrink: 0;
+    }
+    .animation-header {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        font-weight: bold;
+        text-align: start;
+    }
+    .animation-content {
+        height: var(--animations-height);
+        flex: none;
+    }
+    .model-actions:not(.expanded) .animation-content {
+        display: none;
+    }
+    .animation-header,
+    .model-wardrobe {
         font-size: .9rem;
+    }
+    .animation-header,
+    .wardrobe-header {
         gap: .25rem;
     }
     .wardrobe-header-actions {
         gap: .3rem;
     }
+    .model-wardrobe {
+        --wardrobe-header-height: 2rem;
+    }
+    .wardrobe-content:has(.wardrobe-outfit-detail) {
+        height: auto;
+        min-height: calc(var(--wardrobe-height) - var(--wardrobe-header-height));
+    }
+    .wardrobe-outfit-detail {
+        container-type: inline-size;
+        gap: .2rem;
+        padding: 0 .2rem;
+    }
+    .wardrobe-parts {
+        flex: 1 0 auto;
+        padding: .5rem 1rem;
+    }
+    .wardrobe-parts button {
+        gap: .2rem;
+        padding: .25rem;
+    }
+    .wardrobe-parts img { width: min(18cqi, 6rem, 14dvh); }
+    .wardrobe-parts button > span { translate: 0 -.25rem; }
     .wardrobe-outfits {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }

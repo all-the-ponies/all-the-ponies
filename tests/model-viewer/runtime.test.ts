@@ -207,15 +207,21 @@ function fixture(mode: 'normal' | 'pending-child' | 'eventful' | 'pending-effect
         },
     }
     const additional = sourceModule('additional.ts', injected)
+    const host = { clientWidth: 400, clientHeight: 300, appendChild() {} }
+    let onResize!: () => void
     const runtime = sourceModule('runtime.ts', {
         ...injected, ...additional, OrbitControls: Controls, document, devicePixelRatio: 1,
-        ResizeObserver: class { observe() {} disconnect() {} },
+        ResizeObserver: class {
+            constructor(callback: () => void) { onResize = callback }
+            observe() {}
+            disconnect() {}
+        },
         requestAnimationFrame(callback: FrameRequestCallback) { frames.set(++frameId, callback); return frameId },
         cancelAnimationFrame(id: number) { frames.delete(id) },
     })
-    const viewer = runtime.mountViewer({ clientWidth: 400, clientHeight: 300, appendChild() {} }, ref,
-        (state: unknown) => changes.push(state))
+    const viewer = runtime.mountViewer(host, ref, (state: unknown) => changes.push(state))
     return {
+        resize(width: number, height: number) { host.clientWidth = width; host.clientHeight = height; onResize() },
         completeAnimation: () => completeAnimation?.(),
         wardrobeRequested: () => wardrobeRequested, clothing, clothingMeshes,
         viewer, parent, child, animation, secondAnimation, prop, disposed, frames, changes, renders, listeners,
@@ -247,6 +253,24 @@ test('opening view sees the right flank of a forward-facing glTF model', async (
         const azimuth = Math.atan2(position[0] - target[0], position[2] - target[2])
         assert.ok(Math.abs(azimuth + Math.PI / 3) < 1e-6)
     } finally { f.close() }
+})
+
+test('rotating the viewport and resetting both fit the current canvas', async () => {
+    const rotated = fixture(), portrait = fixture()
+    try {
+        portrait.resize(300, 600)
+        await Promise.all([rotated.viewer.ready, portrait.viewer.ready])
+        const expected = portrait.viewer.snapshot()
+        const wide = rotated.viewer.snapshot().distance
+        assert.ok(expected.distance > wide)
+        rotated.resize(300, 600)
+        const resized = rotated.viewer.snapshot()
+        rotated.viewer.reset()
+        assert.deepEqual(rotated.viewer.snapshot().position, expected.position)
+        assert.ok(Math.abs(resized.distance - expected.distance) < 1e-7)
+        rotated.resize(400, 300)
+        assert.ok(Math.abs(rotated.viewer.snapshot().distance - wide) < 1e-7)
+    } finally { rotated.close(); portrait.close() }
 })
 
 test('parent frame zero moves the additional actor before the first render, following only root X/Z', async () => {
