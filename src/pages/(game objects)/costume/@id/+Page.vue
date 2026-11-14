@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BackButton from '@/components/buttons/BackButton.vue';
+import CostumeBonus from '@/components/CostumeBonus.vue';
 import Link from '@/components/Link.vue';
 import ObjectPage from '@/layouts/ObjectPage.vue';
 import { createAssetUrl } from '@/scripts/assets';
@@ -10,6 +11,7 @@ import { useData } from 'vike-vue/useData';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { computed } from 'vue';
 import type { Data } from './+data';
+import ModelViewerLauncher from '@/components/model-viewer/ModelViewerLauncher.vue';
 import ObjectImage from '@/components/ObjectImage.vue';
 import CostumePartEntry from './CostumePartEntry.vue';
 import InventoryAddButton from '@/components/buttons/InventoryAddButton.vue';
@@ -40,14 +42,10 @@ const pony = computed(() => getObject(costume.value?.pony, 'pony'))
         <template v-else>
             <ObjectPage :gameObject="costume">
                 <template #left-info v-if="costume.bonus.type">
-                    <div class="bonus-info">
-                        <img v-if="costume.bonus.type == 'MineCart'" src="@/assets/images/ui/icons/minecart-icon.png" alt="Minecart bonus">
-                        <img v-if="costume.bonus.type == 'MiniGames'" src="@/assets/images/ui/icons/costume-minigame-boost.png" alt="Minigame bonus">
-                        <img v-if="costume.bonus.type == 'ShopProduction'" src="@/assets/images/ui/icons/bits-boost.png" alt="Bits bonus">
-                        +{{ $n(costume.bonus.amount / 100, {style: 'percent'}) }}
-                    </div>
+                    <CostumeBonus :bonus="costume.bonus" class="bonus-info" />
                 </template>
                 <template #image-right>
+                    <ModelViewerLauncher :identity="costume.id" :name="name" />
                     <InventoryAddButton :game-object="costume.id"></InventoryAddButton>
                 </template>
                 <template #info>
@@ -116,15 +114,6 @@ const pony = computed(() => getObject(costume.value?.pony, 'pony'))
 .bonus-info {
     font-size: 1.6rem;
     margin-block: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.bonus-info img {
-    height: 1em;
-    object-fit: contain;
-    object-position: center;
 }
 
 .subsets {
