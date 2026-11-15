@@ -39,3 +39,6 @@ requirements.local.txt
 .env
 resources/designs/
 pnpm-workspace.yaml
+
+# Generated viewer test assets
+tests/model-viewer/generated/

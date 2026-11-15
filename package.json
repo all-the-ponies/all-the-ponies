@@ -10,7 +10,10 @@
     "preview": "npm run build && vike preview --port 5000",
     "deploy": "npm run build && wrangler deploy",
     "type-check": "vue-tsc --build",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "test:model-viewer": "tsx --test tests/model-viewer/*.test.ts",
+    "test:model-viewer:glb": "node tests/model-viewer/validate.mjs",
+    "demo:model-viewer": "node tests/model-viewer/server.mjs"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.68.0",
@@ -25,6 +28,7 @@
     "pinia": "^4.1.0",
     "pinia-plugin-persistedstate": "^4.7.1",
     "sitemap": "^10.0.0",
+    "three": "0.186.1",
     "v-lazy-image": "^2.1.2",
     "vike": "^0.4.270",
     "vike-vue": "^0.9.16",
@@ -38,9 +42,11 @@
     "@tsconfig/node22": "^22.0.6",
     "@types/node": "^26.6.6",
     "@types/papaparse": "^5.5.2",
+    "@types/three": "0.186.0",
     "@vitejs/plugin-vue": "^6.0.10",
     "@vitejs/plugin-vue-jsx": "^5.1.6",
     "@vue/tsconfig": "^0.9.1",
+    "gltf-validator": "2.0.0-dev.3.10",
     "navigation-api-types": "^0.6.1",
     "npm-run-all2": "^9.0.4",
     "sass-embedded": "^1.108.2",

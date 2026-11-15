@@ -87,6 +87,7 @@ if (props.open) {
                 <dialog class="dialog" ref="dialog-element" @close="cancel()">
                     <header class="dialog-header">
                         {{ props.title }}
+                        <slot name="title-action"></slot>
                     </header>
                     <XButton
                         v-if="props.hasCloseButton"

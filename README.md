@@ -47,3 +47,6 @@ To build, run this
 ```sh
 npm run build
 ```
+
+The optional 3D model viewer and local game-resource demo are documented in
+[3D model viewer](docs/3d-model-viewer.md).

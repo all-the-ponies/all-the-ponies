@@ -8,6 +8,7 @@ import vike from 'vike/plugin'
 import { cloudflare } from '@cloudflare/vite-plugin'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const viewerDependencies = ['three', 'three/addons/loaders/GLTFLoader.js', 'three/addons/controls/OrbitControls.js']
 
 // https://vite.dev/config/
 function isEnabled(value: string | undefined) {
@@ -180,6 +181,16 @@ export default defineConfig(({ mode }) => {
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+  },
+  optimizeDeps: {
+    // The lazy viewer must not trigger a full-page reload on first open.
+    include: viewerDependencies,
+  },
+  environments: {
+    ssr: {
+      // Late SSR optimization also resets the already loaded game-data module.
+      optimizeDeps: {include: ['vue/server-renderer', ...viewerDependencies]},
     },
   },
   server: {

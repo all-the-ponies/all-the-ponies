@@ -1,4 +1,4 @@
-import ky, { HTTPError } from 'ky'
+import ky, { HTTPError, type Options } from 'ky'
 import {
     ASSETS_PROXY_PATH,
     ensureTrailingSlash,
@@ -138,13 +138,15 @@ export async function getAssetManifest(): Promise<Record<string, string>> {
     return fetchManifest(source.base)
 }
 
+type AssetOptions = Pick<Options, 'signal' | 'cache' | 'credentials' | 'redirect' | 'timeout'> & {version?: string}
+
 /**
  * Fetch an asset and return its response.
  *
  * Uses the dev proxy when DEV_ASSETS_URL is set, the R2 binding on the
  * server when available, and the public assets URL otherwise.
  */
-export async function fetchAsset(key: string): Promise<Response> {
+export async function fetchAsset(key: string, {version, ...options}: AssetOptions = {}): Promise<Response> {
     const source = await resolveAssetSource()
     const assetKey = key.replace(/^\//, '')
 
@@ -164,16 +166,16 @@ export async function fetchAsset(key: string): Promise<Response> {
     const url = new URL(assetKey, source.base)
 
     if (assetKey !== MANIFEST_KEY) {
-        const manifest = await fetchManifest(source.base)
-        if (manifest[assetKey]) {
-            url.searchParams.set('v', manifest[assetKey])
+        const assetVersion = version ?? (await fetchManifest(source.base))[assetKey]
+        if (assetVersion) {
+            url.searchParams.set('v', assetVersion)
         }
     }
 
-    return await ky.get(url, { retry: 0 })
+    return await ky.get(url, { retry: 0, ...options })
 }
 
-export async function fetchAssetJson<T>(key: string): Promise<T> {
-    const response = await fetchAsset(key)
+export async function fetchAssetJson<T>(key: string, options: AssetOptions = {}): Promise<T> {
+    const response = await fetchAsset(key, options)
     return await response.json() as T
 }

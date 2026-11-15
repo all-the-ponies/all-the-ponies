@@ -18,6 +18,7 @@ import { createAssetUrl } from '@/scripts/assets';
 import { computedAsync } from '@vueuse/core';
 import { useBasePrice } from '@/composables/useBasePrice';
 import type { Data } from './+data';
+import ModelViewerLauncher from '@/components/model-viewer/ModelViewerLauncher.vue';
 
 
 const pageContext = usePageContext()
@@ -55,6 +56,9 @@ const fortuneShopData = computed(() => getFortuneShopData(pet.value.id))
         </div>
         <template v-else>
             <ObjectPage :gameObject="pet">
+                <template #image-right>
+                    <ModelViewerLauncher :identity="pet.id" :name="name" />
+                </template>
                 <template #left-info>
                     <div class="bonus-info">
                         <img src="@/assets/images/ui/icons/minecart-icon.png" alt="Minecart bonus">

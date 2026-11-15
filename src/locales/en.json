@@ -24,6 +24,45 @@
     },
     "title": "About"
   },
+  "model_viewer": {
+    "open": "View 3D model",
+    "loading": "Loading 3D model…",
+    "canvas": "3D model. Drag or use left and right arrow keys to rotate.",
+    "reset": "Reset view",
+    "controls": {
+      "title": "Viewer controls",
+      "rotate": "Rotate",
+      "pan": "Pan",
+      "zoom": "Zoom",
+      "mouse": {
+        "rotate": "Drag with the left mouse button. Unlock to tilt. When the model has focus, use ← or →.",
+        "pan": "Drag with the right mouse button or hold Shift and drag.",
+        "zoom": "Use the scroll wheel."
+      },
+      "touch": {
+        "rotate": "Drag with one finger. Unlock to tilt.",
+        "pan": "Slide two fingers together.",
+        "zoom": "Pinch in or out."
+      }
+    },
+    "unlock_rotation": "Unlock rotation",
+    "lock_rotation": "Lock rotation",
+    "animations": "Animations",
+    "wardrobe": "Wardrobe",
+    "back_to_outfits": "Back to outfits",
+    "choose_outfit": "Choose an outfit",
+    "slot_body": "Body",
+    "slot_mane": "Head",
+    "slot_tail": "Tail",
+    "outfit_parts": "Outfit parts",
+    "current_appearance": "Currently wearing",
+    "select_all": "Select All",
+    "add_export": "Add {name} to download",
+    "remove_export": "Remove {name} from download",
+    "choose_export": "Choose animations to export",
+    "preparing_download": "Preparing download…",
+    "export_progress": "Preparing animations {completed}/{total}…"
+  },
   "button": {
     "cancel": "Cancel",
     "close": "Close",

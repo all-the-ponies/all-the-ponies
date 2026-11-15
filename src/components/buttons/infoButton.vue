@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { ref, useId, onBeforeUnmount, useTemplateRef, computed } from 'vue'
-import {arrow, autoUpdate, flip, offset, shift, useFloating, type Placement} from '@floating-ui/vue';
+import {arrow, autoUpdate, flip, offset, shift, size, useFloating, type Placement} from '@floating-ui/vue';
 
 const props = withDefaults(defineProps<{
   placement?: Placement,
   label?: string,
+  centerOnScreen?: boolean,
 }>(), {
   placement: 'top'
 })
@@ -17,12 +18,25 @@ const placement = computed(() => props.placement)
 
 const { floatingStyles, placement: computedPlacement, middlewareData } = useFloating(infoButton, popover, {
   placement: placement,
-  middleware: [
+  strategy: computed(() => props.centerOnScreen ? 'fixed' : 'absolute'),
+  middleware: computed(() => [
     flip(),
     offset(12),
+    {
+      name: 'centerOnScreen',
+      fn: ({elements, rects}) => props.centerOnScreen
+        ? { x: (elements.floating.ownerDocument.documentElement.clientWidth - rects.floating.width) / 2 }
+        : {},
+    },
     shift({ padding: 8 }),
+    ...(props.centerOnScreen ? [size({
+      padding: 8,
+      apply({availableHeight, elements}) {
+        elements.floating.style.setProperty('--popover-available-height', `${Math.max(0, availableHeight)}px`)
+      },
+    })] : []),
     arrow({ element: arrowEl, padding: 14 }),
-  ],
+  ]),
   whileElementsMounted: autoUpdate,
 })
 
@@ -45,10 +59,11 @@ const arrowStyles = computed(() => {
       ref="info-button"
       class="info-button button-circle button-blue"
       :aria-label="label || $t('common.info')"
+      :title="label"
       :popovertarget="id"
       popovertargetaction="toggle"
     >
-      <span aria-hidden="true">i</span>
+      <slot name="icon"><span aria-hidden="true">i</span></slot>
     </button>
 
     <div
