@@ -29,6 +29,22 @@
     "loading": "Loading 3D model…",
     "canvas": "3D model. Drag or use left and right arrow keys to rotate.",
     "reset": "Reset view",
+    "controls": {
+      "title": "Viewer controls",
+      "rotate": "Rotate",
+      "pan": "Pan",
+      "zoom": "Zoom",
+      "mouse": {
+        "rotate": "Drag with the left mouse button. Unlock to tilt. When the model has focus, use ← or →.",
+        "pan": "Drag with the right mouse button or hold Shift and drag.",
+        "zoom": "Use the scroll wheel."
+      },
+      "touch": {
+        "rotate": "Drag with one finger. Unlock to tilt.",
+        "pan": "Slide two fingers together.",
+        "zoom": "Pinch in or out."
+      }
+    },
     "unlock_rotation": "Unlock rotation",
     "lock_rotation": "Lock rotation",
     "animations": "Animations",

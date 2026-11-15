@@ -55,9 +55,19 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
     host.appendChild(canvas)
     const controls = new OrbitControls(camera, canvas)
     controls.enablePan = false
-    controls.enableZoom = true
-    controls.enableDamping = false
-    controls.touches.TWO = THREE.TOUCH.DOLLY_PAN
+    // A fixed camera measures pan in viewport percentages, even while the model turns.
+    const panCamera = new THREE.OrthographicCamera(-50, 50, 50, -50)
+    panCamera.position.z = 1
+    const panControls = new OrbitControls(panCamera, canvas)
+    panControls.enableRotate = false
+    panControls.enableZoom = false
+    panControls.touches.ONE = null // End the two-finger pan when one finger lifts.
+    for (const control of [controls, panControls]) {
+        control.enableDamping = true
+        control.dampingFactor = .1
+        control.touches.TWO = THREE.TOUCH.DOLLY_PAN
+    }
+    const viewport = new THREE.Vector2()
     let disposed = false
     let model: GLTF | undefined
     let additional: AdditionalActor | undefined
@@ -124,9 +134,11 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
     const ticking = () => state.playing || additional?.running() || materialClock?.active || eyes?.active || effects?.active
     function frame(time: number) {
         frameId = 0
-        if (disposed || document.hidden || !ticking()) return
+        if (disposed || document.hidden) return
         const delta = lastTime === undefined ? 0 : Math.min((time - lastTime) / 1000, .1)
         lastTime = time
+        controls.update()
+        panControls.update()
         effects?.update(delta)
         if (state.playing) {
             mixer!.update(delta)
@@ -139,12 +151,19 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
         materialClock?.update(delta)
         if (eyes?.update(delta) && state.playing) mixer!.update(0)
         render()
-        resume()
+        if (ticking()) resume()
+        else lastTime = undefined
     }
     function resume() {
-        if (!disposed && state.ready && !document.hidden && ticking() && !frameId) {
+        if (!disposed && state.ready && !document.hidden && !frameId) {
             frameId = requestAnimationFrame(frame)
         }
+    }
+    function applyPan() {
+        const {x: width, y: height} = viewport
+        camera.setViewOffset(width, height,
+            panControls.target.x * width / 100, -panControls.target.y * height / 100, width, height)
+        resume()
     }
     function visibility() {
         if (document.hidden) { cancelFrame(); gestures.clear() }
@@ -157,6 +176,7 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
     function resize() {
         const width = Math.max(1, host.clientWidth)
         const height = Math.max(1, host.clientHeight)
+        viewport.set(width, height)
         renderer.setSize(width, height, false)
         const previousAspect = camera.aspect
         camera.aspect = width / height
@@ -170,6 +190,13 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
     }
     function resetCamera() {
         if (!initial) return
+        // Flush pending pan and rotation before restoring the framing.
+        for (const control of [controls, panControls]) {
+            control.enableDamping = false
+            control.update()
+            control.enableDamping = true
+        }
+        panControls.reset()
         const polar = THREE.MathUtils.degToRad(76)
         controls.minPolarAngle = state.free ? 0 : polar
         controls.maxPolarAngle = state.free ? Math.PI : polar
@@ -204,10 +231,7 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
     function keydown(event: KeyboardEvent) {
         if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
         event.preventDefault()
-        const offset = camera.position.clone().sub(controls.target)
-        offset.applyAxisAngle(new THREE.Vector3(0, 1, 0), event.key === 'ArrowLeft' ? .1 : -.1)
-        camera.position.copy(controls.target).add(offset)
-        controls.update()
+        controls.rotateLeft(event.key === 'ArrowLeft' ? -.1 : .1)
     }
     function pointerdown(event: PointerEvent) {
         if (!state.ready || disposed || document.hidden) return
@@ -232,7 +256,8 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
     }
     const observer = new ResizeObserver(resize)
     observer.observe(host)
-    controls.addEventListener('change', render)
+    controls.addEventListener('change', resume)
+    panControls.addEventListener('change', applyPan)
     canvas.addEventListener('keydown', keydown)
     canvas.addEventListener('pointerdown', pointerdown)
     canvas.addEventListener('pointermove', pointermove)
@@ -345,8 +370,10 @@ export function mountViewer(host: HTMLElement, ref: ModelRef, changed: (state: V
         releaseModel()
         gestures.clear(true)
         observer.disconnect()
-        controls.removeEventListener('change', render)
+        controls.removeEventListener('change', resume)
+        panControls.removeEventListener('change', applyPan)
         controls.dispose()
+        panControls.dispose()
         canvas.removeEventListener('keydown', keydown)
         canvas.removeEventListener('pointerdown', pointerdown)
         canvas.removeEventListener('pointermove', pointermove)

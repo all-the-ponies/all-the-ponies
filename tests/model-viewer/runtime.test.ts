@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs'
 import { runInNewContext } from 'node:vm'
 import ts from 'typescript'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { bindAnimation as bindNativeAnimation } from '../../src/components/model-viewer/animation'
 import { nativeTransparentSort } from '../../src/components/model-viewer/native-materials'
 import { prepareWardrobe } from '../../src/components/model-viewer/wardrobe'
@@ -32,7 +33,7 @@ function model(name: string) {
     return { name, scene, bone, scenes: [scene], animations: [] }
 }
 
-function fixture(mode: 'normal' | 'pending-child' | 'eventful' | 'pending-effects' | 'visibility' | 'overlap' | 'wardrobe' | 'pending-wardrobe' | 'failed-wardrobe' = 'normal', holdAnimation = false) {
+function fixture(mode: 'normal' | 'static' | 'pending-child' | 'eventful' | 'pending-effects' | 'visibility' | 'overlap' | 'wardrobe' | 'pending-wardrobe' | 'failed-wardrobe' = 'normal', holdAnimation = false) {
     const parent = model('parent')
     const child = model('child')
     const clothing = model('wardrobe')
@@ -99,27 +100,27 @@ function fixture(mode: 'normal' | 'pending-child' | 'eventful' | 'pending-effect
         addEventListener(name: string, listener: () => void) { listeners.set(name, listener) },
         removeEventListener(name: string) { listeners.delete(name) },
     }
-    const canvas = { tabIndex: 0, addEventListener() {}, removeEventListener() {}, remove() {} }
+    const canvas = {tabIndex: 0, style: {}, clientWidth: 400, clientHeight: 300, getRootNode: () => document, ownerDocument: document,
+        addEventListener() {}, removeEventListener() {}, remove() {}}
     class Renderer {
         domElement = canvas
         setPixelRatio() {}
         setTransparentSort() {}
-        setSize() {}
+        setSize(width: number, height: number) { canvas.clientWidth = width; canvas.clientHeight = height }
         render() {
             renders.push({ parent: parent.bone.position.toArray(), childMatrix: child.scene.parent?.matrix.toArray() })
         }
         dispose() {}
         forceContextLoss() {}
     }
-    class Controls extends THREE.EventDispatcher {
-        target = new THREE.Vector3()
-        touches = {}
-        constructor(private camera: THREE.PerspectiveCamera) { super() }
-        update() {}
-        dispose() {}
-        getPolarAngle() { return 1 }
-        getAzimuthalAngle() { return 0 }
-        getDistance() { return this.camera.position.distanceTo(this.target) }
+    let controls!: OrbitControls
+    let panControls!: OrbitControls
+    class Controls extends OrbitControls {
+        constructor(camera: THREE.PerspectiveCamera | THREE.OrthographicCamera, element: HTMLElement) {
+            super(camera, element)
+            if (camera instanceof THREE.OrthographicCamera) panControls = this
+            else controls = this
+        }
     }
     const animation = { id: 'move', name: 'Move', duration: 1, sha256: 'parent-animation' }
     if (mode === 'overlap') Object.assign(animation, {rigKey: 'a'.repeat(64), eventBinding: {version: 2, visibility: [
@@ -136,7 +137,7 @@ function fixture(mode: 'normal' | 'pending-child' | 'eventful' | 'pending-effect
     const ref = {
         rigKey: 'parent-rig', animations: [animation, secondAnimation],
         wardrobe: {rigKey: 'parent-rig'},
-        additionalActor: {
+        additionalActor: mode === 'static' ? undefined : {
             model: childRef, parentRoot: 0, controller: 'native-first-then-random-v1',
             transform: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 10, 0, 0, 1],
         },
@@ -224,7 +225,7 @@ function fixture(mode: 'normal' | 'pending-child' | 'eventful' | 'pending-effect
         resize(width: number, height: number) { host.clientWidth = width; host.clientHeight = height; onResize() },
         completeAnimation: () => completeAnimation?.(),
         wardrobeRequested: () => wardrobeRequested, clothing, clothingMeshes,
-        viewer, parent, child, animation, secondAnimation, prop, disposed, frames, changes, renders, listeners,
+        viewer, controls, panControls, parent, child, animation, secondAnimation, prop, disposed, frames, changes, renders, listeners,
         childRequested: () => childRequested,
         childAborted: () => childAborted,
         eventLog, effectRequested: () => effectRequested, effectsDisposed: () => effectsDisposed,
@@ -271,6 +272,78 @@ test('rotating the viewport and resetting both fit the current canvas', async ()
         rotated.resize(400, 300)
         assert.ok(Math.abs(rotated.viewer.snapshot().distance - wide) < 1e-7)
     } finally { rotated.close(); portrait.close() }
+})
+
+test('a static preview coasts to a stop and Reset clears both rotation and pan momentum', async () => {
+    const f = fixture('static')
+    try {
+        await f.viewer.ready
+        const home = f.viewer.snapshot()
+        assert.equal(f.panControls.enablePan, true)
+        assert.equal(f.controls.dampingFactor, .1)
+        assert.equal(f.panControls.dampingFactor, .1)
+        f.controls.rotateLeft(.8)
+        const firstStep = Math.abs(f.viewer.snapshot().azimuth - home.azimuth)
+        assert.ok(Math.abs(firstStep - .08) < 1e-7)
+        f.tick(16)
+        const secondStep = Math.abs(f.viewer.snapshot().azimuth - home.azimuth) - firstStep
+        assert.ok(secondStep > 0 && secondStep < firstStep)
+        for (let step = 2; f.frames.size && step <= 180; step++) f.tick(step * 16)
+        assert.equal(f.frames.size, 0)
+
+        f.panControls.pan(45, 12)
+        f.controls.rotateLeft(.4)
+        f.tick(3000)
+        assert.ok(f.panControls.target.lengthSq() > 0)
+        f.viewer.reset()
+        for (let step = 1; f.frames.size && step <= 5; step++) f.tick(3000 + step * 16)
+        assert.equal(f.frames.size, 0)
+        assert.deepEqual(f.viewer.snapshot().target, home.target)
+        assert.equal(f.panControls.target.lengthSq(), 0)
+        assert.ok(Math.abs(f.viewer.snapshot().azimuth - home.azimuth) < 1e-7)
+        assert.ok(Math.abs(f.viewer.snapshot().distance - home.distance) < 1e-7)
+    } finally { f.close() }
+})
+
+test('orbit and zoom keep the model at its panned position in the viewport', async () => {
+    const f = fixture('static')
+    try {
+        await f.viewer.ready
+        const camera = f.controls.object as THREE.PerspectiveCamera
+        const pivot = f.controls.target.clone()
+        let time = 0
+        function screenPosition() {
+            camera.updateMatrixWorld()
+            const {x, y} = pivot.clone().project(camera)
+            return new THREE.Vector2(x, y)
+        }
+        function settle() {
+            for (let i = 0; f.frames.size && i < 180; i++) f.tick(time += 16)
+            assert.equal(f.frames.size, 0)
+        }
+        f.viewer.setFree(true)
+        f.panControls.pan(80, -40)
+        settle()
+        const panned = screenPosition()
+        assert.ok(panned.x > .35 && panned.y > .2, 'pan moves the model right and up')
+        f.controls.rotateLeft(Math.PI / 2)
+        f.controls.rotateUp(.4)
+        settle()
+        assert.ok(screenPosition().distanceTo(panned) < .001, `model center moves from ${panned.toArray()} to ${screenPosition().toArray()} during orbit`)
+        f.controls.dollyIn(1.5)
+        settle()
+        assert.ok(screenPosition().distanceTo(panned) < .001, 'zoom keeps the same screen center')
+        f.resize(300, 600)
+        assert.ok(screenPosition().distanceTo(panned) < .001, 'resize preserves relative framing')
+        f.viewer.reset()
+        settle()
+        assert.ok(screenPosition().length() < 1e-7, 'Reset recenters the model')
+        f.resize(400, 300)
+        f.panControls.pan(80, -40)
+        f.controls.rotateLeft(Math.PI / 2)
+        settle()
+        assert.ok(screenPosition().distanceTo(panned) < .001, 'orbiting during pan inertia keeps its screen direction')
+    } finally { f.close() }
 })
 
 test('parent frame zero moves the additional actor before the first render, following only root X/Z', async () => {

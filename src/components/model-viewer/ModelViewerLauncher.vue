@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { defineAsyncComponent, onBeforeUnmount, onErrorCaptured, ref, shallowRef, useTemplateRef, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useMediaQuery } from '@vueuse/core';
 import DialogComponent from '../DialogComponent.vue';
+import InfoButton from '../buttons/infoButton.vue';
 import XButton from '../buttons/XButton.vue';
 import Loading from '../Loading.vue';
 import { resolveModel, type ModelRef } from './assets';
 
 const props = defineProps<{identity: string, name: string}>()
 const { t } = useI18n()
+const touchControls = useMediaQuery('(pointer: coarse)')
+const controlActions = ['rotate', 'pan', 'zoom'] as const
 const ModelViewer = defineAsyncComponent({
     loader: () => import('./ModelViewer.vue'),
     loadingComponent: Loading,
@@ -65,6 +69,20 @@ async function loadModel() {
             @click="open"
         >3D</button>
         <DialogComponent ref="model-dialog" :title="props.name" @close="close">
+            <template #title-action>
+                <InfoButton class="controls-help" placement="bottom" center-on-screen :label="t('model_viewer.controls.title')">
+                    <template #icon><img class="controls-help-icon" src="@/assets/images/ui/icons/info-icon.png" alt=""></template>
+                    <div class="controls-guide" dir="auto" role="group" :aria-label="t('model_viewer.controls.title')" tabindex="0">
+                        <strong>{{ t('model_viewer.controls.title') }}</strong>
+                        <dl>
+                            <template v-for="action in controlActions" :key="action">
+                                <dt>{{ t(`model_viewer.controls.${action}`) }}</dt>
+                                <dd>{{ t(`model_viewer.controls.${touchControls ? 'touch' : 'mouse'}.${action}`) }}</dd>
+                            </template>
+                        </dl>
+                    </div>
+                </InfoButton>
+            </template>
             <div ref="model-tools" class="model-dialog-tools">
                 <XButton class="dialog-close" @click="dialog?.cancel()" />
             </div>
@@ -111,7 +129,7 @@ async function loadModel() {
     bottom: auto;
     margin: 0;
     translate: -50% -50%;
-    padding: 2rem .65rem .65rem;
+    padding: .1rem .65rem .65rem;
     min-height: 0;
     max-height: calc(100dvh - 1rem);
 }
@@ -122,7 +140,14 @@ async function loadModel() {
     display: none;
 }
 :global(.dialog:has(.model-viewer-frame) .dialog-header) {
-    top: .25rem;
+    position: relative;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    min-height: 1.9rem;
+    overflow-wrap: anywhere;
     translate: none;
     max-width: calc(100% - 5rem);
     padding: 0;
@@ -135,6 +160,37 @@ async function loadModel() {
 :global(.dialog:has(.model-viewer-frame) .dialog-header::before) {
     display: none;
 }
+.controls-help { flex: none; }
+.controls-help :deep(.info-button) {
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+.controls-help-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    translate: 0 1px;
+}
+.controls-help :deep(.info-popover:popover-open) {
+    display: flex;
+    flex-direction: column;
+    width: min(19rem, calc(100vw - 2rem));
+    max-width: none;
+    max-height: var(--popover-available-height);
+}
+.controls-guide { overflow-y: auto; }
+.controls-guide dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .35rem .6rem;
+    margin: .4rem 0 0;
+    text-align: start;
+}
+.controls-guide dt { font-weight: bold; }
+.controls-guide dd { margin: 0; }
 .model-dialog-tools {
     position: absolute;
     top: .1rem;
@@ -167,7 +223,7 @@ async function loadModel() {
         min-height: 0;
     }
     :global(.dialog:has(.model-viewer-frame)) {
-        padding: 2rem .4rem .4rem;
+        padding: .1rem .4rem .4rem;
     }
     :global(.dialog:has(.model-viewer-frame) .dialog-header) {
         font-size: 1.1rem;
@@ -179,9 +235,6 @@ async function loadModel() {
 @media (max-height: 500px) {
     .model-viewer-frame {
         --model-height: 40dvh;
-    }
-    :global(.dialog:has(.model-viewer-frame)) {
-        padding-top: 2rem;
     }
     :global(.dialog:has(.model-viewer-frame) .dialog-header) {
         font-size: 1.1rem;

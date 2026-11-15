@@ -16,6 +16,8 @@ the animation and wardrobe panels scroll below the preview, keeping the model
 controls clear. The narrow dialog uses the available viewport height. On wider
 screens, animations sit beside the fixed-height preview and the wardrobe opens
 below it. The round Reset button sits beneath the rotation lock.
+The info button beside the model name shows controls for the device's primary
+pointer. Touchscreens see gestures, while mouse users see mouse and keyboard controls.
 
 ## Review full ATP pages with local S3
 
@@ -69,7 +71,7 @@ by Vite on the phone, using the same port and detail-page path. `localhost` on t
 phone refers to the phone itself. Keep `DEV_ASSETS_URL` pointed at the computer's
 local S3 service; the phone reads assets through ATP's same-origin proxy.
 Narrowing a desktop browser checks the responsive layout, while a real phone
-also checks touch rotation, two-finger zoom, panel scrolling and downloads.
+also checks touch rotation, two-finger panning and zoom, panel scrolling and downloads.
 
 ## Focused viewer demo
 
@@ -400,7 +402,10 @@ hair UV clock also runs while the parent rests and pauses when the page hides.
 
 Locked rotation keeps the initial elevation. Drag horizontally with the mouse
 or one finger, or use the left/right keys, to orbit the model. The scroll wheel
-and two-finger pinch zoom in both modes. Unlocking also allows vertical orbit
+and two-finger pinch zoom in both modes. Right-drag, Shift-drag or slide two
+fingers together to pan. The model stays at its panned position when you orbit
+or zoom. Orbit and pan coast after release with an OrbitControls damping
+factor of 0.1. Unlocking also allows vertical orbit
 and keeps the current view and animation. Resizing the preview preserves the
 orbit and relative zoom within the zoom limits. Switching back to locked
 rotation or pressing Reset view stops the current animation, restores the rest
@@ -495,6 +500,7 @@ uses the same static image reference pattern as ATP's other button icons.
 The contributor adapted the Reset icon from the "Retrieve Information" icon in
 the game assets. The bundled `ui/icons/reset-view-icon.png` has SHA-256
 `59cdb8cfef0d4cc5a39e43f526cb15570457a7086b4f8c5fadd9b1edb10a9982`.
+The contributor sourced `ui/icons/info-icon.png` from the game's CollectionFashion info button.
 
 ### Native SubObject visibility and shared clips
 
