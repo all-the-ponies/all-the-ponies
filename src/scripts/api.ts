@@ -31,15 +31,24 @@ const api = ky.create({
     }
 })
 
-async function getSave(friendCode: string) {
+async function getSave(friendCode: string): Promise<SaveData> {
     friendCode = friendCode.trim().toLocaleLowerCase()
     if (!FRIEND_CODE_PATTERN.test(friendCode)) {
         throw new Error(`Invalid friend code "${friendCode}"`)
     }
     
-    const result = await api.get<SaveData>(`save/${friendCode.toLowerCase().trim()}/inventory/`).json()
+    const response = await api.get<SaveData>(`save/${friendCode}/inventory/`)
+    const body = await response.text()
+    
+    if (!response.ok) {
+        throw new Error(body)
+    }
 
-    return result
+    try {
+        return JSON.parse(body)
+    } catch (error) {
+        throw new Error(body)
+    }    
 }
 
 async function getMazeProgress(friendCode: string) {
@@ -53,10 +62,20 @@ async function getMazeProgress(friendCode: string) {
     return result
 }
 
-async function getShop() {
-    const result = await api.get<ShopEntry[]>('shop').json()
+async function getShop(): Promise<ShopEntry[]> {
+    const response = await api.get<ShopEntry[]>('shop')
 
-    return result
+    const body = await response.text()
+
+    if (!response.ok) {
+        throw new Error(body)
+    }
+    
+    try {
+        return JSON.parse(body)
+    } catch (error) {
+        throw new Error(body)
+    }
 }
 
 async function getPriceHistory(item: GameObjectId) {
