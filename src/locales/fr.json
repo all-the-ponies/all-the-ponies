@@ -118,6 +118,7 @@
       "regular": "Normal"
     },
     "pony": {
+      "critters": "Bestioles",
       "gem_pony": "Poneys à gemmes",
       "not_owned": "Non possédé",
       "npc": "PNJ",
@@ -288,6 +289,7 @@
       }
     },
     "stats": {
+      "bit_ponies": "Bits Poneys",
       "stars": "Étoiles",
       "wh_collections": "Collections tendances"
     },
