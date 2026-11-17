@@ -7,7 +7,7 @@ import { getCollection, getCollectionData, getGameObjects, getMazePony, getObjec
 import type { TDateISO } from "@/types/date"
 import type { CollectionType, GameObject, GameObjectId } from "@/types/gameDataTypes"
 import type { MazePonyType } from '@/types/mazeDataTypes'
-import type { HTTPError } from "ky"
+import { isHTTPError, type HTTPError } from "ky"
 import { defineStore } from "pinia"
 import { computed, shallowRef, toValue, watchEffect, type MaybeRef } from "vue"
 
@@ -350,8 +350,8 @@ export const useSaveStore = defineStore('save', {
             }
             
             const saveData = await api.getSave(friendCode).catch(async (error: HTTPError) => {
-                if (error.response) {
-                    throw new Error(await error.response.text())
+                if (isHTTPError(error) && error.data) {
+                    throw new Error(String(error.data))
                 } else {
                     throw error
                 }
@@ -432,8 +432,8 @@ export const useSaveStore = defineStore('save', {
             }
             
             const mazeProgress = await api.getMazeProgress(friendCode).catch(async (error: HTTPError) => {
-                if (error.response) {
-                    throw new Error(await error.response.text())
+                if (isHTTPError(error) && error.data) {
+                    throw new Error(String(error.data))
                 } else {
                     throw error
                 }

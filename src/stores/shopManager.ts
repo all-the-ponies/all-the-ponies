@@ -3,7 +3,7 @@ import type { ShopEntry } from "@/scripts/api.types"
 import { notNullIsh } from "@/scripts/common"
 import { getObject } from "@/scripts/gameData"
 import type { GameObject, GameObjectId } from "@/types/gameDataTypes"
-import { HTTPError } from "ky"
+import { HTTPError, isHTTPError } from "ky"
 
 enum ShopStatus {
     unloaded,
@@ -80,8 +80,8 @@ class ShopStore {
             try {
                 shop = await api.getShop()
             } catch (error: unknown) {
-                if (error instanceof HTTPError) {
-                    reject(await error.response.text())
+                if (isHTTPError(error) && error.data) {
+                    reject(error.data)
                 } else {
                     reject(error)
                 }
