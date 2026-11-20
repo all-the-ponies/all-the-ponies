@@ -12,7 +12,8 @@
             "1": "Este site foi construído por {ego}.",
             "2": "Obrigada a {bass} por ajudar a carregar os pôneis com um código de amigo.",
             "3": "A fonte usada é {font}, que também é usada no jogo.",
-            "4": "O site foi construído usando {vue} para deixar minha vida mais fácil e permitir uma experiência mais dinâmica."
+            "4": "O site foi construído usando {vue} para deixar minha vida mais fácil e permitir uma experiência mais dinâmica.",
+            "5": "Obrigado a {melty} por alguns recursos"
           }
         },
         "title": "Créditos"
@@ -44,7 +45,7 @@
     }
   },
   "collection": {
-    "collection": "Coleções",
+    "collection": "Coleção | Coleções",
     "message": {
       "alt_reward": "Prêmio alternativo",
       "progress": "PROGRESSO:",
@@ -289,8 +290,27 @@
       }
     },
     "stats": {
+      "bit_ponies": "Pôneis bit",
+      "bit_shops": "Lojas de Bit",
+      "critters": "Bichos",
+      "gem_ponies": "Pôneis gema",
+      "pro_ponies": "Pôneis Pro",
       "stars": "Estrelas",
       "wh_collections": "Coleções populares"
+    },
+    "stats_alt": {
+      "bit_ponies": "{count} Pôneis bit",
+      "bit_shops": "{count} Lojas de Bit",
+      "critters": "{count} Bichos",
+      "gem_ponies": "{count} Pôneis gema",
+      "pro_ponies": "{count} Pôneis Pro",
+      "stars": "{count} Estrelas"
+    },
+    "stats_info": {
+      "bit_ponies": "Pôneis que tem tarefas para coletar bits",
+      "gem_ponies": "Ponêis que tem tarefas para coletar gemas",
+      "shop": "Inclui lojas de bits, bichos, fazendas de alimentos e a roda gigante.",
+      "transformable": "Pôneis que tem uma forma alternativa"
     },
     "title": "Inventário"
   },
@@ -538,6 +558,7 @@
       "pro_rate": "Decoração Profissional"
     },
     "game_order": "Ordem no jogo",
+    "price": "Preço",
     "relevance": "Relevância",
     "reverse": "Reverso",
     "shop": {
